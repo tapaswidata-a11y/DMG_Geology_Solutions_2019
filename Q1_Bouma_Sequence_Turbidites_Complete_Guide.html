@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.1 – Turbidites, Bouma Sequence & Flute Casts | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 18px 22px; }
+  .bg-blue   { background: #1d4ed8; }
+  .bg-indigo { background: #4338ca; }
+  .bg-emerald{ background: #047857; }
+  .bg-purple { background: #6d28d9; }
+  .bg-amber  { background: #b45309; }
+  .bg-teal   { background: #0f766e; }
+  .bg-rose   { background: #be123c; }
+
+  /* ── Textbook Quote Boxes ── */
+  .quote-box {
+    background: #f0fdf4;
+    border-left: 5px solid #059669;
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-style: italic;
+    color: #064e3b;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.boggs {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+    color: #1e3a8a;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 6px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.boggs .quote-ref { color: #1d4ed8; }
+
+  /* ── Textbook Image Wrappers ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 380px;
+    height: auto;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #64748b;
+  }
+  .tb-caption strong { color: #0f172a; }
+
+  /* ── Option Analysis Styling ── */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 11px 15px 13px; background: #fafafa; font-size: 13.5px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th {
+    background: #1e293b;
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* ── Probable Questions ── */
+  .pq-list { list-style: none; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 11px 15px;
+    margin-bottom: 11px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 5px;
+    color: #065f46;
+    font-weight: 600;
+  }
+  .pq-exp {
+    margin-top: 3px;
+    color: #475569;
+    font-size: 12.5px;
+  }
+
+  /* ── Highlighting & Lists ── */
+  .highlight { background: #fef08a; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .section-intro { font-size: 14px; color: #334155; margin-bottom: 12px; }
+  ul.body-list { padding-left: 20px; margin-bottom: 10px; }
+  ul.body-list li { margin-bottom: 6px; font-size: 13.5px; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid #cbd5e1;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="badge">DGMS 2019 · Sedimentology · Chapter Masterclass</div>
+    <h1>Turbidite Dynamics, The Bouma Sequence & Sole Marks</h1>
+    <div class="meta">
+      Comprehensive Textbook Study Guide & Complete Solution for DGMS 2019 Exam (Question 1)<br>
+      Standard Reference: Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Edition, 2006)
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART I: IN-DEPTH TOPIC DISCUSSION WITH DIRECT TEXTBOOK FIGURES         -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Direct Textbook Analysis</div>
+      <div class="part-sub">Sediment gravity flows, hydrodynamics of waning turbidity currents, the Bouma sequence, and sole mark diagnostics</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: SEDIMENT GRAVITY FLOWS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Sediment Gravity Flows vs. Fluid Gravity Flows</div>
+    <div class="card-body">
+      <p class="section-intro">
+        In deep-marine and lacustrine basins, sediment transport is predominantly driven by <strong>sediment gravity flows</strong>—flows in which sediment is moved down-slope under the direct pull of gravity, dragging the interstitial fluid with it (Middleton & Hampton, 1973; Boggs, 2006, Chapter 2).
+      </p>
+
+      <div class="quote-box boggs">
+        "Sediment gravity flows are distinguished from fluid gravity flows (such as rivers and ocean surface currents) because the sediment moves under the direct action of gravity and the fluid is dragged along with the sediment, rather than the fluid moving under gravity and carrying the sediment along... Four fundamental mechanisms of sediment support operate in sediment gravity flows: (1) fluid turbulence (turbidity currents), (2) upward escape of pore fluid (liquefied/fluidized flows), (3) grain-to-grain dispersive pressure (grain flows), and (4) matrix strength of cohesive mud (debris flows)."
+        <span class="quote-ref">— Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), pp. 54–57</span>
+      </div>
+
+      <p>
+        A <strong>turbidity current</strong> is a density current in which sediment is held in suspension by <strong>fluid turbulence</strong>. As a turbidity current surges downslope through a submarine canyon or across a basin floor, its velocity progressively decreases due to slope reduction, friction, and fluid entrainment. This <em>waning flow regime</em> results in characteristic vertical grading and sedimentary structures.
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE BOUMA SEQUENCE -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Hydrodynamics of Waning Flow: The Bouma Sequence (Ta – Te)</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Arnold Bouma (1962) recognized that deposits of deceleration-dominated turbidity currents exhibit an idealized vertical succession of five structural subdivisions, universally known as the <strong>Bouma Sequence</strong>:
+      </p>
+
+      <div class="quote-box boggs">
+        "Bouma (1962) proposed an ideal turbidite sequence, now commonly called a Bouma sequence. This ideal sequence consists of five structural units (Fig. 2.8) that include the characteristics of turbidites. These structural subdivisions record the decay of flow strength of a turbidity current with time at a given point on the sea floor (waning flow) as current-flow velocity wanes through upper flow regime into lower flow regime."
+        <span class="quote-ref">— Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), p. 58</span>
+      </div>
+
+      <ul class="body-list">
+        <li><strong>T<sub>a</sub> (Massive or Graded Sandstone):</strong> Coarsest division at the base. Rapid, catastrophic sedimentation from high-concentration suspension in the upper flow regime. Internal structure is massive or displays normal grading (fining upward).</li>
+        <li><strong>T<sub>b</sub> (Lower Plane-Laminated Sandstone):</strong> Medium to fine sandstone displaying parallel, horizontal laminations formed by traction transport under upper flow regime plane-bed conditions.</li>
+        <li><strong>T<sub>c</sub> (Ripple Cross-Laminated Sandstone):</strong> Fine to very fine sandstone exhibiting current ripple cross-laminations, climbing ripples, or convolute lamination, reflecting deposition in the lower flow regime as current velocity wanes.</li>
+        <li><strong>T<sub>d</sub> (Upper Plane-Laminated Siltstone):</strong> Faint, parallel-laminated silt and clay deposited by settling from dilute suspension under weak traction.</li>
+        <li><strong>T<sub>e</sub> (Pelagic / Hemipelagic Mud):</strong> Structureless hemipelagic mud deposited by slow suspension settling of ocean background sediment.</li>
+      </ul>
+
+      <!-- DIRECT TEXTBOOK IMAGE: Boggs Fig 2.8 -->
+      <div class="tb-figure">
+        <img src="figures_Q01/boggs_fig2_8_bouma_sequence.png" alt="Boggs Figure 2.8 Ideal Bouma Sequence" style="max-width:440px;">
+        <div class="tb-caption">
+          <strong>Figure 2.8 (Boggs, <em>Principles of Sedimentology and Stratigraphy</em>, 2006, p. 58):</strong> The ideal Bouma sequence showing the five structural divisions (T<sub>a</sub> through T<sub>e</sub>) deposited by a decelerating turbidity current, illustrating upward fining from massive coarse sand to pelagic mud.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: FLUTE CASTS AND PALEOCURRENTS -->
+  <div class="card">
+    <div class="card-header bg-teal">3. Sole Marks: Flute Casts as Downslope Turbidity Current Indicators</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Sole marks are positive-relief structures preserved on the underside (sole) of sandstone beds overlying muddy strata. Among sole marks, <strong>flute casts are the diagnostic hallmark of high-energy turbidity currents</strong>.
+      </p>
+
+      <div class="quote-box boggs">
+        "Flute casts are elongated, scoop-shaped structures that occur on the soles of turbidite beds. The genesis of these structures involves localized erosion of cohesive mud bottoms by turbulent eddies generated in the high-velocity head of a turbidity current (Fig. 4.35). As the current wanes, sand fills the scoured depressions, preserving positive casts on the underside of the sandstone bed (Fig. 4.36). The bulbous, deepest end of a flute cast points up-current, and the flared, shallower end points down-current, providing an unambiguous paleocurrent indicator."
+        <span class="quote-ref">— Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), pp. 116–117</span>
+      </div>
+
+      <!-- DIRECT TEXTBOOK IMAGES: Boggs Fig 4.35 & 4.36 -->
+      <div class="tb-figure">
+        <img src="figures_Q01/boggs_fig4_35_flute_genesis.png" alt="Boggs Figure 4.35 Flute cast genesis" style="max-width:560px;">
+        <div class="tb-caption">
+          <strong>Figure 4.35 (Boggs, 2006, p. 117):</strong> Diagrammatic representation of flute mark genesis by localized turbulent eddy scouring into cohesive mud bottom, followed by sand infilling.
+        </div>
+      </div>
+
+      <div class="tb-figure">
+        <img src="figures_Q01/boggs_fig4_36_flute_photo.png" alt="Boggs Figure 4.36 Flute casts photograph" style="max-width:540px;">
+        <div class="tb-caption">
+          <strong>Figure 4.36 (Boggs, 2006, p. 117):</strong> Flute casts on the base of a turbidite sandstone bed. The bulbous, pointed ends point in the up-current direction, establishing flow toward the upper right.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: CONTOUR CURRENTS VS TURBIDITY CURRENTS -->
+  <div class="card">
+    <div class="card-header bg-emerald">4. Contour Currents vs. Turbidity Currents: Key Distinctions</div>
+    <div class="card-body">
+      <p class="section-intro">
+        A classic trap in sedimentary petrology is distinguishing turbidites from contourites:
+      </p>
+      <ul class="body-list">
+        <li><strong>Flow Geometry:</strong> Turbidity currents flow <em>downslope</em> (perpendicular to bathymetric contours), driven by gravitational instability. Contour currents flow <em>along-slope</em> (parallel to bathymetric contours), driven by deep-water thermohaline ocean circulation and deflected by the Coriolis force.</li>
+        <li><strong>Internal Layering:</strong> Turbidites feature the characteristic upward-fining, sequential Bouma subdivisions (Massive $\rightarrow$ Plane-Laminated $\rightarrow$ Ripple-Laminated). Contourites are typically thin, intensely bioturbated, winnowed silt/mud layers lacking the Bouma sequence.</li>
+        <li><strong>Sole Marks:</strong> Flute casts require rapid, catastrophic downslope turbulent eddy erosion. Contour currents are semi-continuous, low-velocity traction currents that do not generate basal flute casts.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART II: ORIGINAL QUESTION & DETAILED WORKED SOLUTION                 -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">DGMS 2019 Examination: Question & Worked Solution</div>
+      <div class="part-sub">Rigorous option-by-option critical analysis and definitive textbook-grounded answer</div>
+    </div>
+  </div>
+
+  <!-- ORIGINAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-blue">❓ Original Question — DGMS 2019 (Junior Scientific Officer)</div>
+    <div class="card-body">
+      <p style="font-size:15.5px; font-weight:700; margin-bottom:14px; color:#0f172a;">
+        Q.1. A normal graded bed of sandstone is noticed with flute cast at its base and internally made up of massive, plane-laminated and ripple-laminated subdivisions, in order of superposition. The sandstone bed is interpreted as a product of
+      </p>
+      <div style="display:flex; flex-direction:column; gap:8px; padding-left:4px;">
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (a) &nbsp; <strong>Debris flow</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (b) &nbsp; <strong>Grain flow</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (c) &nbsp; <strong>Turbidity current</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (d) &nbsp; <strong>Contour current</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (c) Turbidity current</div>
+      <div class="sub">
+        The combination of basal flute casts, normal grading (fining upward), and the upward succession of massive (T<sub>a</sub>) ➔ plane-laminated (T<sub>b</sub>) ➔ ripple-laminated (T<sub>c</sub>) subdivisions is the exact definition of a classic Bouma-sequence turbidite bed.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION BY OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-purple">🔍 Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- Option A -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(a) Debris flow
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> Debris flows are supported by matrix cohesive strength and buoyant raft pressure. They produce <strong>debrites</strong>—chaotic, poorly sorted, matrix-supported diamictites. They lack traction structures (no plane or ripple laminations), do not display normal Bouma grading, and rarely form flute casts because their laminar, plug-like flow does not generate turbulent eddy scours.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option B -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(b) Grain flow
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> Grain flows are supported purely by dispersive pressure arising from grain-to-grain collisions (Bagnold, 1954). In subaqueous settings, grain flows are physically restricted to steep slopes exceeding the angle of repose (~30°). They produce very thin units (&lt;5 cm), are massive to reverse-graded (due to kinetic sieving), and completely lack tractional ripple laminations and basal flute marks.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option C -->
+      <div class="option correct">
+        <div class="option-header">
+          ✔ &nbsp;(c) Turbidity current
+          <span class="tag correct">CORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is correct:</strong> As described in Boggs (2006, pp. 58, 116–117), a decelerating turbidity current deposits the diagnostic <strong>Bouma sequence</strong>:
+            <br>• <strong>Flute casts at base:</strong> Scoured by turbulent eddies in the fast, dense head.
+            <br>• <strong>Massive division (T<sub>a</sub>):</strong> Rapid sedimentation from suspension.
+            <br>• <strong>Plane-laminated division (T<sub>b</sub>):</strong> Upper flow-regime traction transport.
+            <br>• <strong>Ripple-laminated division (T<sub>c</sub>):</strong> Lower flow-regime current ripple migration.
+            <br>The description in the question matches the classic T<sub>a–c</sub> turbidite profile with 100% fidelity.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option D -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(d) Contour current
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> Contour currents flow parallel to bathymetric contours along the continental slope, driven by thermohaline circulation. They are low-velocity, semi-continuous traction flows that lack catastrophic downslope surges, do not generate the Bouma sequence, and do not produce basal flute casts pointing downslope.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS TABLES & HIGH-YIELD PROBABLE QUESTIONS           -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">Quick-reference diagnostic tables and 8 curated exam questions for DGMS, UPSC GSI, and IIT-JAM</div>
+    </div>
+  </div>
+
+  <!-- DIAGNOSTIC TABLES -->
+  <div class="card">
+    <div class="card-header bg-amber">📊 Synthesis Tables: Gravity Flows & The Bouma Divisions</div>
+    <div class="card-body">
+
+      <h4 style="margin-bottom:8px; color:#92400e;">Table 1: Classification of Subaqueous Sediment Gravity Flows</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Flow Type</th>
+            <th>Support Mechanism</th>
+            <th>Depositional Structure</th>
+            <th>Grading Style</th>
+            <th>Sole Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Turbidity Current</td>
+            <td>Fluid turbulence</td>
+            <td>Bouma sequence (T<sub>a</sub>–T<sub>e</sub>)</td>
+            <td>Normal grading (fining upward)</td>
+            <td>Flute casts, groove casts</td>
+          </tr>
+          <tr>
+            <td>Debris Flow</td>
+            <td>Matrix strength (cohesive mud)</td>
+            <td>Chaotic, unstratified diamictite</td>
+            <td>Ungraded or reverse graded</td>
+            <td>Rare / absent</td>
+          </tr>
+          <tr>
+            <td>Grain Flow</td>
+            <td>Dispersive pressure (grain collisions)</td>
+            <td>Massive, thin sheets (&lt;5 cm)</td>
+            <td>Reverse grading (kinetic sieving)</td>
+            <td>Absent</td>
+          </tr>
+          <tr>
+            <td>Fluidized Flow</td>
+            <td>Upward escape of pore fluid</td>
+            <td>Dish structures, fluid escape pipes</td>
+            <td>Poorly graded</td>
+            <td>Absent</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:18px 0 8px; color:#92400e;">Table 2: Divisions of the Ideal Bouma Sequence (Boggs, 2006)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Division</th>
+            <th>Name</th>
+            <th>Sedimentary Structure</th>
+            <th>Flow Regime</th>
+            <th>Grain Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>T<sub>a</sub></td>
+            <td>Massive / Graded</td>
+            <td>Structureless or normally graded</td>
+            <td>Upper flow regime (rapid dump)</td>
+            <td>Coarse to medium sand</td>
+          </tr>
+          <tr>
+            <td>T<sub>b</sub></td>
+            <td>Lower Plane Bed</td>
+            <td>Parallel horizontal laminations</td>
+            <td>Upper flow regime plane bed</td>
+            <td>Medium to fine sand</td>
+          </tr>
+          <tr>
+            <td>T<sub>c</sub></td>
+            <td>Rippled / Convolute</td>
+            <td>Current ripple & convolute laminae</td>
+            <td>Lower flow regime (ripples)</td>
+            <td>Fine to very fine sand / silt</td>
+          </tr>
+          <tr>
+            <td>T<sub>d</sub></td>
+            <td>Upper Plane Bed</td>
+            <td>Faint parallel laminations</td>
+            <td>Lower flow regime (suspension)</td>
+            <td>Silt to clay</td>
+          </tr>
+          <tr>
+            <td>T<sub>e</sub></td>
+            <td>Pelagic Mud</td>
+            <td>Structureless mud / shale</td>
+            <td>Hemipelagic background settling</td>
+            <td>Clay / pelagic biogenic mud</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- PROBABLE EXAM QUESTIONS -->
+  <div class="card">
+    <div class="card-header bg-rose">🎯 Probable High-Yield Exam Questions (UPSC GSI, DGMS, IIT-JAM & GATE)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Q1. In the Bouma sequence, the division that represents the transition into the lower flow regime is:</strong><br>
+          (a) T<sub>a</sub> &nbsp;&nbsp;&nbsp; (b) T<sub>b</sub> &nbsp;&nbsp;&nbsp; (c) T<sub>c</sub> &nbsp;&nbsp;&nbsp; (d) T<sub>d</sub>
+          <div class="pq-ans">→ Correct Answer: (c) T<sub>c</sub></div>
+          <div class="pq-exp">Explanation: T<sub>a</sub> and T<sub>b</sub> represent upper flow regime conditions (rapid suspension dumping and upper plane bed). T<sub>c</sub> represents current ripple cross-laminations, which form strictly under lower flow regime conditions.</div>
+        </li>
+
+        <li>
+          <strong>Q2. In a flute cast, the paleocurrent direction is determined by:</strong><br>
+          (a) The pointed, bulbous end points down-current<br>
+          (b) The pointed, bulbous end points up-current, and the flared end points down-current<br>
+          (c) Flutes are symmetrical and give only the trend, not the direction<br>
+          (d) Flute marks are perpendicular to current direction
+          <div class="pq-ans">→ Correct Answer: (b)</div>
+          <div class="pq-exp">Explanation: Turbulent eddy vortices scour deepest at the up-current impact point, creating a bulbous beak that tapers and flares out in the down-current flow direction (Boggs, 2006, p. 117).</div>
+        </li>
+
+        <li>
+          <strong>Q3. Reverse grading in coarse clastic sedimentary beds is characteristic of:</strong><br>
+          (a) Turbidity currents &nbsp;&nbsp;&nbsp; (b) Grain flows &nbsp;&nbsp;&nbsp; (c) Low-density suspension &nbsp;&nbsp;&nbsp; (d) Contour currents
+          <div class="pq-ans">→ Correct Answer: (b) Grain flows</div>
+          <div class="pq-exp">Explanation: Grain flows are dominated by dispersive pressure from grain collisions. Large clasts experience greater dispersive pressure and migrate to the top of the shearing flow, while smaller clasts fall between interstices (kinetic sieving), producing reverse grading.</div>
+        </li>
+
+        <li>
+          <strong>Q4. Which of the following sedimentary structures is NOT typical of the base of turbidite sandstones?</strong><br>
+          (a) Flute cast &nbsp;&nbsp;&nbsp; (b) Groove cast &nbsp;&nbsp;&nbsp; (c) Desiccation crack &nbsp;&nbsp;&nbsp; (d) Prod mark
+          <div class="pq-ans">→ Correct Answer: (c) Desiccation crack</div>
+          <div class="pq-exp">Explanation: Desiccation cracks (mud cracks) are subaerial exposure structures formed in tidal flats or playa lakes. Turbidites are deep subaqueous marine/lacustrine gravity flows.</div>
+        </li>
+
+        <li>
+          <strong>Q5. How do contourites differ fundamentally from turbidites in deep-sea basins?</strong><br>
+          (a) Contourites flow downslope; turbidites flow along-slope<br>
+          (b) Contourites flow parallel to bathymetric contours; turbidites flow downslope<br>
+          (c) Contourites always display the complete Bouma sequence<br>
+          (d) Contourites are unsorted debris deposits
+          <div class="pq-ans">→ Correct Answer: (b)</div>
+          <div class="pq-exp">Explanation: Contour currents are geostrophic ocean bottom currents flowing parallel to bathymetric contours, whereas turbidity currents are catastrophic density flows moving downslope perpendicular to contours.</div>
+        </li>
+
+        <li>
+          <strong>Q6. The T<sub>b</sub> division of the Bouma sequence is characterized by:</strong><br>
+          (a) Convolute bedding<br>
+          (b) Plane-parallel laminations formed under upper flow regime<br>
+          (c) Climbing ripples<br>
+          (d) Dish structures
+          <div class="pq-ans">→ Correct Answer: (b)</div>
+          <div class="pq-exp">Explanation: T<sub>b</sub> is the lower plane-laminated division, formed by traction transport in the upper flow regime plane-bed phase.</div>
+        </li>
+
+        <li>
+          <strong>Q7. Dish structures and fluid escape pipes are most characteristic of which sediment gravity flow deposit?</strong><br>
+          (a) Turbidite &nbsp;&nbsp;&nbsp; (b) Fluidized / Liquefied flow &nbsp;&nbsp;&nbsp; (c) Grain flow &nbsp;&nbsp;&nbsp; (d) Mud flow
+          <div class="pq-ans">→ Correct Answer: (b) Fluidized / Liquefied flow</div>
+          <div class="pq-exp">Explanation: As pore fluid escapes upward through loose, settling sand, it drags clay and fine silt upward, creating curved, subhorizontal concave-upward "dish" laminae and vertical escape pillars.</div>
+        </li>
+
+        <li>
+          <strong>Q8. The primary mechanism supporting sediment in a turbidity current is:</strong><br>
+          (a) Upward escape of pore water &nbsp;&nbsp;&nbsp; (b) Fluid turbulence &nbsp;&nbsp;&nbsp; (c) Dispersive pressure &nbsp;&nbsp;&nbsp; (d) Matrix cohesion
+          <div class="pq-ans">→ Correct Answer: (b) Fluid turbulence</div>
+          <div class="pq-exp">Explanation: In turbidity currents, sediment grains are maintained in suspension by upward turbulent eddies within the moving fluid.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <p><strong>Tapaswi Saikia</strong> · Geology Student · DGMS & Competitive Geological Examination Preparation</p>
+    <p>Source Exam: DGMS 2019 (Junior Scientific Officer), Question 1 · Subject: Sedimentology</p>
+    <p>Textbook Authority: Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), Chapters 2 & 4, pp. 54–60, 116–120</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.2 – Carbonate Diagenesis & Syntaxial Overgrowths | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 18px 22px; }
+  .bg-blue   { background: #1d4ed8; }
+  .bg-indigo { background: #4338ca; }
+  .bg-emerald{ background: #047857; }
+  .bg-purple { background: #6d28d9; }
+  .bg-amber  { background: #b45309; }
+  .bg-teal   { background: #0f766e; }
+  .bg-rose   { background: #be123c; }
+
+  /* ── Textbook Quote Boxes ── */
+  .quote-box {
+    background: #f0fdf4;
+    border-left: 5px solid #059669;
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-style: italic;
+    color: #064e3b;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.boggs {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+    color: #1e3a8a;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 6px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.boggs .quote-ref { color: #1d4ed8; }
+
+  /* ── Textbook Image Wrappers ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 380px;
+    height: auto;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #64748b;
+  }
+  .tb-caption strong { color: #0f172a; }
+
+  /* ── Option Analysis Styling ── */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 11px 15px 13px; background: #fafafa; font-size: 13.5px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th {
+    background: #1e293b;
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* ── Probable Questions ── */
+  .pq-list { list-style: none; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 11px 15px;
+    margin-bottom: 11px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 5px;
+    color: #065f46;
+    font-weight: 600;
+  }
+  .pq-exp {
+    margin-top: 3px;
+    color: #475569;
+    font-size: 12.5px;
+  }
+
+  /* ── Highlighting & Lists ── */
+  .highlight { background: #fef08a; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .section-intro { font-size: 14px; color: #334155; margin-bottom: 12px; }
+  ul.body-list { padding-left: 20px; margin-bottom: 10px; }
+  ul.body-list li { margin-bottom: 6px; font-size: 13.5px; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid #cbd5e1;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="badge">DGMS 2019 · Carbonate Sedimentology · Chapter Masterclass</div>
+    <h1>Carbonate Diagenesis, Cement Fabrics & Syntaxial Overgrowths</h1>
+    <div class="meta">
+      Comprehensive Textbook Study Guide & Complete Solution for DGMS 2019 Exam (Question 2)<br>
+      Standard Reference: Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Edition, 2006)
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART I: IN-DEPTH TOPIC DISCUSSION WITH DIRECT TEXTBOOK FIGURES         -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Direct Textbook Analysis</div>
+      <div class="part-sub">Carbonate diagenetic environments, cement morphologies, optical continuity, and crystallographic overgrowth mechanisms</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: CARBONATE DIAGENESIS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Carbonate Diagenetic Environments & Cement Precipitation</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Carbonate sediments are extraordinarily susceptible to post-depositional physical and chemical alteration (diagenesis) because calcium carbonate minerals (aragonite, high-Mg calcite, low-Mg calcite) are chemically reactive and metastable in natural waters (Boggs, 2006, Chapter 6).
+      </p>
+
+      <div class="quote-box boggs">
+        "Carbonate diagenesis takes place in three major realms: (1) the marine environment, (2) the meteoric environment (subdivided into the vadose unsaturated zone and the phreatic saturated zone), and (3) the deep-burial environment. Cementation is the primary process responsible for the lithification of loose carbonate grains into rigid limestone. The mineralogy and morphology of carbonate cements are diagnostic of the chemistry, saturation state, and hydrologic flow of pore waters."
+        <span class="quote-ref">— Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), pp. 204–207</span>
+      </div>
+
+      <p>
+        The morphology of carbonate cement crystals ranges widely:
+      </p>
+      <ul class="body-list">
+        <li><strong>Acicular / Aragonite Needles & Fibrous Cements:</strong> Common in the marine phreatic zone (high Mg/Ca ratio favors aragonite and high-Mg calcite).</li>
+        <li><strong>Meniscus & Pendant (Gravitational) Cements:</strong> Confined to the meteoric vadose zone, where capillary forces draw pore water into contact points between grains (meniscus) or beneath grains (stalactitic droplets).</li>
+        <li><strong>Equant / Blocky Calcite Cements:</strong> Interlocking crystals of equal dimensions, characteristic of freshwater meteoric phreatic and deep burial realms.</li>
+        <li><strong>Syntaxial Rim Overgrowths:</strong> Single-crystal cement jackets precipitated in crystallographic and optical continuity around monocrystalline host grains.</li>
+      </ul>
+
+      <!-- DIRECT TEXTBOOK IMAGE: Boggs Fig 6.15 -->
+      <div class="tb-figure">
+        <img src="figures_Q02/boggs_fig6_15_carbonate_cements.png" alt="Boggs Figure 6.15 Carbonate Cements" style="max-width:540px;">
+        <div class="tb-caption">
+          <strong>Figure 6.15 (Boggs, <em>Principles of Sedimentology and Stratigraphy</em>, 2006, p. 208):</strong>
+          Morphology and distribution of carbonate cement types. Note the distinctive <strong>Syntaxial rim cement</strong> surrounding a monocrystalline echinoderm grain, alongside meniscus, pendant, isopachous, and blocky mosaic fabrics.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: SYNTAXIAL OVERGROWTH IN CARBONATES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Mechanism of Syntaxial Overgrowth & Optical Continuity</div>
+    <div class="card-body">
+      <p class="section-intro">
+        The word <em>syntaxial</em> derives from the Greek <em>syn</em> (together) and <em>taxis</em> (order/arrangement). In sedimentary petrography, it defines cement growth that shares the exact crystal lattice orientation of the substrate.
+      </p>
+
+      <div class="quote-box boggs">
+        "In the water-saturated phreatic zone, cements are isopachous, blocky, or syntaxial rim cements. <strong>Syntaxial rims form by precipitation of optically continuous calcite cement on single-crystal echinoderm fragments.</strong> Because syntaxial overgrowths are optically continuous with the original crystal, the host grain and the cement extinguish simultaneously under crossed polars on the petrographic microscope."
+        <span class="quote-ref">— Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), pp. 141, 208</span>
+      </div>
+
+      <p>
+        Echinoderm plates (crinoid ossicles, echinoid spines) are unique in paleontology because each individual skeletal element behaves as a <strong>single giant crystal of high-Mg calcite</strong>. When pore waters become supersaturated with respect to low-Mg calcite:
+      </p>
+      <ul class="body-list">
+        <li>The echinoderm surface acts as an ideal, energetically favored seed template (epitactic nucleation site).</li>
+        <li>Calcite precipitates without needing to nucleate new crystallographic centers, growing outward as an optical continuation of the host lattice.</li>
+        <li>Under a petrographic microscope between crossed polars, when the stage is rotated, <strong>both the core echinoderm fragment and the surrounding syntaxial cement extinguish at the exact same angle</strong>.</li>
+        <li>The boundary between the original grain and the syntaxial overgrowth is typically demarcated only by a thin "dust line" of micro-inclusions or iron oxide coating.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 3: SYNTAXIAL VS ANTITAXIAL VS BLOCKY -->
+  <div class="card">
+    <div class="card-header bg-teal">3. Comparative Terminology: Syntaxial, Antitaxial, Blocky & Rim</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Competitive examinations frequently test precise terminology differentiating overgrowth types:
+      </p>
+      <ul class="body-list">
+        <li>
+          <strong>Syntaxial Overgrowth:</strong> Mineral growth where cement continues the lattice and optical orientation of the substrate (crystal axis [c-axis] is identical). Diagnostic of echinoderm-bearing limestones (encrinites) and syntaxial quartz overgrowths on detrital quartz grains in quartz arenites.
+        </li>
+        <li>
+          <strong>Antitaxial Growth:</strong> A term strictly from <em>structural geology and vein mechanics</em> (Durney & Ramsay, 1973). Antitaxial veins are fibrous veins where fibrous mineral crystals grow outward from a central median suture line towards the vein walls (crystals grow at the vein wall-rock contact). It does <em>not</em> describe carbonate grain cementation.
+        </li>
+        <li>
+          <strong>Blocky / Equant Cement:</strong> A mosaic of randomly oriented calcite crystals that have approximately equal dimensions and vary randomly in their optical extinction angles.
+        </li>
+        <li>
+          <strong>Rim Cement (Generic):</strong> An isopachous or microcrystalline crust coating a grain. While syntaxial overgrowth forms a "rim", calling it merely "rim overgrowth" fails to specify the critical defining condition: <em>optical continuity with the single crystal substrate</em>.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART II: ORIGINAL QUESTION & DETAILED WORKED SOLUTION                 -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">DGMS 2019 Examination: Question & Worked Solution</div>
+      <div class="part-sub">Rigorous option-by-option critical analysis and definitive textbook-grounded answer</div>
+    </div>
+  </div>
+
+  <!-- ORIGINAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-blue">❓ Original Question — DGMS 2019 (Junior Scientific Officer)</div>
+    <div class="card-body">
+      <p style="font-size:15.5px; font-weight:700; margin-bottom:14px; color:#0f172a;">
+        Q.2. In carbonate diagenesis, if calcite cement is overgrown on a single calcite crystal in same optical orientation, it is referred to as
+      </p>
+      <div style="display:flex; flex-direction:column; gap:8px; padding-left:4px;">
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (a) &nbsp; <strong>Rim overgrowth</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (b) &nbsp; <strong>Antitaxial overgrowth</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (c) &nbsp; <strong>Blocky overgrowth</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (d) &nbsp; <strong>Syntaxial overgrowth</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (d) Syntaxial overgrowth</div>
+      <div class="sub">
+        When cement precipitates around a monocrystalline grain (such as an echinoderm fragment or quartz grain) in identical crystallographic and optical orientation, it is defined scientifically as a syntaxial overgrowth (or syntaxial rim cement).
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION BY OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-purple">🔍 Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- Option A -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(a) Rim overgrowth
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> "Rim overgrowth" or "isopachous rim" is a generic descriptive term denoting any cement layer that coats a grain boundary. A rim can be composed of randomly oriented microcrystalline calcite, isopachous fibrous aragonite needles, or tangential coatings, none of which share the optical orientation of the host grain. It misses the specific crystallographic relationship defined in the question.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option B -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(b) Antitaxial overgrowth
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> "Antitaxial" is a structural geology term describing fibrous vein-fill dynamics where fibers grow outward from a median line towards the wall rock (Durney & Ramsay, 1973). In diagenetic sedimentology, cement growing outward from a detrital grain into pore space is <em>syntaxial</em>, never antitaxial.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option C -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(c) Blocky overgrowth
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> Blocky cement (equant spar) consists of equant, polygonal calcite crystals that nucleate randomly in pore spaces without crystallographic alignment to the host grain. Each crystal in a blocky mosaic has its own independent optical orientation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option D -->
+      <div class="option correct">
+        <div class="option-header">
+          ✔ &nbsp;(d) Syntaxial overgrowth
+          <span class="tag correct">CORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is correct:</strong> As defined verbatim in Boggs (2006, pp. 141, 208), precipitation of mineral cement on a single-crystal substrate (e.g., echinoderm ossicle or quartz grain) where the new cement adopts the <strong>exact same optical and crystallographic orientation</strong> as the host crystal is termed <strong>syntaxial overgrowth</strong>. Both host and cement extinguish simultaneously under crossed polars.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS TABLES & HIGH-YIELD PROBABLE QUESTIONS           -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">Quick-reference diagnostic tables and 8 curated exam questions for DGMS, UPSC GSI, and IIT-JAM</div>
+    </div>
+  </div>
+
+  <!-- DIAGNOSTIC TABLES -->
+  <div class="card">
+    <div class="card-header bg-amber">📊 Synthesis Tables: Carbonate Cements & Overgrowth Fabrics</div>
+    <div class="card-body">
+
+      <h4 style="margin-bottom:8px; color:#92400e;">Table 1: Carbonate Cement Fabrics and Diagenetic Environments</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Cement Morphology</th>
+            <th>Mineralogy</th>
+            <th>Diagenetic Environment</th>
+            <th>Diagnostic Feature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Syntaxial Rim Overgrowth</td>
+            <td>Low-Mg Calcite</td>
+            <td>Meteoric Phreatic & Burial</td>
+            <td>Optical continuity with single-crystal host (echinoderm)</td>
+          </tr>
+          <tr>
+            <td>Isopachous Fibrous Rim</td>
+            <td>Aragonite / High-Mg Calcite</td>
+            <td>Marine Phreatic</td>
+            <td>Uniform isopachous coating of needles perpendicular to grain</td>
+          </tr>
+          <tr>
+            <td>Meniscus Cement</td>
+            <td>Low-Mg Calcite</td>
+            <td>Meteoric Vadose</td>
+            <td>Blunt, curved meniscus bridges at grain contacts</td>
+          </tr>
+          <tr>
+            <td>Pendant (Microcodium/Gravitational)</td>
+            <td>Low-Mg Calcite</td>
+            <td>Meteoric Vadose</td>
+            <td>Thickens on undersides of grains due to hanging droplets</td>
+          </tr>
+          <tr>
+            <td>Blocky / Equant Mosaic</td>
+            <td>Low-Mg Calcite</td>
+            <td>Meteoric Phreatic & Burial</td>
+            <td>Equant polygonal crystals increasing in size towards pore center</td>
+          </tr>
+          <tr>
+            <td>Poikilotopic Spar</td>
+            <td>Calcite / Ferroan Calcite</td>
+            <td>Deep Burial</td>
+            <td>Very large calcite crystals enclosing multiple detrital grains</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:18px 0 8px; color:#92400e;">Table 2: Comparison of Growth Terms in Geology</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Discipline</th>
+            <th>Growth Substrate & Direction</th>
+            <th>Optical Property</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Syntaxial</td>
+            <td>Sedimentology / Petrology</td>
+            <td>Grows outward from host grain into open pore space</td>
+            <td>Identical optical extinction to host grain</td>
+          </tr>
+          <tr>
+            <td>Antitaxial</td>
+            <td>Structural Geology</td>
+            <td>Vein fibers grow outward from median line to wall rock</td>
+            <td>Independent fiber optical axes</td>
+          </tr>
+          <tr>
+            <td>Epitaxial</td>
+            <td>Mineralogy / Materials</td>
+            <td>Overgrowth of mineral A onto mineral B with lattice match</td>
+            <td>Distinct optical properties from substrate</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- PROBABLE EXAM QUESTIONS -->
+  <div class="card">
+    <div class="card-header bg-rose">🎯 Probable High-Yield Exam Questions (UPSC GSI, DGMS, IIT-JAM & GATE)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Q1. Syntaxial calcite overgrowths in limestones are most commonly developed around:</strong><br>
+          (a) Ooids &nbsp;&nbsp;&nbsp; (b) Echinoderm fragments &nbsp;&nbsp;&nbsp; (c) Peloids &nbsp;&nbsp;&nbsp; (d) Intraclasts
+          <div class="pq-ans">→ Correct Answer: (b) Echinoderm fragments</div>
+          <div class="pq-exp">Explanation: Each echinoderm skeletal element (crinoid plate, echinoid spine) is a single, optically uniform crystal of calcite, serving as an ideal template for syntaxial rim precipitation.</div>
+        </li>
+
+        <li>
+          <strong>Q2. Under crossed polars, a syntaxial overgrowth and its host grain:</strong><br>
+          (a) Show 90° difference in extinction angles<br>
+          (b) Extinguish simultaneously at the exact same orientation<br>
+          (c) Display undulose versus uniform extinction<br>
+          (d) Never extinguish
+          <div class="pq-ans">→ Correct Answer: (b) Extinguish simultaneously at the exact same orientation</div>
+          <div class="pq-exp">Explanation: Optical continuity means the crystallographic c-axes of both host and cement are parallel, resulting in simultaneous extinction.</div>
+        </li>
+
+        <li>
+          <strong>Q3. Meniscus and pendant cement fabrics in carbonate rocks are diagnostic indicators of:</strong><br>
+          (a) Deep marine phreatic environment<br>
+          (b) Meteoric vadose environment<br>
+          (c) Hydrothermal burial realm<br>
+          (d) Anoxic deep marine basin
+          <div class="pq-ans">→ Correct Answer: (b) Meteoric vadose environment</div>
+          <div class="pq-exp">Explanation: Vadose environments contain both air and water in pores; surface tension holds water in menisci at grain contacts or hanging beneath grains, depositing meniscus and pendant cements.</div>
+        </li>
+
+        <li>
+          <strong>Q4. Syntaxial overgrowths in sandstones are most prominently exhibited by which mineral?</strong><br>
+          (a) Plagioclase &nbsp;&nbsp;&nbsp; (b) Quartz &nbsp;&nbsp;&nbsp; (c) Biotite &nbsp;&nbsp;&nbsp; (d) Tourmaline
+          <div class="pq-ans">→ Correct Answer: (b) Quartz</div>
+          <div class="pq-exp">Explanation: In quartz arenites, silica cement precipitates around detrital quartz grains in optical continuity, forming syntaxial quartz overgrowths with euhedral crystal faces.</div>
+        </li>
+
+        <li>
+          <strong>Q5. The "dust line" frequently visible between a host grain and its syntaxial rim represents:</strong><br>
+          (a) A zone of high strain<br>
+          (b) Impurities, iron oxides, or micro-inclusions on the original grain surface<br>
+          (c) Chemical replacement by dolomite<br>
+          (d) Fracturing during compaction
+          <div class="pq-ans">→ Correct Answer: (b)</div>
+          <div class="pq-exp">Explanation: Prior to cementation, the detrital grain surface accumulates micro-coatings of clay, iron oxides, or fluid inclusions, which remain preserved as a dark line separating the host from the new cement.</div>
+        </li>
+
+        <li>
+          <strong>Q6. Isopachous fibrous aragonite needle cement is typical of:</strong><br>
+          (a) Subaerial caliche crusts<br>
+          (b) Warm, shallow marine phreatic environments<br>
+          (c) Deep burial diagenesis<br>
+          (d) Meteoric phreatic lenses
+          <div class="pq-ans">→ Correct Answer: (b) Warm, shallow marine phreatic environments</div>
+          <div class="pq-exp">Explanation: Marine waters have high Mg/Ca ratios that inhibit calcite growth and promote precipitation of needle-like aragonite or high-Mg calcite as uniform rims around grains.</div>
+        </li>
+
+        <li>
+          <strong>Q7. In structural geology, fibrous veins that grow from a central median suture outwards towards the wall rocks are termed:</strong><br>
+          (a) Syntaxial &nbsp;&nbsp;&nbsp; (b) Antitaxial &nbsp;&nbsp;&nbsp; (c) Composite &nbsp;&nbsp;&nbsp; (d) Ataxial
+          <div class="pq-ans">→ Correct Answer: (b) Antitaxial</div>
+          <div class="pq-exp">Explanation: Antitaxial veins grow at the vein/wall-rock interface with the oldest crystal material in the center, contrasting with syntaxial veins where crystals grow inward toward the vein center.</div>
+        </li>
+
+        <li>
+          <strong>Q8. A limestone dominated by crinoid fragments cemented by syntaxial rim spar is termed:</strong><br>
+          (a) Micrite &nbsp;&nbsp;&nbsp; (b) Encrinite &nbsp;&nbsp;&nbsp; (c) Oolite &nbsp;&nbsp;&nbsp; (d) Travertine
+          <div class="pq-ans">→ Correct Answer: (b) Encrinite</div>
+          <div class="pq-exp">Explanation: Encrinites are crinoidal packstones or grainstones where vast volumes of syntaxial calcite cement interlock around abundant crinoidal debris.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <p><strong>Tapaswi Saikia</strong> · Geology Student · DGMS & Competitive Geological Examination Preparation</p>
+    <p>Source Exam: DGMS 2019 (Junior Scientific Officer), Question 2 · Subject: Carbonate Sedimentology</p>
+    <p>Textbook Authority: Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), Chapter 6, pp. 204–211</p>
+  </div>
+
+</div>
+</body>
+</html>

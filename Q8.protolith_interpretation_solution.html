@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.8 – Protolith Interpretation & Metamorphic Carbonates | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 13px 20px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .card-body { padding: 20px; }
+
+  /* ── Typography & Content ── */
+  h2 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+  h3 { font-size: 15px; font-weight: 700; color: #1e293b; margin: 16px 0 8px 0; }
+  p { font-size: 14px; margin-bottom: 12px; color: #334155; }
+  ul, ol { margin-left: 20px; margin-bottom: 12px; font-size: 14px; color: #334155; }
+  li { margin-bottom: 6px; }
+
+  /* ── Quote & Textbook Boxes ── */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #1e40af;
+    font-size: 13.5px;
+  }
+  .quote-box strong { font-style: normal; color: #1e3a8a; }
+  .quote-box .src {
+    display: block;
+    margin-top: 6px;
+    font-size: 11.5px;
+    font-style: normal;
+    color: #60a5fa;
+    font-weight: 600;
+  }
+
+  .formula-card {
+    background: #fdf2f8;
+    border: 1px solid #fbcfe8;
+    border-left: 4px solid #db2777;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  .formula-card .f-title { font-weight: 700; color: #9d174d; margin-bottom: 6px; }
+  .formula-card code {
+    display: block;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 13.5px;
+    color: #be185d;
+    margin-top: 6px;
+    border: 1px solid #f472b6;
+  }
+
+  /* ── Figure Styles ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+  .tb-figure figcaption {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.4;
+    text-align: justify;
+    padding: 4px 8px;
+    background: #f8fafc;
+    border-radius: 4px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tb-figure figcaption strong { color: #0f172a; }
+
+  /* ── Options Review ── */
+  .option {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f43f5e;
+    background: #fff1f2;
+  }
+  .opt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .opt-header { color: #065f46; }
+  .option.incorrect .opt-header { color: #9f1239; }
+  .opt-tag {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .option.correct .opt-tag { background: #10b981; color: #fff; }
+  .option.incorrect .opt-tag { background: #f43f5e; color: #fff; }
+  .opt-desc { font-size: 13.5px; color: #334155; line-height: 1.5; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th, td { border: 1px solid #cbd5e1; padding: 9px 12px; text-align: left; }
+  th { background: #1e293b; color: #fff; font-weight: 600; font-size: 12.5px; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── Practice Question Cards ── */
+  .pq-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #8b5cf6;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .pq-q { font-weight: 700; font-size: 13.5px; color: #1e1b4b; margin-bottom: 8px; }
+  .pq-opts { font-size: 13px; color: #334155; margin-left: 18px; margin-bottom: 8px; }
+  .pq-ans {
+    background: #f5f3ff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #5b21b6;
+    border: 1px solid #ddd6fe;
+  }
+  .pq-ans strong { color: #4c1d95; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Main Header ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · METAMORPHIC PETROLOGY · CHAPTER MASTERCLASS</span>
+    <h1>Metamorphism of Siliceous Carbonates: The CMS System & Protolith Diagnosis</h1>
+    <div class="meta">Authoritative Reference: John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Chapter 29: Metamorphism of Calcareous & Ultramafic Rocks)</div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART I: THEORETICAL TOPIC & CHAPTER MASTERCLASS                           -->
+  <!-- ========================================================================= -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">Comprehensive Chapter Masterclass: Metamorphism of Carbonate Rocks</div>
+      <div class="part-sub">The CaO–MgO–SiO₂–H₂O–CO₂ (CMS-HC) System, Decarbonation Sequences & T-X(CO₂) Phase Equilibria</div>
+    </div>
+  </div>
+
+  <!-- Section 1: Chemical System & Protolith Types -->
+  <div class="card">
+    <div class="card-header">1. The Chemical System of Carbonate Metamorphism</div>
+    <div class="card-body">
+      <p>
+        Sedimentary carbonate rocks range from pure limestone ($\text{CaCO}_3$) and dolostone ($\text{CaMg(CO}_3)_2$) to <strong>siliceous dolomitic limestones</strong> and <strong>marls</strong> containing varying amounts of detrital quartz ($\text{SiO}_2$) and clay minerals (illite, smectite).
+      </p>
+      <p>
+        The phase equilibria of these rocks are modeled within the fundamental five-component system <strong>$\text{CaO} - \text{MgO} - \text{SiO}_2 - \text{H}_2\text{O} - \text{CO}_2$ (CMS-HC)</strong>. When quartz is present, progressive metamorphism drives a series of dramatic <strong>decarbonation and mixed-volatile reactions</strong>, liberating gaseous $\text{CO}_2$ (and $\text{H}_2\text{O}$) and forming a sequence of calcium-magnesium silicates.
+      </p>
+
+      <div class="quote-box">
+        "Metamorphosed calcareous rocks are derived from carbonate-rich sedimentary precursors... Metamorphosed siliceous dolomites are particularly interesting because the reactions that occur during progressive metamorphism produce a sequence of Ca-Mg silicates that serve as sensitive indicators of metamorphic grade and fluid composition."
+        <span class="src">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Chapter 29, p. 670)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="figures_Q08/winter_fig29_1_cms_triangle.png" alt="CMS Chemographic System">
+        <figcaption>
+          <strong>Figure 29-1 from John D. Winter (p. 671):</strong> Chemographics in the CaO–MgO–SiO₂ (CMS) system showing the positions of Calcite (Cal), Dolomite (Dol), Quartz (Qtz), Talc (Tlc), Tremolite (Tr), Diopside (Di), Forsterite (Fo), and Wollastonite (Wo).
+        </figcaption>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Progressive Decarbonation Sequence -->
+  <div class="card">
+    <div class="card-header">2. The Progressive Mineral Sequence in Siliceous Dolomites</div>
+    <div class="card-body">
+      <p>
+        As temperature rises from greenschist through amphibolite to granulite facies, the initial sedimentary assemblage <strong>Calcite + Dolomite + Quartz</strong> undergoes sequential reactions as portrayed in Winter's $T-X_{\text{CO}_2}$ phase diagram:
+      </p>
+
+      <div class="tb-figure">
+        <img src="figures_Q08/winter_fig29_3_txco2_diagram.png" alt="T-XCO2 Phase Diagram for Siliceous Dolomites">
+        <figcaption>
+          <strong>Figure 29-3 from John D. Winter (p. 672):</strong> Isobaric $T-X_{\text{CO}_2}$ phase diagram for siliceous dolomites calculated at $P = 0.1\text{ GPa}$ showing the progression of decarbonation reactions with increasing metamorphic grade.
+        </figcaption>
+      </div>
+
+      <div class="formula-card">
+        <div class="f-title">Reaction 1: Appearance of Diopside (Medium-to-High Grade)</div>
+        At amphibolite facies conditions, dolomite reacts with quartz (or earlier tremolite + calcite) to generate the calcic pyroxene <strong>diopside</strong>:
+        <code>Dolomite + 2 Quartz = Diopside + 2 CO₂</code>
+        <code>Tremolite + 3 Calcite + 2 Quartz = 5 Diopside + 3 CO₂ + H₂O</code>
+      </div>
+
+      <div class="formula-card">
+        <div class="f-title">Reaction 2: Appearance of Forsterite (High Grade)</div>
+        In quartz-depleted, dolomite-rich bulk compositions, diopside and dolomite react to form Mg-rich olivine (<strong>forsterite</strong>):
+        <code>Diopside + 3 Dolomite = 2 Forsterite + 4 Calcite + 2 CO₂</code>
+        <p style="margin-top:6px; font-size:12.5px; color:#475569;">
+          Notice that forsterite in marbles coexists stably with calcite, but is strictly isolated from free quartz by the intervening diopside tie-line!
+        </p>
+      </div>
+
+      <div class="formula-card">
+        <div class="f-title">Reaction 3: Appearance of Wollastonite (Highest Grade / Granulite Facies)</div>
+        At peak temperatures and low $X_{\text{CO}_2}$ (or very high T in granulites), calcite and quartz directly react to produce the pyroxenoid <strong>wollastonite</strong>:
+        <code>Calcite + Quartz = Wollastonite + CO₂</code>
+      </div>
+
+      <div class="formula-card">
+        <div class="f-title">Reaction 4: K-Feldspar from Illitic Clays</div>
+        In impure dolomites containing minor detrital illite/potassium clay, phlogopite forms at lower grades and breaks down at granulite facies to generate <strong>K-feldspar</strong>:
+        <code>Phlogopite + 3 Calcite + 6 Quartz = K-feldspar + 3 Diopside + 3 CO₂ + H₂O</code>
+      </div>
+
+      <p>
+        Therefore, an assemblage containing <strong>calcite + dolomite + quartz + diopside + wollastonite + K-feldspar + forsterite</strong> represents a classic, high-grade, partially equilibrated <strong>siliceous dolomitic limestone (carbonate rock protolith)</strong> undergoing granulite-facies metamorphism!
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART II: OFFICIAL EXAM QUESTION & OPTION-BY-OPTION ANALYSIS               -->
+  <!-- ========================================================================= -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">Official Exam Question Statement & In-Depth Critical Analysis</div>
+      <div class="part-sub">Directorate General of Mines Safety (DGMS) 2019 · Junior Scientific Officer Exam · Question 8</div>
+    </div>
+  </div>
+
+  <!-- Question Statement Card -->
+  <div class="card">
+    <div class="card-header">Question Statement</div>
+    <div class="card-body">
+      <div style="font-size:16px; font-weight:700; color:#0f172a; margin-bottom:14px; line-height:1.5;">
+        Q.8: Presence of calcite, dolomite, quartz, diopside, wollastonite, K-feldspar, forsterite in a regionally metamorphosed rock, under granulite facies suggests which one of the following types of protoliths?
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(a)</strong> Mafic</div>
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(b)</strong> Pelitic</div>
+        <div style="background:#f0fdf4; padding:10px 14px; border:1px solid #86efac; border-radius:6px; font-size:14px; font-weight:bold; color:#166534;"><strong>(c)</strong> Carbonate rock</div>
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(d)</strong> Ultramafic</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Green Verified Answer Banner -->
+  <div class="answer-banner">
+    <div class="tick">✓</div>
+    <div>
+      <div class="text">Correct Answer: (c) Carbonate rock</div>
+      <div class="sub">The combination of carbonate minerals (calcite, dolomite) with calcium-magnesium silicates (diopside, wollastonite, forsterite) uniquely fingerprints an impure siliceous dolomitic limestone protolith.</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Breakdown -->
+  <div class="card">
+    <div class="card-header">Exhaustive Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- Option C (Correct) -->
+      <div class="option correct">
+        <div class="opt-header">
+          <span>(c) Carbonate rock</span>
+          <span class="opt-tag">CORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is uniquely correct:</strong> The mineral assemblage listed in the question is the textbook signature of a <strong>siliceous dolomitic limestone or marl</strong> (Winter, 2010, Chapter 29; Bucher & Grapes, 2011; Yardley, 1989). Primary sedimentary <em>calcite ($\text{CaCO}_3$)</em>, <em>dolomite ($\text{CaMg(CO}_3)_2$)</em>, and detrital <em>quartz ($\text{SiO}_2$)</em> react during progressive metamorphism to yield <em>diopside ($\text{CaMgSi}_2\text{O}_6$)</em>, <em>forsterite ($\text{Mg}_2\text{SiO}_4$)</em>, and <em>wollastonite ($\text{CaSiO}_3$)</em>. Minor clay/shale impurities (illite) provide potassium and aluminum to generate <em>K-feldspar</em> via phlogopite breakdown. No other geological protolith possesses this combination of abundant Ca-Mg carbonates and calc-silicate phases.
+        </div>
+      </div>
+
+      <!-- Option A (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(a) Mafic</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> A mafic protolith (metabasite such as basalt or gabbro) under granulite facies conditions produces a "two-pyroxene granulite" dominated by <em>orthopyroxene + clinopyroxene + calcic plagioclase ± garnet ± quartz</em> (as examined in Question 5). Mafic rocks have low CO₂ contents; primary calcite and dolomite do not exist in equilibrium in peak mafic granulites, nor does wollastonite form because calcium is strongly partitioned into plagioclase and clinopyroxene.
+        </div>
+      </div>
+
+      <!-- Option B (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(b) Pelitic</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> Pelitic protoliths (shales, mudstones) are characterized by very high Al₂O₃ and FeO/MgO, with very low CaO. Under granulite facies, metapelites form assemblages of <em>sillimanite + garnet (almandine) + cordierite + biotite + K-feldspar + plagioclase + quartz</em>. Pelites completely lack the calcium required to form calcite, dolomite, diopside, or wollastonite.
+        </div>
+      </div>
+
+      <!-- Option D (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(d) Ultramafic</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> While ultramafic rocks (peridotites, serpentinites) contain abundant Mg-olivine (forsterite) and minor pyroxene, they are extremely depleted in CaO and SiO₂. They never contain free quartz in equilibrium with forsterite, nor do they develop wollastonite ($\text{CaSiO}_3$) or significant calcite/dolomite in regional granulite facies terranes.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART III: SYNTHESIS TABLES, COMPARATIVE PETROLOGY & PRACTICE QUESTIONS    -->
+  <!-- ========================================================================= -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables, Diagnostic Criteria & High-Yield Practice</div>
+      <div class="part-sub">Protolith Chemical Fingerprints & 8 Exam-Grade Multiple-Choice Questions</div>
+    </div>
+  </div>
+
+  <!-- Synthesis Table -->
+  <div class="card">
+    <div class="card-header">Diagnostic Protolith Fingerprints Across Metamorphic Facies</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Protolith Class</th>
+            <th>Sedimentary / Igneous Precursor</th>
+            <th>Key Chemical Characteristics</th>
+            <th>Granulite Facies Assemblage</th>
+            <th>Diagnostic Indicator Minerals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Carbonate / Calc-Silicate</strong></td>
+            <td>Siliceous Dolomite, Limestone, Marl</td>
+            <td>High CaO, MgO, CO₂; variable SiO₂</td>
+            <td><strong>Calcite + Dolomite + Diopside + Wollastonite + Forsterite ± Kfs</strong></td>
+            <td>Wollastonite, Diopside, Forsterite in marble</td>
+          </tr>
+          <tr>
+            <td><strong>Pelitic (Aluminous)</strong></td>
+            <td>Shale, Claystone, Mudstone</td>
+            <td>High Al₂O₃, K₂O, FeO; low CaO</td>
+            <td>Sillimanite + Garnet + Cordierite + Kfs + Qtz ± Plag</td>
+            <td>Sillimanite, Kyanite, Staurolite, Cordierite</td>
+          </tr>
+          <tr>
+            <td><strong>Mafic (Basic)</strong></td>
+            <td>Basalt, Gabbro, Diabase</td>
+            <td>Moderate SiO₂, CaO, MgO, FeO; low K₂O</td>
+            <td>Orthopyroxene + Clinopyroxene + Plagioclase ± Garnet</td>
+            <td>Two Pyroxenes (Opx + Cpx)</td>
+          </tr>
+          <tr>
+            <td><strong>Ultramafic</strong></td>
+            <td>Peridotite, Dunite, Pyroxenite</td>
+            <td>Very high MgO, FeO; very low SiO₂, CaO, Al₂O₃</td>
+            <td>Forsterite + Enstatite + Diopside + Spinel (no Quartz)</td>
+            <td>Abundant Forsterite, Anthophyllite, Serpentine</td>
+          </tr>
+          <tr>
+            <td><strong>Quartzo-Feldspathic</strong></td>
+            <td>Granite, Rhyolite, Arkose</td>
+            <td>High SiO₂, Na₂O, K₂O; low FeO, MgO, CaO</td>
+            <td>Quartz + K-feldspar + Plagioclase ± Garnet/Biotite</td>
+            <td>Abundant Quartz &amp; Feldspars, sparse mafics</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8 Curated Practice Questions -->
+  <div class="card">
+    <div class="card-header">8 High-Yield Practice Questions on Carbonate Metamorphism & Protolith Diagnosis</div>
+    <div class="card-body">
+
+      <!-- PQ 1 -->
+      <div class="pq-card">
+        <div class="pq-q">1. The reaction Calcite + Quartz = Wollastonite + CO₂ is an example of which type of metamorphic reaction?</div>
+        <div class="pq-opts">(a) Continuous hydration &nbsp;&nbsp; (b) Discontinuous decarbonation &nbsp;&nbsp; (c) Polymorphic inversion &nbsp;&nbsp; (d) Oxidation reaction</div>
+        <div class="pq-ans"><strong>Answer: (b) Discontinuous decarbonation</strong> — It is a univariant devolatilization reaction releasing CO₂ gas.</div>
+      </div>
+
+      <!-- PQ 2 -->
+      <div class="pq-card">
+        <div class="pq-q">2. Why does wollastonite form at much lower temperatures in the presence of an H₂O-rich metamorphic fluid than in pure CO₂?</div>
+        <div class="pq-opts">
+          (a) H₂O increases the activation energy<br>
+          (b) Dilution of the fluid phase by H₂O lowers the activity of CO₂ ($a_{\text{CO}_2}$), driving decarbonation to lower temperatures<br>
+          (c) H₂O transforms wollastonite into tremolite<br>
+          (d) H₂O reacts with quartz to form coesite
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — Reducing the mole fraction of CO₂ ($X_{\text{CO}_2}$) reduces the partial pressure and chemical potential of CO₂, shifting the equilibrium boundary toward lower temperatures.</div>
+      </div>
+
+      <!-- PQ 3 -->
+      <div class="pq-card">
+        <div class="pq-q">3. In a pure dolomitic marble undergoing metamorphism, what mineral appears before diopside under moderate temperatures if quartz is present?</div>
+        <div class="pq-opts">(a) Tremolite &nbsp;&nbsp; (b) Sillimanite &nbsp;&nbsp; (c) Kyanite &nbsp;&nbsp; (d) Omphacite</div>
+        <div class="pq-ans"><strong>Answer: (a) Tremolite</strong> — The reaction 5 Dolomite + 8 Quartz + 1 H₂O = Tremolite + 3 Calcite + 7 CO₂ introduces tremolite at lower amphibolite grade before diopside appears.</div>
+      </div>
+
+      <!-- PQ 4 -->
+      <div class="pq-card">
+        <div class="pq-q">4. The presence of forsterite in a metamorphic marble indicates that:</div>
+        <div class="pq-opts">
+          (a) The rock was originally an aluminum-rich bauxite<br>
+          (b) The protolith was dolomite-rich and quartz was completely consumed by earlier reactions<br>
+          (c) The metamorphism occurred at 0°C<br>
+          (d) The rock was subjected to hydrothermal gold mineralization
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — Forsterite forms by reaction between diopside and excess dolomite; it cannot coexist with quartz.</div>
+      </div>
+
+      <!-- PQ 5 -->
+      <div class="pq-card">
+        <div class="pq-q">5. A metamorphosed rock consisting essentially of garnet (almandine-pyrope), sillimanite, cordierite, quartz, and biotite is derived from which protolith?</div>
+        <div class="pq-opts">(a) Basalt &nbsp;&nbsp; (b) Pelite (shale) &nbsp;&nbsp; (c) Limestone &nbsp;&nbsp; (d) Dunite</div>
+        <div class="pq-ans"><strong>Answer: (b) Pelite (shale)</strong> — High Al and K with low Ca produce sillimanite, cordierite, and almandine garnet.</div>
+      </div>
+
+      <!-- PQ 6 -->
+      <div class="pq-card">
+        <div class="pq-q">6. Which chemical component distinguishes a siliceous dolomite from a pure limestone?</div>
+        <div class="pq-opts">(a) Abundance of both MgO and SiO₂ &nbsp;&nbsp; (b) Total absence of CaO &nbsp;&nbsp; (c) High Na₂O &nbsp;&nbsp; (d) High P₂O₅</div>
+        <div class="pq-ans"><strong>Answer: (a) Abundance of both MgO and SiO₂</strong> — Dolomite provides Mg and Ca, while detrital sand/chert provides silica.</div>
+      </div>
+
+      <!-- PQ 7 -->
+      <div class="pq-card">
+        <div class="pq-q">7. The chemical formula of wollastonite is:</div>
+        <div class="pq-opts">(a) CaSiO₃ &nbsp;&nbsp; (b) CaMgSi₂O₆ &nbsp;&nbsp; (c) Mg₂SiO₄ &nbsp;&nbsp; (d) Ca₂Al₃Si₃O₁₂(OH)</div>
+        <div class="pq-ans"><strong>Answer: (a) CaSiO₃</strong> — Wollastonite is the calcium metasilicate pyroxenoid.</div>
+      </div>
+
+      <!-- PQ 8 -->
+      <div class="pq-card">
+        <div class="pq-q">8. What is the role of potassium in the formation of K-feldspar in impure calc-silicate rocks?</div>
+        <div class="pq-opts">
+          (a) It comes from detrital illite/muscovite and forms phlogopite, which breaks down to K-feldspar at high grades<br>
+          (b) It replaces silicon in the quartz lattice<br>
+          (c) It forms liquid native potassium metal<br>
+          (d) It acts as a catalyst without entering any mineral
+        </div>
+        <div class="pq-ans"><strong>Answer: (a)</strong> — Illite clay supplies potassium to form phlogopite at medium grades; at higher grades, phlogopite + calcite + quartz react to form K-feldspar + diopside.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

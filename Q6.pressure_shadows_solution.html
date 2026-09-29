@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.6 – Pressure Shadows & Microstructures | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 13px 20px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .card-body { padding: 20px; }
+
+  /* ── Typography & Content ── */
+  h2 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+  h3 { font-size: 15px; font-weight: 700; color: #1e293b; margin: 16px 0 8px 0; }
+  p { font-size: 14px; margin-bottom: 12px; color: #334155; }
+  ul, ol { margin-left: 20px; margin-bottom: 12px; font-size: 14px; color: #334155; }
+  li { margin-bottom: 6px; }
+
+  /* ── Quote & Textbook Boxes ── */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #1e40af;
+    font-size: 13.5px;
+  }
+  .quote-box strong { font-style: normal; color: #1e3a8a; }
+  .quote-box .src {
+    display: block;
+    margin-top: 6px;
+    font-size: 11.5px;
+    font-style: normal;
+    color: #60a5fa;
+    font-weight: 600;
+  }
+
+  .formula-card {
+    background: #fdf2f8;
+    border: 1px solid #fbcfe8;
+    border-left: 4px solid #db2777;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  .formula-card .f-title { font-weight: 700; color: #9d174d; margin-bottom: 6px; }
+  .formula-card code {
+    display: block;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 13.5px;
+    color: #be185d;
+    margin-top: 6px;
+    border: 1px solid #f472b6;
+  }
+
+  /* ── Figure Styles ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+  .tb-figure figcaption {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.4;
+    text-align: justify;
+    padding: 4px 8px;
+    background: #f8fafc;
+    border-radius: 4px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tb-figure figcaption strong { color: #0f172a; }
+
+  /* ── Options Review ── */
+  .option {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f43f5e;
+    background: #fff1f2;
+  }
+  .opt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .opt-header { color: #065f46; }
+  .option.incorrect .opt-header { color: #9f1239; }
+  .opt-tag {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .option.correct .opt-tag { background: #10b981; color: #fff; }
+  .option.incorrect .opt-tag { background: #f43f5e; color: #fff; }
+  .opt-desc { font-size: 13.5px; color: #334155; line-height: 1.5; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th, td { border: 1px solid #cbd5e1; padding: 9px 12px; text-align: left; }
+  th { background: #1e293b; color: #fff; font-weight: 600; font-size: 12.5px; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── Practice Question Cards ── */
+  .pq-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #8b5cf6;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .pq-q { font-weight: 700; font-size: 13.5px; color: #1e1b4b; margin-bottom: 8px; }
+  .pq-opts { font-size: 13px; color: #334155; margin-left: 18px; margin-bottom: 8px; }
+  .pq-ans {
+    background: #f5f3ff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #5b21b6;
+    border: 1px solid #ddd6fe;
+  }
+  .pq-ans strong { color: #4c1d95; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Main Header ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · METAMORPHIC PETROLOGY & STRUCTURAL GEOLOGY · CHAPTER MASTERCLASS</span>
+    <h1>Pressure Shadows, Strain Heterogeneity & Pressure Solution Microstructures</h1>
+    <div class="meta">Authoritative References: John D. Winter (Ch 23: Structures & Textures) &amp; Van der Pluijm &amp; Marshak (Ch 9 &amp; 11: Pressure Solution &amp; Cleavage)</div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART I: THEORETICAL TOPIC & CHAPTER MASTERCLASS                           -->
+  <!-- ========================================================================= -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">Comprehensive Chapter Masterclass: Metamorphic Textures & Stress Heterogeneity</div>
+      <div class="part-sub">Rigid Clasts in Ductile Matrices, Pressure Solution Transfer, Fiber Growth & Strain Shadows</div>
+    </div>
+  </div>
+
+  <!-- Section 1: Mechanical Behavior of Heterogeneous Rocks -->
+  <div class="card">
+    <div class="card-header">1. Stress Shielding & Generation of Pressure Shadows Around Rigid Inclusions</div>
+    <div class="card-body">
+      <p>
+        When a deforming rock contains heterogeneous components—specifically <strong>rigid grains or porphyroblasts</strong> (such as pyrite, garnet, magnetite, or quartz pebbles) embedded within a more ductile, flow-prone matrix (such as calcite, phyllosilicates, or fine-grained quartz)—the local stress field is severely perturbed:
+      </p>
+      <ul>
+        <li><strong>Stress Concentration:</strong> On grain boundaries perpendicular to the maximum compressive stress ($\sigma_1$), compressive stress reaches peak intensity. The ductile matrix impinges against the rigid barrier, creating zones of extreme mean stress.</li>
+        <li><strong>Stress Shielding:</strong> Adjacent to the flanks of the rigid clast (in the extension direction $\sigma_3$, or parallel to foliation), the rigid crystal supports the compressive load, mechanically shielding the matrix behind it. This creates <strong>local zones of significantly reduced mean stress (low pressure)</strong>.</li>
+      </ul>
+
+      <div class="quote-box">
+        "Pre-kinematic crystals, when clearly older than the deformation, commonly exhibit microstructures resulting from high localized strain... Pressure shadows (Figure 34c) occur when solution transfer dissolves a mineral (usually a matrix mineral) from high-stress areas and precipitates it in relatively low-stress areas adjacent to a porphyroblast. In addition, the external foliation usually wraps around a pre-kinematic porphyroblast, a result of flattening in the matrix."
+        <span class="src">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Chapter 23, p. 527)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="figures_Q06/winter_fig23_34_pressure_shadow.png" alt="Textures of Pre-kinematic Crystals showing Pressure Shadows">
+        <figcaption>
+          <strong>Figure 23-34 from John D. Winter (p. 528):</strong> Typical textures of pre-kinematic crystals (after Spry, 1969). Notice in (c) the classic <strong>pressure shadow (or strain fringe)</strong> where fibrous or granular minerals precipitate in the low-pressure sheltered zones adjacent to the porphyroblast, while the matrix foliation wraps around the rigid grain.
+        </figcaption>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Pressure Solution Mass Transfer -->
+  <div class="card">
+    <div class="card-header">2. Pressure Solution Mass Transfer (Diffusive Mass Transfer)</div>
+    <div class="card-body">
+      <p>
+        The formation of pressure shadows is an integral part of the process of <strong>pressure solution</strong> (also called <em>diffusive mass transfer</em> or <em>wet diffusion</em>), which is one of the most prominent low-to-medium temperature deformation mechanisms in the crust (operating from ~150°C to 450°C):
+      </p>
+      <ol>
+        <li><strong>Dissolution:</strong> Soluble minerals (primarily quartz and calcite) have chemical potentials that increase with compressive stress. Under elevated normal stress along grain boundaries, quartz or calcite dissolves into thin intergranular fluid films:
+          $$\mu = \mu_0 + \sigma_n \cdot V_m$$
+          where $\mu$ is the chemical potential, $\sigma_n$ is normal stress, and $V_m$ is molar volume.
+        </li>
+        <li><strong>Transport:</strong> Dissolved chemical species diffuse through the fluid phase down the chemical potential gradient (away from high-stress surfaces toward regions of lower stress).</li>
+        <li><strong>Precipitation:</strong> Ions reach the low-stress <strong>pressure shadows</strong> adjacent to rigid clasts (or extensional tension gashes), where the fluid is supersaturated relative to the local low stress, precipitating new mineral grains or fibrous aggregates.</li>
+      </ol>
+
+      <div class="tb-figure">
+        <img src="figures_Q06/vdpm_fig9_21_stylolite_pressure_solution.png" alt="Pressure Solution and Vein Formation">
+        <figcaption>
+          <strong>Figure 9-21 from Van der Pluijm & Marshak (p. 236):</strong> Complementary relationship between dissolution and precipitation during pressure solution. Material dissolved along compressive dissolution surfaces (stylolites) migrates and precipitates in regions of lowest stress (extensional veins and pressure shadows).
+        </figcaption>
+      </div>
+
+      <div class="formula-card">
+        <div class="f-title">Fibrous Growth Fabrics in Pressure Shadows: Syntaxial vs. Antitaxial</div>
+        Mineral fibers that precipitate in pressure shadows provide valuable kinematic records of the deformation history:
+        <code>Syntaxial Fringes: Fibers grow outward from the rigid porphyroblast; oldest material is at the core clast.</code>
+        <code>Antitaxial Fringes: Fibers grow inward at the boundary with the porphyroblast; oldest material is at the outer tip.</code>
+        <p style="margin-top:6px; font-size:12.5px; color:#475569;">
+          Curved fibers in pressure shadows record progressive rotation of the incremental strain axes during non-coaxial (shear) deformation.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART II: OFFICIAL EXAM QUESTION & OPTION-BY-OPTION ANALYSIS               -->
+  <!-- ========================================================================= -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">Official Exam Question Statement & In-Depth Critical Analysis</div>
+      <div class="part-sub">Directorate General of Mines Safety (DGMS) 2019 · Junior Scientific Officer Exam · Question 6</div>
+    </div>
+  </div>
+
+  <!-- Question Statement Card -->
+  <div class="card">
+    <div class="card-header">Question Statement</div>
+    <div class="card-body">
+      <div style="font-size:16px; font-weight:700; color:#0f172a; margin-bottom:14px; line-height:1.5;">
+        Q.6: When flattening occurs in rocks that contain rigid grains, zones of relatively low pressure develop on the sides of the crystals that are normal to the maximum compressive stress. These zones are called:
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(a)</strong> Solution cleavage</div>
+        <div style="background:#f0fdf4; padding:10px 14px; border:1px solid #86efac; border-radius:6px; font-size:14px; font-weight:bold; color:#166534;"><strong>(b)</strong> Pressure shadows</div>
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(c)</strong> Pressure solution</div>
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(d)</strong> Stylolites</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Green Verified Answer Banner -->
+  <div class="answer-banner">
+    <div class="tick">✓</div>
+    <div>
+      <div class="text">Correct Answer: (b) Pressure shadows</div>
+      <div class="sub">These sheltered, low-stress zones that develop adjacent to rigid porphyroblasts during flattening are universally defined as pressure shadows (or strain shadows).</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Breakdown -->
+  <div class="card">
+    <div class="card-header">Exhaustive Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- Option B (Correct) -->
+      <div class="option correct">
+        <div class="opt-header">
+          <span>(b) Pressure shadows</span>
+          <span class="opt-tag">CORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is uniquely correct:</strong> In metamorphic petrology and structural geology (Winter, 2010, p. 527; Van der Pluijm & Marshak, 2004, pp. 236, 291; Ramsay & Huber, 1983; Passchier & Trouw, 2005), <strong>pressure shadows</strong> (also known as <em>strain shadows</em> or <em>pressure fringes</em>) are explicitly defined as the sheltered, low-mean-stress domains developed on the protected flanks of rigid crystals during tectonic flattening. Because the rigid clast bears the compressive load, the fluid in these protected areas has lower chemical potential, driving the precipitation of fibrous or granular quartz, calcite, or phyllosilicates.
+        </div>
+      </div>
+
+      <!-- Option A (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(a) Solution cleavage</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> <em>Solution cleavage</em> (or pressure-solution cleavage / disjunctive cleavage) refers to a <strong>spaced foliation fabric</strong> formed by the dissolution and removal of soluble minerals, leaving behind planar seams concentrated in insoluble residues (clays, iron oxides, organic carbon). Solution cleavage is the planar dissolution fabric itself, not the localized low-pressure depositional domain adjacent to a rigid crystal.
+        </div>
+      </div>
+
+      <!-- Option C (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(c) Pressure solution</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> <em>Pressure solution</em> is the <strong>physical deformation mechanism</strong> (the process of stress-induced dissolution, diffusion, and reprecipitation), whereas the question asks specifically for the name of the <em>zones</em> of relatively low pressure that develop adjacent to rigid grains. The process is pressure solution; the resulting low-pressure zone is the pressure shadow.
+        </div>
+      </div>
+
+      <!-- Option D (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(d) Stylolites</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> <em>Stylolites</em> are jagged, serrated, tooth-like dissolution surfaces that form in regions of <strong>maximum compressive stress</strong> where extensive volume loss has occurred. Stylolites represent the exact physical opposite of pressure shadows: stylolites are the high-pressure dissolution source, whereas pressure shadows are the low-pressure precipitation sink!
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART III: SYNTHESIS TABLES, COMPARATIVE PETROLOGY & PRACTICE QUESTIONS    -->
+  <!-- ========================================================================= -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables, Diagnostic Criteria & High-Yield Practice</div>
+      <div class="part-sub">Comparative Deformation Structures & 8 Exam-Grade Multiple-Choice Questions</div>
+    </div>
+  </div>
+
+  <!-- Synthesis Table -->
+  <div class="card">
+    <div class="card-header">Comparison of Pressure Solution Microstructures</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Microstructure / Term</th>
+            <th>Stress Regime</th>
+            <th>Dominant Process</th>
+            <th>Typical Mineralogy / Composition</th>
+            <th>Diagnostic Field / Petrographic Form</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pressure Shadow (Strain Shadow)</strong></td>
+            <td><strong>Low Mean Stress (Sheltered Flank)</strong></td>
+            <td><strong>Precipitation of dissolved ions</strong></td>
+            <td>Fibrous or granular Quartz, Calcite, Chlorite, Mica</td>
+            <td>Wings/fringes flanking rigid clasts (pyrite, garnet)</td>
+          </tr>
+          <tr>
+            <td><strong>Stylolite</strong></td>
+            <td>Maximum Compressive Stress ($\sigma_1$)</td>
+            <td>Stress-induced Dissolution (Volume Loss)</td>
+            <td>Insoluble residue: Illite, Smectite, Hematite, Bitumen</td>
+            <td>Serrated, tooth-like interpenetrating seams</td>
+          </tr>
+          <tr>
+            <td><strong>Solution Cleavage</strong></td>
+            <td>Maximum Compressive Stress ($\sigma_1$)</td>
+            <td>Pervasive Dissolution creating Spaced Fabric</td>
+            <td>Alternating Qtz/Cal microlithons &amp; phyllosilicate cleavage domains</td>
+            <td>Parallel to anastomosing dark spaced cleavage seams</td>
+          </tr>
+          <tr>
+            <td><strong>Extensional Vein (Tension Gash)</strong></td>
+            <td>Least Principal Stress ($\sigma_3$, Extension)</td>
+            <td>Fracture opening and mineral precipitation</td>
+            <td>Coarse fibrous or blocky Quartz, Calcite</td>
+            <td>Lenticular, en-échelon, or planar vein arrays</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Diagnostic Petrographic Criteria -->
+  <div class="card">
+    <div class="card-header">Kinematic Significance of Pressure Shadows</div>
+    <div class="card-body">
+      <ul>
+        <li><strong>Foliation Wrapping:</strong> Foliation planes ($S_1$) bend smoothly around the rigid porphyroblast and its flanking pressure shadows, creating an eye-shaped (augen) geometry.</li>
+        <li><strong>Sense of Shear Determination:</strong> In ductile shear zones, asymmetric pressure shadows (such as $\sigma$-type and $\delta$-type mantle/tail geometries) provide unequivocal indicators of the rotational sense of shear (dextral vs. sinistral).</li>
+        <li><strong>Deformation Timing:</strong> If pressure shadows contain unstrained fibers that truncate the matrix foliation, the fringe growth outlasted the main phase of foliation development (post-kinematic to syn-kinematic transition).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8 Curated Practice Questions -->
+  <div class="card">
+    <div class="card-header">8 High-Yield Practice Questions on Pressure Shadows & Microstructures</div>
+    <div class="card-body">
+
+      <!-- PQ 1 -->
+      <div class="pq-card">
+        <div class="pq-q">1. In a deformed rock subjected to pure shear flattening, pressure shadows typically develop:</div>
+        <div class="pq-opts">
+          (a) On faces of rigid grains perpendicular to the maximum compressive stress ($\sigma_1$)<br>
+          (b) Along the sides of rigid grains parallel to the extension direction ($\sigma_3$)<br>
+          (c) Inside the rigid grain along cleavage fractures<br>
+          (d) Exclusively along fault gouge seams
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — Pressure shadows develop in the low-pressure sheltered domains oriented parallel to the extension direction ($\sigma_3$) and perpendicular to $\sigma_1$.</div>
+      </div>
+
+      <!-- PQ 2 -->
+      <div class="pq-card">
+        <div class="pq-q">2. Which mechanism is primarily responsible for mass transfer during the formation of pressure shadows at low-to-medium metamorphic grades?</div>
+        <div class="pq-opts">(a) Dislocation glide &nbsp;&nbsp; (b) Pressure solution diffusion &nbsp;&nbsp; (c) Partial melting &nbsp;&nbsp; (d) Cataclastic flow</div>
+        <div class="pq-ans"><strong>Answer: (b) Pressure solution diffusion</strong> — Dissolution at high-stress grain boundaries and diffusion through intergranular pore fluid toward low-stress sheltered shadows.</div>
+      </div>
+
+      <!-- PQ 3 -->
+      <div class="pq-card">
+        <div class="pq-q">3. In an "antitaxial" pressure fringe, where is the youngest mineral growth located?</div>
+        <div class="pq-opts">
+          (a) At the outer contact between the fringe and the rock matrix<br>
+          (b) At the inner contact directly adjoining the rigid porphyroblast clast<br>
+          (c) Uniformly distributed across the entire fringe<br>
+          (d) At the center of the porphyroblast
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — In antitaxial growth, new fibers precipitate at the boundary between the rigid core and the fringe, pushing older fiber segments outward.</div>
+      </div>
+
+      <!-- PQ 4 -->
+      <div class="pq-card">
+        <div class="pq-q">4. Stylolites differ fundamentally from pressure shadows because stylolites represent sites of:</div>
+        <div class="pq-opts">
+          (a) Maximum precipitation of quartz<br>
+          (b) Maximum stress-induced dissolution and volume loss<br>
+          (c) Magmatic crystallization<br>
+          (d) Brittle tensile fracture opening
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — Stylolites are jagged dissolution seams formed at points of highest compressive stress where material dissolves, whereas pressure shadows are sites of mineral precipitation in low-stress domains.</div>
+      </div>
+
+      <!-- PQ 5 -->
+      <div class="pq-card">
+        <div class="pq-q">5. What causes the curved or sigmoidal shape of mineral fibers commonly observed in pressure shadows?</div>
+        <div class="pq-opts">
+          (a) Rapid cooling of the metamorphic terrane<br>
+          (b) Progressive rotation of the rigid porphyroblast and principal strain axes during non-coaxial shear<br>
+          (c) Chemical reaction between quartz and feldspar<br>
+          (d) Sudden change in metamorphic fluid salinity
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — As non-coaxial (rotational) deformation proceeds, the incremental extension direction rotates relative to the clast, causing newly grown fiber segments to precipitate at changing angles, producing curved fibers.</div>
+      </div>
+
+      <!-- PQ 6 -->
+      <div class="pq-card">
+        <div class="pq-q">6. Which mineral commonly forms prominent, easily recognizable cubic porphyroblasts with fibrous quartz pressure shadows in slates?</div>
+        <div class="pq-opts">(a) Halite &nbsp;&nbsp; (b) Pyrite &nbsp;&nbsp; (c) Gypsum &nbsp;&nbsp; (d) Biotite</div>
+        <div class="pq-ans"><strong>Answer: (b) Pyrite</strong> — Rigid pyrite cubes ($FeS_2$) embedded in fine-grained slate matrices are textbook examples that develop spectacular quartz/chlorite pressure fringes.</div>
+      </div>
+
+      <!-- PQ 7 -->
+      <div class="pq-card">
+        <div class="pq-q">7. In shear sense indicators, a rigid clast flanked by wedge-shaped tails of recrystallized material that are stair-stepped across the clast without a central embayment is termed a:</div>
+        <div class="pq-opts">(a) $\delta$-type clast &nbsp;&nbsp; (b) $\sigma$-type clast &nbsp;&nbsp; (c) Stylolitic nodule &nbsp;&nbsp; (d) Mullion</div>
+        <div class="pq-ans"><strong>Answer: (b) $\sigma$-type clast</strong> — Sigma ($\sigma$) porphyroclast systems have wedge-shaped tails that do not cross the reference median line, indicating non-coaxial shear.</div>
+      </div>
+
+      <!-- PQ 8 -->
+      <div class="pq-card">
+        <div class="pq-q">8. Pressure solution creep becomes the dominant deformation mechanism under which typical crustal conditions?</div>
+        <div class="pq-opts">
+          (a) Completely dry conditions at &gt; 900°C<br>
+          (b) Low-to-moderate temperatures (150°C–400°C) in the presence of an intergranular fluid phase<br>
+          (c) High-strain-rate impact shock events<br>
+          (d) Temperatures below 0°C in permafrost
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — Pressure solution requires the presence of an intergranular aqueous fluid film and operates efficiently at low-to-moderate crustal temperatures (150°C–400°C).</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

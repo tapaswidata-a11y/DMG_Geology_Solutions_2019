@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.16 – Crystal Symmetry & The Isometric System | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 14px 0 6px 0;
+  }
+  p { margin-bottom: 10px; font-size: 13.5px; }
+
+  /* ── Highlight & Quote Boxes ── */
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .quote-box {
+    background: #f0f9ff;
+    border-left: 4px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    font-size: 13px;
+    color: #0c4a6e;
+  }
+  .quote-box .citation {
+    font-style: normal;
+    font-weight: 700;
+    color: #0369a1;
+    margin-top: 6px;
+    font-size: 11.5px;
+  }
+
+  /* ── Formula Cards ── */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-card .title {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Textbook Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+    max-height: 480px;
+    object-fit: contain;
+  }
+  .tb-figure .caption {
+    font-size: 12px;
+    color: #475569;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    line-height: 1.45;
+  }
+  .tb-figure .caption strong { color: #1e293b; }
+
+  /* ── Option Cards ── */
+  .option {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f87171;
+    background: #fef2f2;
+  }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .option-header { color: #065f46; }
+  .option.incorrect .option-header { color: #991b1b; }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-correct { background: #dcfce7; color: #15803d; }
+  .badge-incorrect { background: #fee2e2; color: #b91c1c; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Question Card ── */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .question-box .q-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .question-box .q-stmt {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+
+  /* ── Practice Question Container ── */
+  .practice-box {
+    background: #faf5ff;
+    border: 1px solid #d8b4fe;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .practice-box .p-title {
+    font-weight: 700;
+    color: #6b21a8;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  .practice-box .ans {
+    background: #f3e8ff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #4c1d95;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · Question 16 · Masterclass Guide</span>
+    <h1>Crystal Symmetry, Rotation Combinations & The Diagnostic Symmetry of the Isometric System</h1>
+    <div class="meta">Comprehensive Crystallography Guide · Authoritative Reference: Dexter Perkins, Mineralogy (3rd Ed., Ch. 4 & 5)</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART I: THEORETICAL FOUNDATION & TEXTBOOK EXPOSÉ      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">THEORETICAL FOUNDATION: CRYSTAL SYMMETRY & CUBIC GEOMETRY</div>
+      <div class="part-sub">Symmetry Operations, Rotation Axis Combinations, Derivation of the 54°44′ Angle & Diagnostic Criteria</div>
+    </div>
+  </div>
+
+  <!-- CARD 1: FUNDAMENTAL SYMMETRY & ROTATION COMBINATIONS -->
+  <div class="card">
+    <h2>1. The Four Symmetry Elements & Valid Axis Combinations</h2>
+    <p>In classical morphological crystallography, the external shape and internal lattice of every crystal are governed by four fundamental symmetry elements:</p>
+    <ul style="margin-left: 24px; font-size: 13px; margin-bottom: 10px;">
+      <li><strong>Rotation Axes ($n = 1, 2, 3, 4, 6$):</strong> Repeating a motif by rotation through $360^\circ/n$. 5-fold or $\ge 7$-fold axes cannot fill 3D space with translational lattice periodicity.</li>
+      <li><strong>Mirror Planes ($m$):</strong> Reflection across an imaginary bilateral plane, reversing handedness (enantiomorphism).</li>
+      <li><strong>Inversion Center ($i$ or $\bar{1}$):</strong> Inversion through a central origin $(x, y, z) \to (-x, -y, -z)$.</li>
+      <li><strong>Rotoinversion Axes ($\bar{1}, \bar{2}=m, \bar{3}=3+i, \bar{4}, \bar{6}=3/m$):</strong> Combined rotation through $360^\circ/n$ followed immediately by center inversion.</li>
+    </ul>
+
+    <p>As demonstrated by Dexter Perkins, rotation axes <em>cannot intersect at arbitrary angles</em>. If two rotation axes meet at a general angle that does not divide evenly into $360^\circ$, repeated operations generate an infinite number of axes—violating the discrete lattice nature of matter. Consequently, <strong>only six combinations of rotation axes can exist in crystals</strong>:</p>
+
+    <div class="highlight-box">
+      <strong>The Six Valid Combinations of Proper Rotation Axes:</strong>
+      <ol style="margin-left: 20px; margin-top: 4px;">
+        <li>$222$ (Orthorhombic) — Three mutually perpendicular 2-fold axes at $90^\circ$.</li>
+        <li>$32$ (Trigonal) — One 3-fold axis with three perpendicular 2-fold axes at $60^\circ$ to each other.</li>
+        <li>$422$ (Tetragonal) — One 4-fold axis with four perpendicular 2-fold axes at $45^\circ$ to each other.</li>
+        <li>$622$ (Hexagonal) — One 6-fold axis with six perpendicular 2-fold axes at $30^\circ$ to each other.</li>
+        <li><strong>$23$ (Isometric / Cubic):</strong> Four 3-fold axes with three mutually perpendicular 2-fold axes.</li>
+        <li><strong>$432$ (Isometric / Cubic):</strong> Four 3-fold axes, three mutually perpendicular 4-fold axes, and six 2-fold axes.</li>
+      </ol>
+    </div>
+
+    <div class="quote-box">
+      "The other two combinations are best envisioned by thinking about a cube. The angles between rotation axes are all special angles (to avoid infinite symmetry). In these combinations, the angles are equal to angles between various diagonals in a cube and perpendiculars to cube faces: 70°32′, 54°44′, 45°00′, and 35°16′."
+      <div class="citation">— Dexter Perkins, <em>Mineralogy</em> (3rd Ed., 2014), Chapter 4: Crystal Morphology and Symmetry, p. 251.</div>
+    </div>
+  </div>
+
+  <!-- CARD 2: CUBE ROTATION AXES FIGURE -->
+  <div class="card">
+    <h2>2. Textbook Visual Evidence: The Cube as Archetype of Isometric Symmetry</h2>
+    <p>Figure 5 from Perkins illustrates the spatial arrangement of rotation axes operating simultaneously within a cube. It clearly displays how the three 4-fold axes, six 2-fold axes, and four 3-fold axes relate to the faces, edges, and corners of the cubic framework:</p>
+
+    <div class="tb-figure">
+      <img src="figures_Q16/extracted_p3_0_Im36.jpg" alt="Perkins Fig 5: Rotation Axes of a Cube">
+      <div class="caption">
+        <strong>Figure 1 (Perkins Fig. 5):</strong> Rotation axes of a cube. (a) Three 4-fold axes emerge perpendicular to the cube faces (parallel to crystallographic axes $a_1, a_2, a_3$). (b) Six 2-fold axes emerge through the centers of opposite edges. (c) <strong>Four 3-fold axes emerge along the four body diagonals</strong>, running from corner to diagonally opposite corner through the center. (Source: Dexter Perkins, <em>Mineralogy</em>, 3rd Ed., p. 241).
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: MATHEMATICAL DERIVATION OF 54°44′ -->
+  <div class="card">
+    <h2>3. Rigorous Solid Geometry: Derivation of the 54°44′ Angle</h2>
+    <p>Why are the four 3-fold axes in the isometric system inclined at exactly <strong>54°44′</strong> (54 degrees, 44 minutes) to the crystallographic axes? This angle is not arbitrary—it is a rigorous, unalterable geometric property of three-dimensional Euclidean space:</p>
+
+    <div class="formula-card">
+      <div class="title">Solid Geometry Proof: Edge to Body-Diagonal Angle</div>
+      Let a cube have unit edge length $L = 1$, aligned with Cartesian coordinate axes:<br>
+      • Crystallographic axis $\vec{a}_1 = [1, 0, 0]$ (along the x-edge)<br>
+      • Crystallographic axis $\vec{a}_2 = [0, 1, 0]$ (along the y-edge)<br>
+      • Crystallographic axis $\vec{a}_3 = [0, 0, 1]$ (along the z-edge)<br><br>
+      The four body diagonals (which host the 3-fold rotation axes) connect opposite corners:<br>
+      $\vec{D}_1 = [1, 1, 1]$, &nbsp; $\vec{D}_2 = [\bar{1}, 1, 1]$, &nbsp; $\vec{D}_3 = [1, \bar{1}, 1]$, &nbsp; $\vec{D}_4 = [1, 1, \bar{1}]$<br><br>
+      Vector dot product between an edge $\vec{a}_3$ and a body diagonal $\vec{D}_1$:<br>
+      $\vec{a}_3 \cdot \vec{D}_1 = |\vec{a}_3| |\vec{D}_1| \cos\theta$<br>
+      $(0)(1) + (0)(1) + (1)(1) = (1) \cdot \sqrt{1^2 + 1^2 + 1^2} \cdot \cos\theta$<br>
+      $1 = \sqrt{3} \cos\theta \implies \cos\theta = \frac{1}{\sqrt{3}} \approx 0.577350$<br><br>
+      $\theta = \arccos\left(\frac{1}{\sqrt{3}}\right) = 54.7356103^\circ$<br>
+      Convert decimal degrees to arcminutes:<br>
+      $0.7356103 \times 60' = 44.1366' \approx \mathbf{54^\circ 44'}$
+    </div>
+
+    <div class="highlight-box">
+      <strong>Associated Characteristic Angles of the Cube:</strong>
+      <ul style="margin-left: 18px; margin-top: 4px;">
+        <li><strong>$54^\circ 44'$:</strong> Angle between any of the three crystallographic axes ($\langle 100 \rangle$) and any of the four 3-fold body diagonals ($\langle 111 \rangle$).</li>
+        <li><strong>$70^\circ 32'$:</strong> Acute angle between any two 3-fold body diagonals: $\cos\alpha = \frac{[1,1,1]\cdot[1,1,-1]}{\sqrt{3}\cdot\sqrt{3}} = \frac{1}{3} \implies \alpha = \arccos(1/3) = 70.5288^\circ = \mathbf{70^\circ 32'}$.</li>
+        <li><strong>$45^\circ 00'$:</strong> Angle between a crystallographic axis and a face diagonal ($\langle 110 \rangle$).</li>
+        <li><strong>$35^\circ 16'$:</strong> Angle between a face diagonal ($\langle 110 \rangle$) and a body diagonal ($\langle 111 \rangle$): $\arccos(\sqrt{2/3}) = 35^\circ 16'$.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 4: DIAGNOSTIC SYMMETRY ACROSS CRYSTAL SYSTEMS -->
+  <div class="card">
+    <h2>4. Diagnostic Symmetry Criteria for the Six Crystal Systems</h2>
+    <p>Mineralogists classify crystals into six crystal systems based on their <strong>minimum essential (diagnostic) symmetry elements</strong>, rather than their external facial development:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Crystal System</th>
+          <th>Diagnostic (Essential) Symmetry</th>
+          <th>Axial Length Relations</th>
+          <th>Interaxial Angles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Isometric (Cubic)</strong><br><span style="color:#059669; font-weight:700;">★ The Answer</span></td>
+          <td><strong>Four 3-fold axes</strong> ($4\times 3$ or $4\times \bar{3}$) inclined at $54^\circ 44'$ to crystallographic axes.</td>
+          <td>$a_1 = a_2 = a_3 = a$</td>
+          <td>$\alpha = \beta = \gamma = 90^\circ$</td>
+        </tr>
+        <tr>
+          <td><strong>Hexagonal / Trigonal</strong></td>
+          <td><strong>One 6-fold axis</strong> (or $6/m, \bar{6}$) OR <strong>only ONE 3-fold axis</strong> ($\bar{3}$).</td>
+          <td>$a_1 = a_2 = a_3 \neq c$</td>
+          <td>Angles between $a$-axes $= 120^\circ$; $c \perp a_i$</td>
+        </tr>
+        <tr>
+          <td><strong>Tetragonal</strong></td>
+          <td><strong>One 4-fold axis</strong> (or $\bar{4}$, $4/m$). Never more than one!</td>
+          <td>$a_1 = a_2 \neq c$</td>
+          <td>$\alpha = \beta = \gamma = 90^\circ$</td>
+        </tr>
+        <tr>
+          <td><strong>Orthorhombic</strong></td>
+          <td><strong>Three mutually perpendicular 2-fold axes</strong> ($222$) or two mirrors and one 2-fold ($mm2$).</td>
+          <td>$a \neq b \neq c$</td>
+          <td>$\alpha = \beta = \gamma = 90^\circ$</td>
+        </tr>
+        <tr>
+          <td><strong>Monoclinic</strong></td>
+          <td><strong>Only one 2-fold axis</strong> ($2$) and/or <strong>one mirror plane</strong> ($m$).</td>
+          <td>$a \neq b \neq c$</td>
+          <td>$\alpha = \gamma = 90^\circ, \beta \neq 90^\circ$</td>
+        </tr>
+        <tr>
+          <td><strong>Triclinic</strong></td>
+          <td><strong>No rotation axes $>1$ and no mirrors</strong>; at most an inversion center ($\bar{1}$ or $1$).</td>
+          <td>$a \neq b \neq c$</td>
+          <td>$\alpha \neq \beta \neq \gamma \neq 90^\circ$</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="quote-box">
+      "<strong>Rule 1:</strong> All crystals with four 3-fold axes of symmetry must belong to the cubic system.<br>
+      <strong>Rule 2:</strong> Crystals with more than one 3-fold or $\bar{3}$ axis belong to the cubic system.<br>
+      <strong>Rule 3:</strong> Crystals that have more than one 4-fold axis must belong to the cubic system."
+      <div class="citation">— Dexter Perkins, <em>Mineralogy</em>, Chapter 4, pp. 261, 302.</div>
+    </div>
+  </div>
+
+  <!-- CARD 5: HERMANN-MAUGUIN SYMBOLS -->
+  <div class="card">
+    <h2>5. Hermann-Mauguin Notation: Deciphering the Cubic "3"</h2>
+    <p>In international Hermann-Mauguin crystallographic notation, the position of a symmetry symbol indicates the crystallographic direction to which it applies:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>1st Position in Symbol</th>
+          <th>2nd Position in Symbol</th>
+          <th>3rd Position in Symbol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Isometric</strong></td>
+          <td>Three $\{100\}$ directions: $a_1, a_2, a_3$ (e.g., $4, \bar{4}, 2, \text{or } 4/m$)</td>
+          <td><strong>Four $\langle 111 \rangle$ body diagonals: ALWAYS $3$ or $\bar{3}$</strong></td>
+          <td>Six $\{110\}$ edge diagonals (e.g., $2, m, \text{or } 2/m$)</td>
+        </tr>
+        <tr>
+          <td><strong>Tetragonal</strong></td>
+          <td>Principal $c$-axis $[001]$ (e.g., $4, \bar{4}, 4/m$)</td>
+          <td>Two $a$-axes $[100], [010]$</td>
+          <td>Bisecting directions $[110]$</td>
+        </tr>
+        <tr>
+          <td><strong>Hexagonal</strong></td>
+          <td>Principal $c$-axis $[0001]$ (e.g., $6, \bar{6}, 6/m$)</td>
+          <td>Three $a$-axes $[10\bar{1}0]$</td>
+          <td>Intermediate axes $[11\bar{2}0]$</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>The Diagnostic Hallmark:</strong> Notice that in <em>every single one</em> of the five cubic crystal classes—$23$ (tetartoidal), $2/m\bar{3}$ (diploidal), $432$ (gyroidal), $\bar{4}3m$ (hextetrahedral), and $4/m\bar{3}2/m$ (hexoctahedral)—<strong>the second symbol is always a "3" or "$\bar{3}$"</strong>. This explicitly designates the four 3-fold axes along the body diagonals!
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART II: EXAM QUESTION CRITICAL ANALYSIS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">EXAM QUESTION & RIGOROUS OPTION-BY-OPTION DISSECTION</div>
+      <div class="part-sub">DGMS 2019 Examination · Official Question Statement, Verified Answer & Detailed Distracter Analysis</div>
+    </div>
+  </div>
+
+  <!-- QUESTION STATEMENT -->
+  <div class="card">
+    <div class="question-box">
+      <div class="q-num">DGMS 2019 · QUESTION 16</div>
+      <div class="q-stmt">Four three-fold axes, each inclined at 54°44′ to the crystallographic axes, are characteristic symmetry of which one of the following crystal systems?</div>
+      <div style="margin-top: 10px; font-size: 13.5px; font-weight: 500;">
+        (a) Hexagonal<br>
+        (b) Isometric<br>
+        (c) Orthorhombic<br>
+        (d) Triclinic
+      </div>
+    </div>
+
+    <!-- ANSWER BANNER -->
+    <div class="answer-banner">
+      <div class="tick">✓</div>
+      <div>
+        <div class="text">Correct Option: (b) Isometric</div>
+        <div class="sub">Verified via Dexter Perkins, Mineralogy (3rd Ed., pp. 241, 251, 261, 276)</div>
+      </div>
+    </div>
+
+    <!-- OPTION A -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (a): Hexagonal
+      </div>
+      <p><strong>Detailed Refutation:</strong> The Hexagonal system (including the Trigonal subsystem in standard crystallographic convention) is characterized by having <strong>exactly ONE</strong> principal axis of 3-fold or 6-fold symmetry, which coincides with the vertical $c$-crystallographic axis. A crystal cannot have four 3-fold axes in the hexagonal system; the presence of more than one 3-fold axis geometrically forces all three crystallographic axes to become mutually equivalent and perpendicular ($a_1=a_2=a_3$, $\alpha=\beta=\gamma=90^\circ$), which belongs strictly to the isometric system.</p>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="option correct">
+      <div class="option-header">
+        <span class="badge-tag badge-correct">Correct Answer</span>
+        Option (b): Isometric
+      </div>
+      <p><strong>Detailed Validation:</strong> The <strong>Isometric (Cubic) system</strong> is uniquely defined by the presence of <strong>exactly four 3-fold axes of symmetry</strong> (proper rotation 3 or rotoinversion $\bar{3}$). These four axes emerge along the four body diagonals of the cubic unit cell. Because the body diagonal of a cube makes an angle of $\arccos(1/\sqrt{3}) = 54^\circ 44'$ with all three mutually perpendicular crystallographic axes, this geometric property is universally diagnostic of the Isometric system. Every crystal in the cubic system possesses this feature, and no crystal in any other system can possess it.</p>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (c): Orthorhombic
+      </div>
+      <p><strong>Detailed Refutation:</strong> The Orthorhombic system is characterized by having three mutually perpendicular 2-fold axes of symmetry (point group $222$) or a 2-fold axis and two perpendicular mirror planes ($mm2$, $2/m 2/m 2/m$). <strong>3-fold axes are completely absent</strong> in the orthorhombic system. If four 3-fold axes were introduced into an orthorhombic lattice, the three unequal axes ($a \neq b \neq c$) would immediately be rendered geometrically identical by the 3-fold rotations, destroying the orthorhombic system and generating cubic symmetry.</p>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (d): Triclinic
+      </div>
+      <p><strong>Detailed Refutation:</strong> The Triclinic system has the lowest possible symmetry of all crystal systems: it possesses <strong>no axes of symmetry higher than 1-fold (identity)</strong> and no mirror planes. The only permissible symmetry operation is an inversion center ($i = \bar{1}$) in the pinacoidal class ($C_i$), or no symmetry at all ($1$) in the pedial class ($C_1$). Attributing four 3-fold axes to a triclinic crystal is physically and mathematically impossible.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS & PRACTICE QUESTIONS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">SYNTHESIS & HIGH-YIELD PRACTICE QUESTIONS</div>
+      <div class="part-sub">Curated Problems Covering Hermann-Mauguin Notation, Point Groups, Special Angles & Diagnostic Symmetry</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS CARD -->
+  <div class="card">
+    <h2>High-Yield Exam Practice Questions</h2>
+
+    <!-- Q1 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q1 (Hermann-Mauguin Decoding): Identifying Cubic Point Groups</div>
+      <p>A mineral has the Hermann-Mauguin point group symbol $4/m\bar{3}2/m$. What do the numbers $4/m$, $\bar{3}$, and $2/m$ represent, and which crystal class does this signify?</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        • $4/m$: Three mutually perpendicular 4-fold axes with perpendicular mirror planes parallel to the crystallographic axes $\{100\}$.<br>
+        • $\bar{3}$: <strong>Four 3-fold rotoinversion axes</strong> oriented along the body diagonals $\langle 111 \rangle$.<br>
+        • $2/m$: Six 2-fold axes with perpendicular mirror planes parallel to face diagonals $\{110\}$.<br>
+        This is the <strong>Hexoctahedral Class</strong>—the holosymmetric (highest symmetry) class of the Isometric system (e.g., Galena, Halite, Garnet).
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q2 (Special Angles): Body Diagonal Intersections</div>
+      <p>What is the acute angle between any two of the four 3-fold axes in an isometric crystal?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>70°32′</strong> (or the supplementary obtuse angle of $109^\circ 28'$). This is calculated as $\arccos(1/3) \approx 70.5288^\circ = 70^\circ 32'$. This is also the fundamental tetrahedral bonding angle ($\text{O–Si–O}$ angle is $109.5^\circ$).
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q3 (Diagnostic Rule): Multiple High-Order Axes</div>
+      <p>A crystal is discovered with two distinct 4-fold axes. To which crystal system must this crystal belong?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Isometric (Cubic) system</strong>. In the tetragonal system, only ONE 4-fold axis can exist (along $c$). If a second 4-fold axis exists, geometry requires a third 4-fold axis at $90^\circ$ and four 3-fold axes along the diagonals, forcing the crystal into the Isometric system.
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q4 (Crystal Classes): The Five Cubic Classes</div>
+      <p>How many point groups (crystal classes) exist in the Isometric system, and which point group has the lowest symmetry in this system?</p>
+      <div class="ans">
+        <strong>Answer:</strong> There are exactly <strong>5 crystal classes</strong> in the Isometric system: (1) $23$ (Tetartoidal), (2) $2/m\bar{3}$ (Diploidal / Pyrite class), (3) $432$ (Gyroidal), (4) $\bar{4}3m$ (Hextetrahedral / Sphalerite class), and (5) $4/m\bar{3}2/m$ (Hexoctahedral). The lowest-symmetry class is <strong>$23$ (Tetartoidal)</strong>, having only four 3-fold axes and three 2-fold axes (no mirrors, no inversion center).
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q5 (Solid Geometry): Angle from Face Diagonal to Body Diagonal</div>
+      <p>In a cubic crystal, what is the angle between a 2-fold axis (lying along an edge diagonal $\langle 110 \rangle$) and a 3-fold axis (lying along a body diagonal $\langle 111 \rangle$)?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>35°16′</strong>. Calculated via dot product: $\cos\phi = \frac{[1,1,0]\cdot[1,1,1]}{\sqrt{2}\sqrt{3}} = \frac{2}{\sqrt{6}} = \sqrt{\frac{2}{3}} \approx 0.8165 \implies \phi = 35.264^\circ = \mathbf{35^\circ 16'}$.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q6 (Rotoinversion Equivalence): 3 vs 3̄</div>
+      <p>Explain why a 3-fold rotoinversion axis ($\bar{3}$) is equivalent to a 3-fold rotation axis combined with an inversion center ($3 + i$), whereas a 4-fold rotoinversion axis ($\bar{4}$) is NOT equivalent to $4 + i$.</p>
+      <div class="ans">
+        <strong>Answer:</strong> Because $3$ is an odd number, performing $\bar{3}$ operations repeats points at $60^\circ$ increments around the circle and inverts them, generating 6 distinct points that are mathematically identical to having a proper 3-fold rotation and an independent center of inversion ($\bar{3} = 3 + i$). However, $4$ is an even number; $\bar{4}$ generates a 4-point alternating sphenoidal pattern that lacks an inversion center! Combining $4 + i$ produces $4/m$, which contains an equatorial mirror plane and center of symmetry absent in $\bar{4}$.
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q7 (Form Geometry): Cube vs. Octahedron</div>
+      <p>A crystal displays eight triangular faces $\{111\}$. What is the name of this simple form, and what symmetry element emerges perpendicular to each face?</p>
+      <div class="ans">
+        <strong>Answer:</strong> The form is the <strong>Octahedron</strong>. Because the $\{111\}$ faces are perpendicular to the body diagonals of the cubic unit cell, a <strong>3-fold rotation (or rotoinversion) axis</strong> emerges directly through the center of each triangular face.
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q8 (Pyrite Crystal Class): Diploidal Symmetry</div>
+      <p>Pyrite ($\text{FeS}_2$) commonly forms cubes with striations that are mutually perpendicular on adjacent faces. What is the point group of pyrite, and why are its 4-fold axes reduced to 2-fold?</p>
+      <div class="ans">
+        <strong>Answer:</strong> The point group of pyrite is <strong>$2/m\bar{3}$ (Diploidal class)</strong>. The surface striations (caused by alternating growth of $\{100\}$ and $\{210\}$ pyritohedral faces) destroy the 4-fold rotational symmetry along the crystallographic axes, reducing them to 2-fold axes. However, because the crystal retains four 3-fold axes along the body diagonals, it remains firmly in the <strong>Isometric system</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="card">
+    <h2>Comprehensive Crystal Systems Diagnostic Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>Crystallographic Axes</th>
+          <th>Axial Angles</th>
+          <th>Diagnostic Symmetry Fingerprint</th>
+          <th>Number of Classes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Isometric (Cubic)</strong></td>
+          <td>$a_1 = a_2 = a_3$</td>
+          <td>All $90^\circ$</td>
+          <td><strong>Four 3-fold axes ($\langle 111 \rangle$) inclined at 54°44′ to axes</strong></td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><strong>Tetragonal</strong></td>
+          <td>$a_1 = a_2 \neq c$</td>
+          <td>All $90^\circ$</td>
+          <td>One 4-fold axis ($[001]$)</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td><strong>Hexagonal</strong></td>
+          <td>$a_1 = a_2 = a_3 \neq c$</td>
+          <td>$120^\circ$ and $90^\circ$</td>
+          <td>One 6-fold or 3-fold principal axis ($[0001]$)</td>
+          <td>12 ($7\text{ Hex} + 5\text{ Trig}$)</td>
+        </tr>
+        <tr>
+          <td><strong>Orthorhombic</strong></td>
+          <td>$a \neq b \neq c$</td>
+          <td>All $90^\circ$</td>
+          <td>Three mutually perpendicular 2-fold axes or mirrors</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>Monoclinic</strong></td>
+          <td>$a \neq b \neq c$</td>
+          <td>$\alpha = \gamma = 90^\circ \neq \beta$</td>
+          <td>One 2-fold axis and/or one mirror plane</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>Triclinic</strong></td>
+          <td>$a \neq b \neq c$</td>
+          <td>$\alpha \neq \beta \neq \gamma \neq 90^\circ$</td>
+          <td>No axes $>1$, no mirrors (only 1 or $\bar{1}$)</td>
+          <td>2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

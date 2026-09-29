@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.18 – Incompatible Trace Elements & Igneous Differentiation | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #b91c1c;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 14px 0 6px 0;
+  }
+  p { margin-bottom: 10px; font-size: 13.5px; }
+
+  /* ── Highlight & Quote Boxes ── */
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #b91c1c;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .quote-box {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    font-size: 13px;
+    color: #7f1d1d;
+  }
+  .quote-box .citation {
+    font-style: normal;
+    font-weight: 700;
+    color: #b91c1c;
+    margin-top: 6px;
+    font-size: 11.5px;
+  }
+
+  /* ── Formula Cards ── */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-card .title {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Textbook Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+    max-height: 480px;
+    object-fit: contain;
+  }
+  .tb-figure .caption {
+    font-size: 12px;
+    color: #475569;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    line-height: 1.45;
+  }
+  .tb-figure .caption strong { color: #1e293b; }
+
+  /* ── Option Cards ── */
+  .option {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f87171;
+    background: #fef2f2;
+  }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .option-header { color: #065f46; }
+  .option.incorrect .option-header { color: #991b1b; }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-correct { background: #dcfce7; color: #15803d; }
+  .badge-incorrect { background: #fee2e2; color: #b91c1c; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Question Card ── */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .question-box .q-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .question-box .q-stmt {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+
+  /* ── Practice Question Container ── */
+  .practice-box {
+    background: #faf5ff;
+    border: 1px solid #d8b4fe;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .practice-box .p-title {
+    font-weight: 700;
+    color: #6b21a8;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  .practice-box .ans {
+    background: #f3e8ff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #4c1d95;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · Question 18 · Masterclass Guide</span>
+    <h1>Trace Element Geochemistry: Partition Coefficients, Incompatibility & Igneous Differentiation</h1>
+    <div class="meta">Comprehensive Geochemistry & Petrology Guide · Authoritative Reference: John D. Winter, Principles of Igneous and Metamorphic Petrology (2nd Ed., Ch. 9)</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART I: THEORETICAL FOUNDATION & TEXTBOOK EXPOSÉ      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">THEORETICAL FOUNDATION: TRACE ELEMENT FRACTIONATION & PARTITIONING</div>
+      <div class="part-sub">Distribution Coefficients ($D$), Batch Melting, Rayleigh Fractional Crystallization & Geochemical Reservoirs</div>
+    </div>
+  </div>
+
+  <!-- CARD 1: FUNDAMENTAL PRINCIPLES & DEFINITION -->
+  <div class="card">
+    <h2>1. The Physics and Chemistry of Trace Element Partitioning</h2>
+    <p>Trace elements are defined as elements present in rocks at concentrations less than $0.1\text{ wt}\%$ ($< 1000\text{ ppm}$). Because their abundances are so low, trace elements do not form distinct mineral phases of their own (such as quartz or feldspar); instead, they substitute into the crystal lattices of major rock-forming minerals governed by <strong>Goldschmidt’s Rules of Substitution</strong> (matching ionic radius and charge):</p>
+
+    <div class="formula-card">
+      <div class="title">The Distribution Coefficient ($K_D$ or $D_i$)</div>
+      $D_i = \frac{C_{\text{solid}}}{C_{\text{liquid}}}$<br><br>
+      Where:<br>
+      • $C_{\text{solid}}$ = Weight concentration of element $i$ in the crystalline mineral phase.<br>
+      • $C_{\text{liquid}}$ = Weight concentration of element $i$ in the coexisting silicate melt.<br><br>
+      For a multi-mineralic rock, the <strong>Bulk Distribution Coefficient ($D$)</strong> is the weighted average:<br>
+      $D = \sum_{j} W_j \cdot D_j = W_{\text{ol}}D_{\text{ol}} + W_{\text{cpx}}D_{\text{cpx}} + W_{\text{plag}}D_{\text{plag}} + \dots$<br>
+      where $W_j$ is the weight fraction of mineral $j$ in the solid residue or cumulate.
+    </div>
+
+    <div class="highlight-box">
+      <strong>Compatible vs. Incompatible Elements:</strong>
+      <ul style="margin-left: 18px; margin-top: 4px;">
+        <li><strong>Compatible Element ($D > 1$):</strong> Fits comfortably into the mineral lattice sites of common early-crystallizing minerals (e.g., $\text{Ni}^{2+}$ into olivine; $\text{Cr}^{3+}$ into chromite and clinopyroxene). The element preferentially remains in or enters the solid phase, becoming rapidly depleted in evolving liquids.</li>
+        <li><strong>Incompatible Element ($D < 1$, often $D \ll 1$):</strong> Possesses an ionic radius or valency that is poorly suited for major rock-forming mineral lattices. The element is strongly rejected by solid crystals, partitioning preferentially into the silicate melt ($C_{\text{liquid}} \gg C_{\text{solid}}$).</li>
+      </ul>
+    </div>
+
+    <div class="quote-box">
+      "Practically all elements distribute themselves unevenly between any two phases at equilibrium. This effect is known as chemical fractionation. An incompatible element is one that has a bulk distribution coefficient $D$ significantly less than 1. Such elements are rejected by the solid and are concentrated into the liquid phase during both partial melting and fractional crystallization."
+      <div class="citation">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., 2010), Chapter 9: Chemical Petrology II: Trace Elements and Isotopes, p. 167.</div>
+    </div>
+  </div>
+
+  <!-- CARD 2: TEXTBOOK TABLE 1 - WINTER P. 168 -->
+  <div class="card">
+    <h2>2. Textbook Evidence: Mineral/Melt Partition Coefficients ($D$-Values)</h2>
+    <p>Table 1 from Winter provides authentic measured partition coefficients for key trace elements across the common rock-forming minerals in basaltic to andesitic magmatic systems:</p>
+
+    <div class="tb-figure">
+      <img src="figures_Q18/extracted_p3_0_Im49.jpg" alt="Winter Table 1: Trace Element Partition Coefficients">
+      <div class="caption">
+        <strong>Figure 1 (Winter Table 1, p. 168):</strong> Partition coefficients ($C_{\text{solid}} / C_{\text{liquid}}$) for trace elements in olivine, orthopyroxene, clinopyroxene, garnet, plagioclase, amphibole, and magnetite. Notice that for olivine, $D$-values for incompatible elements are microscopic: $\text{Rb} = 0.010$, $\text{Sr} = 0.014$, $\text{Ba} = 0.010$, $\text{La} = 0.007$, $\text{Zr} = 0.012$. In stark contrast, compatible elements like $\text{Ni}$ in olivine reach $D = 14.0$, and $\text{Cr}$ in clinopyroxene reaches $D = 8.4$.
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: MATHEMATICAL FRACTIONATION LAWS -->
+  <div class="card">
+    <h2>3. Mathematical Behavior During Melting and Crystallization</h2>
+    <p>Trace elements obey rigorous thermodynamic conservation-of-mass equations during magmatic evolution:</p>
+
+    <div class="formula-card">
+      <div class="title">Batch Melting (Equilibrium Partial Melting)</div>
+      $\frac{C_L}{C_0} = \frac{1}{D(1 - F) + F}$<br><br>
+      Where $C_0$ is source rock concentration, $C_L$ is melt concentration, and $F$ is melt fraction ($0 \le F \le 1$).<br>
+      • For a highly incompatible element ($D \to 0$):<br>
+      $\frac{C_L}{C_0} \approx \frac{1}{F}$<br>
+      <em>Physical significance:</em> At small degrees of partial melting (e.g., $F = 0.01 = 1\%$), incompatible elements are concentrated in the first melt by a factor of $1/0.01 = \mathbf{100\times}$ relative to the mantle source!
+    </div>
+
+    <div class="formula-card">
+      <div class="title">Rayleigh Fractional Crystallization</div>
+      $\frac{C_L}{C_0} = F^{(D - 1)}$<br><br>
+      Where $F$ is the fraction of liquid remaining ($1 \to 0$).<br>
+      • For an incompatible element where $D \ll 1$ (say $D \approx 0$):<br>
+      $\frac{C_L}{C_0} \approx F^{-1} = \frac{1}{F}$<br>
+      <em>Physical significance:</em> As crystallization proceeds from basalt $\to$ andesite $\to$ dacite $\to$ rhyolite/granite, the fraction of liquid remaining shrinks ($F \to 0.05$), concentrating incompatible trace elements exponentially in the residual granitic melt!
+    </div>
+
+    <div class="tb-figure">
+      <img src="figures_Q18/extracted_p4_0_Im51.jpg" alt="Winter Fig 1: Harker Diagrams for Ni and Zr">
+      <div class="caption">
+        <strong>Figure 2 (Winter Fig. 1, p. 169):</strong> Harker variation diagrams for compatible $\text{Ni}$ and incompatible $\text{Zr}$ versus $\text{SiO}_2$ for the Crater Lake volcanic suite. Compatible $\text{Ni}$ collapses abruptly from $150\text{ ppm}$ to $<10\text{ ppm}$ during early olivine fractionation. In sharp contrast, incompatible $\text{Zr}$ continuously climbs as $\text{SiO}_2$ increases, reaching maximum concentrations in high-silica rhyolites and granites.
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4: GEOCHEMICAL INVENTORIES - WHY GRANITE WINS -->
+  <div class="card">
+    <h2>4. The Petrogenetic Hierarchy: Dunite $\to$ Peridotite $\to$ Basalt $\to$ Granite</h2>
+    <p>To definitively evaluate Question 18, we trace the abundance of incompatible trace elements across the four candidate rock types:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Rock Type</th>
+          <th>Dominant Mineralogy</th>
+          <th>Petrogenetic Origin</th>
+          <th>Incompatible Trace Element Inventory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dunite</strong><br>(Ultramafic Cumulate / Residue)</td>
+          <td>$>90\%$ Olivine ($\pm$ Chromite)</td>
+          <td>Refractory melt extraction residue or early ultramafic crystal cumulate.</td>
+          <td><strong>Lowest in Nature:</strong> Olivine rejects virtually all incompatible elements ($D_{\text{ol}} < 0.01$). $\text{Rb, Ba, Th, U, Zr, REE}$ are nearly undetectable ($<0.01\text{ to }0.1\text{ ppm}$).</td>
+        </tr>
+        <tr>
+          <td><strong>Peridotite</strong><br>(Mantle Source)</td>
+          <td>Olivine + Orthopyroxene + Clinopyroxene + Garnet/Spinel</td>
+          <td>Pristine upper mantle (e.g., lherzolite) or depleted mantle (harzburgite).</td>
+          <td><strong>Depleted Baseline:</strong> Represents the primitive or depleted mantle reservoir. Serves as the source rock prior to melt extraction ($C_0$). Incompatible levels are very low ($0.1\times$ to $1\times$ Primitive Mantle).</td>
+        </tr>
+        <tr>
+          <td><strong>Basalt</strong><br>(Mafic Volcanic)</td>
+          <td>Calcic Plagioclase + Clinopyroxene ($\pm$ Olivine)</td>
+          <td>Moderate partial melt of mantle peridotite ($F \approx 10\%–25\%$).</td>
+          <td><strong>Moderate Enrichment:</strong> Melt captures incompatible elements extracted from the mantle ($C_L \approx 4\times \text{ to } 10\times$ mantle source), but remains relatively primitive compared to felsic rocks.</td>
+        </tr>
+        <tr>
+          <td><strong>Granite</strong><br><span style="color:#059669; font-weight:700;">★ Correct Answer</span></td>
+          <td>Quartz + K-Feldspar + Sodic Plagioclase + Biotite</td>
+          <td><strong>Terminal product</strong> of extensive fractional crystallization ($F < 10\%$) or low-$F$ crustal partial melting.</td>
+          <td><strong>Highest Abundance:</strong> Extremely enriched in all Large-Ion Lithophile Elements (LILE: $\text{Rb, Cs, Ba, K}$) and High Field Strength Elements (HFSE: $\text{Zr, Hf, Th, U, Nb, Ta}$), reaching $100\times$ to $1000\times$ mantle levels.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="quote-box">
+      "The process of fractional crystallization tends to remove only a few compatible elements from the liquid in significant quantities, and a large number of incompatible, LIL, and non-lithophile elements become concentrated in the latest liquid fraction... Highly evolved granites and pegmatites represent the extreme manifestation of this enrichment."
+      <div class="citation">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, Chapter 11, p. 219.</div>
+    </div>
+  </div>
+
+  <!-- CARD 5: LIL VS HFS ELEMENTS -->
+  <div class="card">
+    <h2>5. Classification of Incompatible Trace Elements</h2>
+    <p>Geochemists subdivide incompatible trace elements into two major groups based on the ratio of ionic charge ($z$) to ionic radius ($r$), known as <strong>ionic potential ($z/r$)</strong>:</p>
+    <ul style="margin-left: 24px; font-size: 13px; margin-bottom: 10px;">
+      <li><strong>Large-Ion Lithophile (LIL) Elements ($z/r < 2.0$):</strong> Low charge ($+1$ or $+2$) and large ionic radius ($>1.0\text{ \AA}$). Includes $\text{Cs}^+, \text{Rb}^+, \text{K}^+, \text{Ba}^{2+}, \text{Sr}^{2+}, \text{Eu}^{2+}$. Highly mobile in aqueous fluids; concentrated heavily in continental crust and granites.</li>
+      <li><strong>High Field Strength (HFS) Elements ($z/r > 2.0$):</strong> High formal charge ($+3, +4, +5$) and small/intermediate radius. Includes $\text{Zr}^{4+}, \text{Hf}^{4+}, \text{Nb}^{5+}, \text{Ta}^{5+}, \text{Th}^{4+}, \text{U}^{4+}, \text{Ti}^{4+}, \text{Y}^{3+}$. Chemically immobile in hydrous fluids; concentrated by magmatic differentiation into felsic magmas and accessory minerals (zircon, monazite, allanite).</li>
+      <li><strong>Rare Earth Elements (REE):</strong> Lanthanides ($\text{La}^{3+} \to \text{Lu}^{3+}$), where Light REE (LREE, large radii) are significantly more incompatible than Heavy REE (HREE, smaller radii).</li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART II: EXAM QUESTION CRITICAL ANALYSIS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">EXAM QUESTION & RIGOROUS OPTION-BY-OPTION DISSECTION</div>
+      <div class="part-sub">DGMS 2019 Examination · Official Question Statement, Verified Answer & Detailed Distracter Analysis</div>
+    </div>
+  </div>
+
+  <!-- QUESTION STATEMENT -->
+  <div class="card">
+    <div class="question-box">
+      <div class="q-num">DGMS 2019 · QUESTION 18</div>
+      <div class="q-stmt">Which one of the following rocks is normally expected to have the highest abundance of incompatible trace elements?</div>
+      <div style="margin-top: 10px; font-size: 13.5px; font-weight: 500;">
+        (a) Basalt<br>
+        (b) Dunite<br>
+        (c) Peridotite<br>
+        (d) Granite
+      </div>
+    </div>
+
+    <!-- ANSWER BANNER -->
+    <div class="answer-banner">
+      <div class="tick">✓</div>
+      <div>
+        <div class="text">Correct Option: (d) Granite</div>
+        <div class="sub">Verified via John D. Winter, Principles of Igneous & Metamorphic Petrology (Ch. 9, pp. 167–172; Ch. 11, p. 219)</div>
+      </div>
+    </div>
+
+    <!-- OPTION A -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (a): Basalt
+      </div>
+      <p><strong>Detailed Refutation:</strong> Basalt is a mafic volcanic rock generated by moderate degrees of partial melting ($F \approx 10\%–25\%$) of mantle peridotite. While basalt is substantially enriched in incompatible elements compared to its peridotite mantle source, it is far less differentiated than granite. During subsequent fractional crystallization of basaltic magma, the liquid undergoes an additional $80\%–90\%$ crystal removal, concentrating incompatible elements several orders of magnitude higher into terminal granitic melts.</p>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (b): Dunite
+      </div>
+      <p><strong>Detailed Refutation:</strong> Dunite is an ultramafic rock composed of $>90\%$ olivine. Because the olivine crystal lattice strongly excludes incompatible trace elements ($D_{\text{ol}} \approx 0.001–0.01$ for $\text{Rb, Ba, Th, U, REE}$), dunites (whether formed as mantle melting residues or early ultramafic cumulates) have the <strong>lowest</strong> incompatible trace element concentrations of any terrestrial rocks.</p>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (c): Peridotite
+      </div>
+      <p><strong>Detailed Refutation:</strong> Peridotite is the primary ultramafic rock of the Earth's upper mantle. It represents the un-melted starting source (primitive mantle) or the depleted residue after basalt extraction (harzburgite). By geochemical definition, the mantle source has baseline trace element concentrations prior to the massive enrichment that occurs during partial melting and prolonged differentiation.</p>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="option correct">
+      <div class="option-header">
+        <span class="badge-tag badge-correct">Correct Answer</span>
+        Option (d): Granite
+      </div>
+      <p><strong>Detailed Validation:</strong> <strong>Granite</strong> is a highly evolved, felsic, silica-rich continental plutonic rock. It represents either the extreme residual melt produced after prolonged fractional crystallization of more mafic parent magmas ($F \ll 0.1$) or the product of low-degree crustal anatexis. Because incompatible trace elements ($D \ll 1$) are continuously rejected by early-crystallizing minerals (olivine, pyroxene, calcic plagioclase, spinels), they accumulate relentlessly in the residual liquid, reaching their absolute maximum natural abundances in granites, pegmatites, and associated felsic differentiates.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS & PRACTICE QUESTIONS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">SYNTHESIS & HIGH-YIELD PRACTICE QUESTIONS</div>
+      <div class="part-sub">Curated Problems Covering Trace Element Modeling, Rayleigh Fractionation, LILE/HFSE & Spidergrams</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS CARD -->
+  <div class="card">
+    <h2>High-Yield Exam Practice Questions</h2>
+
+    <!-- Q1 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q1 (Numerical / Batch Melting): Enrichment Calculation</div>
+      <p>A perfectly incompatible element ($D = 0$) is present in a mantle peridotite source at a concentration of $C_0 = 1.5\text{ ppm}$. If the mantle undergoes $F = 3\%$ ($0.03$) batch partial melting, what is the concentration of this element in the resulting primary basaltic melt?</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        Using the batch melting equation: $C_L / C_0 = \frac{1}{D(1-F) + F}$.<br>
+        Since $D = 0$, $C_L / C_0 = \frac{1}{F} = \frac{1}{0.03} = 33.33$.<br>
+        $C_L = 1.5\text{ ppm} \times 33.33 = \mathbf{50.0\text{ ppm}}$.<br>
+        The melt is enriched by more than $33$-fold relative to the solid mantle source.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q2 (Rayleigh Fractionation): Compatible Element Depletion</div>
+      <p>Nickel is strongly compatible in olivine ($D_{\text{Ni}} = 10$). If a basaltic magma undergoes fractional crystallization until only $F = 50\%$ ($0.5$) of the liquid remains, what fraction of the original nickel remains in the melt?</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        Rayleigh equation: $C_L / C_0 = F^{(D - 1)}$.<br>
+        Here $D - 1 = 10 - 1 = 9$.<br>
+        $C_L / C_0 = (0.5)^9 = \frac{1}{512} \approx 0.00195 = \mathbf{0.195\%}$.<br>
+        Over $99.8\%$ of the original nickel is locked into the early-crystallized olivine cumulate, explaining why evolved rocks (andesites, granites) are virtually devoid of nickel.
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q3 (Element Taxonomy): Distinguishing LILE from HFSE</div>
+      <p>Which of the following trace elements is classified as a High Field Strength Element (HFSE) rather than a Large-Ion Lithophile Element (LILE): (a) $\text{Rb}$, (b) $\text{Ba}$, (c) $\text{Zr}$, (d) $\text{Sr}$?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>(c) $\text{Zr}$ (Zirconium)</strong>. $\text{Zr}^{4+}$ has a high valence charge ($+4$) and relatively small ionic radius ($0.72\text{ \AA}$), yielding a high ionic potential ($z/r = 5.56$). In contrast, $\text{Rb}^+, \text{Ba}^{2+}, \text{and } \text{Sr}^{2+}$ are all low-valence, large-radius LIL elements.
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q4 (Petrogenesis): Incompatible Behavior in Granitic Pegmatites</div>
+      <p>Why do giant rare-metal pegmatites (containing spodumene, columbite-tantalite, beryl, and uraninite) form almost exclusively as peripheral haloes around granitic plutons?</p>
+      <div class="ans">
+        <strong>Answer:</strong> Incompatible elements with extreme ionic charges or radii ($\text{Li, Be, B, Nb, Ta, U, Th, REE}$) cannot fit into quartz or feldspar lattices during the crystallization of granite. As the granite body cools, these elements are squeezed into the final, water-saturated residual volatile melt fraction ($F < 0.01$), which injects into surrounding country rocks to crystallize pegmatites.
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q5 (Bulk Partition Coefficient): Mineral Weight Influence</div>
+      <p>Explain why a rock containing just $3\%$ garnet can behave as a compatible reservoir for Heavy Rare Earth Elements (HREE) like Lutetium ($\text{Lu}$), even when all other minerals in the rock have $D < 1$.</p>
+      <div class="ans">
+        <strong>Answer:</strong> The partition coefficient for $\text{Lu}$ in garnet is exceptionally high ($D_{\text{garnet}}^{\text{Lu}} \approx 12.0$). In the bulk equation $D = W_{\text{gt}} D_{\text{gt}} + \sum W_j D_j$, the garnet term alone contributes $0.03 \times 12.0 = 0.36$. When combined with pyroxenes, the bulk $D$ easily exceeds $1.0$, retaining HREE in the garnet-bearing mantle residue.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q6 (Spidergrams): Primitive Mantle Normalization</div>
+      <p>Why are trace element concentrations in igneous rocks normalized to Chondrite or Primitive Mantle in "spidergrams" (incompatible element multi-element diagrams)?</p>
+      <div class="ans">
+        <strong>Answer:</strong> To eliminate the natural "sawtooth" abundance variation caused by the Oddo-Harkins effect (elements with even atomic numbers are cosmochemically more abundant than elements with odd atomic numbers). Normalization produces smooth patterns where slopes and anomalies directly reflect petrogenetic processes.
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q7 (Subduction Signatures): LILE vs. HFSE Decoupling</div>
+      <p>Why are subduction zone magmas (island arc basalts and calc-alkaline andesites) characteristically enriched in LILE ($\text{Rb, Ba, Sr}$) but depleted in HFSE ($\text{Nb, Ta, Ti}$)?</p>
+      <div class="ans">
+        <strong>Answer:</strong> LILE are fluid-mobile and are readily transported by aqueous dehydration fluids from the subducting slab into the mantle wedge. HFSE are highly insoluble in aqueous fluids and are retained in the slab within residual rutile ($\text{TiO}_2$), producing the classic negative $\text{Nb-Ta}$ and $\text{Ti}$ anomalies on arc spidergrams.
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q8 (Mantle Residues): Fertile vs. Depleted Mantle</div>
+      <p>Between a fertile lherzolite and a depleted harzburgite, which mantle rock has higher incompatible trace element abundances, and why?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Fertile lherzolite</strong>. Harzburgite has already experienced one or more episodes of basaltic melt extraction, which stripped away its clinopyroxene and incompatible trace elements into the extracted magma, leaving a refractory, depleted residue of olivine + orthopyroxene.
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="card">
+    <h2>Summary Comparison of Rock Suites and Trace Element Inventories</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rock Type</th>
+          <th>$\text{SiO}_2$ Content</th>
+          <th>Compatible Elements ($\text{Ni, Cr, Co}$)</th>
+          <th>Incompatible Elements ($\text{Rb, Ba, Zr, Th, REE}$)</th>
+          <th>Degree of Differentiation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dunite</strong></td>
+          <td>$\sim 40\text{ wt}\%$</td>
+          <td>Extreme ($>2000\text{ ppm Ni}$)</td>
+          <td>Negligible / Depleted ($<0.1\text{ ppm}$)</td>
+          <td>Refractory residue / Early cumulate</td>
+        </tr>
+        <tr>
+          <td><strong>Peridotite</strong></td>
+          <td>$40–45\text{ wt}\%$</td>
+          <td>Very High ($>1500\text{ ppm Ni}$)</td>
+          <td>Very Low (Mantle source baseline)</td>
+          <td>Primitive mantle reservoir</td>
+        </tr>
+        <tr>
+          <td><strong>Basalt</strong></td>
+          <td>$45–52\text{ wt}\%$</td>
+          <td>Moderate ($50–250\text{ ppm Ni}$)</td>
+          <td>Moderate ($10\times–50\times$ mantle)</td>
+          <td>Primary mantle melt</td>
+        </tr>
+        <tr>
+          <td><strong>Granite</strong></td>
+          <td>$70–77\text{ wt}\%$</td>
+          <td>Very Low ($<5\text{ ppm Ni}$)</td>
+          <td><strong>Highest in Nature ($100\times–1000\times$ mantle)</strong></td>
+          <td>Terminal differentiated felsic liquid</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

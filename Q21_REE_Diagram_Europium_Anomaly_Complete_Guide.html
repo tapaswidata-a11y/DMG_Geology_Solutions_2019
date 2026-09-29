@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.21 – Rare Earth Element (REE) Geochemistry & The Europium Anomaly | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #0891b2;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 14px 0 6px 0;
+  }
+  p { margin-bottom: 10px; font-size: 13.5px; }
+
+  /* ── Highlight & Quote Boxes ── */
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #0891b2;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .quote-box {
+    background: #ecfeff;
+    border-left: 4px solid #06b6d4;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    font-size: 13px;
+    color: #164e63;
+  }
+  .quote-box .citation {
+    font-style: normal;
+    font-weight: 700;
+    color: #0891b2;
+    margin-top: 6px;
+    font-size: 11.5px;
+  }
+
+  /* ── Formula Cards ── */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-card .title {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Textbook Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+    max-height: 480px;
+    object-fit: contain;
+  }
+  .tb-figure .caption {
+    font-size: 12px;
+    color: #475569;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    line-height: 1.45;
+  }
+  .tb-figure .caption strong { color: #1e293b; }
+
+  /* ── Option Cards ── */
+  .option {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f87171;
+    background: #fef2f2;
+  }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .option-header { color: #065f46; }
+  .option.incorrect .option-header { color: #991b1b; }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-correct { background: #dcfce7; color: #15803d; }
+  .badge-incorrect { background: #fee2e2; color: #b91c1c; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Question Card ── */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .question-box .q-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .question-box .q-stmt {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+
+  /* ── Practice Question Container ── */
+  .practice-box {
+    background: #faf5ff;
+    border: 1px solid #d8b4fe;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .practice-box .p-title {
+    font-weight: 700;
+    color: #6b21a8;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  .practice-box .ans {
+    background: #f3e8ff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #4c1d95;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · Question 21 · Masterclass Guide</span>
+    <h1>Rare Earth Element (REE) Geochemistry: Chondrite Normalization, The Europium Anomaly & Plagioclase Partitioning</h1>
+    <div class="meta">Comprehensive Geochemistry Guide · Authoritative Reference: John D. Winter, Principles of Igneous and Metamorphic Petrology (2nd Ed., Ch. 9)</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART I: THEORETICAL FOUNDATION & TEXTBOOK EXPOSÉ      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">THEORETICAL FOUNDATION: REE SYSTEMATICS & ANOMALY FORMATION</div>
+      <div class="part-sub">Lanthanide Contraction, Oddo-Harkins Smoothing, Europium Valence Multiplicity & The Sm-Gd Baseline</div>
+    </div>
+  </div>
+
+  <!-- CARD 1: THE REE SERIES & CHONDRITE NORMALIZATION -->
+  <div class="card">
+    <h2>1. The Rare Earth Elements (Lanthanides) & Chondrite Normalization</h2>
+    <p>The Rare Earth Elements (REE) comprise the 15 elements with atomic numbers $Z = 57$ (Lanthanum, $\text{La}$) through $Z = 71$ (Lutetium, $\text{Lu}$). Promethium ($\text{Pm}, Z = 61$) has no stable isotopes and is absent in nature. Across this series, electrons fill the inner $4f$ subshell while the outer valence shell remains constant:</p>
+
+    <div class="highlight-box">
+      <strong>The Lanthanide Contraction:</strong>
+      As atomic number increases from $\text{La}$ ($Z=57$) to $\text{Lu}$ ($Z=71$), increasing nuclear charge pulls the electron cloud closer, causing ionic radii to shrink smoothly from $1.16\text{ \AA}$ ($\text{La}^{3+}$) down to $0.977\text{ \AA}$ ($\text{Lu}^{3+}$). This creates a predictable gradient in chemical behavior: Light REE (LREE: $\text{La} \to \text{Sm}$) are larger and more incompatible, while Heavy REE (HREE: $\text{Gd} \to \text{Lu}$) are smaller and more compatible in minerals like garnet.
+    </div>
+
+    <p>Because nucleosynthetic processes favor even-atomic-number nuclei (the <strong>Oddo-Harkins Effect</strong>), raw REE abundances display an irregular "sawtooth" pattern. Geochemists normalize rock abundances against primitive carbonaceous chondrite meteorites (CI chondrites) to produce a smooth curve:</p>
+
+    <div class="formula-card">
+      <div class="title">Chondrite Normalization Formulation</div>
+      $[\text{REE}_i]_N = \frac{[\text{REE}_i]_{\text{sample}}}{[\text{REE}_i]_{\text{chondrite}}}<br><br>
+      Plotting $[\text{REE}_i]_N$ on a logarithmic y-axis against atomic number ($Z$) generates a smooth, diagnostic REE pattern. Any deviation from a smooth curve reflects an anomalous geochemical process affecting that specific element.
+    </div>
+  </div>
+
+  <!-- CARD 2: THE ORDER OF REEs & THE Sm-Eu-Gd SEQUENCE -->
+  <div class="card">
+    <h2>2. Sequential Order of REEs: Locating Europium Between Sm and Gd</h2>
+    <p>In standard REE diagrams, elements are plotted in strict order of increasing atomic number along the horizontal axis:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Group</th>
+          <th>Element</th>
+          <th>Symbol</th>
+          <th>Atomic Number ($Z$)</th>
+          <th>Common Valence</th>
+          <th>Ionic Radius ($3+$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>LREE</strong></td>
+          <td>Lanthanum</td>
+          <td>$\text{La}$</td>
+          <td>57</td>
+          <td>$+3$</td>
+          <td>$1.160\text{ \AA}$</td>
+        </tr>
+        <tr>
+          <td><strong>LREE</strong></td>
+          <td>Cerium</td>
+          <td>$\text{Ce}$</td>
+          <td>58</td>
+          <td>$+3, +4$ (anomalous)</td>
+          <td>$1.143\text{ \AA}$</td>
+        </tr>
+        <tr>
+          <td><strong>LREE</strong></td>
+          <td>Praseodymium</td>
+          <td>$\text{Pr}$</td>
+          <td>59</td>
+          <td>$+3$</td>
+          <td>$1.126\text{ \AA}$</td>
+        </tr>
+        <tr>
+          <td><strong>LREE</strong></td>
+          <td>Neodymium</td>
+          <td>$\text{Nd}$</td>
+          <td>60</td>
+          <td>$+3$</td>
+          <td>$1.109\text{ \AA}$</td>
+        </tr>
+        <tr>
+          <td>—</td>
+          <td>Promethium</td>
+          <td>$\text{Pm}$</td>
+          <td>61</td>
+          <td>Radioactive / Omitted</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><strong>LREE / MREE</strong></td>
+          <td><strong>Samarium</strong></td>
+          <td><strong>$\text{Sm}$</strong></td>
+          <td><strong>62</strong></td>
+          <td><strong>$+3$</strong></td>
+          <td><strong>$1.079\text{ \AA}$</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Anomaly Site</strong></td>
+          <td><strong>EUROPIUM</strong><br><span style="color:#0891b2; font-weight:700;">★ Subject of Anomaly</span></td>
+          <td><strong>$\text{Eu}$</strong></td>
+          <td><strong>63</strong></td>
+          <td><strong>$+2, +3$ (multivalent)</strong></td>
+          <td><strong>$\text{Eu}^{2+}: 1.250\text{ \AA}$</strong><br>$\text{Eu}^{3+}: 1.066\text{ \AA}$</td>
+        </tr>
+        <tr>
+          <td><strong>HREE / MREE</strong></td>
+          <td><strong>Gadolinium</strong></td>
+          <td><strong>$\text{Gd}$</strong></td>
+          <td><strong>64</strong></td>
+          <td><strong>$+3$</strong></td>
+          <td><strong>$1.053\text{ \AA}$</strong></td>
+        </tr>
+        <tr>
+          <td><strong>HREE</strong></td>
+          <td>Terbium</td>
+          <td>$\text{Tb}$</td>
+          <td>65</td>
+          <td>$+3$</td>
+          <td>$1.040\text{ \AA}$</td>
+        </tr>
+        <tr>
+          <td><strong>HREE</strong></td>
+          <td>Dysprosium</td>
+          <td>$\text{Dy}$</td>
+          <td>66</td>
+          <td>$+3$</td>
+          <td>$1.027\text{ \AA}$</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>Structural Sequence:</strong> Notice that <strong>Europium ($Z = 63$) is situated precisely between Samarium ($\text{Sm}, Z = 62$) and Gadolinium ($\text{Gd}, Z = 64$)</strong>. Therefore, on every standardized REE plot, the Europium anomaly appears as a vertical spike or trough situated directly in the interval between $\text{Sm}$ and $\text{Gd}$.
+    </div>
+  </div>
+
+  <!-- CARD 3: TEXTBOOK FIGURES (WINTER FIG 4 & 5) -->
+  <div class="card">
+    <h2>3. Textbook Evidence: The Europium Anomaly on REE Plots</h2>
+    <p>Figure 4 from Winter illustrates chondrite-normalized REE patterns for basaltic and andesitic suites, displaying positive and negative Europium anomalies:</p>
+
+    <div class="tb-figure">
+      <img src="figures_Q21/extracted_p3_0_Im41.jpg" alt="Winter Fig 4: Chondrite-Normalized REE Diagram">
+      <div class="caption">
+        <strong>Figure 1 (Winter Fig. 4, p. 173):</strong> Chondrite-normalized REE diagram. Elements are arranged in order of atomic number from $\text{La}$ to $\text{Lu}$. Note the dramatic vertical excursion at <strong>Europium ($\text{Eu}$)</strong>, situated between <strong>$\text{Sm}$</strong> and <strong>$\text{Gd}$</strong>. A sharp dip represents a <em>negative Eu anomaly</em> ($\text{Eu}/\text{Eu}^* < 1$), while an upward spike represents a <em>positive Eu anomaly</em> ($\text{Eu}/\text{Eu}^* > 1$).
+      </div>
+    </div>
+
+    <div class="tb-figure">
+      <img src="figures_Q21/extracted_p4_1_Im52.jpg" alt="Winter Fig 5: Mineral/Melt Partition Coefficients for REEs">
+      <div class="caption">
+        <strong>Figure 2 (Winter Fig. 5, p. 174):</strong> Mineral/melt partition coefficients for REEs. For all trivalent REEs ($\text{Sm}^{3+}, \text{Gd}^{3+}$, etc.), $D_{\text{plagioclase}}$ is low ($0.05–0.1$). However, at Europium, $D_{\text{plagioclase}}$ jumps to $>1.5$ because divalent $\text{Eu}^{2+}$ substitutes freely for $\text{Sr}^{2+}$ and $\text{Ca}^{2+}$ in the plagioclase crystal lattice.
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4: THE MECHANISM OF THE EUROPIUM ANOMALY -->
+  <div class="card">
+    <h2>4. The Redox Mechanism: Why Europium Behaves Uniquely</h2>
+    <p>Under terrestrial magmatic oxygen fugacities (typically around the QFM buffer), Europium exists in a multivalent equilibrium:</p>
+
+    <div class="formula-card">
+      <div class="title">The Europium Redox Equilibrium & Anomaly Metric</div>
+      $\text{Eu}^{3+} + e^- \rightleftharpoons \text{Eu}^{2+}$<br><br>
+      • In the trivalent state ($\text{Eu}^{3+}$), its radius is $1.066\text{ \AA}$, nearly identical to $\text{Sm}^{3+}$ and $\text{Gd}^{3+}$.<br>
+      • In the divalent state ($\text{Eu}^{2+}$), its radius swells to $1.250\text{ \AA}$, matching $\text{Sr}^{2+}$ ($1.18\text{ \AA}$) and $\text{Ca}^{2+}$ ($1.00\text{ \AA}$).<br><br>
+      Because plagioclase accepts $\text{Ca}^{2+}$ and $\text{Sr}^{2+}$, it preferentially absorbs $\text{Eu}^{2+}$ ($D_{\text{plag}}^{\text{Eu}} \gg 1$), while rejecting all other REEs ($D_{\text{plag}}^{\text{REE}^{3+}} \ll 1$).<br><br>
+      <strong>Mathematical Calculation of the Anomaly ($\text{Eu}/\text{Eu}^*$):</strong><br>
+      $\text{Eu}^* = \sqrt{\text{Sm}_N \times \text{Gd}_N} \quad \text{or} \quad \text{Eu}^* = \frac{\text{Sm}_N + \text{Gd}_N}{2}$<br><br>
+      $\frac{\text{Eu}}{\text{Eu}^*} = \frac{\text{Eu}_N}{\sqrt{\text{Sm}_N \times \text{Gd}_N}}$<br>
+      • $\text{Eu}/\text{Eu}^* < 1.0$: <strong>Negative anomaly</strong> (plagioclase removed by fractional crystallization).<br>
+      • $\text{Eu}/\text{Eu}^* > 1.0$: <strong>Positive anomaly</strong> (plagioclase accumulated, e.g. anorthosite).
+    </div>
+
+    <div class="quote-box">
+      "The magnitude of the Eu anomaly is commonly expressed as $\text{Eu}/\text{Eu}^*$, where $\text{Eu}^*$ is the hypothetical value of $\text{Eu}$ if no $\text{Eu}^{2+}$ was present, determined by interpolating between the chondrite-normalized values of $\text{Sm}$ and $\text{Gd}$... A negative europium anomaly is a good indicator that the liquid was at one time in equilibrium with now-absent plagioclase."
+      <div class="citation">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, Chapter 9, p. 175.</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART II: EXAM QUESTION CRITICAL ANALYSIS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">EXAM QUESTION & RIGOROUS OPTION-BY-OPTION DISSECTION</div>
+      <div class="part-sub">DGMS 2019 Examination · Official Question Statement, Verified Answer & Detailed Distracter Analysis</div>
+    </div>
+  </div>
+
+  <!-- QUESTION STATEMENT -->
+  <div class="card">
+    <div class="question-box">
+      <div class="q-num">DGMS 2019 · QUESTION 21</div>
+      <div class="q-stmt">In a rare earth element (REE) diagram, europium anomaly is seen between which one of the following REE pairs?</div>
+      <div style="margin-top: 10px; font-size: 13.5px; font-weight: 500;">
+        (a) La-Nd<br>
+        (b) Nd-Sm<br>
+        (c) Sm-Gd<br>
+        (d) Gd-Dy
+      </div>
+    </div>
+
+    <!-- ANSWER BANNER -->
+    <div class="answer-banner">
+      <div class="tick">✓</div>
+      <div>
+        <div class="text">Correct Option: (c) Sm-Gd</div>
+        <div class="sub">Verified via John D. Winter, Principles of Igneous & Metamorphic Petrology (Ch. 9, pp. 173–175)</div>
+      </div>
+    </div>
+
+    <!-- OPTION A -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (a): La-Nd
+      </div>
+      <p><strong>Detailed Refutation:</strong> Lanthanum ($\text{La}, Z=57$) and Neodymium ($\text{Nd}, Z=60$) are both Light Rare Earth Elements. The elements intervening between them are Cerium ($\text{Ce}, Z=58$) and Praseodymium ($\text{Pr}, Z=59$). While a <em>Cerium anomaly</em> ($\text{Ce}/\text{Ce}^*$) can occur in marine environments between $\text{La}$ and $\text{Pr}$ due to oxidation of $\text{Ce}^{3+}$ to insoluble $\text{Ce}^{4+}$, Europium ($Z=63$) does not lie anywhere near this interval.</p>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (b): Nd-Sm
+      </div>
+      <p><strong>Detailed Refutation:</strong> Neodymium ($\text{Nd}, Z=60$) and Samarium ($\text{Sm}, Z=62$) flank the synthetic/radioactive element Promethium ($\text{Pm}, Z=61$). Promethium does not occur in natural geological samples. No Europium anomaly can exist here, as Europium has atomic number $Z=63$, which lies beyond Samarium.</p>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="option correct">
+      <div class="option-header">
+        <span class="badge-tag badge-correct">Correct Answer</span>
+        Option (c): Sm-Gd
+      </div>
+      <p><strong>Detailed Validation:</strong> <strong>Europium ($\text{Eu}, Z = 63$) is positioned directly between Samarium ($\text{Sm}, Z = 62$) and Gadolinium ($\text{Gd}, Z = 64$)</strong> in the periodic table and along the x-axis of every standard chondrite-normalized REE diagram. Because $\text{Sm}$ and $\text{Gd}$ exist strictly as trivalent cations ($\text{Sm}^{3+}, \text{Gd}^{3+}$), they establish the smooth, undisturbed background baseline. Europium's multivalent behavior ($\text{Eu}^{2+}$ entering plagioclase) causes its normalized concentration to deviate sharply above or below this baseline, creating the diagnostic <strong>Europium anomaly precisely between $\text{Sm}$ and $\text{Gd}$</strong>. The baseline value $\text{Eu}^*$ is mathematically calculated as the geometric mean $\sqrt{\text{Sm}_N \times \text{Gd}_N}$.</p>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (d): Gd-Dy
+      </div>
+      <p><strong>Detailed Refutation:</strong> Gadolinium ($\text{Gd}, Z=64$) and Dysprosium ($\text{Dy}, Z=66$) are Heavy Rare Earth Elements that flank Terbium ($\text{Tb}, Z=65$). All three elements ($\text{Gd, Tb, Dy}$) are strictly trivalent and define the smooth downward or flat trajectory of the HREE profile, completely past Europium.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS & PRACTICE QUESTIONS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">SYNTHESIS & HIGH-YIELD PRACTICE QUESTIONS</div>
+      <div class="part-sub">Curated Problems Covering REE Modeling, Garnet Signatures, Cerium Anomalies & Lunar Geochemistry</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS CARD -->
+  <div class="card">
+    <h2>High-Yield Exam Practice Questions</h2>
+
+    <!-- Q1 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q1 (Numerical / Anomaly Calculation): Quantifying Eu/Eu*</div>
+      <p>A rhyolitic lava displays chondrite-normalized abundances of $\text{Sm}_N = 36.0$, $\text{Eu}_N = 6.0$, and $\text{Gd}_N = 16.0$. Calculate the Europium anomaly ($\text{Eu}/\text{Eu}^*$) and state whether it is positive or negative.</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        Interpolated baseline: $\text{Eu}^* = \sqrt{\text{Sm}_N \times \text{Gd}_N} = \sqrt{36.0 \times 16.0} = \sqrt{576} = 24.0$.<br>
+        $\frac{\text{Eu}}{\text{Eu}^*} = \frac{\text{Eu}_N}{\text{Eu}^*} = \frac{6.0}{24.0} = \mathbf{0.25}$.<br>
+        Because $\text{Eu}/\text{Eu}^* = 0.25 < 1.0$, the rock displays a <strong>severe negative Europium anomaly</strong>, indicating extensive fractional crystallization and removal of plagioclase feldspar.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q2 (Planetary Petrology): The Lunar Magma Ocean</div>
+      <p>The lunar highlands (anorthosite crust) display a huge positive Europium anomaly, while lunar mare basalts display a pronounced negative Europium anomaly. How does this prove the existence of the primordial Lunar Magma Ocean?</p>
+      <div class="ans">
+        <strong>Answer:</strong> During crystallization of the global Lunar Magma Ocean, low-density plagioclase floated to form the buoyant lunar anorthositic crust, scavenging $\text{Eu}^{2+}$ and creating a massive <strong>positive Eu anomaly</strong>. The complementary residual liquid, depleted in Eu, sank into the lunar mantle; subsequent remelting of this residue formed mare basalts carrying the complementary <strong>negative Eu anomaly</strong>.
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q3 (Marine Geochemistry): The Cerium Anomaly</div>
+      <p>Which other Rare Earth Element produces a prominent anomaly in modern seawater and pelagic sediments, what is its redox state, and which REE pair flanks it?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Cerium ($\text{Ce}$)</strong>. Under oxidizing surface seawater conditions, soluble $\text{Ce}^{3+}$ oxidizes to insoluble $\text{Ce}^{4+}$, precipitating into ferromanganese nodules. This leaves seawater with a strong <strong>negative Ce anomaly</strong> between <strong>$\text{La}$ and $\text{Pr}$</strong> ($\text{Ce}^* = \sqrt{\text{La}_N \times \text{Pr}_N}$).
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q4 (Garnet Signature): Slope of the REE Profile</div>
+      <p>A basalt has an extremely steep chondrite-normalized REE pattern with a very high $(\text{La}/\text{Yb})_N$ ratio ($>20$) and heavy depletion in HREE ($\text{Yb, Lu}$). What residual mineral in the mantle source is diagnostic of this signature?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Garnet</strong>. Garnet has an extraordinarily high partition coefficient for heavy REEs ($D_{\text{garnet}}^{\text{Lu}} \approx 12$), locking them into the solid mantle residue. This proves that melting occurred deep within the garnet peridotite stability field ($>80\text{ km}$ depth).
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q5 (Redox Sensitivity): Eu Valence in the Upper Mantle vs. Terrestrial Atmosphere</div>
+      <p>Why does Europium exhibit anomalous divalent behavior in basaltic magma chambers, but not in low-temperature oxidizing surface waters?</p>
+      <div class="ans">
+        <strong>Answer:</strong> Divalent $\text{Eu}^{2+}$ is stable only under reducing conditions (low oxygen fugacity $f_{\text{O}_2} \le \text{QFM}$ buffer), typical of deep magmatic chambers. In oxygenated surface waters, all Europium oxidizes to trivalent $\text{Eu}^{3+}$, behaving identically to its neighbors and producing no anomaly.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q6 (Plagioclase Accumulates): Anorthosites</div>
+      <p>An igneous cumulate rock composed of $>90\%$ bytownite plagioclase displays a chondrite-normalized REE profile. What characteristic feature will be observed at $Z = 63$?</p>
+      <div class="ans">
+        <strong>Answer:</strong> A prominent <strong>positive Europium anomaly</strong> ($\text{Eu}/\text{Eu}^* \gg 1.0$), because the accumulated plagioclase crystals concentrated $\text{Eu}^{2+}$ from the parental liquid.
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q7 (Oddo-Harkins Rule): Nucleosynthetic Cause</div>
+      <p>What fundamental nuclear property explains why natural abundances of $\text{Ce}, \text{Nd}, \text{Sm}, \text{Gd}$ are systematically higher than those of $\text{La}, \text{Pr}, \text{Eu}, \text{Tb}$ in raw rock analyses?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>The Oddo-Harkins Rule</strong>. Atomic nuclei with even atomic numbers ($Z = 58, 60, 62, 64$) have paired protons, providing greater nuclear binding energy and stability during stellar nucleosynthesis than nuclei with odd atomic numbers ($Z = 57, 59, 63, 65$).
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q8 (Crustal Composition): Post-Archean Australian Shale (PAAS)</div>
+      <p>Why does the average upper continental crust (and PAAS) display a pervasive negative Europium anomaly ($\text{Eu}/\text{Eu}^* \approx 0.65$)?</p>
+      <div class="ans">
+        <strong>Answer:</strong> The upper continental crust is dominated by differentiated granitic rocks and their sedimentary erosional products. These granites formed by partial melting or fractional crystallization that left plagioclase-rich residues in the lower crust, permanently depriving the upper crust of Europium.
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="card">
+    <h2>Comprehensive Rare Earth Element Classification Matrix</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Subdivision</th>
+          <th>Elements & Atomic Numbers</th>
+          <th>Ionic Radius ($3+$)</th>
+          <th>Mantle Compatibility</th>
+          <th>Diagnostic Mineral Reservoir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Light REE (LREE)</strong></td>
+          <td>$\text{La}$ (57) to $\text{Nd}$ (60)</td>
+          <td>Largest ($1.16–1.11\text{ \AA}$)</td>
+          <td>Highly Incompatible</td>
+          <td>Enriched in continental crust & alkaline melts; depleted in N-MORB.</td>
+        </tr>
+        <tr>
+          <td><strong>Middle REE (MREE)</strong></td>
+          <td>$\text{Sm}$ (62) to $\text{Ho}$ (67)</td>
+          <td>Intermediate ($1.08–1.02\text{ \AA}$)</td>
+          <td>Moderately Incompatible</td>
+          <td>Concentrated by amphibole (hornblende). Flanks the <strong>Eu anomaly ($\text{Sm–Eu–Gd}$)</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Heavy REE (HREE)</strong></td>
+          <td>$\text{Er}$ (68) to $\text{Lu}$ (71)</td>
+          <td>Smallest ($1.00–0.98\text{ \AA}$)</td>
+          <td>Compatible in Garnet</td>
+          <td>Strongly retained by <strong>Garnet</strong> in deep mantle peridotite and eclogite.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

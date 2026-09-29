@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.3 – Dunham Carbonate Classification: Grainstones | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 18px 22px; }
+  .bg-blue   { background: #1d4ed8; }
+  .bg-indigo { background: #4338ca; }
+  .bg-emerald{ background: #047857; }
+  .bg-purple { background: #6d28d9; }
+  .bg-amber  { background: #b45309; }
+  .bg-teal   { background: #0f766e; }
+  .bg-rose   { background: #be123c; }
+
+  /* ── Textbook Quote Boxes ── */
+  .quote-box {
+    background: #f0fdf4;
+    border-left: 5px solid #059669;
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-style: italic;
+    color: #064e3b;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.boggs {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+    color: #1e3a8a;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 6px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.boggs .quote-ref { color: #1d4ed8; }
+
+  /* ── Textbook Image Wrappers ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 480px;
+    height: auto;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #64748b;
+  }
+  .tb-caption strong { color: #0f172a; }
+
+  /* ── Option Analysis Styling ── */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 11px 15px 13px; background: #fafafa; font-size: 13.5px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th {
+    background: #1e293b;
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* ── Probable Questions ── */
+  .pq-list { list-style: none; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 11px 15px;
+    margin-bottom: 11px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 5px;
+    color: #065f46;
+    font-weight: 600;
+  }
+  .pq-exp {
+    margin-top: 3px;
+    color: #475569;
+    font-size: 12.5px;
+  }
+
+  /* ── Highlighting & Lists ── */
+  .highlight { background: #fef08a; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .section-intro { font-size: 14px; color: #334155; margin-bottom: 12px; }
+  ul.body-list { padding-left: 20px; margin-bottom: 10px; }
+  ul.body-list li { margin-bottom: 6px; font-size: 13.5px; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid #cbd5e1;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="badge">DGMS 2019 · Carbonate Sedimentology · Chapter Masterclass</div>
+    <h1>Dunham Carbonate Classification: Depositional Fabrics & Grainstones</h1>
+    <div class="meta">
+      Comprehensive Textbook Study Guide & Complete Solution for DGMS 2019 Exam (Question 3)<br>
+      Standard Reference: Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Edition, 2006)
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART I: IN-DEPTH TOPIC DISCUSSION WITH DIRECT TEXTBOOK FIGURES         -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Direct Textbook Analysis</div>
+      <div class="part-sub">Depositional textures, mud- vs. grain-support criteria, matrix winnowing, and the Embry & Klovan reef expansion</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: THE PHILOSOPHY OF CARBONATE CLASSIFICATION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Philosophy of Carbonate Classification: Texture vs. Composition</div>
+    <div class="card-body">
+      <p class="section-intro">
+        In carbonate petrology, two seminal classification schemes predominate: <strong>Robert L. Folk's (1959, 1962)</strong> compositional classification (based on allochems and matrix type: micrite vs. sparite) and <strong>Robert J. Dunham's (1962)</strong> textural classification.
+      </p>
+
+      <div class="quote-box boggs">
+        "Dunham (1962) devised a classification of limestones based on the depositional texture of the rocks rather than the identity of different kinds of carbonate grains. Dunham's classification is based on whether the components of the rock were bound together during deposition (boundstone) or were not bound together. Rocks whose components were not bound together are divided on the basis of whether the rock is matrix-supported (mudstone, wackestone) or grain-supported (packstone, grainstone). The presence or absence of lime mud (&lt; 20 μm) serves as the primary indicator of depositional energy."
+        <span class="quote-ref">— Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), p. 188</span>
+      </div>
+
+      <p>
+        Dunham's system is universally favored for hand-specimen, core, and thin-section description because it directly translates into <strong>hydrodynamic energy conditions at the time of deposition</strong>:
+      </p>
+      <ul class="body-list">
+        <li><strong>Presence of Lime Mud (Micrite):</strong> Indicates calm, low-energy waters (lagoons, protected bays, deep marine below wave base) where fine carbonate mud can settle from suspension.</li>
+        <li><strong>Absence of Lime Mud (Washed Clean):</strong> Indicates turbulent, high-energy settings (shoals, barrier bars, beaches, tidal passes) where waves and currents vigorously winnow away the fine mud, leaving only a grain-supported framework that is later cemented by sparry calcite cement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 2: DUNHAM'S CORE CLASSES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Dunham's (1962) Core Classes & Distinctions</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Dunham established four primary classes for non-bound carbonate rocks based on the ratio of mud to grains and framework support:
+      </p>
+
+      <ul class="body-list">
+        <li><strong>Mudstone:</strong> Mud-supported fabric containing <strong>less than 10% grains</strong> (&gt;90% lime mud matrix). Reflects ultra-quiet, stagnant or sheltered water.</li>
+        <li><strong>Wackestone:</strong> Mud-supported fabric containing <strong>more than 10% grains</strong>, but grains do not touch to support one another; they "float" in a matrix of lime mud.</li>
+        <li><strong>Packstone:</strong> <strong>Grain-supported framework</strong> containing <strong>lime mud matrix</strong> in the interstitial spaces between grains. Represents moderate energy or rapid dumping where mud was not completely winnowed.</li>
+        <li><strong>Grainstone:</strong> <strong>Grain-supported framework</strong> that contains <strong>almost no lime mud matrix</strong> (&lt;1% mud). Interstitial voids are completely free of mud and are filled by sparry calcite cement. Reflects persistent, high-energy wave or current winnowing.</li>
+        <li><strong>Boundstone:</strong> Carbonate components were bound together organically during deposition by colonial organisms (corals, stromatoporoids, encrusting algae, bryozoans).</li>
+      </ul>
+
+      <!-- DIRECT TEXTBOOK IMAGE: Boggs Table 6.3 -->
+      <div class="tb-figure">
+        <img src="figures_Q03/boggs_table6_3_dunham_classification.png" alt="Boggs Table 6.3 Dunham Carbonate Classification" style="max-width:100%;">
+        <div class="tb-caption">
+          <strong>Table 6.3 (Boggs, <em>Principles of Sedimentology and Stratigraphy</em>, 2006, p. 189):</strong>
+          <em>Table 6.3A:</em> The original Dunham (1962) classification of carbonate rocks according to depositional texture. Notice the explicit definition of <strong>Grainstone</strong>: "Grain-supported, Lacks mud".
+          <em>Table 6.3B:</em> The Embry and Klovan (1971) modification expanding boundstones and coarse (>2 mm) carbonate gravels.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: EMBRY & KLOVAN MODIFICATION -->
+  <div class="card">
+    <div class="card-header bg-teal">3. The Embry & Klovan (1971) Reef & Megagrain Expansion</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Embry and Klovan (1971) expanded Dunham's system to better classify organic reef rocks and coarse bioclastic carbonates containing particles larger than 2 mm (Boggs, 2006, pp. 188–189):
+      </p>
+      <ul class="body-list">
+        <li>
+          <strong>Autochthonous Reef Rocks (Bound in Life):</strong>
+          <br>• <strong>Framestone:</strong> Supported by a rigid organic framework (e.g., massive branching corals, stromatoporoids).
+          <br>• <strong>Bindstone:</strong> Supported by tabular or encrusting organisms that bind and laminate sediment (e.g., microbial mats, encrusting red algae).
+          <br>• <strong>Bafflestone:</strong> Supported by stalk-like organisms that baffle current flow and trap sediment (e.g., upright bryozoans, sea grasses).
+        </li>
+        <li>
+          <strong>Allochthonous Coarse Carbonates (>10% grains > 2 mm):</strong>
+          <br>• <strong>Floatstone:</strong> Matrix-supported carbonate gravel (grains > 2 mm float in a fine matrix).
+          <br>• <strong>Rudstone:</strong> Grain-supported carbonate gravel (grains > 2 mm form the self-supporting framework).
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART II: ORIGINAL QUESTION & DETAILED WORKED SOLUTION                 -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">DGMS 2019 Examination: Question & Worked Solution</div>
+      <div class="part-sub">Rigorous option-by-option critical analysis and definitive textbook-grounded answer</div>
+    </div>
+  </div>
+
+  <!-- ORIGINAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-blue">❓ Original Question — DGMS 2019 (Junior Scientific Officer)</div>
+    <div class="card-body">
+      <p style="font-size:15.5px; font-weight:700; margin-bottom:14px; color:#0f172a;">
+        Q.3. A carbonate rock that contains almost no mud and shows grain-supported framework is named as
+      </p>
+      <div style="display:flex; flex-direction:column; gap:8px; padding-left:4px;">
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (a) &nbsp; <strong>Grainstone</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (b) &nbsp; <strong>Packstone</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (c) &nbsp; <strong>Floatstone</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (d) &nbsp; <strong>Bindstone</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (a) Grainstone</div>
+      <div class="sub">
+        By Dunham's (1962) universal classification, a carbonate rock possessing a self-supporting grain framework and devoid of lime mud (matrix-free) is definitively named a Grainstone.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION BY OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-purple">🔍 Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- Option A -->
+      <div class="option correct">
+        <div class="option-header">
+          ✔ &nbsp;(a) Grainstone
+          <span class="tag correct">CORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is correct:</strong> As defined in Table 6.3A of Boggs (2006, p. 189) and Dunham (1962), a <strong>grainstone</strong> is a grain-supported carbonate rock that "lacks mud" (contains almost no micrite). The intergranular pore spaces are typically filled by clear, sparry calcite cement that precipitated during diagenesis after deposition.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option B -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(b) Packstone
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> While a packstone is grain-supported, it is defined by the <strong>presence of lime mud</strong> in its interstitial pore spaces ("grain-supported, contains mud"; Boggs, p. 189). Because the question explicitly specifies "contains almost no mud", packstone is eliminated.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option C -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(c) Floatstone
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> In the Embry & Klovan (1971) classification, a floatstone is a coarse carbonate rock containing &gt;10% grains larger than 2 mm, but it is <strong>matrix-supported</strong> (the large clasts float in a finer matrix). It is neither mud-free nor grain-supported.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option D -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(d) Bindstone
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> A bindstone is an autochthonous reef carbonate where organisms (such as tabular encrusting red algae or cyanobacterial mats) bound the sediment together during life. The question describes an un-bound clastic depositional framework.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS TABLES & HIGH-YIELD PROBABLE QUESTIONS           -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">Quick-reference diagnostic tables and 8 curated exam questions for DGMS, UPSC GSI, and IIT-JAM</div>
+    </div>
+  </div>
+
+  <!-- DIAGNOSTIC TABLES -->
+  <div class="card">
+    <div class="card-header bg-amber">📊 Synthesis Tables: Dunham & Embry-Klovan Framework</div>
+    <div class="card-body">
+
+      <h4 style="margin-bottom:8px; color:#92400e;">Table 1: Dunham (1962) Classification of Carbonates</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Support Fabric</th>
+            <th>Lime Mud Content</th>
+            <th>Depositional Energy</th>
+            <th>Typical Environment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mudstone</td>
+            <td>Mud-supported</td>
+            <td>&gt; 90% mud (&lt; 10% grains)</td>
+            <td>Very Low</td>
+            <td>Protected lagoons, deep basinal marine</td>
+          </tr>
+          <tr>
+            <td>Wackestone</td>
+            <td>Mud-supported</td>
+            <td>&lt; 90% mud (&gt; 10% grains)</td>
+            <td>Low to Moderate</td>
+            <td>Shallow shelf lagoon, quiet embayment</td>
+          </tr>
+          <tr>
+            <td>Packstone</td>
+            <td>Grain-supported</td>
+            <td>Contains mud matrix</td>
+            <td>Moderate</td>
+            <td>Sub-wave-base flank, tempestite dump</td>
+          </tr>
+          <tr>
+            <td>Grainstone</td>
+            <td>Grain-supported</td>
+            <td>Lacks mud (&lt; 1%)</td>
+            <td>High (winnowed)</td>
+            <td>Ooid shoals, tidal inlets, beach barrier</td>
+          </tr>
+          <tr>
+            <td>Boundstone</td>
+            <td>Organically bound in life</td>
+            <td>Variable</td>
+            <td>High to Moderate</td>
+            <td>Biogenic reef core, organic framework</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:18px 0 8px; color:#92400e;">Table 2: Folk (1959/1962) vs. Dunham (1962) Equivalence</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Dunham Class</th>
+            <th>Primary Characteristic</th>
+            <th>Equivalent Folk (1959) Term (Ooid example)</th>
+            <th>Equivalent Folk (1959) Term (Bioclast example)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Grainstone</td>
+            <td>Grain-supported, spar cement, mud-free</td>
+            <td>Oosparite</td>
+            <td>Biosparite</td>
+          </tr>
+          <tr>
+            <td>Packstone</td>
+            <td>Grain-supported, micrite matrix present</td>
+            <td>Packed Oomicrite</td>
+            <td>Packed Biomicrite</td>
+          </tr>
+          <tr>
+            <td>Wackestone</td>
+            <td>Mud-supported, &gt; 10% grains</td>
+            <td>Sparse Oomicrite</td>
+            <td>Sparse Biomicrite</td>
+          </tr>
+          <tr>
+            <td>Mudstone</td>
+            <td>Mud-supported, &lt; 10% grains</td>
+            <td>Micrite</td>
+            <td>Micrite / Fossiliferous Micrite</td>
+          </tr>
+          <tr>
+            <td>Boundstone</td>
+            <td>Organically bound framework</td>
+            <td>Biolithite</td>
+            <td>Biolithite</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- PROBABLE EXAM QUESTIONS -->
+  <div class="card">
+    <div class="card-header bg-rose">🎯 Probable High-Yield Exam Questions (UPSC GSI, DGMS, IIT-JAM & GATE)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Q1. A carbonate rock consisting of 60% ooids and 40% sparry calcite cement with no lime mud is classified in Folk's and Dunham's schemes respectively as:</strong><br>
+          (a) Oomicrite / Packstone<br>
+          (b) Oosparite / Grainstone<br>
+          (c) Oosparite / Wackestone<br>
+          (d) Oomicrite / Grainstone
+          <div class="pq-ans">→ Correct Answer: (b) Oosparite / Grainstone</div>
+          <div class="pq-exp">Explanation: In Folk's system, ooids + spar = Oosparite. In Dunham's system, grain-supported + mud-free = Grainstone.</div>
+        </li>
+
+        <li>
+          <strong>Q2. In the Embry & Klovan (1971) classification, a reef limestone supported by organisms that acted as sediment baffles during life is termed:</strong><br>
+          (a) Bindstone &nbsp;&nbsp;&nbsp; (b) Bafflestone &nbsp;&nbsp;&nbsp; (c) Framestone &nbsp;&nbsp;&nbsp; (d) Rudstone
+          <div class="pq-ans">→ Correct Answer: (b) Bafflestone</div>
+          <div class="pq-exp">Explanation: Bafflestones are formed by upright, stalked organisms (e.g., bryozoans, crinoids, sea grasses) that trap and baffle current-borne sediment.</div>
+        </li>
+
+        <li>
+          <strong>Q3. A limestone consisting of 30% fossil shells floating in a lime mud matrix is named in Dunham's classification as:</strong><br>
+          (a) Mudstone &nbsp;&nbsp;&nbsp; (b) Wackestone &nbsp;&nbsp;&nbsp; (c) Packstone &nbsp;&nbsp;&nbsp; (d) Grainstone
+          <div class="pq-ans">→ Correct Answer: (b) Wackestone</div>
+          <div class="pq-exp">Explanation: A wackestone is mud-supported and contains &gt;10% grains (here 30%). If it contained &lt;10% grains, it would be a mudstone.</div>
+        </li>
+
+        <li>
+          <strong>Q4. How does a Rudstone differ from a Floatstone in the Embry & Klovan scheme?</strong><br>
+          (a) Rudstone is matrix-supported; Floatstone is grain-supported<br>
+          (b) Rudstone is grain-supported; Floatstone is matrix-supported<br>
+          (c) Rudstone contains &lt; 2 mm grains; Floatstone contains &gt; 2 mm grains<br>
+          (d) Rudstone is organically bound; Floatstone is unbound
+          <div class="pq-ans">→ Correct Answer: (b) Rudstone is grain-supported; Floatstone is matrix-supported</div>
+          <div class="pq-exp">Explanation: Both rocks have &gt;10% gravel-size (&gt;2 mm) carbonate particles, but Rudstones have a grain-supported framework, whereas Floatstones are matrix-supported.</div>
+        </li>
+
+        <li>
+          <strong>Q5. The boundary grain size separating lime mud (micrite) from sand-sized carbonate allochems in Dunham's classification is:</strong><br>
+          (a) 2 μm &nbsp;&nbsp;&nbsp; (b) 20 μm &nbsp;&nbsp;&nbsp; (c) 63 μm &nbsp;&nbsp;&nbsp; (d) 2 mm
+          <div class="pq-ans">→ Correct Answer: (b) 20 μm</div>
+          <div class="pq-exp">Explanation: Dunham (1962) defined lime mud as carbonate particles finer than 20 μm, encompassing micrite (&lt;4 μm) and microspar (4–20 μm).</div>
+        </li>
+
+        <li>
+          <strong>Q6. The presence of a Grainstone facies in a stratigraphic succession indicates:</strong><br>
+          (a) Deep marine euxinic basin<br>
+          (b) High-energy agitated shallow water shoal or beach<br>
+          (c) Stagnant restricted coastal lagoon<br>
+          (d) Glaciomarine dropstone setting
+          <div class="pq-ans">→ Correct Answer: (b) High-energy agitated shallow water shoal or beach</div>
+          <div class="pq-exp">Explanation: Grainstones require strong, persistent wave or tidal currents to continuously wash and winnow away fine lime mud.</div>
+        </li>
+
+        <li>
+          <strong>Q7. An encrusting stromatoporoid or red algal framework that binds sediment is categorized as a:</strong><br>
+          (a) Bafflestone &nbsp;&nbsp;&nbsp; (b) Bindstone &nbsp;&nbsp;&nbsp; (c) Floatstone &nbsp;&nbsp;&nbsp; (d) Grainstone
+          <div class="pq-ans">→ Correct Answer: (b) Bindstone</div>
+          <div class="pq-exp">Explanation: Organisms that encrust and bind sheet-like organic crusts form bindstones.</div>
+        </li>
+
+        <li>
+          <strong>Q8. Packstone differs from Grainstone primarily in:</strong><br>
+          (a) Grain size of the allochems<br>
+          (b) Presence versus absence of lime mud in the matrix<br>
+          (c) Mineralogy (calcite vs aragonite)<br>
+          (d) Degree of dolomitization
+          <div class="pq-ans">→ Correct Answer: (b) Presence versus absence of lime mud in the matrix</div>
+          <div class="pq-exp">Explanation: Both are grain-supported; packstones contain lime mud matrix, whereas grainstones are completely winnowed clean of mud.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <p><strong>Tapaswi Saikia</strong> · Geology Student · DGMS & Competitive Geological Examination Preparation</p>
+    <p>Source Exam: DGMS 2019 (Junior Scientific Officer), Question 3 · Subject: Carbonate Sedimentology</p>
+    <p>Textbook Authority: Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., 2006), Chapter 6, pp. 187–192</p>
+  </div>
+
+</div>
+</body>
+</html>

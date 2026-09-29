@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.24 – Silicate Melt Structure, Network Modifiers & Viscosity | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner { break-before: page; page-break-before: always;
+  }
+  .first-part { break-before: avoid !important; page-break-before: avoid !important; margin-top: 10px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 22px; }
+  .bg-blue   { background: #1d4ed8; }
+  .bg-indigo { background: #4338ca; }
+  .bg-emerald{ background: #047857; }
+  .bg-purple { background: #6d28d9; }
+  .bg-amber  { background: #b45309; }
+  .bg-teal   { background: #0f766e; }
+  .bg-rose   { background: #be123c; }
+
+  /* ── Textbook Quote Boxes ── */
+  .quote-box {
+    background: #f0fdf4;
+    border-left: 5px solid #059669;
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-style: italic;
+    color: #064e3b;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.white {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+    color: #1e3a8a;
+  }
+  .quote-box.winter {
+    background: #faf5ff;
+    border-left-color: #7c3aed;
+    color: #4c1d95;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 6px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.white .quote-ref { color: #1d4ed8; }
+  .quote-box.winter .quote-ref { color: #6d28d9; }
+  .quote-box .quote-ref { color: #047857; }
+
+  /* ── Textbook Image Wrappers ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 240px;
+    height: auto;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #64748b;
+  }
+  .tb-caption strong { color: #0f172a; }
+
+  /* ── Option Analysis Styling ── */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 11px 15px 13px; background: #fafafa; font-size: 13.5px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th {
+    background: #1e293b;
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* ── Probable Questions ── */
+  .pq-list { list-style: none; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 11px 15px;
+    margin-bottom: 11px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 5px;
+    color: #065f46;
+    font-weight: 600;
+  }
+  .pq-exp {
+    margin-top: 3px;
+    color: #475569;
+    font-size: 12.5px;
+  }
+
+  /* ── Chemical Formulas & Highlighting ── */
+  .formula-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    text-align: center;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14.5px;
+    color: #0f172a;
+    font-weight: 600;
+  }
+  .highlight { background: #fef08a; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .section-intro { font-size: 14px; color: #334155; margin-bottom: 12px; }
+  ul.body-list { padding-left: 20px; margin-bottom: 10px; }
+  ul.body-list li { margin-bottom: 6px; font-size: 13.5px; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid #cbd5e1;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="badge">DGMS 2019 · Petrology & Geochemistry · Chapter Masterclass</div>
+    <h1>Silicate Melt Architecture: Network Formers, Modifiers & Magma Rheology</h1>
+    <div class="meta">
+      Comprehensive Textbook Study Guide & Complete Solution for DGMS 2019 Exam (Question 24)<br>
+      Standard References: William M. White, <em>Geochemistry</em> (2005) &nbsp;|&nbsp; John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2010) &nbsp;|&nbsp; Dexter Perkins, <em>Mineralogy</em>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART I: IN-DEPTH TOPIC DISCUSSION WITH DIRECT TEXTBOOK FIGURES         -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Direct Textbook Analysis</div>
+      <div class="part-sub">Detailed conceptual walkthrough of silicate liquid structure, bridging vs. non-bridging oxygens, cation classification, and melt viscosity</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: ATOMIC STRUCTURE OF SILICATE LIQUIDS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Atomic Architecture of Silicate Liquids & Glasses</div>
+    <div class="card-body">
+      <p class="section-intro">
+        A foundational insight in modern igneous petrology is that silicate magmas are <strong>not random, unstructured ionic fluids</strong>. Spectroscopic studies (Raman, IR, NMR, and EXAFS) of silicate glasses—which represent supercooled liquids that preserve the structural state of the melt—reveal that liquids retain the short-range atomic architecture of the crystalline minerals that crystallize from them.
+      </p>
+
+      <div class="quote-box white">
+        "Most, though not all, of our knowledge of the structure has come from studies of glasses rather than melts. While the thermodynamic properties of silicate liquids and their respective glasses differ, other studies have confirmed the general structural similarities of glasses and liquids. Spectral studies of glasses, which in some respects can be viewed as supercooled liquids, have revealed that silicate liquids have structures rather similar to those of silicate solids. In fact, the principal difference between silicate liquids and solids is the absence of long-range ordering in the former; short range ordering is similar. As in silicate minerals, the primary structural element of silicate liquids is the silicon tetrahedron, consisting of a silicon atom surrounded by four oxygens."
+        <span class="quote-ref">— William M. White, <em>Geochemistry</em> (2005), Chapter 4: Applications of Thermodynamics, p. 136</span>
+      </div>
+
+      <p>
+        The primary structural unit in all silicate melts is the <strong>[SiO₄]⁴⁻ tetrahedron</strong>, with a Si–O distance of ~1.62 Å and O–Si–O bond angles of ~109.5°. Tetrahedra link together by sharing oxygen atoms:
+      </p>
+      <ul class="body-list">
+        <li><strong>Bridging Oxygen (BO, O⁰):</strong> An oxygen shared between two tetrahedral centers (≡Si–O–Si≡ or ≡Si–O–Al≡). It has a formal charge of zero with respect to the network, linking tetrahedra into continuous polymer chains, sheets, and 3D frameworks.</li>
+        <li><strong>Non-Bridging Oxygen (NBO, O⁻):</strong> An oxygen bonded covalently to only one tetrahedral silicon atom (≡Si–O⁻). Its extra unit of negative charge is balanced by electrostatic attraction to nearby modifier metal cations (Ca²⁺, Mg²⁺, Fe²⁺, Na⁺, K⁺).</li>
+        <li><strong>Free Oxygen (FO, O²⁻):</strong> An oxygen anion not bonded to any silicon atom, present only in highly depolymerized, ultrabasic, or carbonatitic melts and coordinated entirely by metal cations.</li>
+      </ul>
+
+      <!-- DIRECT TEXTBOOK IMAGE 1: White Fig 4.21 -->
+      <div class="tb-figure">
+        <img src="figures_Q24/white_fig4_21_monomer_dimer.png" alt="White Figure 4.21 Silicate structures in melts" style="max-width:380px;">
+        <div class="tb-caption">
+          <strong>Figure 4.21 (White, <em>Geochemistry</em>, 2005, p. 136):</strong> Silicate structures in melts.
+          <em>(a)</em> Short-range silicate structures in melts resemble those in solids. Individual tetrahedra may be linked by bridging oxygens shared between two silicon atoms, or terminated by non-bridging oxygens.
+          <em>(b)</em> Structural units in silicate melts include isolated monomers ([SiO₄]⁴⁻, with zero bridging oxygens) and dimers ([Si₂O₇]⁶⁻, where only 1 of 4 oxygens in each tetrahedron is bridging).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: NETWORK FORMERS VS NETWORK MODIFIERS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Cation Categorization: Network Formers vs. Network Modifiers</div>
+    <div class="card-body">
+      <p class="section-intro">
+        How a dissolved cation behaves in a silicate melt depends fundamentally on its <strong>ionic potential (Z/r, valence divided by ionic radius)</strong> and its ability to fit into tetrahedral 4-fold coordination with oxygen, as governed by <strong>Pauling's First Rule (Radius Ratio Rule)</strong>.
+      </p>
+
+      <div class="quote-box white">
+        "The degree to which the silica tetrahedra are linked, or polymerized, in silicate liquids affects chemical and physical properties. The degree of polymerization in turn depends on other cations present. <strong>These may be divided into two groups, network formers and network modifiers.</strong> Relatively small, highly charged cations such as Al³⁺ and Fe³⁺ (more rarely, Ti⁴⁺, P³⁺, B³⁺ as well) often substitute for silicon in tetrahedral sites and, along with Si, are termed network formers. <strong>The other common cations of natural silicate liquids, Ca²⁺, Mg²⁺, K⁺, Na⁺, and H⁺, are network modifiers. These ions cannot substitute for silicon in tetrahedra and their positive charges can only be balanced by non-bridging oxygens. Addition of these ions disrupts the linkages between silica tetrahedra.</strong> Thus as silicate melts become richer in these network modifiers they become progressively depolymerized."
+        <span class="quote-ref">— William M. White, <em>Geochemistry</em> (2005), Chapter 4: Applications of Thermodynamics, p. 136</span>
+      </div>
+
+      <h3 style="color:#1e3a8a; margin:14px 0 8px;">Crystallographic Reason: Why Ca²⁺ and Mg²⁺ Cannot Form Networks</h3>
+      <p>
+        According to Pauling's Rules, the coordination number (CN) of a cation surrounded by oxygen anions (r<sub>O²⁻</sub> ≈ 1.40 Å) is dictated by the radius ratio r<sub>cation</sub> / r<sub>oxygen</sub>:
+      </p>
+      <ul>
+        <li><strong>Tetrahedral (CN = 4) stability window:</strong> 0.225 ≤ r/r<sub>O</sub> < 0.414.
+          <br>Si⁴⁺ (r = 0.26 Å, r/r<sub>O</sub> = 0.19) and Al³⁺ (r = 0.39 Å, r/r<sub>O</sub> = 0.28) fit easily into tetrahedral sites.
+        </li>
+        <li><strong>Octahedral (CN = 6) stability window:</strong> 0.414 ≤ r/r<sub>O</sub> < 0.732.
+          <br><strong>Mg²⁺ (r = 0.72 Å, r/r<sub>O</sub> = 0.514)</strong> is far too large for a tetrahedron and requires 6-fold octahedral coordination.
+        </li>
+        <li><strong>Cubic / Antiprismatic (CN = 8) stability window:</strong> 0.732 ≤ r/r<sub>O</sub> < 1.000.
+          <br><strong>Ca²⁺ (r = 1.00 Å, r/r<sub>O</sub> = 0.714 to 0.75)</strong> requires 6- to 8-fold coordination.
+        </li>
+      </ul>
+      <p style="margin-top:8px;">
+        Because Ca²⁺ and Mg²⁺ cannot occupy tetrahedral sites, they sit in the open interstitial spaces between tetrahedra. To achieve local charge balance, they pull electrons from adjacent oxygens, rupturing the ≡Si–O–Si≡ bridging bonds:
+      </p>
+
+      <div class="formula-card">
+        ≡Si — O — Si≡ &nbsp;+&nbsp; M²⁺O²⁻ &nbsp;⟶&nbsp; ≡Si — O⁻ ··· M²⁺ ··· ⁻O — Si≡
+      </div>
+
+      <!-- DIRECT TEXTBOOK IMAGE 2: White Fig 4.22 -->
+      <div class="tb-figure">
+        <img src="figures_Q24/white_fig4_22_network_modifiers.png" alt="White Figure 4.22 Pure silica vs silica-rich glass with network modifiers" style="max-width:580px;">
+        <div class="tb-caption">
+          <strong>Figure 4.22 (White, <em>Geochemistry</em>, 2005, p. 136):</strong>
+          <em>(a)</em> Structure of pure silica glass (liquid), consisting of a fully polymerized, continuous 3D network where all oxygens are bridging (BO).
+          <em>(b)</em> A silica-rich glass with additional component ions: network-modifying cations (solid black circles, e.g., Ca²⁺, Mg²⁺) enter the structure, severing bridging bonds and creating non-bridging oxygens (open circles, NBO), thus disrupting the continuous polymer network.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: NBO/T AND GEOCHEMICAL MODELING -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Quantifying Depolymerization: The NBO/T Parameter & Trace Elements</div>
+    <div class="card-body">
+      <p class="section-intro">
+        To parameterize the structural state of magmas in quantitative petrology, scientists use the <strong>NBO/T ratio (Non-Bridging Oxygens per Tetrahedral Cation)</strong>:
+      </p>
+
+      <div class="formula-card">
+        NBO/T = (2O − 4T) / T
+      </div>
+      <p>
+        where <strong>O</strong> is total oxygen atoms per formula unit and <strong>T</strong> is total tetrahedral cations (Si⁴⁺ + Al³⁺ + Fe³⁺ + P⁵⁺).
+      </p>
+
+      <ul class="body-list">
+        <li><strong>Quartz / Pure SiO₂ Melt:</strong> O = 2, T = 1 ⟹ NBO/T = (4 − 4)/1 = <strong>0.0</strong> (Completely polymerized framework).</li>
+        <li><strong>Feldspar Melt (NaAlSi₃O₈):</strong> O = 8, T = 4 ⟹ NBO/T = (16 − 16)/4 = <strong>0.0</strong> (Fully polymerized; Na⁺ charge-balances Al³⁺).</li>
+        <li><strong>Pyroxene Melt (CaMgSi₂O₆):</strong> O = 6, T = 2 ⟹ NBO/T = (12 − 8)/2 = <strong>2.0</strong> (Infinite single chains).</li>
+        <li><strong>Olivine Melt (Mg₂SiO₄):</strong> O = 4, T = 1 ⟹ NBO/T = (8 − 4)/1 = <strong>4.0</strong> (Completely depolymerized isolated monomers).</li>
+      </ul>
+
+      <div class="quote-box white">
+        "The ratio of non-bridging oxygens to tetrahedral cations (Si⁴⁺ and Al³⁺), written NBO/T, provides a measure of the degree of melt depolymerization. Kohn and Schofield (1994) carried out a series of experiments demonstrating the effect of melt polymerization on olivine/melt partitioning of Zn and Mn... the Zn partition coefficient decreases from about 4.5 in highly polymerized melts (low NBO/T) to about 0.8 in depolymerized melts (high NBO/T)."
+        <span class="quote-ref">— William M. White, <em>Geochemistry</em> (2005), Chapter 7: Trace Elements, p. 278</span>
+      </div>
+
+      <!-- DIRECT TEXTBOOK IMAGE 3: White Fig 7.13 -->
+      <div class="tb-figure">
+        <img src="figures_Q24/white_fig7_13_nbot_partitioning.png" alt="White Figure 7.13 Variation of Zn partitioning with NBO/T" style="max-width:440px;">
+        <div class="tb-caption">
+          <strong>Figure 7.13 (White, <em>Geochemistry</em>, 2005, p. 278):</strong> Variation of the zinc olivine/liquid partition coefficient (D<sub>Zn</sub>) as a function of the number of non-bridging oxygens per tetrahedral cation (NBO/T) in experiments by Kohn and Schofield (1994). In depolymerized melts (high NBO/T, rich in Ca²⁺ and Mg²⁺), abundant octahedral sites exist in the liquid, lowering the partition coefficient.
+        </div>
+      </div>
+
+      <h4 style="color:#065f46; margin:14px 0 6px;">Confirmation in Thermodynamic Activity Models</h4>
+      <p>
+        In the two-lattice thermodynamic melt model of Nielsen & Dungan (1983) presented in White (2005, p. 278, Eqs. 7.35–7.36), network modifier oxides (ΣNM) and network former oxides (ΣNF) are separated mathematically:
+      </p>
+      <div class="formula-card">
+        ΣNM = X<sub>AlO1.5</sub> + <strong>X<sub>CaO</sub></strong> + <strong>X<sub>MgO</sub></strong> + X<sub>FeO</sub> + X<sub>P2O5</sub> + X<sub>TiO2</sub> + X<sub>MnO</sub> + X<sub>CrO1.5</sub> − X<sub>NaO0.5</sub> − X<sub>KO0.5</sub>
+        <br>
+        ΣNF = X<sub>SiO2</sub> + X<sub>NaO0.5</sub> + X<sub>KO0.5</sub>
+      </div>
+      <p style="font-size:13px; color:#475569;">
+        <em>Note that CaO and MgO are explicitly summed as network modifiers (ΣNM), providing mathematical textbook confirmation.</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION 4: MELT RHEOLOGY AND VOLATILES -->
+  <div class="card">
+    <div class="card-header bg-teal">4. Melt Rheology: Viscosity, Density & The Role of Volatiles (H₂O vs. CO₂)</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Melt structure is the single most important factor controlling the physical behavior of erupting magmas. High polymerization creates an interconnected network of strong Si–O–Si and Si–O–Al bonds that strongly resists viscous shear flow.
+      </p>
+
+      <div class="quote-box winter">
+        "Because melts approximate the structures of the corresponding minerals, basaltic melts tend to have more isolated Si-O complexes, with no bridging oxygens (as in olivine) and partially bridged -Si-O-Si-O- chains (as in pyroxene), than fully bridged three-dimensional -Si-O-Al-O- networks (as in plagioclase). Because they yield much more feldspar and quartz, rhyolitic melts tend to be dominated by three-dimensional -Si-O-Al-O- networks. The more polymerized -Si-O-Al-O- networks create strong interconnected bonds throughout the rhyolitic melt, and thus higher viscosity. Greater viscosity thus generally correlates with higher silica content."
+        <span class="quote-ref">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2010), Chapter 3, p. 61</span>
+      </div>
+
+      <!-- DIRECT TEXTBOOK IMAGE 4: Winter Fig 1 -->
+      <div class="tb-figure">
+        <img src="figures_Q24/winter_fig1_viscosity_curves.png" alt="Winter Figure 1 Calculated viscosities of anhydrous magmas and volatile effects" style="max-width:100%;">
+        <div class="tb-caption">
+          <strong>Figure 1 (Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, 2010, p. 62):</strong>
+          <em>(a)</em> Calculated viscosities of anhydrous silicate liquids at 1 atmosphere pressure (Bottinga & Weill, 1972; Hess, 1989): Rhyolite viscosity is ~10⁴ Pa·s at 1400°C and skyrockets to 10⁷ Pa·s at 1000°C, whereas depolymerized basalt is ~1 Pa·s.
+          <em>(b)</em> Abrupt increase in viscosity of basalt as it crystallizes.
+          <em>(c)</em> Dramatic reduction in rhyolite viscosity at 1000°C as dissolved H₂O depolymerizes the melt network (Shaw, 1965).
+        </div>
+      </div>
+
+      <h3 style="color:#0f766e; margin:16px 0 8px;">Contrasting Volatiles: H₂O (Depolymerizer) vs. CO₂ (Polymerizer)</h3>
+      <p>
+        Winter (2010, Chapter 5, pp. 145–146) details a profound contrast in how dissolved volatile gases interact with silicate melt structures:
+      </p>
+      <ul class="body-list">
+        <li>
+          <strong>Water (H₂O):</strong> Dissolves by attacking bridging oxygens:
+          <br><strong>≡Si—O—Si≡ + H₂O ⇌ 2(≡Si—OH)</strong>
+          <br>H₂O behaves as a powerful <strong>network modifier</strong>. Adding just 2 wt% H₂O to a rhyolitic melt drops its viscosity by two full orders of magnitude (from 10⁷ to 10⁵ Pa·s; Figure 1c above).
+        </li>
+        <li>
+          <strong>Carbon Dioxide (CO₂):</strong> In marked contrast, CO₂ does not attack bridging bonds. Instead, in mafic melts rich in Ca²⁺ and Mg²⁺, CO₂ reacts with two non-bridging oxygens to form carbonate complexes:
+          <br><strong>CO₂ + 2(≡Si—O⁻) ⇌ CO₃²⁻ + ≡Si—O—Si≡</strong>
+          <br><strong>CO₂ actually consumes non-bridging oxygens and produces bridging oxygens, increasing the degree of polymerization of the melt!</strong> Therefore, CO₂ raises melt viscosity and dissolves preferentially in depolymerized, Ca-Mg-rich mafic melts.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART II: ORIGINAL QUESTION & DETAILED WORKED SOLUTION                 -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">DGMS 2019 Examination: Question & Worked Solution</div>
+      <div class="part-sub">Rigorous option-by-option critical analysis and definitive textbook-grounded answer</div>
+    </div>
+  </div>
+
+  <!-- ORIGINAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-blue">❓ Original Question — DGMS 2019 (Junior Scientific Officer)</div>
+    <div class="card-body">
+      <p style="font-size:15.5px; font-weight:700; margin-bottom:14px; color:#0f172a;">
+        Q.24. In the atomic structure of silicate melts, Ca²⁺ and Mg²⁺ ions are categorized as
+      </p>
+      <div style="display:flex; flex-direction:column; gap:8px; padding-left:4px;">
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (a) &nbsp; <strong>Network modifiers</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (b) &nbsp; <strong>Network formers</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (c) &nbsp; <strong>Bridging atoms</strong>
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (d) &nbsp; <strong>Non-bridging atoms</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (a) Network modifiers</div>
+      <div class="sub">
+        Ca²⁺ and Mg²⁺ are large, divalent cations that cannot enter 4-fold tetrahedral coordination with oxygen. They occupy interstitial positions and disrupt the polymerized framework by converting bridging oxygens into non-bridging oxygens.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION BY OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-purple">🔍 Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- Option A -->
+      <div class="option correct">
+        <div class="option-header">
+          ✔ &nbsp;(a) Network modifiers
+          <span class="tag correct">CORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is correct:</strong> As explicitly established in White (2005, p. 136) and Winter (2010, p. 61), cations in silicate liquids are classified based on whether they build or break the tetrahedral polymer network. Because of their large ionic radii (Mg²⁺ ≈ 0.72 Å, Ca²⁺ ≈ 1.00 Å) and low charge (+2), Ca²⁺ and Mg²⁺ cannot enter tetrahedral sites. Instead, they occupy interstitial 6- to 8-fold coordinated sites where their charges are satisfied by attracting non-bridging oxygens. <strong>This disrupts the ≡Si–O–Si≡ linkages, depolymerizing the melt, lowering its viscosity, and increasing its density.</strong> Hence, they are universally classified as network modifiers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option B -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(b) Network formers
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> Network formers are small, highly charged cations (Si⁴⁺, Al³⁺, Fe³⁺, and minor Ti⁴⁺, P⁵⁺) with ionic potentials Z/r ≥ 6 that can enter 4-fold tetrahedral coordination ([TO₄]). Pauling's radius ratio rule requires 0.225 ≤ r/r<sub>O</sub> < 0.414 for tetrahedral coordination. With r/r<sub>O</sub> values of 0.514 (Mg²⁺) and 0.714 (Ca²⁺), these cations are crystallographically excluded from tetrahedral network sites.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option C -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(c) Bridging atoms
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> In silicate melt nomenclature, the term "bridging" applies exclusively to <strong>oxygen anions (O⁰)</strong> that are shared between two adjacent [SiO₄] tetrahedra. Ca²⁺ and Mg²⁺ are positively charged metal counterions, not bridging atoms.
+          </p>
+        </div>
+      </div>
+
+      <!-- Option D -->
+      <div class="option wrong">
+        <div class="option-header">
+          ✗ &nbsp;(d) Non-bridging atoms
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> "Non-bridging" also strictly describes an <strong>oxygen species (O⁻)</strong> bonded to a single silicon atom (≡Si–O⁻). While Ca²⁺ and Mg²⁺ associate electrostatically with non-bridging oxygens, the cations themselves are categorized functionally as <strong>network modifiers</strong>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS TABLES & HIGH-YIELD PROBABLE QUESTIONS           -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">Quick-reference diagnostic tables and 8 curated exam questions for DGMS, UPSC GSI, and IIT-JAM</div>
+    </div>
+  </div>
+
+  <!-- DIAGNOSTIC TABLES -->
+  <div class="card">
+    <div class="card-header bg-amber">📊 Synthesis Tables: Cation Classification & Magma Properties</div>
+    <div class="card-body">
+
+      <h4 style="margin-bottom:8px; color:#92400e;">Table 1: Comprehensive Classification of Cations in Silicate Melts</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Cations</th>
+            <th>Coordination (CN)</th>
+            <th>Structural Action</th>
+            <th>Effect on Polymerization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Network Formers</td>
+            <td>Si⁴⁺, Al³⁺, Fe³⁺ (Ti⁴⁺, P⁵⁺, B³⁺)</td>
+            <td>4 (Tetrahedral)</td>
+            <td>Build 3D -Si-O-Si- / -Si-O-Al- framework</td>
+            <td>Increases polymerization & viscosity</td>
+          </tr>
+          <tr>
+            <td>Network Modifiers</td>
+            <td>Ca²⁺, Mg²⁺, Fe²⁺, Mn²⁺, Na⁺, K⁺, H⁺</td>
+            <td>6 to 8 (Octahedral / Interstitial)</td>
+            <td>Rupture bridging bonds; create NBOs</td>
+            <td>Depolymerizes melt; lowers viscosity</td>
+          </tr>
+          <tr>
+            <td>Charge Balancers</td>
+            <td>Na⁺, K⁺ (coupled with Al³⁺)</td>
+            <td>Near [AlO₄]⁻ tetrahedra</td>
+            <td>Maintains neutrality: Na⁺ + Al³⁺ ↔ Si⁴⁺</td>
+            <td>Allows Al³⁺ to act as network former</td>
+          </tr>
+          <tr>
+            <td>Amphoteric / Intermediate</td>
+            <td>Fe³⁺, Al³⁺, Ti⁴⁺</td>
+            <td>4 or 6 (Depends on alkalinity/P/T)</td>
+            <td>Former in alkaline; modifier if excess</td>
+            <td>Variable depending on peralkalinity</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:18px 0 8px; color:#92400e;">Table 2: Comparison Across the Natural Magma Spectrum</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Magma Type</th>
+            <th>SiO₂ (wt%)</th>
+            <th>Key Modifiers</th>
+            <th>NBO/T</th>
+            <th>Dominant Units</th>
+            <th>Viscosity (Pa·s)</th>
+            <th>Density (g/cm³)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rhyolite / Granite</td>
+            <td>70–76%</td>
+            <td>Very Low (Alkalis balance Al)</td>
+            <td>0.02–0.15</td>
+            <td>3D Framework (Tectosilicate-like)</td>
+            <td>10⁵ – 10⁸</td>
+            <td>~2.20 – 2.35</td>
+          </tr>
+          <tr>
+            <td>Andesite / Diorite</td>
+            <td>57–63%</td>
+            <td>Moderate</td>
+            <td>0.30–0.50</td>
+            <td>Framework + Sheets/Chains</td>
+            <td>10² – 10⁴</td>
+            <td>~2.45 – 2.60</td>
+          </tr>
+          <tr>
+            <td>Basalt / Gabbro</td>
+            <td>45–52%</td>
+            <td>High (Ca²⁺, Mg²⁺, Fe²⁺ rich)</td>
+            <td>0.60–0.95</td>
+            <td>Short Chains + Monomers</td>
+            <td>1 – 10²</td>
+            <td>~2.65 – 2.85</td>
+          </tr>
+          <tr>
+            <td>Komatiite / Ultramafic</td>
+            <td>40–45%</td>
+            <td>Extreme (MgO up to 30%)</td>
+            <td>1.20–1.80</td>
+            <td>Monomers ([SiO₄]⁴⁻) dominant</td>
+            <td>0.01 – 0.1</td>
+            <td>~2.85 – 3.05</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:18px 0 8px; color:#92400e;">Table 3: The Three Oxygen Species in Silicate Melts</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Oxygen Species</th>
+            <th>Symbol</th>
+            <th>Coordination & Bonding</th>
+            <th>Formal Charge</th>
+            <th>Dominant In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bridging Oxygen</td>
+            <td>O⁰ (BO)</td>
+            <td>Bonded to 2 tetrahedral cations (Si–O–Si, Si–O–Al)</td>
+            <td>0 (Neutral in network)</td>
+            <td>Rhyolites, Dacites, Granites (Polymerized)</td>
+          </tr>
+          <tr>
+            <td>Non-Bridging Oxygen</td>
+            <td>O⁻ (NBO)</td>
+            <td>Bonded to 1 tetrahedral cation + 1 modifier (Si–O⁻ ··· M²⁺)</td>
+            <td>-1 (Local ionic bond)</td>
+            <td>Basalts, Andesites, Alkaline melts</td>
+          </tr>
+          <tr>
+            <td>Free Oxygen</td>
+            <td>O²⁻ (FO)</td>
+            <td>Unbonded to Si; bonded only to modifier cations (M²⁺ ··· O²⁻)</td>
+            <td>-2 (Purely ionic)</td>
+            <td>Ultra-depolymerized melts (Carbonatite, Komatiite)</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- PROBABLE EXAM QUESTIONS -->
+  <div class="card">
+    <div class="card-header bg-rose">🎯 Probable High-Yield Exam Questions (UPSC GSI, DGMS, IIT-JAM & GATE)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Q1. In silicate melts, Al³⁺ acts as a network former only when:</strong><br>
+          (a) Water content is greater than 5 wt%<br>
+          (b) It is charge-balanced by an equimolar proportion of alkali (Na⁺, K⁺) or alkaline earth (Ca²⁺) cations<br>
+          (c) Melt temperature exceeds 1200°C<br>
+          (d) Fe³⁺ is absent from the melt
+          <div class="pq-ans">→ Correct Answer: (b)</div>
+          <div class="pq-exp">Explanation: Al³⁺ substitutes for Si⁴⁺ in tetrahedral sites ([AlO₄]⁵⁻). Because it has a charge of +3 instead of +4, an adjacent cation (such as Na⁺, K⁺, or ½Ca²⁺) is required to maintain local electrical neutrality. Without charge balancing, excess Al³⁺ enters 6-fold coordination as a network modifier.</div>
+        </li>
+
+        <li>
+          <strong>Q2. For a hypothetical melt having pure forsterite stoichiometry (Mg₂SiO₄), the value of NBO/T is:</strong><br>
+          (a) 0.0 &nbsp;&nbsp;&nbsp; (b) 1.0 &nbsp;&nbsp;&nbsp; (c) 2.0 &nbsp;&nbsp;&nbsp; (d) 4.0
+          <div class="pq-ans">→ Correct Answer: (d) 4.0</div>
+          <div class="pq-exp">Explanation: Total oxygens O = 4, tetrahedral cations T = 1 (Si). NBO/T = (2O − 4T)/T = (2 × 4 − 4 × 1)/1 = (8 − 4)/1 = 4.0. In forsterite melt, all tetrahedra are isolated monomers [SiO₄]⁴⁻ with zero bridging oxygens.</div>
+        </li>
+
+        <li>
+          <strong>Q3. Which of the following cations has the highest tendency to act as a network modifier in silicate melts?</strong><br>
+          (a) Si⁴⁺ &nbsp;&nbsp;&nbsp; (b) Ti⁴⁺ &nbsp;&nbsp;&nbsp; (c) P⁵⁺ &nbsp;&nbsp;&nbsp; (d) Ca²⁺
+          <div class="pq-ans">→ Correct Answer: (d) Ca²⁺</div>
+          <div class="pq-exp">Explanation: Ca²⁺ has low charge (+2) and large radius (1.00 Å), giving it a very low ionic potential (Z/r = 2.0) and 8-fold coordination preference. Si⁴⁺, Ti⁴⁺, and P⁵⁺ are all high field-strength cations that act as network formers.</div>
+        </li>
+
+        <li>
+          <strong>Q4. The addition of MgO or CaO to an anhydrous rhyolitic melt causes:</strong><br>
+          (a) Increase in viscosity and decrease in density<br>
+          (b) Decrease in viscosity and increase in density<br>
+          (c) Increase in both viscosity and density<br>
+          (d) Decrease in both viscosity and density
+          <div class="pq-ans">→ Correct Answer: (b) Decrease in viscosity and increase in density</div>
+          <div class="pq-exp">Explanation: As stated in White (2005, p. 136): Network modifiers rupture bridging bonds, depolymerizing the melt into shorter segments (lowering viscosity) and collapsing the open tetrahedral framework into a closer-packed structure (increasing density).</div>
+        </li>
+
+        <li>
+          <strong>Q5. How does dissolved CO₂ affect the polymerization of mafic silicate melts compared to H₂O?</strong><br>
+          (a) Both CO₂ and H₂O depolymerize the melt equally<br>
+          (b) H₂O depolymerizes the melt, whereas CO₂ reacts with non-bridging oxygens to increase polymerization<br>
+          (c) CO₂ depolymerizes the melt, whereas H₂O polymerizes it<br>
+          (d) Neither CO₂ nor H₂O has any effect on melt structure
+          <div class="pq-ans">→ Correct Answer: (b)</div>
+          <div class="pq-exp">Explanation: Winter (2010, p. 146) highlights that CO₂ reacts with two non-bridging oxygens to produce carbonate (CO₃²⁻) and a bridging oxygen (Si–O–Si): CO₂ + 2(Si–O⁻) ⇌ CO₃²⁻ + Si–O–Si. This creates bridging bonds and increases polymerization, directly contrasting with H₂O which breaks bridging bonds.</div>
+        </li>
+
+        <li>
+          <strong>Q6. Divalent transition metals (e.g., Zn²⁺, Mn²⁺) have olivine/melt partition coefficients (D) that:</strong><br>
+          (a) Increase dramatically as the melt becomes more depolymerized (higher NBO/T)<br>
+          (b) Decrease significantly as the melt becomes more depolymerized (higher NBO/T)<br>
+          (c) Are entirely independent of melt polymerization<br>
+          (d) Drop to zero in basaltic liquids
+          <div class="pq-ans">→ Correct Answer: (b) Decrease significantly as the melt becomes more depolymerized</div>
+          <div class="pq-exp">Explanation: Kohn & Schofield (1994) and White (2005, p. 278) showed that D<sub>Zn</sub> drops from ~4.5 in highly polymerized melts (low NBO/T) to ~0.8 in depolymerized melts (high NBO/T), because depolymerized melts provide abundant energetically favorable 6-fold octahedral sites that retain Zn²⁺ in the liquid.</div>
+        </li>
+
+        <li>
+          <strong>Q7. Which mineral group has an atomic structure most analogous to a silicate melt dominated by dimer units [Si₂O₇]⁶⁻?</strong><br>
+          (a) Nesosilicates &nbsp;&nbsp;&nbsp; (b) Sorosilicates &nbsp;&nbsp;&nbsp; (c) Inosilicates &nbsp;&nbsp;&nbsp; (d) Phyllosilicates
+          <div class="pq-ans">→ Correct Answer: (b) Sorosilicates</div>
+          <div class="pq-exp">Explanation: Dimers consist of two [SiO₄] tetrahedra sharing exactly one bridging oxygen ([Si₂O₇]⁶⁻, NBO/T = 3.0), which is the defining structural hallmark of sorosilicates (e.g., epidote, hemimorphite).</div>
+        </li>
+
+        <li>
+          <strong>Q8. In the 2-lattice melt solution model of Nielsen & Dungan (1983) and White (2005, p. 278), the sum of network modifiers (ΣNM) explicitly includes:</strong><br>
+          (a) SiO₂ and NaO₀.₅ &nbsp;&nbsp;&nbsp; (b) CaO and MgO &nbsp;&nbsp;&nbsp; (c) AlO₁.₅ and SiO₂ &nbsp;&nbsp;&nbsp; (d) Only H₂O
+          <div class="pq-ans">→ Correct Answer: (b) CaO and MgO</div>
+          <div class="pq-exp">Explanation: In thermodynamic melt activity modeling, mole fractions of CaO, MgO, FeO, and MnO are grouped in the network-modifier component (ΣNM), whereas SiO₂ is the primary component in the network-former term (ΣNF).</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <p><strong>Tapaswi Saikia</strong> · Geology Student · DGMS & Competitive Geological Examination Preparation</p>
+    <p>Source Exam: DGMS 2019 (Junior Scientific Officer), Question 24 · Subject: Petrology & Geochemistry</p>
+    <p>Textbook Authorities: William M. White, <em>Geochemistry</em> (2005), pp. 136–138, 278–280 &nbsp;|&nbsp; John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2010), pp. 61–62, 145–146 &nbsp;|&nbsp; Dexter Perkins, <em>Mineralogy</em></p>
+  </div>
+
+</div>
+</body>
+</html>

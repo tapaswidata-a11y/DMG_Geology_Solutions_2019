@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.15 – Fault Kinematics & Oblique-Slip Faults | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 14px 0 6px 0;
+  }
+  p { margin-bottom: 10px; font-size: 13.5px; }
+
+  /* ── Highlight & Quote Boxes ── */
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .quote-box {
+    background: #fdf4ff;
+    border-left: 4px solid #a855f7;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    font-size: 13px;
+    color: #3b0764;
+  }
+  .quote-box .citation {
+    font-style: normal;
+    font-weight: 700;
+    color: #7e22ce;
+    margin-top: 6px;
+    font-size: 11.5px;
+  }
+
+  /* ── Formula Cards ── */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-card .title {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Textbook Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+    max-height: 480px;
+    object-fit: contain;
+  }
+  .tb-figure .caption {
+    font-size: 12px;
+    color: #475569;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    line-height: 1.45;
+  }
+  .tb-figure .caption strong { color: #1e293b; }
+
+  /* ── Option Cards ── */
+  .option {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f87171;
+    background: #fef2f2;
+  }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .option-header { color: #065f46; }
+  .option.incorrect .option-header { color: #991b1b; }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-correct { background: #dcfce7; color: #15803d; }
+  .badge-incorrect { background: #fee2e2; color: #b91c1c; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Question Card ── */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .question-box .q-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .question-box .q-stmt {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+
+  /* ── Practice Question Container ── */
+  .practice-box {
+    background: #faf5ff;
+    border: 1px solid #d8b4fe;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .practice-box .p-title {
+    font-weight: 700;
+    color: #6b21a8;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  .practice-box .ans {
+    background: #f3e8ff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #4c1d95;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · Question 15 · Masterclass Guide</span>
+    <h1>Kinematic Classification of Faults: Oblique-Slip Faults, Net-Slip Vectors & Pitch/Rake Analysis</h1>
+    <div class="meta">Comprehensive Geological Concept Guide · Authoritative References: Fossen (2010, Ch. 9) & Van der Pluijm & Marshak (2004, Ch. 8)</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART I: THEORETICAL FOUNDATION & TEXTBOOK EXPOSÉ      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">THEORETICAL FOUNDATION: KINEMATIC GEOMETRY & FAULT SLIP DYNAMICS</div>
+      <div class="part-sub">Displacement Vectors, Components of Slip, Pitch (Rake) Measurement & The Oblique-Slip Spectrum</div>
+    </div>
+  </div>
+
+  <!-- CARD 1: DEFINITIONS & DISPLACEMENT VECTOR -->
+  <div class="card">
+    <h2>1. The Kinematic Definition of Fault Slip</h2>
+    <p>A <strong>fault</strong> is a planar or subplanar discontinuity across which measurable displacement has occurred by brittle or semi-brittle shear fracture. To rigorously characterize the kinematics of fault movement, structural geologists track the relative displacement between points that were originally contiguous across the fault surface before deformation:</p>
+    
+    <div class="highlight-box">
+      <strong>Net Slip ($\vec{S}$):</strong> The total vector displacement connecting two points on opposite sides of the fault that were once directly adjacent (piercing points). The net slip vector lies entirely within the fault plane.
+    </div>
+
+    <p>Because the fault plane is generally inclined at a dip angle ($\delta$) and has a specific strike direction, the net slip vector $\vec{S}$ can be oriented in any arbitrary direction on that plane. The orientation of the slip vector within the fault plane is quantified by its <strong>pitch (or rake)</strong>.</p>
+
+    <div class="formula-card">
+      <div class="title">Vector Decomposition of Net Slip</div>
+      $\vec{S}_{\text{net}} = \vec{S}_{\text{strike-slip}} + \vec{S}_{\text{dip-slip}}$<br><br>
+      $|S_{\text{ss}}| = S \cdot \cos(\phi)$ &nbsp;&nbsp;&nbsp;&nbsp; (Strike-slip component parallel to fault strike)<br>
+      $|S_{\text{ds}}| = S \cdot \sin(\phi)$ &nbsp;&nbsp;&nbsp;&nbsp; (Dip-slip component parallel to true dip direction)<br>
+      $S = \sqrt{S_{\text{ss}}^2 + S_{\text{ds}}^2}$<br><br>
+      Where:<br>
+      • $\phi$ = Pitch (rake) angle of striations/slickenlines on the fault plane ($0^\circ \le \phi \le 90^\circ$)<br>
+      • $\delta$ = True dip of the fault plane ($0^\circ < \delta \le 90^\circ$)
+    </div>
+
+    <p>Further projecting the dip-slip component into spatial coordinates yields the standard engineering and mining parameters:</p>
+    <ul style="margin-left: 24px; font-size: 13px; margin-bottom: 10px;">
+      <li><strong>Throw:</strong> The vertical component of dip slip: $\text{Throw} = S_{\text{ds}} \cdot \sin(\delta) = S \cdot \sin(\phi) \cdot \sin(\delta)$.</li>
+      <li><strong>Heave:</strong> The horizontal component of dip slip perpendicular to the fault strike: $\text{Heave} = S_{\text{ds}} \cdot \cos(\delta) = S \cdot \sin(\phi) \cdot \cos(\delta)$.</li>
+    </ul>
+
+    <div class="quote-box">
+      "Many faults show some deviation from true dip-slip and strike-slip displacement in the sense that the net slip vector is oblique. Such faults are called <strong>oblique-slip faults</strong>. The degree of obliquity is given by the pitch (also called rake), which is the angle between the strike of the slip surface and the slip vector (striation)."
+      <div class="citation">— Haakon Fossen, <em>Structural Geology</em> (2010), Chapter 9: Faults, §9.1 Fault Terminology, p. 153.</div>
+    </div>
+  </div>
+
+  <!-- CARD 2: TEXTBOOK FIGURE 1 - FOSSEN FIG 9.6 -->
+  <div class="card">
+    <h2>2. Textbook Visual Evidence: Oblique-Slip Geometry in Block Diagrams</h2>
+    <p>Figure 9.6 from Fossen demonstrates how an oblique-slip fault displaces tilted stratigraphic layers. Because the net displacement vector is neither horizontal nor parallel to the dip, it simultaneously offsets markers both laterally across strike and vertically:</p>
+
+    <div class="tb-figure">
+      <img src="figures_Q15/fossen_oblique_slip_geometry.png" alt="Fossen Fig 9.6 Oblique-Slip Fault Geometry">
+      <div class="caption">
+        <strong>Figure 1 (Fossen Fig. 9.6):</strong> Block diagram of an oblique-slip fault displacing tilted sedimentary layers. The net displacement vector ($\vec{D}$ or net slip $\vec{S}$) is inclined obliquely on the fault plane. The angle $\phi$ (phi) is the <em>pitch (rake)</em> between the horizontal strike line and the slip vector. In this specific illustration, the hanging wall has moved downward (normal component) and to the left (sinistral strike-slip component), classifying it as a <strong>sinistral-normal oblique-slip fault</strong>. (Source: Haakon Fossen, <em>Structural Geology</em>, 2010, Cambridge University Press, Chapter 9).
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "If the net-slip vector parallels the dip direction of the fault (within ~10°), the fault is called a <strong>dip-slip fault</strong>; if the vector roughly parallels the strike of the fault, the fault is called a <strong>strike-slip fault</strong>. If the vector is not parallel to either dip direction or the strike, we call the fault an <strong>oblique-slip fault</strong>. Oblique-slip faults have both a strike-slip and a dip-slip component of movement."
+      <div class="citation">— B. A. van der Pluijm & S. Marshak, <em>Earth Structure: An Introduction to Structural Geology and Tectonics</em> (2nd Ed., 2004), Chapter 8, p. 170.</div>
+    </div>
+  </div>
+
+  <!-- CARD 3: TEXTBOOK FIGURE 2 - FOSSEN FIG 9.8 (CLASSIFICATION DIAGRAM) -->
+  <div class="card">
+    <h2>3. The Classification Spectrum: Dip vs. Pitch (Angelier Diagram)</h2>
+    <p>In nature, faults rarely plot as pure kinematic end-members. Instead, faults occupy a continuous spectrum based on the fault plane dip ($\delta$) and the rake/pitch ($\phi$) of the slickenlines:</p>
+
+    <div class="tb-figure">
+      <img src="figures_Q15/fossen_rake_pitch_diagram.png" alt="Fossen Fig 9.8 Fault Classification by Pitch and Dip">
+      <div class="caption">
+        <strong>Figure 2 (Fossen Fig. 9.8):</strong> Kinematic classification diagram of faults based on the dip of the fault plane ($0^\circ$–$90^\circ$, x-axis) and the pitch/rake angle of the slip vector ($0^\circ$–$90^\circ$, y-axis), adapted from Angelier (1994). Pure dip-slip faults (normal and reverse/thrust) plot along the top margin ($\phi \approx 90^\circ$). Pure strike-slip faults plot along the baseline ($\phi \approx 0^\circ$). The entire expansive intermediate domain (typically $10^\circ \le \phi \le 80^\circ$) represents <strong>oblique-slip faults</strong>.
+      </div>
+    </div>
+
+    <h3>Kinematic Classification Boundaries</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Kinematic Category</th>
+          <th>Pitch / Rake ($\phi$)</th>
+          <th>$S_{\text{ss}}$ vs. $S_{\text{ds}}$ Ratio</th>
+          <th>Dominant Motion & Slickenline Orientation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pure Strike-Slip Fault</strong></td>
+          <td>$0^\circ \le \phi < 10^\circ$</td>
+          <td>$|S_{\text{ss}}| \gg |S_{\text{ds}}|$ ($S_{\text{ds}} \approx 0$)</td>
+          <td>Horizontal slip parallel to strike; horizontal slickenlines/grooves.</td>
+        </tr>
+        <tr>
+          <td><strong>Oblique-Slip (Strike-slip dominant)</strong></td>
+          <td>$10^\circ \le \phi < 45^\circ$</td>
+          <td>$|S_{\text{ss}}| > |S_{\text{ds}}| > 0$</td>
+          <td>Both components significant; lateral shear exceeds vertical offset.</td>
+        </tr>
+        <tr>
+          <td><strong>Oblique-Slip (Dip-slip dominant)</strong></td>
+          <td>$45^\circ < \phi \le 80^\circ$</td>
+          <td>$|S_{\text{ds}}| > |S_{\text{ss}}| > 0$</td>
+          <td>Both components significant; vertical throw/heave exceeds lateral offset.</td>
+        </tr>
+        <tr>
+          <td><strong>Pure Dip-Slip Fault</strong></td>
+          <td>$80^\circ < \phi \le 90^\circ$</td>
+          <td>$|S_{\text{ds}}| \gg |S_{\text{ss}}|$ ($S_{\text{ss}} \approx 0$)</td>
+          <td>Down-dip or up-dip movement; slickenlines plunge down true dip.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CARD 4: SUBTYPES & TECTONIC SETTINGS -->
+  <div class="card">
+    <h2>4. The Four Subtypes of Oblique-Slip Faults</h2>
+    <p>Because oblique-slip faults combine one of two vertical motions (normal vs. reverse) with one of two lateral motions (dextral vs. sinistral), there are exactly four fundamental geometric combinations:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Subtype Name</th>
+          <th>Dip-Slip Component</th>
+          <th>Strike-Slip Component</th>
+          <th>Typical Geodynamic Setting</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dextral-Normal (Right-lateral Normal)</strong></td>
+          <td>Hanging wall moves downward relative to footwall</td>
+          <td>Opposite block moves rightward to observer</td>
+          <td>Transtensional rifts, oblique continental rifting (e.g., Gulf of California, Dead Sea pull-apart basins).</td>
+        </tr>
+        <tr>
+          <td><strong>Sinistral-Normal (Left-lateral Normal)</strong></td>
+          <td>Hanging wall moves downward relative to footwall</td>
+          <td>Opposite block moves leftward to observer</td>
+          <td>Transtensional shear zones, rift-flank stepovers, Basin and Range accommodation zones.</td>
+        </tr>
+        <tr>
+          <td><strong>Dextral-Reverse (Right-lateral Reverse)</strong></td>
+          <td>Hanging wall moves upward relative to footwall</td>
+          <td>Opposite block moves rightward to observer</td>
+          <td>Transpressional orogens, oblique subduction margins (e.g., Alpine Fault NZ, San Andreas Transverse Ranges).</td>
+        </tr>
+        <tr>
+          <td><strong>Sinistral-Reverse (Left-lateral Reverse)</strong></td>
+          <td>Hanging wall moves upward relative to footwall</td>
+          <td>Opposite block moves leftward to observer</td>
+          <td>Transpressional continental collision belts (e.g., Altyn Tagh flank thrusts, Zagros crush zone).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>Transtension vs. Transpression:</strong>
+      <ul style="margin-left: 18px; margin-top: 6px;">
+        <li><strong>Transtension:</strong> Non-coaxial deformation combining horizontal strike-slip shear with crustal extension (yielding normal oblique-slip faulting, negative flower structures, and rhomb-shaped pull-apart basins).</li>
+        <li><strong>Transpression:</strong> Non-coaxial deformation combining horizontal strike-slip shear with crustal shortening (yielding reverse oblique-slip faulting, positive flower structures / palm-tree structures, and en-echelon push-up ranges).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART II: EXAM QUESTION CRITICAL ANALYSIS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">EXAM QUESTION & RIGOROUS OPTION-BY-OPTION DISSECTION</div>
+      <div class="part-sub">DGMS 2019 Examination · Official Question Statement, Verified Answer & Detailed Distracter Analysis</div>
+    </div>
+  </div>
+
+  <!-- QUESTION STATEMENT -->
+  <div class="card">
+    <div class="question-box">
+      <div class="q-num">DGMS 2019 · QUESTION 15</div>
+      <div class="q-stmt">A fault having both dip-slip as well as strike-slip components is termed as:</div>
+      <div style="margin-top: 10px; font-size: 13.5px; font-weight: 500;">
+        (a) Strike-slip fault<br>
+        (b) Dip-slip fault<br>
+        (c) Oblique-slip fault<br>
+        (d) Wrench fault
+      </div>
+    </div>
+
+    <!-- ANSWER BANNER -->
+    <div class="answer-banner">
+      <div class="tick">✓</div>
+      <div>
+        <div class="text">Correct Option: (c) Oblique-slip fault</div>
+        <div class="sub">Verified via Van der Pluijm & Marshak (Earth Structure, p. 170) & Haakon Fossen (Structural Geology, p. 153)</div>
+      </div>
+    </div>
+
+    <!-- OPTION A -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (a): Strike-slip fault
+      </div>
+      <p><strong>Detailed Refutation:</strong> By standard structural definition, a <em>strike-slip fault</em> (or transcurrent fault) is an end-member structure in which displacement is parallel to the strike of the fault surface. The net slip vector is entirely horizontal ($S_{\text{net}} \approx S_{\text{ss}}$), and the dip-slip component is zero ($S_{\text{ds}} = 0$, pitch $\phi \approx 0^\circ$). If a fault possesses a substantial dip-slip component alongside strike-slip, it cannot be classified as a pure strike-slip fault.</p>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (b): Dip-slip fault
+      </div>
+      <p><strong>Detailed Refutation:</strong> A <em>dip-slip fault</em> is an end-member structure where the net slip vector is oriented parallel to the true dip line of the fault plane. Motion is strictly up-dip (reverse/thrust) or down-dip (normal), with slickenlines plunging at $\phi \approx 90^\circ$. By definition, a pure dip-slip fault has zero strike-slip component ($S_{\text{ss}} = 0$). Hence, this option contradicts the question's premise of possessing both components.</p>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="option correct">
+      <div class="option-header">
+        <span class="badge-tag badge-correct">Correct Answer</span>
+        Option (c): Oblique-slip fault
+      </div>
+      <p><strong>Detailed Validation:</strong> An <strong>oblique-slip fault</strong> is explicitly defined in structural geology as a fault on which the slip direction is neither purely horizontal (strike-parallel) nor purely vertical/down-dip (dip-parallel), but intermediate between the two ($0^\circ < \phi < 90^\circ$, typically $10^\circ \le \phi \le 80^\circ$). Consequently, its net slip vector decomposes into non-zero orthogonal strike-slip and dip-slip components ($S_{\text{ss}} \neq 0$ and $S_{\text{ds}} \neq 0$). This matches the exam question verbatim.</p>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (d): Wrench fault
+      </div>
+      <p><strong>Detailed Refutation:</strong> A <em>wrench fault</em> is a specific geological term (introduced by Kennedy, 1946, and Wilcox et al., 1973) denoting a high-angle to vertical regional strike-slip fault system where deformation is dominated by horizontal strike shear under an Andersonian stress regime where $\sigma_2$ is strictly vertical. While small localized vertical motions occur along wrench faults due to bends and stepovers (flower structures), wrench faults are kinematically strike-slip faults, not a generalized class defined by simultaneous dual components.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS & PRACTICE QUESTIONS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">SYNTHESIS & HIGH-YIELD PRACTICE QUESTIONS</div>
+      <div class="part-sub">Curated Problems Covering Fault Trigonometry, Rake Calculations, Andersonian Regimes & Kinematic Analysis</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS CARD -->
+  <div class="card">
+    <h2>High-Yield Exam Practice Questions</h2>
+
+    <!-- Q1 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q1 (Numerical / Trigonometry): Net Slip Decomposition</div>
+      <p>A planar fault striking $090^\circ$ and dipping $60^\circ\text{S}$ records slickenlines with a pitch (rake) of $30^\circ$ measured from the eastern strike tip. Field measurement reveals a total net slip of $10\text{ m}$. What are the magnitudes of the strike-slip component ($S_{\text{ss}}$) and the dip-slip component ($S_{\text{ds}}$)?</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        Using standard vector projection:<br>
+        • Strike-slip component: $S_{\text{ss}} = S \cdot \cos(\phi) = 10\text{ m} \cdot \cos(30^\circ) = 10 \cdot 0.8660 = \mathbf{8.66\text{ m}}$.<br>
+        • Dip-slip component: $S_{\text{ds}} = S \cdot \sin(\phi) = 10\text{ m} \cdot \sin(30^\circ) = 10 \cdot 0.5000 = \mathbf{5.00\text{ m}}$.<br>
+        Because both components are non-zero ($S_{\text{ss}} = 8.66\text{ m}$ and $S_{\text{ds}} = 5.00\text{ m}$), the structure is an oblique-slip fault.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q2 (Throw & Heave Calculation): Spatial Projections</div>
+      <p>For the fault in Practice Q1 ($S_{\text{ds}} = 5.00\text{ m}$, fault dip $\delta = 60^\circ$), calculate the vertical throw and horizontal heave produced by the displacement.</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        • $\text{Throw} = S_{\text{ds}} \cdot \sin(\delta) = 5.00\text{ m} \cdot \sin(60^\circ) = 5.00 \cdot 0.8660 = \mathbf{4.33\text{ m}}$ vertical displacement.<br>
+        • $\text{Heave} = S_{\text{ds}} \cdot \cos(\delta) = 5.00\text{ m} \cdot \cos(60^\circ) = 5.00 \cdot 0.5000 = \mathbf{2.50\text{ m}}$ horizontal displacement perpendicular to strike.
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q3 (Kinematics & Pitch): Pitch Limits for Oblique Slip</div>
+      <p>According to the standard classification scheme of Angelier (1994) adopted in modern structural geology textbooks (Fossen, 2010), faults are classified as strictly <em>oblique-slip</em> when the pitch (rake) $\phi$ of slickenlines falls within which range?</p>
+      <div class="ans">
+        <strong>Answer:</strong> Between $10^\circ$ and $80^\circ$ (or in tripartite divisions, $15^\circ$ to $75^\circ$). Faults with pitch $< 10^\circ$ are classified as strike-slip, while faults with pitch $> 80^\circ$ are classified as dip-slip.
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q4 (Tectonic Regimes): Transpression Structures</div>
+      <p>In an oblique convergence zone where strike-slip shear is combined with regional shortening (transpression), what structural association is characteristically formed along the fault zone?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Positive Flower Structure (Palm-Tree Structure)</strong> consisting of upward-diverging reverse oblique-slip fault splays, creating structural pop-ups and en-echelon fold belts.
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q5 (Tectonic Regimes): Transtension Structures</div>
+      <p>In an oblique divergence setting where strike-slip motion is accompanied by crustal extension (transtension), what basin geometry typically develops between releasing stepovers?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Pull-Apart Basin (or Rhomb Graben)</strong>, bounded by normal oblique-slip faults exhibiting negative flower structures (tulip structures). Classic modern example: the Dead Sea basin along the Dead Sea Transform.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q6 (Anderson's Theory vs. Oblique Slip): Dynamic Limitations</div>
+      <p>Why does E. M. Anderson's (1905, 1951) standard dynamic classification of faults fail to predict oblique-slip faults?</p>
+      <div class="ans">
+        <strong>Answer:</strong> Andersonian classification assumes that the Earth's surface is a shear-stress-free boundary ($\tau = 0$), forcing one of the three principal stress axes ($\sigma_1, \sigma_2, \sigma_3$) to be strictly vertical and the other two strictly horizontal. This theoretical constraint produces only pure normal, pure reverse, or pure strike-slip faults. Oblique-slip faults occur when faults reactivate pre-existing planes of weakness misoriented with respect to the principal stress axes, or in three-dimensional (triaxial / non-plane) strain fields.
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q7 (Slickenlines & Asymmetries): Determining Kinematic Sense</div>
+      <p>What structural features on a fault plane allow a geologist to distinguish between the two possible senses of movement along an oblique slickenline?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Kinematic indicators (fault-surface asymmetries)</strong>, including: (1) Asymmetric calcite/quartz mineral fiber steps (fibers grow in the shadow behind steps facing the movement direction of the opposite block), (2) Riedel shears ($R, R', P$ shears), (3) Crescentic gouges and chatter marks, and (4) Stylolitic teeth oriented parallel to the maximum shortening direction.
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q8 (Subtype Identification): Scenario Analysis</div>
+      <p>A mining engineer observes a fault dipping $50^\circ\text{W}$. Mining markers show that the hanging wall block moved downward relative to the footwall, and a displaced vertical dyke shows that the opposite block moved to the right of an observer facing the fault. What is the precise kinematic name of this fault?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Dextral-Normal Oblique-Slip Fault</strong> (or Right-lateral Normal Fault). The downward motion of the hanging wall constitutes the normal dip-slip component, while the rightward relative shift of the opposite block provides the dextral strike-slip component.
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="card">
+    <h2>Comprehensive Kinematic Summary Matrix</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fault Classification</th>
+          <th>Primary Stress Axis Orientation (Andersonian)</th>
+          <th>Slickenline Pitch ($\phi$)</th>
+          <th>Slip Vector Components</th>
+          <th>Displacement Effect on Planar Markers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Normal Fault</strong></td>
+          <td>$\sigma_1$ vertical; $\sigma_2, \sigma_3$ horizontal</td>
+          <td>$\phi \approx 90^\circ$ (down-dip)</td>
+          <td>$S_{\text{ds}} > 0$ (hanging wall down), $S_{\text{ss}} = 0$</td>
+          <td>Vertical throw, horizontal crustal extension (heave), stratigraphy dropped.</td>
+        </tr>
+        <tr>
+          <td><strong>Reverse / Thrust Fault</strong></td>
+          <td>$\sigma_3$ vertical; $\sigma_1, \sigma_2$ horizontal</td>
+          <td>$\phi \approx 90^\circ$ (up-dip)</td>
+          <td>$S_{\text{ds}} > 0$ (hanging wall up), $S_{\text{ss}} = 0$</td>
+          <td>Vertical throw, crustal shortening, stratigraphy repeated.</td>
+        </tr>
+        <tr>
+          <td><strong>Strike-Slip Fault</strong></td>
+          <td>$\sigma_2$ vertical; $\sigma_1, \sigma_3$ horizontal</td>
+          <td>$\phi \approx 0^\circ$ (horizontal)</td>
+          <td>$S_{\text{ss}} > 0$ (dextral or sinistral), $S_{\text{ds}} = 0$</td>
+          <td>Lateral separation of vertical markers (dykes, rivers), negligible vertical throw.</td>
+        </tr>
+        <tr>
+          <td><strong>Oblique-Slip Fault (The Answer)</strong></td>
+          <td>Non-Andersonian (stress axes oblique or reactivated fabric)</td>
+          <td>$10^\circ \le \phi \le 80^\circ$ (oblique)</td>
+          <td><strong>Both $S_{\text{ss}} \neq 0$ AND $S_{\text{ds}} \neq 0$</strong></td>
+          <td>Combined vertical offset (throw) and lateral separation in a single slip event.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

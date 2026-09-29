@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.17 – Deuteric Alteration, Saussuritization & Feldspar Breakdown | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #059669;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 14px 0 6px 0;
+  }
+  p { margin-bottom: 10px; font-size: 13.5px; }
+
+  /* ── Highlight & Quote Boxes ── */
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #059669;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .quote-box {
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    font-size: 13px;
+    color: #064e3b;
+  }
+  .quote-box .citation {
+    font-style: normal;
+    font-weight: 700;
+    color: #047857;
+    margin-top: 6px;
+    font-size: 11.5px;
+  }
+
+  /* ── Formula Cards ── */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-card .title {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Textbook Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+    max-height: 480px;
+    object-fit: contain;
+  }
+  .tb-figure .caption {
+    font-size: 12px;
+    color: #475569;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    line-height: 1.45;
+  }
+  .tb-figure .caption strong { color: #1e293b; }
+
+  /* ── Option Cards ── */
+  .option {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f87171;
+    background: #fef2f2;
+  }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .option-header { color: #065f46; }
+  .option.incorrect .option-header { color: #991b1b; }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-correct { background: #dcfce7; color: #15803d; }
+  .badge-incorrect { background: #fee2e2; color: #b91c1c; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Question Card ── */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .question-box .q-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .question-box .q-stmt {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+
+  /* ── Practice Question Container ── */
+  .practice-box {
+    background: #faf5ff;
+    border: 1px solid #d8b4fe;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .practice-box .p-title {
+    font-weight: 700;
+    color: #6b21a8;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  .practice-box .ans {
+    background: #f3e8ff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #4c1d95;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · Question 17 · Masterclass Guide</span>
+    <h1>Postmagmatic & Deuteric Alteration: Saussuritization of Plagioclase, Uralitization, Chloritization & Devitrification</h1>
+    <div class="meta">Comprehensive Petrology & Mineralogy Guide · Authoritative References: John D. Winter (2010, Ch. 3 & 26) & Dexter Perkins (2014, Ch. 13)</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART I: THEORETICAL FOUNDATION & TEXTBOOK EXPOSÉ      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">THEORETICAL FOUNDATION: DEUTERIC & AUTOMETAMORPHIC PROCESSES</div>
+      <div class="part-sub">Magmatic Volatiles, Sub-solidus Hydration Reactions, Plagioclase Breakdown & Reaction Stoichiometry</div>
+    </div>
+  </div>
+
+  <!-- CARD 1: DEFINITIONS & MECHANISMS -->
+  <div class="card">
+    <h2>1. The Concept of Deuteric Alteration (Autometamorphism)</h2>
+    <p>During the final stages of igneous crystallization, magma bodies cool through sub-solidus temperatures. Primary, anhydrous high-temperature igneous minerals (calcic plagioclase, olivine, pyroxenes) become thermodynamically unstable in the presence of water-rich residual fluids exsolved from the magma itself:</p>
+
+    <div class="highlight-box">
+      <strong>Deuteric Alteration (Autometamorphism):</strong> The alteration of early-formed igneous minerals by aqueous, volatile-rich fluids that exsolved directly from the <em>same magma body</em> as it cooled through late magmatic and post-solidus regimes ($500^\circ\text{C} \to 200^\circ\text{C}$). It is strictly distinguished from external hydrothermal alteration or regional metamorphism, which involve fluids or tectonic stresses from outside sources.
+    </div>
+
+    <div class="quote-box">
+      "Secondary mineral reactions that occur in igneous rocks as they cool, and that are not products of a distinct later metamorphic event, are commonly called <strong>autometamorphic processes</strong> rather than metamorphic ones because they are a natural part of igneous cooling. Autometamorphic processes are more common in plutonic rocks than in volcanics because they remain at elevated temperatures for a longer time."
+      <div class="citation">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., 2010), Chapter 3: Textures of Igneous Rocks, p. 51.</div>
+    </div>
+  </div>
+
+  <!-- CARD 2: SAUSSURITIZATION DETAILED -->
+  <div class="card">
+    <h2>2. Saussuritization: The Decomposition of Calcic Plagioclase</h2>
+    <p>Calcic plagioclase (labradorite, bytownite, anorthite $\text{CaAl}_2\text{Si}_2\text{O}_8$) is an anhydrous framework aluminosilicate that crystallizes at high temperatures ($>1000^\circ\text{C}$). Under deuterically hydrated, low-temperature conditions, the anorthite component cannot survive:</p>
+
+    <div class="formula-card">
+      <div class="title">The Stoichiometric Saussuritization Reactions</div>
+      <strong>Hydration Breakdown of Anorthite to Zoisite/Epidote:</strong><br>
+      $4\,\text{CaAl}_2\text{Si}_2\text{O}_8\text{ (Anorthite)} + \text{H}_2\text{O} \longrightarrow 2\,\text{Ca}_2\text{Al}_3\text{Si}_3\text{O}_{12}(\text{OH})\text{ (Zoisite/Epidote)} + \text{Al}_2\text{SiO}_5 + \text{SiO}_2\text{ (Quartz)}$<br><br>
+      <strong>Coupled Breakdown with Sodium Influx (Spilitization / Saussuritization):</strong><br>
+      $\text{Calcic Plagioclase (e.g. }\text{An}_{70}\text{)} + \text{Na}^+ + \text{Si}^{4+} + \text{H}_2\text{O} \longrightarrow \mathbf{\text{Albite (}\text{NaAlSi}_3\text{O}_8\text{)}} + \mathbf{\text{Epidote/Zoisite}} \pm \text{Calcite} \pm \text{Sericite}$
+    </div>
+
+    <p>Under the petrographic microscope, saussuritization produces a diagnostic appearance: the originally clear, transparent plagioclase laths turn turbid, cloudy, or "dusty" in plane-polarized light (PPL), resolving under high magnification into a dense microcrystalline felt of <strong>high-relief, brightly polarizing epidote/clinozoisite grains embedded in clear, low-relief albite</strong>.</p>
+
+    <div class="quote-box">
+      "Plagioclase is commonly altered by deuteric or hydrothermal fluids. Calcic plagioclase in particular is unstable at low temperatures in the presence of water, breaking down to an intimate, fine-grained mixture of <strong>albite and epidote (or zoisite/clinozoisite)</strong>, often with variable amounts of sericite (fine muscovite) and calcite. This fine-grained replacement aggregate is termed <strong>saussurite</strong>, after the Swiss geologist H. B. de Saussure."
+      <div class="citation">— Dexter Perkins, <em>Mineralogy</em> (3rd Ed., 2014), Chapter 13: Sorosilicates (Epidote Group), p. 411.</div>
+    </div>
+  </div>
+
+  <!-- CARD 3: TEXTBOOK FIGURES (WINTER FIG 20 & 21) -->
+  <div class="card">
+    <h2>3. Petrographic Evidence: Photomicrographs of Deuteric Alteration</h2>
+    <p>Figure 20 from Winter illustrates how autometamorphic fluids attack primary minerals along grain boundaries and cleavage planes, generating classic secondary replacement textures:</p>
+
+    <div class="tb-figure">
+      <img src="figures_Q17/extracted_p3_0_Im41.jpg" alt="Winter Fig 20: Uralitization and Chloritization Photomicrographs">
+      <div class="caption">
+        <strong>Figure 1 (Winter Fig. 20):</strong> Thin section photomicrographs of postmagmatic deuteric alterations. (a) <strong>Uralitization:</strong> Primary pyroxene largely replaced by fibrous hornblende/actinolite, with remnant pyroxene surviving as light patches. (b) <strong>Chloritization:</strong> Secondary chlorite (light green) replacing primary igneous biotite (dark brown) along cleavage planes and crystal rims in tonalite, San Diego County, California. (Source: John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, 2010, Pearson, Chapter 3).
+      </div>
+    </div>
+
+    <div class="tb-figure">
+      <img src="figures_Q17/extracted_p6_0_Im58.jpg" alt="Winter Fig 21: Myrmekite and Feldspar Replacement Textures">
+      <div class="caption">
+        <strong>Figure 2 (Winter Fig. 21):</strong> Late-magmatic / deuteric reaction texture: <strong>Myrmekite</strong> forming in plagioclase at the boundary with K-feldspar, showing vermicular (worm-like) quartz rods intergrown with sodic plagioclase as late fluids re-equilibrate alkali feldspar.
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4: THE FOUR ALTERATION PROCESSES COMPARED -->
+  <div class="card">
+    <h2>4. The Four Named Alteration Processes Compared</h2>
+    <p>The four options in Question 17 represent the four most important postmagmatic and low-grade alteration processes recognized in igneous petrology. Their distinct reactants, products, and mechanisms are summarized below:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Process Name</th>
+          <th>Primary Reactant (Starting Material)</th>
+          <th>Essential Secondary Products</th>
+          <th>Diagnostic Petrographic Characteristics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Saussuritization</strong><br><span style="color:#059669; font-weight:700;">★ Correct Option</span></td>
+          <td><strong>Ca-rich Plagioclase</strong> (labradorite, bytownite, anorthite)</td>
+          <td><strong>Albite + Epidote / Zoisite</strong> ($\pm$ sericite, calcite, quartz)</td>
+          <td>Plagioclase laths turn turbid/cloudy with high-relief epidote granules in clear sodic matrix.</td>
+        </tr>
+        <tr>
+          <td><strong>Devitrification</strong><br><span style="color:#dc2626; font-weight:700;">Option (b)</span></td>
+          <td><strong>Volcanic Glass</strong> (obsidian, pitchstone, tachylite)</td>
+          <td><strong>Quartz + Alkali Feldspar</strong> aggregates (spherulites, felsitic chert-like mass, palagonite)</td>
+          <td>Loss of isotropic glassy character; appearance of radiating spherulitic fibrous fans or microgranular quartz-feldspar.</td>
+        </tr>
+        <tr>
+          <td><strong>Chloritization</strong><br><span style="color:#dc2626; font-weight:700;">Option (c)</span></td>
+          <td><strong>Ferromagnesian Minerals</strong> (biotite, hornblende, augite)</td>
+          <td><strong>Chlorite</strong> ($\pm$ titanite, rutile needles, Fe-Ti oxides)</td>
+          <td>Green pleochroism, anomalous "Berlin blue" or brown interference colors replacing mafic sheets.</td>
+        </tr>
+        <tr>
+          <td><strong>Uralitization</strong><br><span style="color:#dc2626; font-weight:700;">Option (d)</span></td>
+          <td><strong>Pyroxenes</strong> (clinopyroxene: augite; orthopyroxene: hypersthene)</td>
+          <td><strong>Actinolitic Amphibole</strong> ("uralite", fibrous hornblende)</td>
+          <td>Fibrous, ragged, pale green amphibole pseudomorphs retaining original prismatic pyroxene outlines.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CARD 5: OTHER IMPORTANT REPLACEMENT TEXTURES -->
+  <div class="card">
+    <h2>5. Additional Essential Secondary & Deuteric Textures</h2>
+    <p>To ensure total exam readiness, students must also be familiar with related sub-solidus replacement processes in igneous rocks:</p>
+    <ul style="margin-left: 24px; font-size: 13px; margin-bottom: 10px;">
+      <li><strong>Sericitization:</strong> Hydration of feldspars (especially K-feldspar and plagioclase) into microscopic flakes of white mica (sericite, $\text{KAl}_3\text{Si}_3\text{O}_{10}(\text{OH})_2$). Imparts a dusty golden-yellow birefringence under crossed polars.</li>
+      <li><strong>Serpentinization:</strong> Hydration of magnesium-rich olivine and orthopyroxene to serpentine ($\text{Mg}_3\text{Si}_2\text{O}_5(\text{OH})_4$) and magnetite: $2\,\text{Mg}_2\text{SiO}_4 + 3\,\text{H}_2\text{O} \to \text{Mg}_3\text{Si}_2\text{O}_5(\text{OH})_4 + \text{Mg(OH)}_2$.</li>
+      <li><strong>Iddingsitization:</strong> Pseudomorphic alteration of olivine to a reddish-brown, semi-opaque mixture of goethite, hematite, smectite, and chlorite (iddingsite).</li>
+      <li><strong>Spilitization:</strong> Sub-seafloor hydrothermal metasomatism of basalt, where calcic plagioclase is altered to albite and augite to chlorite/actinolite, converting basalt into "spilite".</li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART II: EXAM QUESTION CRITICAL ANALYSIS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">EXAM QUESTION & RIGOROUS OPTION-BY-OPTION DISSECTION</div>
+      <div class="part-sub">DGMS 2019 Examination · Official Question Statement, Verified Answer & Detailed Distracter Analysis</div>
+    </div>
+  </div>
+
+  <!-- QUESTION STATEMENT -->
+  <div class="card">
+    <div class="question-box">
+      <div class="q-num">DGMS 2019 · QUESTION 17</div>
+      <div class="q-stmt">Ca-rich plagioclase breaks down to almost pure albite and epidote during which one of the following deuteric alterations?</div>
+      <div style="margin-top: 10px; font-size: 13.5px; font-weight: 500;">
+        (a) Saussuritization<br>
+        (b) Devitrification<br>
+        (c) Chloritization<br>
+        (d) Uralitization
+      </div>
+    </div>
+
+    <!-- ANSWER BANNER -->
+    <div class="answer-banner">
+      <div class="tick">✓</div>
+      <div>
+        <div class="text">Correct Option: (a) Saussuritization</div>
+        <div class="sub">Verified via John D. Winter (Igneous & Metamorphic Petrology, pp. 51–55) & Dexter Perkins (Mineralogy, p. 411)</div>
+      </div>
+    </div>
+
+    <!-- OPTION A -->
+    <div class="option correct">
+      <div class="option-header">
+        <span class="badge-tag badge-correct">Correct Answer</span>
+        Option (a): Saussuritization
+      </div>
+      <p><strong>Detailed Validation:</strong> <strong>Saussuritization</strong> is the universally accepted geological term for the sub-solidus deuteric or hydrothermal alteration of calcic plagioclase (labradorite to anorthite) into a fine-grained aggregate of <strong>almost pure albite</strong> and <strong>epidote-group minerals (epidote, zoisite, or clinozoisite)</strong>, often accompanied by minor sericite, calcite, and quartz. The calcium and aluminium released from the anorthite molecule ($\text{CaAl}_2\text{Si}_2\text{O}_8$) combine with hydroxyl ions to crystallize epidote ($\text{Ca}_2\text{Al}_3\text{Si}_3\text{O}_{12}(\text{OH})$), leaving the sodium-silica component behind as albite ($\text{NaAlSi}_3\text{O}_8$). This matches the exam question verbatim.</p>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (b): Devitrification
+      </div>
+      <p><strong>Detailed Refutation:</strong> <em>Devitrification</em> is the slow, secondary sub-solidus crystallization of amorphous volcanic <strong>glass</strong> into fine-grained crystalline aggregates (typically quartz, cristobalite, and alkali feldspar, forming spherulites or felsitic textures). Devitrification does not involve plagioclase breakdown; it acts exclusively upon non-crystalline volcanic glass.</p>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (c): Chloritization
+      </div>
+      <p><strong>Detailed Refutation:</strong> <em>Chloritization</em> is the alteration of primary <strong>ferromagnesian (mafic) minerals</strong>—specifically biotite, hornblende, augite, or olivine—into hydrous phyllosilicate minerals of the <strong>chlorite</strong> group ($\text{(Mg,Fe)}_5\text{Al}(\text{Si}_3\text{Al})\text{O}_{10}(\text{OH})_8$). Plagioclase contains virtually no magnesium or iron, and cannot break down into chlorite.</p>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (d): Uralitization
+      </div>
+      <p><strong>Detailed Refutation:</strong> <em>Uralitization</em> is the deuteric or low-grade hydrothermal alteration of <strong>pyroxene</strong> (most commonly augite or pigeonite) into fibrous, pale-green amphibole (actinolitic hornblende or tremolite-actinolite, historically known as "uralite"). It is a pyroxene-to-amphibole chain-silicate transformation, entirely independent of plagioclase feldspar.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS & PRACTICE QUESTIONS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">SYNTHESIS & HIGH-YIELD PRACTICE QUESTIONS</div>
+      <div class="part-sub">Curated Problems Covering Deuteric Reactions, Petrography, Metasomatism & Alteration Assemblages</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS CARD -->
+  <div class="card">
+    <h2>High-Yield Exam Practice Questions</h2>
+
+    <!-- Q1 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q1 (Deuteric Mineralogy): Identification of Saussurite</div>
+      <p>In thin section, a calcic plagioclase phenocryst appears clouded with high-relief, prismatic granules exhibiting high birefringence and parallel extinction, alongside fine flakes with moderate birefringence. What are these two secondary minerals?</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        The high-relief grains are <strong>epidote / zoisite</strong> (which concentrate the calcium from anorthite), and the fine, moderate-birefringence flakes are <strong>sericite</strong> (fine-grained white mica, incorporating trace potassium). Together with secondary albite, they constitute saussurite.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q2 (Glass Alteration): Palagonite vs. Felsite</div>
+      <p>What is the distinct name given to the devitrification product of basaltic (mafic) volcanic glass formed under aqueous quenching, as opposed to silicic glass?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Palagonite</strong>. Quenched basaltic glass (sideromelane) hydrates and oxidizes into yellowish-orange to brown, optically isotropic palagonite. In contrast, silicic glass devitrifies into microcrystalline quartz-feldspar (felsitic texture or spherulites).
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q3 (Uralite Chemistry): Reactant and Product</div>
+      <p>Write the simplified mineral reaction showing how augite clinopyroxene is converted to uralite amphibole during postmagmatic cooling.</p>
+      <div class="ans">
+        <strong>Answer:</strong><br>
+        $5\,\text{Ca(Mg,Fe)Si}_2\text{O}_6\text{ (Augite)} + \text{H}_2\text{O} \to \text{Ca}_2(\text{Mg,Fe})_5\text{Si}_8\text{O}_{22}(\text{OH})_2\text{ (Actinolite/Uralite)} + 3\,\text{CaO} + 2\,\text{SiO}_2$.<br>
+        The released $\text{CaO}$ often combines with surrounding titania and silica to form secondary titanite (sphene).
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q4 (Feldspar Alteration): Sericitization Drivers</div>
+      <p>Why does plagioclase alter to sericite more readily when associated with biotite that is simultaneously undergoing chloritization?</p>
+      <div class="ans">
+        <strong>Answer:</strong> Sericite ($\text{KAl}_3\text{Si}_3\text{O}_{10}(\text{OH})_2$) requires potassium ($\text{K}^+$), which is absent in pure plagioclase. When nearby igneous biotite alters to chlorite, it expels its interlayer $\text{K}^+$ into the intergranular fluid, supplying the exact potassium ions necessary to sericitize adjacent plagioclase crystals.
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q5 (Metamorphic Equivalents): Greenschist Facies Analogy</div>
+      <p>Which regional metamorphic facies exhibits mineral reactions that are thermodynamically and mineralogically identical to saussuritization and chloritization?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Greenschist Facies</strong> (and Sub-greenschist / Prehnite-Pumpellyite facies). In metabasites, the characteristic greenschist assemblage—<strong>Albite + Epidote + Chlorite + Actinolite + Quartz</strong>—is formed by the exact same breakdown of high-temperature basaltic plagioclase + clinopyroxene.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q6 (Replacement Textures): Myrmekite Definition</div>
+      <p>Define myrmekite and identify the primary minerals involved in its development.</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Myrmekite</strong> is an intergrowth of sodic plagioclase (oligoclase or albite) and vermicular (worm-like) rods of quartz, typically occurring at the boundaries of K-feldspar megacrysts in granitic plutons. It is produced by late-magmatic / deuteric sodium metasomatism displacing potassium: $\text{KAlSi}_3\text{O}_8 + \text{Na}^+ \to \text{NaAlSi}_3\text{O}_8 + \text{K}^+ + \text{excess SiO}_2$.
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q7 (Sub-seafloor Alteration): Spilitization</div>
+      <p>Basaltic lavas on the ocean floor that undergo hydrothermal metasomatism with seawater, transforming their calcic plagioclase into albite and olivine/pyroxene into chlorite, are petrologically known as:</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Spilites</strong> (process: <strong>Spilitization</strong>). Spilites retain the primary basaltic pillow structures and ophitic/sub-ophitic textures while possessing an entirely sodic, hydrous secondary mineralogy.
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q8 (Zoning & Selective Alteration): Anorthite Susceptibility</div>
+      <p>In normally zoned plagioclase phenocrysts (calcic core, sodic rim), why does saussuritization selectively attack only the central core of the crystals?</p>
+      <div class="ans">
+        <strong>Answer:</strong> The core contains the highest concentration of the calcic anorthite molecule ($\text{CaAl}_2\text{Si}_2\text{O}_8$), which has the lowest thermodynamic stability at sub-solidus hydrous temperatures. The sodic rim (albite-rich) is thermodynamically stable in the presence of water at lower temperatures and remains pristine and unaltered.
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="card">
+    <h2>Comprehensive Secondary Alteration Matrix</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Alteration Type</th>
+          <th>Starting Mineral</th>
+          <th>Primary Secondary Minerals</th>
+          <th>Diagnostic Microscopic Appearance</th>
+          <th>Geological / Geodynamic Context</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Saussuritization</strong></td>
+          <td>Calcic Plagioclase</td>
+          <td><strong>Albite + Epidote / Zoisite</strong></td>
+          <td>Cloudy feldspar with microcrystalline high-relief epidote inclusions.</td>
+          <td>Deuteric plutonic cooling; hydrothermal spilitization.</td>
+        </tr>
+        <tr>
+          <td><strong>Uralitization</strong></td>
+          <td>Pyroxene (Augite)</td>
+          <td><strong>Actinolite / Hornblende</strong></td>
+          <td>Fibrous green amphibole pseudomorphs after pyroxene prisms.</td>
+          <td>Hydration during cooling of gabbros, dolerites, diorites.</td>
+        </tr>
+        <tr>
+          <td><strong>Chloritization</strong></td>
+          <td>Biotite, Amphibole, Pyroxene</td>
+          <td><strong>Chlorite</strong> ($\pm$ Sphene)</td>
+          <td>Green pleochroic sheets with anomalous Prussian blue interference.</td>
+          <td>Late-stage hydrothermal alteration; retrograde greenschist.</td>
+        </tr>
+        <tr>
+          <td><strong>Sericitization</strong></td>
+          <td>Alkali Feldspar, Plagioclase</td>
+          <td><strong>Sericite (Fine Muscovite)</strong></td>
+          <td>Faint dusty brownish coating in PPL; bright speckles in XPL.</td>
+          <td>Hydrothermal wall-rock alteration (porphyry Cu deposits).</td>
+        </tr>
+        <tr>
+          <td><strong>Serpentinization</strong></td>
+          <td>Olivine, Orthopyroxene</td>
+          <td><strong>Serpentine + Magnetite</strong></td>
+          <td>Mesh texture (antigorite/lizardite nets around relict olivine).</td>
+          <td>Hydration of peridotites, ophiolites, ocean floor mantle.</td>
+        </tr>
+        <tr>
+          <td><strong>Devitrification</strong></td>
+          <td>Volcanic Glass</td>
+          <td><strong>Quartz + Cristobalite + K-Feldspar</strong></td>
+          <td>Spherulites with extinction crosses; microfelsitic chert texture.</td>
+          <td>Sub-solidus crystallization of volcanic rhyolites/obsidians.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

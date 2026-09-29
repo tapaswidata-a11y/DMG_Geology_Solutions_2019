@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.14 – Salt Tectonics, Diapir Folds & Halokinesis | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 13px 20px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .card-body { padding: 20px; }
+
+  /* ── Typography & Content ── */
+  h2 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+  h3 { font-size: 15px; font-weight: 700; color: #1e293b; margin: 16px 0 8px 0; }
+  p { font-size: 14px; margin-bottom: 12px; color: #334155; }
+  ul, ol { margin-left: 20px; margin-bottom: 12px; font-size: 14px; color: #334155; }
+  li { margin-bottom: 6px; }
+
+  /* ── Quote & Textbook Boxes ── */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #1e40af;
+    font-size: 13.5px;
+  }
+  .quote-box strong { font-style: normal; color: #1e3a8a; }
+  .quote-box .src {
+    display: block;
+    margin-top: 6px;
+    font-size: 11.5px;
+    font-style: normal;
+    color: #60a5fa;
+    font-weight: 600;
+  }
+
+  .formula-card {
+    background: #fdf2f8;
+    border: 1px solid #fbcfe8;
+    border-left: 4px solid #db2777;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  .formula-card .f-title { font-weight: 700; color: #9d174d; margin-bottom: 6px; }
+
+  /* ── Figure Styles ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+  .tb-figure figcaption {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.4;
+    text-align: justify;
+    padding: 4px 8px;
+    background: #f8fafc;
+    border-radius: 4px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tb-figure figcaption strong { color: #0f172a; }
+
+  /* ── Options Review ── */
+  .option {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f43f5e;
+    background: #fff1f2;
+  }
+  .opt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .opt-header { color: #065f46; }
+  .option.incorrect .opt-header { color: #9f1239; }
+  .opt-tag {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .option.correct .opt-tag { background: #10b981; color: #fff; }
+  .option.incorrect .opt-tag { background: #f43f5e; color: #fff; }
+  .opt-desc { font-size: 13.5px; color: #334155; line-height: 1.5; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th, td { border: 1px solid #cbd5e1; padding: 9px 12px; text-align: left; }
+  th { background: #1e293b; color: #fff; font-weight: 600; font-size: 12.5px; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── Practice Question Cards ── */
+  .pq-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #8b5cf6;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .pq-q { font-weight: 700; font-size: 13.5px; color: #1e1b4b; margin-bottom: 8px; }
+  .pq-opts { font-size: 13px; color: #334155; margin-left: 18px; margin-bottom: 8px; }
+  .pq-ans {
+    background: #f5f3ff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #5b21b6;
+    border: 1px solid #ddd6fe;
+  }
+  .pq-ans strong { color: #4c1d95; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Main Header ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · STRUCTURAL GEOLOGY · CHAPTER MASTERCLASS</span>
+    <h1>Salt Tectonics, Halokinesis & Diapiric Piercement Folds</h1>
+    <div class="meta">Authoritative Reference: Ben A. van der Pluijm & Stephen Marshak, <em>Earth Structure</em> (2nd Ed., Chapters 2 & 10: Salt Structures & Special Fold Geometries)</div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART I: THEORETICAL TOPIC & CHAPTER MASTERCLASS                           -->
+  <!-- ========================================================================= -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">Comprehensive Chapter Masterclass: Halokinesis & Diapiric Folding</div>
+      <div class="part-sub">Rheology of Rock Salt, Gravitational Instability, Piercement Mechanics & Diapiric Folds</div>
+    </div>
+  </div>
+
+  <!-- Section 1: Physical Basis of Salt Movement -->
+  <div class="card">
+    <div class="card-header">1. Physical Properties of Rock Salt & Halokinesis</div>
+    <div class="card-body">
+      <p>
+        <strong>Halokinesis</strong> (salt tectonics) refers to the autonomous, gravity-driven flow and intrusion of rock salt (predominantly halite, $\text{NaCl}$) beneath sedimentary basins. The extraordinary ability of rock salt to flow and intrude overlying rock sequences is governed by three fundamental physical properties (Van der Pluijm & Marshak, Chapter 2):
+      </p>
+      <ol>
+        <li><strong>Incompressible Low Density:</strong> Halite has a fixed density of $\sim 2.16\text{ g/cm}^3$ that remains nearly constant regardless of burial depth. In contrast, common terrigenous sediments (muds, shales, sands) deposit at lower densities ($1.8\text{–}2.0\text{ g/cm}^3$) but undergo irreversible mechanical compaction, exceeding $2.2\text{–}2.6\text{ g/cm}^3$ below ~1 km of burial. This establishes a profound <strong>Rayleigh-Taylor gravitational density inversion</strong> where a buoyant, low-density salt layer is trapped beneath a heavier overburden.</li>
+        <li><strong>Extremely Low Yield Strength:</strong> Salt behaves as a non-Newtonian fluid under geologic strain rates, undergoing pervasive crystal-plastic dislocation creep at temperatures as low as 50°C–100°C.</li>
+        <li><strong>Differential Loading:</strong> Tectonic extension, lateral sediment thickness variations, or prograding sedimentary wedges create pressure gradients that trigger buoyant upward ascent of mobile salt.</li>
+      </ol>
+
+      <div class="quote-box">
+        "Table 2.5 — Terminology of Salt Structures: <strong>Salt Diapir:</strong> A salt structure that <em>pierces bedding in overlying strata</em>... In a diapir fold (or piercement fold), ductile, incompetent material (such as rock salt, gypsum, or overpressured mud) has broken through the more brittle overlying rock layers and occupied the core of the fold."
+        <span class="src">— Van der Pluijm & Marshak, <em>Earth Structure</em> (2nd Ed., Table 2.5, p. 28)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="figures_Q14/vdpm_salt_diapir_piercement.png" alt="Salt Diapir Piercing Overburden">
+        <figcaption>
+          <strong>Figure from Van der Pluijm & Marshak (Chapter 2):</strong> Schematic cross section of a salt diapir (diapir fold). The buoyant, ductile salt core has sheared and pierced through the brittle overlying strata, dragging and upturning the punctured beds along its margins.
+        </figcaption>
+      </div>
+
+      <div class="tb-figure">
+        <img src="figures_Q14/vdpm_salt_structures_evolution.png" alt="Evolution of Salt Structures">
+        <figcaption>
+          <strong>Evolutionary Stages of Salt Structures:</strong> From (1) an initial concordant salt pillow / dome, to (2) an intrusive piercement diapir (diapir fold), to (3) allochthonous salt sheets, canopies, and subaerial salt glaciers (namakiers).
+        </figcaption>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Anatomical Definition of a Diapir Fold -->
+  <div class="card">
+    <div class="card-header">2. The Piercement Mechanism & Fold Core Occupation</div>
+    <div class="card-body">
+      <p>
+        When an anticlinal fold develops above an ascending salt ridge, the ductile core material exerts strong tensile and upward shear forces on the overlying rocks:
+      </p>
+      <ul>
+        <li><strong>Concordant Stage (Salt Dome / Pillow):</strong> The overlying strata bend upward smoothly in conformity with the salt swell without breaking.</li>
+        <li><strong>Piercement Stage (Diapir Fold / Piercement Fold):</strong> The stretching capacity of the brittle roof is exceeded. Faulting and tensile rupture occur, allowing the mobile salt plug to punch through (pierce) the brittle carapace and occupy the central core of the fold. Strata on the flanks are dragged into subvertical, overturned, or faulted attitudes adjacent to the diapir walls.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART II: OFFICIAL EXAM QUESTION & OPTION-BY-OPTION ANALYSIS               -->
+  <!-- ========================================================================= -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">Official Exam Question Statement & In-Depth Critical Analysis</div>
+      <div class="part-sub">Directorate General of Mines Safety (DGMS) 2019 · Junior Scientific Officer Exam · Question 14</div>
+    </div>
+  </div>
+
+  <!-- Question Statement Card -->
+  <div class="card">
+    <div class="card-header">Question Statement</div>
+    <div class="card-body">
+      <div style="font-size:16px; font-weight:700; color:#0f172a; margin-bottom:14px; line-height:1.5;">
+        Q.14: In a fold, rock salt has broken through the more brittle overlying rocks and occupied its core. The structure is known as:
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(a)</strong> Disharmonic fold</div>
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(b)</strong> Drag fold</div>
+        <div style="background:#f8fafc; padding:10px 14px; border:1px solid #e2e8f0; border-radius:6px; font-size:14px;"><strong>(c)</strong> Box fold</div>
+        <div style="background:#f0fdf4; padding:10px 14px; border:1px solid #86efac; border-radius:6px; font-size:14px; font-weight:bold; color:#166534;"><strong>(d)</strong> Diapir fold</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Green Verified Answer Banner -->
+  <div class="answer-banner">
+    <div class="tick">✓</div>
+    <div>
+      <div class="text">Correct Answer: (d) Diapir fold</div>
+      <div class="sub">A fold in which mobile, ductile material (such as rock salt) has actively pierced through the more brittle overlying rock carapace to occupy the core is defined as a diapir fold (or piercement fold).</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Breakdown -->
+  <div class="card">
+    <div class="card-header">Exhaustive Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- Option D (Correct) -->
+      <div class="option correct">
+        <div class="opt-header">
+          <span>(d) Diapir fold</span>
+          <span class="opt-tag">CORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is uniquely correct:</strong> In structural geology and salt tectonics (Van der Pluijm & Marshak, 2004, Table 2.5, p. 28; Billings, 1972, p. 101; Davis & Reynolds, 1996), a <strong>diapir fold</strong> (also known as a <em>piercement fold</em> or <em>diapiric fold</em>, from the Greek <em>diapeirein</em> = to pierce through) is explicitly defined as a fold whose core is composed of mobile, incompetent material (such as rock salt, gypsum, or shale) that has ruptured and broken through the more brittle overlying rock layers.
+        </div>
+      </div>
+
+      <!-- Option A (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(a) Disharmonic fold</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> A <em>disharmonic fold</em> refers to a layered sequence where adjacent layers exhibit markedly different fold profiles, wavelengths, or amplitudes due to sharp contrasts in rheological competence (e.g., incompetent shale folding disharmonically between competent sandstone beds). In disharmonic folding, layers remain stratigraphically intact and do <strong>not</strong> pierce or punch through each other.
+        </div>
+      </div>
+
+      <!-- Option B (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(b) Drag fold</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> A <em>drag fold</em> is a minor, asymmetric parasitic fold formed in incompetent beds adjacent to a fault plane due to frictional dragging of the wall rocks during fault displacement, or by interlayer shear during flexural-slip folding. Drag folds do not involve diapiric piercement of rock salt through a brittle roof.
+        </div>
+      </div>
+
+      <!-- Option C (Incorrect) -->
+      <div class="option incorrect">
+        <div class="opt-header">
+          <span>(c) Box fold</span>
+          <span class="opt-tag">INCORRECT</span>
+        </div>
+        <div class="opt-desc">
+          <strong>Why it is incorrect:</strong> A <em>box fold</em> (conjugate fold) is a profile geometry characterized by two distinct hinge lines and axial planes that converge downward, creating a broad, flat-topped crest and steep limbs. It is a geometric fold shape, not an intrusive piercement structure.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART III: SYNTHESIS TABLES, COMPARATIVE PETROLOGY & PRACTICE QUESTIONS    -->
+  <!-- ========================================================================= -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables, Diagnostic Criteria & High-Yield Practice</div>
+      <div class="part-sub">Salt Structure Classification & 8 Exam-Grade Multiple-Choice Questions</div>
+    </div>
+  </div>
+
+  <!-- Synthesis Table -->
+  <div class="card">
+    <div class="card-header">Classification of Salt Structures (Van der Pluijm & Marshak, Table 2.5)</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Structure Name</th>
+            <th>Relationship to Overlying Bedding</th>
+            <th>Geometric Form</th>
+            <th>Tectonic Stage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Salt Pillow</strong></td>
+            <td><strong>Concordant</strong> (overlying strata conform to the bulge without rupture)</td>
+            <td>Sub-circular to elliptical upward swell</td>
+            <td>Immature early buoyant uplift</td>
+          </tr>
+          <tr>
+            <td><strong>Salt Roller</strong></td>
+            <td>Asymmetric, faulted concordant/sub-concordant</td>
+            <td>Low-amplitude triangular salt wall in extensional fault footwalls</td>
+            <td>Syn-rift extension</td>
+          </tr>
+          <tr>
+            <td><strong>Salt Diapir (Diapir Fold)</strong></td>
+            <td><strong>Discordant / Piercing</strong> (breaks through overlying strata and occupies core)</td>
+            <td><strong>Cylindrical plug, chimney, or intrusive wall</strong></td>
+            <td><strong>Mature piercement stage</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Salt Canopy</strong></td>
+            <td>Discordant feeder spreading horizontally</td>
+            <td>Coalesced sheet of multiple expanding diapir heads</td>
+            <td>Advanced extrusion/spreading</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8 Curated Practice Questions -->
+  <div class="card">
+    <div class="card-header">8 High-Yield Practice Questions on Salt Tectonics & Fold Terminology</div>
+    <div class="card-body">
+
+      <!-- PQ 1 -->
+      <div class="pq-card">
+        <div class="pq-q">1. What physical phenomenon causes rock salt to become buoyant relative to overlying sediments below depths of approximately 1 km?</div>
+        <div class="pq-opts">
+          (a) Salt density increases dramatically<br>
+          (b) Sediments undergo compaction increasing their density above that of salt ($\sim 2.16\text{ g/cm}^3$)<br>
+          (c) Salt vaporizes into steam<br>
+          (d) Magnetic repulsion
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — Salt does not compact and retains a constant density of ~2.16 g/cm³, whereas sediments compact to >2.4 g/cm³, creating a density inversion.</div>
+      </div>
+
+      <!-- PQ 2 -->
+      <div class="pq-card">
+        <div class="pq-q">2. The term "piercement fold" is an exact synonym for:</div>
+        <div class="pq-opts">(a) Diapir fold &nbsp;&nbsp; (b) Chevron fold &nbsp;&nbsp; (c) Ptygmatic fold &nbsp;&nbsp; (d) Isoclinal fold</div>
+        <div class="pq-ans"><strong>Answer: (a) Diapir fold</strong> — "Diapir" is derived from the Greek word meaning "to pierce through."</div>
+      </div>
+
+      <!-- PQ 3 -->
+      <div class="pq-card">
+        <div class="pq-q">3. A salt structure that bulges upward concordantly without rupturing or piercing the overlying strata is called a:</div>
+        <div class="pq-opts">(a) Salt diapir &nbsp;&nbsp; (b) Salt pillow (or salt dome) &nbsp;&nbsp; (c) Salt canopy &nbsp;&nbsp; (d) Salt glacier</div>
+        <div class="pq-ans"><strong>Answer: (b) Salt pillow (or salt dome)</strong> — In a pillow or dome, the overlying beds remain concordant and continuous.</div>
+      </div>
+
+      <!-- PQ 4 -->
+      <div class="pq-card">
+        <div class="pq-q">4. In petroleum geology, why are salt diapirs world-class structural traps for hydrocarbons?</div>
+        <div class="pq-opts">
+          (a) Salt is porous and stores large volumes of oil<br>
+          (b) Impermeable salt seals truncate upturned, porous reservoir beds on the flanks of the diapir<br>
+          (c) Salt generates oil by chemical reactions<br>
+          (d) Salt creates volcanic eruptions
+        </div>
+        <div class="pq-ans"><strong>Answer: (b)</strong> — Crystalline halite has virtually zero permeability, acting as an exceptional top and lateral seal against upturned reservoir strata.</div>
+      </div>
+
+      <!-- PQ 5 -->
+      <div class="pq-card">
+        <div class="pq-q">5. Subaerial extrusion of salt that flows downslope under its own weight in arid environments (such as the Zagros Mountains of Iran) is termed a:</div>
+        <div class="pq-opts">(a) Namakier (salt glacier) &nbsp;&nbsp; (b) Moraine &nbsp;&nbsp; (c) Esker &nbsp;&nbsp; (d) Drumlin</div>
+        <div class="pq-ans"><strong>Answer: (a) Namakier (salt glacier)</strong> — Active salt extrusions flowing like glaciers are called namakiers.</div>
+      </div>
+
+      <!-- PQ 6 -->
+      <div class="pq-card">
+        <div class="pq-q">6. Folds that develop different geometric forms and wavelengths in adjacent layers due to competence differences are called:</div>
+        <div class="pq-opts">(a) Harmonic folds &nbsp;&nbsp; (b) Disharmonic folds &nbsp;&nbsp; (c) Diapir folds &nbsp;&nbsp; (d) Supratenuous folds</div>
+        <div class="pq-ans"><strong>Answer: (b) Disharmonic folds</strong> — Differences in layer stiffness produce disharmonic folding.</div>
+      </div>
+
+      <!-- PQ 7 -->
+      <div class="pq-card">
+        <div class="pq-q">7. The cap rock commonly found capping salt diapir heads consists of an insoluble residue dominated by:</div>
+        <div class="pq-opts">(a) Anhydrite, Gypsum, and Calcite &nbsp;&nbsp; (b) Pure Quartz &nbsp;&nbsp; (c) Olivine &nbsp;&nbsp; (d) Diamond</div>
+        <div class="pq-ans"><strong>Answer: (a) Anhydrite, Gypsum, and Calcite</strong> — Groundwaters dissolve halite, leaving behind a residual crust of insoluble sulfates and secondary carbonates.</div>
+      </div>
+
+      <!-- PQ 8 -->
+      <div class="pq-card">
+        <div class="pq-q">8. What is the dominant crystal deformation mechanism that enables halite to flow ductily at geologic strain rates?</div>
+        <div class="pq-opts">(a) Dislocation creep and pressure solution &nbsp;&nbsp; (b) Melting &nbsp;&nbsp; (c) Sublimation &nbsp;&nbsp; (d) Explosive shattering</div>
+        <div class="pq-ans"><strong>Answer: (a) Dislocation creep and pressure solution</strong> — Halite exhibits low activation energy for dislocation glide/climb and solution-precipitation creep.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

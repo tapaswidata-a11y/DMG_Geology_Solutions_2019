@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.22 – Epsilon Nd Notation & The Chondritic Uniform Reservoir (CHUR) | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #9333ea;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+    margin: 14px 0 6px 0;
+  }
+  p { margin-bottom: 10px; font-size: 13.5px; }
+
+  /* ── Highlight & Quote Boxes ── */
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #9333ea;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .quote-box {
+    background: #faf5ff;
+    border-left: 4px solid #a855f7;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    font-size: 13px;
+    color: #581c87;
+  }
+  .quote-box .citation {
+    font-style: normal;
+    font-weight: 700;
+    color: #7e22ce;
+    margin-top: 6px;
+    font-size: 11.5px;
+  }
+
+  /* ── Formula Cards ── */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-card .title {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    color: #38bdf8;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Textbook Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 10px auto;
+    max-height: 480px;
+    object-fit: contain;
+  }
+  .tb-figure .caption {
+    font-size: 12px;
+    color: #475569;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    line-height: 1.45;
+  }
+  .tb-figure .caption strong { color: #1e293b; }
+
+  /* ── Option Cards ── */
+  .option {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option.correct {
+    border-color: #10b981;
+    background: #f0fdf4;
+  }
+  .option.incorrect {
+    border-color: #f87171;
+    background: #fef2f2;
+  }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .option.correct .option-header { color: #065f46; }
+  .option.incorrect .option-header { color: #991b1b; }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-correct { background: #dcfce7; color: #15803d; }
+  .badge-incorrect { background: #fee2e2; color: #b91c1c; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Question Card ── */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .question-box .q-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .question-box .q-stmt {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+
+  /* ── Practice Question Container ── */
+  .practice-box {
+    background: #faf5ff;
+    border: 1px solid #d8b4fe;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .practice-box .p-title {
+    font-weight: 700;
+    color: #6b21a8;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  .practice-box .ans {
+    background: #f3e8ff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #4c1d95;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <span class="badge">DGMS 2019 · Question 22 · Masterclass Guide</span>
+    <h1>Isotope Geochemistry: Epsilon Notation ($\epsilon_{\text{Nd}}$), CHUR & Mantle-Crust Geochemical Dynamics</h1>
+    <div class="meta">Comprehensive Geochemistry Guide · Authoritative References: William M. White (2005, Ch. 8) & K. C. Misra (2012, Ch. 10)</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART I: THEORETICAL FOUNDATION & TEXTBOOK EXPOSÉ      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">I</div>
+    <div>
+      <div class="part-title">THEORETICAL FOUNDATION: THE Sm-Nd SYSTEM & EPSILON NOTATION</div>
+      <div class="part-sub">The Chondritic Uniform Reservoir, Derivation of the $\epsilon$ Formulation & The Terrestrial Mantle Array</div>
+    </div>
+  </div>
+
+  <!-- CARD 1: THE Sm-Nd DECAY SCHEME & CHUR -->
+  <div class="card">
+    <h2>1. The Sm-Nd Geochronometer & The CHUR Reference Reservoir</h2>
+    <p>Samarium ($\text{Sm}$) and Neodymium ($\text{Nd}$) are adjacent Rare Earth Elements. The radioactive isotope $^{147}\text{Sm}$ decays to stable radiogenic $^{143}\text{Nd}$ by alpha ($\alpha$) emission:</p>
+
+    <div class="formula-card">
+      <div class="title">The Sm-Nd Decay Equation</div>
+      $^{147}_{62}\text{Sm} \longrightarrow {}^{143}_{60}\text{Nd} + \alpha + Q$<br><br>
+      • Decay constant: $\lambda_{\text{Sm}} = 6.54 \times 10^{-12}\text{ yr}^{-1}$<br>
+      • Half-life: $t_{1/2} = 1.06 \times 10^{11}\text{ years}$ ($106\text{ Ga}$)<br><br>
+      Normalized to the non-radiogenic reference isotope $^{144}\text{Nd}$:<br>
+      $\left(\frac{^{143}\text{Nd}}{^{144}\text{Nd}}\right)_{\text{sample}}(t) = \left(\frac{^{143}\text{Nd}}{^{144}\text{Nd}}\right)_0 + \left(\frac{^{147}\text{Sm}}{^{144}\text{Nd}}\right)_{\text{sample}} \cdot (e^{\lambda t} - 1)$
+    </div>
+
+    <div class="highlight-box">
+      <strong>The Chondritic Uniform Reservoir (CHUR):</strong><br>
+      Because both $\text{Sm}$ and $\text{Nd}$ are refractory lithophile elements that condense at high temperatures in the solar nebula, their planetary ratio is not fractionated by volatilization. DePaolo & Wasserburg (1976) demonstrated that the <strong>Bulk Silicate Earth (BSE)</strong> possesses the exact same $\text{Sm/Nd}$ ratio and Nd-isotopic composition as pristine chondritic meteorites. This global planetary baseline is termed <strong>CHUR</strong>:
+      <ul style="margin-left: 20px; margin-top: 4px;">
+        <li>Present-day CHUR ratio: $\left(^{143}\text{Nd}/^{144}\text{Nd}\right)_{\text{CHUR}}(0) = \mathbf{0.512638}$</li>
+        <li>Present-day CHUR parent/daughter ratio: $\left(^{147}\text{Sm}/^{144}\text{Nd}\right)_{\text{CHUR}} = \mathbf{0.1967}$</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: EPSILON NOTATION DEFINITION -->
+  <div class="card">
+    <h2>2. Epsilon ($\epsilon$) Notation: Origin and Mathematical Definition</h2>
+    <p>Because the half-life of $^{147}\text{Sm}$ is exceptionally long ($106\text{ Ga}$), radiogenic growth of $^{143}\text{Nd}$ is very slow. Differences in measured $^{143}\text{Nd}/^{144}\text{Nd}$ ratios between diverse terrestrial rocks occur only in the <strong>4th and 5th decimal places</strong> (e.g., $0.5126$ vs. $0.5118$).</p>
+
+    <p>To eliminate cumbersome decimal fractions and highlight petrogenetic deviations, Donald J. DePaolo and Gerald J. Wasserburg (1976) invented the <strong>Epsilon ($\epsilon_{\text{Nd}}$) parameter</strong>, defined as the fractional deviation of a sample's Nd-isotopic ratio from that of CHUR in <strong>parts per 10,000</strong> (parts per myriad):</p>
+
+    <div class="formula-card">
+      <div class="title">The Epsilon Neodymium ($\epsilon_{\text{Nd}}$) Formulation</div>
+      $\epsilon_{\text{Nd}}(t) = \left[ \frac{\left(^{143}\text{Nd}/^{144}\text{Nd}\right)_{\text{sample}}(t)}{\left(^{143}\text{Nd}/^{144}\text{Nd}\right)_{\text{CHUR}}(t)} - 1 \right] \times 10^4$<br><br>
+      For present-day rocks ($t = 0$):<br>
+      $\epsilon_{\text{Nd}}(0) = \left[ \frac{\left(^{143}\text{Nd}/^{144}\text{Nd}\right)_{\text{sample}}(0)}{0.512638} - 1 \right] \times 10^4$
+    </div>
+
+    <div class="quote-box">
+      "Because variations in the $^{143}\text{Nd}/^{144}\text{Nd}$ ratio are small, DePaolo and Wasserburg (1976) defined the <strong>$\epsilon_{\text{Nd}}$ (epsilon) notation</strong> to express the deviation of the $^{143}\text{Nd}/^{144}\text{Nd}$ ratio of a sample from that of the Chondritic Uniform Reservoir (CHUR) in parts per $10^4$ ($10,000$)... The beauty of this notation is that rocks derived from an undifferentiated reservoir have $\epsilon_{\text{Nd}} = 0$, while rocks from depleted mantle have positive values and ancient crustal rocks have negative values."
+      <div class="citation">— William M. White, <em>Geochemistry</em> (2005), Chapter 8: Radiogenic Isotope Geochemistry, p. 325.</div>
+    </div>
+  </div>
+
+  <!-- CARD 3: PETROGENETIC MEANING & MANTLE ARRAY -->
+  <div class="card">
+    <h2>3. Petrogenetic Meaning: Positive vs. Negative $\epsilon_{\text{Nd}}$ Values</h2>
+    <p>Because $\text{Nd}$ has a larger ionic radius than $\text{Sm}$ (due to the Lanthanide Contraction), $\text{Nd}$ is <em>more incompatible</em> than $\text{Sm}$ during mantle partial melting ($D_{\text{Nd}} < D_{\text{Sm}}$). This creates an elegant geodynamic dichotomy:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>$\epsilon_{\text{Nd}}$ Value</th>
+          <th>Relative $\text{Sm/Nd}$ Ratio</th>
+          <th>Geochemical Reservoir</th>
+          <th>Representative Geological Rock Suite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>$\epsilon_{\text{Nd}} = 0$</strong></td>
+          <td>Identical to CHUR ($0.1967$)</td>
+          <td><strong>CHUR / Bulk Silicate Earth (BSE)</strong></td>
+          <td>Primitive, undifferentiated Earth mantle; chondritic meteorites.</td>
+        </tr>
+        <tr>
+          <td><strong>$\epsilon_{\text{Nd}} > 0$ (Positive)</strong><br>$(+2 \text{ to } +12)$</td>
+          <td><strong>High $\text{Sm/Nd}$</strong> ($> 0.20$)</td>
+          <td><strong>Depleted Mantle (DM)</strong></td>
+          <td><strong>Mid-Ocean Ridge Basalts (N-MORB)</strong>. Ancient melt extraction stripped more Nd than Sm into the crust, leaving a mantle residue with high $\text{Sm/Nd}$ that evolved radiogenic, positive $\epsilon_{\text{Nd}}$.</td>
+        </tr>
+        <tr>
+          <td><strong>$\epsilon_{\text{Nd}} < 0$ (Negative)</strong><br>$(-5 \text{ to } -40)$</td>
+          <td><strong>Low $\text{Sm/Nd}$</strong> ($< 0.18$)</td>
+          <td><strong>Enriched Continental Crust</strong></td>
+          <td><strong>Granites, Shales, Ancient Cratons</strong>. Partial melts extracted into the crust captured preferential Nd, resulting in low $\text{Sm/Nd}$ and retarded radiogenic growth relative to CHUR.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tb-figure">
+      <img src="figures_Q22/extracted_p4_0_Im54.jpg" alt="The Terrestrial Mantle Array (Epsilon Nd vs Epsilon Sr)">
+      <div class="caption">
+        <strong>Figure 1 (The Terrestrial Mantle Array):</strong> Plot of $\epsilon_{\text{Nd}}$ versus $\epsilon_{\text{Sr}}$ for oceanic and continental igneous rocks. The inverse correlation forms the renowned <strong>Mantle Array</strong> trending from the upper-left (Depleted Mantle: positive $\epsilon_{\text{Nd}}$, negative $\epsilon_{\text{Sr}}$) through the origin ($\epsilon_{\text{Nd}} = 0, \epsilon_{\text{Sr}} = 0$, representing BSE/CHUR) down to the lower-right (Enriched Crustal Reservoirs: negative $\epsilon_{\text{Nd}}$, positive $\epsilon_{\text{Sr}}$).
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4: COMPARISON OF NOTATIONS IN GEOCHEMISTRY -->
+  <div class="card">
+    <h2>4. Notation Conventions Across Isotope Geochemistry</h2>
+    <p>Exam candidates must never confuse epsilon notation with delta notation or other physical constants:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Notation Name</th>
+          <th>Scale / Multiplier</th>
+          <th>Application & Domain</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>$\epsilon$</strong> (The Answer)</td>
+          <td><strong>Epsilon Notation</strong></td>
+          <td><strong>$\times 10^4$ (parts per $10,000$)</strong></td>
+          <td><strong>Radiogenic Isotopes ($\text{Sm-Nd, Lu-Hf, Rb-Sr}$)</strong>: Deviations from bulk planetary reservoirs (CHUR / UR).</td>
+        </tr>
+        <tr>
+          <td><strong>$\delta$</strong></td>
+          <td><strong>Delta Notation</strong></td>
+          <td><strong>$\times 10^3$ (parts per $1,000$, $\text{‰}$)</strong></td>
+          <td><strong>Stable Isotopes ($\delta^{18}\text{O}, \delta^{13}\text{C}, \delta^{34}\text{S}, \delta\text{D}$)</strong>: Equilibrium & kinetic mass-dependent fractionation relative to SMOW, PDB, CDT.</td>
+        </tr>
+        <tr>
+          <td><strong>$\omega$</strong></td>
+          <td>Omega</td>
+          <td>Dimensionless / Ratio</td>
+          <td>Cosmological density parameter ($\Omega$) or specific atomic frequency. Never used for isotopic reservoir deviation.</td>
+        </tr>
+        <tr>
+          <td><strong>$\upsilon$</strong></td>
+          <td>Upsilon</td>
+          <td>Dimensionless / Kinematic</td>
+          <td>Particle physics or fluid viscosity ($\nu$). Never used in isotope geochemistry.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART II: EXAM QUESTION CRITICAL ANALYSIS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">II</div>
+    <div>
+      <div class="part-title">EXAM QUESTION & RIGOROUS OPTION-BY-OPTION DISSECTION</div>
+      <div class="part-sub">DGMS 2019 Examination · Official Question Statement, Verified Answer & Detailed Distracter Analysis</div>
+    </div>
+  </div>
+
+  <!-- QUESTION STATEMENT -->
+  <div class="card">
+    <div class="question-box">
+      <div class="q-num">DGMS 2019 · QUESTION 22</div>
+      <div class="q-stmt">Which one of the following symbols denotes the deviation of the Nd-isotopic composition of a rock from that of the chondritic uniform reservoir?</div>
+      <div style="margin-top: 10px; font-size: 13.5px; font-weight: 500;">
+        (a) $\omega$ (Omega)<br>
+        (b) $\varepsilon$ (Epsilon)<br>
+        (c) $\delta$ (Delta)<br>
+        (d) $\upsilon$ (Upsilon)
+      </div>
+    </div>
+
+    <!-- ANSWER BANNER -->
+    <div class="answer-banner">
+      <div class="tick">✓</div>
+      <div>
+        <div class="text">Correct Option: (b) ε (Epsilon)</div>
+        <div class="sub">Verified via William M. White (Geochemistry, p. 325) & K. C. Misra (Introduction to Geochemistry, p. 248)</div>
+      </div>
+    </div>
+
+    <!-- OPTION A -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (a): $\omega$ (Omega)
+      </div>
+      <p><strong>Detailed Refutation:</strong> The Greek letter $\omega$ (Omega) has no role in radiogenic isotope geochemistry. In cosmology and astrophysics, $\Omega$ denotes the critical density parameter of the universe; in structural geology, it may denote angular rotation. It is never used to define deviations in radiogenic isotope ratios from CHUR.</p>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="option correct">
+      <div class="option-header">
+        <span class="badge-tag badge-correct">Correct Answer</span>
+        Option (b): $\varepsilon$ (Epsilon)
+      </div>
+      <p><strong>Detailed Validation:</strong> The lowercase Greek letter <strong>$\varepsilon$ (Epsilon)</strong> is the universally accepted, standard symbol introduced by DePaolo & Wasserburg (1976) to denote the parts-per-ten-thousand ($10^{-4}$) deviation of the $^{143}\text{Nd}/^{144}\text{Nd}$ isotopic composition of a rock from that of the <strong>Chondritic Uniform Reservoir (CHUR)</strong>. A positive $\epsilon_{\text{Nd}}$ indicates extraction from a depleted mantle source with high $\text{Sm/Nd}$, while a negative $\epsilon_{\text{Nd}}$ signifies derivation from or contamination by enriched, low-$\text{Sm/Nd}$ continental crust. This matches the exam question verbatim.</p>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (c): $\delta$ (Delta)
+      </div>
+      <p><strong>Detailed Refutation:</strong> The Greek letter <strong>$\delta$ (Delta)</strong> is used exclusively for <strong>stable isotope geochemistry</strong> (such as $\delta^{18}\text{O}$, $\delta^{13}\text{C}$, $\delta^{34}\text{S}$, and $\delta\text{D}$), where variations are reported as parts-per-thousand (permil, $\text{‰} = 10^{-3}$) deviations from arbitrary reference standards like V-SMOW, V-PDB, or Canyon Diablo Troilite (CDT). Delta notation is never used for Nd radiogenic deviations from CHUR.</p>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="option incorrect">
+      <div class="option-header">
+        <span class="badge-tag badge-incorrect">Incorrect</span>
+        Option (d): $\upsilon$ (Upsilon)
+      </div>
+      <p><strong>Detailed Refutation:</strong> The Greek letter $\upsilon$ (Upsilon) is not used as an isotopic delta or deviation symbol anywhere in geochemistry. It serves solely as a distracter.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS & PRACTICE QUESTIONS              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">III</div>
+    <div>
+      <div class="part-title">SYNTHESIS & HIGH-YIELD PRACTICE QUESTIONS</div>
+      <div class="part-sub">Curated Problems Covering Model Ages ($T_{\text{DM}}$), Mantle Array Trajectories & Cratonic Geochemistry</div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS CARD -->
+  <div class="card">
+    <h2>High-Yield Exam Practice Questions</h2>
+
+    <!-- Q1 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q1 (Numerical / Calculation): Evaluating $\epsilon_{\text{Nd}}$</div>
+      <p>A modern basalt from the East Pacific Rise has a measured $^{143}\text{Nd}/^{144}\text{Nd} = 0.513150$. Given that present-day CHUR has $^{143}\text{Nd}/^{144}\text{Nd} = 0.512638$, calculate $\epsilon_{\text{Nd}}(0)$ and interpret its mantle provenance.</p>
+      <div class="ans">
+        <strong>Solution & Rationale:</strong><br>
+        $\epsilon_{\text{Nd}}(0) = \left[ \frac{0.513150}{0.512638} - 1 \right] \times 10^4 = [1.00099875 - 1] \times 10^4 = \mathbf{+9.99} \approx \mathbf{+10.0}$.<br>
+        A value of $\epsilon_{\text{Nd}} = +10.0$ indicates derivation from the <strong>Depleted Mantle (DM)</strong> reservoir, which underwent ancient melt depletion that elevated its $\text{Sm/Nd}$ ratio relative to CHUR.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q2 (Geochronology): Nd Model Age ($T_{\text{DM}}$) Definition</div>
+      <p>What is a Neodymium Depleted Mantle Model Age ($T_{\text{DM}}$), and why is it referred to as a "crustal residence age"?</p>
+      <div class="ans">
+        <strong>Answer:</strong> The $T_{\text{DM}}$ age is the calculated time in the past when the Nd-isotopic growth curve of a crustal rock intersected the Depleted Mantle evolution curve. It records the time when the rock's chemical precursors were <strong>originally extracted from the mantle</strong> to form continental crust, irrespective of later metamorphic or magmatic remelting events.
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q3 (Scale Multiplier): Parts Per Ten Thousand vs. Permil</div>
+      <p>Why did DePaolo and Wasserburg select a multiplier of $10^4$ (parts per ten thousand) for epsilon notation instead of $10^3$ (permil, used in delta notation)?</p>
+      <div class="ans">
+        <strong>Answer:</strong> Because the fractional differences in $^{143}\text{Nd}/^{144}\text{Nd}$ caused by $\text{Sm-Nd}$ decay are approximately an order of magnitude smaller than mass-dependent stable isotope fractionation. A multiplier of $10^4$ scales the subtle differences in the 4th and 5th decimal places into convenient, whole-integer numbers (e.g., $+10$ or $-15$) easily analyzed by geochemists.
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q4 (Complementary Systems): Lu-Hf and Epsilon Hafnium ($\epsilon_{\text{Hf}}$)</div>
+      <p>Which other radiogenic isotope system is defined using an identical epsilon notation relative to a chondritic reservoir, and how does its behavior correlate with $\epsilon_{\text{Nd}}$?</p>
+      <div class="ans">
+        <strong>Answer:</strong> The <strong>Lutetium-Hafnium ($\text{Lu-Hf}$) system</strong> ($^{176}\text{Lu} \to {}^{176}\text{Hf}$), expressed as $\epsilon_{\text{Hf}}$ relative to CHUR. Because $\text{Lu-Hf}$ behaves identically to $\text{Sm-Nd}$ during mantle melting ($D_{\text{Hf}} < D_{\text{Lu}}$), $\epsilon_{\text{Hf}}$ correlates positively with $\epsilon_{\text{Nd}}$ along the "terrestrial mantle-crust array" ($\epsilon_{\text{Hf}} \approx 1.4\,\epsilon_{\text{Nd}} + 3$).
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q5 (Crustal Provenance): Archean Craton Signatures</div>
+      <p>A granitic pluton intruded during the Proterozoic ($1.8\text{ Ga}$) displays an initial $\epsilon_{\text{Nd}}(1.8\text{ Ga}) = -12.5$. What does this imply about the magma's origin?</p>
+      <div class="ans">
+        <strong>Answer:</strong> It proves that the granite was not derived from juvenile Proterozoic mantle; rather, it formed by the <strong>remelting or heavy assimilation of ancient Archean continental crust</strong> that had existed for at least $1\text{ billion years}$ prior with low $\text{Sm/Nd}$, allowing its $\epsilon_{\text{Nd}}$ to decay to highly negative values.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q6 (Sediment Resistance): Sm-Nd vs. Weathering</div>
+      <p>Why do Nd isotopes in clastic sedimentary rocks (e.g., shales and turbidites) accurately record the average crustal age of an entire eroded continent, whereas Sr isotopes do not?</p>
+      <div class="ans">
+        <strong>Answer:</strong> Rare Earth Elements like $\text{Sm}$ and $\text{Nd}$ are insoluble and immobile during surface weathering and diagenesis, preserving their pristine parent-daughter ratio. Strontium ($\text{Sr}$), being a fluid-mobile alkaline earth element, is easily leached and exchanged with seawater and groundwaters, corrupting its original isotopic signature.
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q7 (Mantle End-Members): Zindler and Hart (1986) Taxonomy</div>
+      <p>In the isotope taxonomy of oceanic basalts, what mantle component is characterized by extremely high $^{206}\text{Pb}/^{204}\text{Pb}$ but moderately positive $\epsilon_{\text{Nd}}$?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>HIMU</strong> (High-$\mu$, where $\mu = {}^{238}\text{U}/^{204}\text{Pb}$). HIMU represents ancient subducted oceanic crust that was dehydrated (stripping lead relative to uranium) and recycled through the deep mantle for $1.5–2.0\text{ Ga}$.
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="practice-box">
+      <div class="p-title">Practice Q8 (Initial Ratio Evolution): Slopes of $\epsilon_{\text{Nd}}$ vs. Time</div>
+      <p>On a plot of $\epsilon_{\text{Nd}}$ versus geologic time ($4.55\text{ Ga} \to \text{Present}$), what is the slope of the CHUR reference reservoir line?</p>
+      <div class="ans">
+        <strong>Answer:</strong> <strong>Zero (horizontal line at $\epsilon_{\text{Nd}} = 0$)</strong>. Because $\epsilon_{\text{Nd}}$ is defined by normalize-comparing a sample to CHUR at that exact same time $t$, CHUR by mathematical definition always has $\epsilon_{\text{Nd}}(t) \equiv 0$ at all times in Earth's history.
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="card">
+    <h2>Comprehensive Isotope Ratio Notation Matrix</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Notation Symbol</th>
+          <th>Isotope System</th>
+          <th>Reference Baseline</th>
+          <th>Multiplier</th>
+          <th>Geological Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>$\epsilon_{\text{Nd}}$ (The Answer)</strong></td>
+          <td>$^{147}\text{Sm} \to {}^{143}\text{Nd}$</td>
+          <td><strong>CHUR (Chondritic Uniform Reservoir)</strong></td>
+          <td>$\mathbf{\times 10^4}$ (parts per $10,000$)</td>
+          <td>Mantle depletion, continental crust extraction, crustal recycling.</td>
+        </tr>
+        <tr>
+          <td><strong>$\epsilon_{\text{Hf}}$</strong></td>
+          <td>$^{176}\text{Lu} \to {}^{176}\text{Hf}$</td>
+          <td><strong>CHUR</strong></td>
+          <td>$\mathbf{\times 10^4}$ (parts per $10,000$)</td>
+          <td>Zircon provenance, crustal growth through geologic time.</td>
+        </tr>
+        <tr>
+          <td><strong>$\epsilon_{\text{Sr}}$</strong></td>
+          <td>$^{87}\text{Rb} \to {}^{87}\text{Sr}$</td>
+          <td><strong>UR (Uniform Reservoir)</strong></td>
+          <td>$\mathbf{\times 10^4}$ (parts per $10,000$)</td>
+          <td>Mantle array correlation with $\epsilon_{\text{Nd}}$.</td>
+        </tr>
+        <tr>
+          <td><strong>$\delta^{18}\text{O}, \delta^{13}\text{C}$</strong></td>
+          <td>Stable Isotopes</td>
+          <td><strong>V-SMOW, V-PDB</strong></td>
+          <td>$\mathbf{\times 10^3}$ (parts per $1,000$, $\text{‰}$)</td>
+          <td>Paleothermometry, paleoclimate, fluid-rock interaction.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
