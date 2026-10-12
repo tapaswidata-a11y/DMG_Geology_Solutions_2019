@@ -49,7 +49,7 @@ Every question module follows an uncompromising 3-tier academic structure:
 
 ---
 
-## 📂 Index of Solved Questions (Q01 – Q24)
+## 📂 Index of Solved Questions (Q01 – Q25)
 
 | Q# | Discipline | Topic / Concept Focus | Correct Answer | Module Files |
 | :---: | :--- | :--- | :--- | :---: |
@@ -77,6 +77,7 @@ Every question module follows an uncompromising 3-tier academic structure:
 | **Q22** | Geochemistry | Epsilon Nd ($\epsilon_{\text{Nd}}$) Notation & CHUR | $\varepsilon$ (Epsilon) — Parts-per-10,000 deviation from Chondritic Uniform Reservoir | [HTML](Q22_Epsilon_Notation_CHUR_Complete_Guide.html) · [PDF](Q22_Epsilon_Notation_CHUR_Complete_Guide.pdf) |
 | **Q23** | Geochronology | U-Pb Concordia & Discordia Curves | Concordia curve (Locus of points having identical $^{206}\text{Pb}$ and $^{207}\text{Pb}$ ages) | [HTML](Q23_UPb_Concordia_Discordia_Complete_Guide.html) · [PDF](Q23_UPb_Concordia_Discordia_Complete_Guide.pdf) |
 | **Q24** | Melt Physics | Silicate Melt Atomic Structure | Network modifiers ($\text{Ca}^{2+}, \text{Mg}^{2+}$ depolymerize melts by creating non-bridging oxygens) | [HTML](Q24_Silicate_Melt_Structure_Complete_Guide.html) · [PDF](Q24_Silicate_Melt_Structure_Complete_Guide.pdf) |
+| **Q25** | Petrology & Geochemistry | MORB Petrogenesis & Mantle Reservoirs | N-MORB (Normal MORB derived from depleted upper mantle DMM) | [HTML](Q25_MORB_Petrogenesis_Mantle_Source_Complete_Guide.html) · [PDF](Q25_MORB_Petrogenesis_Mantle_Source_Complete_Guide.pdf) |
 
 ---
 
