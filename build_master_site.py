@@ -1003,7 +1003,7 @@ window.MathJax = {{
     <div class="sidebar-header">
       <span class="brand-badge">DGMS 2019 · Complete Suite</span>
       <h1 class="brand-title">Geology Master Solution</h1>
-      <div class="brand-sub">24 Comprehensive Textbook Guides</div>
+      <div class="brand-sub">{len(q_metadata)} Comprehensive Textbook Guides</div>
     </div>
 
     <div class="sidebar-search">
@@ -1057,7 +1057,7 @@ window.MathJax = {{
 <!-- ── INTERACTIVE CONTROLLER ── -->
 <script>
   let currentQ = 1;
-  const totalQ = 24;
+  const totalQ = {len(q_metadata)};
   let isViewAll = false;
 
   function selectQuestion(qNum) {{
@@ -1090,6 +1090,11 @@ window.MathJax = {{
     if (activeEl) {{
       qBadge.textContent = 'Q' + (qNum < 10 ? '0' + qNum : qNum);
       qTitle.textContent = activeEl.getAttribute('data-topic');
+    }}
+
+    // Update URL hash cleanly
+    if (history.replaceState) {{
+      history.replaceState(null, null, '#q' + qNum);
     }}
 
     // Scroll main window to top
@@ -1151,10 +1156,22 @@ window.MathJax = {{
     if (e.key === 'ArrowRight') nextQuestion();
   }});
 
-  // Initialize on Q1
-  window.addEventListener('DOMContentLoaded', () => {{
+  // Handle URL hash on load and change
+  function initFromHash() {{
+    const hash = window.location.hash;
+    const match = hash.match(/#q(\d+)/);
+    if (match) {{
+      const q = parseInt(match[1]);
+      if (q >= 1 && q <= totalQ) {{
+        selectQuestion(q);
+        return;
+      }}
+    }}
     selectQuestion(1);
-  }});
+  }}
+
+  window.addEventListener('DOMContentLoaded', initFromHash);
+  window.addEventListener('hashchange', initFromHash);
 </script>
 
 </body>
