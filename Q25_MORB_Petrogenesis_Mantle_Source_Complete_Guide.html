@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.25 – Mid-Ocean Ridge Basalts (MORB), Mantle Reservoirs & Incompatible Elements | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Part Banners ── */
+  .part-banner {
+    break-before: page;
+    page-break-before: always;
+  }
+  .first-part {
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .part-banner .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+  }
+  .part-banner .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .part-banner .part-sub {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  /* ── Answer Banner ── */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 18px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 3px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 22px; }
+  .bg-blue   { background: #1d4ed8; }
+  .bg-indigo { background: #4338ca; }
+  .bg-emerald{ background: #047857; }
+  .bg-purple { background: #6d28d9; }
+  .bg-amber  { background: #b45309; }
+  .bg-teal   { background: #0f766e; }
+  .bg-rose   { background: #be123c; }
+
+  /* ── Textbook Quote Boxes ── */
+  .quote-box {
+    background: #f0fdf4;
+    border-left: 5px solid #059669;
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-style: italic;
+    color: #064e3b;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.white {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+    color: #1e3a8a;
+  }
+  .quote-box.winter {
+    background: #faf5ff;
+    border-left-color: #7c3aed;
+    color: #4c1d95;
+  }
+  .quote-box.misra {
+    background: #fffbeb;
+    border-left-color: #d97706;
+    color: #78350f;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 6px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.white .quote-ref { color: #1d4ed8; }
+  .quote-box.winter .quote-ref { color: #6d28d9; }
+  .quote-box.misra .quote-ref { color: #b45309; }
+  .quote-box .quote-ref { color: #047857; }
+
+  /* ── Textbook Image Wrappers ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 380px;
+    height: auto;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #64748b;
+  }
+  .tb-caption strong { color: #0f172a; }
+
+  /* ── Option Analysis Styling ── */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 11px 15px 13px; background: #fafafa; font-size: 13.5px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th {
+    background: #1e293b;
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* ── Probable Questions ── */
+  .pq-list { list-style: none; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 11px 15px;
+    margin-bottom: 11px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 5px;
+    color: #065f46;
+    font-weight: 600;
+  }
+  .pq-exp {
+    margin-top: 3px;
+    color: #475569;
+    font-size: 12.5px;
+  }
+
+  /* ── Chemical Formulas & Highlighting ── */
+  .formula-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    text-align: center;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    color: #0f172a;
+    font-weight: 600;
+  }
+  .highlight { background: #fef08a; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .section-intro { font-size: 14px; color: #334155; margin-bottom: 12px; }
+  ul.body-list { padding-left: 20px; margin-bottom: 10px; }
+  ul.body-list li { margin-bottom: 6px; font-size: 13.5px; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid #cbd5e1;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="badge">DGMS 2019 · Igneous Petrology & Geochemistry · Chapter Masterclass</div>
+    <h1>Mid-Ocean Ridge Basalts (MORB): Petrogenesis, Mantle Reservoirs & Incompatible Trace Element Systematics</h1>
+    <div class="meta">
+      Comprehensive Textbook Study Guide & Complete Worked Solution for DGMS 2019 Exam (Question 25)<br>
+      Grounded in John D. Winter (2010), William M. White (2005/2013), Kula C. Misra (2012), and Hugh Rollinson (1993)
+    </div>
+  </div>
+
+  <!-- ── QUICK SUMMARY / EXECUTIVE OVERVIEW ── -->
+  <div class="card">
+    <div class="card-header bg-slate" style="background:#334155;">📌 Executive Summary & Key Geochemical Takeaways</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Question 25 examines the foundational petrogenetic classification of <strong>Mid-Oceanic Ridge Basalts (MORB)</strong> and the chemical heterogeneity of the sub-oceanic upper mantle. The global ocean ridge system produces the largest volume of magma on Earth (~21 km³/yr), yet these basalts are not chemically uniform:
+      </p>
+      <ul class="body-list">
+        <li><strong>N-MORB ("Normal" MORB):</strong> Derived from a previously depleted, <strong>incompatible element-poor mantle reservoir</strong> known as <span class="highlight">DMM (Depleted MORB Mantle)</span>. Because the continental crust extracted incompatible elements over geologic time, the residue is depleted in light rare earth elements (LREE), Cs, Rb, Ba, Th, U, and K, yielding characteristically low (La/Sm)<sub>N</sub> &lt; 1.0 (positive REE slope) and low K<sub>2</sub>O &lt; 0.10 wt.%.</li>
+        <li><strong>E-MORB / P-MORB ("Enriched" or "Plume" MORB):</strong> Taps an <strong>incompatible element-richer mantle</strong> associated with deep mantle plumes or enriched, fertile mantle domains (e.g., Iceland, Azores, Galapagos), yielding (La/Sm)<sub>N</sub> &gt; 1.8 (negative REE slope) and high K<sub>2</sub>O &gt; 0.10 wt.%.</li>
+        <li><strong>T-MORB ("Transitional" MORB):</strong> Represents intermediate or hybrid compositions ((La/Sm)<sub>N</sub> ≈ 0.8–1.8) generated by mixing between N-MORB and E-MORB parental magmas during ascent and shallow ridge magma chamber processing.</li>
+        <li><strong>VAB (Volcanic Arc Basalts):</strong> Formed exclusively at <strong>subduction zones (convergent plate margins)</strong> via hydrous slab-fluid flux melting; <em>not a mid-ocean ridge basalt at all</em>. Characterized by strong LILE enrichment and prominent HFSE depletion (marked negative Nb–Ta anomaly).</li>
+      </ul>
+      <div class="formula-card" style="background:#ecfdf5; border-color:#10b981; color:#065f46;">
+        Definitive Answer: <strong>(a) N-MORB</strong> is derived from an incompatible element-poor (depleted) mantle.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART I: IN-DEPTH TOPIC DISCUSSION WITH DIRECT TEXTBOOK FIGURES         -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Direct Textbook Analysis</div>
+      <div class="part-sub">Comprehensive exploration of MORB magmatism, trace element fractionation, mantle reservoir isotopic taxonomy, and decompression melting mechanics</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: THE NATURE OF MID-OCEAN RIDGE VOLCANISM -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Mid-Ocean Ridge Basalts (MORB): Tectonic Framework & Primary vs. Derivative Melts</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Mid-ocean ridges represent the divergent boundaries where oceanic lithosphere is created by the upwelling and partial melting of the underlying asthenospheric mantle. Oceanic crust is structured into a classic stratified sequence (recognized on land as <strong>ophiolites</strong>): Layer 1 (pelagic sediment), Layer 2A (pillow basalts), Layer 2B (sheeted dolerite dikes), Layer 3A (isotropic and foliated gabbros), and Layer 3B (layered gabbroic cumulates), underlain by residual mantle peridotite (harzburgite and depleted lherzolite).
+      </p>
+
+      <div class="quote-box winter">
+        "The great quantity and chemical uniformity of MORBs led early workers to conclude they were all primary melts delivered directly to the surface. As discussed above, the vast majority of, if not all, MORBs are now believed to be derivative liquids that have undergone at least some degree of fractional crystallization and magma mixing, as first proposed by O'Hara (1968a, 1977, 1982). Because the composition of most MORBs approximate a low-pressure cotectic for olivine + plagioclase + clinopyroxene + liquid, the fractional crystallization must have taken place near the surface, probably in shallow magma chambers. Primary magmas must be in equilibrium with mantle phases, and therefore must have Mg# around 70... Thus few, if any, of the MORB liquids that reach the surface are primary."
+        <span class="quote-ref">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd ed.), Chapter 13, p. 299–301</span>
+      </div>
+
+      <p style="font-size:13.5px; margin-top:10px;">
+        Because near-surface fractional crystallization modifies the concentrations of major oxides (reducing MgO, raising FeO, and concentrating incompatible elements), petrologists evaluate mantle source variations by comparing primitive samples with equal <strong>Mg#</strong> [where Mg# = 100 × Mg / (Mg + Fe²⁺)] or by using trace element ratios and radiogenic isotopes that do not fractionate during crystal removal.
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE MORB SPECTRUM (N-MORB, E-MORB, T-MORB) -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Chemical Heterogeneity of MORB: N-MORB, E-MORB (P-MORB), and T-MORB</div>
+    <div class="card-body">
+      <p class="section-intro">
+        When primitive MORBs with similar Mg# are compared along ridge segments, substantial differences in incompatible elements (K, Ti, P, LREE) become immediately apparent. This proves that the sub-oceanic mantle is not a single, homogeneous reservoir:
+      </p>
+
+      <div class="quote-box winter">
+        "Figure 10 shows the variation in K₂O with Mg# for the MAR data set of Schilling et al. (1983). Note the tremendous variation in K₂O, even for constant Mg# values between 65 and 70, indicating considerable variation in MORB parental liquids. Similar variations independent of Mg# are found for TiO₂ and P₂O₅... Because K₂O, TiO₂, and P₂O₅ are incompatible elements, their concentration is unlikely to be affected greatly by fractional crystallization processes after separation from the mantle. The concentrations of these elements are more likely to reflect characteristics inherited from the mantle source. This suggests, although subtly, that there is an incompatible-rich and an incompatible-poor source region (at least) for MORB magmas in the mantle beneath the ridges... <strong>We can thus distinguish between N-MORB ('normal' MORB), which taps the depleted, or incompatible-poor mantle, and E-MORB ('enriched' MORB, also called P-MORB for 'plume'), which taps an incompatible-richer mantle.</strong> N-MORBs with Mg# &gt; 65 have K₂O &lt; 0.10, TiO₂ &lt; 1.0, whereas E-MORBs have K₂O &gt; 0.10 and TiO₂ &gt; 1.0 for the same Mg#."
+        <span class="quote-ref">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, Chapter 13, p. 300</span>
+      </div>
+
+      <!-- FIGURE 13-10: K2O vs Mg# -->
+      <div class="tb-figure">
+        <img src="figures_Q25/winter_fig13_10_k2o_mg.png" alt="Winter Figure 13-10: K2O versus Mg# for MORBs">
+        <div class="tb-caption">
+          <strong>Winter Figure 13-10:</strong> Variation in K₂O versus Mg# for Mid-Atlantic Ridge basalts (Schilling et al., 1983). For any given primitive Mg# (e.g., 65–70), K₂O varies from &lt;0.05 wt.% (incompatible-depleted N-MORB) to &gt;1.5 wt.% (incompatible-enriched E-MORB/P-MORB associated with plume plateaus like Iceland and the Azores).
+        </div>
+      </div>
+
+      <h3 style="color:#1e3a8a; margin:16px 0 8px;">Rare Earth Element (REE) Patterns: Distinguishing N-MORB from E-MORB and T-MORB</h3>
+      <p style="font-size:13.5px;">
+        The Rare Earth Elements (REEs, Lanthanides: La to Lu) exhibit progressive decreases in ionic radii from La³⁺ (largest, most incompatible) to Lu³⁺ (smallest, least incompatible). Therefore, chondrite-normalized REE diagrams provide an unmistakable fingerprint of mantle source depletion:
+      </p>
+
+      <ul class="body-list" style="margin-top:8px;">
+        <li><strong>N-MORB:</strong> Exhibits a <em>positive slope</em> in the Light REE (LREE) segment. La is more incompatible than Sm, so prior melt extraction depletes La much more severely than Sm, resulting in <span class="highlight">(La/Sm)<sub>N</sub> &lt; 1.0 (typically &lt; 0.7)</span> and depleted absolute LREE concentrations (~2–4× chondrite).</li>
+        <li><strong>E-MORB (P-MORB):</strong> Exhibits a <em>negative slope</em> in the LREE segment. The source is fertile or enriched, so incompatible LREEs are elevated relative to HREEs, resulting in <span class="highlight">(La/Sm)<sub>N</sub> &gt; 1.8</span> (up to 5×) and LREE concentrations (~50–80× chondrite).</li>
+        <li><strong>T-MORB (Transitional MORB):</strong> Possesses intermediate slopes with <span class="highlight">(La/Sm)<sub>N</sub> between 0.8 and 1.8</span>. Geochemical modeling shows T-MORBs do not represent a third mantle layer, but rather the continuous hybrid mixing between N-MORB and E-MORB melts.</li>
+      </ul>
+
+      <!-- FIGURE 13-11: REE Patterns of MORB -->
+      <div class="tb-figure">
+        <img src="figures_Q25/winter_fig13_11_ree_morb.png" alt="Winter Figure 13-11: REE patterns of N-MORB and E-MORB">
+        <div class="tb-caption">
+          <strong>Winter Figure 13-11:</strong> Chondrite-normalized REE patterns for Mid-Atlantic Ridge basalts (Schilling et al., 1983). Solid triangles represent <strong>N-MORBs</strong> derived from the <em>depleted (incompatible-poor) mantle</em> with a positive slope (depleted in LREE). Open squares represent <strong>E-MORBs</strong> derived from an <em>enriched mantle</em> with a negative slope (enriched in LREE). Notice the identical Heavy REE (HREE) levels, demonstrating that source differences reside in the highly incompatible elements.
+        </div>
+      </div>
+
+      <!-- FIGURE 13-12: La/Sm vs Mg# -->
+      <div class="tb-figure">
+        <img src="figures_Q25/winter_fig13_12_lasm_mg.png" alt="Winter Figure 13-12: La/Sm vs Mg#">
+        <div class="tb-caption">
+          <strong>Winter Figure 13-12:</strong> La/Sm ratio versus Mg# for Mid-Atlantic Ridge MORBs (Schilling et al., 1983). Solid triangles = <strong>N-MORB</strong> ((La/Sm)<sub>N</sub> &lt; 1.0); Open squares = <strong>E-MORB</strong> ((La/Sm)<sub>N</sub> &gt; 1.8); Gray circles = <strong>T-MORB</strong> (Transitional MORB, 1.0 &lt; La/Sm &lt; 1.8) forming a continuous hybrid mixing spectrum.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: EXTENDED SPIDER DIAGRAMS & ORIGIN OF DEPLETED MANTLE -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Incompatible Trace Element Multi-Element Diagrams & The Origin of the Depleted Mantle</div>
+    <div class="card-body">
+      <p class="section-intro">
+        When trace elements are arranged on an <strong>extended rare earth diagram (spidergram)</strong> in order of increasing compatibility during mantle melting (from Cs, Rb, Ba, Th, U on the far left to Y, Yb, Lu on the far right), the incompatible element depletion of MORB is remarkably clear.
+      </p>
+
+      <div class="quote-box white">
+        "Figure 11.18 compares the incompatible element abundances in MORB and typical OIB alkali basalt in a spider diagram, in which elements are ordered according to their incompatibility and normalized to primitive mantle values... <strong>The incompatible element depletion of MORB is apparent.</strong> OIB are generally incompatible-element enriched... In the view of most mantle geochemists and geophysicists, MORB are derived from the asthenosphere, which is that part of the upper mantle that directly underlies the lithosphere and is characterized by relatively low seismic velocities... Oceanic island basalts are thought to be derived from mantle plumes that rise from a thermal boundary layer at either the 660 km discontinuity or the core-mantle boundary."
+        <span class="quote-ref">— William M. White, <em>Geochemistry</em>, Chapter 11 (The Mantle and Core), p. 491</span>
+      </div>
+
+      <!-- WHITE FIGURE 11.18: SPIDER DIAGRAM -->
+      <div class="tb-figure">
+        <img src="figures_Q25/white_fig11_18_spider_morb_oib.png" alt="White Figure 11.18: Incompatible Trace Element Spidergram">
+        <div class="tb-caption">
+          <strong>White Figure 11.18:</strong> Primitive mantle-normalized incompatible trace element spider diagram for Average MORB tholeiite compared with typical OIB alkali basalt (Sun, 1980). Note the profound depletion of MORB in the most incompatible elements (Cs, Rb, Ba, Th, U, Nb, Ta, K) dropping to near or below 1× primitive mantle, in stark contrast to OIB which reaches 50–150× primitive mantle.
+        </div>
+      </div>
+
+      <h3 style="color:#047857; margin:16px 0 8px;">The Hofmann (1988) Complementary Crust–Mantle Paradigm</h3>
+      <p style="font-size:13.5px;">
+        Why is the upper mantle depleted in incompatible elements? The definitive geochemical answer was articulated by Albrecht Hofmann (1988): <strong>the Depleted MORB Mantle (DMM) is the complementary residue left behind by the extraction of the Earth's continental crust</strong>.
+      </p>
+
+      <div class="quote-box misra">
+        "Hofmann (1988) argued that the compositional relationship between continental crust and oceanic crust could be explained by a simple two-stage model of first extracting continental crust from the primitive mantle, and then extracting oceanic crust by remelting of the residual (depleted) mantle... <strong>Fig. 12.15 shows complementary patterns exhibited by concentrations of elements in the bulk continental crust and 'normal-type' mid-ocean ridge basalts (N-MORB)</strong>, both normalized to the estimated values for the primitive mantle (Sun and McDonough, 1989). The continental crust is enriched in incompatible elements... whereas N-MORB is depleted in these elements."
+        <span class="quote-ref">— Kula C. Misra, <em>Introduction to Geochemistry: Principles and Applications</em>, Chapter 12, p. 308</span>
+      </div>
+
+      <!-- MISRA FIGURE 12.15: COMPLEMENTARY CRUST-MORB -->
+      <div class="tb-figure">
+        <img src="figures_Q25/misra_fig12_15_complementary_crust_morb.png" alt="Misra Figure 12.15: Complementary Crust and N-MORB">
+        <div class="tb-caption">
+          <strong>Misra Figure 12.15:</strong> Complementary trace element patterns of bulk continental crust (open circles) and N-MORB (solid circles), normalized to Primitive Mantle (Hofmann, 1988; Sun & McDonough, 1989). Incompatible elements strongly partitioned into the continental crust (yielding enrichment factors of 30–80×) leave the residual upper mantle severely depleted, directly explaining why N-MORB has normalized ratios &lt; 1 for Rb, Ba, and Th.
+        </div>
+      </div>
+
+      <!-- WHITE FIGURE 11.21: THREE RESERVOIR MODEL -->
+      <div class="tb-figure">
+        <img src="figures_Q25/white_fig11_21_three_reservoir.png" alt="White Figure 11.21: Three Reservoir Mantle Model">
+        <div class="tb-caption">
+          <strong>White Figure 11.21:</strong> The Three-Reservoir Model of the Earth's mantle and crust (DePaolo, 1980; White, 2005). The extraction of the continental crust (enriched in incompatible elements) leaves the <strong>Depleted Mantle</strong> (source of MORB, characterized by ε<sub>Nd</sub> = +10 and low ⁸⁷Sr/⁸⁶Sr), underlain by an undepleted Primitive Mantle or deep plume source.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: RADIOGENIC ISOTOPE SYSTEMATICS -->
+  <div class="card">
+    <div class="card-header bg-purple">4. Radiogenic Isotope Fingerprinting of Mantle Reservoirs (DMM, BSE, HIMU, EMI, EMII)</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Because radiogenic isotopic ratios (e.g., ⁸⁷Sr/⁸⁶Sr, ¹⁴³Nd/¹⁴⁴Nd) do not change during partial melting or fractional crystallization, they reflect the time-integrated parent/daughter ratio of the mantle source over hundreds of millions of years:
+      </p>
+
+      <ul class="body-list">
+        <li><strong>Rb–Sr System:</strong> Rb is more incompatible than Sr (D<sub>Rb</sub> &lt; D<sub>Sr</sub>). Extraction of continental crust depleted the upper mantle in Rb, leaving a low Rb/Sr ratio. Over 2–3 billion years, little radiogenic ⁸⁷Sr grew, so <strong>DMM has very low ⁸⁷Sr/⁸⁶Sr (&lt; 0.7025)</strong>.</li>
+        <li><strong>Sm–Nd System:</strong> Nd is more incompatible than Sm (D<sub>Nd</sub> &lt; D<sub>Sm</sub>). Continental crust extraction extracted more Nd than Sm, leaving the residual upper mantle with an <em>elevated Sm/Nd ratio</em>. Decay of ¹⁴⁷Sm to ¹⁴³Nd produced high radiogenic ¹⁴³Nd, so <strong>DMM has high ¹⁴³Nd/¹⁴⁴Nd (&gt; 0.5131) and positive ε<sub>Nd</sub> (+10 to +12)</strong>.</li>
+      </ul>
+
+      <!-- FIGURE 13-13: SR-ND ISOTOPES -->
+      <div class="tb-figure">
+        <img src="figures_Q25/winter_fig13_13_sr_nd.png" alt="Winter Figure 13-13: Sr and Nd isotopic ratios for MORBs">
+        <div class="tb-caption">
+          <strong>Winter Figure 13-13:</strong> ¹⁴³Nd/¹⁴⁴Nd versus ⁸⁷Sr/⁸⁶Sr for Atlantic and Pacific N-MORBs compared with E-MORBs (Winter, 2010; Ito et al., 1987). N-MORB forms a tight cluster in the upper-left quadrant (high ¹⁴³Nd/¹⁴⁴Nd &gt; 0.5130, low ⁸⁷Sr/⁸⁶Sr &lt; 0.7032), characteristic of long-term incompatible element depletion. E-MORBs extend downward and rightward toward Bulk Earth (BSE) and enriched mantle components.
+        </div>
+      </div>
+
+      <!-- WINTER TABLE 14-5: MANTLE RESERVOIRS -->
+      <div class="tb-figure">
+        <img src="figures_Q25/winter_table14_5_mantle_reservoirs.png" alt="Winter Table 14-5: Mantle Reservoirs Isotopic Ratios">
+        <div class="tb-caption">
+          <strong>Winter Table 14-5:</strong> Approximate isotopic ratios of principal mantle reservoirs (Rollinson, 1993; Winter, 2010). Note that <strong>DM / DMM (Depleted Mantle)</strong> exhibits the lowest ⁸⁷Sr/⁸⁶Sr (0.7015–0.7025) and highest ¹⁴³Nd/¹⁴⁴Nd (0.5133–0.5136), defining the source of <strong>N-MORB</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: DECOMPRESSION MELTING & PLUME-RIDGE DYNAMICS -->
+  <div class="card">
+    <div class="card-header bg-teal">5. Decompression Melting Mechanics & Plume–Ridge Interaction</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Melting beneath mid-ocean ridges is driven by <strong>adiabatic decompression</strong> of upwelling mantle peridotite (lherzolite/harzburgite). Because the dry peridotite solidus has a steeper dP/dT slope than the mantle adiabat (~0.3°C/km), upward flow causes the mantle to cross its solidus at depths of ~60–80 km (P ≈ 1.5–2.5 GPa):
+      </p>
+
+      <!-- WINTER FIGURE 13-14: DECOMPRESSION MELTING -->
+      <div class="tb-figure">
+        <img src="figures_Q25/winter_fig13_14_decompression_melting.png" alt="Winter Figure 13-14: Mantle Decompression Melting Model">
+        <div class="tb-caption">
+          <strong>Winter Figure 13-14:</strong> Schematic model for the rise and decompression melting of different mantle source regions beneath mid-ocean ridges (after Zindler et al., 1984; Wilson, 1989; Winter, 2010). The shallow, convecting upper mantle above 660 km consists of <strong>Depleted Mantle (source of N-MORB)</strong>. Deep mantle plumes ascending from the lower mantle tap <strong>Enriched Mantle (source of E-MORB/P-MORB)</strong>. Where plumes interact with spreading ridges (e.g., Iceland on MAR), melt mixing produces <strong>T-MORB</strong>.
+        </div>
+      </div>
+
+      <p style="font-size:13.5px; margin-top:10px;">
+        Melting proceeds by <em>incremental polybaric near-fractional melting</em>, where small melt fractions (~1%) segregate continuously as the mantle rises through a triangular melting regime (Langmuir et al., 1992), focusing into the axial magma chamber to form the oceanic crust.
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION 6: CONTRAST WITH VOLCANIC ARC BASALTS (VAB) -->
+  <div class="card">
+    <div class="card-header bg-rose">6. Distinct Petrogenetic Setting of Volcanic Arc Basalts (VAB)</div>
+    <div class="card-body">
+      <p class="section-intro">
+        Option (d) in the question refers to <strong>VAB (Volcanic Arc Basalts)</strong>. It is essential to recognize that VABs are completely distinct from Mid-Ocean Ridge Basalts in tectonic regime, melting mechanism, and geochemical signature:
+      </p>
+
+      <ul class="body-list">
+        <li><strong>Tectonic Setting:</strong> VAB erupts at convergent plate boundaries (island arcs and active continental margins above subduction zones), whereas MORB erupts at divergent spreading ridges.</li>
+        <li><strong>Melting Trigger:</strong> MORB is generated by <em>dry adiabatic decompression melting</em>. VAB is generated by <em>hydrous flux melting</em>: aqueous fluids released by the dehydration of subducting serpentinite, altered basalts, and pelagic sediments lower the solidus of the overlying mantle wedge.</li>
+        <li><strong>Geochemical Signature:</strong> Subduction fluids selectively transport soluble <strong>Large Ion Lithophile Elements (LILE: Cs, Rb, Ba, Sr, Pb)</strong> into the mantle wedge, while <strong>High Field Strength Elements (HFSE: Nb, Ta, Zr, Hf, Ti)</strong> are retained in residual refractory titanate phases (such as rutile) in the subducting slab. This produces the universally diagnostic <span class="highlight">negative Nb–Ta anomaly</span> and <span class="highlight">positive Pb anomaly</span> in VAB, which is entirely absent in MORB.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART II: DGMS EXAMINATION QUESTION & WORKED SOLUTION                   -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">DGMS 2019 Examination: Question & Worked Solution</div>
+      <div class="part-sub">Exhaustive option-by-option critical appraisal and definitive textbook-grounded answer</div>
+    </div>
+  </div>
+
+  <!-- ORIGINAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-blue">❓ Original Question — DGMS 2019 (Junior Scientific Officer)</div>
+    <div class="card-body">
+      <p style="font-size:15.5px; font-weight:700; margin-bottom:14px; color:#0f172a;">
+        Q.25. Which one of the following Mid-Oceanic Ridge Basalts (MORB) is derived from an incompatible element-poor mantle?
+      </p>
+      <div style="display:flex; flex-direction:column; gap:8px; padding-left:4px;">
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #10b981; font-weight:600;">
+          (a) N-MORB
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (b) P-MORB
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (c) T-MORB
+        </div>
+        <div style="padding:9px 15px; background:#f8fafc; border-radius:6px; font-size:14px; border-left:4px solid #94a3b8;">
+          (d) VAB
+        </div>
+      </div>
+      <div style="margin-top:14px; font-size:12px; color:#64748b;">
+        <em>Source: DGMS Junior Scientific Officer Exam 2019, Question 25. Reference Screenshot: <code>Screenshot from 2026-10-12 23-14-41.png</code>.</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEFINITIVE ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✓</div>
+    <div>
+      <div class="text">CORRECT OPTION: (a) N-MORB</div>
+      <div class="sub">N-MORB ("Normal" MORB) is derived from the Depleted MORB Mantle (DMM), an incompatible element-poor upper mantle reservoir left behind after ancient extraction of continental crust.</div>
+    </div>
+  </div>
+
+  <!-- OPTION-BY-OPTION CRITICAL ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-emerald">🔬 Exhaustive Option-by-Option Critical Analysis</div>
+    <div class="card-body">
+
+      <!-- OPTION A -->
+      <div class="option correct">
+        <div class="option-header">
+          <span>(a) N-MORB (Normal Mid-Ocean Ridge Basalt)</span>
+          <span class="tag correct">CORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is correct:</strong> "N" stands for <em>Normal</em>. N-MORB constitutes the vast majority (~85%) of volcanic rock generated along oceanic spreading ridges globally. It is derived by adiabatic decompression partial melting of the <strong>Depleted MORB Mantle (DMM)</strong>—the convecting upper asthenospheric mantle above ~660 km depth.
+          </p>
+          <ul style="margin:8px 0 8px 18px; line-height:1.5;">
+            <li><strong>Trace Element Depletion:</strong> The DMM experienced previous melt extraction events (most notably the progressive formation of the continental crust throughout the Archean and Proterozoic). Because incompatible elements preferentially enter the liquid phase during melting, the residual DMM was left severely depleted in highly incompatible trace elements (Cs, Rb, Ba, Th, U, Nb, Ta, K, La, Ce).</li>
+            <li><strong>Rare Earth Fingerprint:</strong> N-MORB possesses a characteristic <em>positive LREE slope</em> on chondrite-normalized diagrams, with normalized <strong>(La/Sm)<sub>N</sub> &lt; 1.0 (typically &lt; 0.7)</strong>, demonstrating that the source had already lost its light rare earths.</li>
+            <li><strong>Isotopic Depletion:</strong> High time-integrated Sm/Nd and low Rb/Sr in the depleted mantle result in highly depleted isotopic compositions: low ⁸⁷Sr/⁸⁶Sr (&lt; 0.7025) and high ¹⁴³Nd/¹⁴⁴Nd (&gt; 0.5131, ε<sub>Nd</sub> = +10 to +12).</li>
+          </ul>
+          <p>
+            Winter (2010, p. 300) explicitly writes: <em>"We can thus distinguish between N-MORB ('normal' MORB), which taps the depleted, or incompatible-poor mantle, and E-MORB ('enriched' MORB, also called P-MORB for 'plume'), which taps an incompatible-richer mantle."</em> Thus, (a) is unequivocally the correct answer.
+          </p>
+        </div>
+      </div>
+
+      <!-- OPTION B -->
+      <div class="option wrong">
+        <div class="option-header">
+          <span>(b) P-MORB (Plume-type Mid-Ocean Ridge Basalt / E-MORB)</span>
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> "P" stands for <em>Plume</em> (also termed <strong>E-MORB</strong> for <em>Enriched</em> MORB). P-MORBs occur along ridge segments that are situated near or directly influenced by deep-seated mantle plumes and hotspots (e.g., the Mid-Atlantic Ridge near Iceland, the Azores, or Tristan da Cunha, and the Galapagos Spreading Center).
+          </p>
+          <p style="margin-top:6px;">
+            P-MORBs are derived from an <strong>incompatible element-rich (fertile or metasomatized) mantle source</strong>, not an incompatible element-poor mantle. They have elevated concentrations of K₂O (&gt;0.10 wt.%), TiO₂ (&gt;1.0 wt.%), P₂O₅, and enriched LREE profiles with negative slopes where <strong>(La/Sm)<sub>N</sub> &gt; 1.8</strong>. Their radiogenic isotopes plot toward enriched reservoirs (higher ⁸⁷Sr/⁸⁶Sr ~ 0.7030–0.7045 and lower ¹⁴³Nd/¹⁴⁴Nd). Therefore, P-MORB represents the opposite of an incompatible element-poor melt.
+          </p>
+        </div>
+      </div>
+
+      <!-- OPTION C -->
+      <div class="option wrong">
+        <div class="option-header">
+          <span>(c) T-MORB (Transitional Mid-Ocean Ridge Basalt)</span>
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> "T" stands for <em>Transitional</em>. T-MORBs exhibit geochemical characteristics intermediate between N-MORB and E-MORB/P-MORB, with <strong>(La/Sm)<sub>N</sub> ratios typically ranging between 0.8 and 1.8</strong>.
+          </p>
+          <p style="margin-top:6px;">
+            As documented by Schilling et al. (1983) and Winter (2010, p. 301), chemical and isotopic data demonstrate that T-MORBs do not represent a unique, distinct third mantle layer, but are formed by the <strong>mixing of depleted N-MORB melts with enriched E-MORB plume melts</strong> during magma ascent and storage in axial magma chambers. Because T-MORBs involve significant contributions from the enriched mantle component, they are not derived from a purely incompatible element-poor mantle source.
+          </p>
+        </div>
+      </div>
+
+      <!-- OPTION D -->
+      <div class="option wrong">
+        <div class="option-header">
+          <span>(d) VAB (Volcanic Arc Basalts)</span>
+          <span class="tag wrong">INCORRECT</span>
+        </div>
+        <div class="option-body">
+          <p>
+            <strong>Why it is incorrect:</strong> VAB stands for <em>Volcanic Arc Basalts</em>. This option is a double category error:
+          </p>
+          <ol style="margin:6px 0 6px 18px; line-height:1.5;">
+            <li><strong>Not a MORB:</strong> VAB is erupted at <strong>convergent plate boundaries (subduction zones)</strong>, such as island arcs and continental volcanic arcs (e.g., the Marianas, Aleutians, Andes). The question specifically asks for a <em>Mid-Oceanic Ridge Basalt (MORB)</em>.</li>
+            <li><strong>Not incompatible element-poor:</strong> VABs are strongly enriched in Large Ion Lithophile Elements (LILE: Cs, Rb, Ba, Sr, Pb) and LREE derived from hydrous slab fluids fluxing the mantle wedge. Furthermore, they display a profound depletion in HFSE (Nb, Ta, Ti), producing the classic subduction-zone negative Nb–Ta anomaly.</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS TABLES & HIGH-YIELD PRACTICE QUESTIONS             -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">Comprehensive diagnostic reference tables and 8 curated exam questions for DGMS, UPSC GSI, GATE & IIT-JAM</div>
+    </div>
+  </div>
+
+  <!-- SYNTHESIS TABLES -->
+  <div class="card">
+    <div class="card-header bg-amber">📊 Master Reference Tables: Oceanic Basalt Systematics & Mantle Reservoirs</div>
+    <div class="card-body">
+
+      <h4 style="margin-bottom:8px; color:#92400e;">Table 1: Comprehensive Comparison of MORB Varieties and Oceanic Island Basalts (OIB)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Geochemical Class</th>
+            <th>Mantle Source Reservoir</th>
+            <th>(La/Sm)<sub>N</sub></th>
+            <th>REE Slope</th>
+            <th>K₂O (wt.% at Mg# 65)</th>
+            <th>⁸⁷Sr/⁸⁶Sr</th>
+            <th>¹⁴³Nd/¹⁴⁴Nd</th>
+            <th>Tectonic Setting</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>N-MORB</strong> (Normal)</td>
+            <td>DMM (Depleted MORB Mantle)</td>
+            <td>&lt; 1.0 (0.4–0.8)</td>
+            <td>Positive (LREE depleted)</td>
+            <td>&lt; 0.10</td>
+            <td>0.7020 – 0.7028</td>
+            <td>&gt; 0.5131 (ε<sub>Nd</sub> +10 to +12)</td>
+            <td>Spreading ridges away from plumes</td>
+          </tr>
+          <tr>
+            <td><strong>T-MORB</strong> (Transitional)</td>
+            <td>Hybrid / Mixed (DMM + Enriched Plume)</td>
+            <td>0.8 – 1.8</td>
+            <td>Flat to slightly sloped</td>
+            <td>0.10 – 0.25</td>
+            <td>0.7027 – 0.7032</td>
+            <td>0.5129 – 0.5131 (ε<sub>Nd</sub> +6 to +9)</td>
+            <td>Transition zones along ridge axes</td>
+          </tr>
+          <tr>
+            <td><strong>E-MORB / P-MORB</strong> (Enriched / Plume)</td>
+            <td>Enriched Mantle / Plume Diapir</td>
+            <td>&gt; 1.8 (up to 5.0)</td>
+            <td>Negative (LREE enriched)</td>
+            <td>&gt; 0.15 (up to 1.5)</td>
+            <td>0.7030 – 0.7045</td>
+            <td>0.5127 – 0.5129 (ε<sub>Nd</sub> +2 to +6)</td>
+            <td>Ridge-plume intersections (Iceland, Azores)</td>
+          </tr>
+          <tr>
+            <td><strong>OIB</strong> (Ocean Island Basalt)</td>
+            <td>Deep Plumes (HIMU, EMI, EMII, FOZO)</td>
+            <td>&gt; 2.0 (up to 10.0)</td>
+            <td>Steep negative</td>
+            <td>0.5 – 3.5</td>
+            <td>0.7030 – 0.7070+</td>
+            <td>0.5124 – 0.5130 (ε<sub>Nd</sub> -2 to +8)</td>
+            <td>Intraplate oceanic hotspots (Hawaii, Samoa)</td>
+          </tr>
+          <tr>
+            <td><strong>VAB</strong> (Volcanic Arc Basalt)</td>
+            <td>Subduction-fluid fluxed mantle wedge</td>
+            <td>Variable (high LILE/HFSE)</td>
+            <td>Negative Nb-Ta anomaly</td>
+            <td>0.3 – 2.0</td>
+            <td>0.7035 – 0.7060+</td>
+            <td>0.5127 – 0.5130</td>
+            <td>Convergent subduction boundaries</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:18px 0 8px; color:#92400e;">Table 2: Key Sub-Oceanic Mantle Reservoirs Defined by Radiogenic Isotopes (Zindler & Hart, 1986)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Reservoir Code</th>
+            <th>Full Name</th>
+            <th>⁸⁷Sr/⁸⁶Sr</th>
+            <th>¹⁴³Nd/¹⁴⁴Nd</th>
+            <th>Proposed Petrogenetic Origin & Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>DMM (DM)</strong></td>
+            <td>Depleted MORB Mantle</td>
+            <td>0.7015 – 0.7025</td>
+            <td>0.5133 – 0.5136</td>
+            <td>Residue left after extraction of the continental crust; source of <strong>N-MORB</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>BSE (PM)</strong></td>
+            <td>Bulk Silicate Earth / Primitive Mantle</td>
+            <td>~0.7045 – 0.7052</td>
+            <td>0.51264 (ε<sub>Nd</sub> = 0)</td>
+            <td>Theoretical pristine composition of the silicate Earth before crust-mantle differentiation.</td>
+          </tr>
+          <tr>
+            <td><strong>HIMU</strong></td>
+            <td>High-µ (High ²³⁸U/²⁰⁴Pb)</td>
+            <td>0.7028 – 0.7035</td>
+            <td>0.5128 – 0.5130</td>
+            <td>Subducted ancient altered oceanic crust where hydrothermal alteration removed Pb relative to U.</td>
+          </tr>
+          <tr>
+            <td><strong>EMI</strong></td>
+            <td>Enriched Mantle Type I</td>
+            <td>~0.7050</td>
+            <td>&lt; 0.5124</td>
+            <td>Recycled pelagic sediments or subcontinental lithospheric mantle (SCLM) delamination.</td>
+          </tr>
+          <tr>
+            <td><strong>EMII</strong></td>
+            <td>Enriched Mantle Type II</td>
+            <td>&gt; 0.7070</td>
+            <td>0.5120 – 0.5124</td>
+            <td>Recycled upper continental crust or terrigenous sediments carrying high Rb/Sr.</td>
+          </tr>
+          <tr>
+            <td><strong>FOZO / PREMA</strong></td>
+            <td>Focal Zone / Prevalent Mantle</td>
+            <td>0.7030 – 0.7040</td>
+            <td>0.5128 – 0.5130</td>
+            <td>Ubiquitous common mixing component in deep mantle plumes.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:18px 0 8px; color:#92400e;">Table 3: Diagnostic Trace Element Ratios for Tectonic Discrimination of Basalts</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Ratio</th>
+            <th>N-MORB</th>
+            <th>E-MORB</th>
+            <th>OIB</th>
+            <th>Volcanic Arc Basalts (VAB)</th>
+            <th>Continental Crust</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>(La/Sm)<sub>N</sub></strong></td>
+            <td>&lt; 1.0 (0.4–0.8)</td>
+            <td>&gt; 1.8</td>
+            <td>&gt; 2.5</td>
+            <td>Variable (1.2–3.0)</td>
+            <td>3.0 – 5.0</td>
+          </tr>
+          <tr>
+            <td><strong>Nb / U</strong></td>
+            <td>47 ± 10</td>
+            <td>47 ± 10</td>
+            <td>47 ± 10</td>
+            <td>&lt; 10 (pronounced deficit)</td>
+            <td>~10</td>
+          </tr>
+          <tr>
+            <td><strong>Ce / Pb</strong></td>
+            <td>25 ± 5</td>
+            <td>25 ± 5</td>
+            <td>25 ± 5</td>
+            <td>&lt; 5 (Pb enrichment)</td>
+            <td>~4</td>
+          </tr>
+          <tr>
+            <td><strong>Zr / Nb</strong></td>
+            <td>&gt; 30 (typically 30–50)</td>
+            <td>10 – 20</td>
+            <td>&lt; 10 (typically 4–8)</td>
+            <td>Variable</td>
+            <td>~10</td>
+          </tr>
+          <tr>
+            <td><strong>Ba / Nb</strong></td>
+            <td>&lt; 5</td>
+            <td>~8</td>
+            <td>~10</td>
+            <td>&gt; 30 (up to 100+)</td>
+            <td>~50</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS -->
+  <div class="card">
+    <div class="card-header bg-blue">🎯 High-Yield Curated Practice Questions (DGMS, UPSC GSI, GATE & IIT-JAM)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+
+        <!-- Q1 -->
+        <li>
+          <strong>Practice Question 1 (UPSC Geologist 2022 Pattern):</strong><br>
+          Which of the following rare earth element ratios is globally utilized as the primary diagnostic slope index to discriminate between LREE-depleted N-MORB and LREE-enriched E-MORB?
+          <div class="pq-ans">Answer: (La/Sm)<sub>N</sub> (Chondrite-normalized Lanthanum-to-Samarium ratio).</div>
+          <div class="pq-exp"><strong>Explanation:</strong> Because HREEs (Tb to Lu) have virtually overlapping, flat concentrations in both N-MORB and E-MORB (controlled by garnet/spinel melting physics), the overall slope ratio (La/Lu)<sub>N</sub> or (La/Yb)<sub>N</sub> can be misleading if residual garnet is involved. In contrast, (La/Sm)<sub>N</sub> directly measures the slope across the light rare earth elements where incompatible element fractionation is most pronounced: (La/Sm)<sub>N</sub> &lt; 1.0 defines N-MORB, while (La/Sm)<sub>N</sub> &gt; 1.8 defines E-MORB.</div>
+        </li>
+
+        <!-- Q2 -->
+        <li>
+          <strong>Practice Question 2 (GATE Geology 2021 Pattern):</strong><br>
+          In a diagram of ¹⁴³Nd/¹⁴⁴Nd versus ⁸⁷Sr/⁸⁶Sr, the Depleted MORB Mantle (DMM) source plots in which quadrant relative to the Bulk Silicate Earth (BSE)?
+          <div class="pq-ans">Answer: Upper-left quadrant (high ¹⁴³Nd/¹⁴⁴Nd, low ⁸⁷Sr/⁸⁶Sr).</div>
+          <div class="pq-exp"><strong>Explanation:</strong> Continental crust formation extracted incompatible elements over 3.8+ Ga, depleting the upper mantle in Rb relative to Sr (low Rb/Sr) and in Nd relative to Sm (high Sm/Nd). Over geologic time, low Rb/Sr yielded minimal ⁸⁷Sr accumulation (⁸⁷Sr/⁸⁶Sr &lt; 0.7025), whereas high Sm/Nd yielded substantial ¹⁴³Nd accumulation (¹⁴³Nd/¹⁴⁴Nd &gt; 0.5131, ε<sub>Nd</sub> = +10 to +12).</div>
+        </li>
+
+        <!-- Q3 -->
+        <li>
+          <strong>Practice Question 3 (IIT-JAM Geology Pattern):</strong><br>
+          According to the complementary crust–mantle evolution model of Hofmann (1988), which planetary process was primarily responsible for depleting the N-MORB mantle source in incompatible elements?
+          <div class="pq-ans">Answer: The irreversible, episodic extraction of the continental crust from the primitive mantle.</div>
+          <div class="pq-exp"><strong>Explanation:</strong> Incompatible trace elements (Cs, Rb, Ba, Th, U, K, LREE) have bulk solid/liquid distribution coefficients D &lt;&lt; 1. During partial melting, they strongly partition into the magma. Because low-density, buoyant felsic continental crust cannot be subducted back into the convective mantle, its growth sequestered these elements, leaving the upper convecting asthenosphere as a depleted, incompatible-poor residue (DMM).</div>
+        </li>
+
+        <!-- Q4 -->
+        <li>
+          <strong>Practice Question 4 (UPSC GSI Mains Analytical Question):</strong><br>
+          Explain how Volcanic Arc Basalts (VAB) can be distinguished from Mid-Ocean Ridge Basalts (MORB) on multi-element spidergrams using High Field Strength Elements (HFSE).
+          <div class="pq-ans">Answer: Presence of a marked negative Nb–Ta anomaly and positive Pb anomaly in VAB.</div>
+          <div class="pq-exp"><strong>Explanation:</strong> In subduction zones, aqueous fluids from the slab transport water-soluble LILE (Cs, Rb, Ba, Sr, Pb) into the mantle wedge, but cannot transport insoluble HFSE (Nb, Ta, Zr, Hf, Ti), which remain bound in residual titanate minerals (rutile) in the slab. Consequently, VAB displays very high Ba/Nb (&gt;30) and low Nb/U (&lt;10), manifesting as a sharp trough at Nb–Ta on spidergrams. In MORBs (both N-MORB and E-MORB), no negative Nb–Ta anomaly exists (Nb/U ≈ 47).</div>
+        </li>
+
+        <!-- Q5 -->
+        <li>
+          <strong>Practice Question 5 (DGMS Mining / Geology 2018 Pattern):</strong><br>
+          What is the primary physical mechanism of mantle melting that produces parental magmas at mid-ocean spreading centers?
+          <div class="pq-ans">Answer: Decompression melting (adiabatic upwelling of mantle peridotite).</div>
+          <div class="pq-exp"><strong>Explanation:</strong> Plates pull apart at divergent boundaries, causing underlying asthenospheric mantle peridotite to ascend passively. Because the ascent is rapid relative to conductive thermal loss, the path is adiabatic (~0.3°C/km). The solidus slope (dP/dT) of peridotite is much steeper than the adiabat, so the upwelling rock intersects the dry solidus at depths between 60 and 80 km, generating basaltic melts without any external heat or water addition.</div>
+        </li>
+
+        <!-- Q6 -->
+        <li>
+          <strong>Practice Question 6 (Petrology Competitive Exam):</strong><br>
+          Along the Mid-Atlantic Ridge near Iceland, basalts with flat REE patterns and intermediate incompatible element abundances ((La/Sm)<sub>N</sub> ≈ 1.0–1.6) are classified as:
+          <div class="pq-ans">Answer: T-MORB (Transitional MORB).</div>
+          <div class="pq-exp"><strong>Explanation:</strong> Where deep mantle plumes impinge on oceanic spreading centers (e.g., the Iceland hotspot on the Mid-Atlantic Ridge), ascending enriched plume diapir melts mix with ambient depleted N-MORB melts within sub-ridge melting regimes and shallow magma chambers, producing hybrid transitional lavas termed T-MORBs.</div>
+        </li>
+
+        <!-- Q7 -->
+        <li>
+          <strong>Practice Question 7 (Isotope Geochemistry Specialist Exam):</strong><br>
+          Why do both N-MORB and OIB share identical canonical ratios of Nb/U = 47 ± 10 and Ce/Pb = 25 ± 5, despite vastly different absolute abundances?
+          <div class="pq-ans">Answer: Because Nb and U (and Ce and Pb) have identical bulk partition coefficients during purely oceanic mantle melting and differentiation.</div>
+          <div class="pq-exp"><strong>Explanation:</strong> Hofmann et al. (1986) demonstrated that D<sub>Nb</sub> ≈ D<sub>U</sub> and D<sub>Ce</sub> ≈ D<sub>Pb</sub> during igneous processes in the oceanic mantle. Fractionation only occurs when continental crust or subduction fluids are involved, where aqueous fluids fractionate Pb from Ce (producing Ce/Pb &lt; 5 in arcs and crust) and rutile fractionates Nb from U (producing Nb/U &lt; 10 in continental crust).</div>
+        </li>
+
+        <!-- Q8 -->
+        <li>
+          <strong>Practice Question 8 (Advanced Igneous Petrology):</strong><br>
+          During fractional crystallization of a parental MORB magma in a shallow crustal axial magma chamber, which pair of trace elements will decrease rapidly in the liquid?
+          <div class="pq-ans">Answer: Nickel (Ni) and Chromium (Cr).</div>
+          <div class="pq-exp"><strong>Explanation:</strong> Ni has a very high partition coefficient in olivine (D<sub>Ni</sub><sup>ol/liq</sup> &gt;&gt; 1, typically 5–15), and Cr is strongly compatible in magnesiochromite and clinopyroxene (D<sub>Cr</sub> &gt;&gt; 1). Consequently, early fractional crystallization of olivine + spinel immediately depletes the derivative MORB melt in Ni and Cr, while incompatible elements (Zr, Ti, Y, K) steadily increase.</div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <strong>DGMS 2019 Complete Petrology & Geochemistry Series · Question 25 Master Guide</strong><br>
+    Compiled for DGMS, UPSC Geologist, GATE & IIT-JAM Candidates · Department of Geology & Mines Exam Architecture<br>
+    Grounded in Winter (2010), White (2005), Misra (2012), Hofmann (1988), and Schilling et al. (1983).
+  </div>
+
+</div>
+</body>
+</html>

@@ -243,10 +243,20 @@ q_metadata = [
         "question": "In the atomic structure of silicate melts, Ca2+ and Mg2+ ions are categorized as:",
         "correct": "Network modifiers (Depolymerize melt framework by breaking Si-O-Si bridging bonds into non-bridging oxygens)",
         "icon": "⚛️"
+    },
+    {
+        "q": 25,
+        "file": "Q25_MORB_Petrogenesis_Mantle_Source_Complete_Guide.html",
+        "pdf": "Q25_MORB_Petrogenesis_Mantle_Source_Complete_Guide.pdf",
+        "section": "Igneous Petrology & Geochemistry",
+        "topic": "MORB Petrogenesis & Mantle Reservoir Systematics",
+        "question": "Which one of the following Mid-Oceanic Ridge Basalts (MORB) is derived from an incompatible element-poor mantle?",
+        "correct": "N-MORB (Normal MORB derived from depleted upper mantle DMM with (La/Sm)_N < 1, depleted in incompatible elements)",
+        "icon": "🌊"
     }
 ]
 
-print("Processing 24 HTML files and extracting inner contents...")
+print("Processing 25 HTML files and extracting inner contents...")
 extracted_content = []
 
 for meta in q_metadata:
