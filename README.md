@@ -83,6 +83,7 @@ Every question module follows an uncompromising 3-tier academic structure:
 | **Q28** | Sedimentology | Coastal Hydrodynamics & Shoreface Zonation | Swash zone → surf zone → breaker zone → shoaling zone (Landward beach to seaward shoreface) | [HTML](Q28_Wave_Dominated_Coastline_Zonation_Complete_Guide.html) · [PDF](Q28_Wave_Dominated_Coastline_Zonation_Complete_Guide.pdf) |
 | **Q29** | Sedimentology | Deltaic Environments & Subaqueous Facies | Delta front (Uppermost subaqueous delta, water depth down to ~10 m; mouth bar sands) | [HTML](Q29_Deltaic_Zonation_Delta_Front_Complete_Guide.html) · [PDF](Q29_Deltaic_Zonation_Delta_Front_Complete_Guide.pdf) |
 | **Q30** | Sedimentology | Hydrodynamics & Bedform Succession | Ripple ➔ Dune ➔ Parting lineation ➔ Flute mark (Lower flow regime to turbulent sole scour) | [HTML](Q30_Bedform_Succession_Bed_Shear_Complete_Guide.html) · [PDF](Q30_Bedform_Succession_Bed_Shear_Complete_Guide.pdf) |
+| **Q31** | Seismotectonics | Deep-Focus Earthquakes & Subduction Zones | Benioff zone (Wadati-Benioff subducting slab down to ~670 km) | [HTML](Q31_Benioff_Zone_Deep_Earthquakes_Complete_Guide.html) · [PDF](Q31_Benioff_Zone_Deep_Earthquakes_Complete_Guide.pdf) |
 
 ---
 

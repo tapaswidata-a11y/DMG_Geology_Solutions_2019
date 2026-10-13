@@ -303,6 +303,16 @@ q_metadata = [
         "question": "Which one of the following sequences of sedimentary structures is correct in terms of increasing bed shear?",
         "correct": "Ripple, dune, parting lineation, flute mark (Lower flow regime to turbulent sole scour)",
         "icon": "🌊"
+    },
+    {
+        "q": 31,
+        "file": "Q31_Benioff_Zone_Deep_Earthquakes_Complete_Guide.html",
+        "pdf": "Q31_Benioff_Zone_Deep_Earthquakes_Complete_Guide.pdf",
+        "section": "Seismology & Earth Interior",
+        "topic": "Seismotectonics: Deep-Focus Earthquakes & Wadati-Benioff Zone",
+        "question": "The deep-focused earthquakes commonly originate along:",
+        "correct": "Benioff zone (Dipping subducting lithospheric slab down to ~670 km)",
+        "icon": "⚡"
     }
 ]
 

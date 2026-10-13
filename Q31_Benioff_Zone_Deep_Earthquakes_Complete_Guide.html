@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.31 – Seismology & Tectonics: Deep-Focus Earthquakes and the Wadati-Benioff Zone | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(22,163,74,0.25);
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 • SECTION G • QUESTION 31</div>
+    <h1>Global Seismology & Tectonics: Earthquake Focal Depths & The Wadati-Benioff Zone</h1>
+    <div class="meta">Directorate General of Mines Safety (DGMS) Junior Scientific Officer Examination 2019 | Seismotectonics & Plate Margins Guide</div>
+  </div>
+
+  <!-- Question & Options Card -->
+  <div class="card">
+    <h2>📋 Question Statement</h2>
+    <div class="q-box">
+      Q.31. The deep-focused earthquakes commonly originate along:
+    </div>
+    <div class="options-grid">
+      <div class="opt-item incorrect">
+        <span class="opt-letter">a</span>
+        <span>(a) Mid-oceanic ridge</span>
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">b</span>
+        <span>(b) Continental rift</span>
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">c</span>
+        <span>(c) Transform fault</span>
+      </div>
+      <div class="opt-item correct">
+        <span class="opt-letter">d</span>
+        <span>(d) Benioff zone</span>
+      </div>
+    </div>
+    <div class="answer-pill">
+      ✅ Correct Answer: (d) Benioff zone (Wadati-Benioff subduction zone down to ~670 km)
+    </div>
+  </div>
+
+  <!-- Textbook Figures Card -->
+  <div class="card">
+    <h2>📖 Official Textbook Figure (Van der Pluijm & Marshak, Earth Structure)</h2>
+
+    <!-- Figure 1: VdP Fig 17.6 -->
+    <div class="tb-figure">
+      <img src="figures_Q31/vdp_fig17_6_benioff_zone.png" alt="Van der Pluijm Figure 17.6 Wadati-Benioff Zone">
+      <div class="fig-caption">
+        <strong>Figure 1: B. A. van der Pluijm & S. Marshak, Chapter 17, Figure 17.6.</strong> Cross-sections showing earthquake foci defining the inclined <strong>Wadati-Benioff zone</strong> in the Western Pacific (Izu-Bonin and Mariana Arcs). Earthquakes penetrate continuously from shallow depths (&lt; 70 km) near the trench through intermediate depths (70–300 km) down to <strong>deep-focus depths (300 to ~670 km)</strong> strictly within the cold, descending subducted lithospheric slab.
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Breakdown Card -->
+  <div class="card">
+    <h2>🔍 In-Depth Option Evaluation & Seismotectonic Architecture</h2>
+
+    <!-- Option D: Correct -->
+    <div class="option-card correct-card">
+      <h4>(d) Benioff zone (Wadati-Benioff Zone) — [CORRECT]</h4>
+      <p>
+        <strong>Seismotectonic Mechanism:</strong> Named after seismologists Kiyoo Wadati and Hugo Benioff, the Wadati-Benioff zone is a dipping planar zone of seismicity tracing the trajectory of cold, dense oceanic lithosphere subducting into the warm mantle asthenosphere.
+      </p>
+      <p style="margin-top: 6px;">
+        <strong>Focal Depth Distribution:</strong> Because ordinary mantle at depths &gt; 50–70 km is too hot and ductile for brittle frictional sliding, earthquakes can only occur where cold, rigid rock is transported downwards. The subducting slab remains cold and brittle down to <strong>670–700 km</strong> (the upper mantle transition zone), enabling <strong>deep-focus earthquakes (300–670 km)</strong> via dehydration embrittlement and transformational faulting (metastable olivine ⟶ spinel/ringwoodite phase changes). <strong>Subduction zones are the ONLY tectonic environments on Earth where deep-focus earthquakes occur!</strong>
+      </p>
+    </div>
+
+    <!-- Option A: Wrong -->
+    <div class="option-card wrong-card">
+      <h4>(a) Mid-oceanic ridge — [INCORRECT • SHALLOW ONLY]</h4>
+      <p>
+        Mid-ocean ridges are divergent plate boundaries characterized by high heat flow and thin, newly formed lithosphere. Brittle failure is strictly limited to the uppermost <strong>10–15 km</strong> (shallow-focus earthquakes only) along extensional rift grabens.
+      </p>
+    </div>
+
+    <!-- Option B: Wrong -->
+    <div class="option-card wrong-card">
+      <h4>(b) Continental rift — [INCORRECT • SHALLOW ONLY]</h4>
+      <p>
+        Continental rifts (e.g., East African Rift, Baikal Rift) involve crustal thinning and elevated geothermal gradients. Earthquakes are restricted to the brittle upper crust at depths <strong>&lt; 20–30 km</strong> (shallow-focus).
+      </p>
+    </div>
+
+    <!-- Option C: Wrong -->
+    <div class="option-card wrong-card">
+      <h4>(c) Transform fault — [INCORRECT • SHALLOW ONLY]</h4>
+      <p>
+        Transform faults (e.g., San Andreas Fault, Alpine Fault, oceanic fracture zones) represent strike-slip motion between plates. Frictional locking and rupture occur exclusively in the upper seismogenic crust, rarely exceeding <strong>15–20 km</strong> depth.
+      </p>
+    </div>
+  </div>
+
+  <!-- Earthquake Depth Classification Table -->
+  <div class="card">
+    <h2>📊 Global Earthquake Focal Depth Classification & Plate Margins</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Classification</th>
+          <th>Focal Depth (h)</th>
+          <th>Typical Tectonic Environments</th>
+          <th>Dominant Rupture Mechanism</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Shallow-Focus</strong></td>
+          <td><strong>0 – 70 km</strong></td>
+          <td>Mid-ocean ridges, continental rifts, transform faults, collision zones, subduction trenches</td>
+          <td>Classic brittle frictional sliding & cataclasis (Byerlee's Law)</td>
+        </tr>
+        <tr>
+          <td><strong>Intermediate-Focus</strong></td>
+          <td><strong>70 – 300 km</strong></td>
+          <td><strong>Subduction zones exclusively</strong> (Wadati-Benioff zone)</td>
+          <td>Dehydration embrittlement of serpentinite/hydrous minerals</td>
+        </tr>
+        <tr style="background: #f0fdf4; font-weight: 600;">
+          <td><strong>Deep-Focus</strong></td>
+          <td><strong>300 – 670 km</strong></td>
+          <td><strong>Wadati-Benioff zones exclusively</strong> (Subduction slabs)</td>
+          <td><span style="color:#15803d;">Transformational faulting (metastable olivine ➔ spinel/wadsleyite transition)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Direct Textbook Quotations Card -->
+  <div class="card">
+    <h2>📚 Direct Textbook Quotations & Citations</h2>
+
+    <div class="quote-box">
+      <strong>B. A. van der Pluijm & S. Marshak (2004)</strong>, <em>Earth Structure: An Introduction to Structural Geology and Tectonics</em>, 2nd ed., p. 217 & 434:
+      <br><br>
+      "Earthquakes in subduction zones define an inclined belt, called the <strong>Wadati-Benioff zone</strong>, that extends from the trench down to depths as great as <strong>670 km</strong>... In fact, it is the distribution of earthquakes in the Wadati-Benioff zone that outlines the geometry of subducting slabs. Deep-focus earthquakes occur only where cold, rigid slabs penetrate into the mantle."
+      <div class="quote-cite">— Van der Pluijm & Marshak, p. 217 & 434</div>
+    </div>
+
+    <div class="quote-box">
+      <strong>William Lowrie (2007)</strong>, <em>Fundamentals of Geophysics</em>, 2nd ed., Cambridge University Press, Chapter 3:
+      <br><br>
+      "Deep-focus earthquakes (depths &gt; 300 km) are unknown along mid-ocean ridges or transform faults. They occur solely along the Wadati-Benioff zones associated with subduction at convergent plate boundaries, terminating abruptly at the 670 km seismic discontinuity."
+      <div class="quote-cite">— William Lowrie, Fundamentals of Geophysics</div>
+    </div>
+  </div>
+
+  <!-- Exam Strategy Card -->
+  <div class="card">
+    <h2>🎯 Exam Traps & Rapid Elimination Strategy</h2>
+    <div class="strategy-box">
+      <strong>⚡ Rule of Thumb for Earthquake Depths:</strong>
+      <ol style="margin-left: 20px; margin-top: 6px;">
+        <li><strong>Mid-Ocean Ridges & Transform Faults:</strong> NEVER have deep earthquakes! Always shallow (&lt; 20 km).</li>
+        <li><strong>Continental Rifts:</strong> Always shallow (&lt; 30 km).</li>
+        <li><strong>Deep-Focus Earthquakes (&gt; 300 km):</strong> Found <strong>ONLY in Wadati-Benioff zones</strong> of subduction zones!</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
