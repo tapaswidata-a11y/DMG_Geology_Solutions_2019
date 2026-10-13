@@ -273,6 +273,16 @@ q_metadata = [
         "question": "Which of the following do NOT constitute an equilibrium mineral assemblage in a rock?",
         "correct": "Forsterite and quartz (Chemically incompatible pair; react via Fo + Qtz → 2 En)",
         "icon": "🌋"
+    },
+    {
+        "q": 28,
+        "file": "Q28_Wave_Dominated_Coastline_Zonation_Complete_Guide.html",
+        "pdf": "Q28_Wave_Dominated_Coastline_Zonation_Complete_Guide.pdf",
+        "section": "Sedimentary Environments & Coastal Dynamics",
+        "topic": "Wave-Dominated Coastline Hydrodynamic Zonation",
+        "question": "In a wave-dominated coastline, the correct distribution of environment from land to sea is:",
+        "correct": "Swash zone → surf zone → breaker zone → shoaling zone (Landward beach face to seaward shoreface)",
+        "icon": "🏖️"
     }
 ]
 
