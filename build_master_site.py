@@ -263,6 +263,16 @@ q_metadata = [
         "question": "Which one of the following geochemical reservoirs is defined by the Nd-isotopic composition of chondritic meteorites?",
         "correct": "BSE (Bulk Silicate Earth / CHUR with 143Nd/144Nd = 0.512638 and εNd = 0)",
         "icon": "🪐"
+    },
+    {
+        "q": 27,
+        "file": "Q27_Equilibrium_Mineral_Assemblage_Fo_Qtz_Complete_Guide.html",
+        "pdf": "Q27_Equilibrium_Mineral_Assemblage_Fo_Qtz_Complete_Guide.pdf",
+        "section": "Igneous Petrology & Phase Equilibria",
+        "topic": "Equilibrium Mineral Assemblages & Fo-Qtz Incompatibility",
+        "question": "Which of the following do NOT constitute an equilibrium mineral assemblage in a rock?",
+        "correct": "Forsterite and quartz (Chemically incompatible pair; react via Fo + Qtz → 2 En)",
+        "icon": "🌋"
     }
 ]
 

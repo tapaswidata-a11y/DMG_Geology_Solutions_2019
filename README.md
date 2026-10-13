@@ -79,6 +79,7 @@ Every question module follows an uncompromising 3-tier academic structure:
 | **Q24** | Melt Physics | Silicate Melt Atomic Structure | Network modifiers ($\text{Ca}^{2+}, \text{Mg}^{2+}$ depolymerize melts by creating non-bridging oxygens) | [HTML](Q24_Silicate_Melt_Structure_Complete_Guide.html) · [PDF](Q24_Silicate_Melt_Structure_Complete_Guide.pdf) |
 | **Q25** | Petrology & Geochemistry | MORB Petrogenesis & Mantle Reservoirs | N-MORB (Normal MORB derived from depleted upper mantle DMM) | [HTML](Q25_MORB_Petrogenesis_Mantle_Source_Complete_Guide.html) · [PDF](Q25_MORB_Petrogenesis_Mantle_Source_Complete_Guide.pdf) |
 | **Q26** | Geochemistry & Isotopes | Mantle Reservoirs & Sm-Nd CHUR | BSE (Bulk Silicate Earth defined by chondritic meteorite Nd isotopes with $\epsilon_{\text{Nd}} = 0$) | [HTML](Q26_Nd_Isotopic_Reservoirs_BSE_CHUR_Complete_Guide.html) · [PDF](Q26_Nd_Isotopic_Reservoirs_BSE_CHUR_Complete_Guide.pdf) |
+| **Q27** | Igneous Petrology | Phase Equilibria & Incompatible Pairs | Forsterite and quartz (Incompatible pair reacting to enstatite via $\text{Fo} + \text{Qtz} \rightarrow 2\,\text{En}$) | [HTML](Q27_Equilibrium_Mineral_Assemblage_Fo_Qtz_Complete_Guide.html) · [PDF](Q27_Equilibrium_Mineral_Assemblage_Fo_Qtz_Complete_Guide.pdf) |
 
 ---
 
