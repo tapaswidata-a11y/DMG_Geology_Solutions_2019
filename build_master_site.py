@@ -653,6 +653,56 @@ q_metadata = [
         "question": "Which one of the following is the correct order of abundance of dissolved salts in ocean water?",
         "correct": "NaCl > MgCl₂ > MgSO₄ > CaSO₄ > K₂SO₄ > CaCO₃ > MgBr₂ (Classic Dittmar seawater stoichiometry)",
         "icon": "🧂"
+    },
+    {
+        "q": 66,
+        "file": "Q66_Zoophycos_Ichnofacies_Bathyal_Zone_Complete_Guide.html",
+        "pdf": "Q66_Zoophycos_Ichnofacies_Bathyal_Zone_Complete_Guide.pdf",
+        "section": "Ichnology & Sedimentary Facies",
+        "topic": "Seilacherian Ichnofacies: Bathyal Continental Slope Zoophycos Assemblage",
+        "question": "Zoophycos assemblage is the characteristic ichnofacies of which one of the following zones?",
+        "correct": "Bathyal zone (Continental slope/rise quiet-water, dysaerobic muds)",
+        "icon": "🐚"
+    },
+    {
+        "q": 67,
+        "file": "Q67_Aerial_Photography_Wind_Errors_Drift_Crab_Complete_Guide.html",
+        "pdf": "Q67_Aerial_Photography_Wind_Errors_Drift_Crab_Complete_Guide.pdf",
+        "section": "Remote Sensing & Photogrammetry",
+        "topic": "Aerial Photography Flight Errors: Drift vs. Crab",
+        "question": "Which one of the following errors results in because of wind effects in aerial photography?",
+        "correct": "Drift (Lateral departure of aircraft off course caused by crosswinds; Crab is yaw angle)",
+        "icon": "✈️"
+    },
+    {
+        "q": 68,
+        "file": "Q68_GIS_Point_in_Polygon_Overlay_Spatial_Analysis_Complete_Guide.html",
+        "pdf": "Q68_GIS_Point_in_Polygon_Overlay_Spatial_Analysis_Complete_Guide.pdf",
+        "section": "Geographical Information Systems (GIS)",
+        "topic": "Vector Spatial Analysis: Point-in-Polygon Overlay & Spatial Join",
+        "question": "In a GIS database, the location of meteorological station with respect to a specific land use can be identified using:",
+        "correct": "Point in polygon overlay (Point weather stations evaluated within 2D land-use polygons)",
+        "icon": "🗺️"
+    },
+    {
+        "q": 69,
+        "file": "Q69_GPS_Atomic_Clocks_Rubidium_Cesium_Accuracy_Complete_Guide.html",
+        "pdf": "Q69_GPS_Atomic_Clocks_Rubidium_Cesium_Accuracy_Complete_Guide.pdf",
+        "section": "Geodesy & Satellite Navigation",
+        "topic": "GPS Satellite Atomic Clocks: Rubidium and Cesium Precision Standards",
+        "question": "GPS satellites carry rubidium and cesium atomic clocks that usually have time accuracy of 1 part in:",
+        "correct": "10¹² and 10¹³ respectively (Rubidium 1 in 10¹²; Cesium beam 1 in 10¹³)",
+        "icon": "🛰️"
+    },
+    {
+        "q": 70,
+        "file": "Q70_Passive_Microwave_Dielectric_Constant_Moisture_Complete_Guide.html",
+        "pdf": "Q70_Passive_Microwave_Dielectric_Constant_Moisture_Complete_Guide.pdf",
+        "section": "Hydrogeology & Microwave Remote Sensing",
+        "topic": "Passive Microwave Radiometry: Dielectric Constant & Soil Moisture Mapping",
+        "question": "Statements regarding passive microwave remote sensing (Seepage/fault detection & Dielectric constants):",
+        "correct": "Both Statement 1 and Statement 2 are true and Statement 2 is the correct explanation of Statement 1",
+        "icon": "📡"
     }
 ]
 

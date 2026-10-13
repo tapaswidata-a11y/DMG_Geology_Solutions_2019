@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.67: Wind Effects in Aerial Photography: Drift vs. Crab — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .option-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid var(--border);
+    font-size: 14.5px;
+  }
+  .option-item.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .option-label {
+    font-weight: 700;
+    margin-right: 10px;
+    min-width: 24px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 28px 0 14px 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; font-size: 14.5px; }
+  
+  .figure-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 24px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .figure-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: #f8fafc;
+  }
+  .figure-caption {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    background: #f8fafc;
+    border-top: 1px solid var(--border);
+    text-align: left;
+    line-height: 1.5;
+  }
+  .figure-caption strong { color: #0f172a; }
+  
+  .highlight-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .highlight-title {
+    font-weight: 700;
+    color: #166534;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .comparison-table th, .comparison-table td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .comparison-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .comparison-table tr:nth-child(even) { background: #fbfcfe; }
+  
+  .source-tag {
+    display: inline-block;
+    background: #e2e8f0;
+    color: #334155;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; padding: 20px; max-width: 100%; }
+    .figure-card { break-inside: avoid; }
+    @page { margin: 15mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section H: Ichnology, Remote Sensing & GIS</div>
+  <h1>Question 67: Flight Planning Errors in Aerial Photography: Drift vs. Crab</h1>
+  <div class="subtitle">Photogrammetric Flight Strip Geometry, Crosswind Physics, and Stereoscopic Coverage Control</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">
+      Which one of the following errors results in because of wind effects in aerial photography?
+    </div>
+    <div class="options-grid">
+      <div class="option-item correct">
+        <span class="option-label">(a)</span>
+        <span>Drift [CORRECT PRIMARY ANSWER]</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(b)</span>
+        <span>Crab [RELATED WIND EFFECT]</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(c)</span>
+        <span>Tilt</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(d)</span>
+        <span>Relief displacement</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="highlight-title">Verified Answer Key & Diagnostic Note</div>
+    <p style="margin:0; font-size:15px; color:#14532d;">
+      <strong>Correct Option: (a) Drift</strong> (with <strong>(b) Crab</strong> as a closely related wind-induced condition) — In aerial survey photogrammetry, crosswinds blowing across the flight line physically push the aircraft laterally off its intended flight path; this lateral course displacement error is termed <strong>Drift</strong>. When the pilot angles the nose of the plane into the wind to counteract drift, the resulting angular yaw discrepancy between the camera frame and flight path is termed <strong>Crab</strong>. <em>Drift</em> is the direct physical error caused by the wind pushing the aircraft off course.
+    </p>
+  </div>
+
+  <div class="figure-card">
+    <img src="figures_Q67/aerial_photography_drift_vs_crab_errors.png" alt="Aerial Photography Flight Errors: Drift vs. Crab">
+    <div class="figure-caption">
+      <strong>Figure 67.1 | Geometry of Wind-Induced Flight Errors in Aerial Photography:</strong> (a) <strong>Drift:</strong> Lateral displacement of the aircraft from the planned flight line caused by uncorrected crosswinds, resulting in missing coverage and severe loss of sidelap between adjacent photographic strips. (b) <strong>Crab:</strong> The aircraft's longitudinal axis is intentionally turned into the wind to maintain the ground track; unless the aerial camera mount is rotated by an equal and opposite crab angle, the photograph edges will not be parallel to the flight line, producing triangular gaps in stereoscopic overlap.
+    </div>
+  </div>
+
+  <h2 class="section-title">1. Photogrammetric Flight Execution & Wind Disruptions</h2>
+  <p>
+    Aerial photography for topographic mapping requires capturing a series of parallel, overlapping flight lines or strips. Photogrammetric standards typically mandate:
+  </p>
+  <ul>
+    <li><strong>Forward Overlap (Endlap):</strong> 60% ± 5% along the direction of flight, necessary for continuous stereoscopic three-dimensional parallax observation.</li>
+    <li><strong>Side Overlap (Sidelap):</strong> 20% to 30% between adjacent parallel flight lines, ensuring complete geographic coverage without holidays (data gaps).</li>
+  </ul>
+  <p>
+    When an aircraft encounters atmospheric crosswinds during exposure runs, two distinct phenomena occur:
+  </p>
+
+  <h3 style="font-size:16px; color:#0f172a; margin: 16px 0 6px 0;">1. Drift (Lateral Trajectory Error)</h3>
+  <p>
+    <strong>Drift</strong> is the physical, lateral departure of the survey aircraft from its planned flight path caused by crosswinds pushing the aircraft body sideways. 
+  </p>
+  <ul>
+    <li>If the aircraft drifts to the right or left of the intended line, the distance between adjacent flight strips increases on one side and decreases on the other.</li>
+    <li>This results in <em>holidays</em> (unphotographed gaps) where the sidelap drops to zero, requiring expensive re-flights of the mission area.</li>
+  </ul>
+
+  <h3 style="font-size:16px; color:#0f172a; margin: 16px 0 6px 0;">2. Crab (Heading vs. Track Discrepancy)</h3>
+  <p>
+    To prevent drifting off the planned line, the pilot must steer the aircraft heading into the wind at an angle called the <strong>crab angle</strong> ($\theta$). Although the aircraft tracks straight along the ground, its fuselage points into the wind.
+  </p>
+  <ul>
+    <li>If the camera is fixed rigidly to the aircraft fuselage, the edges of the resulting photographic negatives will be skewed at an angle $\theta$ relative to the flight track.</li>
+    <li>This reduces the effective stereoscopic overlap at the photograph corners.</li>
+    <li>To eliminate crab, modern aerial cameras are installed in rotatable mounts that allow the photographer or autopilot system to rotate the camera in azimuth by an angle equal to $-\theta$, keeping the photo edges parallel to the ground track.</li>
+  </ul>
+
+  <h2 class="section-title">2. Comparative Matrix: Drift vs. Crab vs. Tilt vs. Relief Displacement</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Error / Term</th>
+        <th>Primary Physical Cause</th>
+        <th>Effect on Aerial Photographs</th>
+        <th>Remedy / Correction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Drift (Option a)</strong></td>
+        <td><strong>Crosswinds pushing aircraft laterally off course.</strong></td>
+        <td>Lateral course deviation; gaps between adjacent strips (loss of sidelap).</td>
+        <td>GPS/GNSS flight management systems; navigation tracking.</td>
+      </tr>
+      <tr>
+        <td><strong>Crab (Option b)</strong></td>
+        <td><strong>Aircraft heading angled into wind to maintain track.</strong></td>
+        <td>Photo edges skewed relative to ground flight line; stepped overlaps.</td>
+        <td>Rotating the camera in its gimbal mount by the crab angle.</td>
+      </tr>
+      <tr>
+        <td><strong>Tilt (Option c)</strong></td>
+        <td>Aircraft pitch and roll rotational movements during exposure.</td>
+        <td>Optical axis deviates from true vertical ($&gt;3^\circ$); scale varies across photo.</td>
+        <td>Gyroscopically stabilized camera mounts; orthorectification.</td>
+      </tr>
+      <tr>
+        <td><strong>Relief Displacement (Option d)</strong></td>
+        <td>Surface topographic elevation variations above/below datum.</td>
+        <td>Radial displacement of points away from (hills) or toward (valleys) the nadir.</td>
+        <td>Digital Elevation Model (DEM) differential orthorectification.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">3. Comprehensive Option Analysis</h2>
+  <ul>
+    <li><strong>(a) Drift:</strong> <strong style="color:#166534;">Correct Primary Answer.</strong> Drift is the direct lateral error resulting from crosswind forces pushing the aircraft body off its predetermined flight path.</li>
+    <li><strong>(b) Crab:</strong> <em>Related wind condition.</em> Crab is the angular orientation adopted to combat wind drift; both drift and crab are wind-related flight phenomena, but drift is the fundamental displacement error caused by the wind.</li>
+    <li><strong>(c) Tilt:</strong> <em>Incorrect.</em> Caused by aircraft attitude variations (pitch, roll, yaw instability due to air turbulence or banking maneuvers), not specifically by steady wind drift.</li>
+    <li><strong>(d) Relief displacement:</strong> <em>Incorrect.</em> Inherent geometric characteristic of central perspective projection caused by terrain elevation differences, completely independent of wind or flight conditions.</li>
+  </ul>
+
+  <h2 class="section-title">4. Authoritative Textbook References</h2>
+  <ul>
+    <li><span class="source-tag">Thomas M. Lillesand, Ralph W. Kiefer &amp; Jonathan W. Chipman (2015)</span> <em>Remote Sensing and Image Interpretation</em>, 7th Ed., John Wiley &amp; Sons, Chapter 2 ("Elements of Photographic Systems: Flight Planning, Crab and Drift"), pp. 78–88.</li>
+    <li><span class="source-tag">Paul R. Wolf, Bon A. Dewitt &amp; Benjamin E. Wilkinson (2014)</span> <em>Elements of Photogrammetry with Applications in GIS</em>, 4th Ed., McGraw-Hill, Chapter 8 ("Flight Planning"), pp. 195–210.</li>
+    <li><span class="source-tag">Basak, N. N. (2014)</span> <em>Surveying and Levelling</em>, 2nd Ed., McGraw-Hill Education (India), Chapter 20 ("Photogrammetric Surveying").</li>
+    <li><span class="source-tag">B. Bhatta (2021)</span> <em>Remote Sensing and GIS</em>, 3rd Ed., Oxford University Press, Chapter 4 ("Aerial Photography").</li>
+  </ul>
+</div>
+
+</body>
+</html>
