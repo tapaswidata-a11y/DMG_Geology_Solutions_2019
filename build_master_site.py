@@ -903,6 +903,106 @@ q_metadata = [
         "question": "Which of the following are the requirements for locating epicentre of an earthquake?",
         "correct": "(b) 1 and 3 only (P-S time difference determines distance; ≥3 stations required for triangulation)",
         "icon": "📍"
+    },
+    {
+        "q": 91,
+        "file": "Q91_Radiant_Energy_Irradiance_Remote_Sensing_Complete_Guide.html",
+        "pdf": "Q91_Radiant_Energy_Irradiance_Remote_Sensing_Complete_Guide.pdf",
+        "section": "Remote Sensing & Photogeology",
+        "topic": "Radiometric Quantities: Radiant Flux Density & Spectral Irradiance (Eλ)",
+        "question": "The measure of the amount of radiant energy incident upon a surface per unit area per unit time is called:",
+        "correct": "(c) Irradiance (Eλ) (Radiant flux per unit area incident upon a surface: E = dΦ / dA in W/m²)",
+        "icon": "📡"
+    },
+    {
+        "q": 92,
+        "file": "Q92_Polarization_Reflected_Light_Brewster_Complete_Guide.html",
+        "pdf": "Q92_Polarization_Reflected_Light_Brewster_Complete_Guide.pdf",
+        "section": "Optics & Remote Sensing",
+        "topic": "Polarization of Light: Brewster's Angle, Specular Glare & Atmospheric Scattering",
+        "question": "Which of the statements regarding polarization of light is/are correct (Water reflection, skylight, unpolarized assumption)?",
+        "correct": "(a) 1 and 2 (Water glare is polarized via Brewster angle; blue skylight is polarized by Rayleigh scattering)",
+        "icon": "👓"
+    },
+    {
+        "q": 93,
+        "file": "Q93_Earth_Curvature_Satellite_Imagery_Altitude_Complete_Guide.html",
+        "pdf": "Q93_Earth_Curvature_Satellite_Imagery_Altitude_Complete_Guide.pdf",
+        "section": "Remote Sensing & Satellite Geodesy",
+        "topic": "Earth Curvature Manifestation vs. Sensor Platform Altitude",
+        "question": "Which one of the following statements regarding the curvature of the earth in satellite imagery is correct?",
+        "correct": "(c) Least curvature of the earth is manifested by lowest altitude sensor (Narrower ground swath behaves planar)",
+        "icon": "🛰️"
+    },
+    {
+        "q": 94,
+        "file": "Q94_Nucleosynthesis_Heavier_Than_Bi209_r_Process_Complete_Guide.html",
+        "pdf": "Q94_Nucleosynthesis_Heavier_Than_Bi209_r_Process_Complete_Guide.pdf",
+        "section": "Cosmochemistry & Isotope Geochemistry",
+        "topic": "Stellar Nucleosynthesis Beyond Bismuth-209: The r-Process and p-Process",
+        "question": "Nuclides heavier than 209Bi are produced by which of the following nucleosynthetic processes?",
+        "correct": "(c) Rapid neutron capture (r-process) and rapid proton capture (p-process)",
+        "icon": "⚛️"
+    },
+    {
+        "q": 95,
+        "file": "Q95_Nepheline_Quartz_Albite_Reaction_Complete_Guide.html",
+        "pdf": "Q95_Nepheline_Quartz_Albite_Reaction_Complete_Guide.pdf",
+        "section": "Mineralogy & Igneous Petrology",
+        "topic": "Silica Saturation & Mineral Stoichiometry: Nepheline + Quartz = Albite",
+        "question": "The chemical formula of which one of the following minerals can be expressed as a combination of nepheline and quartz?",
+        "correct": "(d) Albite (NaAlSiO4 + 2 SiO2 → NaAlSi3O8; thermal divide prevents coexistence)",
+        "icon": "🧪"
+    },
+    {
+        "q": 96,
+        "file": "Q96_Halmyrolysis_Submarine_Weathering_Ion_Exchange_Complete_Guide.html",
+        "pdf": "Q96_Halmyrolysis_Submarine_Weathering_Ion_Exchange_Complete_Guide.pdf",
+        "section": "Sedimentary Geochemistry & Marine Geology",
+        "topic": "Halmyrolysis: Submarine Weathering & Ion Exchange at the River-Sea Interface",
+        "question": "Halmyrolysis refers to a process where:",
+        "correct": "(c) Removal of some ions of river water takes place when the river enters the sea",
+        "icon": "🌊"
+    },
+    {
+        "q": 97,
+        "file": "Q97_Initial_Sr87_Sr86_Ratio_Earth_Achondrite_BABI_Complete_Guide.html",
+        "pdf": "Q97_Initial_Sr87_Sr86_Ratio_Earth_Achondrite_BABI_Complete_Guide.pdf",
+        "section": "Isotope Geochemistry & Geochronology",
+        "topic": "Initial 87Sr/86Sr Ratio of the Earth: Basaltic Achondrites & BABI (0.69897)",
+        "question": "The initial 87Sr/86Sr ratio of the earth has been estimated from which one of the following?",
+        "correct": "(d) Achondrite (BABI = 0.69897 ± 0.00003 from low Rb/Sr basaltic achondrites)",
+        "icon": "☄️"
+    },
+    {
+        "q": 98,
+        "file": "Q98_Goldschmidt_Chalcophile_Element_Silver_Complete_Guide.html",
+        "pdf": "Q98_Goldschmidt_Chalcophile_Element_Silver_Complete_Guide.pdf",
+        "section": "Geochemistry & Chemical Mineralogy",
+        "topic": "Goldschmidt's Geochemical Classification: Chalcophile Nature of Silver (Ag)",
+        "question": "Which one of the following is a chalcophile element?",
+        "correct": "(c) Silver (Ag concentrates strongly in sulfide melts and forms sulfide ores; O, Li, Nb are lithophile)",
+        "icon": "🥈"
+    },
+    {
+        "q": 99,
+        "file": "Q99_Geophysical_Exploration_Methods_Gravity_Milligal_Complete_Guide.html",
+        "pdf": "Q99_Geophysical_Exploration_Methods_Gravity_Milligal_Complete_Guide.pdf",
+        "section": "Applied Geophysics & Mineral Exploration",
+        "topic": "Geophysical Methods: Units, Density Contrasts & Magnetic Properties",
+        "question": "Which one of the following statements regarding geophysical exploration methods is NOT correct?",
+        "correct": "(a) Milligal is a unit of magnetic field (Incorrect; Milligal is the unit of gravity acceleration)",
+        "icon": "🧲"
+    },
+    {
+        "q": 100,
+        "file": "Q100_Significant_Geochemical_Anomaly_Threshold_Background_Complete_Guide.html",
+        "pdf": "Q100_Significant_Geochemical_Anomaly_Threshold_Background_Complete_Guide.pdf",
+        "section": "Geochemical Exploration & Ore Prospecting",
+        "topic": "Geochemical Exploration: Significant Anomaly, Background & Threshold",
+        "question": "Which one of the following can be termed as significant geochemical anomaly in mineral exploration?",
+        "correct": "(d) Concentration of indicator elements higher than the local background",
+        "icon": "🎯"
     }
 ]
 

@@ -2,10 +2,10 @@
 ## Authoritative Textbook Solutions & Interactive Concept Masterclass Portal
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Portal-success?style=for-the-badge&logo=github)](https://tapaswidata-a11y.github.io/DMG_Geology_Solutions_2019/)
-[![Questions Covered](https://img.shields.io/badge/Questions-Q01--Q24%20Complete-blue?style=for-the-badge)](https://tapaswidata-a11y.github.io/DMG_Geology_Solutions_2019/)
+[![Questions Covered](https://img.shields.io/badge/Questions-Q01--Q100%20Complete%20(100%25)-blue?style=for-the-badge)](https://tapaswidata-a11y.github.io/DMG_Geology_Solutions_2019/)
 [![Textbook Grounded](https://img.shields.io/badge/Pedagogy-100%25%20Textbook%20Grounded-emerald?style=for-the-badge)](#authoritative-textbook-sources)
 
-A comprehensive, rigorously referenced academic repository containing complete concept guides, mathematical derivations, scanned textbook figures, and detailed option-by-option analyses for all 24 questions (Q01–Q24) from the **DGMS 2019 (Directorate General of Mines Safety) Junior Scientific Officer – Geology Examination**.
+A comprehensive, rigorously referenced academic repository containing complete concept guides, mathematical derivations, scanned textbook figures, and detailed option-by-option analyses for **all 100 questions (Q01–Q100, 100% Complete)** from the **DGMS 2019 (Directorate General of Mines Safety) Junior Scientific Officer – Geology Examination**.
 
 ---
 
@@ -49,7 +49,7 @@ Every question module follows an uncompromising 3-tier academic structure:
 
 ---
 
-## 📂 Index of Solved Questions (Q01 – Q25)
+## 📂 Index of Solved Questions (Q01 – Q100)
 
 | Q# | Discipline | Topic / Concept Focus | Correct Answer | Module Files |
 | :---: | :--- | :--- | :--- | :---: |
@@ -143,6 +143,16 @@ Every question module follows an uncompromising 3-tier academic structure:
 | **Q88** | Hydrogeology | Coastal Aquifer Saltwater Intrusion | 1 and 3 only (Density floatation forms lens z=40h; heavy pumping causes 40:1 saltwater upconing) | [HTML](Q88_Coastal_Aquifer_Saltwater_Encroachment_Ghyben_Herzberg_Complete_Guide.html) · [PDF](Q88_Coastal_Aquifer_Saltwater_Encroachment_Ghyben_Herzberg_Complete_Guide.pdf) |
 | **Q89** | Environmental Geology | Water Quality: Organic Load & BOD | Biochemical oxygen demand (BOD measures O2 consumed by aerobic bacterial decay of organics) | [HTML](Q89_Organic_Matter_Load_Water_BOD_COD_Complete_Guide.html) · [PDF](Q89_Organic_Matter_Load_Water_BOD_COD_Complete_Guide.pdf) |
 | **Q90** | Geophysics | Earthquake Epicenter Triangulation | 1 and 3 only (P-S time difference determines distance; ≥3 stations required for triangulation) | [HTML](Q90_Earthquake_Epicenter_Location_Triangulation_Complete_Guide.html) · [PDF](Q90_Earthquake_Epicenter_Location_Triangulation_Complete_Guide.pdf) |
+| **Q91** | Remote Sensing | Radiometric Quantities: Irradiance | Irradiance ($E_\lambda$) (Radiant flux per unit area incident upon a surface: $E = d\Phi / dA$) | [HTML](Q91_Radiant_Energy_Irradiance_Remote_Sensing_Complete_Guide.html) · [PDF](Q91_Radiant_Energy_Irradiance_Remote_Sensing_Complete_Guide.pdf) |
+| **Q92** | Optics & Remote Sensing | Polarization of Light: Brewster's Angle | 1 and 2 (Water glare is polarized via Brewster's Law; blue skylight is polarized by Rayleigh scattering) | [HTML](Q92_Polarization_Reflected_Light_Brewster_Complete_Guide.html) · [PDF](Q92_Polarization_Reflected_Light_Brewster_Complete_Guide.pdf) |
+| **Q93** | Remote Sensing | Earth Curvature Manifestation vs. Altitude | Least curvature of the earth is manifested by lowest altitude sensor (Narrower ground swath behaves planar) | [HTML](Q93_Earth_Curvature_Satellite_Imagery_Altitude_Complete_Guide.html) · [PDF](Q93_Earth_Curvature_Satellite_Imagery_Altitude_Complete_Guide.pdf) |
+| **Q94** | Cosmochemistry | Nucleosynthesis Beyond ²⁰⁹Bi: r- & p-Processes | Rapid neutron capture (r-process) and rapid proton capture (p-process) [s-process terminates at ²⁰⁹Bi] | [HTML](Q94_Nucleosynthesis_Heavier_Than_Bi209_r_Process_Complete_Guide.html) · [PDF](Q94_Nucleosynthesis_Heavier_Than_Bi209_r_Process_Complete_Guide.pdf) |
+| **Q95** | Petrology & Mineralogy | Nepheline + Quartz Combination = Albite | Albite ($\text{NaAlSiO}_4 + 2\,\text{SiO}_2 \rightarrow \text{NaAlSi}_3\text{O}_8$; thermal divide prevents coexistence) | [HTML](Q95_Nepheline_Quartz_Albite_Reaction_Complete_Guide.html) · [PDF](Q95_Nepheline_Quartz_Albite_Reaction_Complete_Guide.pdf) |
+| **Q96** | Marine Geochemistry | Halmyrolysis (Submarine Weathering) | Removal of some ions of river water takes place when the river enters the sea (Flocculation & cation exchange) | [HTML](Q96_Halmyrolysis_Submarine_Weathering_Ion_Exchange_Complete_Guide.html) · [PDF](Q96_Halmyrolysis_Submarine_Weathering_Ion_Exchange_Complete_Guide.pdf) |
+| **Q97** | Isotope Geochemistry | Initial ⁸⁷Sr/⁸⁶Sr Ratio of Earth (BABI) | Achondrite (BABI = 0.69897 ± 0.00003 from low Rb/Sr basaltic achondrite meteorites) | [HTML](Q97_Initial_Sr87_Sr86_Ratio_Earth_Achondrite_BABI_Complete_Guide.html) · [PDF](Q97_Initial_Sr87_Sr86_Ratio_Earth_Achondrite_BABI_Complete_Guide.pdf) |
+| **Q98** | Geochemistry | Goldschmidt's Chalcophile Classification | Silver (Ag concentrates strongly in sulfide melts and forms sulfide ores; O, Li, Nb are lithophile) | [HTML](Q98_Goldschmidt_Chalcophile_Element_Silver_Complete_Guide.html) · [PDF](Q98_Goldschmidt_Chalcophile_Element_Silver_Complete_Guide.pdf) |
+| **Q99** | Applied Geophysics | Geophysical Units & Properties (Milligal) | Milligal is a unit of magnetic field (Incorrect statement; Milligal is the unit of gravity acceleration) | [HTML](Q99_Geophysical_Exploration_Methods_Gravity_Milligal_Complete_Guide.html) · [PDF](Q99_Geophysical_Exploration_Methods_Gravity_Milligal_Complete_Guide.pdf) |
+| **Q100** | Geochemical Exploration | Significant Anomaly, Background & Threshold | Concentration of indicator elements higher than the local background (Exceeds threshold $\bar{x} + 2s$) | [HTML](Q100_Significant_Geochemical_Anomaly_Threshold_Background_Complete_Guide.html) · [PDF](Q100_Significant_Geochemical_Anomaly_Threshold_Background_Complete_Guide.pdf) |
 
 ---
 

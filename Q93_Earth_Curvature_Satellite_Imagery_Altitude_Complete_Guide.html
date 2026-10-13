@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.93: Satellite Image Geometry: Earth Curvature Manifestation vs. Sensor Altitude — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .option-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .option-card.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .badge-correct {
+    background: #10b981;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; font-size: 15px; }
+  li { margin-bottom: 8px; }
+  .figure-container {
+    margin: 24px 0;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .figure-caption {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .table-custom th, .table-custom td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .table-custom th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .table-custom tr:nth-child(even) { background: #f8fafc; }
+  .callout {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-size: 14.5px;
+  }
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .formula-box {
+    background: #f1f5f9;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14.5px;
+    margin: 14px 0;
+    border-left: 4px solid var(--secondary);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section M: Satellite Remote Sensing & Photogrammetry</div>
+  <h1>Question 93: Satellite Image Geometry: Earth Curvature Manifestation vs. Sensor Altitude</h1>
+  <div class="subtitle">Official Examination Guide • Geometric Distortions, Ground Swath Scales & Tangent Plane Approximations</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">In the satellite images, when other factors are same</div>
+    <div class="options-grid">
+      <div class="option-card">
+        <span>(a) Equal curvature of the earth is manifested by all altitude sensors</span>
+      </div>
+      <div class="option-card">
+        <span>(b) Least curvature of the earth is manifested by highest altitude sensor</span>
+      </div>
+      <div class="option-card correct">
+        <span>(c) Least curvature of the earth is manifested by lowest altitude sensor</span>
+        <span class="badge-correct">CORRECT ANSWER</span>
+      </div>
+      <div class="option-card">
+        <span>(d) Highest curvature of the earth is manifested by lowest altitude sensor</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">1. Executive Summary & Core Principle</div>
+  <p>
+    In photogrammetry, geodesy, and satellite remote sensing (Lillesand, Kiefer & Chipman, <em>Remote Sensing and Image Interpretation</em>; Wolf & Dewitt, <em>Elements of Photogrammetry</em>):
+  </p>
+  <ul>
+    <li>
+      <strong>Geometric Effect of Altitude:</strong> The manifestation of the Earth's curvature in an optical image depends on the proportion of the Earth's spherical surface encompassed within the sensor's field of view (FOV).
+    </li>
+    <li>
+      <strong>Lowest Altitude Sensor (Option c is TRUE):</strong> A sensor positioned at a low orbital altitude (or airborne platform) covers a relatively small ground swath ($D$). Because the radius of the Earth ($R \approx 6,371\text{ km}$) is massive compared to a localized low-altitude scene footprint ($D \ll R$), the vertical deviation of the spherical surface from a local tangent plane is negligible:
+      <div class="formula-box">
+        Δh ≈ D² / (2 · R)
+      </div>
+      For a 10 km swath, $\Delta h \approx 7.8\text{ meters}$, which is practically imperceptible in the image. The ground behaves nearly as a flat Euclidean plane, and <strong>the least curvature of the Earth is manifested</strong>.
+    </li>
+    <li>
+      <strong>Highest Altitude Sensor:</strong> As orbital altitude increases to thousands of kilometers (or geostationary orbit at $35,786\text{ km}$), the sensor images full continental landmasses or an entire hemisphere. The limb of the Earth forms a pronounced circular arc, and tangential distortion due to spherical curvature reaches its maximum across the image frame.
+    </li>
+  </ul>
+  <p>
+    Therefore, when other factors are held equal, the <strong>least curvature of the earth is manifested by the lowest altitude sensor</strong>, corresponding to Option <strong>(c)</strong>.
+  </p>
+
+  <div class="figure-container">
+    <img src="figures_Q93/earth_curvature_manifestation_altitude.png" alt="Earth Curvature Manifestation vs Altitude">
+    <div class="figure-caption">Figure 93.1: Geometric manifestation of Earth curvature comparing low-altitude sensors (planar approximation, least curvature) with high-altitude orbital sensors (global spherical arc, maximum curvature) (Grounded in Wolf & Dewitt Photogrammetry).</div>
+  </div>
+
+  <div class="section-title">2. Mathematical Formulation of Earth Curvature Displacement</div>
+  <p>In aerial and satellite photogrammetry, image displacement due to Earth curvature ($d_{cr}$) is expressed as:</p>
+  <div class="formula-box">
+    dcr = r³ / (2 · R · H)<br><br>
+    Where:<br>
+    • r = Radial distance from the image principal point (nadir)<br>
+    • R = Mean radius of the Earth (~6,371 km)<br>
+    • H = Flying height / sensor altitude above ground
+  </div>
+  <p>
+    Over localized scenes captured by low-altitude sensors, $r$ is very small, meaning radial displacement from curvature is essentially zero. As altitude and angular coverage expand, planetary spherical curvature dominates the projection.
+  </p>
+
+  <div class="section-title">3. Evaluation of Options</div>
+  <ul>
+    <li><strong>(a) Equal curvature of the earth is manifested by all altitude sensors:</strong> <strong>INCORRECT.</strong> Curvature manifestation is strongly altitude- and footprint-dependent.</li>
+    <li><strong>(b) Least curvature of the earth is manifested by highest altitude sensor:</strong> <strong>INCORRECT.</strong> Highest altitude sensors image the greatest curvature (the spherical limb of the Earth).</li>
+    <li><strong>(c) Least curvature of the earth is manifested by lowest altitude sensor:</strong> <strong>CORRECT ANSWER.</strong> Lowest altitude captures the smallest localized ground area where the planar tangent approximation is closest to truth.</li>
+    <li><strong>(d) Highest curvature of the earth is manifested by lowest altitude sensor:</strong> <strong>INCORRECT.</strong> Directly contradicts geometric reality.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Key Takeaway:</strong> Lower altitude = smaller ground swath = closer to flat plane = <strong>least curvature manifested</strong>. Hence, <strong>(c)</strong> is the correct answer.
+  </div>
+
+  <div class="nav-bar">
+    <a href="Q92_Polarization_Reflected_Light_Brewster_Complete_Guide.html" class="nav-link">← Previous: Q.92 Polarization of Reflected Light</a>
+    <a href="index.html" class="nav-link">Master Portal Index</a>
+    <a href="Q94_Nucleosynthesis_Heavier_Than_Bi209_r_Process_Complete_Guide.html" class="nav-link">Next: Q.94 Stellar Nucleosynthesis beyond Bi-209 →</a>
+  </div>
+</div>
+</body>
+</html>
