@@ -503,6 +503,56 @@ q_metadata = [
         "question": "Match Bed form in sandy alluvial channel with Froude number (Dunes, Washed out dunes, Plane bed, Ripples):",
         "correct": "Dunes = F ≪ 1, Washed out dunes = F = 1, Plane bed = F ≥ 1, Ripples = F ≪ 1",
         "icon": "🏄"
+    },
+    {
+        "q": 51,
+        "file": "Q51_Glacial_Landforms_Arete_Col_Cirque_Complete_Guide.html",
+        "pdf": "Q51_Glacial_Landforms_Arete_Col_Cirque_Complete_Guide.pdf",
+        "section": "Geomorphology, Hydrogeology & Engineering Geology",
+        "topic": "Glacial Geomorphology: Arête, Col, Cirque, Nunatak, Fjord",
+        "question": "Which one of the following pairs is NOT correctly matched?",
+        "correct": "Col : Narrow, sharp-edged ridge in mountain glaciers (Incorrect; Arête is the sharp ridge, Col is the pass)",
+        "icon": "❄️"
+    },
+    {
+        "q": 52,
+        "file": "Q52_Throughflow_Hillslope_Hydrology_Soil_Water_Complete_Guide.html",
+        "pdf": "Q52_Throughflow_Hillslope_Hydrology_Soil_Water_Complete_Guide.pdf",
+        "section": "Geomorphology, Hydrogeology & Engineering Geology",
+        "topic": "Hillslope Hydrology: Lateral Soil Water Flux & Throughflow",
+        "question": "The lateral unsaturated flow of water in the soil zone, where a highly permeable geological unit overlays a less permeable geological unit, is termed as:",
+        "correct": "Throughflow (Lateral subsurface water flux deflected above a permeability barrier)",
+        "icon": "💧"
+    },
+    {
+        "q": 53,
+        "file": "Q53_Void_Ratio_Porosity_Soil_Mechanics_Complete_Guide.html",
+        "pdf": "Q53_Void_Ratio_Porosity_Soil_Mechanics_Complete_Guide.pdf",
+        "section": "Geomorphology, Hydrogeology & Engineering Geology",
+        "topic": "Engineering Geology & Soil Mechanics: Void Ratio vs. Porosity",
+        "question": "The void ratio of the solid mass is defined as:",
+        "correct": "Volume of voids / Volume of solids (e = Vv / Vs, normalized against solid mineral skeleton)",
+        "icon": "🧱"
+    },
+    {
+        "q": 54,
+        "file": "Q54_Drainage_Patterns_Geological_Structural_Control_Complete_Guide.html",
+        "pdf": "Q54_Drainage_Patterns_Geological_Structural_Control_Complete_Guide.pdf",
+        "section": "Geomorphology, Hydrogeology & Engineering Geology",
+        "topic": "Fluvial Geomorphology: Drainage Patterns & Bedrock Control",
+        "question": "Which one of the following pairs is NOT correctly matched?",
+        "correct": "Parallel drainages : Develop on horizontal sediments or homogeneous crystalline rocks (Incorrect; Dendritic develops on flat rocks)",
+        "icon": "🌲"
+    },
+    {
+        "q": 55,
+        "file": "Q55_Transform_Fault_Plate_Boundaries_Conservative_Complete_Guide.html",
+        "pdf": "Q55_Transform_Fault_Plate_Boundaries_Conservative_Complete_Guide.pdf",
+        "section": "Plate Tectonics & Structural Geology",
+        "topic": "Plate Tectonic Boundaries: Conservative Transform Fault Margins",
+        "question": "Along which of the following plate boundaries, the moving plates grind past each other without producing or destroying lithosphere?",
+        "correct": "Transform fault plate boundary only (Conservative margin; lateral strike-slip motion conserves lithosphere)",
+        "icon": "⚡"
     }
 ]
 
