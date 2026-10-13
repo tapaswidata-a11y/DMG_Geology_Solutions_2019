@@ -803,6 +803,56 @@ q_metadata = [
         "question": "The suitable geological conditions required for construction of a dam are resistant and stable bedrock:",
         "correct": "(a) 1 and 2 (or identically (c) 1 and 3; Gentle upstream dip is ideal; duplicate typo in exam)",
         "icon": "🏗️"
+    },
+    {
+        "q": 81,
+        "file": "Q81_Glacial_Landforms_Nunatak_Cirque_Col_Fjord_Complete_Guide.html",
+        "pdf": "Q81_Glacial_Landforms_Nunatak_Cirque_Col_Fjord_Complete_Guide.pdf",
+        "section": "Geomorphology & Glacial Geology",
+        "topic": "Alpine Glacial Landforms: Arête, Col, Cirque, Nunatak and Fjord",
+        "question": "Which one of the following pairs is NOT correctly matched?",
+        "correct": "(c) Col : Narrow, sharp-edged ridge in mountain glaciers (Arête is the ridge; Col is the breached pass)",
+        "icon": "🏔️"
+    },
+    {
+        "q": 82,
+        "file": "Q82_Atterberg_Limits_Plastic_Limit_Complete_Guide.html",
+        "pdf": "Q82_Atterberg_Limits_Plastic_Limit_Complete_Guide.pdf",
+        "section": "Soil Mechanics & Engineering Geology",
+        "topic": "Atterberg Limits & Soil Consistency: Boundary of Plastic and Semi-Solid States",
+        "question": "The Atterberg limits that define the boundary between the plastic and semi-solid states is:",
+        "correct": "(b) Plastic limit (Demarcates plastic from semi-solid state; Liquid limit demarcates liquid from plastic)",
+        "icon": "🧪"
+    },
+    {
+        "q": 83,
+        "file": "Q83_Arch_Dam_Abutment_Thrust_Mechanics_Complete_Guide.html",
+        "pdf": "Q83_Arch_Dam_Abutment_Thrust_Mechanics_Complete_Guide.pdf",
+        "section": "Engineering Geology & Dam Structures",
+        "topic": "Dam Structural Types: Arch Action and Lateral Thrust Transmission to Abutments",
+        "question": "In which one of the following dams, the major portion of the water pressure is transmitted to the abutments?",
+        "correct": "(b) Arch dam (Convexity converts horizontal water pressure into ring thrust into valley abutments)",
+        "icon": "🌉"
+    },
+    {
+        "q": 84,
+        "file": "Q84_Brazilian_Test_Tensile_Strength_Rock_Complete_Guide.html",
+        "pdf": "Q84_Brazilian_Test_Tensile_Strength_Rock_Complete_Guide.pdf",
+        "section": "Rock Mechanics & Geotechnical Testing",
+        "topic": "The Brazilian Test: Diametral Compression & Indirect Tensile Strength of Rock",
+        "question": "The Brazilian test is used to determine:",
+        "correct": "(b) Tensile strength (Diametral line load creates uniform perpendicular tensile stress splitting the disc)",
+        "icon": "⚙️"
+    },
+    {
+        "q": 85,
+        "file": "Q85_Tunnel_Site_Geological_Conditions_Horizontal_Complete_Guide.html",
+        "pdf": "Q85_Tunnel_Site_Geological_Conditions_Horizontal_Complete_Guide.pdf",
+        "section": "Engineering Geology & Tunneling",
+        "topic": "Tunnel Site Geological Consideration: Horizontal Formations vs. Folded Anticlinal/Synclinal Strata",
+        "question": "Which one of the following is the best condition for tunnel site consideration?",
+        "correct": "(b) Tunnel within thick horizontal formation (Lithological uniformity, stable roof beam action, symmetric stress)",
+        "icon": "🚇"
     }
 ]
 
