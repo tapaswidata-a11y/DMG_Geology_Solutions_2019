@@ -553,6 +553,56 @@ q_metadata = [
         "question": "Along which of the following plate boundaries, the moving plates grind past each other without producing or destroying lithosphere?",
         "correct": "Transform fault plate boundary only (Conservative margin; lateral strike-slip motion conserves lithosphere)",
         "icon": "⚡"
+    },
+    {
+        "q": 56,
+        "file": "Q56_Lithostatic_Pressure_Overburden_Rock_Column_Complete_Guide.html",
+        "pdf": "Q56_Lithostatic_Pressure_Overburden_Rock_Column_Complete_Guide.pdf",
+        "section": "Structural Geology & Metamorphic Petrology",
+        "topic": "Crustal Stresses: Lithostatic Pressure vs. Deviatoric Stress",
+        "question": "Stress that is generated due to the weight of the overlying rock column in the earth's crust is referred to as:",
+        "correct": "Lithostatic pressure (P = ρgz; isotropic overburden pressure from overlying rock mass)",
+        "icon": "⚖️"
+    },
+    {
+        "q": 57,
+        "file": "Q57_Pinch_and_Swell_Structure_Boudinage_Complete_Guide.html",
+        "pdf": "Q57_Pinch_and_Swell_Structure_Boudinage_Complete_Guide.pdf",
+        "section": "Structural Geology & Rock Deformation",
+        "topic": "Layer-Parallel Extension: Pinch-and-Swell vs. True Boudinage",
+        "question": "The separation of a competent layer due to layer-parallel extension is incomplete and shows a narrowing of the segments. This structure is termed as:",
+        "correct": "Pinch-and-swell structure (Ductile layer-parallel extension with necking without complete fracture separation)",
+        "icon": "🍬"
+    },
+    {
+        "q": 58,
+        "file": "Q58_Overfolds_Overturned_Inverted_Limbs_Complete_Guide.html",
+        "pdf": "Q58_Overfolds_Overturned_Inverted_Limbs_Complete_Guide.pdf",
+        "section": "Structural Geology & Fold Geometries",
+        "topic": "Fold Classification: Overfolds, Overturned Limbs & Stratal Inversion",
+        "question": "Overfolds have one of the limbs essentially:",
+        "correct": "Inverted (Overturned limb has strata rotated past vertical into stratigraphic inversion)",
+        "icon": "🔄"
+    },
+    {
+        "q": 59,
+        "file": "Q59_Tethys_Ocean_Himalayan_Orogeny_Complete_Guide.html",
+        "pdf": "Q59_Tethys_Ocean_Himalayan_Orogeny_Complete_Guide.pdf",
+        "section": "Geodynamics, Global Tectonics & Indian Geology",
+        "topic": "Himalayan Orogeny: Neo-Tethys Subduction & India-Asia Collision",
+        "question": "The ocean that gave rise to birth of the Himalayan mountains was:",
+        "correct": "Tethys Ocean (Closure of Neo-Tethys during late Cretaceous to Eocene collision)",
+        "icon": "🏔️"
+    },
+    {
+        "q": 60,
+        "file": "Q60_Passive_Margin_Continental_Rifting_Wilson_Cycle_Complete_Guide.html",
+        "pdf": "Q60_Passive_Margin_Continental_Rifting_Wilson_Cycle_Complete_Guide.pdf",
+        "section": "Plate Tectonics & Continental Margins",
+        "topic": "Wilson Cycle: Continental Rifting & Passive Continental Margins",
+        "question": "A continental margin that forms due to initial rifting of a continent to develop an ocean later, is called:",
+        "correct": "Passive margin (Atlantic-type rifted margin formed by continental rifting and seafloor spreading)",
+        "icon": "🌊"
     }
 ]
 
