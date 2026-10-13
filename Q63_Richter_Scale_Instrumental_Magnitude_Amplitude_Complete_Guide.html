@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.63: Richter Magnitude Scale, Seismograph Amplitude & Historical Quantification — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .statements-list {
+    margin-left: 0;
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .statement-item {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .option-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid var(--border);
+    font-size: 14.5px;
+  }
+  .option-item.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .option-label {
+    font-weight: 700;
+    margin-right: 10px;
+    min-width: 24px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 28px 0 14px 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; font-size: 14.5px; }
+  
+  .figure-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 24px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .figure-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: #f8fafc;
+  }
+  .figure-caption {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    background: #f8fafc;
+    border-top: 1px solid var(--border);
+    text-align: left;
+    line-height: 1.5;
+  }
+  .figure-caption strong { color: #0f172a; }
+  
+  .highlight-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .highlight-title {
+    font-weight: 700;
+    color: #166534;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .comparison-table th, .comparison-table td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .comparison-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .comparison-table tr:nth-child(even) { background: #fbfcfe; }
+  
+  .source-tag {
+    display: inline-block;
+    background: #e2e8f0;
+    color: #334155;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; padding: 20px; max-width: 100%; }
+    .figure-card { break-inside: avoid; }
+    @page { margin: 15mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section G: Seismology & Earth Interior</div>
+  <h1>Question 63: The Richter Magnitude Scale ($M_L$), Wood-Anderson Seismograph & Seismic Intensity</h1>
+  <div class="subtitle">Quantitative Seismology, Logarithmic Trace Amplitudes, and Magnitude vs. Intensity Demarcation</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">
+      Consider the following statements regarding Richter scale:
+    </div>
+    <div class="statements-list">
+      <div class="statement-item"><strong>1.</strong> It is the first scale to estimate the size of an earthquake by instrument.</div>
+      <div class="statement-item"><strong>2.</strong> It is based on the released energy at focus of the earthquake.</div>
+      <div class="statement-item"><strong>3.</strong> It is based on the maximum amplitude of waves measured on a seismograph.</div>
+      <div class="statement-item"><strong>4.</strong> It is based on extent of the damage done by the seismic waves.</div>
+    </div>
+    <div class="question-text" style="font-size:14.5px; margin-bottom:10px;">
+      Which of the statements given above is/are correct?
+    </div>
+    <div class="options-grid">
+      <div class="option-item correct">
+        <span class="option-label">(a)</span>
+        <span>1 and 3 [CORRECT]</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(b)</span>
+        <span>2 and 3</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(c)</span>
+        <span>1 and 4</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(d)</span>
+        <span>2 and 4</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="highlight-title">Verified Answer Key</div>
+    <p style="margin:0; font-size:15px; color:#14532d;">
+      <strong>Correct Option: (a) 1 and 3</strong> — Charles Richter developed the Local Magnitude scale ($M_L$) in 1935 as the world's <em>first instrumental scale</em> for objectively sizing earthquakes. It is explicitly defined by the logarithm of the <em>maximum trace amplitude</em> recorded on a Wood-Anderson torsion seismograph. Statement 2 describes energy/moment magnitude ($M_w$), and Statement 4 describes the Modified Mercalli Intensity (MMI) scale.
+    </p>
+  </div>
+
+  <div class="figure-card">
+    <img src="figures_Q63/richter_magnitude_nomogram_wood_anderson.png" alt="Richter Magnitude Nomogram and Wood-Anderson Seismogram Trace">
+    <div class="figure-caption">
+      <strong>Figure 63.1 | The Physics of the Richter Scale ($M_L$):</strong> (Left) Simulated Wood-Anderson torsion seismogram showing the $P$-wave and $S$-wave arrivals and the maximum trace amplitude ($A$ in mm). The $(S - P)$ arrival time difference determines epicentral distance $\Delta$. (Right) The original nomogram constructed by Charles F. Richter (1935) showing the alignment between distance ($\Delta$), local magnitude ($M_L$), and trace amplitude ($A$).
+    </div>
+  </div>
+
+  <h2 class="section-title">1. Historical Genesis & Mathematical Definition of the Richter Scale</h2>
+  <p>
+    Prior to 1935, earthquake size could only be evaluated qualitatively using descriptive <strong>intensity scales</strong> (such as the Rossi-Forel or Mercalli scales), which relied on personal perception, structural destruction, and surface cracks. These varied wildly depending on ground geology, construction quality, and distance from the epicenter.
+  </p>
+  <p>
+    In 1935, <strong>Charles F. Richter</strong> (in collaboration with Beno Gutenberg at the California Institute of Technology) formulated the <strong>Local Magnitude Scale ($M_L$)</strong>. It was explicitly created as the <em>first instrumental, objective metric</em> of earthquake size:
+  </p>
+  <ul>
+    <li><strong>Standard Instrument:</strong> A Wood-Anderson torsion seismograph with a natural period of $T_0 = 0.8\text{ s}$, damping constant $h = 0.8$, and static magnification $V = 2800$.</li>
+    <li><strong>Reference Definition:</strong> An earthquake of magnitude $M_L = 3.0$ is defined as one that produces a maximum trace amplitude of $A = 1\text{ mm}$ ($1000\ \mu\text{m}$) on a standard Wood-Anderson seismograph at an epicentral distance of $\Delta = 100\text{ km}$.</li>
+    <li><strong>Logarithmic Amplitude Formula:</strong>
+      $$M_L = \log_{10}(A) - \log_{10}(A_0(\Delta))$$
+      where $A$ is the maximum peak-to-peak trace amplitude measured in millimeters, and $\log_{10}(A_0(\Delta))$ is an empirical distance attenuation correction factor calibrated by Richter for Southern California crustal paths.
+    </li>
+  </ul>
+
+  <h2 class="section-title">2. Statement-by-Statement Rigorous Verification</h2>
+
+  <h3 style="font-size:16px; color:#0f172a; margin: 16px 0 6px 0;">Statement 1: "First scale to estimate the size of an earthquake by instrument" — <span style="color:#166534;">CORRECT</span></h3>
+  <p>
+    The Richter scale was explicitly designed in 1935 as the first instrumental scale in earthquake science. Prior to Richter, seismologists had seismographs but no standardized, quantitative instrumental scale to rate total event size.
+  </p>
+
+  <h3 style="font-size:16px; color:#0f172a; margin: 16px 0 6px 0;">Statement 2: "Based on the released energy at focus of the earthquake" — <span style="color:#dc2626;">INCORRECT</span></h3>
+  <p>
+    The Richter scale ($M_L$) is <strong>not</strong> directly based on seismic energy release at the focus. It is purely an empirical scale based on maximum record displacement. While empirical regression equations were later developed relating magnitude to radiating energy (e.g., Gutenberg-Richter relation: $\log_{10} E = 4.8 + 1.5 M_S$), the fundamental definition of the Richter scale is amplitude-based, not energy-based. Energy released at the source is properly quantified by <em>Seismic Moment</em> ($M_0 = \mu A_{fault} D$) and the <em>Moment Magnitude Scale</em> ($M_w = \frac{2}{3}\log_{10} M_0 - 10.7$, Kanamori, 1977).
+  </p>
+
+  <h3 style="font-size:16px; color:#0f172a; margin: 16px 0 6px 0;">Statement 3: "Based on the maximum amplitude of waves measured on a seismograph" — <span style="color:#166534;">CORRECT</span></h3>
+  <p>
+    This is the fundamental operational definition of $M_L$. Richter measured the maximum wave amplitude (the largest peak displacement on the seismogram record, usually the $S$-wave or $L_g$ wave train) directly in millimeters from the photographic paper record.
+  </p>
+
+  <h3 style="font-size:16px; color:#0f172a; margin: 16px 0 6px 0;">Statement 4: "Based on extent of the damage done by the seismic waves" — <span style="color:#dc2626;">INCORRECT</span></h3>
+  <p>
+    Extent of damage, structural collapse, and human sensation are the definition of <strong>Seismic Intensity</strong>, measured by the <strong>Modified Mercalli Intensity (MMI) Scale</strong> (grades I to XII) or MSK-64 scale. A single earthquake has only <em>one magnitude</em> (an instrumental measure of source size), but possesses <em>many different intensities</em> depending on local distance, soil conditions, and building structural vulnerability.
+  </p>
+
+  <h2 class="section-title">3. Comparison: Magnitude ($M_L$) vs. Intensity (MMI) vs. Moment ($M_w$)</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Richter Local Magnitude ($M_L$)</th>
+        <th>Modified Mercalli Intensity (MMI)</th>
+        <th>Moment Magnitude ($M_w$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Measurement Basis</strong></td>
+        <td><strong>Instrumental:</strong> Max trace amplitude on Wood-Anderson seismograph.</td>
+        <td><strong>Observational:</strong> Extent of physical damage and human perception.</td>
+        <td><strong>Physical / Energetic:</strong> Rupture area $\times$ average fault slip $\times$ shear modulus.</td>
+      </tr>
+      <tr>
+        <td><strong>Mathematical Form</strong></td>
+        <td>Logarithmic: $M_L = \log_{10} A - \log_{10} A_0$</td>
+        <td>Discrete Roman Numerals (I to XII)</td>
+        <td>$M_w = \frac{2}{3}\log_{10} M_0 - 10.7$</td>
+      </tr>
+      <tr>
+        <td><strong>Number of Values</strong></td>
+        <td>Single unique number per earthquake.</td>
+        <td>Varies across locations (mapped by isoseismal lines).</td>
+        <td>Single unique physical value; does not saturate.</td>
+      </tr>
+      <tr>
+        <td><strong>Invention / Pioneer</strong></td>
+        <td>Charles Richter (1935)</td>
+        <td>Giuseppe Mercalli (1902) / Wood &amp; Neumann (1931)</td>
+        <td>Hiroo Kanamori (1977) &amp; Thomas Hanks (1979)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">4. Authoritative Textbook References</h2>
+  <ul>
+    <li><span class="source-tag">Peter M. Shearer (2009)</span> <em>Introduction to Seismology</em>, 2nd Ed., Cambridge University Press, Chapter 9 ("Earthquake Sources"), Section 9.2 ("Magnitude Scales"), pp. 248–254.</li>
+    <li><span class="source-tag">Bruce A. Bolt (2003)</span> <em>Earthquakes</em>, 5th Ed., W. H. Freeman, Chapter 6 ("Measuring Earthquakes: Magnitude and Energy"), pp. 120–145.</li>
+    <li><span class="source-tag">Van der Pluijm &amp; Marshak (2004)</span> <em>Earth Structure</em>, 2nd Ed., W. W. Norton, Chapter 8 ("Faults and Faulting"), pp. 199–201.</li>
+    <li><span class="source-tag">P. K. Mukherjee (2013)</span> <em>A Text Book of Geology</em>, World Press, Chapter on Earthquakes ("The Richter and Mercalli Scales").</li>
+  </ul>
+</div>
+
+</body>
+</html>

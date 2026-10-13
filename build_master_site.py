@@ -603,6 +603,56 @@ q_metadata = [
         "question": "A continental margin that forms due to initial rifting of a continent to develop an ocean later, is called:",
         "correct": "Passive margin (Atlantic-type rifted margin formed by continental rifting and seafloor spreading)",
         "icon": "🌊"
+    },
+    {
+        "q": 61,
+        "file": "Q61_Paleoseismicity_Geological_Fault_Slippage_Complete_Guide.html",
+        "pdf": "Q61_Paleoseismicity_Geological_Fault_Slippage_Complete_Guide.pdf",
+        "section": "Seismology & Active Tectonics",
+        "topic": "Paleoseismology: Geologic Evidence of Prehistoric Fault Slip",
+        "question": "Palaeoseismicity is related to the study of:",
+        "correct": "Earthquakes of the geological past through slippage observed in the field along faults",
+        "icon": "⚡"
+    },
+    {
+        "q": 62,
+        "file": "Q62_Earth_Interior_Mantle_Depth_Lehmann_Moho_Complete_Guide.html",
+        "pdf": "Q62_Earth_Interior_Mantle_Depth_Lehmann_Moho_Complete_Guide.pdf",
+        "section": "Global Geophysics & Earth Interior",
+        "topic": "Earth Internal Discontinuities: Moho, Lehmann Core & Fluid Outer Core",
+        "question": "Consider statements regarding Earth's interior (Mantle depth ~3100 km, Inge Lehmann solid inner core, Mohorovičić contrast, Outer core transverse waves):",
+        "correct": "2, 3 and 4 only (Mantle depth is ~2890 km, not 3100 km; Lehmann, Moho, and fluid outer core are correct)",
+        "icon": "🌍"
+    },
+    {
+        "q": 63,
+        "file": "Q63_Richter_Scale_Instrumental_Magnitude_Amplitude_Complete_Guide.html",
+        "pdf": "Q63_Richter_Scale_Instrumental_Magnitude_Amplitude_Complete_Guide.pdf",
+        "section": "Seismology & Earthquake Quantification",
+        "topic": "Richter Magnitude Scale (ML) vs. Mercalli Intensity & Energy",
+        "question": "Consider statements regarding Richter scale (First instrumental scale, Energy at focus, Max amplitude on seismograph, Damage done):",
+        "correct": "1 and 3 (First instrumental scale to estimate size; based on maximum trace amplitude on Wood-Anderson seismograph)",
+        "icon": "📈"
+    },
+    {
+        "q": 64,
+        "file": "Q64_Seismic_Wave_Velocities_Whole_Earth_PREM_Complete_Guide.html",
+        "pdf": "Q64_Seismic_Wave_Velocities_Whole_Earth_PREM_Complete_Guide.pdf",
+        "section": "Seismology & Earth Interior",
+        "topic": "Seismic Wave Velocity Distribution: Whole Earth PREM Profile",
+        "question": "The velocity of the seismic waves within the earth ranges from:",
+        "correct": "2 to 13 km/second (Spans from ~2-3 km/s in shallow crust up to ~13.7 km/s at base of mantle)",
+        "icon": "〰️"
+    },
+    {
+        "q": 65,
+        "file": "Q65_Ocean_Water_Dissolved_Salts_Abundance_Order_Complete_Guide.html",
+        "pdf": "Q65_Ocean_Water_Dissolved_Salts_Abundance_Order_Complete_Guide.pdf",
+        "section": "Chemical Oceanography & Geochemistry",
+        "topic": "Seawater Chemistry: Order of Abundance of Dissolved Salts (Dittmar, 1884)",
+        "question": "Which one of the following is the correct order of abundance of dissolved salts in ocean water?",
+        "correct": "NaCl > MgCl₂ > MgSO₄ > CaSO₄ > K₂SO₄ > CaCO₃ > MgBr₂ (Classic Dittmar seawater stoichiometry)",
+        "icon": "🧂"
     }
 ]
 
