@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.88: Coastal Aquifer Hydrogeology: Ghyben-Herzberg Saltwater Intrusion — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .statements-list {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .statement-item {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .option-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .option-card.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .badge-correct {
+    background: #10b981;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; font-size: 15px; }
+  li { margin-bottom: 8px; }
+  .figure-container {
+    margin: 24px 0;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .figure-caption {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .table-custom th, .table-custom td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .table-custom th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .table-custom tr:nth-child(even) { background: #f8fafc; }
+  .callout {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-size: 14.5px;
+  }
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .formula-box {
+    background: #f1f5f9;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14.5px;
+    margin: 14px 0;
+    border-left: 4px solid var(--secondary);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section L: Hydrogeology & Environmental Geology</div>
+  <h1>Question 88: Coastal Aquifer Hydrogeology: Ghyben-Herzberg Saltwater Intrusion</h1>
+  <div class="subtitle">Official Examination Guide • Freshwater Lens Dynamics, Upconing & Anthropogenic Encroachment</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">In coastal areas, groundwater resource is being threatened by the encroachment of saltwater because:</div>
+    <ul class="statements-list">
+      <li class="statement-item"><strong>1.</strong> Freshwater being less dense than saltwater, floats over the latter and forms large lens-shaped body</li>
+      <li class="statement-item"><strong>2.</strong> Saltwater being dense, is available at very shallow depths in coastal regions</li>
+      <li class="statement-item"><strong>3.</strong> Heavy pumping in coastal areas causes encroachment of saltwater</li>
+      <li class="statement-item"><strong>4.</strong> Waves and tides cause mixing of saltwater with freshwater</li>
+    </ul>
+    <div class="question-text">Which of the statements given above are correct?</div>
+    <div class="options-grid">
+      <div class="option-card correct">
+        <span>(a) 1 and 3 only</span>
+        <span class="badge-correct">CORRECT ANSWER</span>
+      </div>
+      <div class="option-card">
+        <span>(b) 2 and 4 only</span>
+      </div>
+      <div class="option-card">
+        <span>(c) 1, 3 and 4 only</span>
+      </div>
+      <div class="option-card">
+        <span>(d) 1, 2, 3 and 4</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">1. Executive Summary & Core Hydrogeological Principles</div>
+  <p>
+    In coastal groundwater systems (Todd & Mays, <em>Groundwater Hydrology</em>; Fetter, <em>Applied Hydrogeology</em>), the delicate equilibrium between terrestrial freshwater and adjacent marine saltwater is governed by the <strong>Ghyben-Herzberg Principle (1888, 1901)</strong>:
+  </p>
+  <ul>
+    <li>
+      <strong>Freshwater Lens Floatation (Statement 1 is TRUE):</strong> Pure terrestrial freshwater has a lower density ($\rho_f \approx 1.000\text{ g/cm}^3$) than mineralized seawater ($\rho_s \approx 1.025\text{ g/cm}^3$). Consequently, recharge water naturally floats above the denser saltwater wedge, forming a convex unconfined freshwater lens. Under static equilibrium:
+      <div class="formula-box">
+        z = [ ρf / (ρs - ρf) ] · h ≈ [ 1.000 / (1.025 - 1.000) ] · h = 40 · h
+      </div>
+      where $h$ is the elevation of the freshwater table above mean sea level (MSL), and $z$ is the depth of the freshwater-saltwater interface below sea level.
+    </li>
+    <li>
+      <strong>Heavy Pumping & Upconing (Statement 3 is TRUE):</strong> When heavy extraction occurs in coastal wellfields, local drawdown lowers the water table ($\Delta h$). Because of the 40:1 hydrostatic balance ratio, <strong>a 1-meter drawdown in the water table causes the underlying saltwater interface to rise by approximately 40 meters</strong>! This rapid upward migration (known as <em>saltwater upconing</em>) and inland lateral advance directly salinizes coastal production wells.
+    </li>
+    <li>
+      <strong>Statement 2 is FALSE:</strong> In healthy coastal aquifers with natural inland recharge, the freshwater lens maintains a deep protective wedge, depressing the saltwater interface tens to hundreds of meters below sea level ($z = 40h$); saltwater is NOT situated at "very shallow depths" inland.
+    </li>
+    <li>
+      <strong>Statement 4 is NOT the Driving Mechanism:</strong> Although oceanic tides create localized mechanical dispersion along the immediate shoreline beach zone, this does not threaten regional groundwater resources—the actual threat is regional upconing and lateral encroachment driven by anthropogenic over-abstraction.
+    </li>
+  </ul>
+  <p>
+    Thus, Statements <strong>1 and 3 only</strong> are the valid explanatory reasons, making Option <strong>(a)</strong> the correct choice.
+  </p>
+
+  <div class="figure-container">
+    <img src="figures_Q88/ghyben_herzberg_saltwater_intrusion.png" alt="Ghyben-Herzberg Saltwater Intrusion Model">
+    <div class="figure-caption">Figure 88.1: Cross-sectional hydrogeological model of a coastal aquifer illustrating the Ghyben-Herzberg freshwater lens ($z \approx 40h$) and the catastrophic 40:1 saltwater upconing induced by heavy well pumping (Grounded in Todd & Mays).</div>
+  </div>
+
+  <div class="section-title">2. Mathematical Derivation of the Ghyben-Herzberg Relation</div>
+  <p>Consider a column of groundwater extending from the water table down to the interface point at depth $z$ below sea level:</p>
+  <div class="formula-box">
+    Pressure of freshwater column at interface = Pressure of seawater column at interface<br>
+    Pf = Ps<br>
+    ρf · g · (h + z) = ρs · g · z<br>
+    ρf · h + ρf · z = ρs · z<br>
+    z · (ρs - ρf) = ρf · h<br>
+    z = [ ρf / (ρs - ρf) ] · h<br><br>
+    For typical seawater (ρs = 1.025 g/cm³) and freshwater (ρf = 1.000 g/cm³):<br>
+    z = [ 1.000 / 0.025 ] · h = 40 · h
+  </div>
+
+  <div class="section-title">3. Evaluation of Options</div>
+  <ul>
+    <li><strong>Statement 1:</strong> <strong>CORRECT.</strong> Density difference ($\rho_f &lt; \rho_s$) causes freshwater to float atop saltwater, forming a lens.</li>
+    <li><strong>Statement 2:</strong> <strong>INCORRECT.</strong> Saltwater occurs at depth ($40h$ below sea level), not at very shallow depths unless the freshwater lens has already been completely destroyed.</li>
+    <li><strong>Statement 3:</strong> <strong>CORRECT.</strong> Excessive pumping causes 40:1 upconing, driving severe saltwater encroachment into coastal wells.</li>
+    <li><strong>Statement 4:</strong> <strong>INCORRECT AS REGIONAL THREAT.</strong> Tidal action only affects the immediate surficial beach boundary; it does not drive regional basin-scale encroachment.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Key Takeaway:</strong> Ghyben-Herzberg relation ($z \approx 40h$): 1 m drop in water table causes 40 m rise of saltwater. Density floatation (1) combined with overpumping (3) threatens coastal aquifers. Hence, <strong>(a) 1 and 3 only</strong> is the correct answer.
+  </div>
+
+  <div class="nav-bar">
+    <a href="Q87_Ocean_Acidification_CO2_Carbonate_Chemistry_Complete_Guide.html" class="nav-link">← Previous: Q.87 Ocean Acidification</a>
+    <a href="index.html" class="nav-link">Master Portal Index</a>
+    <a href="Q89_Organic_Matter_Load_Water_BOD_COD_Complete_Guide.html" class="nav-link">Next: Q.89 Organic Matter Load & BOD →</a>
+  </div>
+</div>
+</body>
+</html>

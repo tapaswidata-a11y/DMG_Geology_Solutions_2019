@@ -853,6 +853,56 @@ q_metadata = [
         "question": "Which one of the following is the best condition for tunnel site consideration?",
         "correct": "(b) Tunnel within thick horizontal formation (Lithological uniformity, stable roof beam action, symmetric stress)",
         "icon": "🚇"
+    },
+    {
+        "q": 86,
+        "file": "Q86_Geothermal_Energy_Plate_Boundaries_Gradient_Complete_Guide.html",
+        "pdf": "Q86_Geothermal_Energy_Plate_Boundaries_Gradient_Complete_Guide.pdf",
+        "section": "Environmental & Energy Geology",
+        "topic": "Geothermal Energy Systems: Plate Boundaries, Magma Convection, and Thermal Gradients",
+        "question": "Statements regarding geothermal energy (Plate boundaries, seasonal variations, magma circulation, gradients):",
+        "correct": "(a) 1 and 3 only (Tapped along plate margins; magma convection; seasonal changes don't affect depth)",
+        "icon": "🌋"
+    },
+    {
+        "q": 87,
+        "file": "Q87_Ocean_Acidification_CO2_Carbonate_Chemistry_Complete_Guide.html",
+        "pdf": "Q87_Ocean_Acidification_CO2_Carbonate_Chemistry_Complete_Guide.pdf",
+        "section": "Marine & Environmental Geochemistry",
+        "topic": "Ocean Acidification: CO2 Dissolution, pH Reduction, and Carbonate Ion Depletion",
+        "question": "Statements regarding carbon dioxide emissions entering the oceans (Acidity, basicity, carbonate shells):",
+        "correct": "(a) 1 only (CO2 releases H+ lowering pH; consumes CO3²⁻ impairing shell calcification)",
+        "icon": "🌊"
+    },
+    {
+        "q": 88,
+        "file": "Q88_Coastal_Aquifer_Saltwater_Encroachment_Ghyben_Herzberg_Complete_Guide.html",
+        "pdf": "Q88_Coastal_Aquifer_Saltwater_Encroachment_Ghyben_Herzberg_Complete_Guide.pdf",
+        "section": "Hydrogeology & Coastal Aquifers",
+        "topic": "Coastal Aquifers & Saltwater Intrusion: Ghyben-Herzberg Lens and Over-Pumping Upconing",
+        "question": "Groundwater threatened by saltwater encroachment in coastal areas because (Freshwater lens floatation, pumping):",
+        "correct": "(a) 1 and 3 only (Density floatation forms lens z=40h; heavy pumping causes 40:1 saltwater upconing)",
+        "icon": "🏖️"
+    },
+    {
+        "q": 89,
+        "file": "Q89_Organic_Matter_Load_Water_BOD_COD_Complete_Guide.html",
+        "pdf": "Q89_Organic_Matter_Load_Water_BOD_COD_Complete_Guide.pdf",
+        "section": "Environmental Geology & Water Quality",
+        "topic": "Water Pollution: Biochemical Oxygen Demand (BOD) vs. Chemical Oxygen Demand (COD)",
+        "question": "The organic matter load in a water body is described as:",
+        "correct": "(b) Biochemical oxygen demand (BOD measures O2 consumed by aerobic bacterial decay of organics)",
+        "icon": "🦠"
+    },
+    {
+        "q": 90,
+        "file": "Q90_Earthquake_Epicenter_Location_Triangulation_Complete_Guide.html",
+        "pdf": "Q90_Earthquake_Epicenter_Location_Triangulation_Complete_Guide.pdf",
+        "section": "Geophysics & Earthquake Seismology",
+        "topic": "Earthquake Epicenter Location: (ts - tp) Travel-Time Differential & Multi-Station Triangulation",
+        "question": "Which of the following are the requirements for locating epicentre of an earthquake?",
+        "correct": "(b) 1 and 3 only (P-S time difference determines distance; ≥3 stations required for triangulation)",
+        "icon": "📍"
     }
 ]
 

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.90: Earthquake Seismology: Epicenter Location by Triangulation — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .statements-list {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .statement-item {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .option-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .option-card.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .badge-correct {
+    background: #10b981;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; font-size: 15px; }
+  li { margin-bottom: 8px; }
+  .figure-container {
+    margin: 24px 0;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .figure-caption {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .table-custom th, .table-custom td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .table-custom th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .table-custom tr:nth-child(even) { background: #f8fafc; }
+  .callout {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-size: 14.5px;
+  }
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .formula-box {
+    background: #f1f5f9;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14.5px;
+    margin: 14px 0;
+    border-left: 4px solid var(--secondary);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section M: Geophysics & Seismology</div>
+  <h1>Question 90: Earthquake Epicenter Location by Triangulation</h1>
+  <div class="subtitle">Official Examination Guide • P-S Travel-Time Differentials, Multi-Station Networks & Epicenter Determination</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">Which of the following are the requirements for locating epicentre of an earthquake?</div>
+    <ul class="statements-list">
+      <li class="statement-item"><strong>1.</strong> Time difference data of first arrivals of P and S waves on a seismograph station</li>
+      <li class="statement-item"><strong>2.</strong> Highest amplitude data from seismograph stations</li>
+      <li class="statement-item"><strong>3.</strong> Time and amplitude data from several seismograph stations</li>
+    </ul>
+    <div class="question-text">Choose the correct combination:</div>
+    <div class="options-grid">
+      <div class="option-card">
+        <span>(a) 1, 2 and 3</span>
+      </div>
+      <div class="option-card correct">
+        <span>(b) 1 and 3 only</span>
+        <span class="badge-correct">CORRECT ANSWER</span>
+      </div>
+      <div class="option-card">
+        <span>(c) 2 and 3 only</span>
+      </div>
+      <div class="option-card">
+        <span>(d) 1 and 2 only</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">1. Executive Summary & Core Seismological Principles</div>
+  <p>
+    The determination of an earthquake's <strong>epicenter</strong> (the geographic point on the Earth's surface directly above the subsurface hypocenter / focus) is a fundamental problem in observational seismology (Shearer, <em>Introduction to Seismology</em>; Fowler, <em>The Solid Earth</em>):
+  </p>
+  <ul>
+    <li>
+      <strong>P-S Travel-Time Difference (Statement 1 is a Requirement):</strong> Because primary compressional waves (P-waves) travel at greater velocities ($V_P \approx 5.5\text{--}8.0\text{ km/s}$) than secondary shear waves (S-waves, $V_S \approx 3.0\text{--}4.5\text{ km/s}$), the arrival time gap $\Delta t = (t_S - t_P)$ widens progressively with distance from the source. The epicentral distance $D$ from any single station is calculated as:
+      <div class="formula-box">
+        D = Δt / [ (1/Vs) - (1/Vp) ]
+      </div>
+      This single-station time difference establishes a circle of radius $D$ centered on that seismograph station upon which the epicenter must lie.
+    </li>
+    <li>
+      <strong>Multiple Seismograph Stations (Statement 3 is a Requirement):</strong> A single distance circle gives an infinite number of possible locations. To uniquely locate the epicenter in 2D geographic space (latitude and longitude), the classical <strong>triangulation method</strong> requires data from <strong>at least three distinct seismograph stations</strong>. The intersection of three distance circles defines a single, unique geographic coordinate point. In modern digital networks, multi-station arrival time and waveform amplitude/inversion data are routinely combined in generalized least-squares inversion algorithms (e.g., HYPOINVERSE) to resolve both the epicenter and focal depth.
+    </li>
+    <li>
+      <strong>Highest Amplitude Data (Statement 2 is NOT a Location Requirement):</strong> The maximum trace amplitude recorded on a seismograph is used to calculate earthquake <strong>magnitude</strong> ($M_L$ Richter scale: $M_L = \log_{10} A - \log_{10} A_0$), not the spatial position of the epicenter. Highest amplitude cannot reliably pinpoint location because local geological site conditions (e.g., soft alluvial amplification, basin resonance) and source radiation patterns can produce abnormally high amplitudes at stations located far from the actual epicenter.
+    </li>
+  </ul>
+  <p>
+    Therefore, the valid requirements for locating an earthquake epicenter are Statements <strong>1 and 3 only</strong>, making Option <strong>(b)</strong> the correct answer.
+  </p>
+
+  <div class="figure-container">
+    <img src="figures_Q90/earthquake_epicenter_triangulation_stations.png" alt="Earthquake Epicenter Triangulation Method">
+    <div class="figure-caption">Figure 90.1: Geometrical triangulation of an earthquake epicenter using P-S travel-time difference radii from three independent seismograph stations (Grounded in Shearer Introduction to Seismology).</div>
+  </div>
+
+  <div class="section-title">2. Mathematical Formulation of the Triangulation Method</div>
+  <p>For an earthquake originating at time $t_0$ at distance $D$ from a seismograph station:</p>
+  <div class="formula-box">
+    Arrival time of P-wave:  tP = t0 + D / Vp<br>
+    Arrival time of S-wave:  tS = t0 + D / Vs<br><br>
+    Subtracting tP from tS eliminates the unknown origin time t0:<br>
+    tS - tP = D · [ (1/Vs) - (1/Vp) ] = D · [ (Vp - Vs) / (Vp · Vs) ]<br><br>
+    Solving for Epicentral Distance D:<br>
+    D = (tS - tP) · [ (Vp · Vs) / (Vp - Vs) ]
+  </div>
+  <p>
+    With the distance $D_i$ known for three stations $(x_i, y_i)$, the epicenter coordinates $(x_e, y_e)$ are resolved by solving the system of circular equations:
+  </p>
+  <div class="formula-box">
+    (xe - x₁)² + (ye - y₁)² = D₁²<br>
+    (xe - x₂)² + (ye - y₂)² = D₂²<br>
+    (xe - x₃)² + (ye - y₃)² = D₃²
+  </div>
+
+  <div class="section-title">3. Evaluation of Options</div>
+  <ul>
+    <li><strong>Statement 1:</strong> <strong>REQUIRED.</strong> The $(t_S - t_P)$ time difference provides the radial distance from the station to the epicenter.</li>
+    <li><strong>Statement 2:</strong> <strong>NOT REQUIRED FOR LOCATION.</strong> Maximum amplitude measures magnitude ($M_L$), not spatial coordinates; local geology can distort amplitudes.</li>
+    <li><strong>Statement 3:</strong> <strong>REQUIRED.</strong> Data from multiple stations (minimum three) is indispensable for geometric triangulation and resolving unique epicenter coordinates.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Key Takeaway:</strong> Epicenter location requires $(t_S - t_P)$ time difference (1) and multi-station triangulation networks (3). Amplitudes determine magnitude, not location. Hence, <strong>(b) 1 and 3 only</strong> is the correct answer.
+  </div>
+
+  <div class="nav-bar">
+    <a href="Q89_Organic_Matter_Load_Water_BOD_COD_Complete_Guide.html" class="nav-link">← Previous: Q.89 Organic Matter Load & BOD</a>
+    <a href="index.html" class="nav-link">Master Portal Index</a>
+    <a href="Q91_Radiant_Energy_Irradiance_Remote_Sensing_Complete_Guide.html" class="nav-link">Next: Q.91 Remote Sensing: Radiant Flux & Irradiance →</a>
+  </div>
+</div>
+</body>
+</html>
