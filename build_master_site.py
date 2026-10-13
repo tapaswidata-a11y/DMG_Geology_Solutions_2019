@@ -313,6 +313,16 @@ q_metadata = [
         "question": "The deep-focused earthquakes commonly originate along:",
         "correct": "Benioff zone (Dipping subducting lithospheric slab down to ~670 km)",
         "icon": "⚡"
+    },
+    {
+        "q": 32,
+        "file": "Q32_Laurasia_Paleogeography_Supercontinent_Complete_Guide.html",
+        "pdf": "Q32_Laurasia_Paleogeography_Supercontinent_Complete_Guide.pdf",
+        "section": "Historical Geology & Plate Tectonics",
+        "topic": "Paleogeography: Laurasia Supercontinent Architecture",
+        "question": "A major continent that existed before 90 Ma and comprised present-day N. America, Greenland, Europe and part of Asia is referred to as:",
+        "correct": "Laurasia (Mesozoic northern supercontinent comprising Laurentia + Eurasia)",
+        "icon": "🌍"
     }
 ]
 
