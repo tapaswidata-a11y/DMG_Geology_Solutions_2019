@@ -353,6 +353,56 @@ q_metadata = [
         "question": "In hexagonal crystals, there is one and only one direction which shows no double refraction of light. This direction is called:",
         "correct": "Optic axis (Coincident with crystallographic c-axis; birefringence = 0)",
         "icon": "💎"
+    },
+    {
+        "q": 36,
+        "file": "Q36_Uniaxial_Flash_Figure_Interference_Complete_Guide.html",
+        "pdf": "Q36_Uniaxial_Flash_Figure_Interference_Complete_Guide.pdf",
+        "section": "Optical Mineralogy & Conoscopic Optics",
+        "topic": "Uniaxial Minerals: Conoscopic Flash Figures",
+        "question": "The interference figure produced by a uniaxial crystal cut parallel to its optic axis is known as:",
+        "correct": "Flash figure (Optic normal figure; broad fuzzy isogyres flash out within 5° rotation)",
+        "icon": "⚡"
+    },
+    {
+        "q": 37,
+        "file": "Q37_Al2SiO5_Polymorphs_XRD_Discrimination_Complete_Guide.html",
+        "pdf": "Q37_Al2SiO5_Polymorphs_XRD_Discrimination_Complete_Guide.pdf",
+        "section": "Analytical Mineralogy & Crystallography",
+        "topic": "Al2SiO5 Polymorph Discrimination: XRD vs. Elemental Methods",
+        "question": "Which one of the following instruments can be used to distinguish kyanite, sillimanite and andalusite?",
+        "correct": "XRD (X-Ray Diffraction distinguishes unique crystal lattice d-spacings of polymorphs)",
+        "icon": "🔬"
+    },
+    {
+        "q": 38,
+        "file": "Q38_Silicate_Classification_Mineral_Examples_Complete_Guide.html",
+        "pdf": "Q38_Silicate_Classification_Mineral_Examples_Complete_Guide.pdf",
+        "section": "Systematic Mineralogy & Silicate Chemistry",
+        "topic": "Silicate Subclasses: Chains, Rings, and Sheets",
+        "question": "Matching mineral examples with silicate classes (Phlogopite, Enstatite, Anthophyllite, Beryl):",
+        "correct": "Phlogopite = Phyllosilicate, Enstatite = Inosilicate single chain, Anthophyllite = Inosilicate double chain, Beryl = Cyclosilicate",
+        "icon": "⛓️"
+    },
+    {
+        "q": 39,
+        "file": "Q39_Muscovite_Phyllosilicate_Structure_Complete_Guide.html",
+        "pdf": "Q39_Muscovite_Phyllosilicate_Structure_Complete_Guide.pdf",
+        "section": "Phyllosilicate Crystallography & Sheet Silicates",
+        "topic": "Mica Crystal Chemistry: Muscovite Dioctahedral t-o-t Stacking",
+        "question": "Muscovite belongs to which one of the following types of phyllosilicate structures?",
+        "correct": "Dioctahedral t-o-t, interlayer cation, dioctahedral t-o-t type (2:1 Al³⁺ layer with K⁺)",
+        "icon": "📖"
+    },
+    {
+        "q": 40,
+        "file": "Q40_Miller_Indices_Crystallography_Complete_Guide.html",
+        "pdf": "Q40_Miller_Indices_Crystallography_Complete_Guide.pdf",
+        "section": "Geometric Crystallography & Notation",
+        "topic": "Miller Indices: Crystal Face Bracket Syntax & Intercepts",
+        "question": "Which one of the following expressions is correct as per notations of Miller indices of a crystal face?",
+        "correct": "(1 1 1) [Enclosed in round parentheses, integers cleared of fractions, no axis letters]",
+        "icon": "📐"
     }
 ]
 

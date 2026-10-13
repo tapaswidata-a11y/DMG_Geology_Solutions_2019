@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.36 – Optical Mineralogy: Uniaxial Flash Figures & Conoscopic Optics | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #8b5cf6;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #8b5cf6;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 36</div>
+    <h1>Conoscopic Optical Mineralogy: Uniaxial Flash Figures</h1>
+    <div class="meta">Topic: Optical Mineralogy & Conoscopic Microscopy | Primary Reference: Dexter Perkins (Mineralogy, 3rd ed., Ch. 5)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.36. The interference figure produced by a uniaxial crystal cut parallel to its optic axis is known as<br><br>
+      (a) Dichroic figure<br>
+      (b) Flash figure<br>
+      (c) Brewster's figure<br>
+      (d) Uniaxial indicatrix
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item incorrect">
+        <span class="opt-letter">a</span> Dichroic figure
+      </div>
+      <div class="opt-item correct">
+        <span class="opt-letter">b</span> Flash figure (Correct Answer)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">c</span> Brewster's figure
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> Uniaxial indicatrix
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (b) Flash figure [When a uniaxial crystal is cut parallel to the optic axis, broad fuzzy isogyres flash across the field of view and leave within a few degrees of stage rotation].
+    </div>
+  </div>
+
+  <!-- Textbook Evidence Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Textbook Evidence: Dexter Perkins (Chapter 5)</h2>
+    <div class="tb-figure">
+      <img src="figures_Q36/perkins_fig19_uniaxial_interference_figure_clean.png" alt="Uniaxial Interference Figures">
+      <div class="fig-caption">
+        <strong>Figure 5.19: Uniaxial Interference Figures Under Conoscopic Observation</strong> (Dexter Perkins, <em>Mineralogy</em>, 3rd ed., p. 127). (a–c) Centered optic axis (OA) figures formed when the crystal is cut perpendicular to the optic axis ($c$-axis), producing an invariant black cross (melatope at center) with concentric isochromes. (d–g) Off-centered OA figures where the melatope precesses. When a crystal is instead cut <strong>parallel to the optic axis</strong>, the optic axis lies in the plane of the section; at extinction, broad diffuse isogyres fill the field, but upon rotating the stage by less than 5°, they split and flash out of view—forming a classic <strong>Flash Figure</strong>.
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "When a uniaxial mineral is oriented with its optic axis parallel to the stage (cut parallel to the optic axis), it exhibits maximum birefringence under orthoscopic illumination. Conoscopically, when the optic axis is parallel to either polarizer, a very broad, fuzzy dark cross covers nearly the whole field of view. As soon as the stage is rotated by just 2° to 5°, the isogyres rapidly split into hyperbolas that exit the field in opposite quadrants. Because the cross appears and disappears so quickly upon slight rotation, this is termed a <strong>flash figure</strong>."
+      <div class="quote-cite">— Dexter Perkins, <em>Mineralogy</em>, Chapter 5 (Optical Mineralogy), pp. 126–128</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Analysis Card -->
+  <div class="card">
+    <h2><span>🔍</span> Comprehensive Option Analysis</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>(b) Flash figure (Optic Normal Figure)</span> <span>[CORRECT]</span></h4>
+      <p><strong>Optical Mechanism:</strong> When a uniaxial mineral (such as quartz, calcite, or apatite) is cut parallel to its $c$-crystallographic axis (the optic axis), the optic axis lies horizontally on the microscope stage. Under convergent polarized light (Bertrand lens inserted):</p>
+      <ul style="margin-left: 20px; margin-top: 6px; font-size: 13.5px;">
+        <li>At the extinction position (optic axis parallel to polarizer or analyzer), light traversing the crystal experiences zero or 90° vibration match, resulting in broad, diffuse, shadowy extinction bands that cover the central field of view.</li>
+        <li>Upon slight rotation of the microscope stage (typically &lt; 5°), the retardation increases rapidly across the field, and the fuzzy isogyres break apart and flash out of the field of view into the quadrants of the optic axis.</li>
+        <li>This diagnostic phenomenon gives it the universally accepted optical mineralogy name: <strong>Flash Figure</strong>. Grains exhibiting a flash figure always display the <em>maximum interference color (maximum birefringence)</em> for that mineral in thin section.</li>
+      </ul>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(a) Dichroic figure</span> <span>[INCORRECT]</span></h4>
+      <p><em>Dichroism</em> (pleochroism in uniaxial minerals) is the change in absorption color of a mineral when rotated in plane-polarized light (PPL) due to differential absorption along $\omega$ and $\epsilon$ vibrations. There is no such conoscopic interference feature known as a "dichroic figure".</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(c) Brewster's figure</span> <span>[INCORRECT]</span></h4>
+      <p>Named after Sir David Brewster, Brewster's fringes or figures occur in interferometry and photoelasticity of stressed isotropic media (birefringence induced under mechanical stress). It is not a standard crystallographic interference figure of unstrained minerals.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(d) Uniaxial indicatrix</span> <span>[INCORRECT]</span></h4>
+      <p>The <em>uniaxial indicatrix</em> is an abstract three-dimensional geometric ellipsoid of revolution used to represent the refractive indices and vibration directions of a crystal mathematically ($n_\omega$ and $n_\epsilon$). It is a theoretical geometric construct, NOT an observed optical interference figure seen down the microscope.</p>
+    </div>
+  </div>
+
+  <!-- Comparison Table Card -->
+  <div class="card">
+    <h2><span>📊</span> Uniaxial Interference Figures by Grain Cut Orientation</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Cut Orientation</th>
+          <th>Orthoscopic Appearance</th>
+          <th>Conoscopic Figure Name</th>
+          <th>Figure Appearance on Stage Rotation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Perpendicular to Optic Axis</strong> ($\perp c$-axis)</td>
+          <td>Zero birefringence; stays dark (extinct) during 360° rotation</td>
+          <td><strong>Centered Optic Axis (OA) Figure</strong></td>
+          <td>Sharp black cross whose center (melatope) remains fixed at the crosshairs; concentric circular isochromes.</td>
+        </tr>
+        <tr>
+          <td><strong>Inclined to Optic Axis</strong></td>
+          <td>Low to moderate interference colors; extinct every 90°</td>
+          <td><strong>Off-Centered Optic Axis Figure</strong></td>
+          <td>Black cross whose melatope precesses in a circle around the center of the field as the stage is rotated.</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Parallel to Optic Axis</strong> ($\parallel c$-axis)</td>
+          <td><strong>Maximum interference colors (highest birefringence)</strong></td>
+          <td><strong>Flash Figure (Optic Normal Figure)</strong></td>
+          <td><strong>Broad, fuzzy isogyres cover the field at extinction; split and rapidly flash out of view within 5° rotation.</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Essential Diagnostic Rules for Optical Mineralogy:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li><strong>Cut $\perp$ Optic Axis:</strong> Minimum birefringence (isotropic behavior in thin section) $\rightarrow$ <strong>Centered Optic Axis Figure</strong> (stable centered black cross).</li>
+        <li><strong>Cut $\parallel$ Optic Axis:</strong> Maximum birefringence $\rightarrow$ <strong>Flash Figure</strong> (fleeting broad isogyres that flash out upon minimal rotation).</li>
+        <li>Remember: A flash figure confirms the mineral is anisotropic and oriented with its optic axis horizontal, but cannot easily be used to determine optic sign.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

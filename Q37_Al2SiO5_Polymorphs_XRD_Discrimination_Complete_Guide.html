@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.37 – Analytical Mineralogy: Distinguishing Al2SiO5 Polymorphs via XRD | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 37</div>
+    <h1>Analytical Mineralogy: Distinguishing Al₂SiO₅ Polymorphs via XRD</h1>
+    <div class="meta">Topic: Mineral Analysis, Crystallography & Geochemistry | Primary Reference: Dexter Perkins (Mineralogy, 3rd ed., Ch. 12)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.37. Which one of the following instruments can be used to distinguish kyanite, sillimanite and andalusite?<br><br>
+      (a) EPMA<br>
+      (b) XRD<br>
+      (c) XRF<br>
+      (d) ICP-MS
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item incorrect">
+        <span class="opt-letter">a</span> EPMA (Electron Probe Microanalyzer)
+      </div>
+      <div class="opt-item correct">
+        <span class="opt-letter">b</span> XRD (X-Ray Diffraction) [Correct Answer]
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">c</span> XRF (X-Ray Fluorescence)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> ICP-MS (Inductively Coupled Plasma Mass Spectrometry)
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (b) XRD [Because kyanite, sillimanite, and andalusite are polymorphs with identical chemical composition (Al₂SiO₅), chemical analytical methods cannot distinguish them; only XRD distinguishes their unique crystal structures and d-spacings].
+    </div>
+  </div>
+
+  <!-- Textbook Evidence Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Textbook Evidence: Dexter Perkins (Chapter 12)</h2>
+    <div class="tb-figure">
+      <img src="figures_Q37/perkins_fig15_xrd_diffraction_peaks.png" alt="XRD Peak Comparison">
+      <div class="fig-caption">
+        <strong>Figure 12.15: Identification of Minerals by Diagnostic X-Ray Diffraction Patterns</strong> (Dexter Perkins, <em>Mineralogy</em>, 3rd ed., p. 336). Diffraction patterns plotted as intensity vs. diffraction angle $2\theta$. Each crystalline phase has a unique arrangement of atomic planes with specific interplanar $d$-spacings ($d_{hkl}$). In polymorphs having identical bulk chemistries, the distinct spatial arrangement of atoms produces unmistakable differences in peak positions and intensities.
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "Chemical analyses (such as wet chemistry, XRF, EPMA, or ICP-MS) tell us the elemental composition of a mineral but provide <strong>no information about atomic arrangement or crystal structure</strong>. In contrast, <strong>X-ray diffraction (XRD)</strong> provides direct information about the 3-dimensional arrangement of atoms and interplanar spacings. Consequently, XRD is the definitive technique for distinguishing <strong>polymorphs</strong>—minerals that share identical chemical formulas but possess distinct crystal structures (such as calcite vs. aragonite, diamond vs. graphite, or kyanite vs. sillimanite vs. andalusite)."
+      <div class="quote-cite">— Dexter Perkins, <em>Mineralogy</em>, Chapter 12 (X-ray Diffraction and Mineral Analysis), pp. 326–335</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Analysis Card -->
+  <div class="card">
+    <h2><span>🔍</span> Comprehensive Option Analysis</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>(b) XRD (X-Ray Powder Diffraction)</span> <span>[CORRECT]</span></h4>
+      <p><strong>Crystallographic Principle:</strong> Kyanite, sillimanite, and andalusite are the three classic <strong>Al₂SiO₅ polymorphs (trimorphs)</strong>:</p>
+      <ul style="margin-left: 20px; margin-top: 6px; font-size: 13.5px;">
+        <li><strong>Kyanite:</strong> Triclinic crystal system ($P\bar{1}$); $a = 7.12\text{ \AA}, b = 7.85\text{ \AA}, c = 5.57\text{ \AA}$; density $\approx 3.6\text{ g/cm}^3$. High-pressure polymorph.</li>
+        <li><strong>Andalusite:</strong> Orthorhombic crystal system ($Pnnm$); $a = 7.79\text{ \AA}, b = 7.90\text{ \AA}, c = 5.56\text{ \AA}$; density $\approx 3.15\text{ g/cm}^3$. Low-P, moderate-T polymorph.</li>
+        <li><strong>Sillimanite:</strong> Orthorhombic crystal system ($Pbnm$); $a = 7.48\text{ \AA}, b = 7.67\text{ \AA}, c = 5.77\text{ \AA}$; density $\approx 3.23\text{ g/cm}^3$. High-temperature polymorph.</li>
+      </ul>
+      <p style="margin-top: 8px;">Because their crystal lattices and space groups differ radically, their interplanar $d$-spacings satisfy Bragg's law ($\lambda = 2d_{hkl}\sin\theta$) at completely distinct diffraction angles ($2\theta$). XRD powder diffractograms yield diagnostic, non-overlapping peak fingerprints that distinguish the three phases effortlessly.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(a) EPMA (Electron Probe Microanalyzer)</span> <span>[INCORRECT]</span></h4>
+      <p>EPMA focuses a high-energy electron beam onto a 1-micron spot and measures characteristic X-rays emitted by elements. Because kyanite, sillimanite, and andalusite have the <strong>exact same chemical formula</strong> ($62.92\text{ wt}\%\text{ Al}_2\text{O}_3$ and $37.08\text{ wt}\%\text{ SiO}_2$), an EPMA analysis of all three minerals will yield identical Al:Si molar ratios (2:1). EPMA cannot detect crystal structure.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(c) XRF (X-Ray Fluorescence Spectrometry)</span> <span>[INCORRECT]</span></h4>
+      <p>XRF is a bulk geochemical technique used to determine elemental concentrations in whole-rock or powdered samples. Like EPMA, it measures secondary characteristic fluorescent X-rays from elements, not structural diffraction. It reports identical bulk oxide weight percentages for all three polymorphs.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(d) ICP-MS (Inductively Coupled Plasma Mass Spectrometry)</span> <span>[INCORRECT]</span></h4>
+      <p>ICP-MS ionizes dissolved sample solutions (or laser-ablated aerosols) into an argon plasma and separates ions by mass-to-charge ratio ($m/z$). It is celebrated for ultra-trace element and isotope analysis down to parts-per-trillion (ppt), but since the sample's crystal lattice is completely destroyed in the 7,000 K plasma, it cannot distinguish polymorphs.</p>
+    </div>
+  </div>
+
+  <!-- Comparison Table Card -->
+  <div class="card">
+    <h2><span>📊</span> Comparison: Analytical Techniques in Mineralogy</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Instrument / Method</th>
+          <th>What It Measures</th>
+          <th>Sample State</th>
+          <th>Can It Distinguish Polymorphs?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background: #f0fdf4;">
+          <td><strong>XRD (X-Ray Diffraction)</strong></td>
+          <td><strong>Lattice parameters, $d$-spacings, crystal symmetry</strong></td>
+          <td><strong>Intact crystalline powder or single crystal</strong></td>
+          <td><strong>YES (Unambiguously separates polymorphs)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>EPMA</strong></td>
+          <td>In-situ elemental composition (spot size ~1 µm)</td>
+          <td>Polished thin section / mount</td>
+          <td>NO (Identical composition: 63% Al₂O₃, 37% SiO₂)</td>
+        </tr>
+        <tr>
+          <td><strong>XRF</strong></td>
+          <td>Bulk elemental & major oxide concentrations</td>
+          <td>Fused glass bead / pressed powder pellet</td>
+          <td>NO (Identical bulk chemistry)</td>
+        </tr>
+        <tr>
+          <td><strong>ICP-MS</strong></td>
+          <td>Trace element & isotope concentrations</td>
+          <td>Acid-digested liquid or laser-ablated vapor</td>
+          <td>NO (Crystal structure is completely destroyed)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Universal Geochemical Rule:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li>Whenever a question asks to distinguish <strong>polymorphs</strong> (e.g., Kyanite–Sillimanite–Andalusite, Calcite–Aragonite, Quartz–Coesite–Stishovite, Rutile–Anatase–Brookite, Diamond–Graphite), <strong>always select structural methods</strong>: <strong>XRD</strong> (or Raman / FTIR spectroscopy / Optical microscopy).</li>
+        <li><strong>Chemical/elemental methods</strong> (EPMA, XRF, ICP-MS, AAS, EDS) <strong>FAIL</strong> on polymorphs because chemistry is identical.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
