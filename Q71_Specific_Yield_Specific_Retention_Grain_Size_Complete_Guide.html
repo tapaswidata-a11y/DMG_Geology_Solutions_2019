@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.71: Specific Yield, Specific Retention & Grain Size Dependence — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .statements-list {
+    margin-left: 0;
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .statement-item {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .option-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid var(--border);
+    font-size: 14.5px;
+  }
+  .option-item.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .option-label {
+    font-weight: 700;
+    margin-right: 10px;
+    min-width: 24px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 28px 0 14px 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; font-size: 14.5px; }
+  
+  .figure-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 24px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .figure-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: #f8fafc;
+  }
+  .figure-caption {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    background: #f8fafc;
+    border-top: 1px solid var(--border);
+    text-align: left;
+    line-height: 1.5;
+  }
+  .figure-caption strong { color: #0f172a; }
+  
+  .highlight-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .highlight-title {
+    font-weight: 700;
+    color: #166534;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .comparison-table th, .comparison-table td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .comparison-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .comparison-table tr:nth-child(even) { background: #fbfcfe; }
+  
+  .source-tag {
+    display: inline-block;
+    background: #e2e8f0;
+    color: #334155;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; padding: 20px; max-width: 100%; }
+    .figure-card { break-inside: avoid; }
+    @page { margin: 15mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section I: Hydrogeology & Environmental Geology</div>
+  <h1>Question 71: Specific Yield ($S_y$), Specific Retention ($S_r$) & Grain Size Controls</h1>
+  <div class="subtitle">Aquifer Storage Fundamentals, Gravity Drainage Physics, and Pore-Size Surface Tension Dynamics</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">
+      Consider the following statements regarding specific yield of an aquifer:
+    </div>
+    <div class="statements-list">
+      <div class="statement-item"><strong>1.</strong> It is the ratio of the volume of water that after saturation can be drained by gravity to its own volume.</div>
+      <div class="statement-item"><strong>2.</strong> Its value does not depend on the grain size.</div>
+    </div>
+    <div class="question-text" style="font-size:14.5px; margin-bottom:10px;">
+      Which of the statements given above is/are correct?
+    </div>
+    <div class="options-grid">
+      <div class="option-item correct">
+        <span class="option-label">(a)</span>
+        <span>1 only [CORRECT]</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(b)</span>
+        <span>2 only</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(c)</span>
+        <span>Both 1 and 2</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(d)</span>
+        <span>Neither 1 nor 2</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="highlight-title">Verified Answer Key</div>
+    <p style="margin:0; font-size:15px; color:#14532d;">
+      <strong>Correct Option: (a) 1 only</strong> — Statement 1 is the exact classical thermodynamic definition of <strong>Specific Yield</strong> ($S_y = V_{wd} / V$). Statement 2 is completely false because specific yield depends <em>profoundly</em> on grain size: fine-grained sediments (clays) have very small pore throats and huge surface areas where molecular capillary forces retain water ($S_r \approx 48\%$, $S_y \approx 2\%$), whereas coarse sands and gravels release water freely under gravity ($S_y \approx 25\text{--}30\%$).
+    </p>
+  </div>
+
+  <div class="figure-card">
+    <img src="figures_Q71/specific_yield_retention_grain_size.png" alt="Specific Yield and Retention vs Grain Size">
+    <div class="figure-caption">
+      <strong>Figure 71.1 | Dependence of Specific Yield ($S_y$) and Specific Retention ($S_r$) on Sediment Grain Size:</strong> In an unconfined aquifer, total porosity is partitioned into drainable water ($S_y$) and capillary-retained water ($S_r$): $n = S_y + S_r$. In clay, high total porosity ($n \approx 50\%$) yields almost no gravity drainage ($S_y \approx 2\%$) because molecular attraction binds pore water. In medium-to-coarse sand, wide pores allow gravity to overcome capillary forces, maximizing specific yield ($S_y \approx 27\text{--}28\%$). (Source: Todd &amp; Mays, <em>Groundwater Hydrology</em>; Davis &amp; DeWiest, 1966).
+    </div>
+  </div>
+
+  <h2 class="section-title">1. Mathematical Definitions in Aquifer Storage</h2>
+  <p>
+    When an unconfined saturated porous medium is subjected to gravity drainage (e.g., during pumping or water table decline), not all water drains out:
+  </p>
+  <ul>
+    <li><strong>Specific Yield ($S_y$):</strong> The ratio of the volume of water drained by gravity ($V_{wd}$) to the total bulk volume of the rock or soil ($V$):
+      $$S_y = \frac{V_{wd}}{V}$$
+    </li>
+    <li><strong>Specific Retention ($S_r$):</strong> The ratio of the volume of water retained against gravity by molecular attraction and surface tension ($V_{wr}$) to the total volume ($V$):
+      $$S_r = \frac{V_{wr}}{V}$$
+    </li>
+    <li><strong>Porosity Conservation Law:</strong> The sum of specific yield and specific retention equals the total porosity ($n$):
+      $$n = S_y + S_r = \frac{V_v}{V}$$
+    </li>
+  </ul>
+
+  <h2 class="section-title">2. Why Specific Yield Depends Strongly on Grain Size</h2>
+  <p>
+    The retention of water in a porous skeleton is governed by <strong>capillary forces</strong> and <strong>adsorption</strong> along mineral grain surfaces. 
+  </p>
+  <ul>
+    <li>The capillary rise height ($h_c$) in a cylindrical pore is inversely proportional to the pore throat radius ($r$):
+      $$h_c = \frac{2\gamma \cos \theta}{\rho_w g r}$$
+      where $\gamma$ is surface tension and $\theta$ is contact angle.
+    </li>
+    <li>In <strong>fine-grained sediments</strong> (clay and fine silt), pore radii are microscopic ($r &lt; 2\ \mu\text{m}$), and specific surface area is enormous ($&gt;10\text{ m}^2/\text{g}$). Capillary suction pressures exceed gravity by orders of magnitude, causing virtually all pore water to be held as pellicular and capillary water ($S_r \approx 45\text{--}50\%$). Consequently, $S_y$ drops to an insignificant 1% to 3%, despite clay having the highest total porosity of all sedimentary rocks!</li>
+    <li>In <strong>coarse-grained sediments</strong> (medium sand, coarse sand, gravel), pore radii are large ($r &gt; 100\ \mu\text{m}$), specific surface area is low, capillary forces are weak, and gravity drains water freely ($S_y \approx 20\text{--}30\%$).</li>
+  </ul>
+
+  <h2 class="section-title">3. Typical Representative Values in Hydrogeology</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Sediment / Rock Type</th>
+        <th>Total Porosity ($n$, %)</th>
+        <th>Specific Retention ($S_r$, %)</th>
+        <th>Specific Yield ($S_y$, %)</th>
+        <th>Aquifer Potential</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Clay</strong></td>
+        <td>45 – 55%</td>
+        <td>45 – 52%</td>
+        <td><strong>1 – 3%</strong></td>
+        <td>Aquitard / Aquiclude (holds water, cannot yield it).</td>
+      </tr>
+      <tr>
+        <td><strong>Silt</strong></td>
+        <td>40 – 48%</td>
+        <td>32 – 40%</td>
+        <td><strong>5 – 10%</strong></td>
+        <td>Poor yield; low drainage efficiency.</td>
+      </tr>
+      <tr>
+        <td><strong>Fine Sand</strong></td>
+        <td>35 – 42%</td>
+        <td>15 – 22%</td>
+        <td><strong>15 – 23%</strong></td>
+        <td>Moderate aquifer yield.</td>
+      </tr>
+      <tr>
+        <td><strong>Medium / Coarse Sand</strong></td>
+        <td>32 – 38%</td>
+        <td>6 – 12%</td>
+        <td><strong>25 – 30%</strong></td>
+        <td><strong>Excellent, prolific unconfined aquifer!</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Gravel</strong></td>
+        <td>25 – 32%</td>
+        <td>3 – 8%</td>
+        <td><strong>20 – 25%</strong></td>
+        <td>Highly transmissive prolific aquifer.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">4. Comprehensive Statement Analysis</h2>
+  <ul>
+    <li><strong>Statement 1:</strong> <strong style="color:#166534;">Correct.</strong> "It is the ratio of the volume of water that after saturation can be drained by gravity to its own volume." This is the verbatim classical definition of specific yield.</li>
+    <li><strong>Statement 2:</strong> <strong style="color:#dc2626;">Incorrect.</strong> "Its value does not depend on the grain size." As proved by capillary theory and empirical testing across all sediments, grain size is the primary physical control on the partition between specific yield and specific retention.</li>
+  </ul>
+
+  <h2 class="section-title">5. Authoritative Textbook References</h2>
+  <ul>
+    <li><span class="source-tag">David Keith Todd &amp; Larry W. Mays (2005)</span> <em>Groundwater Hydrology</em>, 3rd Ed., John Wiley &amp; Sons, Chapter 2 ("Groundwater Occurrence: Specific Yield and Retention"), pp. 35–45.</li>
+    <li><span class="source-tag">C. W. Fetter (2001)</span> <em>Applied Hydrogeology</em>, 4th Ed., Prentice Hall, Chapter 4 ("Groundwater Flow: Storage Properties"), pp. 88–95.</li>
+    <li><span class="source-tag">H. M. Raghunath (2007)</span> <em>Ground Water</em>, 3rd Ed., New Age International Publishers, Chapter 2 ("Hydrogeological Parameters").</li>
+    <li><span class="source-tag">K. M. Bangar (2018)</span> <em>Principles of Engineering Geology</em>, Standard Publishers, Chapter on Groundwater.</li>
+  </ul>
+</div>
+
+</body>
+</html>

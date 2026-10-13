@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.72: Intrinsic Permeability ($k$): Pore Size & Pore Shape Controls — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .option-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid var(--border);
+    font-size: 14.5px;
+  }
+  .option-item.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .option-label {
+    font-weight: 700;
+    margin-right: 10px;
+    min-width: 24px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 28px 0 14px 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; font-size: 14.5px; }
+  
+  .figure-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 24px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .figure-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: #f8fafc;
+  }
+  .figure-caption {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    background: #f8fafc;
+    border-top: 1px solid var(--border);
+    text-align: left;
+    line-height: 1.5;
+  }
+  .figure-caption strong { color: #0f172a; }
+  
+  .highlight-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .highlight-title {
+    font-weight: 700;
+    color: #166534;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .comparison-table th, .comparison-table td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .comparison-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .comparison-table tr:nth-child(even) { background: #fbfcfe; }
+  
+  .source-tag {
+    display: inline-block;
+    background: #e2e8f0;
+    color: #334155;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; padding: 20px; max-width: 100%; }
+    .figure-card { break-inside: avoid; }
+    @page { margin: 15mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section I: Hydrogeology & Environmental Geology</div>
+  <h1>Question 72: Physical Determinants of Intrinsic Permeability: Pore Size & Pore Shape</h1>
+  <div class="subtitle">Kozeny-Carman Equation, Hubbert's Fluid Independence, and Microscopic Pore Geometry</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">
+      The intrinsic permeability of the porous medium depends on the
+    </div>
+    <div class="options-grid">
+      <div class="option-item">
+        <span class="option-label">(a)</span>
+        <span>Size of the opening through which the fluid moves only</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(b)</span>
+        <span>Shape of the opening through which the fluid moves only</span>
+      </div>
+      <div class="option-item correct">
+        <span class="option-label">(c)</span>
+        <span>Both 1 and 2 [CORRECT]</span>
+      </div>
+      <div class="option-item">
+        <span class="option-label">(d)</span>
+        <span>Neither 1 nor 2</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="highlight-title">Verified Answer Key</div>
+    <p style="margin:0; font-size:15px; color:#14532d;">
+      <strong>Correct Option: (c) Both 1 and 2</strong> — Intrinsic permeability ($k$) is an exclusive property of the solid porous matrix (independent of fluid properties). As mathematically formulated in Hubbert's derivation and the Kozeny-Carman equation ($k = C \cdot d^2$), it depends directly on both the <strong>size</strong> of the pore openings (cross-sectional throat diameter squared, $d^2$) and the <strong>shape</strong> of the openings (tortuosity, angularity, sphericity, and packing geometry represented by dimensionless factor $C$).
+    </p>
+  </div>
+
+  <div class="figure-card">
+    <img src="figures_Q72/intrinsic_permeability_pore_geometry.png" alt="Pore Size and Pore Shape Controls on Intrinsic Permeability">
+    <div class="figure-caption">
+      <strong>Figure 72.1 | Geometric Controls on Intrinsic Permeability ($k$):</strong> (a) <strong>Pore Size Effect:</strong> Wider pore throat openings ($d$) reduce frictional viscous drag along mineral grain walls, drastically increasing fluid discharge ($k \propto d^2$). (b) <strong>Pore Shape &amp; Tortuosity Effect:</strong> Angular, platy, or poorly sorted grains create convoluted, tortuous flow paths ($T = L_e / L$), lowering the dimensionless geometric shape factor $C$ and reducing permeability even at identical total porosities.
+    </div>
+  </div>
+
+  <h2 class="section-title">1. Definition of Intrinsic Permeability vs. Hydraulic Conductivity</h2>
+  <p>
+    In groundwater dynamics, fluid movement through a porous rock or sediment is governed by <strong>Darcy's Law</strong>:
+  </p>
+  <p style="text-align:center; font-weight:bold; font-size:16px; margin: 12px 0;">
+    $Q = -K A \frac{dh}{dl}$
+  </p>
+  <p>
+    where $K$ is the <strong>Hydraulic Conductivity</strong> ($\text{m/s}$ or $\text{m/day}$). 
+  </p>
+  <p>
+    In 1940 and 1956, <strong>M. King Hubbert</strong> analyzed the microscopic physics of Darcy's law and demonstrated that hydraulic conductivity incorporates both the properties of the fluid and the properties of the rock:
+  </p>
+  <p style="text-align:center; font-weight:bold; font-size:16px; margin: 12px 0;">
+    $K = k \left( \frac{\rho g}{\mu} \right)$
+  </p>
+  <p>
+    where:
+  </p>
+  <ul>
+    <li>$\rho$ is fluid density ($\text{kg/m}^3$)</li>
+    <li>$\mu$ is dynamic viscosity ($\text{Pa}\cdot\text{s}$)</li>
+    <li>$g$ is gravitational acceleration ($9.81\text{ m/s}^2$)</li>
+    <li>$k$ is the <strong>Intrinsic Permeability</strong> of the porous medium.</li>
+  </ul>
+  <p>
+    Because $k$ is stripped of all fluid terms, it has dimensions of area ($[L^2]$, expressed in $\text{m}^2$, $\text{cm}^2$, or <em>Darcies</em>: $1\text{ Darcy} \approx 0.987 \times 10^{-12}\text{ m}^2$). It depends <strong>strictly on the geometrical properties of the solid skeleton</strong>.
+  </p>
+
+  <h2 class="section-title">2. Mathematical Derivation: Kozeny-Carman &amp; Fair-Hatch Equations</h2>
+  <p>
+    The classic Kozeny-Carman equation models the porous medium as an assembly of interconnected capillary tubes:
+  </p>
+  <p style="text-align:center; font-weight:bold; font-size:16px; margin: 12px 0;">
+    $k = C_0 \cdot \frac{n^3}{(1 - n)^2 \cdot S_0^2} = C \cdot d_m^2$
+  </p>
+  <p>
+    This fundamental equation proves that intrinsic permeability depends on two distinct geometric parameters:
+  </p>
+  <ol>
+    <li><strong>Size of the Openings ($d_m^2$):</strong> The mean pore diameter or effective grain size (Hazen's effective diameter $d_{10}^2$). Fluid friction occurs against the pore walls; by Poiseuille's law, flow rate through a channel is proportional to the square of its hydraulic radius. Doubling the pore diameter quadruples the intrinsic permeability!</li>
+    <li><strong>Shape of the Openings ($C$):</strong> A dimensionless coefficient governed by:
+      <ul>
+        <li><strong>Pore Throat Sphericity &amp; Roundness:</strong> Smooth rounded grains form open, regular pores; angular grains create tight, irregular crevices.</li>
+        <li><strong>Tortuosity ($\tau = L_e / L$):</strong> The ratio of actual curved flow path length ($L_e$) to straight-line distance ($L$). Highly tortuous channels reduce fluid flow rates.</li>
+        <li><strong>Pore Aspect Ratio &amp; Grain Packing:</strong> Rhombohedral vs. cubic packing geometries alter channel cross-sectional profile.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2 class="section-title">3. Comprehensive Option Analysis</h2>
+  <ul>
+    <li><strong>(a) Size of the opening through which the fluid moves only:</strong> <em>Incorrect.</em> Incomplete because two porous media with identical average pore sizes can have vastly different permeabilities if one has smooth cylindrical pores while the other has highly flattened, tortuous pores.</li>
+    <li><strong>(b) Shape of the opening through which the fluid moves only:</strong> <em>Incorrect.</em> Incomplete because pore size exerts a primary quadratic ($d^2$) control on flow resistance.</li>
+    <li><strong>(c) Both 1 and 2:</strong> <strong style="color:#166534;">Correct.</strong> Intrinsic permeability is determined jointly by the size ($d^2$) and the shape ($C$, tortuosity, cross-sectional geometry) of the interconnected pore openings.</li>
+    <li><strong>(d) Neither 1 nor 2:</strong> <em>Incorrect.</em> Contradicts basic hydrogeological physics.</li>
+  </ul>
+
+  <h2 class="section-title">4. Authoritative Textbook References</h2>
+  <ul>
+    <li><span class="source-tag">C. W. Fetter (2001)</span> <em>Applied Hydrogeology</em>, 4th Ed., Prentice Hall, Chapter 4 ("Groundwater Flow: Intrinsic Permeability and Kozeny-Carman Equation"), pp. 84–88.</li>
+    <li><span class="source-tag">David Keith Todd &amp; Larry W. Mays (2005)</span> <em>Groundwater Hydrology</em>, 3rd Ed., John Wiley &amp; Sons, Chapter 3 ("Hydrogeological Properties: Darcy's Law and Permeability"), pp. 63–70.</li>
+    <li><span class="source-tag">M. King Hubbert (1940)</span> "The Theory of Ground-Water Motion", <em>Journal of Geology</em>, 48(8): 785–944.</li>
+    <li><span class="source-tag">Freeze &amp; Cherry (1979)</span> <em>Groundwater</em>, Prentice-Hall, Chapter 2 ("Physical Properties and Principles"), pp. 26–30.</li>
+  </ul>
+</div>
+
+</body>
+</html>

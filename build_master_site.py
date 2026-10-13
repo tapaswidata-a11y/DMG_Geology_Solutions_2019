@@ -703,6 +703,56 @@ q_metadata = [
         "question": "Statements regarding passive microwave remote sensing (Seepage/fault detection & Dielectric constants):",
         "correct": "Both Statement 1 and Statement 2 are true and Statement 2 is the correct explanation of Statement 1",
         "icon": "📡"
+    },
+    {
+        "q": 71,
+        "file": "Q71_Specific_Yield_Specific_Retention_Grain_Size_Complete_Guide.html",
+        "pdf": "Q71_Specific_Yield_Specific_Retention_Grain_Size_Complete_Guide.pdf",
+        "section": "Hydrogeology & Groundwater Dynamics",
+        "topic": "Specific Yield & Specific Retention: Storage Coefficients & Grain-Size Controls",
+        "question": "Statements regarding specific yield of an aquifer (Gravity drainage definition & Grain size independence):",
+        "correct": "(a) 1 only (Specific yield is gravity drainable volume ratio; it depends heavily on grain size)",
+        "icon": "💧"
+    },
+    {
+        "q": 72,
+        "file": "Q72_Intrinsic_Permeability_Pore_Size_Shape_Complete_Guide.html",
+        "pdf": "Q72_Intrinsic_Permeability_Pore_Size_Shape_Complete_Guide.pdf",
+        "section": "Hydrogeology & Porous Media Flow",
+        "topic": "Intrinsic Permeability: Geometric Controls of Pore Size and Pore Shape",
+        "question": "The intrinsic permeability of the porous medium depends on the:",
+        "correct": "(c) Both 1 and 2 (Depends on both pore size d² and pore shape/tortuosity factor C)",
+        "icon": "🔬"
+    },
+    {
+        "q": 73,
+        "file": "Q73_Groundwater_TDS_Electrical_Conductance_Temperature_Complete_Guide.html",
+        "pdf": "Q73_Groundwater_TDS_Electrical_Conductance_Temperature_Complete_Guide.pdf",
+        "section": "Hydrogeology & Water Chemistry",
+        "topic": "Groundwater TDS, Electrical Conductance, and Temperature Compensation",
+        "question": "Statements regarding Total Dissolved Solids (TDS) and Electrical Conductance (EC) of groundwater:",
+        "correct": "(c) 1 and 2 only (EC estimates TDS; unit is µS/cm; EC increases with temperature, not decreases)",
+        "icon": "⚡"
+    },
+    {
+        "q": 74,
+        "file": "Q74_Irrigation_Water_Sodium_Hazard_SAR_Soil_Permeability_Complete_Guide.html",
+        "pdf": "Q74_Irrigation_Water_Sodium_Hazard_SAR_Soil_Permeability_Complete_Guide.pdf",
+        "section": "Hydrogeology & Agricultural Water Quality",
+        "topic": "Irrigation Water Sodium Hazard: SAR, Clay Dispersion, and Soil Permeability Breakdown",
+        "question": "Statements regarding irrigation water: Sodium concentration classification and soil permeability reduction:",
+        "correct": "(a) Both Statement 1 and Statement 2 are true and Statement 2 is the correct explanation of Statement 1",
+        "icon": "🌾"
+    },
+    {
+        "q": 75,
+        "file": "Q75_Aquifer_Resistivity_Saturation_Salinity_Archie_Complete_Guide.html",
+        "pdf": "Q75_Aquifer_Resistivity_Saturation_Salinity_Archie_Complete_Guide.pdf",
+        "section": "Hydrogeology & Electrical Geophysics",
+        "topic": "Aquifer Electrical Resistivity: Archie's Law, Water Saturation, and Groundwater Salinity",
+        "question": "Statements regarding unconsolidated aquifer resistivity (Saturation vs Resistivity & Salinity vs Resistivity):",
+        "correct": "(d) Neither 1 nor 2 (Resistivity decreases with increasing saturation and decreases with increasing salinity)",
+        "icon": "🔋"
     }
 ]
 
