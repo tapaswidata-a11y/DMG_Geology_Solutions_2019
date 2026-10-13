@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.42 – Systematic Mineralogy: Dana Chemical Classification & Mineral Matching | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 42</div>
+    <h1>Dana Chemical Mineralogy: Halides, Hydroxides, Carbonates & Phosphates</h1>
+    <div class="meta">Topic: Mineral Classification & Systematic Mineralogy | Primary Reference: Dexter Perkins (Mineralogy, 3rd ed., Appendix & Ch. 2)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.42. Match List-I (Mineral name) with List-II (Mineral classification):<br><br>
+      <strong>List-I (Mineral name):</strong><br>
+      A. Sylvite<br>
+      B. Manganite<br>
+      C. Siderite<br>
+      D. Monazite<br><br>
+      <strong>List-II (Mineral classification):</strong><br>
+      1. Carbonate<br>
+      2. Phosphate<br>
+      3. Hydroxide<br>
+      4. Halide<br><br>
+      (a) A-4, B-3, C-1, D-2<br>
+      (b) A-1, B-3, C-4, D-2<br>
+      (c) A-4, B-2, C-3, D-1<br>
+      (d) A-3, B-2, C-4, D-1
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item correct">
+        <span class="opt-letter">a</span> A-4, B-3, C-1, D-2 (Correct Answer)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">b</span> A-1, B-3, C-4, D-2
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">c</span> A-4, B-2, C-3, D-1
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> A-3, B-2, C-4, D-1
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (a) A-4, B-3, C-1, D-2 [Sylvite = Halide; Manganite = Hydroxide; Siderite = Carbonate; Monazite = Phosphate].
+    </div>
+  </div>
+
+  <!-- Textbook Evidence Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Textbook Evidence: Dana's Chemical Classification System</h2>
+    <div class="tb-figure">
+      <img src="figures_Q42/dana_mineral_classification_matching.png" alt="Dana Mineral Classification Table">
+      <div class="fig-caption">
+        <strong>Figure 42.1: Dana Classification of Non-Silicate Minerals</strong> (Dexter Perkins, <em>Mineralogy</em>, 3rd ed., Chapter 2 & Appendix). Classification based on the dominant anionic group: Halides ($\text{Cl}^-$, $\text{F}^-$), Hydroxides ($(\text{OH})^-$), Carbonates ($[\text{CO}_3]^{2-}$), and Phosphates ($[\text{PO}_4]^{3-}$).
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "In the Dana System of Mineralogy, minerals are grouped primarily according to the dominant anion or anionic complex in their chemical formula:
+      <br>• <strong>Halides:</strong> Contain halogen anions ($\text{Cl}^-, \text{F}^-, \text{Br}^-, \text{I}^-$) bonded to metals (e.g., halite $\text{NaCl}$, sylvite $\text{KCl}$, fluorite $\text{CaF}_2$).
+      <br>• <strong>Hydroxides / Oxy-hydroxides:</strong> Contain hydroxyl $(\text{OH})^-$ groups (e.g., brucite $\text{Mg(OH)}_2$, manganite $\text{MnO(OH)}$, goethite $\text{FeO(OH)}$).
+      <br>• <strong>Carbonates:</strong> Contain planar $[\text{CO}_3]^{2-}$ complex anions (e.g., calcite $\text{CaCO}_3$, siderite $\text{FeCO}_3$, dolomite).
+      <br>• <strong>Phosphates:</strong> Contain tetrahedral $[\text{PO}_4]^{3-}$ complex anions (e.g., apatite $\text{Ca}_5(\text{PO}_4)_3(\text{F,Cl,OH})$, monazite $(\text{Ce,La,Th})\text{PO}_4$)."
+      <div class="quote-cite">— Dexter Perkins, <em>Mineralogy</em>, Chapter 2 (Classification of Minerals), pp. 47–55</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Matching Card -->
+  <div class="card">
+    <h2><span>🔍</span> Step-by-Step Chemical Matching</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>A. Sylvite ➔ 4. Halide</span> <span>[MATCH 1]</span></h4>
+      <p><strong>Formula & Chemistry:</strong> $\text{KCl}$ (Potassium chloride). Belongs to the isometric halite structure group. The dominant anion is chloride ($\text{Cl}^-$), making sylvite a primary member of the <strong>Halide</strong> class. It is the premier commercial ore of potash, precipitating in late-stage evaporite marine basins.</p>
+    </div>
+
+    <div class="option-card correct-card">
+      <h4><span>B. Manganite ➔ 3. Hydroxide</span> <span>[MATCH 2]</span></h4>
+      <p><strong>Formula & Chemistry:</strong> $\text{MnO(OH)}$ (Manganese oxy-hydroxide). Contains essential structural hydroxyl $(\text{OH})^-$ groups coordinated with $\text{Mn}^{3+}$ cations. In Dana's taxonomy, oxy-hydroxides are classified under <strong>Hydroxides</strong> (Oxides and Hydroxides class). It occurs in low-temperature hydrothermal veins and secondary manganese replacement deposits.</p>
+    </div>
+
+    <div class="option-card correct-card">
+      <h4><span>C. Siderite ➔ 1. Carbonate</span> <span>[MATCH 3]</span></h4>
+      <p><strong>Formula & Chemistry:</strong> $\text{FeCO}_3$ (Iron(II) carbonate). Belongs to the rhombohedral calcite group ($R\bar{3}c$). The fundamental anionic complex is $[\text{CO}_3]^{2-}$. Siderite is an important iron ore found in sedimentary iron formations (clay ironstone), coal beds, and hydrothermal veins.</p>
+    </div>
+
+    <div class="option-card correct-card">
+      <h4><span>D. Monazite ➔ 2. Phosphate</span> <span>[MATCH 4]</span></h4>
+      <p><strong>Formula & Chemistry:</strong> $(\text{Ce},\text{La},\text{Nd},\text{Th})\text{PO}_4$ (Rare-earth phosphate). Contains tetrahedral $[\text{PO}_4]^{3-}$ groups coordinating large light rare-earth elements (LREEs) and thorium. Monazite is the primary source of cerium, thorium, and rare earths, occurring in granites, pegmatites, and concentrated as heavy mineral beach sands (placers).</p>
+    </div>
+  </div>
+
+  <!-- Master Classification Table -->
+  <div class="card">
+    <h2><span>📊</span> Overview: Dana Chemical Mineral Classes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Mineral Class</th>
+          <th>Defining Anion / Radical</th>
+          <th>Key Examples</th>
+          <th>Diagnostic Properties</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Native Elements</strong></td>
+          <td>None (pure elements)</td>
+          <td>Gold ($\text{Au}$), Diamond/Graphite ($\text{C}$), Sulfur ($\text{S}$)</td>
+          <td>Metallic or covalent bonding</td>
+        </tr>
+        <tr>
+          <td><strong>Sulfides</strong></td>
+          <td>$\text{S}^{2-}$ (Sulfide ion)</td>
+          <td>Galena ($\text{PbS}$), Sphalerite ($\text{ZnS}$), Pyrite ($\text{FeS}_2$)</td>
+          <td>High density, metallic luster, dark streak</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Halides</strong></td>
+          <td><strong>$\text{F}^-, \text{Cl}^-, \text{Br}^-, \text{I}^-$</strong></td>
+          <td><strong>Sylvite ($\text{KCl}$)</strong>, Halite ($\text{NaCl}$), Fluorite ($\text{CaF}_2$)</td>
+          <td>Ionic bonding, low hardness, salty/bitter taste, water solubility</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Hydroxides</strong></td>
+          <td><strong>$(\text{OH})^-$ (Hydroxyl ion)</strong></td>
+          <td><strong>Manganite ($\text{MnO(OH)}$)</strong>, Brucite, Goethite, Gibbsite</td>
+          <td>Dehydrate upon heating to form oxides</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Carbonates</strong></td>
+          <td><strong>$[\text{CO}_3]^{2-}$</strong></td>
+          <td><strong>Siderite ($\text{FeCO}_3$)</strong>, Calcite ($\text{CaCO}_3$), Dolomite</td>
+          <td>Effervesce in dilute $\text{HCl}$, high birefringence, rhombohedral cleavage</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Phosphates</strong></td>
+          <td><strong>$[\text{PO}_4]^{3-}$</strong></td>
+          <td><strong>Monazite ($(\text{Ce,La,Th})\text{PO}_4$)</strong>, Apatite ($\text{Ca}_5(\text{PO}_4)_3\text{F}$)</td>
+          <td>High refractive index, moderate-to-high density, radioactive when Th/U-rich</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Quick Matching Logic:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li><strong>Sylvite ($\text{KCl}$):</strong> $\text{Cl}^- \rightarrow$ <strong>Halide (4)</strong>.</li>
+        <li><strong>Manganite ($\text{MnO(OH)}$):</strong> $\text{OH}^- \rightarrow$ <strong>Hydroxide (3)</strong>.</li>
+        <li><strong>Siderite ($\text{FeCO}_3$):</strong> $\text{CO}_3^{2-} \rightarrow$ <strong>Carbonate (1)</strong>.</li>
+        <li><strong>Monazite ($(\text{Ce,La,Th})\text{PO}_4$):</strong> $\text{PO}_4^{3-} \rightarrow$ <strong>Phosphate (2)</strong>.</li>
+        <li>Direct matching: <strong>A-4, B-3, C-1, D-2</strong> (Option a).</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

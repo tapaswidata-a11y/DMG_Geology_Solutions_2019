@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.43 – Mineral Physics & Optical Properties: Labradorescence & The Bøggild Miscibility Gap | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 43</div>
+    <h1>Plagioclase Subsolidus Phase Relations: Labradorescence & The Bøggild Gap</h1>
+    <div class="meta">Topic: Mineral Physics, Feldspar Petrology & Optics | Primary Reference: Dexter Perkins (Mineralogy, 3rd ed., Ch. 17) & Winter (Petrology, Ch. 6)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.43. 'Labradorescence' observed in plagioclase is caused by<br><br>
+      (a) Polymorphism<br>
+      (b) The presence of closely spaced lamellae of An₁ and An₁₀ composition<br>
+      (c) Fine exsolution lamellae of An₅₀ to An₆₀ composition (Bøggild gap)<br>
+      (d) Peristerite gap
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item incorrect">
+        <span class="opt-letter">a</span> Polymorphism
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">b</span> The presence of closely spaced lamellae of An₁ and An₁₀ composition
+      </div>
+      <div class="opt-item correct">
+        <span class="opt-letter">c</span> Fine exsolution lamellae of An₅₀ to An₆₀ composition (Correct Answer)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> Peristerite gap
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (c) Fine exsolution lamellae of An₅₀ to An₆₀ composition [Labradorescence is caused by optical interference of visible light from submicroscopic exsolution lamellae within the Bøggild miscibility gap in intermediate plagioclase (An₄₈–An₅₈ / An₅₀–An₆₀)].
+    </div>
+  </div>
+
+  <!-- Textbook Evidence Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Subsolidus Phase Diagram: Plagioclase Solvi</h2>
+    <div class="tb-figure">
+      <img src="figures_Q43/plagioclase_miscibility_gaps_labradorescence.png" alt="Plagioclase Miscibility Gaps">
+      <div class="fig-caption">
+        <strong>Figure 43.1: Subsolidus Phase Relations and Miscibility Gaps in Plagioclase Feldspars</strong>. Plagioclase forms a complete solid solution at magmatic temperatures (>1100°C), but at lower temperatures (subsolidus), three distinct miscibility gaps emerge: (1) <strong>Peristerite gap</strong> ($An_2–An_{16}$), causing peristerescence in albite-oligoclase; (2) <strong>Bøggild gap</strong> ($An_{48}–An_{58} / An_{50}–An_{60}$), where exsolution lamellae on the scale of visible light wavelengths produce iridescent <strong>labradorescence</strong>; and (3) <strong>Huttenlocher gap</strong> ($An_{65}–An_{90}$), occurring in bytownite.
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "Plagioclases in the range $\text{An}_{48}$ to $\text{An}_{58}$ (or $\text{An}_{50}–\text{An}_{60}$) unmix upon slow cooling across the <strong>Bøggild miscibility gap</strong> into alternating submicroscopic lamellae of slightly differing anorthite contents. The lamellar spacing typically ranges between 100 nm and 300 nm, which matches the wavelength of visible light. Light reflected from these alternating layers undergoes constructive interference, producing the spectacular iridescent blue, green, and golden flashes known as <strong>labradorescence</strong> (the Schiller effect)."
+      <div class="quote-cite">— Dexter Perkins, <em>Mineralogy</em>, Chapter 17 (Tectosilicates: Feldspars), pp. 381–383</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Analysis Card -->
+  <div class="card">
+    <h2><span>🔍</span> Comprehensive Option Analysis</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>(c) Fine exsolution lamellae of An₅₀ to An₆₀ composition (Bøggild Intergrowths)</span> <span>[CORRECT]</span></h4>
+      <p><strong>Optical & Crystallographic Mechanism:</strong> Labradorescence is not a pigmentary or chemical color; it is a physical <strong>interference phenomenon (structural color)</strong>:</p>
+      <ul style="margin-left: 20px; margin-top: 6px; font-size: 13.5px;">
+        <li>As high-temperature plagioclase of labradorite composition ($An_{50}–An_{60}$) cools below ~800°C, it enters the <strong>Bøggild miscibility gap</strong>.</li>
+        <li>The crystal unmixes via spinodal decomposition into alternating, planar lamellae differing by only ~10–12% An content (e.g., $An_{44}$ and $An_{56}$).</li>
+        <li>Because these alternating layers have slightly different refractive indices and thicknesses matching the wavelength of visible light ($\lambda \approx 400\text{–}700\text{ nm}$), light reflected from successive lamellar interfaces interferes constructively (Bragg-type diffraction of light). This creates the brilliant spectral Schiller effect known as <strong>labradorescence</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(a) Polymorphism</span> <span>[INCORRECT]</span></h4>
+      <p>Polymorphism describes a substance with a fixed chemical composition existing in multiple crystal structures (e.g., graphite vs. diamond, calcite vs. aragonite). Plagioclase feldspars are a solid solution series ($\text{NaAlSi}_3\text{O}_8 - \text{CaAl}_2\text{Si}_2\text{O}_8$), not polymorphs. Labradorescence is caused by subsolidus exsolution, not a polymorphic phase transition.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(b) The presence of closely spaced lamellae of An₁ and An₁₀ composition</span> <span>[INCORRECT]</span></h4>
+      <p>This composition range corresponds to the albite/peristerite region, not labradorite. Furthermore, lamellae of $An_1$ and $An_{10}$ do not produce labradorescence; they produce the faint bluish-white sheen of moonstone (peristerescence).</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(d) Peristerite gap</span> <span>[INCORRECT / DISTINCT PHENOMENON]</span></h4>
+      <p>The <em>peristerite gap</em> is located at the sodic end of the plagioclase series, between <strong>$An_2$ and $An_{16}$</strong> (albite and oligoclase). It causes a pale bluish-white, cloudy opalescence termed <strong>peristerescence</strong> (from Greek <em>peristera</em>, pigeon, referring to the sheen on a pigeon's neck feathers). It is completely distinct from the vivid, colorful labradorescence of the Bøggild gap ($An_{50}–An_{60}$).</p>
+    </div>
+  </div>
+
+  <!-- Comparison Table Card -->
+  <div class="card">
+    <h2><span>📊</span> The Three Subsolidus Miscibility Gaps in Plagioclase</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Miscibility Gap Name</th>
+          <th>Composition Range</th>
+          <th>Plagioclase Variety</th>
+          <th>Optical Effect Produced</th>
+          <th>Peak Solvus Temperature</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Peristerite Gap</strong></td>
+          <td>$\text{An}_2 - \text{An}_{16}$</td>
+          <td>Albite – Oligoclase</td>
+          <td><strong>Peristerescence</strong> (Whitish-blue opalescent sheen / moonstone)</td>
+          <td>~550°C</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Bøggild Gap</strong></td>
+          <td><strong>$\text{An}_{48} - \text{An}_{58}$ (or $\text{An}_{50} - \text{An}_{60}$)</strong></td>
+          <td><strong>Labradorite</strong></td>
+          <td><strong>Labradorescence</strong> (Spectacular blue, green, golden Schiller effect)</td>
+          <td><strong>~800°C</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Huttenlocher Gap</strong></td>
+          <td>$\text{An}_{65} - \text{An}_{90}$</td>
+          <td>Bytownite</td>
+          <td>No visible iridescence (Lamellae are submicroscopic / coarse)</td>
+          <td>~900°C</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Essential Plagioclase Gap Rules for Competitive Exams:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li><strong>Bøggild Gap $\rightarrow$ $An_{50}–An_{60}$ $\rightarrow$ Labradorescence</strong> (Schiller effect in Labradorite).</li>
+        <li><strong>Peristerite Gap $\rightarrow$ $An_2–An_{16}$ $\rightarrow$ Peristerescence</strong> (Bluish sheen in Albite/Oligoclase).</li>
+        <li><strong>Huttenlocher Gap $\rightarrow$ $An_{65}–An_{90}$</strong> in Bytownite.</li>
+        <li>Physical cause is always: <strong>Submicroscopic exsolution lamellae whose thickness matches the wavelength of visible light (~100–300 nm)</strong> causing constructive interference.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.44 – Crystallography: Hermann-Mauguin Notation & The 32 Point Groups | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #4f46e5;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #4f46e5;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 44</div>
+    <h1>Crystallography: Hermann-Mauguin Symbols & Symmetry Axis Matching</h1>
+    <div class="meta">Topic: Geometric Crystallography & Point Groups | Primary Reference: Dexter Perkins (Mineralogy, 3rd ed., Ch. 9 & 10)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.44. Match Hermann-Mauguin notations List-I with List-II (Crystal class):<br><br>
+      <strong>List-I (Symmetry Axes / Elements):</strong><br>
+      A. 3A₄, 4A₃, 6A₂<br>
+      B. 1A₄, 4A₂<br>
+      C. 1A₂, 2m<br>
+      D. 1A₆, 6A₂<br><br>
+      <strong>List-II (Hermann-Mauguin Class Symbol):</strong><br>
+      1. 4 2 2<br>
+      2. 4 3 2<br>
+      3. m m 2<br>
+      4. 6 2 2<br><br>
+      (a) A-2, B-1, C-3, D-4<br>
+      (b) A-1, B-2, C-4, D-3<br>
+      (c) A-4, B-3, C-2, D-1<br>
+      (d) A-3, B-4, C-1, D-2
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item correct">
+        <span class="opt-letter">a</span> A-2, B-1, C-3, D-4 (Correct Answer)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">b</span> A-1, B-2, C-4, D-3
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">c</span> A-4, B-3, C-2, D-1
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> A-3, B-4, C-1, D-2
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (a) A-2, B-1, C-3, D-4 [3A₄, 4A₃, 6A₂ = 4 3 2 (Cubic); 1A₄, 4A₂ = 4 2 2 (Tetragonal); 1A₂, 2m = m m 2 (Orthorhombic); 1A₆, 6A₂ = 6 2 2 (Hexagonal)].
+    </div>
+  </div>
+
+  <!-- Textbook Evidence Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Textbook Evidence: Dexter Perkins (Chapter 9 & 10)</h2>
+    <div class="tb-figure">
+      <img src="figures_Q44/perkins_p276_hermann_mauguin_box.png" alt="Hermann-Mauguin Symbols Rules">
+      <div class="fig-caption">
+        <strong>Box 9.7: International Hermann-Mauguin Crystallographic Symbols</strong> (Dexter Perkins, <em>Mineralogy</em>, 3rd ed., p. 276). Rules governing point group symbols:
+        Numbers ($2, 3, 4, 6$) denote proper rotation axes; $m$ denotes mirror planes.
+        For <strong>cubic</strong> crystals, the second symbol represents the four 3-fold axes along the body diagonals (e.g., $432$).
+        For <strong>tetragonal</strong>, the first position is the principal 4-fold axis along $c$ ($422$).
+        For <strong>hexagonal</strong>, the first position is the principal 6-fold axis along $c$ ($622$).
+        For <strong>orthorhombic</strong>, the three positions correspond to axes along $a, b, c$ ($mm2$).
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "In the Hermann-Mauguin system:
+      <br>• <strong>Cubic (4 3 2):</strong> Three 4-fold axes parallel to $a, b, c$, four 3-fold axes along cube body diagonals, and six 2-fold axes along edge diagonals.
+      <br>• <strong>Tetragonal (4 2 2):</strong> One 4-fold principal axis along $c$, two 2-fold axes along $a_1, a_2$, and two 2-fold diagonal axes.
+      <br>• <strong>Orthorhombic (m m 2):</strong> Two mutually perpendicular vertical mirror planes intersecting along a single 2-fold rotation axis.
+      <br>• <strong>Hexagonal (6 2 2):</strong> One 6-fold principal axis along $c$, three 2-fold axes along $a_1, a_2, a_3$, and three intermediate 2-fold axes."
+      <div class="quote-cite">— Dexter Perkins, <em>Mineralogy</em>, Chapter 9 & 10, pp. 270–276</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Matching Card -->
+  <div class="card">
+    <h2><span>🔍</span> Detailed Step-by-Step Point Group Matching</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>A. 3A₄, 4A₃, 6A₂ ➔ 2. 4 3 2 (Isometric / Cubic Gyroidal Class)</span> <span>[MATCH 1]</span></h4>
+      <p><strong>Symmetry Elements:</strong> Three 4-fold axes of rotation ($3A_4$), four 3-fold axes of rotation ($4A_3$), six 2-fold axes of rotation ($6A_2$). Center of symmetry and mirror planes are absent ($C$ absent, $P$ absent). In the Hermann-Mauguin system, the 4-fold axes along $a, b, c$ form the 1st position ($4$), the 3-fold body diagonal axes form the 2nd position ($3$), and the 2-fold edge diagonal axes form the 3rd position ($2$), giving <strong>4 3 2</strong>.</p>
+    </div>
+
+    <div class="option-card correct-card">
+      <h4><span>B. 1A₄, 4A₂ ➔ 1. 4 2 2 (Tetragonal Trapezohedral Class)</span> <span>[MATCH 2]</span></h4>
+      <p><strong>Symmetry Elements:</strong> One 4-fold principal axis along the $c$-crystallographic axis ($1A_4$), four 2-fold axes perpendicular to $c$ ($4A_2$: two along $a_1, a_2$ and two along the bisecting diagonal directions). No mirror planes ($m$) and no center of symmetry. The Hermann-Mauguin notation is <strong>4 2 2</strong>.</p>
+    </div>
+
+    <div class="option-card correct-card">
+      <h4><span>C. 1A₂, 2m ➔ 3. m m 2 (Orthorhombic Pyramidal Class)</span> <span>[MATCH 3]</span></h4>
+      <p><strong>Symmetry Elements:</strong> One 2-fold rotation axis ($1A_2$, conventionally taken along $c$) and two vertical mirror planes ($2m$) intersecting along the 2-fold axis ($m \perp a$ and $m \perp b$). No horizontal mirror plane and no center of symmetry. Written as <strong>m m 2</strong> (or $mm2$).</p>
+    </div>
+
+    <div class="option-card correct-card">
+      <h4><span>D. 1A₆, 6A₂ ➔ 4. 6 2 2 (Hexagonal Trapezohedral Class)</span> <span>[MATCH 4]</span></h4>
+      <p><strong>Symmetry Elements:</strong> One 6-fold principal rotation axis along $c$ ($1A_6$), six 2-fold axes perpendicular to $c$ ($6A_2$: three along $a_1, a_2, a_3$ and three intermediate diagonal axes). No mirror planes and no inversion center. Represented in Hermann-Mauguin notation as <strong>6 2 2</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Master Point Group Systematics Table -->
+  <div class="card">
+    <h2><span>📊</span> Hermann-Mauguin Position Rules Across Crystal Systems</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Crystal System</th>
+          <th>1st Position in Symbol</th>
+          <th>2nd Position in Symbol</th>
+          <th>3rd Position in Symbol</th>
+          <th>Example Class (from Q.44)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Isometric (Cubic)</strong></td>
+          <td>3 mutually perpendicular cube axes ($a_1, a_2, a_3$)</td>
+          <td><strong>4 body diagonals (3-fold axes)</strong></td>
+          <td>6 face / edge diagonals</td>
+          <td><strong>4 3 2 (3A₄, 4A₃, 6A₂)</strong></td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Tetragonal</strong></td>
+          <td><strong>Principal $c$-axis (4-fold)</strong></td>
+          <td>2 axial axes ($a_1, a_2$)</td>
+          <td>2 diagonal axes</td>
+          <td><strong>4 2 2 (1A₄, 4A₂)</strong></td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Hexagonal</strong></td>
+          <td><strong>Principal $c$-axis (6-fold)</strong></td>
+          <td>3 coplanar axes ($a_1, a_2, a_3$)</td>
+          <td>3 intermediate diagonal axes</td>
+          <td><strong>6 2 2 (1A₆, 6A₂)</strong></td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Orthorhombic</strong></td>
+          <td>Symmetry along $a$-axis</td>
+          <td>Symmetry along $b$-axis</td>
+          <td>Symmetry along $c$-axis</td>
+          <td><strong>m m 2 (1A₂, 2m)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Universal Hermann-Mauguin Recognition Shortcuts:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li>Presence of a <strong>3 in the second position</strong> (e.g., $432, m\bar{3}m, 23$) $\rightarrow$ Always <strong>Cubic (Isometric)</strong> system!</li>
+        <li>Starting with a <strong>4</strong> (e.g., $422, 4/m, 4mm$) $\rightarrow$ Always <strong>Tetragonal</strong> system!</li>
+        <li>Starting with a <strong>6</strong> (e.g., $622, 6/m, 6mm$) $\rightarrow$ Always <strong>Hexagonal</strong> system!</li>
+        <li>Symbols composed exclusively of $2$s and $m$s (e.g., $222, mm2, 2/m 2/m 2/m$) $\rightarrow$ Always <strong>Orthorhombic</strong> system!</li>
+        <li>Matching: <strong>A-2, B-1, C-3, D-4</strong> (Option a).</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

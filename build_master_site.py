@@ -403,6 +403,56 @@ q_metadata = [
         "question": "Which one of the following expressions is correct as per notations of Miller indices of a crystal face?",
         "correct": "(1 1 1) [Enclosed in round parentheses, integers cleared of fractions, no axis letters]",
         "icon": "📐"
+    },
+    {
+        "q": 41,
+        "file": "Q41_Antiperthite_Perthite_Feldspar_Exsolution_Complete_Guide.html",
+        "pdf": "Q41_Antiperthite_Perthite_Feldspar_Exsolution_Complete_Guide.pdf",
+        "section": "Mineralogy & Feldspar Petrology",
+        "topic": "Feldspar Exsolution: Perthite vs. Antiperthite",
+        "question": "The intergrowth of host plagioclase feldspar and exsolved lamellae of K-feldspar is known as:",
+        "correct": "Antiperthite (Plagioclase host containing exsolved K-feldspar lamellae)",
+        "icon": "💎"
+    },
+    {
+        "q": 42,
+        "file": "Q42_Mineral_Classification_Sylvite_Manganite_Siderite_Monazite_Complete_Guide.html",
+        "pdf": "Q42_Mineral_Classification_Sylvite_Manganite_Siderite_Monazite_Complete_Guide.pdf",
+        "section": "Systematic Mineralogy & Mineral Classes",
+        "topic": "Dana Mineral Classification: Sylvite, Manganite, Siderite, Monazite",
+        "question": "Matching minerals with Dana classes (Sylvite, Manganite, Siderite, Monazite):",
+        "correct": "Sylvite = Halide, Manganite = Hydroxide, Siderite = Carbonate, Monazite = Phosphate",
+        "icon": "🧪"
+    },
+    {
+        "q": 43,
+        "file": "Q43_Labradorescence_Plagioclase_Boggild_Gap_Complete_Guide.html",
+        "pdf": "Q43_Labradorescence_Plagioclase_Boggild_Gap_Complete_Guide.pdf",
+        "section": "Optical Mineralogy & Feldspar Mineralogy",
+        "topic": "Plagioclase Miscibility Gaps & Labradorescence",
+        "question": "Labradorescence in plagioclase feldspar is caused by:",
+        "correct": "Fine exsolution lamellae of An50 to An60 composition (Bøggild miscibility gap)",
+        "icon": "🌈"
+    },
+    {
+        "q": 44,
+        "file": "Q44_Hermann_Mauguin_Notation_Crystal_Classes_Complete_Guide.html",
+        "pdf": "Q44_Hermann_Mauguin_Notation_Crystal_Classes_Complete_Guide.pdf",
+        "section": "Crystallography & Point Group Symmetry",
+        "topic": "Hermann-Mauguin Notation for 32 Crystal Classes",
+        "question": "Matching symmetry elements with Hermann-Mauguin symbols (3A4, 4A3, 6A2; 1A4, 4A2; 1A2, 2m; 1A6, 6A2):",
+        "correct": "3A4, 4A3, 6A2 = 432; 1A4, 4A2 = 422; 1A2, 2m = mm2; 1A6, 6A2 = 622",
+        "icon": "🔷"
+    },
+    {
+        "q": 45,
+        "file": "Q45_General_Form_Special_Form_Crystallography_Complete_Guide.html",
+        "pdf": "Q45_General_Form_Special_Form_Crystallography_Complete_Guide.pdf",
+        "section": "Geometric Crystallography & Crystal Forms",
+        "topic": "Crystal Forms: General Form vs. Special Form",
+        "question": "In each crystal class there is a form, the faces of which intersect all the crystallographic axes at different lengths. This form is known as:",
+        "correct": "General form ({hkl} where h ≠ k ≠ l ≠ 0, intersecting all axes at different lengths)",
+        "icon": "🧊"
     }
 ]
 
