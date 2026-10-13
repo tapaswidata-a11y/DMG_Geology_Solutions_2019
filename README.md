@@ -82,6 +82,7 @@ Every question module follows an uncompromising 3-tier academic structure:
 | **Q27** | Igneous Petrology | Phase Equilibria & Incompatible Pairs | Forsterite and quartz (Incompatible pair reacting to enstatite via $\text{Fo} + \text{Qtz} \rightarrow 2\,\text{En}$) | [HTML](Q27_Equilibrium_Mineral_Assemblage_Fo_Qtz_Complete_Guide.html) · [PDF](Q27_Equilibrium_Mineral_Assemblage_Fo_Qtz_Complete_Guide.pdf) |
 | **Q28** | Sedimentology | Coastal Hydrodynamics & Shoreface Zonation | Swash zone → surf zone → breaker zone → shoaling zone (Landward beach to seaward shoreface) | [HTML](Q28_Wave_Dominated_Coastline_Zonation_Complete_Guide.html) · [PDF](Q28_Wave_Dominated_Coastline_Zonation_Complete_Guide.pdf) |
 | **Q29** | Sedimentology | Deltaic Environments & Subaqueous Facies | Delta front (Uppermost subaqueous delta, water depth down to ~10 m; mouth bar sands) | [HTML](Q29_Deltaic_Zonation_Delta_Front_Complete_Guide.html) · [PDF](Q29_Deltaic_Zonation_Delta_Front_Complete_Guide.pdf) |
+| **Q30** | Sedimentology | Hydrodynamics & Bedform Succession | Ripple ➔ Dune ➔ Parting lineation ➔ Flute mark (Lower flow regime to turbulent sole scour) | [HTML](Q30_Bedform_Succession_Bed_Shear_Complete_Guide.html) · [PDF](Q30_Bedform_Succession_Bed_Shear_Complete_Guide.pdf) |
 
 ---
 

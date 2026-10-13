@@ -293,6 +293,16 @@ q_metadata = [
         "question": "The uppermost part of subaqueous delta that lies at water depth down to 10 m or so, is referred to as:",
         "correct": "Delta front (Uppermost subaqueous delta, depth 0 to ~10 m; mouth bar sands)",
         "icon": "🌊"
+    },
+    {
+        "q": 30,
+        "file": "Q30_Bedform_Succession_Bed_Shear_Complete_Guide.html",
+        "pdf": "Q30_Bedform_Succession_Bed_Shear_Complete_Guide.pdf",
+        "section": "Sedimentary Environments & Stratigraphy",
+        "topic": "Hydrodynamics: Bedform Succession with Increasing Bed Shear",
+        "question": "Which one of the following sequences of sedimentary structures is correct in terms of increasing bed shear?",
+        "correct": "Ripple, dune, parting lineation, flute mark (Lower flow regime to turbulent sole scour)",
+        "icon": "🌊"
     }
 ]
 
