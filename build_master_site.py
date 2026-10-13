@@ -753,6 +753,56 @@ q_metadata = [
         "question": "Statements regarding unconsolidated aquifer resistivity (Saturation vs Resistivity & Salinity vs Resistivity):",
         "correct": "(d) Neither 1 nor 2 (Resistivity decreases with increasing saturation and decreases with increasing salinity)",
         "icon": "🔋"
+    },
+    {
+        "q": 76,
+        "file": "Q76_Supergene_Copper_Deposit_Weathering_Complete_Guide.html",
+        "pdf": "Q76_Supergene_Copper_Deposit_Weathering_Complete_Guide.pdf",
+        "section": "Ore Geology & Economic Geology",
+        "topic": "Supergene Copper Deposits: Weathering Profile, Leaching & Geochemical Zoning",
+        "question": "Which one of the following statements regarding supergene copper deposit is NOT correct?",
+        "correct": "(d) The secondary enrichment zone contains native copper and chalcocite (Native Cu belongs to oxidized zone)",
+        "icon": "⛏️"
+    },
+    {
+        "q": 77,
+        "file": "Q77_Algoma_vs_Superior_BIF_Iron_Formations_Complete_Guide.html",
+        "pdf": "Q77_Algoma_vs_Superior_BIF_Iron_Formations_Complete_Guide.pdf",
+        "section": "Ore Geology & Precambrian Iron Formations",
+        "topic": "Banded Iron Formations: Algoma-Type Greenstones vs. Superior-Type Continental Shelves",
+        "question": "Statements regarding Algoma-type and Superior-type iron formations (Age and depositional settings):",
+        "correct": "(c) 2 only (Algoma-type is Archean, not Cambrian; Superior-type is late Archean to Paleoproterozoic)",
+        "icon": "🪨"
+    },
+    {
+        "q": 78,
+        "file": "Q78_Hydrocarbon_Deposits_India_Lignite_Coal_Oil_Gas_Complete_Guide.html",
+        "pdf": "Q78_Hydrocarbon_Deposits_India_Lignite_Coal_Oil_Gas_Complete_Guide.pdf",
+        "section": "Petroleum & Coal Geology of India",
+        "topic": "Indian Hydrocarbon & Fossil Fuel Deposits: Neyveli, Kalol, Kamptee, and Jaisalmer",
+        "question": "Match List-I (Hydrocarbon deposit) with List-II (Location): Lignite, Oil, Bituminous coal, Natural gas:",
+        "correct": "(a) A-2, B-1, C-4, D-3 (Lignite: Neyveli; Oil: Kalol; Coal: Kamptee; Gas: Jaisalmer)",
+        "icon": "🛢️"
+    },
+    {
+        "q": 79,
+        "file": "Q79_Rock_Mass_Rating_RMR_Parameters_Complete_Guide.html",
+        "pdf": "Q79_Rock_Mass_Rating_RMR_Parameters_Complete_Guide.pdf",
+        "section": "Engineering Geology & Rock Mechanics",
+        "topic": "Bieniawski's Rock Mass Rating (RMR) Parameters & Geomechanics Classification",
+        "question": "Which one of the following is NOT considered for the calculation of rock mass rating?",
+        "correct": "(d) Slake durability index (RMR uses UCS, RQD, spacing, condition, groundwater, and orientation)",
+        "icon": "📐"
+    },
+    {
+        "q": 80,
+        "file": "Q80_Dam_Foundation_Geological_Conditions_Dip_Complete_Guide.html",
+        "pdf": "Q80_Dam_Foundation_Geological_Conditions_Dip_Complete_Guide.pdf",
+        "section": "Engineering Geology & Dam Sites",
+        "topic": "Geological Conditions for Dam Construction: Foundation Dip Orientation and Valley Faults",
+        "question": "The suitable geological conditions required for construction of a dam are resistant and stable bedrock:",
+        "correct": "(a) 1 and 2 (or identically (c) 1 and 3; Gentle upstream dip is ideal; duplicate typo in exam)",
+        "icon": "🏗️"
     }
 ]
 

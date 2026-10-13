@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.79: Bieniawski's Rock Mass Rating (RMR) Parameters — Complete Guide</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --secondary: #0d9488;
+    --secondary-light: #f0fdfa;
+    --accent: #b45309;
+    --text: #1f2937;
+    --text-muted: #4b5563;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --correct-bg: #ecfdf5;
+    --correct-border: #10b981;
+    --correct-text: #065f46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 24px 16px;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .question-box {
+    background: #f1f5f9;
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+  .question-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .option-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .option-card.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-border);
+    color: var(--correct-text);
+    font-weight: 600;
+  }
+  .badge-correct {
+    background: #10b981;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; font-size: 15px; }
+  li { margin-bottom: 8px; }
+  .figure-container {
+    margin: 24px 0;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .figure-caption {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .table-custom th, .table-custom td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .table-custom th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .table-custom tr:nth-child(even) { background: #f8fafc; }
+  .callout {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-size: 14.5px;
+  }
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .formula-box {
+    background: #f1f5f9;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14.5px;
+    margin: 14px 0;
+    border-left: 4px solid var(--secondary);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header-badge">DGMS 2019 • Section K: Engineering Geology & Rock Mechanics</div>
+  <h1>Question 79: Bieniawski's Rock Mass Rating (RMR) Parameters</h1>
+  <div class="subtitle">Official Examination Guide • Geomechanics Classification System vs. Intact Rock Weatherability Indices</div>
+
+  <div class="question-box">
+    <div class="question-title">Official Examination Question</div>
+    <div class="question-text">Which one of the following is NOT considered for the calculation of rock mass rating?</div>
+    <div class="options-grid">
+      <div class="option-card">
+        <span>(a) Uniaxial compressive strength</span>
+      </div>
+      <div class="option-card">
+        <span>(b) Condition of discontinuities</span>
+      </div>
+      <div class="option-card">
+        <span>(c) Rock quality designation</span>
+      </div>
+      <div class="option-card correct">
+        <span>(d) Slake durability index</span>
+        <span class="badge-correct">CORRECT ANSWER (NOT INCLUDED)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">1. Executive Summary & Core Principle</div>
+  <p>
+    The <strong>Rock Mass Rating (RMR)</strong> system, also universally known as the <strong>Geomechanics Classification</strong>, was developed by <strong>Z.T. Bieniawski (1973, 1976, 1989)</strong>. It is one of the most widely utilized empirical design tools in civil and mining engineering for assessing rock mass quality, designing tunnel support systems, and evaluating rock slope and foundation stability.
+  </p>
+  <p>
+    The calculation of the basic and adjusted RMR value relies strictly upon <strong>six specific geotechnical parameters</strong>:
+  </p>
+  <ol>
+    <li><strong>Uniaxial Compressive Strength (UCS)</strong> of intact rock material (or Point Load Index $I_{s(50)}$) — Rating: 0 to 15.</li>
+    <li><strong>Rock Quality Designation (RQD)</strong> (Deere 1964) — Rating: 3 to 20.</li>
+    <li><strong>Spacing of Discontinuities</strong> — Rating: 5 to 20.</li>
+    <li><strong>Condition of Discontinuities</strong> (roughness, separation/aperture, persistence, infilling/gouge, and weathering) — Rating: 0 to 30.</li>
+    <li><strong>Groundwater Conditions</strong> (inflow rate per 10 m tunnel length, joint water pressure ratio, or moisture state) — Rating: 0 to 15.</li>
+    <li><strong>Adjustment for Discontinuity Orientation</strong> (favorable, fair, unfavorable, or very unfavorable relative to the tunnel axis, dam foundation, or slope strike) — Adjustment: 0 to -12 (tunnels), up to -25 (foundations), up to -60 (slopes).</li>
+  </ol>
+  <p>
+    In contrast, the <strong>Slake Durability Index ($I_{d2}$)</strong> (Franklin & Chandra 1972, ISRM 1979) measures the percentage dry weight retained by a sample of rock after two standard cycles of wetting, oven-drying, and mechanical tumbling in a slake drum. It is exclusively an index of weathering susceptibility and slaking degradation for weak, argillaceous rocks (shales, mudstones, marls). It is <strong>NOT</strong> an input parameter in the RMR formula.
+  </p>
+  <p>
+    Therefore, the parameter that is <strong>NOT considered</strong> in the calculation of Rock Mass Rating is <strong>(d) Slake durability index</strong>.
+  </p>
+
+  <div class="figure-container">
+    <img src="figures_Q79/rmr_parameters_bieniawski_classification.png" alt="Bieniawski RMR Parameters vs Slake Durability Index">
+    <div class="figure-caption">Figure 79.1: The six fundamental parameters governing Bieniawski's Rock Mass Rating (RMR) system (Geomechanics Classification) contrasted with the excluded Slake Durability Index (Grounded in Bieniawski 1989 and Hoek & Brown 1980).</div>
+  </div>
+
+  <div class="section-title">2. Mathematical Formulation and Parameter Weights (Bieniawski 1989)</div>
+  <p>The total adjusted RMR score is computed as:</p>
+  <div class="formula-box">
+    RMR = R₁ (UCS) + R₂ (RQD) + R₃ (Spacing) + R₄ (Condition) + R₅ (Groundwater) + R₆ (Orientation Adjustment)
+  </div>
+
+  <table class="table-custom">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Measured Property</th>
+        <th>Rating Range</th>
+        <th>Engineering Significance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Strength of Intact Rock ($R_1$)</strong></td>
+        <td>Point Load Index ($>10 \text{ MPa}$) or Uniaxial Compressive Strength ($>250 \text{ MPa}$)</td>
+        <td>0 – 15</td>
+        <td>Evaluates intact rock block crushing resistance under applied overburden stresses.</td>
+      </tr>
+      <tr>
+        <td><strong>2. Rock Quality Designation ($R_2$)</strong></td>
+        <td>Percentage of intact core pieces $\ge 10\text{ cm}$ in total drill core run</td>
+        <td>3 – 20</td>
+        <td>Quantifies rock mass fracturing frequency; $\text{RQD} = 90\text{--}100\%$ gives maximum rating of 20.</td>
+      </tr>
+      <tr>
+        <td><strong>3. Spacing of Discontinuities ($R_3$)</strong></td>
+        <td>Perpendicular distance between joints ($>2\text{ m}$ to $<60\text{ mm}$)</td>
+        <td>5 – 20</td>
+        <td>Dictates the size of individual interlocking rock blocks within the rock mass.</td>
+      </tr>
+      <tr>
+        <td><strong>4. Condition of Discontinuities ($R_4$)</strong></td>
+        <td>Persistence, aperture, roughness, infilling thickness/type, joint wall weathering</td>
+        <td>0 – 30</td>
+        <td>Highest single weighted parameter; controls shear strength along potential failure surfaces.</td>
+      </tr>
+      <tr>
+        <td><strong>5. Groundwater Conditions ($R_5$)</strong></td>
+        <td>Completely dry, damp, wet, dripping, or flowing water; or pore pressure ratio</td>
+        <td>0 – 15</td>
+        <td>Quantifies effective stress reduction and lubrication along joint planes.</td>
+      </tr>
+      <tr>
+        <td><strong>6. Orientation Adjustment ($R_6$)</strong></td>
+        <td>Strike and dip orientation relative to engineering excavation</td>
+        <td>0 to -12 (Tunnels)<br>0 to -25 (Foundations)</td>
+        <td>Penalizes unfavorable daylighting of discontinuities dipping into excavations.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">3. Rock Mass Classes Derived from Total RMR</div>
+  <table class="table-custom">
+    <thead>
+      <tr>
+        <th>RMR Value</th>
+        <th>Rock Class</th>
+        <th>Rock Quality Description</th>
+        <th>Cohesion ($c$)</th>
+        <th>Friction Angle ($\phi$)</th>
+        <th>Stand-up Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>81 – 100</strong></td>
+        <td>Class I</td>
+        <td>Very Good Rock</td>
+        <td>$> 400\text{ kPa}$</td>
+        <td>$> 45^\circ$</td>
+        <td>20 years for 15 m span</td>
+      </tr>
+      <tr>
+        <td><strong>61 – 80</strong></td>
+        <td>Class II</td>
+        <td>Good Rock</td>
+        <td>$300 – 400\text{ kPa}$</td>
+        <td>$35^\circ – 45^\circ$</td>
+        <td>1 year for 10 m span</td>
+      </tr>
+      <tr>
+        <td><strong>41 – 60</strong></td>
+        <td>Class III</td>
+        <td>Fair Rock</td>
+        <td>$200 – 300\text{ kPa}$</td>
+        <td>$25^\circ – 35^\circ$</td>
+        <td>1 week for 5 m span</td>
+      </tr>
+      <tr>
+        <td><strong>21 – 40</strong></td>
+        <td>Class IV</td>
+        <td>Poor Rock</td>
+        <td>$100 – 200\text{ kPa}$</td>
+        <td>$15^\circ – 25^\circ$</td>
+        <td>10 hours for 2.5 m span</td>
+      </tr>
+      <tr>
+        <td><strong>&lt; 20</strong></td>
+        <td>Class V</td>
+        <td>Very Poor Rock</td>
+        <td>$&lt; 100\text{ kPa}$</td>
+        <td>$&lt; 15^\circ$</td>
+        <td>30 minutes for 1 m span</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">4. Systematic Option Evaluation</div>
+  <ul>
+    <li><strong>(a) Uniaxial compressive strength:</strong> <strong>CONSIDERED.</strong> Parameter 1 ($R_1$) directly evaluates UCS (or Point Load Index), with ratings from 0 to 15.</li>
+    <li><strong>(b) Condition of discontinuities:</strong> <strong>CONSIDERED.</strong> Parameter 4 ($R_4$) evaluates discontinuity roughness, infilling, and weathering, carrying the largest weight (up to 30 points).</li>
+    <li><strong>(c) Rock quality designation:</strong> <strong>CONSIDERED.</strong> Parameter 2 ($R_2$) directly uses Deere's RQD, with ratings from 3 to 20.</li>
+    <li><strong>(d) Slake durability index:</strong> <strong>NOT CONSIDERED (CORRECT ANSWER).</strong> Slake durability ($I_{d2}$) is an independent index for shale and mudrock weathering in laboratory drums; it is absent from the RMR framework.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Exam Tip:</strong> RMR = UCS + RQD + Spacing + Condition + Groundwater ± Orientation. Slake durability is NOT in RMR! Hence, <strong>(d)</strong> is the correct answer.
+  </div>
+
+  <div class="nav-bar">
+    <a href="Q78_Hydrocarbon_Deposits_India_Lignite_Coal_Oil_Gas_Complete_Guide.html" class="nav-link">← Previous: Q.78 Indian Hydrocarbon Deposits</a>
+    <a href="index.html" class="nav-link">Master Portal Index</a>
+    <a href="Q80_Dam_Foundation_Geological_Conditions_Dip_Complete_Guide.html" class="nav-link">Next: Q.80 Dam Foundation Geological Conditions →</a>
+  </div>
+</div>
+</body>
+</html>
