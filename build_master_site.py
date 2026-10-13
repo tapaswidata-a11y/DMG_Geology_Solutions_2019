@@ -253,10 +253,20 @@ q_metadata = [
         "question": "Which one of the following Mid-Oceanic Ridge Basalts (MORB) is derived from an incompatible element-poor mantle?",
         "correct": "N-MORB (Normal MORB derived from depleted upper mantle DMM with (La/Sm)_N < 1, depleted in incompatible elements)",
         "icon": "🌊"
+    },
+    {
+        "q": 26,
+        "file": "Q26_Nd_Isotopic_Reservoirs_BSE_CHUR_Complete_Guide.html",
+        "pdf": "Q26_Nd_Isotopic_Reservoirs_BSE_CHUR_Complete_Guide.pdf",
+        "section": "Geochemistry & Geochronology",
+        "topic": "Mantle Reservoirs & BSE/CHUR Isotope Systematics",
+        "question": "Which one of the following geochemical reservoirs is defined by the Nd-isotopic composition of chondritic meteorites?",
+        "correct": "BSE (Bulk Silicate Earth / CHUR with 143Nd/144Nd = 0.512638 and εNd = 0)",
+        "icon": "🪐"
     }
 ]
 
-print("Processing 25 HTML files and extracting inner contents...")
+print("Processing HTML files and extracting inner contents...")
 extracted_content = []
 
 for meta in q_metadata:
@@ -1182,3 +1192,255 @@ with open("index.html", "w", encoding="utf-8") as f:
     f.write(index_template)
 
 print("Master application successfully created at index.html!")
+
+# Generate questions.html directory page
+cards_html = []
+for m in q_metadata:
+    q_num = m['q']
+    content_search = f"{m['topic']} {m['question']} {m['section']} {m['correct']}".lower()
+    card = f'''
+    <div class="q-card" data-q="{q_num}" data-content="{content_search}">
+      <div class="q-card-top">
+        <span class="q-badge">Q{q_num:02d}</span>
+        <span class="q-section">{m['section']}</span>
+      </div>
+      <div class="q-topic">{m['icon']} {m['topic']}</div>
+      <div class="q-text"><strong>Question:</strong> {m['question']}</div>
+      <div class="q-answer"><strong>Correct Answer / Key Concept:</strong> {m['correct']}</div>
+      <div class="q-actions">
+        <a href="index.html#q{q_num}" class="btn-action primary">Interactive Master View</a>
+        <a href="{m['file']}" target="_blank" class="btn-action secondary">Standalone Chapter Guide</a>
+        <a href="{m['pdf']}" target="_blank" class="btn-action pdf">Download PDF Guide</a>
+      </div>
+    </div>'''
+    cards_html.append(card)
+
+questions_catalog_html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Questions Directory (Q01–Q{len(q_metadata):02d}) | DGMS 2019 Geology Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
+    line-height: 1.5;
+    padding: 30px 16px;
+  }}
+  .container {{ max-width: 1040px; margin: 0 auto; }}
+  .header {{
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }}
+  .badge {{
+    display: inline-block;
+    background: #e11d48;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+  }}
+  .header h1 {{ font-size: 26px; font-weight: 800; margin-bottom: 8px; }}
+  .header p {{ color: #94a3b8; font-size: 14.5px; max-width: 780px; }}
+  
+  .toolbar {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    background: #fff;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }}
+  .search-input {{
+    flex: 1;
+    min-width: 240px;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s;
+  }}
+  .search-input:focus {{ border-color: #2563eb; ring: 2px solid #bfdbfe; }}
+  .btn-all-scroll {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 8px;
+    transition: background 0.15s;
+  }}
+  .btn-all-scroll:hover {{ background: #1d4ed8; }}
+
+  .q-grid {{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }}
+  .q-card {{
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 18px 22px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }}
+  .q-card:hover {{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }}
+  .q-card-top {{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }}
+  .q-badge {{
+    background: #0f172a;
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }}
+  .q-section {{
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.5px;
+  }}
+  .q-topic {{
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+  }}
+  .q-text {{
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.5;
+  }}
+  .q-answer {{
+    font-size: 13.5px;
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    color: #15803d;
+  }}
+  .q-actions {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }}
+  .btn-action {{
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }}
+  .btn-action.primary {{
+    background: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+  }}
+  .btn-action.primary:hover {{ background: #e2e8f0; }}
+  .btn-action.secondary {{
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+  }}
+  .btn-action.secondary:hover {{ background: #dbeafe; }}
+  .btn-action.pdf {{
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+  }}
+  .btn-action.pdf:hover {{ background: #fee2e2; }}
+
+  .footer {{
+    margin-top: 36px;
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+  }}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="badge">DGMS 2019 • Official Syllabus Architecture</div>
+    <h1>Comprehensive Questions Directory (Q01–Q{len(q_metadata):02d})</h1>
+    <p>Junior Scientific Officer (Geology) Examination 2019 — Complete question catalog, verified answer keys, and direct links to comprehensive chapter modules and textbook-referenced PDF study guides.</p>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search questions, topics, rock types, or concepts..." onkeyup="filterCards()">
+    <a href="index.html#all" class="btn-all-scroll">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      Continuous Scroll: Read All Questions
+    </a>
+  </div>
+
+  <div class="q-grid" id="qGrid">
+    {''.join(cards_html)}
+  </div>
+
+  <div class="footer">
+    <strong>DGMS 2019 Geology Master Directory · {len(q_metadata)} Comprehensive Chapters</strong><br>
+    Hosted on GitHub Pages · Department of Geology & Mines Exam Architecture
+  </div>
+
+</div>
+
+<script>
+function filterCards() {{
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.q-card').forEach(card => {{
+    const text = card.getAttribute('data-content');
+    if (text.includes(query)) {{
+      card.style.display = 'flex';
+    }} else {{
+      card.style.display = 'none';
+    }}
+  }});
+}}
+</script>
+</body>
+</html>'''
+
+with open("questions.html", "w", encoding="utf-8") as f:
+    f.write(questions_catalog_html)
+
+print("Questions directory successfully created at questions.html!")
