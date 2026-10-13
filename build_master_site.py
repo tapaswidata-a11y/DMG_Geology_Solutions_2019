@@ -283,6 +283,16 @@ q_metadata = [
         "question": "In a wave-dominated coastline, the correct distribution of environment from land to sea is:",
         "correct": "Swash zone → surf zone → breaker zone → shoaling zone (Landward beach face to seaward shoreface)",
         "icon": "🏖️"
+    },
+    {
+        "q": 29,
+        "file": "Q29_Deltaic_Zonation_Delta_Front_Complete_Guide.html",
+        "pdf": "Q29_Deltaic_Zonation_Delta_Front_Complete_Guide.pdf",
+        "section": "Sedimentary Environments & Stratigraphy",
+        "topic": "Deltaic Environments: Subaqueous Delta Zonation",
+        "question": "The uppermost part of subaqueous delta that lies at water depth down to 10 m or so, is referred to as:",
+        "correct": "Delta front (Uppermost subaqueous delta, depth 0 to ~10 m; mouth bar sands)",
+        "icon": "🌊"
     }
 ]
 
