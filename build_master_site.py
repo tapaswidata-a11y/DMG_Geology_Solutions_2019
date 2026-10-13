@@ -453,6 +453,56 @@ q_metadata = [
         "question": "In each crystal class there is a form, the faces of which intersect all the crystallographic axes at different lengths. This form is known as:",
         "correct": "General form ({hkl} where h ≠ k ≠ l ≠ 0, intersecting all axes at different lengths)",
         "icon": "🧊"
+    },
+    {
+        "q": 46,
+        "file": "Q46_Weathering_Oxidation_Redox_Processes_Complete_Guide.html",
+        "pdf": "Q46_Weathering_Oxidation_Redox_Processes_Complete_Guide.pdf",
+        "section": "Geomorphology, Weathering & Geochemistry",
+        "topic": "Chemical Weathering Mechanisms & Redox Thermodynamics",
+        "question": "Which one of the following pairs regarding weathering is NOT correctly matched?",
+        "correct": "Oxidation : Occurs when an atom or an ion gains an electron (Incorrect; Oxidation is electron loss)",
+        "icon": "🍂"
+    },
+    {
+        "q": 47,
+        "file": "Q47_Mean_Age_Oceanic_Floor_Seafloor_Spreading_Complete_Guide.html",
+        "pdf": "Q47_Mean_Age_Oceanic_Floor_Seafloor_Spreading_Complete_Guide.pdf",
+        "section": "Marine Geology, Geodynamics & Plate Tectonics",
+        "topic": "Oceanic Lithosphere Age & Triangular Age-Area Distribution",
+        "question": "The mean age of the oceanic floor is approximately:",
+        "correct": "60 Ma (Triangular age-area distribution up to ~180 Ma yields ~60 Ma global average)",
+        "icon": "🌊"
+    },
+    {
+        "q": 48,
+        "file": "Q48_Airy_Isostasy_Crustal_Doubling_Mountain_Height_Complete_Guide.html",
+        "pdf": "Q48_Airy_Isostasy_Crustal_Doubling_Mountain_Height_Complete_Guide.pdf",
+        "section": "Solid Earth Geophysics & Isostasy",
+        "topic": "Airy Isostasy: Crustal Roots & Surface Elevation Response",
+        "question": "According to Airy's hypothesis, if the thickness of crustal column is doubled, the mountain heights may increase approximately by:",
+        "correct": "20% (~18-20% surface topographic elevation; remaining ~80% forms submerged root)",
+        "icon": "🏔️"
+    },
+    {
+        "q": 49,
+        "file": "Q49_Volcano_Types_Classification_Shield_Composite_Dome_Complete_Guide.html",
+        "pdf": "Q49_Volcano_Types_Classification_Shield_Composite_Dome_Complete_Guide.pdf",
+        "section": "Volcanology & Igneous Geomorphology",
+        "topic": "Volcano Classification: Shield, Cinder Cone, Stratovolcano, Lava Dome",
+        "question": "Matching volcano types with characteristics (Shield, Cinder cone, Stratovolcano, Lava dome):",
+        "correct": "Shield = Flattened dome, Cinder cone = Exclusively pyroclastic, Stratovolcano = Composite, Lava dome = Viscous lava",
+        "icon": "🌋"
+    },
+    {
+        "q": 50,
+        "file": "Q50_Bedforms_Froude_Number_Flow_Regimes_Complete_Guide.html",
+        "pdf": "Q50_Bedforms_Froude_Number_Flow_Regimes_Complete_Guide.pdf",
+        "section": "Sedimentology, Hydrodynamics & Flow Regimes",
+        "topic": "Open Channel Hydrodynamics: Bedform Succession & Froude Numbers",
+        "question": "Match Bed form in sandy alluvial channel with Froude number (Dunes, Washed out dunes, Plane bed, Ripples):",
+        "correct": "Dunes = F ≪ 1, Washed out dunes = F = 1, Plane bed = F ≥ 1, Ripples = F ≪ 1",
+        "icon": "🏄"
     }
 ]
 
