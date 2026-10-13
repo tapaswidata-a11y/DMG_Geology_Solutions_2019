@@ -85,6 +85,9 @@ Every question module follows an uncompromising 3-tier academic structure:
 | **Q30** | Sedimentology | Hydrodynamics & Bedform Succession | Ripple ➔ Dune ➔ Parting lineation ➔ Flute mark (Lower flow regime to turbulent sole scour) | [HTML](Q30_Bedform_Succession_Bed_Shear_Complete_Guide.html) · [PDF](Q30_Bedform_Succession_Bed_Shear_Complete_Guide.pdf) |
 | **Q31** | Seismotectonics | Deep-Focus Earthquakes & Subduction Zones | Benioff zone (Wadati-Benioff subducting slab down to ~670 km) | [HTML](Q31_Benioff_Zone_Deep_Earthquakes_Complete_Guide.html) · [PDF](Q31_Benioff_Zone_Deep_Earthquakes_Complete_Guide.pdf) |
 | **Q32** | Historical Geology | Paleogeography & Supercontinents | Laurasia (Mesozoic northern landmass: N. America + Greenland + Europe + Asia) | [HTML](Q32_Laurasia_Paleogeography_Supercontinent_Complete_Guide.html) · [PDF](Q32_Laurasia_Paleogeography_Supercontinent_Complete_Guide.pdf) |
+| **Q33** | Structural Geology | Subduction Accretion: Underplating vs. Offscraping | Underplating (Basal accretion of subducting sediments to overriding plate base) | [HTML](Q33_Subduction_Accretion_Underplating_Offscraping_Complete_Guide.html) · [PDF](Q33_Subduction_Accretion_Underplating_Offscraping_Complete_Guide.pdf) |
+| **Q34** | Solid Earth Geophysics | Lithosphere Composition & Rheological Layering | Upper mantle and crust (Rigid plate = crust + uppermost mantle LID) | [HTML](Q34_Lithosphere_Structure_Composition_Complete_Guide.html) · [PDF](Q34_Lithosphere_Structure_Composition_Complete_Guide.pdf) |
+| **Q35** | Optical Mineralogy | Hexagonal System & Uniaxial Optic Axis | Optic axis (Zero double refraction / single refraction along c-axis) | [HTML](Q35_Hexagonal_System_Uniaxial_Optic_Axis_Complete_Guide.html) · [PDF](Q35_Hexagonal_System_Uniaxial_Optic_Axis_Complete_Guide.pdf) |
 
 ---
 

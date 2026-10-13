@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.35 – Optical Mineralogy: Uniaxial Crystals & Optic Axis | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #7c3aed;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #7c3aed;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 35</div>
+    <h1>Optical Mineralogy: Hexagonal Crystals & The Optic Axis</h1>
+    <div class="meta">Topic: Optical Mineralogy & Crystallography | Primary Reference: Dexter Perkins (Mineralogy, 3rd ed., Ch. 5)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.35. In hexagonal crystals, there is one and only one direction which shows no double refraction of light. This direction is called<br><br>
+      (a) Optic axis<br>
+      (b) Optic axial plane<br>
+      (c) Isogyre<br>
+      (d) Optic normal
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item correct">
+        <span class="opt-letter">a</span> Optic axis (Correct Answer)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">b</span> Optic axial plane
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">c</span> Isogyre
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> Optic normal
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (a) Optic axis [In hexagonal and tetragonal crystals, the crystallographic c-axis is the single optic axis along which birefringence is zero].
+    </div>
+  </div>
+
+  <!-- Textbook Evidence Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Textbook Evidence: Dexter Perkins (Chapter 5)</h2>
+    <div class="tb-figure">
+      <img src="figures_Q35/perkins_fig15_uniaxial_optic_axis.png" alt="Uniaxial Indicatrix and Optic Axis">
+      <div class="fig-caption">
+        <strong>Figure 5.15: The Uniaxial Optical Indicatrix</strong> (Dexter Perkins, <em>Mineralogy</em>, 3rd ed., pp. 122–123). In minerals belonging to the hexagonal and tetragonal crystal systems, the optical indicatrix is an ellipsoid of revolution about the crystallographic $c$-axis. The circular cross-section is perpendicular to $c$. Light propagating along the $c$-axis vibrates in the circular section with a constant index of refraction ($n_\omega$). It experiences <strong>zero birefringence ($\Delta n = 0$)</strong> and no double refraction. This unique propagation direction is the <strong>Optic Axis</strong>.
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "For light traveling parallel to the $c$-axis, all vibration directions are perpendicular to $c$ and have the same refractive index ($n_\omega$). Because all vibration directions are equivalent, light traveling parallel to $c$ does not split into two rays. It behaves as if it were in an isotropic mineral. The direction parallel to $c$ in tetragonal and hexagonal minerals is called the <strong>optic axis</strong>. Because minerals of these systems have only one optic axis, they are called <strong>uniaxial minerals</strong>."
+      <div class="quote-cite">— Dexter Perkins, <em>Mineralogy</em>, Chapter 5 (Optical Mineralogy), p. 122</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Analysis Card -->
+  <div class="card">
+    <h2><span>🔍</span> Comprehensive Option Analysis</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>(a) Optic axis</span> <span>[CORRECT]</span></h4>
+      <p><strong>Definition:</strong> An <em>optic axis</em> is a direction of light propagation in an anisotropic crystal along which there is <strong>no double refraction (no birefringence)</strong>. Light traveling along this direction travels with uniform wave velocity regardless of vibration direction, effectively experiencing an isotropic section.</p>
+      <ul style="margin-left: 20px; margin-top: 6px; font-size: 13.5px;">
+        <li>In <strong>hexagonal (including trigonal)</strong> and <strong>tetragonal</strong> crystal systems, the high symmetry around the principal rotation axis makes the $c$-axis the single optic axis (hence <em>uniaxial</em>).</li>
+        <li>Under crossed polars in a petrographic microscope, a grain cut strictly perpendicular to the optic axis remains permanently extinct throughout 360° stage rotation, and conoscopically exhibits a classic centered uniaxial cross interference figure.</li>
+      </ul>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(b) Optic axial plane (OAP)</span> <span>[INCORRECT]</span></h4>
+      <p>The <em>Optic Axial Plane (OAP)</em> is a geometric plane found <strong>only in biaxial crystals</strong> (orthorhombic, monoclinic, triclinic). It is the plane that contains both optic axes, the acute bisectrix ($Bxa$), and the obtuse bisectrix ($Bxo$). Uniaxial (hexagonal) crystals have only <em>one</em> optic axis, so no optic axial plane exists in the hexagonal system.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(c) Isogyre</span> <span>[INCORRECT]</span></h4>
+      <p>An <em>isogyre</em> is an optical interference feature, not a crystallographic direction. When observing a crystal conoscopically (using the Bertrand lens with convergent polarized light), the dark bands or cross formed where light vibration directions coincide with the vibration directions of the polarizer and analyzer are called isogyres.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(d) Optic normal</span> <span>[INCORRECT]</span></h4>
+      <p>The <em>Optic Normal</em> is the vibration direction $Y$ ($n_\beta$) in a <strong>biaxial crystal</strong>. It is oriented exactly perpendicular to the optic axial plane ($Y \perp \text{OAP}$). It has no meaning in the hexagonal (uniaxial) system.</p>
+    </div>
+  </div>
+
+  <!-- Optical Symmetry Systematics Table -->
+  <div class="card">
+    <h2><span>📊</span> Optical Symmetry Systematics Across Crystal Systems</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Optical Class</th>
+          <th>Crystal Systems</th>
+          <th>Indicatrix Geometry</th>
+          <th>Number of Optic Axes</th>
+          <th>Optic Orientation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Isotropic</strong></td>
+          <td>Isometric (Cubic), Amorphous</td>
+          <td>Sphere ($n_x = n_y = n_z$)</td>
+          <td>Infinite (no unique axis)</td>
+          <td>Every direction is non-birefringent</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td><strong>Uniaxial</strong></td>
+          <td><strong>Hexagonal, Trigonal, Tetragonal</strong></td>
+          <td><strong>Ellipsoid of Revolution ($n_\omega, n_\epsilon$)</strong></td>
+          <td><strong>1 (One unique axis)</strong></td>
+          <td><strong>Optic axis $\parallel c$-crystallographic axis</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Biaxial</strong></td>
+          <td>Orthorhombic, Monoclinic, Triclinic</td>
+          <td>Triaxial Ellipsoid ($n_\alpha, n_\beta, n_\gamma$)</td>
+          <td>2 (Two optic axes)</td>
+          <td>Lie in Optic Axial Plane (OAP); $Y \perp \text{OAP}$ (Optic Normal)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Memory Matrix for Competitive Exams:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li><strong>Hexagonal / Tetragonal:</strong> Uniaxial $\rightarrow$ <strong>1 Optic Axis</strong> coincident with the $c$-axis.</li>
+        <li><strong>Orthorhombic / Monoclinic / Triclinic:</strong> Biaxial $\rightarrow$ <strong>2 Optic Axes</strong>, separated by $2V$, lying in the <strong>Optic Axial Plane (OAP)</strong>, with <strong>Optic Normal ($Y$)</strong> perpendicular to OAP.</li>
+        <li>Direction of zero double refraction $\equiv$ <strong>Optic Axis</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

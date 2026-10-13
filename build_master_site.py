@@ -323,6 +323,36 @@ q_metadata = [
         "question": "A major continent that existed before 90 Ma and comprised present-day N. America, Greenland, Europe and part of Asia is referred to as:",
         "correct": "Laurasia (Mesozoic northern supercontinent comprising Laurentia + Eurasia)",
         "icon": "🌍"
+    },
+    {
+        "q": 33,
+        "file": "Q33_Subduction_Accretion_Underplating_Offscraping_Complete_Guide.html",
+        "pdf": "Q33_Subduction_Accretion_Underplating_Offscraping_Complete_Guide.pdf",
+        "section": "Structural Geology & Tectonics",
+        "topic": "Subduction Accretion: Underplating vs. Offscraping",
+        "question": "The rocks and sediments that were subducting sometimes get attached with overriding plates by thrusting. This process is commonly called:",
+        "correct": "Underplating (Basal accretion of subducting material to overriding plate base)",
+        "icon": "🏔️"
+    },
+    {
+        "q": 34,
+        "file": "Q34_Lithosphere_Structure_Composition_Complete_Guide.html",
+        "pdf": "Q34_Lithosphere_Structure_Composition_Complete_Guide.pdf",
+        "section": "Solid Earth Geophysics & Petrology",
+        "topic": "Solid Earth Architecture: Lithosphere Structure & Composition",
+        "question": "The lithosphere is comprised of:",
+        "correct": "Upper mantle and crust (Rigid mechanical plate = crust + uppermost lithospheric mantle)",
+        "icon": "🌐"
+    },
+    {
+        "q": 35,
+        "file": "Q35_Hexagonal_System_Uniaxial_Optic_Axis_Complete_Guide.html",
+        "pdf": "Q35_Hexagonal_System_Uniaxial_Optic_Axis_Complete_Guide.pdf",
+        "section": "Optical Mineralogy & Crystallography",
+        "topic": "Hexagonal System: Uniaxial Indicatrix & Optic Axis",
+        "question": "In hexagonal crystals, there is one and only one direction which shows no double refraction of light. This direction is called:",
+        "correct": "Optic axis (Coincident with crystallographic c-axis; birefringence = 0)",
+        "icon": "💎"
     }
 ]
 

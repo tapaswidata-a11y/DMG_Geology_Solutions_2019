@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.33 – Convergent Margins & Subduction Tectonics: Underplating vs. Offscraping | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .header .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(22,163,74,0.25);
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 33</div>
+    <h1>Subduction Tectonics: Underplating vs. Offscraping in Accretionary Prisms</h1>
+    <div class="meta">Topic: Structural Geology & Global Tectonics | Primary Reference: Van der Pluijm & Marshak (Earth Structure, Ch. 17)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.33. The rocks and sediments that were subducting sometimes get attached with overriding plates by thrusting. This process is commonly called<br><br>
+      (a) Obduction<br>
+      (b) Rejuvenation<br>
+      (c) Underplating<br>
+      (d) Offscraping
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item incorrect">
+        <span class="opt-letter">a</span> Obduction
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">b</span> Rejuvenation
+      </div>
+      <div class="opt-item correct">
+        <span class="opt-letter">c</span> Underplating (Correct Answer)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> Offscraping
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (c) Underplating [Note: In subduction tectonics, underplating specifically denotes the basal accretion of subducting material to the underside of the overriding plate by thrusting; offscraping denotes frontal accretion at the trench toe].
+    </div>
+  </div>
+
+  <!-- Textbook Figures Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Textbook Evidence: Van der Pluijm & Marshak (Chapter 17)</h2>
+    <div class="tb-figure">
+      <img src="figures_Q33/vdp_fig17_4_accretionary_prism_offscraping.png" alt="Accretionary Prism and Subduction Accretion">
+      <div class="fig-caption">
+        <strong>Figure 17.4: Anatomy of a Convergent Margin Accretionary Prism</strong> (Van der Pluijm & Marshak, <em>Earth Structure: An Introduction to Structural Geology and Tectonics</em>, 2nd ed., p. 433). Cross-section illustrating the mechanics of subduction accretion: incoming trench sediments are either scraped off frontally at the trench toe (<strong>offscraping</strong>) or carried beneath the prism along the subduction channel and transferred to the base of the overriding plate by basal thrust faults and duplex slicing (<strong>underplating / basal accretion</strong>).
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "Sediment can be added to an accretionary wedge in two ways: by <strong>offscraping</strong> at the toe of the wedge, or by <strong>underplating</strong> (also called basal accretion) beneath the wedge. In underplating, sediment and slivers of oceanic crust that were subducted to depths of several kilometers or more are transferred to the overriding plate along thrust faults that branch off the subduction décollement."
+      <div class="quote-cite">— Ben A. van der Pluijm & Stephen Marshak, <em>Earth Structure</em>, Chapter 17 (Convergent Margins), p. 433</div>
+    </div>
+  </div>
+
+  <!-- Deep Detailed Option Analysis Card -->
+  <div class="card">
+    <h2><span>🔍</span> Comprehensive Option Analysis</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>(c) Underplating (Subduction Underplating / Basal Accretion)</span> <span>[CORRECT]</span></h4>
+      <p><strong>Mechanics & Tectonic Definition:</strong> When oceanic lithosphere carrying a veneer of sediment subducts beneath an overriding plate, not all material is scraped off immediately at the trench toe. A substantial volume of sediments and fragments of oceanic crust travels down the <em>subduction channel</em>. As pressure, dewatering, and frictional resistance increase at depths between 5 km and 30 km, slices of these <strong>subducting rocks and sediments</strong> are detached from the downgoing slab by thrust faults that step down into the footwall. These slices are welded and accreted to the base (underside) of the overriding wedge via duplex structures. This basal accretionary attachment of previously subducting material is precisely defined as <strong>underplating</strong> (or subduction underplating).</p>
+      <p style="margin-top: 8px;"><strong>Diagnostic Clue in Question:</strong> The phrasing <em>"The rocks and sediments that were subducting sometimes get attached with overriding plates by thrusting"</em> explicitly captures rocks that were already underway in the subduction channel being transferred at depth, which is the textbook distinction between underplating (basal accretion) and offscraping (frontal accretion at the toe).</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(d) Offscraping (Frontal Accretion)</span> <span>[INCORRECT / DISTINCT PHENOMENON]</span></h4>
+      <p><strong>Definition:</strong> <em>Offscraping</em> refers specifically to <strong>frontal accretion</strong> at the toe of the trench. Before the sediment can subduct beneath the overriding plate, the upper layers of trench turbidites and pelagic muds are peeled off by seaward-verging or landward-dipping imbricate thrusts right at the deformation front.</p>
+      <p style="margin-top: 6px;">While both offscraping and underplating are subduction accretion mechanisms, offscraping occurs at the <em>trench surface (toe)</em> before subduction to depth, whereas underplating captures material that <em>was subducting</em> down the interface and becomes attached to the base of the overriding plate.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(a) Obduction</span> <span>[INCORRECT]</span></h4>
+      <p><strong>Definition:</strong> <em>Obduction</em> is the tectonic emplacement of a large slab of dense oceanic lithosphere (an <strong>ophiolite suite</strong>) onto a buoyant continental margin or island arc during an arc-continent or continent-continent collision (e.g., the Semail Ophiolite in Oman). It involves catastrophic overthrusting of an entire oceanic lithospheric section onto continent, rather than routine accretionary transfer of subducting sediments during steady-state subduction.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(b) Rejuvenation</span> <span>[INCORRECT]</span></h4>
+      <p><strong>Definition:</strong> In geology, <em>rejuvenation</em> refers to: (1) Geomorphic renewal of stream erosive power caused by base-level fall or tectonic uplift (forming entrenched meanders and river terraces), or (2) Rejuvenated volcanism (post-erosional volcanic stage on oceanic hotspot islands like Oahu, Hawaii). It has no relation to subduction thrust accretion.</p>
+    </div>
+  </div>
+
+  <!-- Comparison Table Card -->
+  <div class="card">
+    <h2><span>📊</span> Comparison: Accretionary Wedge Mass-Transfer Mechanisms</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Location / Depth</th>
+          <th>Structural Style</th>
+          <th>Material Involved</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Offscraping (Frontal Accretion)</strong></td>
+          <td>Trench toe / Deformation front (0–5 km depth)</td>
+          <td>Imbricate thrust fans, protothrusts, frontal folds</td>
+          <td>Unconsolidated trench turbidites, hemipelagic muds</td>
+        </tr>
+        <tr>
+          <td><strong>Underplating (Basal Accretion)</strong></td>
+          <td>Base of overriding plate (5–30 km depth)</td>
+          <td>Antiformal duplexes, basal shear zones, underthrust nappes</td>
+          <td>Subducted sediment, basaltic ocean crust, chert, melange</td>
+        </tr>
+        <tr>
+          <td><strong>Subduction Erosion (Tectonic Erosion)</strong></td>
+          <td>Trench toe or subduction channel</td>
+          <td>Basal scouring, extensional collapse of forearc</td>
+          <td>Forearc crust ground up and dragged down into the mantle</td>
+        </tr>
+        <tr>
+          <td><strong>Obduction</strong></td>
+          <td>Continental margin collision zone</td>
+          <td>Major crustal sutures, continental-scale thrust sheets</td>
+          <td>Complete ophiolite suite (harzburgite, gabbro, sheeted dikes, pillow basalt)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Competitive Exam Rule:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li>When a question mentions transfer of <em>subducting</em> material to the <em>underside/base of the overriding plate by thrusting</em>, the technically rigorous answer is <strong>Underplating</strong> (basal accretion).</li>
+        <li>When a question refers to <em>peeling or scraping of trench sediments at the front/toe of the trench</em>, the term is <strong>Offscraping</strong>.</li>
+        <li>Both processes together constitute <strong>Subduction Accretion</strong>, which enlarges the forearc accretionary prism over geologic time.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q.34 – Solid Earth Architecture: Lithosphere Composition & Rheology | DGMS 2019</title>
+<style>
+  /* ── Base & Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ── Print / PDF Optimization ── */
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .option, .diagram-wrap, .quote-box, .formula-card, table, tr, .tb-figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #d97706;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .header .meta { font-size: 13px; color: #94a3b8; margin-top: 8px; }
+
+  /* ── Section Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 8px 0;
+  }
+
+  /* ── Question Box ── */
+  .q-box {
+    background: #f8fafc;
+    border-left: 5px solid #d97706;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-item.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    font-weight: 700;
+    color: #15803d;
+  }
+  .opt-item.incorrect {
+    border-color: #e2e8f0;
+    background: #fafafa;
+    color: #64748b;
+  }
+  .opt-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .correct .opt-letter { background: #16a34a; color: #fff; }
+  .incorrect .opt-letter { background: #e2e8f0; color: #475569; }
+
+  /* ── Answer Highlight ── */
+  .answer-pill {
+    background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* ── Option Analysis Cards ── */
+  .option-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .option-card.correct-card {
+    border-left: 5px solid #16a34a;
+    background: #f0fdf4;
+  }
+  .option-card.wrong-card {
+    border-left: 5px solid #ef4444;
+    background: #fef2f2;
+  }
+  .option-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-card.correct-card h4 { color: #15803d; }
+  .option-card.wrong-card h4 { color: #b91c1c; }
+
+  /* ── Quotes & Textbook Callouts ── */
+  .quote-box {
+    background: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13.5px;
+    color: #334155;
+    font-style: italic;
+  }
+  .quote-box strong { font-style: normal; color: #0f172a; }
+  .quote-cite {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  /* ── Figures ── */
+  .tb-figure {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+  .fig-caption {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.45;
+  }
+  .fig-caption strong { color: #0f172a; }
+
+  /* ── Exam Strategy Box ── */
+  .strategy-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid #3b82f6;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #1e3a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">DGMS 2019 Geology • Question 34</div>
+    <h1>The Earth's Lithosphere: Mechanical vs. Compositional Layering</h1>
+    <div class="meta">Topic: Geophysics, Petrology & Geodynamics | Primary Reference: John D. Winter (Principles of Igneous & Metamorphic Petrology, Ch. 1)</div>
+  </div>
+
+  <!-- Question Presentation Card -->
+  <div class="card">
+    <h2><span>📝</span> Question Statement</h2>
+    <div class="q-box">
+      Q.34. The lithosphere is comprised of<br><br>
+      (a) Mantle and outer core<br>
+      (b) Mantle and asthenosphere<br>
+      (c) Upper mantle and crust<br>
+      (d) Continental and oceanic crusts
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-item incorrect">
+        <span class="opt-letter">a</span> Mantle and outer core
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">b</span> Mantle and asthenosphere
+      </div>
+      <div class="opt-item correct">
+        <span class="opt-letter">c</span> Upper mantle and crust (Correct Answer)
+      </div>
+      <div class="opt-item incorrect">
+        <span class="opt-letter">d</span> Continental and oceanic crusts
+      </div>
+    </div>
+
+    <div class="answer-pill">
+      ✓ Correct Answer: (c) Upper mantle and crust [Specifically the crust plus the uppermost rigid lithospheric mantle above the asthenosphere].
+    </div>
+  </div>
+
+  <!-- Textbook Evidence Card -->
+  <div class="card">
+    <h2><span>🖼️</span> Textbook Evidence: Winter (Chapter 1)</h2>
+    <div class="tb-figure">
+      <img src="figures_Q34/winter_fig1_11_lithosphere_structure.png" alt="Lithosphere and Asthenosphere Structure">
+      <div class="fig-caption">
+        <strong>Figure 1-11: Rheological and Compositional Subdivisions of the Earth</strong> (John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, 2nd ed., p. 29). Cross-section illustrating the fundamental duality of the Earth's upper layers: compositionally, the boundary between the crust and mantle is the <em>Mohorovičić discontinuity (Moho)</em>; mechanically, the rigid <strong>lithosphere</strong> consists of the entire crust plus the uppermost rigid mantle (the lithospheric mantle), resting above the ductile, convecting <strong>asthenosphere</strong>.
+      </div>
+    </div>
+
+    <div class="quote-box">
+      "The <strong>lithosphere</strong> (from Greek <em>lithos</em>, stone) is the rigid, mechanically strong outer layer of the Earth. It includes the <strong>crust</strong> and the <strong>uppermost solid, rigid portion of the upper mantle</strong>. The underlying <strong>asthenosphere</strong> (from Greek <em>asthenes</em>, weak) is part of the upper mantle, but differs rheologically: it is plastic, ductile, and capable of flow over geologic timescales."
+      <div class="quote-cite">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, Chapter 1, pp. 11–12</div>
+    </div>
+  </div>
+
+  <!-- Detailed Option Analysis Card -->
+  <div class="card">
+    <h2><span>🔍</span> Comprehensive Option Analysis</h2>
+
+    <div class="option-card correct-card">
+      <h4><span>(c) Upper mantle and crust</span> <span>[CORRECT]</span></h4>
+      <p><strong>Rheological & Structural Architecture:</strong> Earth is layered in two distinct ways:</p>
+      <ul style="margin-left: 20px; margin-top: 6px; font-size: 13.5px;">
+        <li><strong>Compositional (Chemical) Layering:</strong> Based on density and mineral chemistry—<strong>Crust</strong> (felsic to mafic silicates), <strong>Mantle</strong> (ultramafic peridotite), and <strong>Core</strong> (iron-nickel metal).</li>
+        <li><strong>Mechanical (Rheological) Layering:</strong> Based on mechanical strength and deformation response—<strong>Lithosphere</strong> (rigid/brittle plate), <strong>Asthenosphere</strong> (weak/ductile mantle), <strong>Mesosphere</strong> (stiff lower mantle), <strong>Outer core</strong> (liquid), and <strong>Inner core</strong> (solid).</li>
+      </ul>
+      <p style="margin-top: 8px;">The <strong>lithosphere</strong> is defined precisely as the rigid outer shell that moves as coherent tectonic plates. It encompasses the entirety of the <strong>crust</strong> (both continental and oceanic) plus the <strong>uppermost mantle</strong> (lithospheric mantle / LID), bounded below by the ~1300°C isotherm that marks the transition into the ductile asthenosphere.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(a) Mantle and outer core</span> <span>[INCORRECT]</span></h4>
+      <p>The outer core is a liquid iron-nickel metallic alloy extending from 2,890 km to 5,150 km depth. The lithosphere is confined exclusively to the outermost 100–250 km of the Earth.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(b) Mantle and asthenosphere</span> <span>[INCORRECT]</span></h4>
+      <p>The asthenosphere is the <em>ductile substrate</em> beneath the lithosphere, not a constituent of it. Moreover, the lithosphere contains the crust, which is omitted here, while the lithosphere does NOT include the entire mantle.</p>
+    </div>
+
+    <div class="option-card wrong-card">
+      <h4><span>(d) Continental and oceanic crusts</span> <span>[INCORRECT]</span></h4>
+      <p>Continental and oceanic crusts together make up only the <strong>Crust</strong>. Confining the lithosphere to the crust is a classic student pitfall: the crust is merely the top 7–70 km of the lithosphere. The lithosphere extends down to 100 km (beneath oceans) and up to 200–250 km (beneath ancient continental cratons) because it includes the rigid upper mantle.</p>
+    </div>
+  </div>
+
+  <!-- Comparison Table Card -->
+  <div class="card">
+    <h2><span>📊</span> Compositional vs. Mechanical Layers of the Solid Earth</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Classification</th>
+          <th>Layer Name</th>
+          <th>Typical Depth</th>
+          <th>Composition & Physical State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3"><strong>Compositional (Chemical)</strong></td>
+          <td>Crust (Continental / Oceanic)</td>
+          <td>0 – 35 km (avg)</td>
+          <td>Granitic to basaltic silicates; rigid, low density (2.7–3.0 g/cm³)</td>
+        </tr>
+        <tr>
+          <td>Mantle (Upper + Lower)</td>
+          <td>35 – 2,890 km</td>
+          <td>Peridotite (olivine, pyroxene, garnet); bridgmanite, ferropericlase (3.3–5.5 g/cm³)</td>
+        </tr>
+        <tr>
+          <td>Core (Outer + Inner)</td>
+          <td>2,890 – 6,371 km</td>
+          <td>Iron-nickel alloy + light elements (S, Si, O) (10–13 g/cm³)</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td rowspan="4"><strong>Mechanical (Rheological)</strong></td>
+          <td><strong>Lithosphere</strong></td>
+          <td><strong>0 – 100/250 km</strong></td>
+          <td><strong>Rigid, elastic, brittle plates: Crust + Uppermost Mantle (LID)</strong></td>
+        </tr>
+        <tr>
+          <td>Asthenosphere</td>
+          <td>100 – 410/660 km</td>
+          <td>Ductile, plastic peridotite; capable of slow solid-state convective flow</td>
+        </tr>
+        <tr>
+          <td>Mesosphere</td>
+          <td>660 – 2,890 km</td>
+          <td>Rigid, solid lower mantle under high lithostatic pressure</td>
+        </tr>
+        <tr>
+          <td>Outer Core / Inner Core</td>
+          <td>2,890 – 6,371 km</td>
+          <td>Liquid outer core (magnetic dynamo) / Solid inner core</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Card -->
+  <div class="card">
+    <h2><span>💡</span> Key Takeaway & Exam Strategy</h2>
+    <div class="strategy-box">
+      <strong>Core Golden Rule:</strong>
+      <ul style="margin-left: 20px; margin-top: 6px;">
+        <li><strong>Moho:</strong> The compositional boundary separating crust from mantle.</li>
+        <li><strong>LAB (Lithosphere-Asthenosphere Boundary):</strong> The rheological/thermal boundary separating the rigid lithosphere (crust + upper mantle) from the ductile asthenosphere.</li>
+        <li>Always remember: <strong>Lithosphere = Crust + Uppermost Mantle</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
