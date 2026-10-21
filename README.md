@@ -9,9 +9,9 @@ A comprehensive, rigorously referenced academic repository containing complete c
 
 ---
 
-## 🌐 Live Web Portal
-Explore the interactive single-page web application featuring real-time search, discipline filtering, and embedded math typesetting:
-👉 **[https://tapaswidata-a11y.github.io/DMG_Geology_Solutions_2019/](https://tapaswidata-a11y.github.io/DMG_Geology_Solutions_2019/)**
+## 🌐 Live Web Portals
+- 👉 **[Assam DGMS 2019 Geology Master Portal](https://tapaswidata-a11y.github.io/DMG_Geology_Solutions_2019/)** (100 Questions)
+- 👉 **[Odisha OPSC 2021 Geology Paper-II Master Portal](https://tapaswidata-a11y.github.io/DMG_Geology_Solutions_2019/Orrisa_geology/index.html)** (150 Questions, 187 Plates)
 
 ---
 

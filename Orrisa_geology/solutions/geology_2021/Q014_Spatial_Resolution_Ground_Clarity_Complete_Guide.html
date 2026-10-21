@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q14: Spatial Resolution & Geometric Ground Clarity in Remote Sensing | OPSC Geology 2021 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
+  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  
+  .back-nav {
+    margin-bottom: 16px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner h2 { font-size: 18px; font-weight: 700; }
+  
+  .content-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+  }
+  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
+  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
+  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
+  .content-card li { margin-bottom: 8px; }
+
+  .q-box {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .opt-item.correct {
+    background: #f0fdf4;
+    border-color: #16a34a;
+    color: #15803d;
+    font-weight: 700;
+  }
+  
+  .verified-box {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 5px solid #10b981;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .v-badge {
+    display: inline-block;
+    background: #10b981;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+  .spec-table th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: 600;
+  }
+  .spec-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+
+  .qa-card {
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+  }
+  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
+  .a-box {
+    background: #fff;
+    border-left: 3px solid #7c3aed;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  /* ── Figure Styles ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-figure figcaption {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GEO - 2/21 • Remote Sensing & Image Quality</div>
+    <h1>Q14: Spatial Resolution & Geometric Ground Clarity in Remote Sensing</h1>
+    <div class="meta">
+      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
+      <strong>Authoritative Reference:</strong> Lillesand, Kiefer & Chipman (Remote Sensing & Image Interpretation, Ch. 1, pp. 30-35)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+  </div>
+  <div class="content-card">
+    
+        <h3>14.1 The Four Fundamental Resolutions in Remote Sensing</h3>
+        <p>In digital image processing (Lillesand, Kiefer & Chipman, <i>Remote Sensing</i>, Ch. 1, pp. 30–35), sensor performance is defined by four orthogonal resolutions:</p>
+        <div class="table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Resolution Dimension</th>
+                <th>Physical Definition & Governing Metric</th>
+                <th>Primary Impact on Image Utility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Spatial Resolution</b></td>
+                <td><b>Size of the smallest ground area recorded by a detector (Instantaneous Field of View, IFOV; Ground Sampling Distance, GSD)</b></td>
+                <td><b>Clarity, geometric discernibility, and edge sharpness of ground objects</b></td>
+              </tr>
+              <tr>
+                <td><b>Spectral Resolution</b></td>
+                <td>Width and number of discrete wavelength bands recorded across the electromagnetic spectrum ($\Delta \lambda$)</td>
+                <td>Ability to discriminate distinct rock types, minerals, and chemical compositions</td>
+              </tr>
+              <tr>
+                <td><b>Radiometric Resolution</b></td>
+                <td>Bit-depth sensitivity to subtle differences in radiance intensity ($8\text{-bit} = 256$, $12\text{-bit} = 4096$)</td>
+                <td>Contrast sensitivity in deep shadow and bright snow/salt domains</td>
+              </tr>
+              <tr>
+                <td><b>Temporal Resolution</b></td>
+                <td>Revisit period between consecutive image acquisitions over the same geographic location</td>
+                <td>Monitoring dynamic seasonal changes, floods, landslides, and volcanic eruptions</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>14.2 Ground Sampling Distance (GSD) & Nyquist Criterion</h3>
+        <p>The ground clarity of an object requires that its dimension exceeds approximately <b>$2.0 \times \text{GSD}$</b> (the two-dimensional Nyquist sampling limit) to be reliably resolved and identified without spatial aliasing.</p>
+        
+    <div class="tb-figure">
+      <img src="../../figures_Q14/spatial_resolution_ifov_gsd.png" alt="Sensor IFOV and Ground Sampling Distance Geometry">
+      <figcaption>
+        <strong>Figure 14.1: Optical Sensor Geometric Relations: Instantaneous Field of View (IFOV) and Ground Sampling Distance (GSD).</strong> Nadir optical ray trace showing how sensor altitude ($H$) and angular pixel aperture ($eta$) dictate ground footprint: $GSD = 2 H 	an(eta / 2) pprox H 	imes eta$.
+      </figcaption>
+    </div>
+    
+  </div>
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <h2>Part II: Official Question & Critical Option Dissection</h2>
+  </div>
+  <div class="content-card">
+    <div class="q-box">
+      <div class="q-stmt">Q14. Clarity of ground object will depend upon :</div>
+      <div class="options-grid">
+        <div class="opt-item correct"><strong>(A)</strong> Spatial Resolution</div>
+        <div class="opt-item "><strong>(B)</strong> Spectral Resolution</div>
+        <div class="opt-item "><strong>(C)</strong> Temporal Resolution</div>
+        <div class="opt-item "><strong>(D)</strong> Radiometric Resolution</div>
+      </div>
+    </div>
+    
+        <div class="verified-box">
+          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
+          <p><b>Correct Answer: (A) Spatial Resolution</b> — The clarity, sharpness, and geometric recognizability of individual ground objects on an image depends directly upon its <b>Spatial Resolution</b>.</p>
+        </div>
+
+        <h3>Option-by-Option Critical Dissection</h3>
+        <ul>
+          <li><b>(A) Spatial Resolution — CORRECT:</b> Directly dictates the minimum ground sampling distance and resolving power of individual spatial objects.</li>
+          <li><b>(B) Spectral Resolution — INCORRECT:</b> Governs the ability to identify chemical composition and absorption bands, not geometric sharpness.</li>
+          <li><b>(C) Temporal Resolution — INCORRECT:</b> Governs the frequency of overpasses (revisit interval), not image clarity.</li>
+          <li><b>(D) Radiometric Resolution — INCORRECT:</b> Governs brightness quantization and bit depth, not ground detail size.</li>
+        </ul>
+        
+  </div>
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+  </div>
+  <div class="content-card">
+    
+        <h3>Photogrammetric Resolution Practice Problem</h3>
+        <div class="qa-card">
+          <div class="q-title">Practice Problem 14: Ground Sampling Distance (GSD) Calculation</div>
+          <p>An airborne aerial camera with focal length $f = 150\text{ mm}$ flies at an altitude of $H = 3,000\text{ m}$ above mean terrain. If the physical detector pixel pitch is $p = 6.0\ \mu\text{m}$, calculate the Ground Sampling Distance (GSD).</p>
+          <div class="a-box">
+            <p><b>Solution:</b></p>
+            $$\text{GSD} = p \cdot \frac{H}{f} = (6.0 \times 10^{-6}\text{ m}) \cdot \frac{3000\text{ m}}{0.150\text{ m}} = 6.0 \times 10^{-6} \times 20,000 = 0.12\text{ m} = 12\text{ cm}$$
+            <p>The spatial resolution of the camera at this flying height is <b>$12\text{ cm}$</b> per pixel.</p>
+          </div>
+        </div>
+        
+  </div>
+</div>
+</body>
+</html>

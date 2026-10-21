@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q123: Rock Poromechanics - Void Ratio vs Porosity | OPSC Geology 2021 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
+  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  
+  .back-nav {
+    margin-bottom: 16px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner h2 { font-size: 18px; font-weight: 700; }
+  
+  .content-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+  }
+  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
+  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
+  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
+  .content-card li { margin-bottom: 8px; }
+
+  .q-box {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .opt-item.correct {
+    background: #f0fdf4;
+    border-color: #16a34a;
+    color: #15803d;
+    font-weight: 700;
+  }
+  
+  .verified-box {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 5px solid #10b981;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .v-badge {
+    display: inline-block;
+    background: #10b981;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+  .spec-table th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: 600;
+  }
+  .spec-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+
+  .qa-card {
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+  }
+  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
+  .a-box {
+    background: #fff;
+    border-left: 3px solid #7c3aed;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  /* ── Figure Styles ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-figure figcaption {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GEO - 2/21 • Engineering Geology & Hydrogeology</div>
+    <h1>Q123: Rock Poromechanics - Void Ratio vs Porosity</h1>
+    <div class="meta">
+      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
+      <strong>Authoritative Reference:</strong> Soil Mechanics Phase Relations (Terzaghi & Peck); Bangar (Ch. 10, p. 360)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+  </div>
+  <div class="content-card">
+    
+<h3>1. Question & Volumetric Phase Ratio</h3>
+<div class="question-box">
+  <p><strong>Question 123:</strong> The ratio of the total volume of the pore spaces to the total volume of the solid rock mass is termed as :</p>
+  <ul>
+    <li>(A) Void ratio</li>
+    <li>(B) Porosity</li>
+    <li>(C) Pores ratio</li>
+    <li>(D) Effective porosity</li>
+  </ul>
+  <p><strong>Correct Answer:</strong> <strong>(A) Void ratio</strong></p>
+</div>
+
+    <div class="tb-figure">
+      <img src="../../figures_Q123/soil_mechanics_three_phase_void_ratio_porosity.png" alt="Three-Phase Soil Model Void Ratio vs Porosity">
+      <figcaption>
+        <strong>Figure 123.1: Three-Phase Soil & Rock Model — Mathematical Demarcation of Void Ratio vs Porosity.</strong> Standard geotechnical phase diagram defining void ratio (e = V_v / V_s, ratio of volume of voids to volume of solid skeleton) versus porosity (n = V_v / V, ratio of volume of voids to total volume), with interconversion relations e = n / (1 - n) and n = e / (1 + e).
+      </figcaption>
+    </div>
+    
+  </div>
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <h2>Part II: Official Question & Critical Option Dissection</h2>
+  </div>
+  <div class="content-card">
+    <div class="q-box">
+      <div class="q-stmt">Q123. The ratio of the total volume of the pore spaces to the total volume of the solid rock mass is termed as :</div>
+      <div class="options-grid">
+        <div class="opt-item correct"><strong>(A)</strong> Void ratio</div>
+        <div class="opt-item "><strong>(B)</strong> Porosity</div>
+        <div class="opt-item "><strong>(C)</strong> Pores ratio</div>
+        <div class="opt-item "><strong>(D)</strong> Effective porosity</div>
+      </div>
+    </div>
+    
+<h3>2. Detailed Geological Masterclass: Void Ratio ($e$) vs Porosity ($n$)</h3>
+<p>
+In rock mechanics, soil mechanics, and hydrogeology, the pore geometry of a geological material is rigorously defined by two distinct volume ratios:
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Definition Formula</th>
+      <th>Denominator</th>
+      <th>Range & Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Void Ratio ($e$)</strong></td>
+      <td><strong>$e = \frac{V_v}{V_s}$</strong></td>
+      <td><strong>Volume of Solid rock / mineral skeleton ($V_s$)</strong></td>
+      <td>Can exceed $1.0$ ($0 < e < \infty$); preferred in mechanics because solid volume $V_s$ remains constant during compaction.</td>
+    </tr>
+    <tr>
+      <td><strong>Porosity ($n$)</strong></td>
+      <td>$n = \frac{V_v}{V_t} \times 100$</td>
+      <td><strong>Total volume of the rock ($V_t = V_s + V_v$)</strong></td>
+      <td>Always $< 100\%$ (expressed as a fraction or percentage); preferred in hydrogeology and reservoir engineering.</td>
+    </tr>
+    <tr>
+      <td><strong>Effective Porosity ($n_e$)</strong></td>
+      <td>$n_e = \frac{V_{\text{interconnected voids}}}{V_t}$</td>
+      <td>Total volume ($V_t$)</td>
+      <td>Only measures interconnected void channels that permit fluid transmission.</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+The mathematical relationship linking them is:
+$$e = \frac{n}{1 - n} \quad \Longleftrightarrow \quad n = \frac{e}{1 + e}$$
+Because the question explicitly specifies the ratio of the volume of pore spaces ($V_v$) to the volume of the <strong>solid rock mass ($V_s$)</strong>, it is by definition the <strong>Void ratio ($e$)</strong>.
+</p>
+
+  </div>
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+  </div>
+  <div class="content-card">
+    
+<h3>3. Critical Option Elimination & Exam Traps</h3>
+<ul>
+  <li><strong>Option A (Void ratio) is correct:</strong> $e = V_v / V_s$ (ratio of voids to solid skeleton).</li>
+  <li><strong>Option B (Porosity):</strong> The ratio of voids to <em>total volume</em> ($V_v / V_t$), the classic trap!</li>
+  <li><strong>Option C (Pores ratio):</strong> Fabricated distractor.</li>
+  <li><strong>Option D (Effective porosity):</strong> Ratio of interconnected voids to total volume.</li>
+</ul>
+
+  </div>
+</div>
+</body>
+</html>

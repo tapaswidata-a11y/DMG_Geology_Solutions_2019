@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q40: Landslide Morphology: Kinematics of Displaced Mass vs. Subjacent Bedrock | OPSC Geology 2021 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
+  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  
+  .back-nav {
+    margin-bottom: 16px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner h2 { font-size: 18px; font-weight: 700; }
+  
+  .content-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+  }
+  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
+  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
+  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
+  .content-card li { margin-bottom: 8px; }
+
+  .q-box {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .opt-item.correct {
+    background: #f0fdf4;
+    border-color: #16a34a;
+    color: #15803d;
+    font-weight: 700;
+  }
+  
+  .verified-box {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 5px solid #10b981;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .v-badge {
+    display: inline-block;
+    background: #10b981;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+  .spec-table th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: 600;
+  }
+  .spec-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+
+  .qa-card {
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+  }
+  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
+  .a-box {
+    background: #fff;
+    border-left: 3px solid #7c3aed;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  /* ── Figure Styles ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-figure figcaption {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GEO - 2/21 • Engineering Geology & Slope Stability</div>
+    <h1>Q40: Landslide Morphology: Kinematics of Displaced Mass vs. Subjacent Bedrock</h1>
+    <div class="meta">
+      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
+      <strong>Authoritative Reference:</strong> D.J. Varnes (1978, Landslides: Analysis and Control); Cruden & Varnes (1996); K.M. Bangar (Ch. 12)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+  </div>
+  <div class="content-card">
+    
+        <h3>40.1 Varnes (1978) Morphological Anatomy of a Landslide</h3>
+        <p>In geotechnical engineering and engineering geology (Cruden & Varnes, 1996; Varnes, 1978; Bangar, <i>Principles of Engineering Geology</i>, Ch. 12), a landslide is defined as the downslope movement of a mass of rock, debris, or earth under the direct influence of gravity. The slope is partitioned by a distinct <b>surface of rupture (shear plane)</b> into two mechanically distinct masses:</p>
+        <div class="table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Zonal Component</th>
+                <th>Physical Description & Terminology</th>
+                <th>Mechanical State & Factor of Safety ($FS$)</th>
+                <th>Geotechnical Stability</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Displaced Mass (Mass Above Slip Surface)</b></td>
+                <td>The volume of rock or soil that has broken away from the parent slope and moved downslope along or beyond the surface of rupture.</td>
+                <td>Shear stress exceeded shear strength ($\tau > \tau_f$); $FS < 1.0$. Highly fractured, remolded, dilation occurred; lost cohesive bond.</td>
+                <td><b>UNSTABLE / ACTIVELY DEFORMING</b></td>
+              </tr>
+              <tr>
+                <td><b>Subjacent Mass (Mass Below Slip Surface)</b></td>
+                <td>The intact, undisturbed rock or soil mass situated beneath the surface of rupture and forming the stable foundation/bedrock.</td>
+                <td>Resisting shear strength intact; $\tau < \tau_f$; $FS > 1.0$. Preserves native confinement and structural integrity.</td>
+                <td><b>STABLE / INTACT</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>40.2 Mohr-Coulomb Rupture Localization</h3>
+        <p>The failure occurs along the surface of rupture when driving stresses overcome shear resistance:</p>
+        $$\tau_f = c' + (\sigma_n - u) \tan \phi'$$
+        <p>The mass <b>above</b> the rupture surface experiences loss of shear strength, catastrophic displacement, and extensive disaggregation, rendering it <b>unstable</b>. The mass <b>below</b> the surface of rupture remains fully anchored to the autochthonous geological formation, remaining completely <b>stable</b>.</p>
+        <div class="tb-figure">
+      <img src="../../figures_Q40/bangar_fig10_20_21_landslide_shear_plane.png" alt="Anatomy of a Rotational Landslide (K.M. Bangar, Figs. 10.20 & 10.21)">
+      <figcaption>
+        <strong>Figure 40.1: Anatomy of a Rotational Landslide (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 10, Section 10.9, p. 196, Figs. 10.20 & 10.21).</strong> Authentic plate illustrating landslide components: displaced mass, crown cracks, head scarp, transverse fissures, and the basal <strong>surface of rupture</strong> (shear slip plane) along which downward and outward shear displacement occurs.
+      </figcaption>
+    </div>
+  </div>
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <h2>Part II: Official Question & Critical Option Dissection</h2>
+  </div>
+  <div class="content-card">
+    <div class="q-box">
+      <div class="q-stmt">Q40. What is the distinguishing feature of the mass above and below a landslide ?</div>
+      <div class="options-grid">
+        <div class="opt-item "><strong>(A)</strong> Both masses are stable</div>
+        <div class="opt-item "><strong>(B)</strong> Mass above is stable, whereas mass below is unstable</div>
+        <div class="opt-item correct"><strong>(C)</strong> Mass above is unstable, whereas mass below is stable</div>
+        <div class="opt-item "><strong>(D)</strong> Both masses are unstable</div>
+      </div>
+    </div>
+    
+        <div class="verified-box">
+          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
+          <p><b>Correct Answer: (C) Mass above is unstable, whereas mass below is stable</b> — In landslide kinematics, the displaced mass situated above the shear failure plane is mechanically <b>unstable</b>, while the underlying intact bedrock mass situated below the slip plane is <b>stable</b>.</p>
+        </div>
+
+        <h3>Option-by-Option Critical Dissection</h3>
+        <ul>
+          <li><b>(A) Both masses are stable — INCORRECT:</b> If both were stable, no landslide failure or downslope movement could ever take place.</li>
+          <li><b>(B) Mass above is stable, whereas mass below is unstable — INCORRECT:</b> Complete inversion of physical reality; the displaced material that slides downslope is above the slip surface, not below it.</li>
+          <li><b>(C) Mass above is unstable, whereas mass below is stable — CORRECT:</b> Precisely captures the mechanical demarcation defined by the basal shear rupture surface (Varnes 1978).</li>
+          <li><b>(D) Both masses are unstable — INCORRECT:</b> The underlying deep bedrock below the shear plane is not in a state of sliding failure; it forms the stable substrate across which the slide moves.</li>
+        </ul>
+        
+  </div>
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+  </div>
+  <div class="content-card">
+    
+        <h3>High-Yield Slope Remediation Table</h3>
+        <div class="table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Engineering Remediation Method</th>
+                <th>Target Landslide Zone</th>
+                <th>Mechanical Principle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Rock Anchors & Fully Grouted Dowels</b></td>
+                <td>Drilled through <b>unstable upper mass into stable lower mass</b></td>
+                <td>Pins the unstable slide mass securely to the stable bedrock, increasing normal stress and shear resistance.</td>
+              </tr>
+              <tr>
+                <td><b>Horizontal Drainage Bores</b></td>
+                <td>Punctures the slip surface into the upper mass</td>
+                <td>Dissipates pore water pressure ($u$), increasing effective stress $\sigma_n' = (\sigma_n - u)$.</td>
+              </tr>
+              <tr>
+                <td><b>Toe Bench / Retaining Gabion Wall</b></td>
+                <td>Base of unstable displaced mass</td>
+                <td>Provides passive resisting force ($P_p$) against driving gravitational moment.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+  </div>
+</div>
+</body>
+</html>

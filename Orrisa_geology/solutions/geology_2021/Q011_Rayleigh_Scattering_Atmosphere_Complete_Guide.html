@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q11: Atmospheric Scattering Mechanisms (Rayleigh, Mie, Non-Selective) & Sky Coloration | OPSC Geology 2021 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
+  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  
+  .back-nav {
+    margin-bottom: 16px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-banner h2 { font-size: 18px; font-weight: 700; }
+  
+  .content-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+  }
+  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
+  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
+  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
+  .content-card li { margin-bottom: 8px; }
+
+  .q-box {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .opt-item {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .opt-item.correct {
+    background: #f0fdf4;
+    border-color: #16a34a;
+    color: #15803d;
+    font-weight: 700;
+  }
+  
+  .verified-box {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 5px solid #10b981;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .v-badge {
+    display: inline-block;
+    background: #10b981;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+  .spec-table th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: 600;
+  }
+  .spec-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+
+  .qa-card {
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+  }
+  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
+  .a-box {
+    background: #fff;
+    border-left: 3px solid #7c3aed;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  /* ── Figure Styles ── */
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-figure figcaption {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GEO - 2/21 • Remote Sensing & Atmospheric Physics</div>
+    <h1>Q11: Atmospheric Scattering Mechanisms (Rayleigh, Mie, Non-Selective) & Sky Coloration</h1>
+    <div class="meta">
+      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
+      <strong>Authoritative Reference:</strong> Lillesand, Kiefer & Chipman (Remote Sensing & Image Interpretation, 7th Ed., Ch. 1, pp. 9-14); Sabins (Ch. 1)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+  </div>
+  <div class="content-card">
+    
+        <h3>11.1 Physics of Atmospheric Scattering in Remote Sensing</h3>
+        <p>In atmospheric physics and remote sensing (Lillesand, Kiefer & Chipman, <i>Remote Sensing and Image Interpretation</i>, 7th Ed., Ch. 1, pp. 9–14; Sabins, Ch. 1), solar radiation interacts with atmospheric particles through three distinct scattering mechanisms, classified by the ratio of particle diameter ($d$) to incident wavelength ($\lambda$):</p>
+        <div class="table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Scattering Type</th>
+                <th>Particle Diameter vs. Wavelength</th>
+                <th>Primary Atmospheric Agents</th>
+                <th>Wavelength Dependence & Spectral Behavior</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Rayleigh Scattering</b></td>
+                <td>$d \ll \lambda$ (typically $d < 0.1\lambda$)</td>
+                <td>Gas molecules ($N_2, O_2, CO_2$)</td>
+                <td><b>Extremely strong inverse 4th power dependence: $I \propto \lambda^{-4}$</b>. Scatters blue light $\sim 9.4$ times more than red light.</td>
+              </tr>
+              <tr>
+                <td><b>Mie Scattering</b></td>
+                <td>$d \approx \lambda$ ($0.1\lambda < d < 10\lambda$)</td>
+                <td>Smoke, dust, pollen, fine aerosols</td>
+                <td>Weak wavelength dependence ($I \propto \lambda^{-\alpha}$, where $\alpha \approx 0.5 - 2$). Creates overcast haze.</td>
+              </tr>
+              <tr>
+                <td><b>Non-Selective Scattering</b></td>
+                <td>$d \gg \lambda$ ($d > 10\lambda$)</td>
+                <td>Water droplets, ice crystals, cloud particles ($> 5-100\ \mu\text{m}$)</td>
+                <td><b>No wavelength dependence</b>; scatters all visible wavelengths equally ($I \approx \text{const}$), making clouds and fog appear white.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>11.2 Mathematical Derivation of Sky Coloration</h3>
+        <p>According to Lord Rayleigh's scattering formula, the intensity of scattered light ($I_s$) at distance $R$ and scattering angle $\theta$ is:</p>
+        $$I_s = I_0 \frac{8\pi^4 \alpha^2}{\lambda^4 R^2} (1 + \cos^2 \theta)$$
+        <p>Comparing blue light ($\lambda_b = 0.45\ \mu\text{m}$) and red light ($\lambda_r = 0.70\ \mu\text{m}$):</p>
+        $$\frac{I_{s,\text{blue}}}{I_{s,\text{red}}} = \left(\frac{\lambda_r}{\lambda_b}\right)^4 = \left(\frac{0.70}{0.45}\right)^4 = (1.555)^4 \approx 5.86$$
+        <p>Because nitrogen and oxygen molecules scatter shorter blue wavelengths almost 6 to 10 times more effectively throughout the daytime sky, the diffuse scattered skylight arriving at the Earth's surface is predominantly blue.</p>
+        
+    <div class="tb-figure">
+      <img src="../../figures_Q11/rayleigh_scattering_curve.png" alt="Rayleigh Atmospheric Scattering Curve">
+      <figcaption>
+        <strong>Figure 11.1: Rayleigh Atmospheric Scattering Cross-Section as an Inverse Fourth Power of Wavelength ($\sigma_R \propto \lambda^{-4}$).</strong> Demonstrates why blue light ($\sim 0.4\,\mu	ext{m}$) is scattered $\sim 10	imes$ more intensely than red light ($\sim 0.7\,\mu	ext{m}$), and why SWIR/TIR wavelengths penetrate atmospheric particulates with minimal Rayleigh attenuation.
+      </figcaption>
+    </div>
+    
+  </div>
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <h2>Part II: Official Question & Critical Option Dissection</h2>
+  </div>
+  <div class="content-card">
+    <div class="q-box">
+      <div class="q-stmt">Q11. What is responsible for the blue colour of the sky ?</div>
+      <div class="options-grid">
+        <div class="opt-item "><strong>(A)</strong> Mie Scattering</div>
+        <div class="opt-item "><strong>(B)</strong> Non-Selective Scattering</div>
+        <div class="opt-item correct"><strong>(C)</strong> Rayleigh Scattering</div>
+        <div class="opt-item "><strong>(D)</strong> Water droplets present in the sky</div>
+      </div>
+    </div>
+    
+        <div class="verified-box">
+          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
+          <p><b>Correct Answer: (C) Rayleigh Scattering</b> — Rayleigh scattering by atmospheric gas molecules ($N_2, O_2$) with an intensity proportional to $\lambda^{-4}$ preferentially scatters short blue wavelengths, causing the blue color of the daytime sky.</p>
+        </div>
+
+        <h3>Option-by-Option Critical Dissection</h3>
+        <ul>
+          <li><b>(A) Mie Scattering — INCORRECT:</b> Mie scattering is caused by dust, pollen, and aerosols of sizes comparable to wavelength ($d \approx \lambda$). It creates whitish-gray atmospheric haze, not the clear blue sky.</li>
+          <li><b>(B) Non-Selective Scattering — INCORRECT:</b> Caused by large cloud droplets ($d \gg \lambda$) that scatter all visible wavelengths equally, resulting in white clouds and fog.</li>
+          <li><b>(C) Rayleigh Scattering — CORRECT:</b> Classical, universal atmospheric mechanism where $d \ll \lambda$, generating the $\lambda^{-4}$ selective scattering of blue light.</li>
+          <li><b>(D) Water droplets present in the sky — INCORRECT:</b> Water droplets produce non-selective scattering (white clouds) or rain, not molecular Rayleigh scattering.</li>
+        </ul>
+        
+  </div>
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+  </div>
+  <div class="content-card">
+    
+        <h3>Worked Scattering & Optical Remote Sensing Problem</h3>
+        <div class="qa-card">
+          <div class="q-title">Practice Problem 11: Atmospheric Path Radiance & Band Selection</div>
+          <p>Why do Landsat and Sentinel-2 optical geological sensors avoid using blue-band data for rock-type classification, preferring SWIR bands?</p>
+          <div class="a-box">
+            <p><b>Answer:</b></p>
+            <p>Due to Rayleigh scattering ($I \propto \lambda^{-4}$), atmospheric <b>path radiance (haze)</b> is at its maximum in the blue band ($0.45 - 0.52\ \mu\text{m}$), severely degrading surface image contrast. In contrast, SWIR bands ($1.55 - 2.35\ \mu\text{m}$) have $\lambda$ values $4-5$ times larger, experiencing virtually zero Rayleigh scattering ($(\frac{0.45}{2.20})^4 \approx 0.0017$), providing razor-sharp surface diagnostic mineral absorption spectra.</p>
+          </div>
+        </div>
+        
+  </div>
+</div>
+</body>
+</html>
