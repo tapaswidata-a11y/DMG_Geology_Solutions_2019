@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q115: Blueschist Facies Metamorphism - Subduction along Continental Margins | OPSC Geology 2021 Masterclass</title>
+<title>Q115: Metamorphic Petrology: Blueschist Facies & Subduction Zones | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,226 +89,563 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q115" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Metamorphic Petrology & Tectonics</div>
-    <h1>Q115: Blueschist Facies Metamorphism - Subduction along Continental Margins</h1>
+    <div class="badge">GEO - 2/21 • Metamorphic Petrology & Geodynamics</div>
+    <h1>Q115: Blueschist Facies Metamorphism: High-Pressure / Low-Temperature Subduction along Continental Margins</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> J.D. Winter (Principles of Igneous and Metamorphic Petrology, Ch. 25, p. 489)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 115<br>
+<strong>Authoritative References:</strong> John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Ch. 25: Metamorphic Facies / Blueschist Facies, pp. 485–492; Fig. 25.3); Akiho Miyashiro (1961, 1994), <em>Evolution of Metamorphic Belts</em> & <em>Metamorphism and Metamorphic Belts</em>; Kurt Bucher and Rodney Grapes, <em>Petrogenesis of Metamorphic Rocks</em> (8th Ed., Springer); W.G. Ernst (1971, 1988), <em>Do Blueschists Really Signify Former Subduction Zones?</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Geodynamic Setting</h3>
-<div class="question-box">
-  <p><strong>Question 115:</strong> The characteristic locale for blueschist type of metamorphism appears to be along a ________ being underthrust by an oceanic plate.</p>
-  <ul>
-    <li>(A) mid-oceanic ridge</li>
-    <li>(B) continental margin</li>
-    <li>(C) transform boundary</li>
-    <li>(D) Both (A) and (C) are correct</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(B) continental margin</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q115/winter_p489_blueschist_subduction_continental_margin.png" alt="Blueschist Facies at Convergent Continental Margins">
-      <figcaption>
-        <strong>Figure 115.1: Geodynamic Setting of HP-LT Blueschist Metamorphism.</strong> Authentic plate from J.D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, Ch. 25, p. 489). Illustrates rapid underthrusting of cold oceanic lithosphere along an active <strong>continental margin</strong> generating low thermal gradients and high-pressure glaucophane schists.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: DEFINITION AND GEODYNAMIC LOCALIZATION OF BLUESCHISTS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Geodynamic Framework & The Subduction Locale of Blueschists</div>
+    <div class="card-body">
+      <p>
+        In global geodynamics and metamorphic petrology (Winter, 2014, pp. 485–492; Ernst, 1988; Miyashiro, 1994), the <strong>blueschist (glaucophane-schist) facies</strong> represents the quintessential signature of <strong>High-Pressure / Low-Temperature ($HP/LT$) metamorphism</strong>.
+      </p>
+      <p>
+        The characteristic, canonical locale for blueschist metamorphism is along an <strong>active convergent continental margin (or island-arc trench)</strong> where a cold, dense, hydrous oceanic lithospheric plate is actively <strong>underthrust (subducted)</strong> beneath the overriding continental crust:
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q115/winter_p489_blueschist_subduction_continental_margin.png" alt="Blueschist Metamorphism at Convergent Continental Margins from John D. Winter">
+        <div class="figure-caption">
+          <strong>Figure 115.1 — Geodynamic Locale of Blueschist Metamorphism in a Subduction Zone:</strong> Authentic textbook diagram from John D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, p. 489). Illustrates rapid underthrusting of oceanic crust along a continental margin, depressing isotherms downward and generating an anomalously low geothermal gradient ($< 10\text{--}15^\circ\text{C/km}$) that stabilizes glaucophane, lawsonite, and jadeite.
+        </div>
+      </div>
+
+      <h4>Thermodynamic Mechanism: Why Temperatures Remain Unusually Low</h4>
+      <p>
+        Normal continental geotherms exhibit gradients of $25\text{ to } 35^\circ\text{C/km}$, which would heat rocks at $30\text{ km}$ depth to $> 750^\circ\text{C}$ (granulite facies). Blueschists require temperatures of only <strong>$200^\circ\text{C}$ to $400^\circ\text{C}$</strong> at depths of <strong>$20\text{ to } 45\text{ km}$ ($P \approx 6\text{ to } 14\text{ kbar}$)</strong>. This anomalous $HP/LT$ regime is generated exclusively by subduction kinematics:
+      </p>
+      <ul>
+        <li><strong>Rapid Advective Down-Carrying:</strong> The cold oceanic slab is subducted at tectonic velocities ($3\text{ to } 10\text{ cm/year}$) vastly faster than the rate at which heat can conduct inward from the surrounding hot mantle wedge ($thermal\text{ diffusivity } \kappa \approx 10^{-6}\text{ m}^2\text{/s}$).</li>
+        <li><strong>Depressed Isotherms:</strong> This thermal lag severely bends regional isotherms downward into the subduction trench, maintaining frigid conditions ($200\text{--}350^\circ\text{C}$) while lithostatic pressure climbs steeply to over $10\text{ kbar}$, directly accessing the blueschist stability field.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: DIAGNOSTIC MINERALOGY & PAIRED BELTS -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Diagnostic Mineralogy, Decompression Preservation & Paired Belts</div>
+    <div class="card-body">
+      <h4>Pathognomonic Minerals of the Blueschist Facies</h4>
+      <p>
+        When basaltic oceanic crust (MORB) undergoes blueschist metamorphism, it develops a striking blue-to-lavender coloration defined by specific high-pressure minerals:
+      </p>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Diagnostic Mineral</th>
+            <th>Chemical Formula</th>
+            <th>Thermodynamic Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Glaucophane</strong></td>
+            <td>$\text{Na}_2(\text{Mg}_3\text{Al}_2)\text{Si}_8\text{O}_{22}(\text{OH})_2$</td>
+            <td>Sodic amphibole imparting the diagnostic blue color; requires high confining pressure to stabilize $\text{Na}$ in the $M4$ site.</td>
+          </tr>
+          <tr>
+            <td><strong>Lawsonite</strong></td>
+            <td>$\text{CaAl}_2\text{Si}_2\text{O}_7(\text{OH})_2\cdot\text{H}_2\text{O}$</td>
+            <td>Hydrous calcium aluminosilicate; diagnostic of cold subduction geotherms ($T < 350\text{--}400^\circ\text{C}$).</td>
+          </tr>
+          <tr>
+            <td><strong>Jadeite + Quartz</strong></td>
+            <td>$\text{NaAlSi}_2\text{O}_6 + \text{SiO}_2$</td>
+            <td>Formed by the high-pressure breakdown of albite: $\text{Albite} \rightleftharpoons \text{Jadeite} + \text{Quartz}$ ($P > 10\text{ kbar}$).</td>
+          </tr>
+          <tr>
+            <td><strong>Aragonite</strong></td>
+            <td>$\text{CaCO}_3$ (orthorhombic)</td>
+            <td>Dense high-pressure polymorph of calcite ($P > 6\text{--}8\text{ kbar}$ at $250^\circ\text{C}$).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Miyashiro's (1961) Paired Metamorphic Belts</h4>
+      <p>
+        In convergent continental margins (e.g., Japan, California Franciscan/Sierra Nevada), Akiho Miyashiro demonstrated that blueschist belts always occur as part of a <strong>paired metamorphic belt</strong>:
+      </p>
+      <ul>
+        <li><strong>Outer Belt (Trench / Accretionary Prism, Oceanward):</strong> $HP/LT$ Blueschist belt formed in the cold subduction channel along the continental margin.</li>
+        <li><strong>Inner Belt (Volcanic Arc / Back-Arc, Continentward):</strong> $LP/HT$ Ryoke-type metamorphic belt formed by magmatic advection beneath continental arc volcanoes.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q115. The characteristic locale for blueschist type of metamorphism appears to be along a ________ being underthrust by an oceanic plate.</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 115:</strong> The characteristic locale for blueschist type of metamorphism appears to be along a ________ being underthrust by an oceanic plate.
+      </div>
       <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> mid-oceanic ridge</div>
-        <div class="opt-item correct"><strong>(B)</strong> continental margin</div>
-        <div class="opt-item "><strong>(C)</strong> transform boundary</div>
-        <div class="opt-item "><strong>(D)</strong> Both (A) and (C) are correct</div>
+        <div class="option-item"><strong>(A)</strong> mid-oceanic ridge</div>
+        <div class="option-item correct-option"><strong>(B)</strong> continental margin</div>
+        <div class="option-item"><strong>(C)</strong> transform boundary</div>
+        <div class="option-item"><strong>(D)</strong> Both (A) and (C) are correct</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(B) continental margin</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: High-Pressure / Low-Temperature (HP-LT) Blueschist Facies</h3>
-<p>
-<strong>Blueschist facies</strong> metamorphism is characterized by the sodic amphibole <strong>glaucophane</strong> (which imparts a distinctive lavender-blue color), accompanied by lawsonite, jadeitic pyroxene, and aragonite:
-</p>
-<ul>
-  <li><strong>The Subduction Refrigeration Mechanism:</strong> Blueschist metamorphism requires an anomalous geotherm characterized by <strong>high pressure ($P > 6 - 12\text{ kbar}$, depths $>20 - 40\text{ km}$) but low temperature ($T = 200^\circ - 400^\circ\text{C}$)</strong>:
-    <ul>
-      <li>In a subduction zone, cold, dense oceanic lithosphere is underthrust rapidly beneath a <strong>continental margin</strong> or island arc.</li>
-      <li>The subducting slab descends into the mantle faster than conductive heat can warm it from the surrounding mantle wedge ("refrigeration effect").</li>
-      <li>Consequently, rocks reach enormous pressures while remaining unusually cold, forming the diagnostic blueschist and eclogite suites.</li>
-    </ul>
-  </li>
-  <li><strong>Mid-Ocean Ridges:</strong> Exhibit extremely high heat flow ($>100^\circ\text{C/km}$), generating low-pressure hydrothermal ocean-floor metamorphism (zeolite to greenschist/amphibolite facies), the exact opposite of blueschist conditions.</li>
-  <li><strong>Transform Boundaries:</strong> Sites of shallow strike-slip faulting and localized cataclasis without deep subduction underthrusting.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-a">Option (A) Refuted — Mid-Oceanic Ridge</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Mid-oceanic ridges</strong> are divergent extensional plate boundaries characterized by upwelling mantle asthenosphere, extreme geothermal heat flow ($> 100\text{--}200^\circ\text{C/km}$), and zero lithostatic burial pressure. Metamorphism at ridges is <strong>low-pressure hydrothermal metamorphism (ocean-floor metamorphism)</strong> producing spilites, greenschists, and serpentinites, never high-pressure blueschists.
+        </p>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-badge opt-b">Option (B) Confirmed — Continental Margin</div>
+        <p>
+          <strong>Correct:</strong> By universal consensus in plate tectonics and metamorphic petrology (Winter, 2014, p. 489; Ernst, 1988; Miyashiro, 1994), <strong>blueschist metamorphism occurs along convergent active continental margins</strong> (e.g., the Franciscan Complex along the western margin of North America) where an oceanic lithospheric plate is subducted (underthrust) beneath the continental edge. This unique tectonic mechanism drags cold rocks rapidly to high pressures while suppressing temperature, generating the pathognomonic blueschist facies.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Transform Boundary</div>
+        <p>
+          <strong>Incorrect:</strong> A <strong>transform boundary</strong> (e.g., the San Andreas Fault) is a strike-slip boundary where plates slide past one another horizontally without significant vertical descent or subduction. It generates localized cataclasites and mylonites via dynamic metamorphism, not regional $HP/LT$ blueschists.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Both (A) and (C) are Correct</div>
+        <p>
+          <strong>Incorrect:</strong> Because neither mid-oceanic ridges nor transform boundaries involve plate underthrusting or $HP/LT$ thermal lag, Option (D) is completely invalid. The sole correct geodynamic locale is <strong>(B) continental margin</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option B (continental margin) is correct:</strong> The classic subduction trench along an active continental margin (e.g., Franciscan Complex of California) where oceanic crust is underthrust beneath continental crust.</li>
-  <li><strong>Option A (mid-oceanic ridge):</strong> Low-pressure, high-temperature hydrothermal metamorphism.</li>
-  <li><strong>Option C (transform boundary):</strong> Strike-slip shearing without subduction underthrusting.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Geodynamic Settings of Metamorphic Facies Series</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Metamorphic Facies Series</th>
+            <th>$P/T$ Regime</th>
+            <th>Geothermal Gradient</th>
+            <th>Diagnostic Plate Tectonic Locale</th>
+            <th>Classic Type Locality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Blueschist - Eclogite Series</strong></td>
+            <td><strong>High $P$ / Low $T$ ($HP/LT$)</strong></td>
+            <td><strong>$< 10\text{--}15^\circ\text{C/km}$ (Frigid Geotherm)</strong></td>
+            <td><strong>Subduction Trench along Active Continental Margin</strong></td>
+            <td><strong>Franciscan Complex (California), Sanbagawa Belt (Japan)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Barrovian Series</strong></td>
+            <td>Medium $P$ / Medium $T$ ($MP/MT$)</td>
+            <td>$20\text{--}30^\circ\text{C/km}$ (Standard Orogenic)</td>
+            <td>Continent-Continent Collision Orogens</td>
+            <td>Scottish Highlands (Grampian Orogen), Himalayas</td>
+          </tr>
+          <tr>
+            <td><strong>Buchan / Ryoke Series</strong></td>
+            <td>Low $P$ / High $T$ ($LP/HT$)</td>
+            <td>$> 40\text{--}70^\circ\text{C/km}$ (High Heat Flow)</td>
+            <td>Volcanic Magmatic Arc & Back-Arc Basins</td>
+            <td>Ryoke Belt (Japan), Sierra Nevada Batholith aureoles</td>
+          </tr>
+          <tr>
+            <td><strong>Ocean-Floor Hydrothermal</strong></td>
+            <td>Low $P$ / Moderate-High $T$</td>
+            <td>Extremely high ($> 100^\circ\text{C/km}$)</td>
+            <td>Mid-Oceanic Ridge Spreading Centers</td>
+            <td>Mid-Atlantic Ridge, Oman Ophiolite upper crust</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>Write the chemical reaction for the high-pressure breakdown of albite plagioclase into jadeitic pyroxene and quartz, and calculate why this reaction is favored at high pressures based on molar volumes: $V^\circ_{\text{albite}} = 100.1\text{ cm}^3\text{/mol}$, $V^\circ_{\text{jadeite}} = 60.4\text{ cm}^3\text{/mol}$, $V^\circ_{\text{quartz}} = 22.7\text{ cm}^3\text{/mol}$.</p>
+        <p><strong>Solution:</strong>
+          The reaction is:
+          $$\text{NaAlSi}_3\text{O}_8\text{ (Albite)} \rightleftharpoons \text{NaAlSi}_2\text{O}_6\text{ (Jadeite)} + \text{SiO}_2\text{ (Quartz)}$$
+          Calculate $\Delta V^\circ$:
+          $$\Delta V^\circ = V^\circ_{\text{jadeite}} + V^\circ_{\text{quartz}} - V^\circ_{\text{albite}} = 60.4 + 22.7 - 100.1 = 83.1 - 100.1 = \mathbf{-17.0\text{ cm}^3\text{/mol}}$$
+          Because the product assemblage occupies $17\%$ less volume than albite ($\Delta V \ll 0$), high lithostatic pressure drives the equilibrium strongly to the right, making the appearance of <strong>jadeite + quartz</strong> the premier geobarometric indicator of blueschist/eclogite facies metamorphism ($P > 10\text{--}12\text{ kbar}$).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Why are blueschists virtually absent from the Archean and early Paleoproterozoic geological record prior to $\sim 1.0\text{ Ga}$?</p>
+        <p><strong>Solution:</strong>
+          Blueschist metamorphism requires an anomalously <strong>cold geothermal gradient ($< 10\text{--}15^\circ\text{C/km}$)</strong>. During the Archean and Paleoproterozoic, the Earth's mantle was significantly hotter due to higher radiogenic heat production and residual accretionary heat. Even in subduction zones, warm mantle temperatures heated the descending slab rapidly ($LP/HT$ or $MP/MT$), preventing the cold thermal lag required for blueschists. The appearance of blueschists in the Neoproterozoic marks the secular cooling of the Earth and the onset of modern "cold, deep" subduction tectonics.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>How does rapid tectonic exhumation preserve delicate blueschist minerals from retrograde transformation into greenschist facies during their return to the surface?</p>
+        <p><strong>Solution:</strong>
+          If a subducted slab exhumes slowly along a normal geothermal path, conduction from surrounding hot mantle heats the rock while it decompresses, entering the greenschist field where glaucophane and lawsonite react with fluids to form chlorite, albite, and actinolite (complete retrograde destruction). Preservation of blueschists requires <strong>rapid tectonic exhumation</strong> (driven by buoyant extrusion, channel flow, or tectonic unroofing in accretionary wedges) accompanied by <strong>structural desiccation (fluid loss)</strong>, preventing retrograde hydration and "freezing" the high-pressure glaucophane assemblage metastably.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>What is the significance of the "calcite-to-aragonite" phase transition in subduction zone blueschists?</p>
+        <p><strong>Solution:</strong>
+          Aragonite is the dense orthorhombic high-pressure polymorph of calcium carbonate ($\text{CaCO}_3$, $\rho \approx 2.93\text{ g/cm}^3$ vs. calcite $\rho \approx 2.71\text{ g/cm}^3$). The transition boundary requires a minimum pressure of <strong>$P \approx 6.5\text{ kbar}$ at $200^\circ\text{C}$ ($z \approx 22\text{ km}$)</strong>. The discovery of metamorphic aragonite veins in the Franciscan Complex proved conclusively that these sedimentary rocks were carried to depths exceeding $20\text{--}30\text{ km}$ and exhumed rapidly before aragonite could invert back to calcite.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>In a paired metamorphic belt, what accounts for the dramatic contrast in geothermal gradient between the oceanward blueschist belt and the continentward volcanic arc belt?</p>
+        <p><strong>Solution:</strong>
+          The contrast is driven by <strong>asymmetric heat advection</strong>:
+          - <strong>Oceanward (Trench):</strong> Dominated by the subduction of a massive, cold, hydrated oceanic lithospheric slab, which acts as a gigantic regional heat sink, dragging isotherms down and producing a <strong>frigid geotherm ($< 10^\circ\text{C/km}$, Blueschist belt)</strong>.
+          - <strong>Continentward (Arc):</strong> Dominated by the ascent of hot, mantle-derived magmas generated by fluxed melting above the dehydrating slab. Magmatic advection pumps enormous heat into the overriding crust, producing an <strong>extremely hot geotherm ($> 40\text{--}60^\circ\text{C/km}$, Ryoke-type belt)</strong>.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>What rock type forms when a blueschist metabasite is subjected to further increase in pressure and temperature beyond $P > 15\text{ kbar}$ and $T > 500^\circ\text{C}$?</p>
+        <p><strong>Solution:</strong>
+          At depths exceeding $\sim 45\text{--}50\text{ km}$ ($P > 15\text{ kbar}$), hydrous glaucophane and lawsonite break down via terminal dehydration, recrystallizing into anhydrous <strong>omphacite clinopyroxene and pyrope-almandine garnet</strong>. The rock transforms into an <strong>Eclogite</strong>, the densest crustal rock on Earth ($\rho \approx 3.4\text{--}3.6\text{ g/cm}^3$).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>Under a polarizing microscope, how can a geologist definitively identify glaucophane?</p>
+        <p><strong>Solution:</strong>
+          Glaucophane is an inosilicate amphibole exhibiting diagnostic optical properties:
+          1. <strong>Strong Distinctive Pleochroism:</strong> $X = \text{colorless to pale yellow}$, $Y = \text{violet / lavender-blue}$, $Z = \text{vivid Prussian blue / sky blue}$.
+          2. <strong>Low Extinction Angle:</strong> Small extinction angle $Z \wedge c = 4^\circ\text{ to } 8^\circ$.
+          3. <strong>Amphibole Cleavage:</strong> Intersecting $\{110\}$ cleavage planes at $56^\circ / 124^\circ$.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>Why do serpentine mud volcanoes on the Mariana forearc seafloor exhume blueschist-facies mineral clasts?</p>
+        <p><strong>Solution:</strong>
+          In the Mariana subduction forearc, dehydration fluids rising from the subducting slab hydrate the overlying mantle wedge peridotite into low-density, buoyant <strong>serpentine diapirs ($\rho \approx 2.5\text{ g/cm}^3$)</strong>. As the ductile serpentine rises buoyantly through faults to erupt on the ocean floor as mud volcanoes, it physically plucks and entrains rock fragments (xenoliths) of subducted blueschists from $15\text{--}25\text{ km}$ depth, providing real-time exhumation of active subduction zone metamorphism.
+        </p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
