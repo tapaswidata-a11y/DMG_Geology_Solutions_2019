@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q103: Heavy Mineral Analysis and Sedimentary Provenance | OPSC Geology 2021 Masterclass</title>
+<title>Q103: Sedimentary Petrology: Heavy Minerals & Provenance Analysis | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,226 +89,555 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q103" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentary Petrology</div>
-    <h1>Q103: Heavy Mineral Analysis and Sedimentary Provenance</h1>
+    <div class="badge">GEO - 2/21 • Sedimentary Petrology & Provenance</div>
+    <h1>Q103: Heavy Mineral Suites: Petrographic Fingerprinting & Sedimentary Provenance Reconstructions</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, Ch. 5, p. 170)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 103<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th/6th Ed., Ch. 5: Sandstones / Provenance, pp. 165–172; Fig. 5.15); Maria A. Mange and Heinz F.W. Maurer, <em>Heavy Minerals in Colour</em> (Chapman & Hall); F.J. Pettijohn, P.E. Potter, and R. Siever, <em>Sand and Sandstone</em>; Maurice E. Tucker, <em>Sedimentary Petrology: An Introduction to the Origin of Sedimentary Rocks</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Analytical Objective</h3>
-<div class="question-box">
-  <p><strong>Question 103:</strong> The origin of many heavy mineral species is limited to rather specific rock types ; hence, heavies provide information concerning :</p>
-  <ul>
-    <li>(A) source rock</li>
-    <li>(B) mineral dispersion pattern</li>
-    <li>(C) quaternary sediments</li>
-    <li>(D) provenance</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(D) provenance</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q103/boggs_p170_heavy_minerals_provenance.png" alt="Heavy Minerals and Provenance Analysis">
-      <figcaption>
-        <strong>Figure 103.1: Heavy Minerals as Diagnostic Indicators of Provenance.</strong> Authentic textbook table from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, Ch. 5, p. 170). Details diagnostic suites of non-opaque heavy minerals that trace sedimentary provenance to specific igneous, metamorphic, or recycled sedimentary source terranes.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: DEFINITION AND PRINCIPLES OF HEAVY MINERAL PROVENANCE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Separation Techniques & The Provenance Paradigm</div>
+    <div class="card-body">
+      <p>
+        In clastic sedimentology and basin analysis (Boggs, 2014, pp. 165–172; Mange & Maurer, 1992; Pettijohn et al., 1987), <strong>heavy minerals</strong> are defined as accessory detrital mineral grains that possess a specific gravity greater than that of the standard rock-forming framework minerals (quartz $\rho \approx 2.65\text{ g/cm}^3$ and feldspars $\rho \approx 2.55\text{--}2.76\text{ g/cm}^3$).
+      </p>
+      <p>
+        By convention, minerals with <strong>$\text{specific gravity} > 2.85\text{ g/cm}^3$</strong> (the density of bromoform, $\text{CHBr}_3$) or $> 2.90\text{ g/cm}^3$ (sodium polytungstate) are designated as heavy minerals. Although they typically constitute <strong>less than $1.0\%$ (often $< 0.1\%$)</strong> of a sandstone by weight, their extraordinary compositional diversity makes them the single most potent diagnostic tool for reconstructing <strong>sedimentary provenance</strong>.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q103/boggs_p170_heavy_minerals_provenance.png" alt="Heavy Mineral Suites and Provenance Lithologies from Sam Boggs Jr.">
+        <div class="figure-caption">
+          <strong>Figure 103.1 — Diagnostic Heavy Mineral Suites and Source Rock Lithologies:</strong> Authentic textbook diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, p. 170). Details specific heavy mineral assemblages corresponding to acid igneous, basic/ultrabasic igneous, dynamic regional metamorphic, contact metamorphic, and recycled sedimentary provenances.
+        </div>
+      </div>
+
+      <h4>The Concept of Sedimentary Provenance</h4>
+      <p>
+        The geological term <strong>provenance</strong> (from the French <em>provenir</em>, meaning "to originate or come forth") is an expansive, integrated scientific concept that encompasses:
+      </p>
+      <ol>
+        <li><strong>Source Rock Lithology:</strong> The precise petrographic nature of the parent rocks (granite, basalt, amphibolite, schist, or older sedimentary strata).</li>
+        <li><strong>Tectonic Setting of the Source Area:</strong> Craton interior, volcanic island arc, Andean-type continental magmatic arc, or collision orogen.</li>
+        <li><strong>Paleoclimate and Weathering:</strong> The climatic regime under which the source rocks were unroofed and decomposed.</li>
+        <li><strong>Drainage Basin Geometry & Paleocurrent Pathways:</strong> The geographic dispersal routes, transport distances, and fluvial/marine mixing patterns.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CARD 2: DIAGNOSTIC HEAVY MINERAL SUITES -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Diagnostic Heavy Mineral Suites for Specific Source Lithologies</div>
+    <div class="card-body">
+      <h4>Petrographic Mineral Fingerprints</h4>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Source Rock Lithology</th>
+            <th>Diagnostic Heavy Mineral Assemblage</th>
+            <th>Diagnostic Petrographic Characteristics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Acidic Igneous (Granites & Pegmatites)</strong></td>
+            <td>Apatite, Biotite, Tourmaline (brown/pink schorl), Zircon, Monazite, Muscovite, Sphene (Titanite), Cassiterite</td>
+            <td>Euhedral, prismatic, growth-zoned zircons; fluorine/boron-bearing species.</td>
+          </tr>
+          <tr>
+            <td><strong>Basic & Ultrabasic Igneous (Basalts, Gabbros, Peridotites)</strong></td>
+            <td>Augite, Hypersthene, Enstatite, Olivine, Chromite, Picotite, Ilmenite, Magnetite</td>
+            <td>High-temperature pyroxenes; chrome spinels; opaque Fe-Ti oxides; low ZTR index.</td>
+          </tr>
+          <tr>
+            <td><strong>Low-Grade Metamorphic (Greenschist Facies)</strong></td>
+            <td>Chlorite, Chloritoid, Epidote, Zoisite, Actinolite, Green Tourmaline</td>
+            <td>Flaky green phyllosilicates; pistachio-green pleochroic epidote.</td>
+          </tr>
+          <tr>
+            <td><strong>High-Grade Regional Metamorphic (Amphibolite & Granulite Facies)</strong></td>
+            <td>Garnet (almandine-pyrope), Kyanite, Sillimanite, Staurolite, Andalusite, Epidote, Hornblende</td>
+            <td>Diagnostic aluminosilicate polymorphs ($\text{Al}_2\text{SiO}_5$); golden-yellow pleochroic staurolite; bladed kyanite.</td>
+          </tr>
+          <tr>
+            <td><strong>Contact Metamorphic (Thermal Aureoles)</strong></td>
+            <td>Andalusite (chiastolite), Cordierite, Vesuvianite, Wollastonite, Grossular garnet</td>
+            <td>Cross-shaped carbonaceous inclusions in chiastolite; sector-twinned cordierite.</td>
+          </tr>
+          <tr>
+            <td><strong>Recycled / Polycyclic Sedimentary</strong></td>
+            <td>Zircon, Tourmaline, Rutile (ZTR $> 90\%$), Rounded Leucoxene, Rounded Chert</td>
+            <td>Exceptionally high roundness and sphericity; abraded overgrowths; absence of labile species.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q103. The origin of many heavy mineral species is limited to rather specific rock types ; hence, heavies provide information concerning :</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 103:</strong> The origin of many heavy mineral species is limited to rather specific rock types ; hence, heavies provide information concerning :
+      </div>
       <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> source rock</div>
-        <div class="opt-item "><strong>(B)</strong> mineral dispersion pattern</div>
-        <div class="opt-item "><strong>(C)</strong> quaternary sediments</div>
-        <div class="opt-item correct"><strong>(D)</strong> provenance</div>
+        <div class="option-item"><strong>(A)</strong> source rock</div>
+        <div class="option-item"><strong>(B)</strong> mineral dispersion pattern</div>
+        <div class="option-item"><strong>(C)</strong> quaternary sediments</div>
+        <div class="option-item correct-option"><strong>(D)</strong> provenance</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(D) provenance</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Heavy Minerals & Provenance Analysis</h3>
-<p>
-<strong>Heavy minerals</strong> are accessory detrital mineral grains possessing a specific gravity greater than standard bromoform / liquid separation media ($SG > 2.85\text{ g/cm}^3$):
-</p>
-<ul>
-  <li><strong>Provenance Indicator:</strong> Provenance encompasses the complete history of a sedimentary rock, including the <strong>source rock lithology, tectonic setting, climate, and paleogeographic location</strong> of the parent landmass. Because specific heavy minerals originate in distinctive lithotectonic realms, they serve as the premier tool for provenance reconstruction:
-    <ul>
-      <li><em>Acid Plutonic (Granitic) Source:</em> Monazite, Euhedral Zircon, Tourmaline, Muscovite.</li>
-      <li><em>Basic / Ultrabasic Igneous Source:</em> Chromite, Ilmenite, Enstatite, Augite, Olivine.</li>
-      <li><em>Regional Metamorphic Source:</em> Kyanite, Sillimanite, Staurolite, Garnet, Glaucophane.</li>
-      <li><em>Contact Metamorphic Source:</em> Andalusite, Cordierite, Epidote.</li>
-    </ul>
-  </li>
-  <li><strong>Source Rock vs Provenance:</strong> While "source rock" (Option A) refers only to the parent lithology, <strong>provenance</strong> (Option D) is the comprehensive, universally accepted scientific term encompassing source terrain, tectonic setting, transport pathways, and weathering conditions.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-a">Option (A) Refuted — Source Rock (Incomplete Sub-concept)</div>
+        <p>
+          <strong>Incorrect:</strong> While heavy minerals certainly reveal the lithological nature of the parent rocks, "source rock" is merely <strong>one individual parameter</strong> within the broader geological discipline. Heavy minerals provide vastly more comprehensive data: they constrain tectonic regime, paleorelief, weathering intensity, transport distance, and drainage basin evolution. In sedimentary geology curricula and exam benchmarks (Boggs, 2014, p. 165; Pettijohn, 1975), the full, overarching scientific objective of heavy mineral study is formally designated as <strong>provenance</strong>.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Mineral Dispersion Pattern</div>
+        <p>
+          <strong>Incorrect:</strong> "Mineral dispersion pattern" refers specifically to exploration geochemistry (such as secondary geochemical dispersion halos around economic ore bodies during stream-sediment prospecting). While spatial mapping of heavies can delineate dispersion, this is a localized applied technique, not the primary fundamental petrological information revealed by diagnostic heavy mineral assemblages.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Quaternary Sediments</div>
+        <p>
+          <strong>Incorrect:</strong> Heavy mineral analysis applies equally to sedimentary rocks of <strong>all geological ages</strong>—from Archean quartzites and Proterozoic sandstones to Paleozoic, Mesozoic, and Cenozoic strata worldwide. It is not restricted to Quaternary sediments.
+        </p>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-badge opt-d">Option (D) Confirmed — Provenance</div>
+        <p>
+          <strong>Correct:</strong> By fundamental definition in sedimentology (Boggs, 2014; Pettijohn et al., 1987; Mange & Maurer, 1992), because distinct heavy mineral species originate under specific thermomechanical conditions in particular parent rocks, their presence, variety, optical properties, and roundness provide diagnostic fingerprints of the sediment's <strong>provenance</strong> (source rock composition, tectonic setting, relief, climate, and transport history).
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option D (provenance) is correct:</strong> The rigorous, overarching geological term for source area analysis using heavy mineral suites.</li>
-  <li><strong>Option A (source rock):</strong> Incomplete subset of provenance; standard academic curricula (Boggs, Pettijohn) designate this study specifically as <em>provenance analysis</em>.</li>
-  <li><strong>Option B & C:</strong> Narrow local applications, not the primary scientific objective of heavy mineral petrography.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Matrix: Provenance Discrimination Parameters from Heavy Mineral Petrography</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Analytical Dimension</th>
+            <th>Heavy Mineral Indicator / Metric</th>
+            <th>Geological Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lithological Fingerprinting</strong></td>
+            <td>Staurolite + Kyanite + Sillimanite</td>
+            <td>Medium- to high-grade regionally metamorphosed pelitic rocks (Barrovian metamorphic terrane).</td>
+          </tr>
+          <tr>
+            <td><strong>Tectonic Unroofing</strong></td>
+            <td>Chrome spinel ($\text{Cr#}$) + Olivine $\rightarrow$ Pyroxenes $\rightarrow$ Zircon + Monazite</td>
+            <td>Progressive erosional unroofing from ophiolitic mantle obduction to deeper granitic continental core.</td>
+          </tr>
+          <tr>
+            <td><strong>Transport & Recycling</strong></td>
+            <td>Roundness of Zircon and Tourmaline; ZTR Index $> 90\%$</td>
+            <td>Polycyclic sedimentary recycling across multiple sedimentary cycles in stable cratonic basins.</td>
+          </tr>
+          <tr>
+            <td><strong>Paleoclimate & Weathering</strong></td>
+            <td>Survival vs. destruction of apatite, pyroxene, and amphibole</td>
+            <td>Humid tropical climate dissolves apatite and pyroxene; arid or cold-glacial climates preserve them.</td>
+          </tr>
+          <tr>
+            <td><strong>Diagenetic Dissolution (Intrastratal Solution)</strong></td>
+            <td>Etched cockscomb terminations on augite and hornblende; skeletal garnets</td>
+            <td>Deep burial mesodiagenesis by corrosive basinal pore waters dissolving labile minerals in-situ.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>A heavy mineral separation from a deltaic sandstone reveals an abundance of honey-yellow pleochroic staurolite, bladed kyanite, and almandine garnet. What specific provenance lithology and metamorphic grade are indicated?</p>
+        <p><strong>Solution:</strong> The heavy mineral assemblage indicates a <strong>medium- to high-grade regionally metamorphosed pelitic source rock (amphibolite facies)</strong>. Staurolite, kyanite, and almandine are classic Barrovian index minerals formed by the regional metamorphism of aluminous shales under temperatures of $500\text{--}650^\circ\text{C}$ and pressures of $4\text{--}8\text{ kbar}$.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Explain how the chemical composition of detrital chrome spinel (specifically the Chromium Number, $\text{Cr\#} = \frac{\text{Cr}}{\text{Cr} + \text{Al}}$) is used in heavy mineral provenance analysis to distinguish between mid-ocean ridge basalts (MORB) and forearc peridotites.</p>
+        <p><strong>Solution:</strong>
+          Chrome spinel ($\text{(Mg,Fe)(Cr,Al,Fe)}_2\text{O}_4$) is highly resistant to chemical weathering and alteration. In modern petrogenetic models (Dick & Bullen, 1984):
+          - <strong>MORB / Abyssal Peridotites:</strong> Exhibit low to moderate $\text{Cr\#}$ ($< 0.60$, typically $0.20\text{--}0.50$), reflecting lower degrees of mantle partial melting.
+          - <strong>Forearc Peridotites / Supra-Subduction Zone Ophiolites:</strong> Undergo extreme fluxed partial melting ($> 25\text{--}35\%$), which selectively strips aluminum into the melt, leaving highly refractory residual spinels with <strong>very high $\text{Cr\#}$ ($> 0.60\text{ to } 0.85$)</strong>. Thus, detrital spinel $\text{Cr\#}$ precisely discriminates the geodynamic tectonic setting of the source ophiolite.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>What is "intrastratal solution" and how can it bias heavy mineral provenance interpretations in deeply buried sandstones?</p>
+        <p><strong>Solution:</strong>
+          <strong>Intrastratal solution</strong> (diagenetic dissolution) is the post-depositional leaching and destruction of unstable heavy minerals by hot, circulating basinal pore waters during deep burial diagenesis. Minerals disappear in a predictable order of decreasing stability:
+          $$\text{Olivine} \rightarrow \text{Pyroxenes} \rightarrow \text{Amphiboles} \rightarrow \text{Epidote} \rightarrow \text{Garnet} \rightarrow \text{Staurolite} \rightarrow \text{Kyanite} \gg \text{ZTR}$$
+          If an ancient sandstone has undergone intense intrastratal solution, an originally diverse heavy mineral assemblage may be stripped of all pyroxenes and amphiboles, falsely mimicking a high-maturity or multi-cycle cratonic provenance. Petrographers check for serrated "cockscomb" or "hacksaw" dissolution textures on remaining grains to detect this bias.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>How does the morphological roundness of detrital zircon crystals differentiate a first-cycle plutonic provenance from a polycyclic sedimentary provenance?</p>
+        <p><strong>Solution:</strong>
+          - <strong>First-Cycle Plutonic Provenance:</strong> Zircons directly weathered from a granitic pluton retain sharp, euhedral crystal facets, acute bipyramidal terminations, and pristine oscillatory growth zoning with zero roundness ($\rho < 0.15$).
+          - <strong>Polycyclic Sedimentary Provenance:</strong> Because zircon is extremely hard (Mohs 7.5) and chemically inert, rounding a zircon crystal requires hundreds to thousands of kilometers of abrasive transport over multiple sedimentary recycling episodes. The presence of well-rounded, egg-shaped or spherical zircons ($\rho > 0.60$) definitively establishes a recycled sedimentary source rock.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>Explain the principle of "hydraulic equivalence" in heavy mineral grain-size distribution.</p>
+        <p><strong>Solution:</strong>
+          According to C. Rubey (1933), when moving water deposits mineral grains, denser heavy minerals settle at the same hydrodynamic velocity as larger, lighter quartz grains. Under Stokes' Law and turbulent drag, two grains are in <strong>hydraulic equivalence</strong> when they possess the same settling velocity:
+          $$v_{\text{heavy}} = v_{\text{quartz}} \implies d_{\text{heavy}} \approx d_{\text{quartz}} \sqrt{\frac{\rho_{\text{quartz}} - \rho_f}{\rho_{\text{heavy}} - \rho_f}}$$
+          Because heavy minerals have higher densities ($\rho_h = 3.5\text{--}5.2\text{ g/cm}^3$ vs. $\rho_q = 2.65\text{ g/cm}^3$), their depositional grain diameter is systematically <strong>finer ($0.5\text{ to } 1.0\phi$ smaller)</strong> than the co-occurring quartz framework grains.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>What specific source rock is indicated by the presence of detrital glaucophane and lawsonite in a foreland basin sandstone?</p>
+        <p><strong>Solution:</strong>
+          Glaucophane (sodic amphibole) and lawsonite are the pathognomonic diagnostic minerals of <strong>blueschist facies metamorphism</strong>, formed under conditions of extreme high pressure and low temperature ($P = 6\text{--}12\text{ kbar}$, $T = 200\text{--}400^\circ\text{C}$). Their presence unequivocally diagnoses an <strong>obducted subduction complex or accretionary wedge suture zone</strong> provenance (e.g., Franciscan-type subduction complexes).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>How does U-Pb geochronology of detrital zircon revolutionize sedimentary provenance studies?</p>
+        <p><strong>Solution:</strong>
+          While optical heavy mineral microscopy identifies broad rock classes, in-situ LA-ICP-MS or SIMS U-Pb isotopic dating of individual detrital zircon cores yields absolute crystallization ages for hundreds of grains in a single sandstone. The resulting age probability density plot (e.g., peaks at $2.5\text{ Ga}$, $1.8\text{ Ga}$, and $500\text{ Ma}$) acts as an isotopic "DNA barcode" that matches the sediment directly to specific geological provinces, terranes, and mountain belts, precisely reconstructing continental drainage systems through geological time.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>Contrast the heavy mineral suites expected from an arid desert environment vs. an intensely weathered, humid tropical rainforest basin draining the same granitic batholith.</p>
+        <p><strong>Solution:</strong>
+          - <strong>Arid Desert Drainage:</strong> Lacks moisture for chemical leaching. Both chemically stable (zircon, tourmaline, sphene) and chemically unstable/labile heavies (apatite, biotite, hornblende, augite) survive unweathered, yielding a diverse, multi-species heavy mineral suite.
+          - <strong>Humid Tropical Rainforest Drainage:</strong> Extreme chemical hydrolysis and acidic humic groundwater dissolve all unstable species (apatite, pyroxenes, amphiboles are completely leached away). Only the ultra-resistant ZTR trio (Zircon, Tourmaline, Rutile) survives, yielding an artificially depleted, ultra-mature residual heavy mineral assemblage.
+        </p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

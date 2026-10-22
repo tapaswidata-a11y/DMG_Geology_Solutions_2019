@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q105: Folk (1962) Limestone Classification - Allochems and Intraclasts | OPSC Geology 2021 Masterclass</title>
+<title>Q105: Carbonate Petrology: Folk (1959, 1962) Limestone Classification & Allochems | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,228 +89,602 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q105" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentary Petrology</div>
-    <h1>Q105: Folk (1962) Limestone Classification - Allochems and Intraclasts</h1>
+    <div class="badge">GEO - 2/21 • Carbonate Petrology & Petrography</div>
+    <h1>Q105: Folk (1962) Limestone Petrography: The Four Allochems (Intraclasts, Oolites, Fossils, Pellets)</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, Ch. 6, p. 186)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 105<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th/6th Ed., Ch. 6: Carbonate Rocks / Limestone Classification, pp. 180–195; Fig. 6.16); Robert L. Folk (1959, 1962), <em>Spectral Subdivision of Limestone Types</em> (AAPG Memoir 1, pp. 62–84); Maurice E. Tucker and V. Paul Wright, <em>Carbonate Sedimentology</em> (Blackwell Science); K.M. Bangar, <em>Principles of Engineering Geology</em> (pp. 75–78, 175).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Framework Grain Identification</h3>
-<div class="question-box">
-  <p><strong>Question 105:</strong> Folk (1962) described the classes of limestone in which framework grains are called allochems which include (i) _________, (ii) oolites, (iii) fossils and (iv) pellets.</p>
-  <ul>
-    <li>(A) intraclasts</li>
-    <li>(B) micrite</li>
-    <li>(C) sparry calcite</li>
-    <li>(D) All of these</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(A) intraclasts</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q105/boggs_p186_folk_limestone_allochems_intraclasts.png" alt="Folk Limestone Classification - Allochems and Intraclasts">
-      <figcaption>
-        <strong>Figure 105.1: Folk's (1962) Carbonate Classification and the Four Allochems.</strong> Authentic textbook plate from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, Ch. 6, p. 186). Categorizes the four fundamental framework allochems: <strong>intraclasts</strong>, oolites (ooids), fossils (bioclasts), and pellets (peloids).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: FOLK'S DUAL PETROGRAPHIC FRAMEWORK FOR LIMESTONES -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Folk's (1959, 1962) Petrographic Framework: Allochems vs. Orthochems</div>
+    <div class="card-body">
+      <p>
+        In carbonate petrology, Robert L. Folk (1959, 1962) formulated a revolutionary, rigorous petrographic classification of limestones based on the conceptual analogy between carbonate rocks and siliciclastic sandstones.
+      </p>
+      <p>
+        Folk recognized that limestones are composed of two fundamentally distinct categories of constituents:
+      </p>
+      <ol>
+        <li><strong>Allochems (Framework Grains):</strong> Organized, discrete, particulate carbonate grains that originated by chemical or biochemical precipitation within the sedimentary basin and have undergone some degree of hydrodynamic movement or transport (analogous to the quartz, feldspar, and rock fragments in a sandstone).</li>
+        <li><strong>Orthochems (Matrix & Cement):</strong> Normal chemical or biochemical precipitates formed directly in-situ within the interstitial void spaces without significant transport:
+          <ul>
+            <li><strong>Micrite (Microcrystalline Calcite Mud, $1\text{ to } 4\mu\text{m}$):</strong> Sub-microscopic, dull, semi-opaque lime mud acting as the depositional matrix (analogous to clay matrix in a wacke).</li>
+            <li><strong>Sparite (Sparry Calcite Cement, $> 10\mu\text{m}$):</strong> Clear, crystalline, equant or fibrous calcite crystals precipitated from pore waters filling open intergranular pore spaces (analogous to silica or calcite cement in an arenite).</li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q105/boggs_p186_folk_limestone_allochems_intraclasts.png" alt="Folk Limestone Allochems and Classification Scheme from Sam Boggs Jr.">
+        <div class="figure-caption">
+          <strong>Figure 105.1 — Folk's (1959, 1962) Classification of Limestones:</strong> Authentic textbook diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, p. 186). Details the four fundamental allochems—Intraclasts, Ooids, Bioclasts (Fossils), and Peloids (Pellets)—combined with micrite and sparite to yield the canonical rock classes (Intrasparite, Oosparite, Biosparite, Pelmicrite, etc.).
+        </div>
+      </div>
+
+      <h4>The Four Canonical Allochems Defined by Folk</h4>
+      <p>
+        Folk recognized precisely <strong>four distinct types of allochemical framework grains</strong>:
+      </p>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Allochem Type</th>
+            <th>Prefix in Rock Name</th>
+            <th>Size & Internal Microstructure</th>
+            <th>Hydrodynamic & Depositional Genesis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>(i) Intraclasts</strong></td>
+            <td><strong>Intra-</strong> (e.g., <em>Intrasparite</em>)</td>
+            <td>Sand to gravel size ($0.1\text{ to }> 10\text{ mm}$); irregular, angular to rounded fragments of older lime mud/sediment containing internal fossils, pellets, or laminations.</td>
+            <td>Formed by the erosional tearing up and redeposition of penecontemporaneous, semi-consolidated carbonate mud from adjacent tidal flats, beach hardgrounds, or storm rip-up.</td>
+          </tr>
+          <tr>
+            <td><strong>(ii) Oolites (Ooids)</strong></td>
+            <td><strong>Oo-</strong> (e.g., <em>Oosparite</em>)</td>
+            <td>Spherical to ellipsoidal grains ($< 2.0\text{ mm}$, typically $0.2\text{--}1.0\text{ mm}$) displaying concentric laminar cortex and/or radial fibrous calcite around a central nucleus (quartz grain or shell fragment).</td>
+            <td>Precipitated by continuous rolling in warm, hypersaline, agitated shallow marine waters supersaturated with calcium carbonate (e.g., modern Bahamas banks).</td>
+          </tr>
+          <tr>
+            <td><strong>(iii) Fossils (Bioclasts)</strong></td>
+            <td><strong>Bio-</strong> (e.g., <em>Biosparite</em>)</td>
+            <td>Variable size; whole or fragmented skeletal hard parts of marine organisms (foraminifera, brachiopods, mollusks, corals, echinoderms, algae).</td>
+            <td>Direct biological metabolic secretion of calcite or aragonite hard parts in marine or lacustrine biofacies.</td>
+          </tr>
+          <tr>
+            <td><strong>(iv) Pellets (Peloids)</strong></td>
+            <td><strong>Pel-</strong> (e.g., <em>Pelmicrite</em>)</td>
+            <td>Tiny ($0.03\text{ to } 0.15\text{ mm}$), uniform, structureless, ovoid to spherical microcrystalline calcite aggregates lacking internal concentric fabric.</td>
+            <td>Primarily invertebrate <strong>fecal pellets</strong> excreted by benthic deposit-feeding organisms (gastropods, polychaetes, crustaceans) in quiet lagoonal mudflats.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD 2: NOMENCLATURE & COMPARISON WITH DUNHAM -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Folk's Compound Nomenclature & Comparison with Dunham (1962)</div>
+    <div class="card-body">
+      <h4>Folk's Binary Petrographic Word Construction</h4>
+      <p>
+        Folk constructed limestone names systematically by combining the prefix for the dominant allochem with the root for the dominant orthochem:
+      </p>
+      <ul>
+        <li><strong>Allochem Prefix + "sparite":</strong> Limestones formed in high-energy, wave-washed or current-swept environments where fine mud was winnowed away, leaving pores that were subsequently cemented by clear sparry calcite:
+          <ul>
+            <li><strong>Intrasparite:</strong> Intraclasts cemented by sparry calcite.</li>
+            <li><strong>Oosparite:</strong> Oolites cemented by sparry calcite.</li>
+            <li><strong>Biosparite:</strong> Skeletal fossil fragments cemented by sparry calcite.</li>
+            <li><strong>Pelsparite:</strong> Pellets cemented by sparry calcite.</li>
+          </ul>
+        </li>
+        <li><strong>Allochem Prefix + "micrite":</strong> Limestones formed in low-energy, quiet, sheltered environments (lagoons, protected bays, deep marine) where microcrystalline lime mud was trapped:
+          <ul>
+            <li><strong>Intramicrite, Oomicrite, Biomicrite, Pelmicrite.</strong></li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Folk (1962) vs. Dunham (1962) Classification Paradigms</h4>
+      <p>
+        While Folk's system focuses on thin-section petrographic composition (allochems vs. orthochems), Robert J. Dunham's (1962) system focuses on <strong>depositional texture and framework-support mechanisms</strong>:
+      </p>
+      <ul>
+        <li><strong>Mudstone:</strong> Mud-supported, contains $< 10\%$ grains.</li>
+        <li><strong>Wackestone:</strong> Mud-supported, contains $> 10\%$ grains.</li>
+        <li><strong>Packstone:</strong> Grain-supported, but contains interstitial mud matrix.</li>
+        <li><strong>Grainstone:</strong> Grain-supported, completely devoid of mud matrix.</li>
+        <li><strong>Boundstone:</strong> Original components bound organically in life (coral/stromatolite reefs).</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q105. Folk (1962) described the classes of limestone in which framework grains are called allochems which include (i) _________, (ii) oolites, (iii) fossils and (iv) pellets.</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 105:</strong> Folk (1962) described the classes of limestone in which framework grains are called allochems which include (i) _________, (ii) oolites, (iii) fossils and (iv) pellets.
+      </div>
       <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> intraclasts</div>
-        <div class="opt-item "><strong>(B)</strong> micrite</div>
-        <div class="opt-item "><strong>(C)</strong> sparry calcite</div>
-        <div class="opt-item "><strong>(D)</strong> All of these</div>
+        <div class="option-item correct-option"><strong>(A)</strong> intraclasts</div>
+        <div class="option-item"><strong>(B)</strong> micrite</div>
+        <div class="option-item"><strong>(C)</strong> sparry calcite</div>
+        <div class="option-item"><strong>(D)</strong> All of these</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(A) intraclasts</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Folk's Carbonate Classification</h3>
-<p>
-Robert L. Folk (1959, 1962) classified limestones based on the volumetric proportions of three basic components: (1) <strong>Allochems</strong> (framework grains), (2) <strong>Micrite</strong> (microcrystalline carbonate mud matrix, $<4\,\mu\text{m}$), and (3) <strong>Sparite</strong> (sparry calcite pore-filling cement, $>10\,\mu\text{m}$).
-</p>
-<p>
-Folk recognized exactly <strong>four types of allochems</strong>:
-</p>
-<ol>
-  <li><strong>Intraclasts:</strong> Fragments of penecontemporaneous, semi-consolidated carbonate sediment torn up by wave or storm agitation from within the same depositional basin and redeposited (intrabasinal clasts).</li>
-  <li><strong>Oolites (Ooids):</strong> Spherical, concentrically laminated grains formed by chemical or biological accretion of calcium carbonate around a nucleus in agitated shallow warm waters.</li>
-  <li><strong>Fossils (Bioclasts):</strong> Whole or broken skeletal remains of calcareous organisms (shells, foraminifera, crinoids, algae).</li>
-  <li><strong>Pellets (Peloids):</strong> Structureless, ovoid grains ($0.03 - 0.2\text{ mm}$) composed of microcrystalline calcite, commonly of fecal origin.</li>
-</ol>
-<p>
-<em>Micrite</em> and <em>sparry calcite</em> are interstitial binding media (matrix and cement), NOT allochems!
-</p>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-correct">
+        <div class="option-badge opt-a">Option (A) Confirmed — Intraclasts</div>
+        <p>
+          <strong>Correct:</strong> In Robert L. Folk's (1959, 1962) classic classification of limestones, the four canonical types of <strong>allochems</strong> (framework grains) are explicitly: <strong>(1) intraclasts</strong>, <strong>(2) oolites (ooids)</strong>, <strong>(3) fossils (bioclasts)</strong>, and <strong>(4) pellets (peloids)</strong>. Intraclasts represent fragments of semi-consolidated carbonate mud ripped up from the sea floor and incorporated into younger strata. Thus, (A) is the exact missing term.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Micrite</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Micrite</strong> (microcrystalline calcite mud, crystal size $1\text{ to } 4\mu\text{m}$) is classified in Folk's scheme as an <strong>orthochem</strong>, specifically the fine depositional lime mud matrix. It is the fundamental <em>opposite</em> of an allochem; it forms by direct chemical/biochemical precipitation from quiet water, not as a transported framework grain.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Sparry Calcite</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Sparry calcite (sparite)</strong> is also an <strong>orthochem</strong>, representing the clear, crystalline calcite cement ($> 10\mu\text{m}$) precipitated diagenetically from supersaturated pore fluids into intergranular void spaces. It binds allochems together, but is never classified as an allochem itself.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — All of These</div>
+        <p>
+          <strong>Incorrect:</strong> Because micrite and sparry calcite are orthochems (matrix and cement) and NOT allochems (framework grains), grouping them into allochems violates the core taxonomic foundation of carbonate petrology. The sole correct allochem among the choices is <strong>(A) intraclasts</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option A (intraclasts) is correct:</strong> The fourth cardinal allochem defined by Folk.</li>
-  <li><strong>Option B (micrite):</strong> Microcrystalline matrix, strictly distinct from allochems.</li>
-  <li><strong>Option C (sparry calcite):</strong> Secondary cement, not an allochem.</li>
-  <li><strong>Option D (All of these):</strong> A fatal trap for candidates who confuse carbonate matrix/cement with framework grains.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural Comparison: Folk's Limestone Components</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Component Category</th>
+            <th>Folk (1962) Designation</th>
+            <th>Specific Types</th>
+            <th>Physical Nature & Petrographic Scale</th>
+            <th>Genetic Function in Rock Architecture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4"><strong>Allochems</strong></td>
+            <td><strong>(i) Intraclasts</strong></td>
+            <td>Rip-up clasts of semi-lithified lime mud ($0.1\text{ to }> 10\text{ mm}$)</td>
+            <td>Penecontemporaneous basin floor reworkings</td>
+            <td rowspan="4"><strong>Framework Grains</strong><br>(Provide structural framework; support hydrodynamic current sorting)</td>
+          </tr>
+          <tr>
+            <td><strong>(ii) Oolites (Ooids)</strong></td>
+            <td>Concentric spherical grains ($< 2.0\text{ mm}$)</td>
+            <td>Agitated high-energy marine wave rollings</td>
+          </tr>
+          <tr>
+            <td><strong>(iii) Fossils (Bioclasts)</strong></td>
+            <td>Skeletal hard parts (shells, spines, plates)</td>
+            <td>Biogenic secretion in varied ecosystems</td>
+          </tr>
+          <tr>
+            <td><strong>(iv) Pellets (Peloids)</strong></td>
+            <td>Structureless ovoid micro-aggregates ($30\text{--}150\mu\text{m}$)</td>
+            <td>Invertebrate organism fecal excretions</td>
+          </tr>
+          <tr>
+            <td rowspan="2"><strong>Orthochems</strong></td>
+            <td><strong>Micrite</strong></td>
+            <td>Microcrystalline calcite ($1\text{ to } 4\mu\text{m}$)</td>
+            <td>Sub-microscopic murky lime mud</td>
+            <td><strong>Depositional Matrix</strong> (fills interstitial spaces in low energy)</td>
+          </tr>
+          <tr>
+            <td><strong>Sparite</strong></td>
+            <td>Coarse crystalline calcite ($> 10\mu\text{m}$)</td>
+            <td>Clear, interlocking equant spar crystals</td>
+            <td><strong>Authigenic Cement</strong> (precipitated in open pores in high energy)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>A thin section of a limestone consists of $60\%$ spherical ooids exhibiting distinct concentric cortical laminations, $35\%$ clear equant crystalline sparry calcite cement filling intergranular voids, and $5\%$ lime mud. Name this rock using Folk's (1962) and Dunham's (1962) classifications.</p>
+        <p><strong>Solution:</strong>
+          - <strong>Folk (1962):</strong> The dominant allochem is oolites (prefix <em>Oo-</em>) and the dominant interstitial filling is sparry calcite cement (root <em>-sparite</em>). Because the rock contains $< 10\%$ micrite, it is classified as an <strong>Oosparite</strong>.
+          - <strong>Dunham (1962):</strong> The rock is grain-supported (ooids in point contact) and contains virtually no interstitial mud ($< 5\%$, washed out by waves), classifying it as an <strong>Oolitic Grainstone</strong>.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Explain how "intraclasts" differ genetically from "extraclasts" in carbonate petrology.</p>
+        <p><strong>Solution:</strong>
+          - <strong>Intraclasts:</strong> Fragments of carbonate sediment that were deposited, semi-consolidated, and subsequently torn up from the seafloor, tidal flat, or hardground <em>within the same sedimentary basin</em> (penecontemporaneous) and redeposited into younger beds.
+          - <strong>Extraclasts:</strong> Rock fragments derived from older, completely lithified rock formations located <em>outside the depositional basin</em> (e.g., eroded from an uplifted mountainous highland) and transported into the basin by rivers.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>Under a petrographic microscope, how does a geologist distinguish between a "pellet" (peloid) and an "ooid" (oolite)?</p>
+        <p><strong>Solution:</strong>
+          - <strong>Ooid (Oolite):</strong> Possesses an organized, highly structured interior featuring a central nucleus (quartz grain or fossil speck) surrounded by <strong>concentric growth laminae (cortex)</strong> and/or radiating fibrous calcite crystals that produce a pseudo-uniaxial extinction cross under crossed polars.
+          - <strong>Pellet (Peloid):</strong> Completely <strong>structureless and homogeneous</strong> throughout, consisting of a uniform, microcrystalline mosaic of dark micrite ($1\text{--}4\mu\text{m}$) without any concentric banding or radial fibrous structure.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>What hydrodynamic energy regime is indicated by a "Biomicrite" compared to a "Biosparite" in Folk's environmental interpretation?</p>
+        <p><strong>Solution:</strong>
+          - <strong>Biosparite (High Energy):</strong> Indicates a high-energy depositional environment (e.g., wave-dominated shallow marine shoal or beach) where vigorous waves or tidal currents continuously washed and winnowed away all fine lime mud (micrite), allowing the open intergranular pore spaces to be filled post-depositionally by clean, clear sparry calcite cement.
+          - <strong>Biomicrite (Low Energy):</strong> Indicates a low-energy, quiet, sheltered environment (e.g., deep quiet shelf, protected lagoon) where sluggish currents were unable to winnow fine suspension lime mud, allowing skeletal shells to settle directly into dense, murky micrite matrix.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>What is a "pisolite" (pisoid) and how is it distinguished quantitatively from an oolite (ooid)?</p>
+        <p><strong>Solution:</strong>
+          Both pisoids and ooids are spherical to ellipsoidal carbonate grains with concentric cortical laminations. The standard textbook distinction (Boggs, 2014, p. 183) is strictly <strong>grain diameter</strong>:
+          - <strong>Ooid (Oolite):</strong> Diameter is <strong>$< 2.0\text{ mm}$</strong> (typically $0.2\text{ to } 1.0\text{ mm}$).
+          - <strong>Pisoid (Pisolite):</strong> Diameter is <strong>$> 2.0\text{ mm}$</strong> (often $2\text{ to } 10\text{ mm}$ or larger), commonly formed in vadose caliche soils, hypersaline pans, or hot-spring caves (cave pearls).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>In Dunham's (1962) classification, define a "Boundstone" and explain why Folk gave such rocks the designation "Biolithite".</p>
+        <p><strong>Solution:</strong>
+          A <strong>Boundstone</strong> (Dunham, 1962) or <strong>Biolithite</strong> (Folk, 1959, 1962) is an autochthonous, in-situ organic reef limestone where the framework organisms (e.g., scleractinian corals, encrusting bryozoans, red coralline algae, stromatoporoids, stromatolites) grew in rigid mutual contact during life, erecting a self-supporting wave-resistant organic framework that passively trapped sediment rather than being deposited as mechanically transported particles.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>What is "micritization" and what biological process drives this diagenetic alteration of allochems?</p>
+        <p><strong>Solution:</strong>
+          <strong>Micritization</strong> is the diagenetic process wherein the outer margin (or the entirety) of a skeletal bioclast or ooid is converted into sub-microscopic microcrystalline calcite mud (micrite), creating a dark, opaque <strong>micrite envelope</strong>. The process is driven by <strong>endolithic boring algae, fungi, and cyanobacteria</strong> that bore microscopic tunnels ($5\text{--}15\mu\text{m}$) into the carbonate grains. When the microbes die, their empty borings are backfilled by tiny precipitated micrite crystals.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>Under Folk's textural maturity spectrum for limestones, arrange the following in order of increasing wave energy: Biosparite, Fossiliferous Micrite, Packed Biomicrite, Poorly Washed Biosparite.</p>
+        <p><strong>Solution:</strong>
+          In Folk's (1962) energy spectrum, the order of increasing wave energy and winnowing efficiency is:
+          $$\text{Fossiliferous Micrite (lowest energy; mud dominant, } < 10\%\text{ shells)}$$
+          $$\downarrow$$
+          $$\text{Packed Biomicrite (moderate energy; shells touching, but mud completely fills pores)}$$
+          $$\downarrow$$
+          $$\text{Poorly Washed Biosparite (intermediate energy; incomplete mud winnowing, mix of spar and mud)}$$
+          $$\downarrow$$
+          $$\text{Biosparite (highest energy; complete mud removal, clean grain-supported spar cement)}$$
+        </p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
