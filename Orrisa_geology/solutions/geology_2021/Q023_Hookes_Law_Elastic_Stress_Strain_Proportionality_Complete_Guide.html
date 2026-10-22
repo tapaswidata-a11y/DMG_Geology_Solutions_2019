@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q23: Rock Mechanics: Hooke's Law of Linear Elastic Deformation | OPSC Geology 2021 Masterclass</title>
+<title>Q023: Rheology of Geomaterials: Hooke's Law of Linear Elasticity | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,252 +89,562 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q23" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Rock Mechanics & Continuum Deformation</div>
-    <h1>Q23: Rock Mechanics: Hooke's Law of Linear Elastic Deformation</h1>
+    <div class="badge">GEO - 2/21 • Rock Mechanics & Geomechanics</div>
+    <h1>Q023: Rheology of Geomaterials: Hooke's Law of Linear Elasticity</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Haakon Fossen (Structural Geology, Ch. 6, pp. 110-115); Turcotte & Schubert (Geodynamics, Ch. 3)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 23<br>
+<strong>Authoritative References:</strong> Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 6: Stress & Elasticity, pp. 115–128); Jaeger, Cook & Zimmerman, <em>Fundamentals of Rock Mechanics</em> (4th Ed., Wiley-Blackwell); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 10: Rock Mechanics, pp. 360–368).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>23.1 Fundamental Rheological Models of Rock Deformation</h3>
-        <p>In continuum mechanics, rock mechanics, and structural geology (Haakon Fossen, <i>Structural Geology</i>, Ch. 6, pp. 110–115; Turcotte & Schubert, <i>Geodynamics</i>, Ch. 3), the mechanical response of a rock mass under applied stress ($\sigma$) is described by constitutive rheological laws:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Constitutive Law</th>
-                <th>Mathematical Formulation</th>
-                <th>Physical Behavior & Rock Rheology</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Hooke's Law (Elasticity)</b></td>
-                <td><b>$\sigma = E \cdot \epsilon$</b></td>
-                <td><b>Linear elastic behavior</b>: Strain is directly proportional to stress; instantaneous and 100% recoverable upon stress release.</td>
-              </tr>
-              <tr>
-                <td><b>Newton's Law (Viscosity)</b></td>
-                <td>$\sigma = \eta \cdot \dot{\epsilon}$</td>
-                <td><b>Viscous fluid flow</b>: Stress is proportional to strain rate; permanent non-recoverable deformation.</td>
-              </tr>
-              <tr>
-                <td><b>St. Venant (Plasticity)</b></td>
-                <td>$\sigma = \sigma_y$</td>
-                <td><b>Plastic yield</b>: Permanent deformation occurs only when stress exceeds a critical yield stress.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>23.2 Generalized 3D Hooke's Law</h3>
-        <p>In isotropic three-dimensional rock mechanics, Hooke's law relates stress and strain through Young's Modulus ($E$) and Poisson's Ratio ($\nu$):</p>
-        $$\epsilon_x = \frac{1}{E} [\sigma_x - \nu(\sigma_y + \sigma_z)]$$
-        $$\epsilon_y = \frac{1}{E} [\sigma_y - \nu(\sigma_x + \sigma_z)]$$
-        $$\epsilon_z = \frac{1}{E} [\sigma_z - \nu(\sigma_x + \sigma_y)]$$
-        <div class="tb-figure">
-      <img src="../../figures_Q23/fossen_fig6_3_hookes_law_elasticity.png" alt="Linear Elastic Deformation and Hooke's Law (Haakon Fossen, Structural Geology, Fig. 6.3)">
-      <figcaption>
-        <strong>Figure 23.1: Linear Elastic Deformation & Hooke's Law in Rocks (Haakon Fossen, <em>Structural Geology</em>, 2nd Ed., Chapter 6, p. 100, Fig. 6.3 / PDF p. 423).</strong> Uniaxial stress-strain diagram illustrating linear Hookean elastic behavior (&sigma; = E &middot; &epsilon;), where strain is instantaneous, directly proportional to applied stress, and fully recoverable upon stress removal up to the elastic yield limit.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: HOOKE'S LAW & LINEAR ELASTICITY -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Principle of Linear Elasticity: Hooke's Law (1678)</div>
+    <div class="card-body">
+      <p>In continuum mechanics, rock mechanics, and geodynamics, the mechanical response of solid Earth materials to applied tectonic stresses is governed by <strong>rheology</strong>. When a solid geomaterial is subjected to differential stress below its elastic yield limit ($\sigma < \sigma_y$), it deforms through <strong>recoverable elastic deformation</strong>:</p>
+
+      <ul>
+        <li><strong>Hooke's Law Formulation:</strong> First formulated anagrammatically in 1676 and published in 1678 by the English polymath Robert Hooke as <em>Ut tensio, sic vis</em> ("As the extension, so the force"), Hooke's Law states that <strong>strain ($\epsilon$) is directly proportional to applied stress ($\sigma$)</strong>:
+        $$\sigma = E \cdot \epsilon$$
+        Where $\sigma$ is normal stress ($\text{Pa}$ or $\text{MPa}$), $\epsilon = \Delta L / L_0$ is dimensionless axial strain, and $E$ is the material proportionality constant known as <strong>Young's Modulus</strong> (Modulus of Elasticity).</li>
+        <li><strong>Instantaneous & Recoverable:</strong> Elastic strain occurs instantaneously upon stress application and is completely recovered (reverses to zero strain) when the stress is removed, storing energy as strain potential energy ($U = \frac{1}{2} \sigma \epsilon$).</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">The Four Fundamental Elastic Constants for Isotropic Rocks</div>
+        $$E = \frac{\sigma}{\epsilon} \quad \text{(Young's Modulus)} \qquad \nu = -\frac{\epsilon_{\text{lateral}}}{\epsilon_{\text{axial}}} \quad \text{(Poisson's Ratio)}$$
+        $$G = \frac{\tau}{\gamma} = \frac{E}{2(1 + \nu)} \quad \text{(Shear Modulus)} \qquad K = \frac{\Delta P}{\Delta V / V} = \frac{E}{3(1 - 2\nu)} \quad \text{(Bulk Modulus)}$$
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q23/fossen_fig6_3_hookes_law_elasticity.png" alt="Hooke's Law Linear Elasticity from Haakon Fossen">
+        <div class="tb-caption">
+          <strong>Figure 23.1 (Haakon Fossen, <em>Structural Geology</em>, Fig. 6.3):</strong> Linear elastic stress-strain behavior governed by Hooke's Law ($\sigma = E\epsilon$). Illustrates the linear elastic slope ($E$), elastic limit, yield point, and post-yield failure regimes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE COMPLETE STRESS-STRAIN SPECTRUM OF ROCKS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Complete Rock Deformation Spectrum: Elastic, Plastic & Brittle</div>
+    <div class="card-body">
+      <p>Under laboratory triaxial testing, crystalline rocks pass through three distinct deformation regimes as differential stress ($\sigma_1 - \sigma_3$) increases:</p>
+
+      <ul>
+        <li><strong>1. Linear Elastic Region (Hookean):</strong> The initial straight-line portion where strain is proportional to stress. The slope of this line equals Young's Modulus ($E$). Rocks like quartzite and granite have high $E \approx 60 - 80\text{ GPa}$; soft shales have $E \approx 10 - 20\text{ GPa}$.</li>
+        <li><strong>2. Elastic Limit / Yield Strength ($\sigma_y$):</strong> The critical threshold beyond which deformation ceases to be linear and permanent irreversible strain begins.</li>
+        <li><strong>3. Ductile / Plastic Deformation:</strong> Permanent strain accumulated without loss of macroscopic cohesion (governed by power-law dislocation creep $\dot{\epsilon} = A \sigma^n \exp(-Q/RT)$). Strain is NOT proportional to stress.</li>
+        <li><strong>4. Brittle Rupture / Failure:</strong> Catastrophic loss of cohesion along shear fracture planes governed by Mohr-Coulomb and Griffith's failure criteria.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q23/rock_mechanics_hookes_law_stress_strain.png" alt="Rock Mechanics Stress Strain Curve">
+        <div class="tb-caption">
+          <strong>Figure 23.2: Complete Triaxial Stress-Strain Curve of Rock.</strong> Showing the Hookean linear elastic regime, yield point, plastic flow plateau, and brittle ultimate failure strength.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Mohr, Griffith, and Plasticity Distractors</div>
+    <div class="card-body">
+      <p>Candidates must clearly differentiate Hooke's Law from failure and non-elastic rheologies:</p>
+      <ul>
+        <li><strong>(A) Mohr’s Circle:</strong> A two-dimensional graphical representation of the coordinate transformation equations for normal ($\sigma$) and shear ($\tau$) stress acting on planes of varying orientation. It is a mathematical stress transformation tool, not a physical law of proportionality.</li>
+        <li><strong>(B) Plastic Deformation:</strong> Irreversible permanent strain occurring beyond the yield strength without cohesion loss. In plasticity, strain continues to increase under constant yield stress (perfect plasticity), violating proportionality.</li>
+        <li><strong>(D) Griffith’s Theory:</strong> A brittle fracture mechanics theory (A.A. Griffith, 1921) explaining rock failure via stress concentration at the tips of microscopic pre-existing elliptical micro-cracks ($K_{IC} = \sigma \sqrt{\pi a}$). It governs tensile and shear rupture, not linear elastic proportionality.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q23. In elastic deformation, when strain is proportional to stress is known as :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Smith's law</div>
-        <div class="opt-item "><strong>(B)</strong> Poisson's ratio</div>
-        <div class="opt-item correct"><strong>(C)</strong> Hooke’s law</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 23)</div>
+    <div class="q-stmt">
+      Q23. In elastic deformation, when strain is proportional to stress is known as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Mohr’s circle</div>
+      <div class="raw-opt">(B) Plastic deformation</div>
+      <div class="raw-opt correct">(C) Hooke’s law &nbsp;✔</div>
+      <div class="raw-opt">(D) Griffith’s theory</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (C) Hooke’s law</div>
+      <div class="sub">
+        In solid mechanics and rock physics, the fundamental relationship stating that <strong>strain is directly proportional to applied stress ($\sigma = E\epsilon$)</strong> during recoverable elastic deformation is known universally as <strong>Hooke’s law</strong>.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
-          <p><b>Correct Answer: (C) Hooke’s law</b> — In elastic deformation, the linear proportionality between stress and strain ($\sigma = E \cdot \epsilon$) is known as <b>Hooke’s law</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Smith's law — INCORRECT:</b> No such constitutive physical law in rock mechanics.</li>
-          <li><b>(B) Poisson's ratio — INCORRECT:</b> Poisson's ratio is a dimensionless constant ($
-u = -\epsilon_{	ext{trans}} / \epsilon_{	ext{axial}}$) measuring lateral expansion, not the proportionality law itself.</li>
-          <li><b>(C) Hooke’s law — CORRECT:</b> Formulated by Robert Hooke in 1678 (<i>ut tensio, sic vis</i>), established as the foundational law of linear elasticity.</li>
-          <li><b>(D) None of these — INCORRECT.</b></li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Mohr’s circle</span>
+      <span class="tag wrong">Incorrect (Stress Transformation Graphical Circle)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Mohr's circle is a geometric graphical construct (developed by Christian Otto Mohr in 1882) used to calculate normal and shear stresses acting on arbitrarily oriented planes from known principal stresses ($\sigma_1, \sigma_3$). It does not define stress-strain proportionality.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Plastic deformation</span>
+      <span class="tag wrong">Incorrect (Non-Linear, Irreversible Permanent Flow)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Plastic deformation occurs only after the elastic limit has been exceeded. It represents permanent, non-recoverable change in shape where strain is highly non-linear and not proportional to stress.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(C) Hooke’s law</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Formulated by Robert Hooke in 1678, Hooke's Law represents the foundational constitutive equation of linear elasticity: $\sigma = E\epsilon$. It states that within the elastic limit, strain is directly proportional to the applied stress, and the material returns to its original dimensions when the stress is released.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Griffith’s theory</span>
+      <span class="tag wrong">Incorrect (Microcrack Brittle Fracture Mechanics)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A.A. Griffith's (1921) theory is a brittle failure criterion based on the thermodynamic balance between surface energy and elastic strain energy around micro-cracks. It explains why rocks fracture at stresses far below their theoretical atomic bond strengths, but does not describe linear elasticity.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Rock Elastic Moduli Calculation Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 23: Young's Modulus & Elastic Shortening</div>
-          <p>A cylindrical granite core of length $L_0 = 100\text{ mm}$ with Young's Modulus $E = 50\text{ GPa}$ is subjected to a uniaxial compressive stress of $\sigma = 150\text{ MPa}$. Calculate the axial elastic strain ($\epsilon$) and change in length ($\Delta L$).</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            $$\epsilon = \frac{\sigma}{E} = \frac{150 \times 10^6\text{ Pa}}{50 \times 10^9\text{ Pa}} = 0.003 = 0.3\%$$
-            $$\Delta L = \epsilon \cdot L_0 = 0.003 \times 100\text{ mm} = 0.3\text{ mm}$$
-            <p>The granite core shortens elastically by <b>$0.3\text{ mm}$</b>, which will be completely recovered if the stress is released.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Rheological & Failure Models in Rock Mechanics</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Constitutive / Mechanical Law</th>
+            <th>Primary Mathematical Formulation</th>
+            <th>Rheological Behavior</th>
+            <th>Geological Process & Environment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Hooke’s Law (Elasticity)</strong></td>
+            <td><strong>$\sigma = E \cdot \epsilon$</strong></td>
+            <td><strong>Instantaneous, recoverable, linear strain proportional to stress</strong></td>
+            <td>Seismic wave propagation; crustal tidal flexure; coseismic elastic rebound</td>
+          </tr>
+          <tr>
+            <td><strong>Newtonian Viscosity</strong></td>
+            <td>$\sigma = \eta \cdot \dot{\epsilon}$</td>
+            <td>Linear viscous fluid flow; strain rate proportional to stress</td>
+            <td>Magma chamber convection; asthenospheric mantle flow</td>
+          </tr>
+          <tr>
+            <td><strong>Saint-Venant Plasticity</strong></td>
+            <td>$\sigma = \sigma_y$ (for $\dot{\epsilon} > 0$)</td>
+            <td>Rigid-perfectly plastic; zero strain until yield stress $\sigma_y$ is reached</td>
+            <td>Glacial basal sliding; cohesive mudflow initiation</td>
+          </tr>
+          <tr>
+            <td><strong>Power-Law Creep (Dislocation)</strong></td>
+            <td>$\dot{\epsilon} = A \sigma^n \exp(-Q/RT)$</td>
+            <td>Non-linear ductile flow ($n \approx 3 - 4$)</td>
+            <td>Mid-to-lower crustal ductile shear zones; mylonite formation</td>
+          </tr>
+          <tr>
+            <td><strong>Mohr-Coulomb Failure</strong></td>
+            <td>$\tau_f = c + \sigma_n \tan\phi$</td>
+            <td>Brittle shear fracture envelope</td>
+            <td>Upper crustal faulting; landslide shear plane failure</td>
+          </tr>
+          <tr>
+            <td><strong>Griffith Failure Criterion</strong></td>
+            <td>$(\sigma_1 - \sigma_3)^2 = 8 T_0 (\sigma_1 + \sigma_3)$</td>
+            <td>Tensile and shear fracture from elliptical microcracks</td>
+            <td>Hydraulic fracturing; joint initiation; volcanic dyke propagation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A core of Charnockite with an original length $L_0 = 100.0\text{ mm}$ and cross-sectional area $A = 2000\text{ mm}^2$ is compressed in a uniaxial press. The applied axial load is $F = 160\text{ kN}$. If the rock's Young's Modulus is $E = 80\text{ GPa}$, calculate the resulting axial stress ($\sigma$), axial strain ($\epsilon$), and total length reduction ($\Delta L$).
+          <div class="pq-ans">✔ Worked Answer: $\sigma = 80\text{ MPa}$; $\epsilon = 0.0010$ ($0.10\%$); $\Delta L = 0.10\text{ mm}$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\sigma = \frac{F}{A} = \frac{160,000\text{ N}}{2 \times 10^{-3}\text{ m}^2} = 80 \times 10^6\text{ Pa} = 80\text{ MPa}$$<br>
+            By Hooke's Law ($\epsilon = \sigma / E$):
+            $$\epsilon = \frac{80 \times 10^6\text{ Pa}}{80 \times 10^9\text{ Pa}} = 1.0 \times 10^{-3} = 0.0010$$<br>
+            $$\Delta L = \epsilon \cdot L_0 = 0.0010 \times 100.0\text{ mm} = 0.10\text{ mm}$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> In elasticity, what is <em>Poisson’s Ratio ($\nu$)</em>, and what is its typical value for crystalline rocks?
+          <div class="pq-ans">✔ Correct Answer: The ratio of lateral transverse strain to axial longitudinal strain ($\nu = -\epsilon_{\text{lat}} / \epsilon_{\text{ax}}$); typically $\nu \approx 0.20 - 0.30$ (Poisson solid: $\nu = 0.25$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Under uniaxial compression, rocks expand laterally as they shorten longitudinally. An incompressible material has $\nu = 0.50$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What geophysical theory, proposed by H.F. Reid following the 1906 San Francisco earthquake, directly relies on Hooke's Law of elasticity?
+          <div class="pq-ans">✔ Correct Answer: The Elastic Rebound Theory.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Tectonic plate motions slowly bend crustal rocks elastically (storing Hookean strain energy) until shear stress overcomes fault friction, causing rapid elastic rebound that releases seismic waves.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What are the two <em>Lamé parameters</em> ($\lambda$ and $\mu$) used to describe linear isotropic elasticity in seismology?
+          <div class="pq-ans">✔ Correct Answer: $\mu$ is the Shear Modulus (modulus of rigidity $G$), and $\lambda$ is Lamé's first parameter ($\lambda = K - \frac{2}{3}\mu$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In a Poisson solid ($\lambda = \mu$), the seismic compressional wave velocity relates to shear velocity as $V_p = \sqrt{3} V_s \approx 1.732 V_s$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How is seismic P-wave velocity ($V_p$) expressed in terms of Bulk Modulus ($K$), Shear Modulus ($G$), and rock density ($\rho$)?
+          <div class="pq-ans">✔ Correct Answer: $V_p = \sqrt{\frac{K + \frac{4}{3}G}{\rho}}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> P-wave speed is controlled by the elastic resistance of the rock lattice to volumetric compression ($K$) and shear deformation ($G$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What mechanical model represents a <em>Maxwell viscoelastic</em> body, and how does it respond to an instantaneous stress step?
+          <div class="pq-ans">✔ Correct Answer: A Hookean spring connected in series with a Newtonian viscous dashpot; responds with instantaneous elastic strain followed by steady viscous creep.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The Maxwell model explains post-glacial isostatic rebound and post-seismic relaxation in the upper mantle.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is <em>elastic hysteresis</em> in rock mechanics?
+          <div class="pq-ans">✔ Correct Answer: The loop-like divergence between the loading and unloading stress-strain curves caused by micro-scale frictional sliding along internal microcracks.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The area enclosed by the hysteresis loop represents energy permanently dissipated as heat (internal friction damping) during cyclic loading.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why does Bulk Modulus ($K$) describe the elastic behavior of fluids (water, magma), whereas Shear Modulus ($G$) is zero?
+          <div class="pq-ans">✔ Correct Answer: Fluids resist volumetric compression ($K > 0$) but possess zero resistance to shear deformation ($G = 0$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because $G = 0$ in liquids, shear waves cannot propagate ($V_s = \sqrt{G/\rho} = 0$), explaining why S-waves are blocked by Earth's liquid outer core.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

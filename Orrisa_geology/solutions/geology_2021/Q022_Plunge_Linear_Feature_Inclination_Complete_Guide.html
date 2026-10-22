@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q22: Structural Geology: Attitude of Linear Features & Plunge Mechanics | OPSC Geology 2021 Masterclass</title>
+<title>Q022: Orientation of Linear Structural Features: Plunge vs. Rake / Pitch | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,256 +89,567 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q22" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Geometric Orientations</div>
-    <h1>Q22: Structural Geology: Attitude of Linear Features & Plunge Mechanics</h1>
+    <div class="badge">GEO - 2/21 • Structural Geology & Lineations</div>
+    <h1>Q022: Orientation of Linear Structural Features: Plunge vs. Rake / Pitch</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Haakon Fossen (Structural Geology, Ch. 2, pp. 24-28); Davis & Reynolds (Structural Geology of Rocks & Regions, Ch. 1)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 22<br>
+<strong>Authoritative References:</strong> Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 2: Structural Orientation, pp. 24–35); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Dip, Strike & Plunge, pp. 191–194, Fig. 7.5); Davis, Reynolds & Kluth (3rd Ed., pp. 12–18).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>22.1 Geometric Description of Linear vs. Planar Geological Features</h3>
-        <p>In structural geology (Haakon Fossen, <i>Structural Geology</i>, Ch. 2, pp. 24–28; Davis & Reynolds, <i>Structural Geology of Rocks and Regions</i>, Ch. 1), the spatial orientation (attitude) of linear and planar elements is strictly distinguished:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Attitude Parameter</th>
-                <th>Geometric Definition</th>
-                <th>Applies To</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Plunge</b></td>
-                <td><b>The vertical angle between the horizontal plane and a line (or line of maximum elongation), measured downward in a vertical plane</b></td>
-                <td><b>Linear features</b> (fold hinge lines, slickenside lineations, mineral stretching lineations)</td>
-              </tr>
-              <tr>
-                <td><b>Trend</b></td>
-                <td>The compass direction / azimuth of the vertical plane containing a plunging line</td>
-                <td>Linear features</td>
-              </tr>
-              <tr>
-                <td><b>Dip Angle</b></td>
-                <td>The acute vertical angle between the horizontal plane and an inclined planar surface</td>
-                <td><b>Planar features</b> (bedding, joints, faults, foliation)</td>
-              </tr>
-              <tr>
-                <td><b>Strike</b></td>
-                <td>The compass bearing of a horizontal line contained within an inclined geological plane</td>
-                <td>Planar features</td>
-              </tr>
-              <tr>
-                <td><b>Rake (Pitch)</b></td>
-                <td>The angle between a line and the strike of the plane containing it, measured within the plane</td>
-                <td>Linear features lying on a plane</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tb-figure">
-      <img src="../../figures_Q22/bangar_fig7_5_7_8_plunge_fold_axis.png" alt="Plunge of Fold Axis (K.M. Bangar, Figs. 7.5 & 7.8)">
-      <figcaption>
-        <strong>Figure 22.1: Plunge of Fold Axis (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 7, Section 7.3, p. 113, Figs. 7.5 & 7.8).</strong> Authentic textbook diagram showing: <em>"The angle of inclination of the fold axis measured from the horizontal in a vertical plane is called the Plunge of the fold."</em> Folds having inclined axes are called plunging folds, displaying closed closures/noses on geological maps.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: LINEAR STRUCTURAL ORIENTATION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Geometric Definitions: Plunge & Trend of Linear Elements</div>
+    <div class="card-body">
+      <p>In structural geology, geological structures are geometric entities classified as either <strong>planar features</strong> (e.g., bedding planes, fault planes, foliation surfaces, joint sets) or <strong>linear features</strong> (e.g., fold hinge lines, stretching lineations, intersection lineations, slickenlines, elongate mineral needles). While planar features are completely defined by <em>Strike and Dip</em>, linear features are completely defined in space by <strong>Plunge and Trend</strong>:</p>
+
+      <ul>
+        <li><strong>Plunge ($\beta$):</strong> The <strong>vertical angle</strong> between the horizontal plane and the inclined linear feature, measured downward in a vertical plane from the horizontal to the line ($0^\circ \le \beta \le 90^\circ$). If a line lies horizontally, its plunge is $0^\circ$; if it is vertical, its plunge is $90^\circ$.</li>
+        <li><strong>Trend ($\alpha$):</strong> The geographic azimuth (compass bearing, $000^\circ - 360^\circ$) of the vertical plane containing the linear feature, pointing in the direction of downward plunge.</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Structural Notation for Linear Orientation</div>
+        $$\text{Notation: } \beta \to \alpha \quad \text{(e.g., } 35^\circ \to 140^\circ\text{)}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Read as: "Plunging 35 degrees toward an azimuth of 140 degrees (South-East)". The plunge angle is always written first as a two-digit number, followed by the trend as a three-digit azimuth.</p>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q22/linear_feature_plunge_trend_block.png" alt="Linear Feature Plunge and Trend 3D Block Diagram">
+        <div class="tb-caption">
+          <strong>Figure 22.1: 3D Geometry of a Linear Structural Feature.</strong> Showing the Plunge angle ($\beta$) measured strictly in the vertical plane, the Trend azimuth ($\alpha$), and the Rake / Pitch angle ($\phi$) measured within an inclined plane.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: CRITICAL DISCRIMINATION: PLUNGE VS RAKE / PITCH -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Crucial Distinction: Plunge vs. Rake (Pitch)</div>
+    <div class="card-body">
+      <p>Candidates must strictly master the geometric difference between <strong>Plunge</strong> and <strong>Rake (Pitch)</strong>:</p>
+
+      <ul>
+        <li><strong>Plunge:</strong> Measured strictly within a <strong>true vertical plane</strong> intersecting the line. It requires no reference to an inclined plane ($0^\circ \le \text{Plunge} \le 90^\circ$).</li>
+        <li><strong>Rake (or Pitch):</strong> The acute angle measured <strong>within an inclined structural plane</strong> between the linear feature and the horizontal strike line of that plane ($0^\circ \le \text{Rake} \le 90^\circ$). For example, slickenlines (fault scratch marks) on a fault plane dipping $60^\circ$ are measured directly on the rock face as a rake angle relative to the fault's strike line.</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Mathematical Relation Connecting Plunge, Dip, and Rake</div>
+        $$\sin(\text{Plunge}) = \sin(\text{Dip}) \cdot \sin(\text{Rake})$$
+        $$\tan(\text{Apparent Dip}) = \tan(\text{True Dip}) \cdot \cos(\text{Angle to Strike})$$
+      </div>
+
+      <div class="quote-box bangar">
+        "Plunge: The angle of inclination of the fold axis (or any linear feature) with the horizontal, measured in a vertical plane, is called the plunge of the fold. When the axis is horizontal, the plunge is zero."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds, pp. 192–193, Fig. 7.5)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q22/bangar_fig7_5_7_8_plunge_fold_axis.png" alt="Plunge of Fold Axis from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 22.2 (K.M. Bangar, Fig. 7.5 & 7.8):</strong> Plunging fold geometry, illustrating the vertical inclination angle between the horizontal plane and the fold axis (plunge).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Strike and Dip (Planar Parameters)</div>
+    <div class="card-body">
+      <p>Understanding geometric dimensionality eliminates distractors:</p>
+      <ul>
+        <li><strong>Strike:</strong> The compass bearing of a horizontal line formed by the intersection of an inclined <em>geological plane</em> with the horizontal plane. It applies to planes, not lines.</li>
+        <li><strong>Dip:</strong> The maximum vertical inclination angle of an inclined <em>geological plane</em> relative to the horizontal. Dip is measured perpendicular to the strike line of a plane.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q22. The vertical angle between the horizontal plane and the axis or line of maximum elongation of a feature is called ____.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> dip angle</div>
-        <div class="opt-item "><strong>(B)</strong> strike</div>
-        <div class="opt-item "><strong>(C)</strong> right-lateral strike slip</div>
-        <div class="opt-item correct"><strong>(D)</strong> plunge</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 22)</div>
+    <div class="q-stmt">
+      Q22. The vertical angle between the horizontal plane and the axis or line of maximum elongation of a... (linear feature) is known as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) strike</div>
+      <div class="raw-opt">(B) dip</div>
+      <div class="raw-opt">(C) rake</div>
+      <div class="raw-opt correct">(D) plunge &nbsp;✔</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) plunge</div>
+      <div class="sub">
+        The vertical angle measured in a vertical plane between the horizontal plane and an inclined linear feature (such as a fold axis, line of maximum elongation, or mineral lineation) is universally defined as the <strong>plunge</strong> of that line (Bangar, p. 192; Fossen, p. 25).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) plunge</b> — The vertical angle between the horizontal plane and a linear feature or axis of maximum elongation is formally defined as the <b>plunge</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) dip angle — INCORRECT:</b> Dip is the vertical angle of inclination of a <i>planar</i> surface (bedding or fault plane), not a linear feature.</li>
-          <li><b>(B) strike — INCORRECT:</b> Strike is a horizontal compass direction on an inclined plane.</li>
-          <li><b>(C) right-lateral strike slip — INCORRECT:</b> A kinematic fault displacement sense (dextral strike-slip), not an orientation angle.</li>
-          <li><b>(D) plunge — CORRECT:</b> The precise structural definition for the vertical inclination of any linear geological element.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) strike</span>
+      <span class="tag wrong">Incorrect (Compass Azimuth of a Planar Feature)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Strike is the horizontal compass direction of a planar surface (bedding, joint, fault). It is a horizontal azimuth, not a vertical angle of inclination, and applies exclusively to planes, not linear axes.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) dip</span>
+      <span class="tag wrong">Incorrect (Vertical Angle of an Inclined Plane)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Dip is the angle of inclination of a <em>planar surface</em> measured perpendicular to strike. While both dip and plunge are vertical angles, "dip" is reserved strictly for planar surfaces, whereas "plunge" is the precise scientific term for linear features.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) rake</span>
+      <span class="tag wrong">Incorrect (Angle Measured in an Inclined Plane, Not Vertical Plane)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Rake (also termed pitch) is the angle between a linear feature and the strike line measured <em>within an inclined plane</em>. Plunge is measured strictly in a <em>true vertical plane</em>.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) plunge</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By standard definition in structural geology, the vertical angle between the horizontal reference plane and an inclined line (fold axis, mineral stretching lineation, or line of maximum elongation) is the <strong>plunge</strong>. It ranges from $0^\circ$ (horizontal line) to $90^\circ$ (vertical line).
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Structural Geometry Notation Practice</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 22: Plunge / Trend Notation</div>
-          <p>A fold hinge line is recorded as $35^\circ \to 140^\circ$. Decode this structural measurement into its constituent plunge and trend components.</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <ul>
-              <li><b>Plunge:</b> $35^\circ$ (inclined $35^\circ$ downwards from the horizontal plane).</li>
-              <li><b>Trend:</b> $140^\circ$ (pointing towards South-East, azimuth $140^\circ$).</li>
-            </ul>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural Attitude Measurements: Planar vs. Linear</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Structural Measurement</th>
+            <th>Applies To</th>
+            <th>Plane of Measurement</th>
+            <th>Angular Range</th>
+            <th>Standard Structural Notation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Plunge</strong></td>
+            <td><strong>Linear Feature</strong></td>
+            <td><strong>True Vertical Plane</strong></td>
+            <td><strong>$0^\circ \text{ to } 90^\circ$</strong></td>
+            <td>$\beta \to \alpha$ (e.g., $30^\circ \to 045^\circ$)</td>
+          </tr>
+          <tr>
+            <td><strong>Trend</strong></td>
+            <td>Linear Feature</td>
+            <td>Horizontal Plane (Azimuth)</td>
+            <td>$000^\circ \text{ to } 360^\circ$</td>
+            <td>Compass bearing of plunge direction</td>
+          </tr>
+          <tr>
+            <td><strong>Rake / Pitch</strong></td>
+            <td>Linear Feature on a Plane</td>
+            <td><strong>Inclined Structural Plane</strong></td>
+            <td>$0^\circ \text{ to } 90^\circ$</td>
+            <td>e.g., $45^\circ\text{NE on plane } 120/40^\circ\text{SW}$</td>
+          </tr>
+          <tr>
+            <td><strong>Dip</strong></td>
+            <td><strong>Planar Feature</strong></td>
+            <td>True Vertical Plane $\perp$ Strike</td>
+            <td>$0^\circ \text{ to } 90^\circ$</td>
+            <td>Strike/Dip (e.g., $045^\circ/30^\circ\text{SE}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Strike</strong></td>
+            <td>Planar Feature</td>
+            <td>Horizontal Plane (Intersection)</td>
+            <td>$000^\circ \text{ to } 360^\circ$</td>
+            <td>Compass azimuth of horizontal line</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical Trigonometry):</strong> Slickenlines on a fault plane dipping $60^\circ$ display a rake of $30^\circ$. Calculate the true plunge of the slickenlines.
+          <div class="pq-ans">✔ Worked Answer: $\text{Plunge } \beta \approx 25.66^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            Using the fundamental geometric formula:
+            $$\sin(\text{Plunge}) = \sin(\text{Dip}) \cdot \sin(\text{Rake}) = \sin(60^\circ) \cdot \sin(30^\circ) = (0.8660) \times (0.5000) = 0.4330$$<br>
+            $$\text{Plunge } \beta = \arcsin(0.4330) \approx 25.66^\circ$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> If a mineral lineation lies directly along the true dip direction of an inclined foliation plane, what is the mathematical relationship between its plunge and the plane's dip?
+          <div class="pq-ans">✔ Correct Answer: Plunge equals True Dip ($\beta = \text{Dip}$); Rake is $90^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the line points down the steepest path of the plane, $\sin\beta = \sin(\text{Dip}) \sin(90^\circ) = \sin(\text{Dip})$, meaning plunge is identical to the plane's dip angle.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> If a linear feature lies parallel to the strike line of an inclined plane, what are its plunge and rake?
+          <div class="pq-ans">✔ Correct Answer: Plunge is $0^\circ$ (horizontal line); Rake is $0^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Any line parallel to the strike is horizontal by definition, hence its vertical plunge angle is zero.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What type of lineation is formed by the intersection of sedimentary bedding ($S_0$) with tectonic cleavage foliation ($S_1$)?
+          <div class="pq-ans">✔ Correct Answer: An intersection lineation ($L_{0-1}$), which is parallel to the fold hinge line.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In cylindrical folds, axial planar cleavage intersects bedding along lines parallel to the regional fold axis, allowing fold plunge to be determined from hand samples.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> On a geological map, how is a plunging anticline recognized from the outcrop pattern of its beds?
+          <div class="pq-ans">✔ Correct Answer: The outcrop pattern forms a V-shaped or U-shaped nose that points (closes) in the direction of plunge.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> For an anticline, the outcrop closes in the direction of plunge, with older rocks inside the V; for a syncline, the outcrop opens in the direction of plunge (closes away from plunge).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is a <em>stretching lineation</em>, and what does its plunge and trend indicate in ductile shear zones?
+          <div class="pq-ans">✔ Correct Answer: Elongate mineral aggregates (stretched pebbles, quartz ribbons) parallel to the maximum finite elongation direction ($\lambda_1$ or $X$-axis of the strain ellipsoid).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Stretching lineations record the flow trajectory of ductile tectonic transport within mylonites and orogenic shear belts.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> On an equal-area stereonet (Schmidt net), how is a linear structural feature represented?
+          <div class="pq-ans">✔ Correct Answer: As a single point (pole), plotted at an angular distance from the primitive circle equal to $90^\circ - \text{plunge}$ along its trend radius.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Planes plot as great circle arcs; lines plot as unique discrete points on the lower hemisphere projection.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> If a fold has an axis that is horizontal, what is its plunge, and what is the term for such a fold?
+          <div class="pq-ans">✔ Correct Answer: Plunge is $0^\circ$; termed a Non-Plunging (or Horizontal) Fold.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> A horizontal fold produces perfectly parallel ribbon-like outcrop stripes on a planar horizontal geologic map that never close into V-shaped noses.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

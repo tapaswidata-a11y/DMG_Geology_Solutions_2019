@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q21: Structural Geology: Thrust Fault vs. High-Angle Reverse Fault Dip Angle (< 45°) | OPSC Geology 2021 Masterclass</title>
+<title>Q021: Mechanics of Contractional Faulting: Thrust vs. Reverse Fault Dip Angles | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,260 +89,578 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q21" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Structural Geology & Fault Mechanics</div>
-    <h1>Q21: Structural Geology: Thrust Fault vs. High-Angle Reverse Fault Dip Angle (< 45°)</h1>
+    <h1>Q021: Mechanics of Contractional Faulting: Thrust vs. Reverse Fault Dip Angles</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Haakon Fossen (Structural Geology, Ch. 14, pp. 296-302); Van der Pluijm & Marshak (Ch. 9); Bangar (Ch. 9, pp. 175-182)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 21<br>
+<strong>Authoritative References:</strong> Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 9: Contractional Regimes, pp. 195–215); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds & Faults, pp. 200–205); E.M. Anderson, <em>The Dynamics of Faulting</em> (1951, Oliver & Boyd); Davis, Reynolds & Kluth, <em>Structural Geology of Rocks and Regions</em> (3rd Ed., Wiley).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>21.1 Geometric & Kinematic Definitions of Compressional Faults</h3>
-        <p>In structural geology and fault mechanics (Haakon Fossen, <i>Structural Geology</i>, 2010, Ch. 14, pp. 296–302; Van der Pluijm & Marshak, <i>Earth Structure</i>, Ch. 9; Bangar, Ch. 9), compressional dip-slip faults where the hanging wall moves upward relative to the footwall are subdivided by fault dip angle ($\theta$):</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Fault Classification</th>
-                <th>Fault Dip Angle ($\theta$)</th>
-                <th>Tectonic Context & Typical Kinematics</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Reverse Fault (Sensu Stricto)</b></td>
-                <td><b>$\theta > 45^\circ$</b> (typically $60^\circ$)</td>
-                <td>High-angle crustal shortening, basement-involved block uplifts</td>
-              </tr>
-              <tr>
-                <td><b>Thrust Fault</b></td>
-                <td><b>$\theta < 45^\circ$</b> (typically $15^\circ - 30^\circ$)</td>
-                <td>Low-angle regional contractional orogenic belts (fold-and-thrust belts, subduction accretionary prisms)</td>
-              </tr>
-              <tr>
-                <td><b>Overthrust / Nappe</b></td>
-                <td>$\theta < 10^\circ - 15^\circ$ (often near-horizontal)</td>
-                <td>Large-scale regional displacement exceeding tens to hundreds of kilometers</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: ANDERSONIAN DYNAMICS & COULOMB CRITERIA -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Andersonian Fault Mechanics & Theoretical Dip Angle</div>
+    <div class="card-body">
+      <p>In structural geology and geodynamics, <strong>thrust faults</strong> and <strong>reverse faults</strong> are contractional dip-slip fault systems in which the hanging wall moves upward relative to the footwall, accommodating horizontal crustal shortening ($\Delta L < 0$) and vertical thickening. The orientation and dip angle ($\theta$) of these faults are governed by E.M. Anderson's (1905, 1951) dynamic theory of faulting and the Mohr-Coulomb failure criterion:</p>
 
-        <h3>21.2 Anderson's Mechanical Model of Faulting</h3>
-        <p>According to E.M. Anderson (1905, 1951), thrust faulting occurs when the maximum principal stress is horizontal ($\sigma_1 = \sigma_{xx}$) and the minimum principal stress is vertical ($\sigma_3 = \sigma_{zz} = \rho g z$).</p>
-        <p>The theoretical Coulomb fracture angle ($\theta_c$) with the horizontal plane (direction of $\sigma_1$) is:</p>
-        $$\theta_c = 45^\circ - \frac{\phi}{2}$$
-        <p>For typical crustal rocks with internal friction angle $\phi \approx 30^\circ$, the predicted thrust fault dip angle is:</p>
-        $$\theta_c = 45^\circ - 15^\circ = 30^\circ < 45^\circ$$
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q21/fossen_fig9_2_three_fault_regimes.png" alt="Haakon Fossen Figure 9.2 Fault Classification and Reverse/Thrust Faults">
-      <figcaption>
-        <strong>Textbook Figure 9.2 from Haakon Fossen (<em>Structural Geology</em>, Cambridge University Press, Chapter 9, p. 190):</strong> Authentic textbook cut illustrating 3D block geometries, slip vectors, and lower-hemisphere stereonets for (a) Normal faults, (b) Strike-slip faults, and (c) <strong>Reverse / Thrust faults</strong>. Fossen explicitly notes (p. 191): <em>"Low-angle reverse faults are called thrust faults, particularly if the dip angle is less than 30° to 45°."</em>
-      </figcaption>
+      <ul>
+        <li><strong>Principal Stress Orientation:</strong> In a contractional tectonic regime (such as collisional orogenic belts like the Himalayas or Appalachian foreland), the maximum compressive principal stress ($\sigma_1$) is horizontal, intermediate stress ($\sigma_2$) is horizontal and parallel to fault strike, and the minimum principal stress ($\sigma_3$) is vertical (overburden weight).</li>
+        <li><strong>Theoretical Andersonian Failure Angle:</strong> According to Coulomb fracture mechanics, shear rupture planes form at an angle $\theta$ relative to $\sigma_1$:
+        $$\theta = 45^\circ - \frac{\phi}{2}$$
+        Where $\phi$ is the angle of internal friction of typical crustal rocks ($\phi \approx 30^\circ$). Because $\sigma_1$ is horizontal, the theoretical dip of a newly initiated thrust fault is:
+        $$\theta = 45^\circ - \frac{30^\circ}{2} = 45^\circ - 15^\circ = 30^\circ$$
+        Thus, Andersonian mechanics predicts that contractional shear planes naturally initiate with gentle dips around $30^\circ$, universally satisfying the criterion <strong>$< 45^\circ$</strong>.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q21/fossen_fig9_2_three_fault_regimes.png" alt="Anderson's Three Fault Regimes from Haakon Fossen">
+        <div class="tb-caption">
+          <strong>Figure 21.1 (Haakon Fossen, <em>Structural Geology</em>, 2nd Ed., Fig. 9.2):</strong> Anderson's three tectonic fault regimes. In the contractional thrust regime, $\sigma_1$ is horizontal and $\sigma_3$ is vertical, generating shallow-dipping conjugate shear fractures dipping at $\approx 30^\circ$ ($< 45^\circ$).
+        </div>
+      </div>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q21/thrust_fault_geometry.png" alt="Thrust Fault Geometry and Stratigraphic Repetition">
-      <figcaption>
-        <strong>Figure 21.1: Contractional Fault Anatomy & Mohr-Coulomb Mechanics.</strong> Low-angle thrust fault ($\delta < 45^\circ$) causing crustal shortening and older-over-younger stratigraphic repetition under horizontal compression ($\sigma_1$ horizontal).
-      </figcaption>
-    </div>
-    
   </div>
+
+  <!-- CARD 2: STRUCTURAL CLASSIFICATION: THRUST VS REVERSE -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Geometric Demarcation: Thrust Fault ($< 45^\circ$) vs. Reverse Fault ($> 45^\circ$)</div>
+    <div class="card-body">
+      <p>In both classical and modern structural geology syllabi (Bangar, p. 202; Billings, 1972; Fossen, 2016), the dip angle of $45^\circ$ represents the formal dividing boundary between contractional fault species:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Contractional Fault Type</th>
+            <th>Dip Angle Range ($\theta$)</th>
+            <th>Tectonic Architecture & Kinematics</th>
+            <th>Classic Geological Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Thrust Fault (Sensu Stricto)</strong></td>
+            <td><strong>$< 45^\circ$</strong> (typically $10^\circ - 35^\circ$)</td>
+            <td>Low-angle contraction; large horizontal transport ($> 10 - 100\text{ km}$); forms nappes, klippes, and tectonic windows (fensters)</td>
+            <td>Main Boundary Thrust (MBT), Main Central Thrust (MCT) in Himalayas; Moine Thrust (Scotland)</td>
+          </tr>
+          <tr>
+            <td><strong>Low-Angle Overthrust / Decollement</strong></td>
+            <td>$< 10^\circ - 15^\circ$ (sub-horizontal)</td>
+            <td>Basal detachment gliding along weak evaporite/shale horizons (thin-skinned fold-and-thrust belts)</td>
+            <td>Main Frontal Thrust (MFT) / Siwalik detachment</td>
+          </tr>
+          <tr>
+            <td><strong>High-Angle Reverse Fault</strong></td>
+            <td>$> 45^\circ$ (typically $55^\circ - 75^\circ$)</td>
+            <td>Steep contractional slip; dominantly vertical stratigraphic offset; often reactivated steep normal faults (tectonic inversion)</td>
+            <td>Laramide basement-cored uplifts (Rocky Mountains, USA)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-box bangar">
+        "Thrust Fault: A reverse fault in which the fault plane dips at an angle less than 45° (usually between 10° and 30°) is termed a thrust fault or overthrust. In such faults, older rocks are pushed horizontally over younger rocks across large distances."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds and Faults, p. 202)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q21/fossen_fig9_2c_reverse_thrust_fault.png" alt="Reverse vs Thrust Fault Geometry from Fossen">
+        <div class="tb-caption">
+          <strong>Figure 21.2 (Haakon Fossen, Fig. 9.2c):</strong> Cross-sectional geometry of contractional faults. Shows low-angle thrust faults ($\theta < 45^\circ$) with extensive horizontal displacement placing older strata over younger strata.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: TECTONIC FEATURES: NAPPES, KLIPPES AND FENSTERS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Regional Tectonic Manifestations: Nappes, Klippen & Fensters</div>
+    <div class="card-body">
+      <p>Because thrust faults dip at shallow angles ($< 45^\circ$), prolonged erosion of the displaced thrust sheet (allochthon) uncovers complex geometric outcrop patterns:</p>
+      <ul>
+        <li><strong>Nappe:</strong> A colossal, sheet-like allochthonous rock mass displaced horizontally tens to hundreds of kilometers along a low-angle thrust surface.</li>
+        <li><strong>Klippe (Plural: Klippen):</strong> An isolated, erosional remnant of the thrust sheet stranded atop younger autochthonous footwall rocks.</li>
+        <li><strong>Fenster (Tectonic Window):</strong> An erosional hole or window gouged through the hanging wall sheet exposing the underlying younger autochthonous rocks beneath.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q21. Thrust faults are reverse faults that dip at :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> 45°</div>
-        <div class="opt-item correct"><strong>(B)</strong> < 45°</div>
-        <div class="opt-item "><strong>(C)</strong> > 30°</div>
-        <div class="opt-item "><strong>(D)</strong> Both (A) and (B) are correct</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 21)</div>
+    <div class="q-stmt">
+      Q21. Thrust faults are reverse faults that dip at :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) > 45°</div>
+      <div class="raw-opt correct">(B) < 45° &nbsp;✔</div>
+      <div class="raw-opt">(C) 45°</div>
+      <div class="raw-opt">(D) 90°</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) < 45°</div>
+      <div class="sub">
+        In standard structural geology (Bangar, p. 202; Billings; Fossen), a contractional fault where the hanging wall moves upward is formally classified as a <strong>thrust fault</strong> when the fault plane dips at an inclination <strong>less than 45° ($\theta < 45^\circ$)</strong>. Contractional faults dipping $> 45^\circ$ are termed reverse faults.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) < 45°</b> — In standard structural geology (Fossen; Billings; Bangar), a reverse fault dipping at an angle <b>less than 45° (< 45°)</b> is specifically designated as a <b>Thrust fault</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) 45° — INCORRECT:</b> 45° is the geometric boundary dividing high-angle and low-angle dip-slip faults.</li>
-          <li><b>(B) < 45° — CORRECT:</b> The universal structural definition of a thrust fault is a reverse fault dipping at $< 45^\circ$.</li>
-          <li><b>(C) > 30° — INCORRECT:</b> Most active thrust faults dip at $< 30^\circ$, making this option factually incorrect.</li>
-          <li><b>(D) Both (A) and (B) are correct — INCORRECT:</b> 45° is not included in the standard definition.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) > 45°</span>
+      <span class="tag wrong">Incorrect (Defines High-Angle Reverse Faults)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Contractional faults dipping at angles greater than 45° ($\theta > 45^\circ$) are specifically designated as <em>high-angle reverse faults</em>. They are typically produced by tectonic inversion of older steep normal faults or deep basement upthrusts, producing high vertical throw with minimal horizontal displacement.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) < 45°</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> The universal geometric criterion that separates a thrust fault from a generic reverse fault is a dip angle <strong>$< 45^\circ$</strong>. In nature and Andersonian failure models ($\theta = 45^\circ - \phi/2 \approx 30^\circ$), most thrusts initiate at $25^\circ - 35^\circ$ and often flatten into bedding-parallel decollements dipping $< 15^\circ$.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) 45°</span>
+      <span class="tag wrong">Incorrect (Arbitrary Division Boundary, Not a Range)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> 45° is the geometric boundary dividing low-angle thrusts ($< 45^\circ$) from high-angle reverse faults ($> 45^\circ$). A thrust fault does not dip exclusively at exactly 45°.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) 90°</span>
+      <span class="tag wrong">Incorrect (Vertical Fault / Strike-Slip Fault)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A dip of 90° represents a vertical fault. In Andersonian mechanics, vertical faults with horizontal displacement are strike-slip (wrench) faults ($\sigma_2$ vertical).
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Structural Geometry Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 21: Fault Shortening & Heave Calculation</div>
-          <p>A planar thrust fault dipping at $\theta = 30^\circ$ exhibits a dip-slip net slip of $S = 200\text{ meters}$. Calculate the vertical throw and horizontal heave (crustal shortening) produced by the fault.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            $$\text{Vertical Throw} = S \cdot \sin \theta = 200 \cdot \sin(30^\circ) = 200 \times 0.5 = 100\text{ meters}$$
-            $$\text{Horizontal Heave (Shortening)} = S \cdot \cos \theta = 200 \cdot \cos(30^\circ) = 200 \times 0.866 = 173.2\text{ meters}$$
-            <p>Because $\theta < 45^\circ$, the horizontal shortening ($173.2\text{ m}$) significantly exceeds the vertical displacement ($100\text{ m}$).</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Fault Classification Matrix (Andersonian Mechanics)</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Fault Class</th>
+            <th>Kinematic Slip Type</th>
+            <th>Dip Angle ($\theta$)</th>
+            <th>Stress Regime ($\sigma_1, \sigma_2, \sigma_3$)</th>
+            <th>Tectonic Shortening / Extension</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Thrust Fault</strong></td>
+            <td>Hanging wall moves UP</td>
+            <td><strong>$< 45^\circ$ (typically $\sim 30^\circ$)</strong></td>
+            <td>$\sigma_1$ horizontal, $\sigma_2$ horizontal, $\sigma_3$ vertical</td>
+            <td><strong>Horizontal Shortening</strong> ($\Delta L < 0$)</td>
+          </tr>
+          <tr>
+            <td><strong>High-Angle Reverse Fault</strong></td>
+            <td>Hanging wall moves UP</td>
+            <td>$> 45^\circ$ (typically $60^\circ - 70^\circ$)</td>
+            <td>Contractional inversion / basement uplifts</td>
+            <td>Horizontal Shortening ($\Delta L < 0$)</td>
+          </tr>
+          <tr>
+            <td><strong>Normal Fault</strong></td>
+            <td>Hanging wall moves DOWN</td>
+            <td>$\sim 60^\circ$ (Andersonian: $45^\circ + \phi/2$)</td>
+            <td>$\sigma_1$ vertical, $\sigma_2$ horizontal, $\sigma_3$ horizontal</td>
+            <td><strong>Horizontal Extension</strong> ($\Delta L > 0$)</td>
+          </tr>
+          <tr>
+            <td><strong>Strike-Slip Fault</strong></td>
+            <td>Horizontal lateral shear</td>
+            <td>$\approx 90^\circ$ (Near-vertical)</td>
+            <td>$\sigma_1$ horizontal, $\sigma_2$ vertical, $\sigma_3$ horizontal</td>
+            <td>Conservative (no net extension or shortening)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A thrust fault dips at an angle $\theta = 30^\circ$ into a collisional mountain belt. Geodetic and seismic measurements indicate a net dip-slip displacement (slip) of $S = 5.0\text{ km}$. Calculate the horizontal crustal shortening ($\Delta L$) and vertical tectonic throw ($h$) produced by this fault.
+          <div class="pq-ans">✔ Worked Answer: Horizontal Shortening $\Delta L = 4.33\text{ km}$; Vertical Throw $h = 2.50\text{ km}$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\text{Shortening } \Delta L = S \cdot \cos\theta = 5.0 \cdot \cos 30^\circ = 5.0 \times 0.8660 = 4.33\text{ km}$$<br>
+            $$\text{Vertical Throw } h = S \cdot \sin\theta = 5.0 \cdot \sin 30^\circ = 5.0 \times 0.5000 = 2.50\text{ km}$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a <em>blind thrust fault</em>, and why does it represent a grave seismic hazard in urban foreland regions?
+          <div class="pq-ans">✔ Correct Answer: A thrust fault that terminates underground without breaking the surface, creating an anticline fold (fault-propagation fold) above it.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the fault plane does not rupture the surface, it lacks a recognizable surface fault scarp, obscuring active seismic accumulation until a catastrophic earthquake occurs (e.g., 1994 Northridge, California earthquake).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What stratigraphic diagnostic rule is universally violated when a borehole penetrates an active thrust fault?
+          <div class="pq-ans">✔ Correct Answer: Steno's Law of Superposition; the borehole encounters older rocks overlying younger rocks, and repeats stratigraphic sections.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Low-angle thrusting transports deeply buried older strata up and over younger rocks in the footwall, causing vertical repetition of layers.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In Himalayan tectonics, name the major regional low-angle thrust fault separating the Lesser Himalayan sedimentary sequence from the Higher Himalayan Crystallines.
+          <div class="pq-ans">✔ Correct Answer: The Main Central Thrust (MCT).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The MCT is an iconic ductile shear zone and low-angle thrust dipping gently to the north, along which high-grade metamorphic rocks were thrust over low-grade Lesser Himalayan rocks.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is a <em>duplex</em> in thrust belt kinematics?
+          <div class="pq-ans">✔ Correct Answer: A stack of imbricate thrust slices (horses) bounded below by a floor thrust (sole thrust) and above by a roof thrust.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Duplexes accommodate massive crustal shortening by packing multiple lenticular thrust sheets into an overlapping shingles-like structural stack.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is the difference between a <em>ramp</em> and a <em>flat</em> in thin-skinned fold-and-thrust belts?
+          <div class="pq-ans">✔ Correct Answer: A flat is a bedding-parallel thrust segment in weak shale/salt; a ramp is a steeper segment cutting obliquely across competent sandstone/limestone.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Faults propagate easily along weak bedding planes (flats, $\theta \approx 0^\circ - 5^\circ$) and step upward through strong layers along ramps ($\theta \approx 30^\circ$), generating fault-bend folds.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> How does high pore fluid pressure ($u$) facilitate low-angle thrusting under Hubbert and Rubey's (1959) overthrust mechanism?
+          <div class="pq-ans">✔ Correct Answer: Pore fluid pressure reduces effective normal stress ($\sigma_n' = \sigma_n - u$), reducing frictional resistance along the fault plane to near zero.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Trapped high fluid pressures float the thrust sheet, allowing colossal nappes to glide horizontally across hundreds of kilometers without shattering.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> A tectonic window (fenster) is an erosional hole that exposes:
+          <div class="pq-ans">✔ Correct Answer: Autochthonous (younger) footwall rocks surrounded by allochthonous (older) hanging wall rocks.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Deep stream incision cuts through the allochthonous thrust sheet, opening a window to view the younger, overridden rocks underneath.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q32: Himalayan Orogenic Wedge Tectonics (Contractional Folds & Thrust Faults) | OPSC Geology 2021 Masterclass</title>
+<title>Q032: Himalayan Collisional Orogenesis: Folds and Reverse Fault Systems | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,280 +89,547 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q32" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Geotectonics & Himalayan Geology</div>
-    <h1>Q32: Himalayan Orogenic Wedge Tectonics (Contractional Folds & Thrust Faults)</h1>
+    <h1>Q032: Himalayan Collisional Orogenesis: Folds and Reverse Fault Systems</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> K.S. Valdiya (The Making of India, Ch. 5); Augusto Gansser (Geology of the Himalayas, 1964)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 32<br>
+<strong>Authoritative References:</strong> K.S. Valdiya, <em>The Making of India: Geodynamic Evolution</em> (2nd Ed., Springer); Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 16: Orogenesis); Gansser, A., <em>Geology of the Himalayas</em> (Wiley, 1964); van der Pluijm & Marshak, <em>Earth Structure</em> (Fig. 21.21).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>32.1 Tectonic Architecture of the India-Asia Collisional Orogen</h3>
-        <p>In global tectonics and Indian geology (K.S. Valdiya, <i>The Making of India: Geodynamic Evolution</i>, Ch. 5; Gansser, 1964; Ramakrishnan & Vaidyanadhan, <i>Geology of India</i>, Vol. 2, Ch. 29), the Himalayan mountain belt represents the classic, archetypal active <b>continental collision zone</b> (Himalayan-Tibetan orogen). Driven by the ongoing northward indentation of the Indian plate into Eurasia at $\sim 40 - 50\text{ mm/yr}$, crustal shortening is accommodated by a massive foreland-propagating <b>fold-and-thrust belt</b>:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Major Tectonic Boundary / Unit</th>
-                <th>Structural Architecture</th>
-                <th>Dominant Deformational Regime</th>
-                <th>Lithotectonic Association</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Main Central Thrust (MCT)</b></td>
-                <td>Ductile, high-angle shear zone transitioning into crustal ramp</td>
-                <td><b>Contractional Thrusting + Overturned Folds</b></td>
-                <td>High-grade Higher Himalayan Crystalline core over Lesser Himalaya.</td>
-              </tr>
-              <tr>
-                <td><b>Main Boundary Thrust (MBT)</b></td>
-                <td>Regional northward-dipping low-angle thrust fault</td>
-                <td><b>Contractional Thrusting + Nappes</b></td>
-                <td>Lesser Himalayan metasediments thrust over the Siwaliks.</td>
-              </tr>
-              <tr>
-                <td><b>Main Frontal Thrust (MFT / HFT)</b></td>
-                <td>Active southernmost frontal reverse fault</td>
-                <td><b>Blind thrusts, Fault-bend folds, Fault-propagation folds</b></td>
-                <td>Siwalik molasse thrust over active Indo-Gangetic alluvium.</td>
-              </tr>
-              <tr>
-                <td><b>Sub-Himalayan Siwalik Belt</b></td>
-                <td>Fold-thrust wedge</td>
-                <td><b>Asymmetrical anticlines, synclines, & imbricate thrusts</b></td>
-                <td>Neogene-Quaternary foreland synorogenic sediments.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>32.2 Why Normal Faults are Minor and Restricted</h3>
-        <p>While the South Tibetan Detachment System (STDS) at the crest of the Higher Himalaya exhibits localized orogen-parallel extension due to gravitational collapse of over-thickened crust, the <b>overwhelming bulk of the deformed rocks across the length and breadth of the Himalayan belt forms folds and reverse/thrust faults</b> under regional horizontal compression ($\sigma_1$ horizontal, $\sigma_3$ vertical).</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q32/vdp_fig21_21_india_asia_tethys_collision.png" alt="Himalayan Collisional Orogen and Foreland Thrust Belt (Van der Pluijm & Marshak, Fig. 21.21)">
-      <figcaption>
-        <strong>Figure 32.1: Himalayan Collisional Orogen & Foreland Thrust Belt Architecture (Van der Pluijm & Marshak, <em>Earth Structure</em>, 2nd Ed., Chapter 21, Fig. 21.21).</strong> Authentic cross-section of the India-Asia continental collision zone showing the progressive forward-propagating thrust system: Main Central Thrust (MCT), Main Boundary Thrust (MBT), and Main Frontal Thrust (MFT) accommodating Himalayan crustal shortening.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: CONTINENTAL COLLISION & CONTRACTIONAL SHORTENING -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Himalayan Collisional Orogenic System</div>
+    <div class="card-body">
+      <p>The Himalayan Mountain Belt is Earth's premier active archetype of an <strong>in-sequence continent-continent collisional orogen</strong>. Initiated approximately $50 - 55\text{ million years ago}$ (Early Eocene) following the closure of the Neo-Tethys Ocean and the collision of the Indian Plate with the Eurasian Plate, the orogen accommodates roughly $15 - 20\text{ mm/yr}$ of ongoing horizontal tectonic convergence:</p>
+
+      <ul>
+        <li><strong>Contractional Tectonic Regime:</strong> Because continental lithosphere is buoyant and cannot be subducted deep into the mantle, convergence is accommodated by colossal <strong>crustal shortening and vertical thickening</strong> (doubling crustal thickness up to $70 - 75\text{ km}$ beneath the Tibetan Plateau).</li>
+        <li><strong>Primary Deformational Structures:</strong> By fundamental structural mechanics, horizontal compression ($\sigma_1$ horizontal and oriented NNE-SSW) produces two dominant, ubiquitous structural styles throughout the Himalayas: <strong>Folds</strong> (anticlinoria, synclinoria, recumbent folds, nappes) and <strong>Reverse / Thrust Faults</strong> (south-vergent imbricate thrust sheets).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q32/vdp_fig21_21_india_asia_tethys_collision.png" alt="India Asia Collision Tethys from van der Pluijm and Marshak">
+        <div class="tb-caption">
+          <strong>Figure 32.1 (van der Pluijm & Marshak, Fig. 21.21):</strong> Geodynamic cross-section of the India-Asia continental collision. Shows horizontal contraction generating south-vergent crustal thrust wedges and colossal folds.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE FOUR MASTER HIMALAYAN THRUST SYSTEMS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Foreland-Propagating Thrust Belt: MFT, MBT, and MCT</div>
+    <div class="card-body">
+      <p>The entire $2400\text{ km}$ arc of the Himalayas is partitioned into distinct lithotectonic zones bounded by four master south-verging <strong>thrust faults (reverse faults)</strong> and folded nappes:</p>
+
+      <ul>
+        <li><strong>1. Main Frontal Thrust (MFT / HFT):</strong> The southernmost active thrust fault, placing Neogene-Quaternary folded Siwalik molasses over the Indo-Gangetic Alluvial Plain.</li>
+        <li><strong>2. Main Boundary Thrust (MBT):</strong> Separates the folded Siwalik group from the highly folded and faulted Proterozoic Lesser Himalayan sedimentary sequence.</li>
+        <li><strong>3. Main Central Thrust (MCT):</strong> A colossal ductile shear zone and low-angle thrust dipping north, placing the high-grade metamorphic Higher Himalayan Crystalline Sequence (HHC) over the Lesser Himalayas.</li>
+        <li><strong>4. Main Himalayan Thrust (MHT):</strong> The basal mega-decollement detachment underlying the entire orogen at $15 - 30\text{ km}$ depth, upon which all major Himalayan earthquakes nucleate.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q32/himalayan_thrust_belt_mct_mbt_mft.png" alt="Himalayan Thrust Belt Architecture MCT MBT MFT">
+        <div class="tb-caption">
+          <strong>Figure 32.2: Architecture of the Himalayan Thrust Belt.</strong> Cross-section showing in-sequence forward thrust propagation: MCT, MBT, and MFT, accommodating horizontal shortening via folding and reverse faulting.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Normal Faulting Distractors</div>
+    <div class="card-body">
+      <p>Candidates must clearly refute options containing normal faults:</p>
+      <ul>
+        <li><strong>Normal Faults (Options A & C):</strong> Normal faults require horizontal <em>crustal extension</em> ($\sigma_1$ vertical, $\sigma_3$ horizontal). While minor localized normal faulting occurs high in the orogenic superstructure due to gravitational collapse (e.g., South Tibetan Detachment System, STDS), the regional tectonic deformation of the Himalayan mountain belt is overwhelmingly <strong>contractional</strong>. Claiming normal faults are the common deformational structure is geodynamically false.</li>
+      </ul>
+
+      <div class="quote-box">
+        "The Himalayan orogen is characterized by intense crustal shortening accommodated by south-verging thrust faults and associated asymmetric to recumbent folds... The major tectonic boundaries (MCT, MBT, MFT) are all contractional reverse/thrust fault systems."
+        <span class="quote-ref">— K.S. Valdiya, <em>The Making of India: Geodynamic Evolution</em> (2016, pp. 385–395)</span>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q32. Rocks are deformed in the Himalayan mountain belt commonly forms which deformational structures ?</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Normal and reverse faults</div>
-        <div class="opt-item correct"><strong>(B)</strong> Folds and reverse faults</div>
-        <div class="opt-item "><strong>(C)</strong> Recumbent folds and normal faults</div>
-        <div class="opt-item "><strong>(D)</strong> All of these</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 32)</div>
+    <div class="q-stmt">
+      Q32. Rocks are deformed in the Himalayan mountain belt commonly forms which deformational structures ?
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Folds and normal faults</div>
+      <div class="raw-opt correct">(B) Folds and reverse faults &nbsp;✔</div>
+      <div class="raw-opt">(C) Normal faults and reverse faults</div>
+      <div class="raw-opt">(D) None of these</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) Folds and reverse faults</div>
+      <div class="sub">
+        As a direct result of ongoing NNE-directed continental collision and crustal shortening between the Indian and Eurasian plates, rocks in the Himalayan mountain belt are overwhelmingly deformed into <strong>Folds and reverse faults</strong> (including major thrust nappes like the MCT, MBT, and MFT).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) Folds and reverse faults</b> — Regional crustal shortening in the Himalayan contractional collision orogen produces predominantly <b>folds and reverse (thrust) faults</b> throughout the belt.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Normal and reverse faults — INCORRECT:</b> Normal faults characterize extensional tectonic environments (rifts), whereas the Himalayas are an active compressional convergent orogen.</li>
-          <li><b>(B) Folds and reverse faults — CORRECT:</b> The hallmark deformational structures of collisional mountain belts (MCT, MBT, MFT, and associated Siwalik and Lesser Himalayan fold-thrust nappes) are compressive folds and reverse/thrust faults.</li>
-          <li><b>(C) Recumbent folds and normal faults — INCORRECT:</b> While recumbent folds occur locally in the crystalline nappes, normal faults are not the characteristic widespread deformation structure of the range.</li>
-          <li><b>(D) All of these — INCORRECT:</b> Normal faults are not a primary characteristic of the general Himalayan deformation belt.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Folds and normal faults</span>
+      <span class="tag wrong">Incorrect (Normal Faults Indicate Extensional Regimes)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Normal faults are characteristic of extensional rift settings (such as the East African Rift or Basin and Range). The Himalayas represent an active convergent orogen dominated by compressive stress, not regional extension.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) Folds and reverse faults</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Under horizontal compressive stress ($\sigma_1$ horizontal), rocks deform via horizontal shortening and vertical thickening, generating extensive fold systems (anticlinoria, synclinoria, recumbent folds) and south-vergent reverse/thrust fault systems (MCT, MBT, MFT) that define the Himalayan architecture.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Normal faults and reverse faults</span>
+      <span class="tag wrong">Incorrect (Omits Fundamental Folding & Includes Extensional Faults)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Folding is the most prominent structural feature visible in Himalayan outcrops (e.g., Krol and Garhwal nappes). Omitting folds while including extensional normal faults misrepresents orogenic geodynamics.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) None of these</span>
+      <span class="tag wrong">Incorrect (Valid Answer Exists in Option B)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Option (B) is the universally established, textbook consensus across all Indian and international geology literature.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Orogenic Wedge Synthesis Table</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Tectonic Setting</th>
-                <th>Stress Regime</th>
-                <th>Dominant Structures</th>
-                <th>Representative Global Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Continental Collision / Orogen</b></td>
-                <td>$\sigma_1$ horizontal, $\sigma_3$ vertical</td>
-                <td><b>Folds, Reverse Faults, Thrust Nappes</b></td>
-                <td><b>Himalayas, Alps, Zagros, Appalachians</b></td>
-              </tr>
-              <tr>
-                <td><b>Continental Rifting</b></td>
-                <td>$\sigma_1$ vertical, $\sigma_3$ horizontal</td>
-                <td>Normal Faults, Grabens, Tilted Blocks</td>
-                <td>East African Rift, Basin & Range</td>
-              </tr>
-              <tr>
-                <td><b>Transform Boundary</b></td>
-                <td>$\sigma_1, \sigma_3$ horizontal</td>
-                <td>Strike-slip faults, Flower structures</td>
-                <td>San Andreas Fault, Dead Sea Transform</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural Framework of the Himalayan Orogen</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Tectonic Unit / Sub-Division</th>
+            <th>Boundary Faults</th>
+            <th>Dominant Lithologies</th>
+            <th>Primary Deformational Structures</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sub-Himalaya (Siwaliks)</strong></td>
+            <td>MFT (South) / MBT (North)</td>
+            <td>Neogene-Quaternary fluvial sandstones, conglomerates, shales</td>
+            <td>Asymmetric fault-propagation folds, blind thrusts, piggyback basins (Duns)</td>
+          </tr>
+          <tr>
+            <td><strong>Lesser Himalaya</strong></td>
+            <td>MBT (South) / MCT (North)</td>
+            <td>Proterozoic quartzites, stromatolitic limestones, phyllites</td>
+            <td>Colossal synformal nappes (Krol, Almora, Garhwal), tight isoclinal folds, thrusts</td>
+          </tr>
+          <tr>
+            <td><strong>Higher Himalaya (HHC)</strong></td>
+            <td>MCT (South) / STDS (North)</td>
+            <td>High-grade paragneisses, migmatites, leucogranites</td>
+            <td>Polyphase ductile folding ($F_1, F_2, F_3$), shear zones, ductile recumbent folds</td>
+          </tr>
+          <tr>
+            <td><strong>Tethyan Himalaya</strong></td>
+            <td>STDS (South) / ITSZ (North)</td>
+            <td>Neoproterozoic to Eocene fossiliferous marine sediments</td>
+            <td>Detachment fold-and-thrust belt; back-thrusts; chevron folds</td>
+          </tr>
+          <tr>
+            <td><strong>Indus-Tsangpo Suture (ITSZ)</strong></td>
+            <td>Northern boundary</td>
+            <td>Ophiolites, melanges, blueschists</td>
+            <td>Subduction accretionary prism; vertical strike-slip shear zones</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> What is a <em>Dun valley</em> (e.g., Dehradun) in Himalayan structural geomorphology?
+          <div class="pq-ans">✔ Correct Answer: A longitudinal synclinal piggyback basin (intermontane valley) enclosed between the Siwalik hills and the Lesser Himalaya.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Duns develop behind the active Main Frontal Thrust (MFT) as fault-bend fold gravels aggrade in piggyback synclines.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What singular structural exception in the Himalayas exhibits normal faulting, and what causes it?
+          <div class="pq-ans">✔ Correct Answer: The South Tibetan Detachment System (STDS); caused by gravitational orogenic collapse and ductile extrusion (channel flow) of the Higher Himalayan Crystallines.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> While the base of the HHC was thrust south along the MCT, its top collapsed north along the low-angle normal STDS during the Miocene.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is the direction of tectonic transport (vergence) of the major folds and thrusts throughout the Himalayas?
+          <div class="pq-ans">✔ Correct Answer: South to South-Southwest vergence (toward the Indian foreland).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Underthrusting of the Indian craton beneath Asia drives top-to-the-south reverse displacement across all major thrusts.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What is the <em>Main Himalayan Thrust (MHT)</em>?
+          <div class="pq-ans">✔ Correct Answer: The master basal decollement dipping gently ($\sim 5^\circ - 10^\circ$) northward, which roots all frontal thrusts (MFT, MBT, MCT).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The MHT accommodates the entire convergence budget and is locked over a $100\text{ km}$ width, rupturing periodically in giant earthquakes (e.g., 2015 Gorkha earthquake).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> In Himachal Pradesh and Uttarakhand, the Almora and Shimla crystalline masses are preserved in the core of what structural feature?
+          <div class="pq-ans">✔ Correct Answer: Synformal klippen (klippes).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Erosion removed the Higher Himalayan thrust sheet over anticlinal arches, leaving crystalline rocks preserved only in down-warped synformal depressions (klippen).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is the average rate of active horizontal convergence between the Indian Plate and Eurasian Plate across the Himalayas?
+          <div class="pq-ans">✔ Correct Answer: Approximately $35 - 40\text{ mm/yr}$ total convergence, with $15 - 20\text{ mm/yr}$ absorbed across the Himalayan thrust belt.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> About half the convergence is accommodated by Himalayan thrust shortening, and the remainder by internal deformation and eastward extrusion of Tibet.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> The Main Boundary Thrust (MBT) places which older rock unit over which younger rock unit?
+          <div class="pq-ans">✔ Correct Answer: Proterozoic Lesser Himalayan metasediments over Neogene Siwalik molasse sediments.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The MBT represents a major in-sequence contractional boundary active during the Pliocene-Pleistocene.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why do transverse river gorges (such as the Kali Gandaki and Indus) cut across the highest Himalayan peaks?
+          <div class="pq-ans">✔ Correct Answer: Antecedent drainage; rivers established their flow courses prior to the tectonic uplift of the Higher Himalayan peaks and cut down as the mountains rose.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Downcutting rates equaled or exceeded orogenic uplift rates, creating the deepest river gorges on Earth.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

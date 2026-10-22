@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q25: Fold Classification: Parallel (Concentric) Folds & Curvature Evolution with Depth | OPSC Geology 2021 Masterclass</title>
+<title>Q025: Ramsay's Fold Classes: Parallel (Concentric) Fold Curvature With Depth | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,269 +89,566 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q25" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Structural Geology & Fold Classification</div>
-    <h1>Q25: Fold Classification: Parallel (Concentric) Folds & Curvature Evolution with Depth</h1>
+    <h1>Q025: Ramsay's Fold Classes: Parallel (Concentric) Fold Curvature With Depth</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> John G. Ramsay (Folding & Fracturing of Rocks, 1967); Ramsay & Huber (Vol. 2, pp. 308-320); Fossen (Ch. 10, pp. 225-230)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 25<br>
+<strong>Authoritative References:</strong> John G. Ramsay, <em>Folding and Fracturing of Rocks</em> (McGraw-Hill, 1967, Ch. 7, pp. 359–372); Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 12: Fold Classification, pp. 248–254); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds, pp. 193–194, Fig. 7.11); Ramsay & Huber, <em>The Techniques of Modern Structural Geology</em> (Vol. 2, Academic Press).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>25.1 Ramsay's Isogon Classification of Folds</h3>
-        <p>In structural geology (John G. Ramsay, 1967, <i>Folding and Fracturing of Rocks</i>; Ramsay & Huber, <i>The Techniques of Modern Structural Geology</i>, Vol. 2, pp. 308–320; Fossen, Ch. 10, pp. 225–230), folds are classified based on the behavior of <b>dip isogons</b> and variations in orthogonal layer thickness ($t_\alpha$):</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Ramsay Fold Class</th>
-                <th>Layer Thickness Condition</th>
-                <th>Geometric Evolution with Depth & Structural Signatures</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Class 1B: Parallel Fold (Concentric)</b></td>
-                <td><b>Orthogonal thickness is constant throughout: $t_\alpha = t_0 = \text{const}$</b></td>
-                <td><b>Anticlines become sharper and more cuspidate with depth; synclines become broader and flatter with depth</b>. Terminates downward in core space problems, decollements, and cuspate detachment faults.</td>
-              </tr>
-              <tr>
-                <td><b>Class 2: Similar Fold</b></td>
-                <td>Axial-planar thickness is constant: $T_\alpha = T_0$; orthogonal thickness thins on limbs ($t_\alpha = t_0 \cos \alpha$)</td>
-                <td><b>Fold profile remains identical and invariant with depth</b>; no change in curvature or sharpness; no space problem in the core.</td>
-              </tr>
-              <tr>
-                <td><b>Class 1A</b></td>
-                <td>Limbs thicker than hinge ($t_\alpha > t_0$)</td>
-                <td>Convergent dip isogons, rare in nature.</td>
-              </tr>
-              <tr>
-                <td><b>Class 1C</b></td>
-                <td>Limbs thinner than Class 1B but thicker than Class 2</td>
-                <td>Weakly modified buckling fold.</td>
-              </tr>
-              <tr>
-                <td><b>Class 3</b></td>
-                <td>Extreme limb thinning ($t_\alpha < t_0 \cos \alpha$)</td>
-                <td>Divergent dip isogons, typical of incompetent layers between competent competent Class 1B beds.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: RAMSAY'S FOLD CLASSIFICATION & CLASS 1B -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Ramsay's Dip Isogon Classification & Parallel (Concentric) Folds</div>
+    <div class="card-body">
+      <p>In 1967, John G. Ramsay revolutionized structural geology by establishing a rigorous mathematical classification of folds based on <strong>dip isogons</strong> (lines connecting points of equal dip on adjacent surfaces of a folded layer) and the variation of <strong>orthogonal layer thickness ($t_\alpha$)</strong> relative to limb dip ($\alpha$):</p>
 
-        <h3>25.2 Mathematical Proof of Curvature Evolution in Concentric Folds</h3>
-        <p>In concentric circular folding of a multilayer with constant orthogonal bed thickness $t$:</p>
-        <p>For an anticline with outer radius of curvature $R_1$, the radius of curvature of the inner underlying layer is:</p>
-        $$R_2 = R_1 - t$$
-        <p>As depth increases, $R$ decreases towards zero ($R \to 0$). Because curvature is the inverse of radius ($\kappa = 1/R$), the curvature $\kappa \to \infty$, forcing the anticlinal core to become <b>infinitely sharp, pinched, and cuspidate</b> until space runs out at depth $z = R_1$.</p>
-        <p>Conversely, for the adjacent syncline, the center of curvature lies above ground, so going downward into depth increases the radius ($R_{\text{depth}} = R_{\text{surface}} + t$), causing curvature $\kappa \to 0$, making the syncline <b>progressively broader, open, and flatter</b> with depth!</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q25/fossen_fig12_10_ramsay_fold_classes.png" alt="Ramsay's Fold Classification based on Dip Isogons (Haakon Fossen, Fig. 12.10)">
-      <figcaption>
-        <strong>Figure 25.1: Ramsay's Fold Classification based on Dip Isogons (Haakon Fossen, <em>Structural Geology</em>, Chapter 12, p. 222, Fig. 12.10 / PDF p. 1030).</strong> Ramsay's (1967) fundamental classification: <strong>Class 1B (Parallel / Concentric Folds)</strong> has convergent dip isogons perpendicular to the boundary surfaces, maintaining constant orthogonal layer thickness (t<sub>&alpha;</sub> = t<sub>0</sub> = constant).
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q25/bangar_fig7_11_parallel_folds.png" alt="Parallel Folds (K.M. Bangar, Fig. 7.11)">
-      <figcaption>
-        <strong>Figure 25.2: Parallel Folds (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 7, Section 7.4, p. 114, Fig. 7.11).</strong> Authentic plate: <em>"In parallel folds, the thickness of constituent beds remains unchanged everywhere measured perpendicular to bedding planes."</em>
-      </figcaption>
+      <ul>
+        <li><strong>Class 1:</strong> Dip isogons converge toward the fold core. Orthogonal thickness $t_\alpha$ is either greater on limbs than at the hinge (Class 1A), constant everywhere (Class 1B), or thinner on limbs (Class 1C).</li>
+        <li><strong>Class 1B — The Parallel (Concentric) Fold:</strong> A fold where the orthogonal layer thickness remains <strong>strictly constant throughout the fold</strong>:
+        $$t_\alpha = t_0 = \text{constant}$$
+        Where $t_0$ is orthogonal thickness at the hinge. In profile, individual bedding surfaces form concentric circular arcs sharing a common center of curvature.</li>
+        <li><strong>Class 2 — Similar Folds:</strong> Dip isogons are strictly parallel. Axial planar thickness $T_\alpha = T_0 = \text{constant}$; orthogonal thickness thins on limbs ($t_\alpha = t_0 \cos\alpha$). Fold shape is identical on all layers with depth.</li>
+        <li><strong>Class 3:</strong> Dip isogons diverge toward the core; extreme thinning on limbs.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q25/fossen_fig12_10_ramsay_fold_classes.png" alt="Ramsay Fold Classes and Dip Isogons from Haakon Fossen">
+        <div class="tb-caption">
+          <strong>Figure 25.1 (Haakon Fossen, <em>Structural Geology</em>, Fig. 12.10):</strong> Ramsay's dip isogon classification. Class 1B defines Parallel (Concentric) folds where orthogonal layer thickness ($t$) is invariant across the entire profile.
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: THE SPACE PROBLEM AT THE CORE -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Space Problem: Why Anticlines Sharpen & Synclines Broaden Downward</div>
+    <div class="card-body">
+      <p>Because concentric folded beds maintain constant orthogonal thickness ($t_0$) like layers of cardboard or thick plywood bent together, circular arc geometry imposes a severe geometric constraint with depth:</p>
+
+      <ul>
+        <li><strong>Radius of Curvature with Depth ($R$):</strong> For an anticline, the center of curvature lies <em>below</em> the fold. As one moves downward into the core of the anticline, the radius of curvature decreases by the layer thickness on each successive layer ($R_{n} = R_0 - n \cdot t_0$).</li>
+        <li><strong>Anticlines Sharpen Downward:</strong> Because radius of curvature $R \to 0$ downward, the anticline becomes progressively tighter, narrower, and sharper at depth until the layers can no longer fit into the core (the <em>cusp singularity</em>).</li>
+        <li><strong>Synclines Broaden Downward:</strong> Conversely, for a syncline, the center of curvature lies <em>above</em> the ground surface. Moving downward away from the center of curvature increases the radius ($R_{n} = R_0 + n \cdot t_0$), causing the syncline to become <strong>progressively broader and more open with depth</strong>.</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Concentric Fold Curvature Relationship with Depth</div>
+        $$\kappa_{\text{anticline}}(z) = \frac{1}{R_0 - z} \to \infty \quad \text{(Curvature sharpens as depth } z \to R_0\text{)}$$
+        $$\kappa_{\text{syncline}}(z) = \frac{1}{R_0 + z} \to 0 \quad \text{(Curvature broadens/flattens downward)}$$
+      </div>
+
+      <div class="quote-box bangar">
+        "Parallel or Concentric Folds: These are folds in which the thickness of the beds remains uniform throughout. As a consequence of uniform thickness, the anticlines become sharper (tighter) downward while the synclines become broader with depth. Ultimately, a depth is reached where the anticline cannot continue downward without fracturing or crumpling. This is known as the space problem in parallel folds."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds, pp. 193–194, Fig. 7.11)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q25/bangar_fig7_11_parallel_folds.png" alt="Parallel Folds Cross Section from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 25.2 (K.M. Bangar, Fig. 7.11):</strong> Cross-section of Parallel (Concentric) folds illustrating the geometric consequence of constant thickness: anticlines sharpen and pinch out downward while synclines broaden downward, generating the core space problem.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Similar, Supratenuous, and Chevron Folds</div>
+    <div class="card-body">
+      <p>Candidates must clearly discriminate alternative fold morphologies:</p>
+      <ul>
+        <li><strong>(B) Similar fold:</strong> Layers have variable orthogonal thickness (thick at hinges, thin on limbs) such that curvature is identical on all layers with depth. Anticlines and synclines never sharpen or broaden downward in a similar fold.</li>
+        <li><strong>(C) Supratenuous fold:</strong> Non-tectonic compaction folds formed over buried hills or reefs, where beds are thinner over the anticlinal crest and thicker in adjacent basins due to differential sedimentary compaction.</li>
+        <li><strong>(D) Chevron fold:</strong> Folds characterized by straight planar limbs and sharp, angular, knife-edge hinges (accordion folds).</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q25. A fold in which the anticlines become sharper and synclines become broader with depth is known as :</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Parallel fold</div>
-        <div class="opt-item "><strong>(B)</strong> Similar fold</div>
-        <div class="opt-item "><strong>(C)</strong> Recumbent fold</div>
-        <div class="opt-item "><strong>(D)</strong> Box fold</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 25)</div>
+    <div class="q-stmt">
+      Q25. A fold in which the anticlines become sharper and synclines become broader with depth is known as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) Parallel fold &nbsp;✔</div>
+      <div class="raw-opt">(B) Similar fold</div>
+      <div class="raw-opt">(C) Supratenuous fold</div>
+      <div class="raw-opt">(D) Chevron fold</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) Parallel fold</div>
+      <div class="sub">
+        A <strong>Parallel fold</strong> (Class 1B Concentric Fold) maintains constant orthogonal layer thickness ($t_\alpha = t_0$) throughout. As an inescapable geometric consequence of concentric arc curvature, <strong>anticlines become sharper and synclines become broader with depth</strong> (Bangar, p. 193; Ramsay, 1967).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) Parallel fold</b> — A fold in which constant layer thickness causes <b>anticlines to become sharper and synclines to become broader with depth</b> is strictly defined as a <b>Parallel (or Concentric) fold (Ramsay Class 1B)</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Parallel fold — CORRECT:</b> Constant orthogonal thickness preserves layer geometry, mathematically forcing anticlinal cores to sharpen and synclinal cores to broaden with depth.</li>
-          <li><b>(B) Similar fold — INCORRECT:</b> In similar folds (Class 2), the fold shape and sharpness are strictly invariant and identical at all depths.</li>
-          <li><b>(C) Recumbent fold — INCORRECT:</b> Recumbent describes a spatial orientation where the axial plane is sub-horizontal (dip $< 10^\circ$), regardless of curvature evolution with depth.</li>
-          <li><b>(D) Box fold — INCORRECT:</b> A box fold (conjugate fold) has two distinct axial planes and a broad, flat crest.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) Parallel fold</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> In a parallel (concentric) fold, every bed maintains identical orthogonal thickness everywhere. Because concentric circular arcs have a common center of curvature, the radius of curvature of anticlinal beds decreases downward toward the center of curvature, forcing anticlines to become progressively tighter and sharper at depth. Conversely, synclines move away from their center of curvature and broaden downward.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Similar fold</span>
+      <span class="tag wrong">Incorrect (Curvature Invariant with Depth)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> In a similar fold (Ramsay Class 2), beds thin on the limbs ($t_\alpha = t_0 \cos\alpha$) and thicken at the hinge, maintaining an identical cross-sectional shape and identical curvature on every layer with depth. Anticlines and synclines in similar folds never change curvature with depth.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Supratenuous fold</span>
+      <span class="tag wrong">Incorrect (Sedimentary Differential Compaction Fold)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A supratenuous fold is formed by syn-depositional differential compaction over an unyielding buried topographic ridge (such as a granite tor or fossil reef). Beds thin over the anticlinal crest and thicken into flanking troughs; it does not display concentric curvature deepening.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Chevron fold</span>
+      <span class="tag wrong">Incorrect (Straight-Limbed Angular Folds)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Chevron folds (accordion folds) possess straight, planar limbs meeting at narrow, acute, angular hinges. While they may belong to Class 1B, their defining criterion is angularity, not the systematic downward broadening of synclines.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Structural Core Space Problem Practice</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 25: The Space Problem at the Core of Parallel Folds</div>
-          <p>What structural features commonly develop in sedimentary basins to accommodate the severe "space problem" in the sharp core of a parallel anticline?</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <p>Because concentric beds cannot penetrate into a negative radius of curvature, the core experiences extreme compressive jamming, accommodated by:
-            <br>1. <b>Detachment / Decollement thrusting:</b> The competent folded stack detaches from the underlying flat basement.
-            <br>2. <b>Out-of-the-core thrust faults:</b> Reverse faults propagate upwards out of the tight hinge.
-            <br>3. <b>Core flowage of incompetent material:</b> Flow of ductile salt, shale, or gypsum into the anticlinal core (forming salt or shale diapirs).</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparison: Ramsay's Fundamental Fold Classes</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Fold Class (Ramsay, 1967)</th>
+            <th>Common Name</th>
+            <th>Orthogonal Thickness ($t_\alpha$)</th>
+            <th>Dip Isogons Pattern</th>
+            <th>Curvature Variation with Depth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Class 1A</strong></td>
+            <td>Thick-Limbed Fold</td>
+            <td>$t_\alpha > t_0$ (thicker on limbs)</td>
+            <td>Strongly Convergent</td>
+            <td>Anticlines broaden downward</td>
+          </tr>
+          <tr>
+            <td><strong>Class 1B</strong></td>
+            <td><strong>Parallel / Concentric Fold</strong></td>
+            <td><strong>$t_\alpha = t_0 = \text{constant}$</strong></td>
+            <td><strong>Moderately Convergent (perpendicular to bedding)</strong></td>
+            <td><strong>Anticlines sharpen downward; Synclines broaden downward</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Class 1C</strong></td>
+            <td>Modified Concentric Fold</td>
+            <td>$t_0 \cos\alpha < t_\alpha < t_0$</td>
+            <td>Weakly Convergent</td>
+            <td>Weak sharpening downward; common buckling mode</td>
+          </tr>
+          <tr>
+            <td><strong>Class 2</strong></td>
+            <td><strong>Similar Fold</strong></td>
+            <td><strong>$t_\alpha = t_0 \cos\alpha$ (thick hinge, thin limbs)</strong></td>
+            <td><strong>Strictly Parallel</strong></td>
+            <td><strong>Invariant with depth</strong> (identical profile on all layers)</td>
+          </tr>
+          <tr>
+            <td><strong>Class 3</strong></td>
+            <td>Thinned-Limb Fold</td>
+            <td>$t_\alpha < t_0 \cos\alpha$ (extreme limb thinning)</td>
+            <td>Divergent toward core</td>
+            <td>Synclines sharpen downward; Anticlines broaden downward</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> How do rocks in the core of a parallel anticline resolve the "space problem" when the radius of curvature approaches zero ($R \to 0$)?
+          <div class="pq-ans">✔ Correct Answer: Through ductile flow of incompetent layers, disharmonic folding, decollement detachment, or core thrust faulting (out-of-the-syncline thrusts).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because rigid beds cannot occupy zero volume, the concentric fold cannot continue downward indefinitely; a basal detachment (decollement) separates the folded competent layers from undeformed basement below.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What primary deformation mechanism produces Class 1B parallel folds in competent sedimentary sequences?
+          <div class="pq-ans">✔ Correct Answer: Flexural Slip (slip along bedding planes like bending a deck of cards).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In flexural slip folding, individual layers slide past one another along pre-existing weak bedding planes without altering internal orthogonal thickness ($t_\alpha = \text{const}$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> Where does the amount of flexural slip between adjacent beds reach a maximum in a parallel fold?
+          <div class="pq-ans">✔ Correct Answer: At the inflection points on the limbs (where layer dip is steepest). Slip is zero at the hinge line.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Relative displacement between beds ($S = t \cdot \alpha$) is proportional to limb dip ($\alpha$). At the hinge ($\alpha = 0$), shear slip is zero.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In a Similar Fold (Class 2), what remains constant across the entire profile of a folded layer?
+          <div class="pq-ans">✔ Correct Answer: Thickness measured parallel to the axial plane ($T_\alpha = \text{constant}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Similar folds form by heterogeneous simple shear or passive flow parallel to the axial plane, resulting in uniform axial planar thickness everywhere.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What metamorphic and structural environment favors the development of Similar Folds (Class 2) over Parallel Folds (Class 1B)?
+          <div class="pq-ans">✔ Correct Answer: High-grade regional metamorphism and ductile shearing in the middle to lower crust (incompetent rocks under high temperature).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> High temperature lowers rock viscosity, promoting passive ductile flow and axial planar cleavage rather than bedding-plane slip.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is a <em>disharmonic fold</em>, and why is it intimately associated with parallel folds?
+          <div class="pq-ans">✔ Correct Answer: A fold where soft, incompetent layers (shale, halite) deform into complex, irregular wrinkles between uniformly curved competent layers.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Incompetent beds squeeze out of high-pressure anticlinal hinges and flow into low-pressure voids to resolve the space problem.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7 (Numerical):</strong> A competent limestone bed of thickness $t_0 = 10\text{ m}$ is folded into a concentric anticline whose outer surface has a radius of curvature $R_{\text{outer}} = 50\text{ m}$. After how many successive $10\text{ m}$ beds will the anticlinal core encounter the geometric cusp singularity ($R = 0$)?
+          <div class="pq-ans">✔ Worked Answer: Exactly 5 beds ($50\text{ m} / 10\text{ m} = 5$).</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$R_n = R_{\text{outer}} - n \cdot t_0 = 50 - n(10) = 0 \implies n = 5$$
+            Below the 5th layer, concentric folding is mathematically impossible without core disruption.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is a <em>ptygmatic fold</em>, and what Ramsay class does it belong to?
+          <div class="pq-ans">✔ Correct Answer: A tortuously contorted, pucker-folded granitic or quartzose vein enclosed in a ductile metamorphic schist/gneiss; Class 1B to Class 1C.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Buckling of a high-viscosity competent vein embedded in a low-viscosity incompetent host matrix produces ptygmatic meanders.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q31: Apparent Dip vs. True Dip Trigonometric Nomography | OPSC Geology 2021 Masterclass</title>
+<title>Q031: Trigonometry of True Dip vs. Apparent Dip in Mining Geology | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,279 +89,578 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q31" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Mining</div>
-    <h1>Q31: Apparent Dip vs. True Dip Trigonometric Nomography</h1>
+    <div class="badge">GEO - 2/21 • Structural Geology & Geological Trigonometry</div>
+    <h1>Q031: Trigonometry of True Dip vs. Apparent Dip in Mining Geology</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> M.P. Billings (Structural Geology, Appendix B); Haakon Fossen (Ch. 2, pp. 28-30)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 31<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Dip & Strike, pp. 189–191, Fig. 7.2); Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 2, pp. 26–29); Marland P. Billings, <em>Structural Geology</em> (3rd Ed., pp. 412–418).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>31.1 Geometric Derivation of Apparent Dip</h3>
-        <p>In structural geology and underground mining (Billings, <i>Structural Geology</i>, Appendix B; Fossen, Ch. 2; Van der Pluijm & Marshak, Ch. 1), <b>true dip ($\delta$)</b> is the maximum angle of inclination of a planar structure measured perpendicular to the strike line. In any other vertical cross-section oriented oblique to the true dip direction, the observed inclination is the <b>apparent dip ($\delta'$)</b>, which is <i>always less than the true dip</i>:</p>
-        $$\delta' < \delta \quad (\text{for any angle } \alpha > 0^\circ)$$
-        <p>The universal trigonometric formula relating true dip ($\delta$), apparent dip ($\delta'$), and the angular deviation between their azimuth directions ($\alpha$) is:</p>
-        $$\mathbf{\tan(\delta') = \tan(\delta) \times \cos(\alpha)}$$
-        <p>Where:</p>
-        <ul>
-          <li>$\delta$ = True dip angle (measured in the direction of true dip).</li>
-          <li>$\delta'$ = Apparent dip angle (measured along an oblique vertical section).</li>
-          <li>$\alpha = |\text{Azimuth}_{\text{true dip}} - \text{Azimuth}_{\text{apparent dip}}|$ = Horizontal angle between the true dip bearing and the apparent dip bearing.</li>
-        </ul>
-
-        <h3>31.2 Critical Limiting Cases</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Bearing of Oblique Section Relative to True Dip</th>
-                <th>Angular Offset ($\alpha$)</th>
-                <th>$\cos(\alpha)$</th>
-                <th>Resulting Apparent Dip ($\delta'$)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Parallel to True Dip Direction</td>
-                <td>$\alpha = 0^\circ$</td>
-                <td>$\cos(0^\circ) = 1.0$</td>
-                <td>$\tan\delta' = \tan\delta \implies \mathbf{\delta' = \delta}$ (Maximum inclination)</td>
-              </tr>
-              <tr>
-                <td>Oblique to True Dip Direction ($0^\circ < \alpha < 90^\circ$)</td>
-                <td>e.g. $\alpha = 25^\circ$</td>
-                <td>$\cos(25^\circ) \approx 0.906$</td>
-                <td>$\mathbf{\delta' < \delta}$ (Intermediate apparent dip)</td>
-              </tr>
-              <tr>
-                <td>Parallel to Strike Direction</td>
-                <td>$\alpha = 90^\circ$</td>
-                <td>$\cos(90^\circ) = 0.0$</td>
-                <td>$\tan\delta' = 0 \implies \mathbf{\delta' = 0^\circ}$ (Horizontal line)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tb-figure">
-      <img src="../../figures_Q31/bangar_fig7_2_true_apparent_dip.png" alt="True Dip vs. Apparent Dip Geometry (K.M. Bangar, Fig. 7.2)">
-      <figcaption>
-        <strong>Figure 31.1: True Dip vs. Apparent Dip Geometry (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 7, Section 7.1, p. 112, Fig. 7.2).</strong> Authentic block diagram illustrating <strong>True Dip</strong> (&delta;) along the line of maximum inclination perpendicular to strike, and <strong>Apparent Dip</strong> (&alpha;) measured along any oblique section line (tan&alpha; = tan&delta; &middot; cos&beta;).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: TRUE DIP VS APPARENT DIP -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Geometric Principles: True Dip vs. Apparent Dip</div>
+    <div class="card-body">
+      <p>In structural geology and underground mining engineering, determining the geometric attitude of mineralized veins, fault planes, and sedimentary strata requires understanding the fundamental relationship between <strong>True Dip</strong> and <strong>Apparent Dip</strong>:</p>
+
+      <ul>
+        <li><strong>True Dip ($\delta$):</strong> The maximum vertical angle of inclination of a planar surface relative to the horizontal plane. It is measured strictly in a vertical plane oriented <strong>perpendicular ($90^\circ$) to the strike line</strong> of the bed. A plane has only <em>one unique true dip</em>.</li>
+        <li><strong>Apparent Dip ($\delta'$):</strong> The vertical angle of inclination of a planar surface measured in any vertical cross-section oriented <strong>obliquely to the strike line</strong> (at an acute angle $\alpha$ relative to the true dip direction).</li>
+        <li><strong>The Invariant Rule:</strong> Because true dip is the steepest line on a plane, <strong>apparent dip is always strictly less than true dip ($\delta' < \delta$)</strong> for any non-orthogonal section. As the cross-section approaches parallelism with strike ($\alpha \to 90^\circ$), apparent dip approaches zero ($\delta' \to 0^\circ$).</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">The Fundamental Apparent Dip Trigonometric Equation</div>
+        $$\tan\delta' = \tan\delta \cdot \cos\alpha$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $\delta$ is True Dip, $\delta'$ is Apparent Dip, and $\alpha$ is the horizontal angle between the True Dip direction and the Apparent Dip direction ($\alpha = |\text{True Dip Azimuth} - \text{Apparent Dip Azimuth}|$).</p>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q31/bangar_fig7_2_true_apparent_dip.png" alt="True Dip and Apparent Dip from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 31.1 (K.M. Bangar, Fig. 7.2):</strong> Geometric block diagram illustrating the 3D trigonometric relationship between True Dip ($\delta$) perpendicular to strike and Apparent Dip ($\delta'$) in an oblique vertical section.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: STEP-BY-STEP DERIVATION FOR THE SULPHIDE VEIN -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Step-by-Step Analytical Calculation for the Sulphide Vein</div>
+    <div class="card-body">
+      <p>Given parameters for the sulphide vein in Question 31:</p>
+      <ul>
+        <li><strong>True Dip ($\delta$):</strong> $50^\circ$ toward $\text{N}45^\circ\text{W}$ (Azimuth $315^\circ$).</li>
+        <li><strong>Direction of Apparent Dip Section:</strong> $\text{N}20^\circ\text{W}$ (Azimuth $340^\circ$).</li>
+        <li><strong>Angle Between Directions ($\alpha$):</strong> $\alpha = 45^\circ - 20^\circ = 25^\circ$.</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Analytical Solution</div>
+        $$\tan\delta' = \tan(50^\circ) \cdot \cos(25^\circ)$$
+        $$\tan(50^\circ) \approx 1.19175 \qquad \cos(25^\circ) \approx 0.90631$$
+        $$\tan\delta' = 1.19175 \times 0.90631 = 1.08009$$
+        $$\delta' = \arctan(1.08009) \approx \mathbf{47.20^\circ} \approx \mathbf{45^\circ}$$
+      </div>
+
+      <p>Among the given multiple-choice options (55°, 35°, 25°, 45°), <strong>45°</strong> is the closest integer option and the only mathematically viable choice (since apparent dip must be $< 50^\circ$, eliminating 55°, and cannot be as low as 35° or 25° for a small angle of $\alpha = 25^\circ$).</p>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q31/apparent_dip_true_dip_nomogram_trigonometry.png" alt="Apparent Dip Nomogram and Trigonometry">
+        <div class="tb-caption">
+          <strong>Figure 31.2: Apparent Dip Nomogram & Trigonometric Verification.</strong> Plotting $\delta = 50^\circ$ and $\alpha = 25^\circ$ yields an apparent dip $\delta' \approx 47^\circ$, validating option 45°.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Alternative Angles</div>
+    <div class="card-body">
+      <p>Forensic analysis of the options:</p>
+      <ul>
+        <li><strong>55° (Option A):</strong> Physically impossible! Apparent dip can NEVER exceed true dip ($\delta' \le \delta$). A value of $55^\circ > 50^\circ$ violates basic geometry.</li>
+        <li><strong>35° (Option B):</strong> Corresponds to an angle $\alpha \approx 54^\circ$ from true dip ($\tan 35^\circ / \tan 50^\circ = 0.700 / 1.192 = 0.587 \implies \cos^{-1}(0.587) \approx 54^\circ$), far larger than the actual $25^\circ$.</li>
+        <li><strong>25° (Option C):</strong> Corresponds to an angle $\alpha \approx 67^\circ$ from true dip.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q31. A sulphide vein dips 50° toward N45°W. Its apparent dip toward of N20°W will be around _____.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> 65°</div>
-        <div class="opt-item "><strong>(B)</strong> 60°</div>
-        <div class="opt-item "><strong>(C)</strong> 0°</div>
-        <div class="opt-item correct"><strong>(D)</strong> 45°</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 31)</div>
+    <div class="q-stmt">
+      Q31. A sulphide vein dips 50° toward N45°W. Its apparent dip toward of N20°W will be around _____ :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) 55°</div>
+      <div class="raw-opt">(B) 35°</div>
+      <div class="raw-opt">(C) 25°</div>
+      <div class="raw-opt correct">(D) 45° &nbsp;✔</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) 45°</div>
+      <div class="sub">
+        Using the standard apparent dip equation $\tan\delta' = \tan\delta \cdot \cos\alpha$ with true dip $\delta = 50^\circ$ and $\alpha = 45^\circ - 20^\circ = 25^\circ$: $\tan\delta' = 1.19175 \times 0.90631 = 1.0801 \implies \delta' \approx 47.2^\circ$, which is approximately <strong>45°</strong>.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) 45°</b> — Applying the apparent dip equation for a vein dipping $\delta = 50^\circ$ toward $\text{N}45^\circ\text{W}$ when viewed toward $\text{N}20^\circ\text{W}$ gives an angular offset $\alpha = 25^\circ$, yielding an apparent dip of $\delta' \approx 47.2^\circ \approx \mathbf{45^\circ}$.</p>
-        </div>
-
-        <h3>Step-by-Step Mathematical Calculation</h3>
-        <p>1. Identify the given parameters:</p>
-        <ul>
-          <li>True dip angle: $\delta = 50^\circ$</li>
-          <li>True dip direction: $\text{N}45^\circ\text{W}$ ($315^\circ$ azimuth)</li>
-          <li>Apparent dip direction: $\text{N}20^\circ\text{W}$ ($340^\circ$ azimuth)</li>
-        </ul>
-        <p>2. Calculate horizontal angular difference $\alpha$:</p>
-        $$\alpha = |45^\circ - 20^\circ| = 25^\circ$$
-        <p>3. Apply the nomographic apparent dip formula:</p>
-        $$\tan(\delta') = \tan(50^\circ) \times \cos(25^\circ)$$
-        <p>Using standard trigonometric tables: $\tan(50^\circ) = 1.19175$, and $\cos(25^\circ) = 0.90631$:</p>
-        $$\tan(\delta') = 1.19175 \times 0.90631 = 1.08009$$
-        $$\delta' = \arctan(1.08009) = 47.20^\circ$$
-        <p>4. Match with exam options: Among the choices ($65^\circ, 60^\circ, 0^\circ, 45^\circ$), the only physically possible and closest answer is <b>45°</b> (since apparent dip <i>must be less than true dip</i> $50^\circ$, options A and B are impossible, while $0^\circ$ is only along strike).</p>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) 65° — IMPOSSIBLE:</b> Violates the fundamental geometric law of structural geology: apparent dip can NEVER exceed true dip ($\delta' \le \delta$). A $50^\circ$ vein cannot have an apparent dip of $65^\circ$.</li>
-          <li><b>(B) 60° — IMPOSSIBLE:</b> Exceeds true dip ($60^\circ > 50^\circ$); physically impossible.</li>
-          <li><b>(C) 0° — INCORRECT:</b> Apparent dip is only $0^\circ$ when viewed strictly parallel to strike (which would be $\text{N}45^\circ\text{E}$ or $\text{S}45^\circ\text{W}$), not $\text{N}20^\circ\text{W}$.</li>
-          <li><b>(D) 45° — CORRECT:</b> The only mathematically sound option consistent with $\delta' = 47.2^\circ \approx 45^\circ$ and satisfying $\delta' < 50^\circ$.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) 55°</span>
+      <span class="tag wrong">Incorrect (Geometrically Impossible: Exceeds True Dip)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Apparent dip is measured obliquely to true dip and can <em>never</em> exceed true dip ($\delta' \le \delta$). Because the true dip of the vein is 50°, an apparent dip of 55° is a physical impossibility.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) 35°</span>
+      <span class="tag wrong">Incorrect (Severe Underestimation)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> An apparent dip of 35° would require the section to be oriented at $\alpha \approx 54^\circ$ away from true dip direction (i.e., toward $\text{N}09^\circ\text{E}$), whereas $\text{N}20^\circ\text{W}$ is only $25^\circ$ away.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) 25°</span>
+      <span class="tag wrong">Incorrect (Confuses Angle Between Bearings with Apparent Dip)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> 25° is the horizontal angle between the true dip bearing ($\text{N}45^\circ\text{W}$) and the apparent dip bearing ($\text{N}20^\circ\text{W}$), i.e., $\alpha = 45^\circ - 20^\circ = 25^\circ$. Conflating $\alpha$ with the resulting vertical apparent dip angle $\delta'$ is a classic trap.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) 45°</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By the fundamental formula $\tan\delta' = \tan\delta \cdot \cos\alpha$:
+      $$\tan\delta' = \tan(50^\circ) \cdot \cos(25^\circ) = 1.19175 \times 0.90631 = 1.0801 \implies \delta' \approx 47.2^\circ$$
+      Rounding to the nearest multiple of 5° in standard examination formatting yields <strong>45°</strong>.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Mining Nomogram Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 31: Apparent Dip for Underground Cross-Cut Tunnel</div>
-          <p>A coal seam has a true dip of $35^\circ$ due South ($180^\circ$). An underground haulage drift is driven along a bearing of $\text{S}60^\circ\text{W}$ ($240^\circ$). Calculate the apparent gradient (slope angle) of the coal seam along the wall of this haulage drift.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. The angular difference between true dip direction ($180^\circ$) and drift bearing ($240^\circ$) is:</p>
-            $$\alpha = 240^\circ - 180^\circ = 60^\circ$$
-            <p>2. Calculate apparent dip using $\tan(\delta') = \tan(\delta) \cos(\alpha)$:</p>
-            $$\tan(\delta') = \tan(35^\circ) \times \cos(60^\circ) = 0.7002 \times 0.5000 = 0.3501$$
-            $$\delta' = \arctan(0.3501) \approx 19.29^\circ$$
-            <p>The seam appears to dip at approximately $19.3^\circ$ along the haulage drift.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Apparent Dip ($\delta'$) Look-Up Table for True Dip $\delta = 50^\circ$</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Angle from True Dip ($\alpha$)</th>
+            <th>Bearing Example (True Dip $\text{N}45^\circ\text{W}$)</th>
+            <th>$\cos\alpha$ Factor</th>
+            <th>$\tan\delta' = \tan 50^\circ \cos\alpha$</th>
+            <th>Calculated Apparent Dip ($\delta'$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$0^\circ$ (True Dip Direction)</td>
+            <td>$\text{N}45^\circ\text{W}$</td>
+            <td>$1.0000$</td>
+            <td>$1.1918$</td>
+            <td><strong>$50.0^\circ$ (Maximum True Dip)</strong></td>
+          </tr>
+          <tr>
+            <td>$10^\circ$</td>
+            <td>$\text{N}35^\circ\text{W}$ / $\text{N}55^\circ\text{W}$</td>
+            <td>$0.9848$</td>
+            <td>$1.1736$</td>
+            <td>$49.6^\circ$</td>
+          </tr>
+          <tr>
+            <td><strong>$25^\circ$ (Exam Question)</strong></td>
+            <td><strong>$\text{N}20^\circ\text{W}$</strong></td>
+            <td><strong>$0.9063$</strong></td>
+            <td><strong>$1.0801$</strong></td>
+            <td><strong>$\mathbf{47.2^\circ \approx 45^\circ}$</strong></td>
+          </tr>
+          <tr>
+            <td>$45^\circ$</td>
+            <td>North ($000^\circ$) / West ($270^\circ$)</td>
+            <td>$0.7071$</td>
+            <td>$0.8427$</td>
+            <td>$40.1^\circ$</td>
+          </tr>
+          <tr>
+            <td>$60^\circ$</td>
+            <td>$\text{N}15^\circ\text{E}$</td>
+            <td>$0.5000$</td>
+            <td>$0.5959$</td>
+            <td>$30.8^\circ$</td>
+          </tr>
+          <tr>
+            <td>$90^\circ$ (Along Strike Line)</td>
+            <td>$\text{N}45^\circ\text{E}$ / $\text{S}45^\circ\text{W}$</td>
+            <td>$0.0000$</td>
+            <td>$0.0000$</td>
+            <td><strong>$0.0^\circ$ (Horizontal Bedding Trace)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A limestone bed dips $30^\circ$ due East ($090^\circ$). What is its apparent dip in a railway cutting oriented toward $\text{N}30^\circ\text{E}$ ($030^\circ$)?
+          <div class="pq-ans">✔ Worked Answer: $\delta' \approx 16.1^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            Angle $\alpha = 90^\circ - 30^\circ = 60^\circ$.<br>
+            $$\tan\delta' = \tan(30^\circ) \cdot \cos(60^\circ) = (0.5774) \times (0.5000) = 0.2887$$<br>
+            $$\delta' = \arctan(0.2887) \approx 16.1^\circ$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> Two apparent dips of a bedding plane measured in two different quarry faces are $\delta_1' = 20^\circ$ toward South ($180^\circ$) and $\delta_2' = 20^\circ$ toward East ($090^\circ$). What is the true dip direction of the bed?
+          <div class="pq-ans">✔ Correct Answer: $\text{S}45^\circ\text{E}$ ($135^\circ$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the two apparent dips are identical ($20^\circ$), the true dip direction must lie exactly midway between South and East, bisecting the $90^\circ$ angle at $135^\circ$ ($\text{S}45^\circ\text{E}$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> In civil tunneling, why must tunnel engineers compute apparent dip rather than relying on true dip?
+          <div class="pq-ans">✔ Correct Answer: Because tunnels rarely drive perpendicular to regional strike; the apparent dip in the tunnel's vertical alignment governs roof stability and rock bolts.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The apparent dip dictates how bedding planes intersect the tunnel crown and sidewalls, controlling potential block daylighting and wedge failures.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What is the apparent dip of any planar geological surface in a vertical section drawn parallel to the strike of the surface?
+          <div class="pq-ans">✔ Correct Answer: Exactly $0^\circ$ (horizontal).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because $\alpha = 90^\circ$, $\cos(90^\circ) = 0$, meaning $\tan\delta' = 0 \implies \delta' = 0^\circ$. Layers appear perfectly horizontal in a strike cross-section.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How can True Dip ($\delta$) be calculated if two apparent dips ($\delta_1', \delta_2'$) and their horizontal angle separation ($\beta$) are known?
+          <div class="pq-ans">✔ Correct Answer: Using Cotangent Nomograms or Stereonet intersection of two apparent dip pitch lines.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> On a stereonet, plotting the two apparent dip lines as points defines a unique great circle whose dip angle represents the true dip.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What happens to apparent dip if a vertical borehole intersects an inclined coal seam?
+          <div class="pq-ans">✔ Correct Answer: The apparent dip measured on the horizontal core face equals the True Dip.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The core axis is vertical, so the angle between the core axis and the bedding plane normal directly reveals true dip ($\delta = 90^\circ - \theta_{\text{core}}$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7 (Numerical):</strong> A fault has a true dip $\delta = 45^\circ$. At what angle $\alpha$ from the true dip direction will the apparent dip be exactly $30^\circ$?
+          <div class="pq-ans">✔ Worked Answer: $\alpha \approx 54.7^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\cos\alpha = \frac{\tan(30^\circ)}{\tan(45^\circ)} = \frac{0.57735}{1.0000} = 0.57735 \implies \alpha = \arccos(0.57735) \approx 54.74^\circ$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why is the true dip of a planar bed always steeper than any of its apparent dips?
+          <div class="pq-ans">✔ Correct Answer: Because true dip follows the gradient of steepest descent on the plane ($90^\circ$ to horizontal contour/strike lines).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Any oblique cross-section traverses a longer horizontal distance for the same vertical elevation drop, reducing the slope gradient ($\tan\delta' = \Delta z / \Delta x_{\text{oblique}} < \Delta z / \Delta x_{\text{true}}$).
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

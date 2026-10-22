@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q24: Fold Geometry: The Hinge Line as the Line of Maximum Curvature | OPSC Geology 2021 Masterclass</title>
+<title>Q024: Fold Anatomy: Hinge Zone, Maximum Curvature & Inflection Points | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,259 +89,557 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q24" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Fold Morphology</div>
-    <h1>Q24: Fold Geometry: The Hinge Line as the Line of Maximum Curvature</h1>
+    <div class="badge">GEO - 2/21 • Structural Geology & Fold Mechanics</div>
+    <h1>Q024: Fold Anatomy: Hinge Zone, Maximum Curvature & Inflection Points</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Haakon Fossen (Structural Geology, Ch. 10, pp. 214-218); Ramsay & Huber (Techniques of Modern Structural Geology, Vol. 2)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 24<br>
+<strong>Authoritative References:</strong> Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 11 & 12: Folds, pp. 240–265); J.G. Ramsay, <em>Folding and Fracturing of Rocks</em> (McGraw-Hill, 1967); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds, pp. 191–195); van der Pluijm & Marshak, <em>Earth Structure</em> (2nd Ed., Norton).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>24.1 Precise Terminology in Fold Geometry</h3>
-        <p>In structural geology (Fleuty, 1964, <i>The Description of Folds</i>; Ramsay, 1967; Haakon Fossen, <i>Structural Geology</i>, Ch. 10, pp. 214–218), folded surfaces are rigorously characterized by specific mathematical lines and zones:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Fold Element</th>
-                <th>Mathematical / Geometric Definition</th>
-                <th>Orientation & Relationship to Topography</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Hinge Line (Hinge)</b></td>
-                <td><b>The locus of points of maximum curvature on a folded layer profile ($rac{d^2y}{dx^2} = 	ext{max}$)</b></td>
-                <td>Intrinsic structural property; completely independent of spatial or topographic orientation.</td>
-              </tr>
-              <tr>
-                <td><b>Fold Axis</b></td>
-                <td>A geometric line which, when moved parallel to itself in space, generates the cylindrical fold form</td>
-                <td>Direction vector of cylindrical symmetry; parallel to the hinge line in cylindrical folds.</td>
-              </tr>
-              <tr>
-                <td><b>Crest Line</b></td>
-                <td>The line connecting the highest topographic / spatial points along a folded layer</td>
-                <td>Depends on spatial orientation; coincides with the hinge line only in upright vertical folds.</td>
-              </tr>
-              <tr>
-                <td><b>Trough Line</b></td>
-                <td>The line connecting the lowest topographic / spatial points along a folded layer</td>
-                <td>Depends on spatial orientation; coincides with synclinal hinge only in upright folds.</td>
-              </tr>
-              <tr>
-                <td><b>Inflection Line</b></td>
-                <td>The line separating opposite senses of curvature (zero curvature point, $\kappa = 0$)</td>
-                <td>Separates the anticline from the syncline along the fold limb.</td>
-              </tr>
-            </tbody>
-          </table>
+  
+  <!-- CARD 1: FOLD ANATOMY & GEOMETRIC DEFINITIONS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Fold Anatomy & Mathematical Curvature Analysis</div>
+    <div class="card-body">
+      <p>In structural geology and differential geometry (Ramsay, 1967; Fossen, 2016), a <strong>fold</strong> is defined as a curved or deformed planar surface that was originally flat. Across any folded layer, structural geologists analyze the mathematical rate of change of layer dip relative to arc length ($\kappa = d\theta / ds$, where $\kappa$ is local curvature):</p>
+
+      <ul>
+        <li><strong>Hinge Point:</strong> The point of <strong>maximum curvature</strong> ($\kappa = \kappa_{\text{max}}$) on a two-dimensional cross-sectional fold profile.</li>
+        <li><strong>Hinge Line (Hinge):</strong> The continuous three-dimensional line or locus formed by connecting all points of maximum curvature across a folded geological surface. The hinge line represents the physical line of maximum bend of the fold.</li>
+        <li><strong>Hinge Zone:</strong> The curved region of high curvature immediately surrounding the hinge line, separating the two limbs.</li>
+        <li><strong>Inflection Point:</strong> The point on the fold limb where curvature is zero ($\kappa = 0$) and where the sense of curvature changes from convex (anticlinal) to concave (synclinal).</li>
+        <li><strong>Fold Limb:</strong> The relatively straight or low-curvature section of the fold located between the hinge zone and the inflection point.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q24/fossen_fig12_1_fold_hinge_anatomy.png" alt="Fold Anatomy Hinge Line Inflection Point from Haakon Fossen">
+        <div class="tb-caption">
+          <strong>Figure 24.1 (Haakon Fossen, <em>Structural Geology</em>, Fig. 12.1):</strong> Anatomical elements of a fold profile. Shows the hinge point as the locus of maximum curvature ($\kappa_{\text{max}}$), the inflection point of zero curvature, and the axial trace connecting hinge lines.
         </div>
-        <div class="tb-figure">
-      <img src="../../figures_Q24/fossen_fig12_1_fold_hinge_anatomy.png" alt="Anatomy of a Fold: Hinge Line, Limbs, and Inflection Points (Haakon Fossen, Fig. 12.1)">
-      <figcaption>
-        <strong>Figure 24.1: Anatomy of a Fold: Hinge Line, Limbs, and Inflection Points (Haakon Fossen, <em>Structural Geology</em>, Chapter 12, p. 214, Fig. 12.1 / PDF p. 1028).</strong> Geometric definition of a fold: the <strong>Hinge Line</strong> is the continuous line connecting points of maximum surface curvature along the folded layer, separating adjacent planar limbs and bounded by inflection points (where curvature changes sign).
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q24/vdpm_hinge_line_curvature.png" alt="Inflection Line and Hinge Line Curvature (Van der Pluijm & Marshak, Fig. 10.3)">
-      <figcaption>
-        <strong>Figure 24.2: Inflection Line and Hinge Line Curvature (Van der Pluijm & Marshak, <em>Earth Structure</em>, 2nd Ed., Chapter 10, Fig. 10.3).</strong> Curvature profiles across folded surfaces highlighting the mathematical definition of the hinge line as the locus of maximum curvature (&kappa;<sub>max</sub>).
-      </figcaption>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: HINGE LINE VS FOLD AXIS (CRUCIAL DISCRIMINATION) -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Vital Distinction: Hinge Line vs. Fold Axis vs. Axial Surface</div>
+    <div class="card-body">
+      <p>Candidates frequently confuse three distinct structural terms:</p>
+
+      <ul>
+        <li><strong>1. Hinge Line (Physical Entity):</strong> A physical, real line on a specific folded surface where curvature is maximum. If the fold is non-cylindrical (e.g., dome or basin), the hinge line is curved.</li>
+        <li><strong>2. Fold Axis (Geometric Kinematic Generator):</strong> An imaginary straight line that, when moved parallel to itself in space, sweeps out and generates the fold surface. A fold axis can only exist for <em>cylindrical folds</em>.</li>
+        <li><strong>3. Axial Surface (Axial Plane):</strong> The surface (planar or curved) formed by connecting the hinge lines of all successive layered beds stacked through the fold profile.</li>
+      </ul>
+
+      <div class="quote-box">
+        "The hinge of a fold is the line of maximum curvature. It connects points of maximum curvature on a folded surface. The limbs are the parts of the fold that have lower curvature and lie between adjacent hinges."
+        <span class="quote-ref">— Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, 2016, p. 242)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q24/vdpm_hinge_line_curvature.png" alt="Hinge Line and Curvature Profile from van der Pluijm and Marshak">
+        <div class="tb-caption">
+          <strong>Figure 24.2 (van der Pluijm & Marshak, <em>Earth Structure</em>):</strong> Curvature distribution across a profile of a folded layer, proving mathematically that the hinge coincides strictly with the curvature maximum ($d\theta/ds = \text{max}$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Axial Plane, Limb, and Axis</div>
+    <div class="card-body">
+      <p>Understanding geometric definitions eliminates the distractors:</p>
+      <ul>
+        <li><strong>(A) Axial plane:</strong> A surface (planar or curved) connecting the hinge lines of multiple stacked layers. It is an extensive 2D surface, not the 1D line of maximum curvature within a bed.</li>
+        <li><strong>(B) Fold limb:</strong> The straight or gently dipping segment of the fold displaying minimum curvature ($\kappa \to 0$).</li>
+        <li><strong>(C) Axis:</strong> An imaginary geometric generator line. A fold axis has a fixed orientation in space but no fixed position on the rock; the hinge is the actual physical line of maximum bend on the rock.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q24. The line of maximum curvature in a fold is known as —________.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> trough</div>
-        <div class="opt-item "><strong>(B)</strong> axis</div>
-        <div class="opt-item "><strong>(C)</strong> crest</div>
-        <div class="opt-item correct"><strong>(D)</strong> hinge</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 24)</div>
+    <div class="q-stmt">
+      Q24. The line of maximum curvature in a fold is known as —________.
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) axial plane</div>
+      <div class="raw-opt">(B) fold limb</div>
+      <div class="raw-opt">(C) axis</div>
+      <div class="raw-opt correct">(D) hinge &nbsp;✔</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) hinge</div>
+      <div class="sub">
+        In structural geology, the line connecting all points of maximum curvature across a folded surface is formally designated as the <strong>hinge</strong> (or <strong>hinge line</strong>).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) hinge</b> — The line of maximum curvature on a folded rock surface is mathematically and structurally designated as the <b>hinge</b> (or hinge line).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) trough — INCORRECT:</b> The trough is the line of minimum structural elevation, which diverges from the hinge in inclined/plunging folds.</li>
-          <li><b>(B) axis — INCORRECT:</b> The fold axis is an abstract directional vector generating a cylindrical fold by parallel translation, not an actual line of maximum curvature on the layer.</li>
-          <li><b>(C) crest — INCORRECT:</b> The crest is the line connecting the highest points on the fold, which shifts away from the hinge line in asymmetrical and inclined folds.</li>
-          <li><b>(D) hinge — CORRECT:</b> The canonical, universal structural definition established by M.J. Fleuty (1964) and J.G. Ramsay (1967).</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) axial plane</span>
+      <span class="tag wrong">Incorrect (Surface Connecting Successive Hinge Lines)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The axial plane (axial surface) is a two-dimensional surface that connects the hinge lines of successive folded layers throughout the rock volume. It is not the 1D line of maximum curvature on a single folded layer.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) fold limb</span>
+      <span class="tag wrong">Incorrect (Zone of Minimum Curvature)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The fold limbs are the side flanks of the fold located between adjacent hinges. Mechanically and mathematically, the limbs are zones of low or zero curvature ($\kappa \approx 0$), the exact opposite of maximum curvature.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) axis</span>
+      <span class="tag wrong">Incorrect (Imaginary Geometric Generator Line)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The fold axis is an abstract mathematical line that, when moved parallel to itself, generates the cylindrical fold surface. It has orientation but no specific physical location on the rock. The hinge is the actual physical line of maximum curvature on the layer.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) hinge</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By standard international definition (Ramsay 1967; Fossen 2016; Bangar p. 192), the locus of points where the rate of change of layer dip is maximum ($\kappa = d\theta/ds = \text{max}$) is the <strong>hinge</strong> (or hinge line).
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Fold Morphometrics Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 24: Crest vs. Hinge in an Overturned Anticline</div>
-          <p>In an inclined or overturned anticline, do the crest line and the hinge line coincide? Explain why or why not.</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <p><b>No, they do not coincide.</b> In an inclined or overturned fold, the highest topographic point (the <b>crest</b>) shifts onto the upper limb, while the line of maximum mathematical curvature (the <b>hinge</b>) remains fixed at the structural nose of the fold. The crest and hinge only coincide in strictly upright folds with a vertical axial plane.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural Anatomy of Fold Elements</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Fold Anatomical Element</th>
+            <th>Geometric Nature</th>
+            <th>Mathematical Definition</th>
+            <th>Field Identification Criteria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Hinge Line (Hinge)</strong></td>
+            <td><strong>1D Physical Line</strong></td>
+            <td><strong>Locus of Maximum Curvature ($\kappa = \text{max}$)</strong></td>
+            <td><strong>Sharpest bend on folded bedding plane; high strain concentration</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Inflection Line</strong></td>
+            <td>1D Line</td>
+            <td>Locus of Zero Curvature ($\kappa = 0$)</td>
+            <td>Point of inflection where limb changes curvature sense</td>
+          </tr>
+          <tr>
+            <td><strong>Axial Surface (Plane)</strong></td>
+            <td>2D Surface (Planar or Curved)</td>
+            <td>Surface connecting hinge lines of successive layers</td>
+            <td>Bisects the interlimb angle in symmetrical folds; parallel to cleavage</td>
+          </tr>
+          <tr>
+            <td><strong>Fold Axis</strong></td>
+            <td>1D Imaginary Line</td>
+            <td>Direction vector generating cylindrical fold</td>
+            <td>Parallel to hinge line in cylindrical folds; non-existent in non-cylindrical</td>
+          </tr>
+          <tr>
+            <td><strong>Crest Line</strong></td>
+            <td>1D Topographic Line</td>
+            <td>Line connecting highest topographic points of layer</td>
+            <td>Coincides with hinge line only in upright, symmetrical folds</td>
+          </tr>
+          <tr>
+            <td><strong>Trough Line</strong></td>
+            <td>1D Topographic Line</td>
+            <td>Line connecting lowest topographic points of layer</td>
+            <td>Coincides with synclinal hinge line only in upright folds</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> Under what geometric condition does the <em>Crest Line</em> of an anticline fail to coincide with its <em>Hinge Line</em>?
+          <div class="pq-ans">✔ Correct Answer: Whenever the fold is inclined, overturned, or plunging (asymmetrical fold).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The hinge line is purely geometric (maximum curvature); the crest line is purely gravitational/topographic (highest elevation). In an inclined fold, the highest point occurs on one of the limbs away from the hinge line.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a <em>cylindrical fold</em>, and how do its hinge lines relate to its fold axis?
+          <div class="pq-ans">✔ Correct Answer: A fold that can be generated by translating a straight line parallel to itself; all hinge lines are straight and mutually parallel to the fold axis.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> On a stereonet, bedding poles of a cylindrical fold plot along a single great circle ($\pi$-circle) whose pole ($\beta$-axis) defines the fold axis.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is a <em>non-cylindrical fold</em>, and give two common geological examples?
+          <div class="pq-ans">✔ Correct Answer: A fold whose hinge line is curved in three dimensions; examples include structural domes and structural basins (doubly-plunging folds).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In non-cylindrical folds (sheath folds, culminations, depressions), no single straight generator axis exists, and the hinge line curves continuously through space.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In Ramsay's fold classification, what parameter is defined by the angle between the two tangents drawn at the inflection points on adjacent limbs?
+          <div class="pq-ans">✔ Correct Answer: The Interlimb Angle ($2\alpha$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Interlimb angle classifies fold tightness: Gentle ($180^\circ - 120^\circ$), Open ($120^\circ - 70^\circ$), Close ($70^\circ - 30^\circ$), Tight ($30^\circ - 0^\circ$), and Isoclinal ($0^\circ$, parallel limbs).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> In an active folding regime via tangential longitudinal strain (buckling), what is the state of strain at the outer arc versus the inner arc of the hinge zone?
+          <div class="pq-ans">✔ Correct Answer: Outer arc experiences layer-parallel extension (tension gashes); inner arc experiences layer-parallel contraction (buckle thrusts and cleavage).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Separating the outer extensional arc from the inner contractional arc is a central <em>neutral surface</em> of zero strain within the hinge zone.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What structural feature typically forms in the hinge zone of folded competent sandstone layers due to low pressure during buckling?
+          <div class="pq-ans">✔ Correct Answer: Saddle reefs (gold-bearing quartz vein dilation zones).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Bedding separation at the hinge during flexural slip creates dilation voids where hydrothermal fluids precipitate thick saddle-reef quartz veins (e.g., Bendigo goldfield, Australia).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> How is an <em>isoclinal fold</em> defined in terms of its limbs and axial plane?
+          <div class="pq-ans">✔ Correct Answer: A fold with an interlimb angle of $0^\circ$, where both limbs are parallel to each other and parallel to the axial plane.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Extreme tectonic shortening compresses both limbs into complete parallelism, making hinge zones the only place where bedding can be seen cutting across cleavage.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is a <em>sheath fold</em>, and in what structural tectonic environment does it form?
+          <div class="pq-ans">✔ Correct Answer: A tubular, eye-shaped, or condom-shaped fold with a severely curved hinge line formed in high-strain ductile shear zones.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> High-strain simple shear rotates the fold hinge into near-perfect parallelism with the stretching lineation ($X$-direction), forming closed elliptical cross-sections.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

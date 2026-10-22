@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q30: Cartographic Representative Fraction (RF) & Geological Map Scaling | OPSC Geology 2021 Masterclass</title>
+<title>Q030: Geological Cartography: Map Scale, Representative Fraction (RF) & Distance | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,273 +89,572 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q30" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Surveying & Field Geology</div>
-    <h1>Q30: Cartographic Representative Fraction (RF) & Geological Map Scaling</h1>
+    <div class="badge">GEO - 2/21 • Geological Cartography & Topographic Analysis</div>
+    <h1>Q030: Geological Cartography: Map Scale, Representative Fraction (RF) & Distance</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Robert R. Compton (Manual of Field Geology); K.M. Bangar (Ch. 1, pp. 12-16)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 30<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 12: Geological Maps & Scales, pp. 385–392, Fig. 12.1); Paul R. Wolf & Charles D. Ghilani, <em>Elementary Surveying: An Introduction to Geomatics</em> (14th Ed., Pearson); Survey of India, <em>Topographical Mapping Manual</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>30.1 Principles of Representative Fraction (RF) in Topographic & Geological Maps</h3>
-        <p>In cartography, surveying, and field geology (Compton, <i>Manual of Field Geology</i>; Bangar, <i>Principles of Engineering Geology</i>, Ch. 1), the scale of a map defines the proportional ratio between a distance measured on the map and the corresponding horizontal distance measured on the ground:</p>
-        $$\text{Scale} = \frac{\text{Map Distance } (d_m)}{\text{Ground Distance } (D_g)}$$
-        <p>When expressed as a <b>Representative Fraction (RF)</b>:</p>
-        $$\text{RF} = \frac{1}{M}$$
-        <p>Where $M$ is the scale denominator (scale factor). Crucially, RF is a dimensionless ratio; both $d_m$ and $D_g$ must be expressed in identical metric units:</p>
-        $$D_g = d_m \times M$$
-
-        <h3>30.2 Metric Unit Scaling Conversions</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Standard Survey of India (SOI) Scale</th>
-                <th>RF Equivalent</th>
-                <th>Ground Distance for $1\text{ cm}$ on Map</th>
-                <th>Application Domain</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$1\text{ cm} = 2.5\text{ km}$</td>
-                <td>$1 : 250,000$</td>
-                <td>$2,500\text{ m}$ ($2.5\text{ km}$)</td>
-                <td>Regional tectonic synoptic sheets</td>
-              </tr>
-              <tr>
-                <td>$1\text{ cm} = 500\text{ m}$</td>
-                <td>$1 : 50,000$</td>
-                <td>$500\text{ m}$ ($0.5\text{ km}$)</td>
-                <td>Standard SOI Toposheets</td>
-              </tr>
-              <tr>
-                <td><b>$1\text{ cm} = 250\text{ m}$</b></td>
-                <td><b>$1 : 25,000$</b></td>
-                <td><b>$250\text{ m}$</b></td>
-                <td><b>High-resolution mineral exploration & engineering geology maps</b></td>
-              </tr>
-              <tr>
-                <td>$1\text{ cm} = 100\text{ m}$</td>
-                <td>$1 : 10,000$</td>
-                <td>$100\text{ m}$</td>
-                <td>Detailed mine working & pit design plans</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tb-figure">
-      <img src="../../figures_Q30/bangar_fig12_1_geological_map_scale.png" alt="Geological Maps and Scale Representation (K.M. Bangar, Fig. 12.1)">
-      <figcaption>
-        <strong>Figure 30.1: Geological Maps and Scale Representation (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 12, p. 208–211, Fig. 12.1).</strong> Authentic textbook plate showing contour-strata relationships and map scales: Representative Fraction (RF = 1:25,000) converts directly to 1 cm = 250 m on the ground (4 cm = 1 km).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: CARTOGRAPHIC SCALE FUNDAMENTALS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Cartographic Scale & The Representative Fraction (RF)</div>
+    <div class="card-body">
+      <p>In geological cartography, civil engineering, and surveying, the <strong>Map Scale</strong> is defined as the fixed ratio between the distance measured between any two points on a map ($D_{\text{map}}$) and the corresponding true horizontal distance between those same two points on the ground ($D_{\text{ground}}$):</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Fundamental Map Scale Equation</div>
+        $$\text{Map Scale} = \frac{\text{Distance on Map } (D_{\text{map}})}{\text{True Distance on Ground } (D_{\text{ground}})}$$
+      </div>
+
+      <p>Scale is expressed in three standard formats:</p>
+      <ul>
+        <li><strong>1. Representative Fraction (RF):</strong> A unitless ratio where the numerator is always unity ($1$). In a $1 : 25,000$ map, $1\text{ unit on the map}$ represents $25,000\text{ identical units on the ground}$ (e.g., $1\text{ cm} = 25,000\text{ cm}$, or $1\text{ inch} = 25,000\text{ inches}$).</li>
+        <li><strong>2. Verbal Scale:</strong> An engineering statement equating map units to convenient ground units (e.g., "$1\text{ cm to } 250\text{ meters}$").</li>
+        <li><strong>3. Graphical (Bar) Scale:</strong> A subdivided ruler printed on the map margin that remains mathematically accurate even if the map is photographically enlarged or reduced.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q30/map_scale_rf_ground_distance_triangle.png" alt="Map Scale RF Ground Distance Formula Triangle">
+        <div class="tb-caption">
+          <strong>Figure 30.1: Cartographic Scale Formula Triangle.</strong> Showing the direct mathematical relationships between Map Distance ($D_{\text{map}}$), Representative Fraction ($RF$), and True Ground Distance ($D_{\text{ground}}$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: STEP-BY-STEP CALCULATION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Step-by-Step Derivation for 1:25,000 Scale</div>
+    <div class="card-body">
+      <p>Applying the Representative Fraction $1 : 25,000$ to a measured map distance of $1.5\text{ cm}$:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Analytical Ground Distance Calculation</div>
+        $$D_{\text{ground}} = D_{\text{map}} \times \text{Scale Factor} = 1.5\text{ cm} \times 25,000 = 37,500\text{ cm}$$
+        <p style="margin-top:6px; font-size:13.5px; color:#38bdf8;">Converting centimeters to standard metric meters ($1\text{ m} = 100\text{ cm}$):</p>
+        $$D_{\text{ground}} = \frac{37,500\text{ cm}}{100\text{ cm/m}} = \mathbf{375\text{ meters}}$$
+      </div>
+
+      <div class="quote-box bangar">
+        "Scale of Maps: The scale is the ratio between a distance measured on the map and the corresponding distance on the ground. When expressed as a fraction, such as 1:25,000 or 1:50,000, it is called the Representative Fraction (R.F.). On a 1:25,000 map, 1 centimetre represents 25,000 centimetres, which equals 250 metres on the ground."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 12: Geological Maps, p. 386)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q30/bangar_fig12_1_geological_map_scale.png" alt="Geological Map Scale from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 30.2 (K.M. Bangar, Fig. 12.1):</strong> Graphical scale representation and conversion factors for topographical and geological mapping.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: SURVEY OF INDIA TOPOSHEET HIERARCHY -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Survey of India (SOI) Topographic Map Scale Hierarchies</div>
+    <div class="card-body">
+      <p>In Indian geology and mining, the Survey of India (SOI) toposheet series follows strict geometric numbering hierarchies:</p>
+      <ul>
+        <li><strong>Million Sheet Series ($1 : 1,000,000$):</strong> Covers $4^\circ \times 4^\circ$ quadrants (e.g., Sheet No. 73 covers Odisha/Jharkhand).</li>
+        <li><strong>Degree Sheet Series ($1 : 250,000$):</strong> Covers $1^\circ \times 1^\circ$ quadrangles (designated by letters A to P, e.g., 73H). Scale: $1\text{ cm} = 2.5\text{ km}$.</li>
+        <li><strong>Quadrant Sheet Series ($1 : 50,000$):</strong> Covers $15' \times 15'$ quadrangles (numbered 1 to 16, e.g., 73H/15). Scale: $1\text{ cm} = 500\text{ meters}$.</li>
+        <li><strong>Special Planning Series ($1 : 25,000$):</strong> Covers $7.5' \times 7.5'$ quadrangles (designated NW, NE, SW, SE). Scale: <strong>$1\text{ cm} = 250\text{ meters}$</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q30. The distance between two points on a 1: 25,000 map is 1.5 cm than the true distance between these points on the field will be :</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> 375 m</div>
-        <div class="opt-item "><strong>(B)</strong> 3750 km</div>
-        <div class="opt-item "><strong>(C)</strong> 3750 cm</div>
-        <div class="opt-item "><strong>(D)</strong> 37500 mm</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 30)</div>
+    <div class="q-stmt">
+      Q30. The distance between two points on a 1: 25,000 map is 1.5 cm than the true distance between them is:
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) 375 m &nbsp;✔</div>
+      <div class="raw-opt">(B) 37.5 m</div>
+      <div class="raw-opt">(C) 3750 m</div>
+      <div class="raw-opt">(D) 3.75 m</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) 375 m</div>
+      <div class="sub">
+        At a Representative Fraction of $1 : 25,000$, $1\text{ cm}$ on the map equals $25,000\text{ cm} = 250\text{ m}$ on the ground. A measured map distance of $1.5\text{ cm}$ corresponds to $1.5 \times 250\text{ m} = \mathbf{375\text{ meters}}$.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) 375 m</b> — On a $1:25,000$ scale map, $1.5\text{ cm}$ measured on the map corresponds exactly to $1.5 \times 25,000 = 37,500\text{ cm} = \mathbf{375\text{ m}}$ on the ground.</p>
-        </div>
-
-        <h3>Step-by-Step Mathematical Derivation</h3>
-        <p>1. Identify the Representative Fraction: $\text{RF} = 1 : 25,000$. This implies $1\text{ unit on map} = 25,000\text{ units on ground}$.</p>
-        <p>2. Calculate field ground distance in centimeters:</p>
-        $$D_g = d_m \times 25,000 = 1.5\text{ cm} \times 25,000 = 37,500\text{ cm}$$
-        <p>3. Convert centimeters to meters ($1\text{ m} = 100\text{ cm}$):</p>
-        $$D_g = \frac{37,500\text{ cm}}{100\text{ cm/m}} = \mathbf{375\text{ m}}$$
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) 375 m — CORRECT:</b> Exact mathematical conversion: $37,500\text{ cm} = 375\text{ m}$.</li>
-          <li><b>(B) 3750 km — INCORRECT:</b> Catastrophic unit conversion error by a factor of $10,000$ (representing $3,750,000\text{ m}$).</li>
-          <li><b>(C) 3750 cm — INCORRECT:</b> Off by an order of magnitude (would correspond to an RF of $1:2,500$).</li>
-          <li><b>(D) 37500 mm — INCORRECT:</b> $37,500\text{ mm} = 37.5\text{ m}$, which is off by a factor of 10.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) 375 m</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By direct metric conversion:
+      $$D_{\text{ground}} = 1.5\text{ cm} \times 25,000 = 37,500\text{ cm}$$
+      Since $1\text{ meter} = 100\text{ centimeters}$:
+      $$D_{\text{ground}} = \frac{37,500}{100} = \mathbf{375\text{ meters}}$$
+      Thus, option (A) is mathematically exact.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) 37.5 m</span>
+      <span class="tag wrong">Incorrect (Factor of 10 Decimal Error)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> $37.5\text{ m}$ results from an arithmetic error dividing by 1000 instead of 100 ($37,500 / 1000 = 37.5\text{ m}$). It corresponds to a scale of $1 : 2,500$, not $1 : 25,000$.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) 3750 m</span>
+      <span class="tag wrong">Incorrect (Factor of 10 Overestimation)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> $3,750\text{ meters}$ ($3.75\text{ km}$) corresponds to a map scale of $1 : 250,000$ (an SOI degree sheet), where $1.5\text{ cm} \times 250,000 = 375,000\text{ cm} = 3750\text{ m}$.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) 3.75 m</span>
+      <span class="tag wrong">Incorrect (Factor of 100 Error)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> $3.75\text{ meters}$ corresponds to an engineering architectural drafting scale of $1 : 250$.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Advanced Cartographic Scale Problems</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 30: Areal Scale & Open-Pit Mine Conversion</div>
-          <p>An open-pit iron ore lease boundary covers an area of $8.0\text{ cm}^2$ on a $1:25,000$ geological map. What is the actual ground surface area of the mining lease in square kilometers ($	ext{km}^2$) and in hectares ($	ext{ha}$)?</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. The areal scale is the square of the linear scale factor:</p>
-            $$\text{Area Ground} = \text{Area Map} \times M^2$$
-            $$A_g = 8.0\text{ cm}^2 \times (25,000)^2 = 8.0 \times 625,000,000\text{ cm}^2 = 5,000,000,000\text{ cm}^2$$
-            <p>2. Convert to square meters ($1\text{ m}^2 = 10,000\text{ cm}^2$):</p>
-            $$A_g = \frac{5,000,000,000}{10,000} = 500,000\text{ m}^2$$
-            <p>3. Convert to square kilometers ($1\text{ km}^2 = 1,000,000\text{ m}^2$) and hectares ($1\text{ ha} = 10,000\text{ m}^2$):</p>
-            $$A_g = \frac{500,000}{1,000,000} = \mathbf{0.50\text{ km}^2} = \mathbf{50.0\text{ hectares}}$$
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Map Scale & Representative Fraction (RF) Matrix</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Representative Fraction (RF)</th>
+            <th>Ground Distance per 1 cm on Map</th>
+            <th>Ground Distance for 1.5 cm</th>
+            <th>Standard Topographic / Geological Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1 : 1,000</strong></td>
+            <td>$10\text{ meters}$</td>
+            <td>$15\text{ meters}$</td>
+            <td>Mine pit engineering; dam site foundation plans</td>
+          </tr>
+          <tr>
+            <td><strong>1 : 10,000</strong></td>
+            <td>$100\text{ meters}$</td>
+            <td>$150\text{ meters}$</td>
+            <td>Detailed mineral block exploration; urban cadastral mapping</td>
+          </tr>
+          <tr>
+            <td><strong>1 : 25,000</strong></td>
+            <td><strong>$250\text{ meters}$</strong></td>
+            <td><strong>$\mathbf{375\text{ meters}}$</strong></td>
+            <td><strong>SOI 7.5' special topographic sheets; district watershed planning</strong></td>
+          </tr>
+          <tr>
+            <td><strong>1 : 50,000</strong></td>
+            <td>$500\text{ meters}$ ($0.5\text{ km}$)</td>
+            <td>$750\text{ meters}$</td>
+            <td>Standard Survey of India 15' toposheet; regional geological quadrangle maps</td>
+          </tr>
+          <tr>
+            <td><strong>1 : 250,000</strong></td>
+            <td>$2,500\text{ meters}$ ($2.5\text{ km}$)</td>
+            <td>$3,750\text{ meters}$ ($3.75\text{ km}$)</td>
+            <td>SOI $1^\circ \times 1^\circ$ degree sheets; state geological overview maps</td>
+          </tr>
+          <tr>
+            <td><strong>1 : 1,000,000</strong></td>
+            <td>$10,000\text{ meters}$ ($10.0\text{ km}$)</td>
+            <td>$15,000\text{ meters}$ ($15.0\text{ km}$)</td>
+            <td>Million sheet series; National Atlas of India; Geological Map of India</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> On a $1 : 50,000$ Survey of India geological map, an iron ore body has an outcrop strike length of $4.8\text{ cm}$. Calculate the actual ground strike length of the ore body in kilometers.
+          <div class="pq-ans">✔ Worked Answer: $2.40\text{ km}$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$D_{\text{ground}} = 4.8\text{ cm} \times 50,000 = 240,000\text{ cm} = 2,400\text{ m} = 2.40\text{ km}$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is the difference between a <em>large-scale map</em> and a <em>small-scale map</em>?
+          <div class="pq-ans">✔ Correct Answer: Large-scale maps have larger numerical RF fractions ($> 1 : 25,000$) showing small areas in great detail; small-scale maps have small fractions ($< 1 : 500,000$) covering vast regional areas with low detail.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because $1/25,000 = 0.00004$ is mathematically larger than $1/250,000 = 0.000004$, a $1 : 25,000$ map is a large-scale map.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3 (Area Scale Conversion):</strong> A mining lease covers a rectangular area measuring $4.0\text{ cm} \times 5.0\text{ cm}$ on a $1 : 25,000$ toposheet. Calculate the true ground area of the lease in square kilometers ($\text{km}^2$) and hectares ($1\text{ ha} = 10,000\text{ m}^2$).
+          <div class="pq-ans">✔ Worked Answer: $\text{Area} = 1.25\text{ km}^2 = 125\text{ hectares}$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\text{Ground Width } W = 4.0\text{ cm} \times 250\text{ m/cm} = 1000\text{ m} = 1.0\text{ km}$$<br>
+            $$\text{Ground Length } L = 5.0\text{ cm} \times 250\text{ m/cm} = 1250\text{ m} = 1.25\text{ km}$$<br>
+            $$\text{Ground Area } A = 1.0\text{ km} \times 1.25\text{ km} = 1.25\text{ km}^2 = 1,250,000\text{ m}^2 = 125\text{ hectares}$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> If a map with a scale of $1 : 50,000$ is photocopied and enlarged by $200\%$ ($2\times$ linear enlargement), what is the new scale of the enlarged copy?
+          <div class="pq-ans">✔ Correct Answer: $1 : 25,000$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Linear features are twice as long on the copy ($2\text{ cm}$ represents what $1\text{ cm}$ previously represented). The new scale is $2 / 50,000 = 1 / 25,000$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> Why does a graphical bar scale remain accurate after photographic map resizing, whereas a written Representative Fraction (e.g., $1 : 50,000$) becomes false?
+          <div class="pq-ans">✔ Correct Answer: The bar scale enlarges or shrinks in exact proportion with the map graphics.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Resizing alters physical distances on paper; the printed RF numbers do not change, but the graphical bar expands/contracts synchronously with the image.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is the standard contour interval on Survey of India $1 : 50,000$ toposheets in plains vs. mountainous terrain?
+          <div class="pq-ans">✔ Correct Answer: Typically $20\text{ meters}$ (or $10\text{ meters}$ on $1 : 25,000$ sheets).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> A $20\text{ m}$ contour interval provides clear topographic visualization without overcrowding steep slopes with contour lines.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> On an aerial photograph of an unmapped region, a runway known to be $1800\text{ meters}$ long measures $7.2\text{ cm}$ on the print. What is the approximate photo scale?
+          <div class="pq-ans">✔ Worked Answer: $1 : 25,000$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\text{Scale} = \frac{D_{\text{photo}}}{D_{\text{ground}}} = \frac{7.2\text{ cm}}{1800\text{ m}} = \frac{7.2\text{ cm}}{180,000\text{ cm}} = \frac{1}{25,000}$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is the geographic coverage area in latitude and longitude of a standard Survey of India $1 : 50,000$ quadrangle sheet (e.g., 73H/15)?
+          <div class="pq-ans">✔ Correct Answer: $15\text{ minutes of latitude} \times 15\text{ minutes of longitude}$ ($15' \times 15'$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> A degree sheet ($1^\circ \times 1^\circ$) is divided into 16 quadrants, each measuring $15' \times 15'$ (approximately $28\text{ km} \times 28\text{ km} \approx 780\text{ km}^2$).
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

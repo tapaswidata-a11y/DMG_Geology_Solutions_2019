@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q28: Fault Classification & Slip Kinematics (Dip-Slip vs. Strike-Slip) | OPSC Geology 2021 Masterclass</title>
+<title>Q028: Kinematic Fault Classification: Dip-Slip, Strike-Slip & Oblique-Slip | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,263 +89,552 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q28" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Fault Mechanics</div>
-    <h1>Q28: Fault Classification & Slip Kinematics (Dip-Slip vs. Strike-Slip)</h1>
+    <div class="badge">GEO - 2/21 • Structural Geology & Fault Kinematics</div>
+    <h1>Q028: Kinematic Fault Classification: Dip-Slip, Strike-Slip & Oblique-Slip</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Van der Pluijm & Marshak (Ch. 16, pp. 402-408); Haakon Fossen (Ch. 8, pp. 154-160); Bangar (Ch. 8)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 28<br>
+<strong>Authoritative References:</strong> Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 8 & 9, pp. 165–185); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Faults, pp. 200–205, Fig. 7.24); Marland P. Billings, <em>Structural Geology</em> (3rd Ed., Prentice Hall).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>28.1 Kinematic Classification of Faults Based on Net Slip Vector</h3>
-        <p>In structural geology and geomechanics (Van der Pluijm & Marshak, Ch. 16; Fossen, Ch. 8; Bangar, <i>Principles of Engineering Geology</i>, Ch. 8), faults are fractures along which measurable relative displacement has occurred parallel to the fracture surface. The classification depends on the orientation of the <b>net slip vector</b> relative to the strike and dip of the fault plane:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Fault Class</th>
-                <th>Slip Vector Orientation</th>
-                <th>Rake / Pitch on Fault</th>
-                <th>Kinematic Sub-types</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Dip-Slip Fault</b></td>
-                <td><b>Movement is parallel to the dip direction of the fault surface</b> (strictly up or down the dip).</td>
-                <td><b>$\text{Rake } \approx 90^\circ$</b></td>
-                <td><b>Normal Fault</b> (hanging wall moves down; extension)<br><b>Reverse / Thrust Fault</b> (hanging wall moves up; contraction)</td>
-              </tr>
-              <tr>
-                <td><b>Strike-Slip Fault (Transcurrent / Wrench)</b></td>
-                <td>Movement is parallel to the horizontal strike line of the fault plane.</td>
-                <td>$\text{Rake } \approx 0^\circ$ or $180^\circ$</td>
-                <td><b>Sinistral</b> (left-lateral)<br><b>Dextral</b> (right-lateral)</td>
-              </tr>
-              <tr>
-                <td><b>Oblique-Slip Fault</b></td>
-                <td>Movement has significant components of both strike-slip and dip-slip.</td>
-                <td>Intermediate rake ($10^\circ < \phi < 80^\circ$)</td>
-                <td>Transtensional (normal + strike-slip)<br>Transpressional (reverse + strike-slip)</td>
-              </tr>
-              <tr>
-                <td><b>Step Fault</b></td>
-                <td>A geometric series of parallel normal faults stepping down in the same direction.</td>
-                <td>Dip-slip arrangement</td>
-                <td>Structural terrace / staircase graben boundary</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>28.2 Components of Fault Displacement Vector</h3>
-        <p>In 3D Cartesian coordinates on the fault surface, net slip ($S_{\text{net}}$) is resolved into:</p>
-        $$S_{\text{net}}^2 = S_{\text{strike}}^2 + S_{\text{dip}}^2$$
-        <p>Where pure dip-slip occurs, $S_{\text{strike}} = 0$ and $S_{\text{net}} = S_{\text{dip}}$. The vertical component of dip slip is termed the <b>throw</b> ($T = S_{\text{dip}} \sin\delta$), and the horizontal component perpendicular to strike is termed the <b>heave</b> ($H = S_{\text{dip}} \cos\delta$).</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q28/bangar_fig7_24_normal_reverse_faults.png" alt="Dip-Slip Faults: Normal vs. Reverse Faults (K.M. Bangar, Fig. 7.24)">
-      <figcaption>
-        <strong>Figure 28.1: Dip-Slip Faults: Normal vs. Reverse Faults (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 7, Section 7.8, p. 117, Figs. 7.23 & 7.24).</strong> Authentic plate illustrating dip-slip displacements: (a) Normal fault where hanging wall moves downward relative to footwall under crustal tension; (b) Reverse fault where hanging wall moves upward relative to footwall under crustal compression.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: KINEMATIC FAULT CLASSIFICATION BY NET SLIP -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Kinematic Classification of Faults by Net Slip Direction</div>
+    <div class="card-body">
+      <p>In structural geology (Billings, 1972; Fossen, 2016; Bangar, p. 201), faults are classified kinematically according to the orientation of the <strong>net-slip vector</strong> (the actual vector displacement connecting two formerly contiguous points on opposite sides of the fault plane):</p>
+
+      <ul>
+        <li><strong>Dip-Slip Fault:</strong> A fault in which the relative movement of the blocks is <strong>parallel to the dip direction of the fault plane</strong> (the net slip vector lies parallel to the true dip line, meaning rake of slickenlines is $\approx 90^\circ$). Dip-slip faults are subdivided based on the sense of displacement:
+          <ul>
+            <li><strong>Normal Fault:</strong> Hanging wall moves downward relative to footwall (extensional regime).</li>
+            <li><strong>Reverse / Thrust Fault:</strong> Hanging wall moves upward relative to footwall (contractional regime).</li>
+          </ul>
+        </li>
+        <li><strong>Strike-Slip Fault (Wrench / Transcurrent Fault):</strong> A fault in which movement is strictly parallel to the strike line of the fault plane (horizontal displacement, rake $\approx 0^\circ$). Subdivided into <em>Dextral</em> (right-lateral) and <em>Sinistral</em> (left-lateral).</li>
+        <li><strong>Oblique-Slip Fault:</strong> A fault combining significant components of both strike-slip and dip-slip motion ($0^\circ < \text{rake} < 90^\circ$, typically $15^\circ < \text{rake} < 75^\circ$).</li>
+        <li><strong>Hinge Fault (Pivotal / Rotational Fault):</strong> A fault where displacement increases progressively away from a stationary pivot point.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q28/dip_slip_normal_reverse_mechanics.png" alt="Dip-Slip Fault Mechanics Normal and Reverse">
+        <div class="tb-caption">
+          <strong>Figure 28.1: Kinematic Architecture of Dip-Slip Faults.</strong> Illustrating pure dip-parallel slip ($90^\circ$ rake) in (A) Normal fault (hanging wall moves down) and (B) Reverse fault (hanging wall moves up).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: DIP-SLIP DISPLACEMENT COMPONENTS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Geometric Anatomy: Throw, Heave, and Net Slip</div>
+    <div class="card-body">
+      <p>On a dip-slip fault dipping at angle $\theta$, the net dip slip ($S$) is geometrically resolved into two orthogonal components:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Mathematical Resolution of Dip Slip</div>
+        $$\text{Vertical Throw } (h) = S \cdot \sin\theta$$
+        $$\text{Horizontal Heave } (l) = S \cdot \cos\theta$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $S$ is dip slip, $h$ is throw (vertical stratigraphic displacement), and $l$ is heave (horizontal separation). For normal faults, heave represents crustal extension; for reverse faults, heave represents crustal shortening.</p>
+      </div>
+
+      <div class="quote-box bangar">
+        "Classification of Faults Based on Direction of Slip: 1. Dip-slip fault: In this type, the relative movement of the blocks is essentially parallel to the dip of the fault plane. It includes normal faults and reverse faults. 2. Strike-slip fault: Movement is parallel to the strike. 3. Oblique-slip fault: Movement is oblique to both dip and strike."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds and Faults, p. 201, Fig. 7.24)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q28/bangar_fig7_24_normal_reverse_faults.png" alt="Normal and Reverse Dip-Slip Faults from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 28.2 (K.M. Bangar, Fig. 7.24):</strong> Dip-slip fault mechanics, illustrating displacement strictly parallel to the fault plane's dip inclination.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Strike-Slip, Oblique-Slip, and Hinge Faults</div>
+    <div class="card-body">
+      <p>Candidates must clearly differentiate alternative slip geometries:</p>
+      <ul>
+        <li><strong>(A) Strike-slip fault:</strong> Movement is parallel to the <em>strike</em> (horizontal line), not the dip.</li>
+        <li><strong>(C) Oblique-slip fault:</strong> Movement is at an oblique angle, possessing both strike and dip components simultaneously.</li>
+        <li><strong>(D) Hinge fault:</strong> Movement involves rotation around an axis perpendicular to the fault plane, where slip is not uniform or purely parallel to dip.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q28. A fault in which the movement is parallel to the dip of the fault is called :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Step fault</div>
-        <div class="opt-item correct"><strong>(B)</strong> Dip-slip fault</div>
-        <div class="opt-item "><strong>(C)</strong> Strike-slip fault</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 28)</div>
+    <div class="q-stmt">
+      Q28. A fault in which the movement is parallel to the dip of the fault is called :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Strike-slip fault</div>
+      <div class="raw-opt correct">(B) Dip-slip fault &nbsp;✔</div>
+      <div class="raw-opt">(C) Oblique-slip fault</div>
+      <div class="raw-opt">(D) Hinge fault</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) Dip-slip fault</div>
+      <div class="sub">
+        A fault in which the relative movement of the displaced blocks is strictly <strong>parallel to the dip of the fault plane</strong> is universally defined as a <strong>Dip-slip fault</strong> (Bangar, p. 201; Fossen, p. 166).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) Dip-slip fault</b> — A fault in which the relative movement of the blocks is parallel to the dip of the fault surface is unequivocally designated as a <b>Dip-slip fault</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Step fault — INCORRECT:</b> Step faulting refers to a structural arrangement or pattern of multiple parallel faults downthrown in steps in the same direction, not the kinematic definition of motion along the dip.</li>
-          <li><b>(B) Dip-slip fault — CORRECT:</b> Standard textbook definition: relative movement parallel to the true dip direction of the fault surface. Includes both normal and reverse/thrust faults.</li>
-          <li><b>(C) Strike-slip fault — INCORRECT:</b> Motion is parallel to the horizontal strike line of the fault plane, with zero or negligible vertical dip-slip displacement.</li>
-          <li><b>(D) None of these — INCORRECT:</b> Option (B) is the universally recognized correct term.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Strike-slip fault</span>
+      <span class="tag wrong">Incorrect (Displacement Parallel to Strike)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> In a strike-slip fault (transcurrent/wrench fault), the displacement vector is horizontal and parallel to the strike line of the fault plane (e.g., San Andreas Fault). It has zero dip-slip component.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) Dip-slip fault</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By standard international definition, a <strong>dip-slip fault</strong> is one in which the net slip is oriented parallel to the fault dip. It encompasses normal faults (hanging wall down) and reverse/thrust faults (hanging wall up).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Oblique-slip fault</span>
+      <span class="tag wrong">Incorrect (Combines Strike and Dip Slip Simultaneously)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> In an oblique-slip fault, the net displacement vector is neither parallel to strike nor parallel to dip, but cuts diagonally across the fault plane ($0^\circ < \text{rake} < 90^\circ$).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Hinge fault</span>
+      <span class="tag wrong">Incorrect (Rotational Displacement around a Pivot)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A hinge (pivotal) fault involves rotational displacement around an axis perpendicular to the fault, such that displacement varies from zero at the pivot to a maximum at the opposite end.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Fault Kinematics & Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 28: Resolving Net Slip and Rake Angle</div>
-          <p>A slickensided fault plane has an observed strike-slip component of $S_s = 60\text{ m}$ and a dip-slip component of $S_d = 80\text{ m}$. Calculate the net slip ($S_{\text{net}}$) and the rake angle ($\phi$) of the movement vector on the fault surface.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. The net slip magnitude is given by the Pythagorean theorem on the fault plane:</p>
-            $$S_{\text{net}} = \sqrt{S_s^2 + S_d^2} = \sqrt{60^2 + 80^2} = \sqrt{3600 + 6400} = \sqrt{10000} = 100\text{ m}$$
-            <p>2. The rake angle ($\phi$) measured from the strike line is:</p>
-            $$\tan(\phi) = \frac{S_d}{S_s} = \frac{80}{60} = 1.3333$$
-            $$\phi = \arctan(1.3333) \approx 53.13^\circ$$
-            <p>Because the rake angle is $53.1^\circ$, this is classified as an <b>oblique-slip fault</b> (transpressional or transtensional depending on whether $S_d$ is reverse or normal).</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Kinematic Fault Classification Matrix</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Kinematic Fault Type</th>
+            <th>Net Slip Orientation Relative to Fault Geometry</th>
+            <th>Rake / Pitch of Slickenlines</th>
+            <th>Primary Subtypes / Manifestations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dip-Slip Fault</strong></td>
+            <td><strong>Strictly parallel to true dip direction</strong></td>
+            <td><strong>$80^\circ - 90^\circ$ (Near-perpendicular to strike)</strong></td>
+            <td><strong>Normal faults</strong> (extensional) and <strong>Reverse / Thrust faults</strong> (contractional)</td>
+          </tr>
+          <tr>
+            <td><strong>Strike-Slip Fault</strong></td>
+            <td>Strictly parallel to fault strike line (horizontal)</td>
+            <td>$0^\circ - 10^\circ$ (Near-parallel to strike)</td>
+            <td>Dextral (Right-lateral) and Sinistral (Left-lateral) wrench faults</td>
+          </tr>
+          <tr>
+            <td><strong>Oblique-Slip Fault</strong></td>
+            <td>Oblique / diagonal across fault plane</td>
+            <td>$15^\circ - 75^\circ$ (Diagonal)</td>
+            <td>Transtensional (normal + strike-slip) and Transpressional (reverse + strike-slip)</td>
+          </tr>
+          <tr>
+            <td><strong>Hinge (Pivotal) Fault</strong></td>
+            <td>Rotational shear around a fixed pivot point</td>
+            <td>Variable along strike</td>
+            <td>Scissors faults, trapdoor caldera collapse faults</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A normal dip-slip fault dips at an angle $\theta = 60^\circ$. Geological mapping shows a total net dip-slip $S = 200\text{ m}$. Calculate the vertical throw ($h$) and horizontal heave ($l$) of the fault.
+          <div class="pq-ans">✔ Worked Answer: Throw $h = 173.2\text{ m}$; Heave $l = 100.0\text{ m}$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\text{Throw } h = S \cdot \sin(60^\circ) = 200 \times 0.8660 = 173.2\text{ m}$$<br>
+            $$\text{Heave } l = S \cdot \cos(60^\circ) = 200 \times 0.5000 = 100.0\text{ m}$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> On a vertical fault plane ($\text{dip} = 90^\circ$), if the hanging wall moves purely vertically downward, is the fault classified as a dip-slip fault?
+          <div class="pq-ans">✔ Correct Answer: Yes; movement is strictly parallel to the vertical dip line.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the slip vector is aligned with the vertical dip vector, it is kinematically a dip-slip fault with $90^\circ$ throw and zero heave.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What field diagnostic feature on a fault surface directly proves that slip was purely dip-slip rather than strike-slip?
+          <div class="pq-ans">✔ Correct Answer: Slickenlines (striations) and mineral step fibres that plunge down the steepest line of dip with a rake of $90^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Slickenlines record the instantaneous velocity vector of fault movement; a rake of $90^\circ$ demonstrates pure dip-slip kinematics.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In oil exploration, what is the geometric difference between <em>stratigraphic throw</em> and <em>vertical throw</em> across a dip-slip fault?
+          <div class="pq-ans">✔ Correct Answer: Vertical throw is measured vertically; stratigraphic throw is measured perpendicular to bedding planes.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Stratigraphic throw ($\text{ST} = \text{Throw} \cdot \cos\delta \pm \text{Heave} \cdot \sin\delta$) directly determines the thickness of missing or repeated strata in a well.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How does an oblique-slip fault differ from a pure dip-slip fault in terms of net slip formulation?
+          <div class="pq-ans">✔ Correct Answer: Net slip requires vector summation of both dip-slip ($S_d$) and strike-slip ($S_s$) components: $S_{\text{net}} = \sqrt{S_d^2 + S_s^2}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> For pure dip-slip faults, $S_s = 0$, so $S_{\text{net}} = S_d$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What term describes a strike-slip fault that terminates into a series of imbricate contractional thrust faults at its end?
+          <div class="pq-ans">✔ Correct Answer: A horse-tailing termination or transpressional flower structure (positive flower structure).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Lateral strike-slip motion decelerates by transferring displacement into contractional thrust splays.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is a <em>growth fault</em>, and what kinematic class does it belong to?
+          <div class="pq-ans">✔ Correct Answer: A syn-sedimentary normal dip-slip fault where sediment thickness increases abruptly across the fault into the downthrown hanging wall.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Growth faults slip continuously during deltaic sedimentation (e.g., Gulf of Mexico and Niger Delta), trapping thick hydrocarbon reservoirs.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why does drilling through a normal dip-slip fault result in a "missing section" of strata in a vertical wellbore?
+          <div class="pq-ans">✔ Correct Answer: Because horizontal crustal extension (heave) pulls the stratigraphic layers apart, creating a horizontal gap.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Normal fault heave separates strata laterally; a vertical wellbore passing through the fault plane passes from hanging wall into footwall, missing the intervening stratigraphic section.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q26: Graben, Horst & Continental Rift Valley Tectonics | OPSC Geology 2021 Masterclass</title>
+<title>Q026: Extensional Tectonics: Graben, Horst & Continental Rift Valleys | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,268 +89,549 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q26" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Structural Geology & Extensional Tectonics</div>
-    <h1>Q26: Graben, Horst & Continental Rift Valley Tectonics</h1>
+    <h1>Q026: Extensional Tectonics: Graben, Horst & Continental Rift Valleys</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Van der Pluijm & Marshak (Earth Structure, Ch. 16, pp. 412-420); Haakon Fossen (Structural Geology, 2nd Ed., Ch. 17)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 26<br>
+<strong>Authoritative References:</strong> Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 17: Extensional Regimes, pp. 360–378); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Faults, pp. 203–204, Fig. 7.30 & 7.31); Davis, Reynolds & Kluth (3rd Ed., pp. 315–330).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>26.1 Extensional Fault Systems & Graben Geometry</h3>
-        <p>In structural geology and tectonics (Van der Pluijm & Marshak, <i>Earth Structure</i>, 2nd Ed., Ch. 16; Haakon Fossen, <i>Structural Geology</i>, 2nd Ed., Ch. 17), crustal extension produces conjugate pairs of <b>normal faults</b>. When regional tensional stress (where maximum principal stress $\sigma_1$ is vertical and minimum principal stress $\sigma_3$ is horizontal) acts on brittle lithosphere, characteristic fault-block morphologies develop:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Morphotectonic Feature</th>
-                <th>Kinematic & Geometric Definition</th>
-                <th>Structural Displacement</th>
-                <th>Global & Indian Examples</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Graben (Rift Valley)</b></td>
-                <td>A depressed, elongate crustal valley bounded on both flanks by <b>inward-dipping conjugate normal faults</b>.</td>
-                <td><b>Downthrown central block (hanging wall of both faults)</b> relative to flanks.</td>
-                <td>East African Rift, Rhine Graben, Narmada-Tapi Rift (SONATA).</td>
-              </tr>
-              <tr>
-                <td><b>Horst</b></td>
-                <td>An elevated, elongate crustal ridge bounded by <b>outward-dipping normal faults</b>.</td>
-                <td><b>Upthrown central block (footwall of both faults)</b> relative to flanking grabens.</td>
-                <td>Vosges and Black Forest (flanking Rhine Graben), Satpura Range.</td>
-              </tr>
-              <tr>
-                <td><b>Half-Graben</b></td>
-                <td>An asymmetric depression tilted towards a single major <b>master listric border fault</b>.</td>
-                <td>Hanging-wall block undergoes rollover anticlinal deformation and tilt.</td>
-                <td>Basin and Range Province, East African lake basins.</td>
-              </tr>
-              <tr>
-                <td><b>Fault Escarpment</b></td>
-                <td>A steep topographic scarp formed directly by differential vertical slip on a single fault plane.</td>
-                <td>Linear step in topography along a single fault trace.</td>
-                <td>Wasatch fault scarp (Utah).</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: EXTENSIONAL FAULT BLOCK SYSTEMATICS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Extensional Tectonic Mechanics & Graben-Horst Geometry</div>
+    <div class="card-body">
+      <p>In continental rift systems and regions undergoing horizontal crustal extension ($\Delta L > 0$), the maximum principal stress is vertical ($\sigma_1 = \text{overburden weight}$), while minimum principal stress is horizontal ($\sigma_3 = \text{extensional axis}$). Under this stress regime, conjugate normal faults dipping at $\approx 60^\circ$ toward each other partition the brittle upper crust into alternating elevated and depressed fault blocks:</p>
 
-        <h3>26.2 Continental Rifting & Lithospheric Attenuation Mechanics</h3>
-        <p>Active and passive rifting mechanisms lead to lithospheric thinning ($eta$-factor, McKenzie 1978):</p>
-        $$eta = rac{t_0}{t_1}$$
-        <p>Where $t_0$ is initial crustal thickness and $t_1$ is thinned post-rift thickness. Subsidence of the central graben floor is accommodated initially by fault-controlled mechanical crustal stretching (syn-rift phase), followed by regional thermal cooling subsidence (post-rift sag phase).</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q26/fossen_fig9_5_horst_graben.png" alt="Horst and Graben Fault Geometries (Haakon Fossen, Fig. 9.5)">
-      <figcaption>
-        <strong>Figure 26.1: Horst and Graben Fault Geometries (Haakon Fossen, <em>Structural Geology</em>, Chapter 9, p. 175, Fig. 9.5 / PDF p. 713).</strong> Structural block diagrams illustrating: (a) Horst (uplifted block between outward-dipping conjugate normal faults), (b) Symmetric Graben (downthrown block between inward-dipping conjugate normal faults), and (c) Asymmetric half-graben.
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q26/bangar_fig7_30_31_graben_horst.png" alt="Graben and Horst Rift Valley Fault Blocks (K.M. Bangar, Figs. 7.30 & 7.31)">
-      <figcaption>
-        <strong>Figure 26.2: Graben and Horst Rift Valley Fault Blocks (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 7, Section 7.8, p. 119, Figs. 7.30 & 7.31).</strong> Authentic plate detailing: <em>"Grabens are long and narrow troughs bounded by parallel high-angle faults, produced under tensional crustal forces."</em>
-      </figcaption>
+      <ul>
+        <li><strong>Graben (German for "trench" or "ditch"):</strong> A downthrown, depressed structural block bounded on both sides by conjugate normal faults dipping toward each other. A graben forms an elongated, fault-bounded structural depression or <strong>rift valley</strong>.</li>
+        <li><strong>Horst (German for "eyrie" or "nest"):</strong> An upthrown, elevated crustal block bounded on both sides by conjugate normal faults dipping away from each other. Horsts form linear mountain ranges or plateaus flanking rift basins.</li>
+        <li><strong>Half-Graben:</strong> An asymmetrical extensional basin bounded by a major master normal fault (border fault) on one side and a gentle roll-over flexure on the other, characteristic of modern continental rifts.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q26/fossen_fig9_5_horst_graben.png" alt="Horst and Graben System from Haakon Fossen">
+        <div class="tb-caption">
+          <strong>Figure 26.1 (Haakon Fossen, <em>Structural Geology</em>, Fig. 9.5):</strong> Extensional tectonic block diagram showing a central downthrown Graben bounded by conjugate normal faults, flanked by elevated Horsts.
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: TEXTBOOK EXCERPTS & GEOLOGICAL EXAMPLES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Global & Indian Archetypes: Rhine Graben, East African Rift & Narmada</div>
+    <div class="card-body">
+      <p>Grabens and rift valleys host some of Earth's most spectacular geological and physiographic features:</p>
+
+      <ul>
+        <li><strong>The Rhine Graben (Western Europe):</strong> The classic European type-locality, where a $300\text{ km}$ long, $35\text{ km}$ wide graben floor (the Rhine Valley) dropped down between the elevated Vosges Mountains horst in France and the Black Forest (Schwarzwald) horst in Germany.</li>
+        <li><strong>The East African Rift System (EARS):</strong> A grand active continental divergent boundary where Africa is splitting into the Nubian and Somalian plates, forming giant grabens occupied by deep rift lakes (Lake Tanganyika, Lake Malawi).</li>
+        <li><strong>The Narmada-Son Graben (Central India):</strong> A major fault-bounded rift basin where the Narmada River flows westward within a depressed crustal graben bounded by the elevated Vindhyan Range horst to the north and the Satpura Range horst to the south.</li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "Graben and Horst: A Graben or Rift Valley is formed when a central block is displaced downward between two parallel normal faults that dip towards each other... A Horst or Block Mountain is formed when the central block remains elevated while the bordering blocks are downthrown, or when the central block is pushed upward between faults that dip away from each other."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds and Faults, p. 204, Fig. 7.30)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q26/bangar_fig7_30_31_graben_horst.png" alt="Graben and Horst from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 26.2 (K.M. Bangar, Fig. 7.30 & 7.31):</strong> Classical cross-sectional diagrams of a Graben (rift valley) and Horst (block mountain) with relative fault displacements.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Horst, Strike Valley, and Dip Valley</div>
+    <div class="card-body">
+      <p>Understanding geomorphic vs. structural terms eliminates distractors:</p>
+      <ul>
+        <li><strong>Horst (Option A):</strong> An elevated, upthrown crustal block (block mountain), the polar opposite of a depressed valley.</li>
+        <li><strong>Strike Valley (Option B):</strong> An erosional valley carved by a river flowing parallel to the strike of soft sedimentary formations (subsequent stream), not a fault-bounded structural downthrow.</li>
+        <li><strong>Dip Valley (Option D):</strong> An erosional valley carved down the dip slope of inclined strata by a consequent or resequent stream.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q26. A valley formed by the downward displacement of a fault bounded block is known as :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Nappe</div>
-        <div class="opt-item "><strong>(B)</strong> Fault escarpment</div>
-        <div class="opt-item correct"><strong>(C)</strong> Graben</div>
-        <div class="opt-item "><strong>(D)</strong> All of these</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 26)</div>
+    <div class="q-stmt">
+      Q26. A valley formed by the downward displacement of a fault bounded block is known as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Horst</div>
+      <div class="raw-opt">(B) Strike valley</div>
+      <div class="raw-opt correct">(C) Graben &nbsp;✔</div>
+      <div class="raw-opt">(D) Dip valley</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (C) Graben</div>
+      <div class="sub">
+        An elongate, fault-bounded structural valley or trench formed by the <strong>downward displacement of a crustal block</strong> between conjugate normal faults is formally designated as a <strong>Graben</strong> (or <strong>Rift Valley</strong>).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
-          <p><b>Correct Answer: (C) Graben</b> — A valley formed by the downward displacement of a crustal block bounded on either side by normal faults is universally designated in structural geology as a <b>Graben</b> (or <b>Rift Valley</b>).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Nappe — INCORRECT:</b> A nappe is a massive, allochthonous rock sheet or recumbent fold that has moved tens to hundreds of kilometers horizontally along a low-angle thrust fault in a contractional orogen (e.g., Swiss Alps or Himalayas), entirely unrelated to extensional downthrown valleys.</li>
-          <li><b>(B) Fault escarpment — INCORRECT:</b> A fault escarpment is simply the cliff-like surface slope formed by vertical offset along an individual fault plane; it is not a fault-bounded downthrown valley.</li>
-          <li><b>(C) Graben — CORRECT:</b> From the German word for "ditch" or "trench", a graben is defined precisely as an elongate valley formed by the downward subsidence of a central block bounded by normal faults.</li>
-          <li><b>(D) All of these — INCORRECT:</b> Erroneous combination of contractional (nappe), geomorphic (escarpment), and extensional graben terms.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Horst</span>
+      <span class="tag wrong">Incorrect (Upthrown Elevated Block Mountain)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A horst is an upthrown, elevated crustal block standing prominent between down-dropped blocks. It forms a block mountain or plateau (such as the Vosges, Black Forest, or Satpura range), the exact morphological opposite of a downthrown valley.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Strike valley</span>
+      <span class="tag wrong">Incorrect (Fluvial Erosional Feature Along Strike)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A strike valley is an erosional landscape feature excavated by a subsequent stream eroding soft rock beds parallel to regional strike. It is produced by fluvial differential erosion, not tectonic block faulting.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(C) Graben</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Derived from the German word for trench, a <strong>graben</strong> is the standard geological term for an elongate crustal valley produced by the downward displacement of a rock block bounded by parallel normal faults dipping toward each other. When developed on a continental scale, it forms a rift valley.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Dip valley</span>
+      <span class="tag wrong">Incorrect (Erosional Valley Down Structural Dip)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A dip valley is carved by a river flowing in the direction of stratal dip across a homoclinal ridge or cuesta. It is an erosional fluvial feature, not a fault-bounded downthrown block.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Concept Check & Numerical Application</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 26: Graben Subsidence from Conjugate Normal Faulting</div>
-          <p>A symmetrical continental graben is bounded by two conjugate planar normal faults each dipping at $\delta = 60^\circ$. If horizontal crustal extension produces a net heave of $H = 2.4\text{ km}$ across the basin ($1.2\text{ km}$ heave per fault), calculate the vertical structural throw (subsidence of the graben floor) accommodated by each fault.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>For a planar normal fault with dip angle $\delta$, the relationship between vertical throw ($T$) and horizontal heave ($H_f$) is:</p>
-            $$T = H_f \times \tan(\delta)$$
-            <p>Given $H_f = 1.2\text{ km}$ and $\delta = 60^\circ$ ($	an 60^\circ = \sqrt{3} \approx 1.732$):</p>
-            $$T = 1.2 \times 1.732 = 2.08\text{ km}$$
-            <p>Thus, each border fault accommodates approximately $2.08\text{ km}$ of vertical graben subsidence.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural vs. Erosional Valley Taxonomy</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Valley / Block Term</th>
+            <th>Primary Origin</th>
+            <th>Structural Architecture</th>
+            <th>Famous Global & Indian Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Graben / Rift Valley</strong></td>
+            <td><strong>Tectonic Downthrow (Extension)</strong></td>
+            <td><strong>Crustal block downthrown between conjugate normal faults</strong></td>
+            <td><strong>Rhine Graben; East African Rift; Narmada Valley</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Horst / Block Mountain</strong></td>
+            <td>Tectonic Upthrow (Extension)</td>
+            <td>Crustal block standing elevated between downthrown blocks</td>
+            <td>Vosges Mountains (France); Black Forest (Germany); Satpuras</td>
+          </tr>
+          <tr>
+            <td><strong>Strike Valley</strong></td>
+            <td>Fluvial Differential Erosion</td>
+            <td>River excavating weak shale parallel to rock strike</td>
+            <td>Appalachian shale vales; Cuddapah Basin strike valleys</td>
+          </tr>
+          <tr>
+            <td><strong>Dip Valley</strong></td>
+            <td>Fluvial Incision</td>
+            <td>River flowing down the dip slope of a cuesta/hogback</td>
+            <td>Consequent valleys in homoclinal terrains</td>
+          </tr>
+          <tr>
+            <td><strong>Fault-Line Scarp Valley</strong></td>
+            <td>Erosion along Fault Trace</td>
+            <td>Differential erosion along crushed fault breccia zone</td>
+            <td>San Andreas fault-line valleys (California)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> What is a <em>half-graben</em>, and what structural feature separates it from a full graben?
+          <div class="pq-ans">✔ Correct Answer: An asymmetrical rift basin bounded by a major planar or listric normal fault on only ONE side, with a flexural rollover on the other.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Most continental rifts are composed of chains of linked half-grabens with alternating polarity, rather than perfectly symmetrical grabens bounded by two opposing faults.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a <em>listric normal fault</em>, and what happens to the hanging wall block as it slips downward?
+          <div class="pq-ans">✔ Correct Answer: A normal fault with a curved, concave-upward fault plane that flattens with depth; hanging wall block rotates backward creating a rollover anticline.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Slip along a curved fault surface creates extension and rollover, forming crestal collapse grabens that trap petroleum in extensional basins.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> In the Basin and Range Province of western North America, what landforms represent the horsts and grabens?
+          <div class="pq-ans">✔ Correct Answer: The linear mountain ranges are horsts; the intervening flat desert basins (playas) are grabens and half-grabens.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Crustal extension across Nevada and Utah over the past 20 million years has doubled the width of the crust, creating alternating horst ranges and graben basins.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In Indian tectonics, the Narmada and Tapti river valleys flow westward across peninsular India through which structural feature?
+          <div class="pq-ans">✔ Correct Answer: The Narmada-Son-Damodar Graben System (SONATA Zone).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> While most peninsular rivers flow eastward to the Bay of Bengal, the Narmada and Tapti are structurally confined within ancient, reactivated Proterozoic-Cretaceous grabens.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is an <em>accommodation zone</em> in a continental rift system?
+          <div class="pq-ans">✔ Correct Answer: A complex structural transfer zone connecting two half-grabens that have opposing fault dip polarities.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Accommodation zones transfer extensional strain between overlapping normal fault segments via oblique faults and strike-slip tear faults.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What sedimentary rock deposit is characteristically deposited along the border fault of an active graben?
+          <div class="pq-ans">✔ Correct Answer: Coarse alluvial fan fanglomerates and talus breccias.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Rapid uplift of the horst footwall generates steep fault scarps that shed coarse, poorly sorted fanglomerates directly into the graben basin.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is a <em>pull-apart basin</em>, and how does it relate to strike-slip faulting?
+          <div class="pq-ans">✔ Correct Answer: A rhomboidal graben-like extensional basin formed at a releasing bend or en echelon stepover along a strike-slip fault.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Left-stepping dextral faults or right-stepping sinistral faults pull crust apart, creating deep rhombic basins (e.g., the Dead Sea basin).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why do continental rifts and grabens exhibit positive Bouguer gravity anomalies despite being filled with low-density sediments?
+          <div class="pq-ans">✔ Correct Answer: Due to crustal thinning and passive upwelling of high-density asthenospheric mantle beneath the rift axis.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Lithospheric necking pulls the dense mantle closer to the surface, generating an overriding positive regional Bouguer gravity signature.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

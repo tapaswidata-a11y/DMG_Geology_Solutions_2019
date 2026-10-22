@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q33: Recumbent Fold Geometry & Axial Surface Inclination | OPSC Geology 2021 Masterclass</title>
+<title>Q033: Fold Attitude Classification: Recumbent Fold Axial Surface Geometry | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,274 +89,586 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q33" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Fold Classification</div>
-    <h1>Q33: Recumbent Fold Geometry & Axial Surface Inclination</h1>
+    <div class="badge">GEO - 2/21 • Structural Geology & Fold Geometry</div>
+    <h1>Q033: Fold Attitude Classification: Recumbent Fold Axial Surface Geometry</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> M.J. Fleuty (The Description of Folds, 1964); Haakon Fossen (Ch. 11, pp. 240-244)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 33<br>
+<strong>Authoritative References:</strong> Fleuty, M.J. (1964, <em>The Description of Folds</em>, Proc. Geol. Assoc., 75, pp. 461–492); Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 12, pp. 244–248, Fig. 12.8); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds, pp. 192–193, Fig. 7.6).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>33.1 Fleuty's (1964) Classification of Folds by Axial Surface Dip</h3>
-        <p>In structural geology (M.J. Fleuty, 1964, <i>The Description of Folds</i>; Haakon Fossen, <i>Structural Geology</i>, Ch. 11; Billings, Ch. 4; Bangar, Ch. 7), folds are rigorously categorized according to the inclination (dip angle $\delta_{\text{ap}}$) of their <b>axial surface (axial plane)</b>:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Fold Category</th>
-                <th>Dip of Axial Surface ($\delta_{\text{ap}}$)</th>
-                <th>Limb Attitude & Structural Symmetry</th>
-                <th>Geotectonic Significance</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Upright Fold</b></td>
-                <td>$\delta_{\text{ap}} = 80^\circ - 90^\circ$ (Vertical to Sub-vertical)</td>
-                <td>Limbs dip symmetrically in opposite directions at equal angles.</td>
-                <td>Mild to moderate horizontal compression.</td>
-              </tr>
-              <tr>
-                <td><b>Steeply Inclined Fold</b></td>
-                <td>$\delta_{\text{ap}} = 60^\circ - 80^\circ$</td>
-                <td>Asymmetrical limbs dipping in opposite directions.</td>
-                <td>Progressive asymmetric shear.</td>
-              </tr>
-              <tr>
-                <td><b>Moderately Inclined Fold</b></td>
-                <td>$\delta_{\text{ap}} = 30^\circ - 60^\circ$</td>
-                <td>Asymmetrical limbs.</td>
-                <td>Oblique contractional shortening.</td>
-              </tr>
-              <tr>
-                <td><b>Gently Inclined Fold</b></td>
-                <td>$\delta_{\text{ap}} = 10^\circ - 30^\circ$</td>
-                <td>One limb normal, one limb overturned.</td>
-                <td>Intense overthrust shear strain.</td>
-              </tr>
-              <tr>
-                <td><b>Recumbent Fold</b></td>
-                <td><b>$\mathbf{\delta_{\text{ap}} = 0^\circ - 10^\circ}$ (Sub-horizontal to Horizontal, $\approx 0^\circ$)</b></td>
-                <td><b>Axial plane is horizontal; the lower limb is completely overturned and inverted.</b></td>
-                <td><b>Extreme ductile shear nappe transport in metamorphic cores.</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: FLEUTY'S FOLD ATTITUDE CLASSIFICATION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Fleuty's (1964) Classification of Folds by Axial Plane Attitude</div>
+    <div class="card-body">
+      <p>In structural geology, the spatial orientation of a fold is rigorously classified based on two independent geometric criteria: the <strong>dip of its axial surface (axial plane)</strong> and the <strong>plunge of its hinge line</strong>. In M.J. Fleuty's (1964) internationally accepted standard classification, folds are categorized by axial plane dip:</p>
 
-        <h3>33.2 Anatomy of a Recumbent Fold</h3>
-        <p>In a true recumbent fold, the fold lies essentially on its side. It consists of:</p>
-        <ul>
-          <li><b>Upper Normal Limb (Digit):</b> Strata are in normal stratigraphic superposition (younger beds over older beds).</li>
-          <li><b>Hinge Zone (Closure):</b> Point of maximum curvature where the axial surface trace is sub-horizontal.</li>
-          <li><b>Lower Inverted Limb (Flank):</b> Strata are completely overturned (inverted, upside down; older beds over younger beds), often subjected to extreme ductile attenuation and shearing, eventually detaching along thrusts to generate <i>nappes</i>.</li>
-        </ul>
-        <div class="tb-figure">
-      <img src="../../figures_Q33/fossen_fig12_8_fold_shapes_inverted_limbs.png" alt="Fold Classification by Axial Surface Inclination (Haakon Fossen, Fig. 12.8)">
-      <figcaption>
-        <strong>Figure 33.1: Fold Classification by Axial Surface Inclination (Haakon Fossen, <em>Structural Geology</em>, Chapter 12, p. 218, Fig. 12.8 / PDF p. 1025).</strong> Morphological spectrum of folds from upright to inclined, overturned, and <strong>Recumbent Folds</strong>, defined by subhorizontal axial surfaces (dip &lt; 10°) and inverted lower limbs.
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q33/bangar_fig7_6_recumbent_fold.png" alt="Recumbent Fold Passing into a Nappe (K.M. Bangar, Fig. 7.6)">
-      <figcaption>
-        <strong>Figure 33.2: Recumbent Fold Passing into a Nappe (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 7, Section 7.4, p. 113, Fig. 7.6).</strong> Authentic plate: <em>"In recumbent folds, the axial plane is virtually horizontal or dips at very gentle angles (&lt; 10°)."</em>
-      </figcaption>
+      <table>
+        <thead>
+          <tr>
+            <th>Fold Type (Fleuty, 1964)</th>
+            <th>Dip of Axial Surface ($\theta_{\text{AP}}$)</th>
+            <th>Limb Attitude & Stratigraphic Inversion</th>
+            <th>Characteristic Kinematic Environment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Upright Fold</strong></td>
+            <td>$80^\circ - 90^\circ$ (Vertical)</td>
+            <td>Both limbs dip at equal angles in opposite directions; normal younging</td>
+            <td>Symmetrical horizontal compression</td>
+          </tr>
+          <tr>
+            <td><strong>Steeply Inclined Fold</strong></td>
+            <td>$60^\circ - 80^\circ$</td>
+            <td>Both limbs dip in opposite directions; one limb steeper</td>
+            <td>Moderate tectonic asymmetry</td>
+          </tr>
+          <tr>
+            <td><strong>Moderately Inclined Fold</strong></td>
+            <td>$30^\circ - 60^\circ$</td>
+            <td>Both limbs dip in opposite directions; asymmetrical</td>
+            <td>Orogenic contractional belts</td>
+          </tr>
+          <tr>
+            <td><strong>Gently Inclined / Overturned</strong></td>
+            <td>$10^\circ - 30^\circ$</td>
+            <td>One limb overturned (inverted stratigraphy); limbs dip in same direction</td>
+            <td>Intense asymmetric tectonic shear</td>
+          </tr>
+          <tr>
+            <td><strong>Recumbent Fold</strong></td>
+            <td><strong>$0^\circ - 10^\circ$ (Horizontal or Sub-horizontal: $\approx 0^\circ$)</strong></td>
+            <td><strong>Axial surface is horizontal; inverted (overturned) lower limb</strong></td>
+            <td><strong>Large-scale crustal nappe translation; Alpine/Himalayan thrust sheets</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q33/fossen_fig12_8_fold_shapes_inverted_limbs.png" alt="Fold Shapes by Axial Plane Dip from Haakon Fossen">
+        <div class="tb-caption">
+          <strong>Figure 33.1 (Haakon Fossen, <em>Structural Geology</em>, Fig. 12.8):</strong> Fleuty's fold classification by axial plane dip, showing the progression from Upright ($90^\circ$) to Overturned and Recumbent ($0^\circ$).
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: MORPHOLOGY OF A RECUMBENT FOLD -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Anatomical Architecture of a Recumbent Fold</div>
+    <div class="card-body">
+      <p>A <strong>Recumbent Fold</strong> represents the ultimate extreme of overturned folding, where intense horizontal shear completely overturns the fold until its axial plane lies <strong>essentially horizontal ($\approx 0^\circ$)</strong>:</p>
+
+      <ul>
+        <li><strong>Normal Limb (Upper Limb):</strong> The upper limb of the recumbent fold, which retains normal upright stratigraphic younging (older beds below, younger beds above).</li>
+        <li><strong>Inverted Limb (Middle / Lower Limb):</strong> The lower limb, which has been rotated through more than $90^\circ$, causing the stratigraphic succession to be completely upside-down (inverted stratigraphy: younger beds below, older beds above).</li>
+        <li><strong>Recumbent Nappes:</strong> When recumbent folds are sheared along their attenuated inverted limbs, they transition into <em>thrust nappes</em> (fold-nappes, e.g., the Morcles nappe in the Swiss Alps, or the Garhwal nappe in the Himalayas).</li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "Recumbent Fold: In this type of fold, the compressive forces are so intense that the fold is completely overturned, and the axial plane becomes practically horizontal (dips at 0° or nearly so). The limbs are horizontal or sub-horizontal, and one limb is completely overturned with inverted stratigraphy."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Folds, p. 193, Fig. 7.6)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q33/bangar_fig7_6_recumbent_fold.png" alt="Recumbent Fold from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 33.2 (K.M. Bangar, Fig. 7.6):</strong> Authentic cross-section of a Recumbent Fold with a horizontal axial surface ($0^\circ$ dip), showing the normal upper limb and inverted lower limb.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of 90°, 60°, and 45° Dip Angles</div>
+    <div class="card-body">
+      <p>Candidate elimination based on Fleuty's boundaries:</p>
+      <ul>
+        <li><strong>90° (Option C):</strong> Defines an <strong>Upright fold</strong> with a perfectly vertical axial plane.</li>
+        <li><strong>60° (Option B):</strong> Defines a <strong>Moderately to Steeply Inclined fold</strong>.</li>
+        <li><strong>45° (Option A):</strong> Defines an <strong>Inclined or Overturned fold</strong>, not a recumbent fold.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q33. In a recumbent fold, the axial plane dips about _____.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> 45°</div>
-        <div class="opt-item "><strong>(B)</strong> 90°</div>
-        <div class="opt-item "><strong>(C)</strong> 60°</div>
-        <div class="opt-item correct"><strong>(D)</strong> 0°</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 33)</div>
+    <div class="q-stmt">
+      Q33. In a recumbent fold, the axial plane dips about _____ :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) 45°</div>
+      <div class="raw-opt">(B) 60°</div>
+      <div class="raw-opt">(C) 90°</div>
+      <div class="raw-opt correct">(D) 0° &nbsp;✔</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) 0°</div>
+      <div class="sub">
+        By standard structural definition (Fleuty 1964; Bangar p. 193; Fossen p. 244), the defining geometric criterion of a <strong>recumbent fold</strong> is that its axial surface is horizontal or essentially horizontal, dipping at approximately <strong>0°</strong> ($0^\circ - 10^\circ$).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) 0°</b> — In a recumbent fold, the defining structural criterion is that the axial plane dips sub-horizontally, essentially at <b>0°</b> ($\le 10^\circ$).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) 45° — INCORRECT:</b> An axial plane dipping at $45^\circ$ defines an <i>inclined fold</i>, not a recumbent fold.</li>
-          <li><b>(B) 90° — INCORRECT:</b> An axial plane dipping at $90^\circ$ defines an <i>upright (vertical) fold</i>.</li>
-          <li><b>(C) 60° — INCORRECT:</b> An axial plane dipping at $60^\circ$ defines a <i>steeply inclined fold</i>.</li>
-          <li><b>(D) 0° — CORRECT:</b> By universal academic definition (Fleuty 1964; Fossen; Billings), a recumbent fold is a fold whose axial surface is horizontal to sub-horizontal (dip $\approx 0^\circ$).</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) 45°</span>
+      <span class="tag wrong">Incorrect (Moderately Inclined / Overturned Fold)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> An axial plane dipping at 45° characterizes an <em>inclined fold</em> or an <em>overturned fold</em>. It is far too steep to be classified as recumbent.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) 60°</span>
+      <span class="tag wrong">Incorrect (Steeply Inclined Fold)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A dip of 60° places the fold into the <em>steeply inclined fold</em> category under Fleuty's classification.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) 90°</span>
+      <span class="tag wrong">Incorrect (Upright Symmetrical Fold)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> An axial plane dipping at 90° defines an <strong>upright fold</strong>, which is the exact polar opposite of a recumbent fold.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) 0°</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Derived from the Latin <em>recumbere</em> ("to recline or lie down"), a <strong>recumbent fold</strong> is geometrically defined as a fold whose axial surface is horizontal ($\approx 0^\circ$). The fold has been overturned so severely that its limbs and axial plane lie flat.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Fold Anatomy Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 33: Identifying Facing and Vergence in Recumbent Nappes</div>
-          <p>A geologist in the Lesser Himalayan Almora Nappe observes graded turbidite sandstone beds on the lower limb of a large recumbent fold whose axial surface dips at $4^\circ\text{ North}$. The coarse pebbles are found at the stratigraphic top of each bed while fine silts are at the bottom. What is the facing direction and structural status of this limb?</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. In graded bedding, normal younging direction (facing) requires coarse grains at the bottom grading upward to fine grains at the top. Here, coarse pebbles are at the top, indicating that the strata are <b>stratigraphically inverted (overturned)</b>.</p>
-            <p>2. In a recumbent fold with an axial surface dip of $4^\circ \approx 0^\circ$, the lower limb is the <b>inverted / overturned limb</b>. Facing is directed downward, confirming classic recumbent nappe kinematics.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Fleuty (1964) Classification of Folds by Axial Surface Dip</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Fold Classification</th>
+            <th>Dip of Axial Surface ($\theta_{\text{AP}}$)</th>
+            <th>Attitude of Limbs</th>
+            <th>Stratigraphic Younging Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Upright Fold</strong></td>
+            <td>$80^\circ - 90^\circ$</td>
+            <td>Both limbs dip steeply in opposite directions</td>
+            <td>Both limbs normal (younger upwards)</td>
+          </tr>
+          <tr>
+            <td><strong>Steeply Inclined</strong></td>
+            <td>$60^\circ - 80^\circ$</td>
+            <td>Both limbs dip in opposite directions at unequal angles</td>
+            <td>Both limbs normal</td>
+          </tr>
+          <tr>
+            <td><strong>Moderately Inclined</strong></td>
+            <td>$30^\circ - 60^\circ$</td>
+            <td>Asymmetrical limbs; one limb dip $< 45^\circ$</td>
+            <td>Both limbs normal</td>
+          </tr>
+          <tr>
+            <td><strong>Gently Inclined / Overturned</strong></td>
+            <td>$10^\circ - 30^\circ$</td>
+            <td>Both limbs dip in the same direction</td>
+            <td>Lower limb inverted (upside-down)</td>
+          </tr>
+          <tr>
+            <td><strong>Recumbent Fold</strong></td>
+            <td><strong>$0^\circ - 10^\circ$ ($\approx 0^\circ$, Horizontal)</strong></td>
+            <td><strong>Limbs are horizontal to sub-horizontal</strong></td>
+            <td><strong>Lower limb completely inverted over regional scale</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> In an overturned fold, what field criterion proves that the middle limb is stratigraphically inverted?
+          <div class="pq-ans">✔ Correct Answer: Inverted primary sedimentary structures (e.g., cross-bedding truncated at bottom, inverted graded bedding, or downward-pointing pillow lavas).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because bedding dips normally, only geopetal way-up indicators prove that the strata are completely upside-down.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a <em>fold-nappe</em>?
+          <div class="pq-ans">✔ Correct Answer: A colossal recumbent fold whose middle inverted limb is stretched, thinned, and translated horizontally tens of kilometers.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Classic examples include the Penninic nappes of the Alps, where recumbent folds travel over $50\text{ km}$ across basement rocks.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is the difference between a <em>reclined fold</em> and a <em>recumbent fold</em>?
+          <div class="pq-ans">✔ Correct Answer: A recumbent fold has a horizontal axial plane ($0^\circ$); a reclined fold has an inclined axial plane where the hinge line plunges down the true dip of the axial plane (rake $= 90^\circ$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In a reclined fold, plunge equals dip, and the hinge points straight down the axial plane.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In an upright symmetrical fold, how does the axial plane orient relative to the interlimb angle?
+          <div class="pq-ans">✔ Correct Answer: It exactly bisects the interlimb angle.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Symmetrical folds have identical limb lengths and equal dips, causing the axial surface to be the exact bisecting plane.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How do parasitic folds ($S$-folds, $Z$-folds, $M$-folds) relate to the axial plane of a major recumbent fold?
+          <div class="pq-ans">✔ Correct Answer: Their axial surfaces are parallel to the master axial plane, with $M$-folds occurring in the hinge zone and $S$/$Z$-folds on the limbs.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Pumpelly's Rule states that minor parasitic fold axes and axial surfaces are parallel to the major tectonic fold structure.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What cleavage type forms parallel to the horizontal axial plane of a recumbent fold?
+          <div class="pq-ans">✔ Correct Answer: Horizontal to sub-horizontal axial planar cleavage ($S_1$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Recumbent folding reorients metamorphic mica grains into horizontal foliation planes parallel to the flat axial surface.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Can a recumbent fold have a steeply plunging hinge line?
+          <div class="pq-ans">✔ Correct Answer: No; because the axial plane is horizontal ($0^\circ$), any line lying within it must also be horizontal ($0^\circ$ plunge).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> By geometry, a line lying on a horizontal plane can only have a plunge of $0^\circ$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is a <em>box fold</em>?
+          <div class="pq-ans">✔ Correct Answer: A fold having a broad, flat crest and two distinct hinge lines with two conjugate axial planes dipping toward each other.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Box folds (conjugate folds) form where two conjugate shear bands or slip surfaces interact, creating a trapezoidal profile.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

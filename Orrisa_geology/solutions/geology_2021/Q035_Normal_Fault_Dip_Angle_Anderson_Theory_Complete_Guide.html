@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q35: Anderson's Dynamic Theory of Faulting & Normal Fault Angles | OPSC Geology 2021 Masterclass</title>
+<title>Q035: Andersonian Fault Mechanics: Normal Fault Dip Angle ($\sim 60^\circ$) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,262 +89,540 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q35" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Fault Dynamics</div>
-    <h1>Q35: Anderson's Dynamic Theory of Faulting & Normal Fault Angles</h1>
+    <div class="badge">GEO - 2/21 • Structural Geology & Andersonian Mechanics</div>
+    <h1>Q035: Andersonian Fault Mechanics: Normal Fault Dip Angle (~60°)</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> E.M. Anderson (The Dynamics of Faulting, 1905, 1951); Haakon Fossen (Ch. 8, pp. 165-170)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 35<br>
+<strong>Authoritative References:</strong> E.M. Anderson, <em>The Dynamics of Faulting</em> (Oliver & Boyd, 1951); Haakon Fossen, <em>Structural Geology</em> (2nd Ed., Cambridge Univ. Press, Ch. 7: Anderson's Classification, pp. 147–152, Fig. 7.14); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Faults, pp. 200–204).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>35.1 Anderson's (1905, 1951) Dynamic Theory of Faulting</h3>
-        <p>In structural geology and geomechanics (E.M. Anderson, 1905, 1951, <i>The Dynamics of Faulting</i>; Fossen, Ch. 8; Van der Pluijm & Marshak, Ch. 16), the Earth's surface is a free boundary contact with the atmosphere, meaning it can support no shear stress. Consequently, <b>one of the three principal stress axes must be vertical, and the other two must lie in the horizontal plane</b>:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Fault Regime</th>
-                <th>Principal Stress Orientation</th>
-                <th>Angle to $\sigma_1$</th>
-                <th>Theoretical Dip Angle (to Horizontal)</th>
-                <th>Angle to Vertical</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Normal Fault</b></td>
-                <td><b>$\sigma_1$ is Vertical</b><br>$\sigma_2, \sigma_3$ are Horizontal</td>
-                <td>$\theta = 45^\circ - \frac{\phi}{2}$ from $\sigma_1$</td>
-                <td><b>$\delta = 45^\circ + \frac{\phi}{2} \approx \mathbf{60^\circ}$ to horizontal</b></td>
-                <td><b>$\mathbf{30^\circ}$ to vertical</b></td>
-              </tr>
-              <tr>
-                <td><b>Thrust / Reverse Fault</b></td>
-                <td><b>$\sigma_3$ is Vertical</b><br>$\sigma_1, \sigma_2$ are Horizontal</td>
-                <td>$\theta = 45^\circ - \frac{\phi}{2}$ from $\sigma_1$</td>
-                <td><b>$\delta = 45^\circ - \frac{\phi}{2} \approx \mathbf{30^\circ}$ to horizontal</b></td>
-                <td><b>$60^\circ$ to vertical</b></td>
-              </tr>
-              <tr>
-                <td><b>Strike-Slip Fault</b></td>
-                <td><b>$\sigma_2$ is Vertical</b><br>$\sigma_1, \sigma_3$ are Horizontal</td>
-                <td>$\theta = 45^\circ - \frac{\phi}{2}$ from $\sigma_1$</td>
-                <td><b>$\delta = 90^\circ$ (Vertical plane)</b></td>
-                <td><b>$0^\circ$ to vertical</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>35.2 Mohr-Coulomb Criterion for Normal Fault Dip</h3>
-        <p>According to the Coulomb failure criterion, conjugate shear fractures form at an angle $\theta$ to the maximum principal compressive stress ($\sigma_1$):</p>
-        $$\theta = 45^\circ - \frac{\phi}{2}$$
-        <p>For typical lithospheric crustal rocks, the internal friction angle is $\phi \approx 30^\circ$. Therefore:</p>
-        $$\theta = 45^\circ - \frac{30^\circ}{2} = 45^\circ - 15^\circ = 30^\circ \quad (\text{angle with vertical } \sigma_1)$$
-        <p>Thus, normal faults dip at an angle of <b>$60^\circ$ to the horizontal</b> and <b>$30^\circ$ to the vertical</b>. The statement claiming that the most common angle of normal faults is <i>45° to vertical</i> is therefore unequivocally <b>FALSE</b>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q35/fossen_fig7_14_anderson_fault_angle.png" alt="Anderson's Fault Theory and Conjugate Normal Fault Dip (Haakon Fossen, Fig. 7.14)">
-      <figcaption>
-        <strong>Figure 35.1: Anderson's Fault Theory & Conjugate Normal Fault Dip (Haakon Fossen, <em>Structural Geology</em>, Chapter 7, p. 136, Fig. 7.14 / PDF p. 528).</strong> Mohr-Coulomb failure criteria under Andersonian extension: the maximum principal compressive stress (&sigma;<sub>1</sub>) is vertical. For typical crustal rock with internal friction angle &phi; &approx; 30°, the shear fracture angle with &sigma;<sub>1</sub> is &theta; = 45° - &phi;/2 &approx; 30°, yielding normal faults dipping at 90° - 30° = 60°.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: ANDERSON'S FAULT MECHANICS & NORMAL FAULT DIP -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Andersonian Dynamics & The Theoretical Dip of Normal Faults</div>
+    <div class="card-body">
+      <p>In 1905 and 1951, the Scottish structural geologist Ernest Masson Anderson published his definitive dynamic theory of faulting based on the <strong>Mohr-Coulomb failure criterion</strong> and the physical boundary condition of Earth's free surface (where shear stress is identically zero, requiring one principal stress to be strictly vertical):</p>
+
+      <ul>
+        <li><strong>Principal Stress State in Normal Faulting:</strong> In an extensional tectonic regime, the maximum principal stress is vertical ($\sigma_1 = \rho g z$, lithostatic overburden load), while the intermediate stress ($\sigma_2$) and minimum principal stress ($\sigma_3$) are horizontal ($\sigma_3$ aligns with the regional extension direction).</li>
+        <li><strong>Mohr-Coulomb Angle Formulation:</strong> According to Coulomb shear fracture mechanics, conjugate shear failure planes initiate at an angle $\theta$ relative to the maximum compressive stress ($\sigma_1$):
+        $$\theta = 45^\circ - \frac{\phi}{2}$$
+        Where $\phi$ is the angle of internal friction of typical brittle crustal rocks ($\phi \approx 30^\circ$, friction coefficient $\mu = \tan\phi \approx 0.60$).
+        $$\theta = 45^\circ - \frac{30^\circ}{2} = 30^\circ \quad \text{(Angle relative to vertical } \sigma_1\text{)}$$</li>
+        <li><strong>Dip Angle Relative to the Horizontal Plane:</strong> Because dip is measured relative to the <strong>horizontal plane</strong>, the dip angle ($\delta$) of a newly formed normal fault is:
+        $$\delta = 90^\circ - \theta = 90^\circ - 30^\circ = \mathbf{60^\circ} \quad \text{or} \quad \delta = 45^\circ + \frac{\phi}{2} = 45^\circ + 15^\circ = \mathbf{60^\circ}$$
+        Therefore, in Andersonian mechanics and global structural field measurements, <strong>normal faults initiate with a characteristic steep dip of approximately 60° to the horizontal</strong> (which corresponds to an angle of $30^\circ$ to the vertical, NOT $45^\circ$ to vertical!).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q35/fossen_fig7_14_anderson_fault_angle.png" alt="Anderson Fault Angle from Haakon Fossen">
+        <div class="tb-caption">
+          <strong>Figure 35.1 (Haakon Fossen, <em>Structural Geology</em>, Fig. 7.14):</strong> Anderson's mechanical derivation for normal faulting. Showing vertical $\sigma_1$ generating conjugate normal faults dipping at $\approx 60^\circ$ to the horizontal.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: FORENSIC REFUTATION OF 45° TO VERTICAL -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Forensic Dissection: Why the Statement is FALSE</div>
+    <div class="card-body">
+      <p>The exam question states: <em>"Most common angle of normal faults is 45° to vertical."</em> This statement is <strong>completely false</strong> for two distinct reasons:</p>
+
+      <ul>
+        <li><strong>1. Angle with the Vertical is ~30°, NOT 45°:</strong> In pristine Andersonian rock fracture, the shear failure plane forms at an angle of $\theta = 45^\circ - \phi/2 = 30^\circ$ to the vertical ($\sigma_1$). An angle of $45^\circ$ to the vertical would require rock friction to be zero ($\phi = 0^\circ$), which never occurs in brittle crustal rocks!</li>
+        <li><strong>2. Dip with Horizontal is ~60°, NOT 45°:</strong> If the statement intended to say "45° to horizontal", that is also incorrect because normal faults dip steeply at $\approx 60^\circ$ (typically $55^\circ - 70^\circ$). Contractional thrust faults dip at $< 45^\circ$.</li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "Normal Faults: In normal faults, the fault plane is usually very steep, dipping at angles between 50° and 70° (most commonly around 60°) to the horizontal... The hanging wall has moved downward relative to the footwall."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Faults, p. 201)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q35/anderson_fault_theory_principal_stresses.png" alt="Anderson Fault Theory Principal Stresses">
+        <div class="tb-caption">
+          <strong>Figure 35.2: Anderson's Conjugate Fault Geometries.</strong> Normal faults ($\sigma_1$ vertical) dip at $\sim 60^\circ$ to horizontal ($30^\circ$ to vertical); Thrust faults ($\sigma_1$ horizontal) dip at $\sim 30^\circ$ to horizontal.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: LOW-ANGLE NORMAL FAULTS (DETACHMENTS) -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Low-Angle Normal Faults: The Detachment Paradox</div>
+    <div class="card-body">
+      <p>In highly extended metamorphic core complexes (e.g., Basin and Range), geologists observe <strong>low-angle normal faults (detachment faults)</strong> dipping at $< 30^\circ$:</p>
+      <ul>
+        <li><strong>The Rolling Hinge Model:</strong> Detachment faults did not initiate at low angles; they initiated as steep $60^\circ$ Andersonian normal faults, which were rotated and flattened to low angles ($< 30^\circ$) by isostatic unloading and crustal flexure as the footwall was exhumed!</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q35. Most common angle of normal faults is 45° to vertical.</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> False</div>
-        <div class="opt-item "><strong>(B)</strong> True</div>
-        <div class="opt-item "><strong>(C)</strong> Can be true or false</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 35)</div>
+    <div class="q-stmt">
+      Q35. Most common angle of normal faults is 45° to vertical.
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) False &nbsp;✔</div>
+      <div class="raw-opt">(B) True</div>
+      <div class="raw-opt">(C) None of these</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) False</div>
+      <div class="sub">
+        The statement is <strong>False</strong>. In classical Andersonian mechanics and global structural field measurements, normal faults initiate with a characteristic steep dip of approximately <strong>60° to the horizontal</strong>, which corresponds to an angle of <strong>30° to the vertical</strong> ($\theta = 45^\circ - \phi/2 \approx 30^\circ$).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) False</b> — The statement "Most common angle of normal faults is 45° to vertical" is <b>False</b>. By Anderson's fault theory and empirical global measurements, normal faults characteristically dip at $\approx 60^\circ$ to the horizontal (i.e. $\approx 30^\circ$ to the vertical).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) False — CORRECT:</b> Based on Mohr-Coulomb failure ($\phi pprox 30^\circ$), shear fractures form at $30^\circ$ to $\sigma_1$. Since $\sigma_1$ is vertical in normal fault regimes, the angle to vertical is $\mathbf{30^\circ}$ (dip is $60^\circ$ to horizontal), making the $45^\circ$ claim categorically false.</li>
-          <li><b>(B) True — INCORRECT:</b> A $45^\circ$ angle would only occur in a perfectly frictionless hypothetical material ($\phi = 0^\circ$), which does not exist in crustal rocks.</li>
-          <li><b>(C) Can be true or false — INCORRECT:</b> Standard mechanical laws provide a precise, verifiable answer.</li>
-          <li><b>(D) None of these — INCORRECT.</b></li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) False</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Under Andersonian fault mechanics, the maximum principal stress ($\sigma_1$) in normal fault regimes is vertical. Coulomb shear failure occurs at an angle $\theta = 45^\circ - \phi/2$ to $\sigma_1$. Because crustal rocks have an angle of internal friction $\phi \approx 30^\circ$, normal faults form at $\approx 30^\circ$ to the vertical, and dip at $\approx 60^\circ$ to the horizontal. Stating that normal faults form at "45° to vertical" would require frictionless rock ($\phi = 0^\circ$), which is physically incorrect.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) True</span>
+      <span class="tag wrong">Incorrect (Violates Coulomb Mechanics and Anderson's Law)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Accepting "True" ignores rock friction. Maximum shear stress ($\tau_{\text{max}}$) occurs on planes oriented at 45° to $\sigma_1$, but actual fracture occurs along planes where the ratio of shear stress to frictional resistance is maximized ($\approx 30^\circ$ to vertical).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) None of these</span>
+      <span class="tag wrong">Incorrect (Binary Truth Value Exists)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The statement is definitively False.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Andersonian Stress State Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 35: Calculating Normal Fault Dip from Friction Angle</div>
-          <p>Triaxial compressive laboratory testing on a granite core yields an internal friction angle of $\phi = 34^\circ$. In a tectonic extensional basin where this granite undergoes Andersonian normal faulting, what will be: (a) the dip angle of the normal fault relative to the horizontal, and (b) the inclination angle of the fault plane relative to the vertical?</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. Angle with maximum compressive stress ($\sigma_1$, which is vertical):</p>
-            $$\theta_v = 45^\circ - \frac{\phi}{2} = 45^\circ - \frac{34^\circ}{2} = 45^\circ - 17^\circ = \mathbf{28^\circ\text{ to the vertical}}$$
-            <p>2. Dip angle relative to the horizontal ground surface:</p>
-            $$\delta = 90^\circ - \theta_v = 45^\circ + \frac{\phi}{2} = 45^\circ + 17^\circ = \mathbf{62^\circ\text{ to the horizontal}}$$
-            <p>This confirms that normal faults are steep ($60^\circ	ext{–}65^\circ$ to horizontal, $25^\circ	ext{–}30^\circ$ to vertical), never $45^\circ$.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Andersonian Fault Angles & Stress Orientations Matrix</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Fault Type</th>
+            <th>Orientation of $\sigma_1$</th>
+            <th>Angle to Vertical ($\sigma_1$)</th>
+            <th>Dip Angle to Horizontal ($\delta$)</th>
+            <th>Tectonic Kinematic Regime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Normal Fault</strong></td>
+            <td><strong>Vertical ($\sigma_1 = \rho g z$)</strong></td>
+            <td><strong>$\approx 30^\circ$ ($45^\circ - \phi/2$)</strong></td>
+            <td><strong>$\approx 60^\circ$ ($45^\circ + \phi/2$)</strong></td>
+            <td><strong>Crustal Extension ($\Delta L > 0$)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Thrust Fault</strong></td>
+            <td>Horizontal ($\sigma_3 = \text{vertical}$)</td>
+            <td>$\approx 60^\circ$ to vertical</td>
+            <td><strong>$\approx 30^\circ$ to horizontal</strong></td>
+            <td>Crustal Shortening ($\Delta L < 0$)</td>
+          </tr>
+          <tr>
+            <td><strong>Strike-Slip Fault</strong></td>
+            <td>Horizontal ($\sigma_2 = \text{vertical}$)</td>
+            <td>$0^\circ$ (Vertical plane: $90^\circ$ dip)</td>
+            <td>$\approx 90^\circ$ (Vertical)</td>
+            <td>Conservative Lateral Shear</td>
+          </tr>
+          <tr>
+            <td><strong>Low-Angle Detachment</strong></td>
+            <td>Rotated stress / flexure</td>
+            <td>$> 60^\circ$ to vertical</td>
+            <td>$< 30^\circ$ (Sub-horizontal)</td>
+            <td>Metamorphic Core Complex Exhumation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical Derivation):</strong> Using the Coulomb failure criterion with an angle of internal friction $\phi = 32^\circ$, calculate the theoretical dip angle to the horizontal ($\delta$) of a newly formed Andersonian normal fault.
+          <div class="pq-ans">✔ Worked Answer: $\delta = 61.0^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\delta = 45^\circ + \frac{\phi}{2} = 45^\circ + \frac{32^\circ}{2} = 45^\circ + 16^\circ = 61.0^\circ$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> Why does maximum shear failure NOT occur on the plane of maximum shear stress ($\tau_{\text{max}}$ at $45^\circ$ to $\sigma_1$)?
+          <div class="pq-ans">✔ Correct Answer: Because normal stress ($\sigma_n$) on the plane creates frictional resistance; failure occurs where the Coulomb shear stress excess ($\tau - \sigma_n \tan\phi$) is maximized.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Steeper planes have lower normal stress, reducing frictional clamping and shifting the failure orientation from $45^\circ$ to $\approx 30^\circ$ relative to $\sigma_1$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is a <em>conjugate normal fault system</em>, and what is the dihedral angle between the two fault planes?
+          <div class="pq-ans">✔ Correct Answer: Two sets of normal faults dipping in opposite directions toward each other; dihedral angle is $2\theta = 2(45^\circ - \phi/2) \approx 60^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The two conjugate planes intersect along the intermediate principal stress axis ($\sigma_2$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In oil exploration of rift basins, what is a <em>rollover anticline</em>, and along which fault type does it form?
+          <div class="pq-ans">✔ Correct Answer: An anticlinal closure formed in the hanging wall of a listric normal fault as the block flexes to fit the curved fault surface.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Rollover anticlines are premier structural hydrocarbon traps in the North Sea, Niger Delta, and Gulf of Mexico.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is the "Mechanical Paradox of Low-Angle Normal Faults"?
+          <div class="pq-ans">✔ Correct Answer: According to Byerlee's friction law ($\mu = 0.6 - 0.85$), normal faults dipping $< 30^\circ$ should lock up and be unfavorably oriented for slip under vertical overburden load.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> To slip at $< 30^\circ$, detachment faults require extremely high pore fluid pressures, low-friction fault gouge (talc, clays), or rolling-hinge rotation.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What structural feature forms when the hanging wall of a listric normal fault collapses due to lack of support?
+          <div class="pq-ans">✔ Correct Answer: A crestal collapse graben (keystone graben).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Bending of the hanging wall creates localized tension over the crest of the rollover, spawning antithetic and synthetic secondary normal faults.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is an <em>antithetic normal fault</em> versus a <em>synthetic normal fault</em>?
+          <div class="pq-ans">✔ Correct Answer: Synthetic faults dip in the same direction as the master border fault; antithetic faults dip in the opposite direction toward the master fault.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Antithetic faults accommodate rotational strain within the hanging wall block of half-grabens.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> In extensional basin analysis, what parameter is represented by the <em>crustal stretching factor ($\beta$)</em> in McKenzie's (1978) model?
+          <div class="pq-ans">✔ Correct Answer: The ratio of initial crustal thickness to final stretched crustal thickness ($\beta = t_0 / t_{\text{stretched}}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The $\beta$ factor dictates the magnitude of initial fault-controlled syn-rift tectonic subsidence and subsequent thermal post-rift sag subsidence.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
