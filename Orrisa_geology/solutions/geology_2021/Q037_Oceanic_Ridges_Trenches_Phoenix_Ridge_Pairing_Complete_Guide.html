@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q37: Global Marine Tectonics & Oceanic Ridge/Trench Geography | OPSC Geology 2021 Masterclass</title>
+<title>Q037: Global Mid-Ocean Ridges & Deep-Sea Trenches: Phoenix Ridge Tectonic Pairing | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,298 +89,594 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q37" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Marine Geology & Plate Tectonics</div>
-    <h1>Q37: Global Marine Tectonics & Oceanic Ridge/Trench Geography</h1>
+    <div class="badge">GEO - 2/21 • Plate Tectonics & Marine Geology</div>
+    <h1>Q037: Global Oceanic Ridges and Trenches: Phoenix Ridge Pairing</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> C.M.R. Fowler (The Solid Earth, 2nd Ed., Ch. 2, pp. 18-24); Kearey, Klepeis & Vine (Global Tectonics, Ch. 4)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 37<br>
+<strong>Authoritative References:</strong> C.M.R. Fowler, <em>The Solid Earth: An Introduction to Global Geophysics</em> (2nd Ed., Cambridge Univ. Press, Ch. 2: Tectonics on a Sphere, pp. 18–34); Kearey, Klepeis & Vine, <em>Global Tectonics</em> (3rd Ed., Wiley-Blackwell, Ch. 4–5); Peter Bird, <em>An updated digital model of plate boundaries</em> (Geochem. Geophys. Geosyst., 2003); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 1: Earth Structures, pp. 12–18).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>37.1 Global Tectonic Framework of Ocean Basins</h3>
-        <p>In marine geology and global plate tectonics (C.M.R. Fowler, <i>The Solid Earth: An Introduction to Global Geophysics</i>, 2nd Ed., Ch. 2; Kearey, Klepeis & Vine, <i>Global Tectonics</i>, 3rd Ed., Ch. 4), the ocean floor is subdivided into divergent mid-ocean ridge systems, convergent subduction trenches, and transform fracture zones:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Feature Name</th>
-                <th>Geotectonic Nature</th>
-                <th>Actual Geographic & Ocean Basin Location</th>
-                <th>Associated Tectonic Plates</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Reykjanes Ridge</b></td>
-                <td>Divergent Mid-Ocean Spreading Ridge (Segment of Mid-Atlantic Ridge)</td>
-                <td><b>North Atlantic Ocean</b> (southwest of Iceland, between $55^\circ\text{N}$ and $63^\circ\text{N}$).</td>
-                <td>North American Plate & Eurasian Plate</td>
-              </tr>
-              <tr>
-                <td><b>Carlsberg Ridge</b></td>
-                <td>Slow-spreading Divergent Mid-Ocean Ridge</td>
-                <td><b>Northwestern Indian Ocean</b> (trending SE from Gulf of Aden / Socotra towards Chagos).</td>
-                <td>African Plate (Somali) & Indo-Australian Plate</td>
-              </tr>
-              <tr>
-                <td><b>Kermadec Trench</b></td>
-                <td>Deep-sea Convergent Subduction Trench ($10,047\text{ m}$ depth)</td>
-                <td><b>Southwestern Pacific Ocean</b> (north of New Zealand, continuous with Tonga Trench).</td>
-                <td>Pacific Plate subducting beneath Indo-Australian Plate</td>
-              </tr>
-              <tr>
-                <td><b>Phoenix Ridge (Antarctic-Phoenix)</b></td>
-                <td>Extinct Spreading Ridge Segment</td>
-                <td><b>Southern Pacific / Antarctic Ocean</b> (Drake Passage / Antarctic Peninsula, NOT the Arctic Ocean!).</td>
-                <td>Former Phoenix Plate & Antarctic Plate</td>
-              </tr>
-              <tr>
-                <td><b>Gakkel Ridge</b></td>
-                <td>Ultra-slow Divergent Mid-Ocean Ridge</td>
-                <td><b>True Arctic Ocean Spreading Ridge</b> (between Greenland and Siberia).</td>
-                <td>North American Plate & Eurasian Plate</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: GLOBAL MORPHOLOGY OF DIVERGENT AND CONVERGENT MARGINS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Architecture of Global Mid-Ocean Ridges and Oceanic Trenches</div>
+    <div class="card-body">
+      <p>The global system of lithospheric plate boundaries is defined by two complementary bathymetric first-order features covering over 70% of Earth's surface:</p>
 
-        <h3>37.2 The Arctic Ocean Spreading Center: Gakkel Ridge</h3>
-        <p>The sole active spreading mid-ocean ridge in the <b>Arctic Ocean</b> is the <b>Gakkel Ridge</b> (formerly Nansen Cordillera), the slowest spreading center on Earth ($< 10\text{ mm/yr}$). The <b>Phoenix Ridge</b> is located at the antipodal southern extremity of the globe near the South Shetland Trench in Antarctica.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q37/bangar_fig1_12_1_13_plate_boundaries.png" alt="Global Plate Boundaries: Divergent Mid-Ocean Ridges vs. Convergent Trenches (K.M. Bangar, Figs. 1.12 & 1.13)">
-      <figcaption>
-        <strong>Figure 37.1: Global Plate Boundaries: Divergent Mid-Ocean Ridges vs. Convergent Trenches (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 1, Section 1.12, p. 16, Figs. 1.12 & 1.13).</strong> Authentic plate illustrating: (a) Divergent boundaries where magma upwells to form mid-ocean ridges (e.g. Mid-Atlantic Ridge); (b) Convergent boundaries where dense oceanic lithosphere subducts into deep oceanic trenches (e.g. Mariana Trench).
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q37/vdp_fig14_14_plate_boundaries_transform.png" alt="Plate Boundaries and Transform Offsets (Van der Pluijm & Marshak, Fig. 14.14)">
-      <figcaption>
-        <strong>Figure 37.2: Plate Boundaries and Transform Offsets (Van der Pluijm & Marshak, <em>Earth Structure</em>, Chapter 14, Fig. 14.14).</strong> Global architectural framework of divergent spreading ridges, oceanic fracture zones, and subduction zones.
-      </figcaption>
+      <ul>
+        <li><strong>Mid-Ocean Ridges (Divergent Boundaries):</strong> An interconnected global submarine mountain chain exceeding $65,000\text{ km}$ in total length. Ridges are locus of seafloor spreading where upwelling asthenospheric mantle undergoes adiabatic decompression melting, generating new oceanic basaltic crust ($6-7\text{ km}$ thick).
+          <ul>
+            <li><strong>Atlantic Ocean:</strong> Bisected axially by the slow-spreading ($2-4\text{ cm/yr}$) <strong>Mid-Atlantic Ridge (MAR)</strong>. Its northern continuation south of Iceland is termed the <strong>Reykjanes Ridge</strong>.</li>
+            <li><strong>Indian Ocean:</strong> Dominated by an inverted 'Y' shaped junction meeting at the Rodriguez Triple Junction: the <strong>Carlsberg Ridge</strong> (northwest branch traversing the Arabian Sea), the Central Indian Ridge, and the Southeast/Southwest Indian Ridges.</li>
+            <li><strong>Arctic Ocean:</strong> Traversed by the ultra-slow spreading ($<1.5\text{ cm/yr}$) <strong>Gakkel Ridge</strong> (Nansen-Gakkel Ridge), which extends from the northern tip of Greenland across the polar basin toward the Laptev Sea.</li>
+          </ul>
+        </li>
+        <li><strong>Deep-Sea Trenches (Convergent Subduction Zones):</strong> Narrow, elongate, arcuate topographic depressions where cold, dense oceanic lithosphere descends back into the asthenospheric mantle.
+          <ul>
+            <li><strong>Pacific Ocean:</strong> Bordered by the "Ring of Fire", including the Mariana Trench ($10,994\text{ m}$), Kermadec-Tonga Trench ($10,882\text{ m}$), Kuril-Kamchatka Trench, and Peru-Chile Trench.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q37/global_mid_ocean_ridges_trenches_tectonic_map.png" alt="Global Mid-Ocean Ridges and Trenches Map">
+        <div class="tb-caption">
+          <strong>Figure 37.1:</strong> Global bathymetric tectonic map showing the locations of mid-ocean spreading ridges (red lines) and deep-sea oceanic trenches (blue teeth lines) across the Pacific, Atlantic, Indian, and Arctic Oceans.
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: PHOENIX RIDGE & GAKKEL RIDGE -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Forensic Tectonic Analysis: Phoenix Ridge vs. Arctic Ocean</div>
+    <div class="card-body">
+      <p>Question 37 tests precise knowledge of global plate geography by pairing oceanic ridges and trenches with their respective ocean basins:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Geodynamic Identity of the Phoenix Ridge</div>
+        <p>The <strong>Phoenix Ridge</strong> (also historically termed the <em>Drake Passage Ridge</em> or <em>Antarctic-Phoenix Ridge</em>) is an extinct mid-ocean spreading ridge situated in the <strong>Southern Ocean / Southeastern Pacific Ocean</strong> between the Antarctic Peninsula and the South American plate (Drake Passage, coordinates approximately $60^\circ\text{S}, 60^\circ\text{W}$).</p>
+      </div>
+
+      <ul>
+        <li><strong>Subduction of the Phoenix Plate:</strong> During the Mesozoic and Cenozoic, the ancient oceanic <strong>Phoenix Plate</strong> (Aluk Plate) subducted southeastward beneath the Antarctic Peninsula magmatic arc. Subduction ceased progressively from southwest to northeast as segments of the active Phoenix spreading ridge collided with the Antarctic continental trench.</li>
+        <li><strong>Extinction of Spreading:</strong> The final segment of the Phoenix Ridge ceased seafloor spreading approximately $3.3\text{ Ma}$ (Pliocene), leaving an extinct, fossil spreading center in the Drake Passage region of the <strong>Southern / South Pacific Ocean</strong>.</li>
+        <li><strong>The Arctic Ridge is Gakkel:</strong> The ocean spreading ridge traversing the Arctic Ocean is unequivocally the <strong>Gakkel Ridge</strong>, NOT the Phoenix Ridge. Therefore, pairing <em>Phoenix Ridge — Arctic Ocean</em> is an erroneous geographical and tectonic mismatch.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q37/bangar_fig1_12_1_13_plate_boundaries.png" alt="Plate Boundaries from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 37.2 (K.M. Bangar, Fig. 1.12 & 1.13):</strong> Global lithospheric plate boundaries and tectonic margins illustrating mid-ocean ridges, oceanic trenches, and transform fault geometries.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPLETE PAIRING INVENTORY -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Verification of the Examination Pairs</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Tectonic Feature</th>
+            <th>Type</th>
+            <th>Ocean Basin Location</th>
+            <th>Validity of Exam Pair</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Kermadec Trench</strong></td>
+            <td>Subduction Zone Trench (Depth $10,047\text{ m}$)</td>
+            <td><strong>Southwest Pacific Ocean</strong> (north of New Zealand, subduction of Pacific plate beneath Indo-Australian plate).</td>
+            <td><strong style="color:#059669;">Correct Pair</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Reykjanes Ridge</strong></td>
+            <td>Mid-Ocean Spreading Ridge (Segment of Mid-Atlantic Ridge)</td>
+            <td><strong>North Atlantic Ocean</strong> (southwest of Iceland, latitude $55^\circ\text{N}-63^\circ\text{N}$).</td>
+            <td><strong style="color:#059669;">Correct Pair</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Carlsberg Ridge</strong></td>
+            <td>Mid-Ocean Spreading Ridge (Spreading rate $\sim 2.5\text{ cm/yr}$)</td>
+            <td><strong>Northwest Indian Ocean / Arabian Sea</strong> (separates African and Indo-Australian plates).</td>
+            <td><strong style="color:#059669;">Correct Pair</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Phoenix Ridge</strong></td>
+            <td>Extinct Mid-Ocean Ridge (Drake Passage / Antarctic margin)</td>
+            <td><strong>Southern Pacific / Antarctic Ocean</strong> (Actual Arctic spreading ridge is <em>Gakkel Ridge</em>).</td>
+            <td><strong style="color:#dc2626;">INCORRECT PAIR (Target)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q37. Find the incorrect pair :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Kermadec Trench — Pacific Ocean</div>
-        <div class="opt-item "><strong>(B)</strong> Reykjanes Ridge — Atlantic Ocean</div>
-        <div class="opt-item correct"><strong>(C)</strong> Phoenix Ridge — Arctic Ocean</div>
-        <div class="opt-item "><strong>(D)</strong> Carlsberg Ridge — Indian Ocean</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 37</div>
+        <div class="q-text">Find the incorrect pair :</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Kermadec Trench — Pacific Ocean</div>
+          <div class="opt-node">(B) Reykjanes Ridge — Atlantic Ocean</div>
+          <div class="opt-node correct">(C) Phoenix Ridge — Arctic Ocean</div>
+          <div class="opt-node">(D) Carlsberg Ridge — Indian Ocean</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(C) Phoenix Ridge — Arctic Ocean</strong> [This is the incorrect pair; Phoenix Ridge is located in the Antarctic/Southern Pacific, whereas the Arctic Ocean spreading centre is the Gakkel Ridge.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
-          <p><b>Correct Answer: (C) Phoenix Ridge — Arctic Ocean</b> — This pair is <b>incorrect</b>. The Phoenix Ridge is located in the <b>Antarctic / Southern Pacific Ocean</b> near the Antarctic Peninsula, whereas the mid-ocean ridge of the Arctic Ocean is the <b>Gakkel Ridge</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Kermadec Trench — Pacific Ocean — CORRECT PAIR:</b> The Kermadec Trench is one of the deepest subduction zones on Earth, located in the South Pacific Ocean.</li>
-          <li><b>(B) Reykjanes Ridge — Atlantic Ocean — CORRECT PAIR:</b> The Reykjanes Ridge is the prominent northern arm of the Mid-Atlantic Ridge extending directly to Iceland.</li>
-          <li><b>(C) Phoenix Ridge — Arctic Ocean — INCORRECT PAIR (The Required Answer):</b> The Phoenix Ridge is an extinct spreading center in the Pacific-Antarctic/Drake Passage region of Antarctica, not the Arctic Ocean.</li>
-          <li><b>(D) Carlsberg Ridge — Indian Ocean — CORRECT PAIR:</b> The Carlsberg Ridge is the principal NW-SE spreading ridge bisecting the northern Indian Ocean.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option (Target Incorrect Pair): (C) Phoenix Ridge — Arctic Ocean</div>
+    <div class="card-body">
+      <p><strong>Detailed Tectonic Forensic Analysis:</strong></p>
+      <ul>
+        <li>The <strong>Phoenix Ridge</strong> is an extinct spreading center located in the <strong>Drake Passage and Southeast Pacific Ocean</strong> bordering the northern Antarctic Peninsula (coordinates $\approx 60^\circ\text{S}, 60^\circ\text{W}$). It marks the boundary where the ancient oceanic Phoenix Plate ceased spreading upon collision with the Antarctic trench at $\sim 3.3\text{ Ma}$.</li>
+        <li>The mid-ocean ridge system located within the <strong>Arctic Ocean</strong> is the <strong>Gakkel Ridge</strong> (also known as the Nansen Cordillera or Arctic Mid-Ocean Ridge), which represents the northernmost continuation of the Mid-Atlantic Ridge between $80^\circ\text{N}$ and $90^\circ\text{N}$.</li>
+        <li>Because the Phoenix Ridge is physically located in the Southern/Pacific polar waters and completely absent from the Arctic Ocean, this pair is false and constitutes the correct answer to the question.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Option (Valid Pair): (A) Kermadec Trench — Pacific Ocean</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Kermadec Trench</strong> is an authentic deep-sea trench located in the <strong>Southwest Pacific Ocean</strong>, extending over $1,000\text{ km}$ from the Louisville Seamount Chain to the North Island of New Zealand.</li>
+        <li>It reaches maximum depths exceeding $10,047\text{ m}$ and marks the active convergent subduction zone where the Pacific Plate subducts westward beneath the Kermadec microplate of the Indo-Australian Plate.</li>
+        <li>Since this pairing is completely accurate, it cannot be the incorrect pair.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Option (Valid Pair): (B) Reykjanes Ridge — Atlantic Ocean</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Reykjanes Ridge</strong> is a well-known, prominent segment of the <strong>Northern Mid-Atlantic Ridge</strong> extending for $\sim 900\text{ km}$ southwest from the Reykjanes Peninsula of Iceland to the Bight Fracture Zone ($56.5^\circ\text{N}$).</li>
+        <li>It is characterized by slow, oblique seafloor spreading between the North American and Eurasian plates, devoid of a classical central axial rift valley due to hot-spot crustal thickening.</li>
+        <li>Because the Reykjanes Ridge is undeniably located in the North Atlantic Ocean, this is a true pair and therefore not the target option.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Option (Valid Pair): (D) Carlsberg Ridge — Indian Ocean</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Carlsberg Ridge</strong> is the northern divergent branch of the Central Indian Ridge system, located entirely in the <strong>Northwest Indian Ocean (Arabian Sea)</strong>.</li>
+        <li>It separates the African (Somali) Plate from the Indo-Australian Plate, trending northwest from the Rodriguez Triple Junction toward the Gulf of Aden and Owen Fracture Zone.</li>
+        <li>Because this pairing is entirely factually and tectonically correct, it is an incorrect distractor.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Ocean Floor Features Matching Suite</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Ocean Basin</th>
-                <th>Major Mid-Ocean Ridge</th>
-                <th>Deepest Subduction Trench</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Pacific Ocean</b></td>
-                <td>East Pacific Rise</td>
-                <td>Mariana Trench ($11,034\text{ m}$), Kermadec Trench ($10,047\text{ m}$)</td>
-              </tr>
-              <tr>
-                <td><b>Atlantic Ocean</b></td>
-                <td>Mid-Atlantic Ridge, Reykjanes Ridge</td>
-                <td>Puerto Rico Trench ($8,376\text{ m}$), South Sandwich Trench</td>
-              </tr>
-              <tr>
-                <td><b>Indian Ocean</b></td>
-                <td>Central Indian Ridge, Carlsberg Ridge, SE Indian Ridge</td>
-                <td>Java (Sunda) Trench ($7,290\text{ m}$)</td>
-              </tr>
-              <tr>
-                <td><b>Arctic Ocean</b></td>
-                <td><b>Gakkel Ridge (Nansen Cordillera)</b></td>
-                <td>Molloy Deep (Fram Strait transform, $5,550\text{ m}$)</td>
-              </tr>
-              <tr>
-                <td><b>Southern / Antarctic Ocean</b></td>
-                <td>Pacific-Antarctic Ridge, <b>Phoenix Ridge</b></td>
-                <td>South Sandwich Trench</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Global Tectonic Spreading Centers & Trenches</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Ocean Basin</th>
+            <th>Primary Divergent Ridges</th>
+            <th>Primary Convergent Trenches</th>
+            <th>Key Geodynamic Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Atlantic Ocean</strong></td>
+            <td>Mid-Atlantic Ridge (Reykjanes, Kolbeinsey, Knipovich, Mid-Atlantic)</td>
+            <td>Puerto Rico Trench ($8,376\text{ m}$), South Sandwich Trench ($8,266\text{ m}$)</td>
+            <td>Slow-spreading ($2-4\text{ cm/yr}$), prominent central rift valleys, passive margins dominant.</td>
+          </tr>
+          <tr>
+            <td><strong>Pacific Ocean</strong></td>
+            <td>East Pacific Rise (EPR), Gorda Ridge, Juan de Fuca Ridge, Chile Rise</td>
+            <td>Mariana ($10,994\text{ m}$), Tonga ($10,882\text{ m}$), Kermadec ($10,047\text{ m}$), Kuril, Japan</td>
+            <td>Fast-to-ultrafast spreading ($8-16\text{ cm/yr}$); active subduction rim ("Ring of Fire").</td>
+          </tr>
+          <tr>
+            <td><strong>Indian Ocean</strong></td>
+            <td>Carlsberg Ridge, Central Indian Ridge, Southeast Indian Ridge, Southwest Indian Ridge</td>
+            <td>Java (Sunda) Trench ($7,290\text{ m}$), Diamantina Deep</td>
+            <td>Intermediate spreading rate; unique inverted 'Y' geometry meeting at Rodriguez Triple Junction.</td>
+          </tr>
+          <tr>
+            <td><strong>Arctic Ocean</strong></td>
+            <td><strong>Gakkel Ridge</strong> (Nansen-Gakkel Cordillera)</td>
+            <td>No active deep-sea oceanic trenches</td>
+            <td>Ultra-slow spreading ($<1.5\text{ cm/yr}$); low mantle magma production, continuous peridotite exposures.</td>
+          </tr>
+          <tr>
+            <td><strong>Southern / Antarctic Ocean</strong></td>
+            <td>Pacific-Antarctic Ridge, <strong>Phoenix Ridge</strong> (extinct in Drake Passage)</td>
+            <td>South Sandwich Trench (southern branch)</td>
+            <td>Extinct Mesozoic-Cenozoic spreading segments following ridge-trench collisions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Marine Geodynamics & Plate Boundaries</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Half-Spreading Rate and Crustal Age Calculation</div>
+        <p>Magnetic anomaly $5$ (age $t = 10\text{ Ma}$) is identified at a distance $x = 120\text{ km}$ from the axis of the Reykjanes Ridge. Calculate the half-spreading rate ($u$) and the full-spreading rate ($2u$) in $\text{cm/year}$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Half-spreading rate is the velocity of one lithospheric plate away from the ridge axis:</p>
+        $$u = \frac{x}{t} = \frac{120\text{ km}}{10\text{ Ma}} = 12\text{ km/Ma}$$
+        <p>Converting $\text{km/Ma}$ to $\text{cm/year}$:</p>
+        $$1\text{ km/Ma} = \frac{10^5\text{ cm}}{10^6\text{ yr}} = 0.1\text{ cm/yr}$$
+        $$u = 12 \times 0.1 = 1.2\text{ cm/year}$$
+        <p>The full spreading rate is:</p>
+        $$2u = 2 \times 1.2\text{ cm/year} = 2.4\text{ cm/year}$$
+        <p><strong>Final Answer:</strong> The half-spreading rate is $1.2\text{ cm/year}$ and the full spreading rate is $2.4\text{ cm/year}$ (typical slow-spreading Mid-Atlantic Ridge rate).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Ocean Bathymetry vs. Age (Thermal Subsidence)</div>
+        <p>The depth $d$ of ocean crust as a function of age $t$ (in $\text{Ma}$) follows Parsons-Sclater thermal cooling: $d(t) = d_0 + C\sqrt{t}$, where $d_0 = 2500\text{ m}$ is the ridge crest depth and $C = 350\text{ m/Ma}^{1/2}$. Calculate the expected ocean depth for $36\text{ Ma}$ old crust in the Indian Ocean.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$d(36) = 2500 + 350 \times \sqrt{36}$$
+        $$d(36) = 2500 + 350 \times 6 = 2500 + 2100 = 4600\text{ m}$$
+        <p><strong>Final Answer:</strong> The expected seafloor depth is $4600\text{ m}$ ($4.6\text{ km}$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Hydrothermal Heat Flow at Ridge Crests</div>
+        <p>Why do observed heat flow measurements directly at mid-ocean ridge axes systematically fall below theoretical conductive cooling predictions?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Near the ridge axis, oceanic crust is extensively fractured, allowing cold seawater to penetrate deep into the hot basaltic crust. This drives vigorous <strong>hydrothermal circulation</strong> (black smokers). Up to $30-40\%$ of the total axial lithospheric heat loss is carried away by advective hydrothermal venting rather than conductive heat flow measured by heat flow probes.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Wadati-Benioff Zone Dip Angle</div>
+        <p>Compare the dip angle of the subducting slab in the Kermadec-Tonga Trench with that in the Peru-Chile Trench.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The Kermadec-Tonga slab consists of ancient, cold, dense Cretaceous oceanic lithosphere ($>100\text{ Ma}$) with low convergence velocity; hence, negative buoyancy causes it to sink steeply into the mantle ($\text{dip} \approx 60^\circ-70^\circ$, reaching depths of $680\text{ km}$). In contrast, the Peru-Chile trench subducts young, buoyant Nazca plate ($<30-50\text{ Ma}$) at rapid speed, producing shallow or flat-slab subduction ($\text{dip} \approx 10^\circ-30^\circ$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Identification of the Gakkel Ridge Ultra-Slow Regime</div>
+        <p>What unique petrological characteristic distinguishes ultra-slow spreading ridges like the Arctic Gakkel Ridge from fast-spreading ridges like the East Pacific Rise?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>At ultra-slow spreading rates ($<20\text{ mm/yr}$), conductive cooling from above suppresses mantle decompression melting, producing an extremely thin or absent basaltic Layer 2/3 crust ($<2-3\text{ km}$). Instead of continuous sheeted dikes and pillow basalts, extensive oceanic detachment faulting exhumes mantle serpentinized peridotites directly onto the seafloor over entire ridge segments.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Rodriguez Triple Junction Kinematics</div>
+        <p>Name the three tectonic plates that meet at the Rodriguez Triple Junction in the Indian Ocean, and state its junction stability type.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The Rodriguez Triple Junction (RTJ) is an authentic <strong>Ridge-Ridge-Ridge (RRR) triple junction</strong> located at $25^\circ\text{S}, 70^\circ\text{E}$. It represents the meeting point of the <strong>African (Somali) Plate</strong>, the <strong>Indo-Australian Plate</strong>, and the <strong>Antarctic Plate</strong>. In McKenzie-Morgan plate kinematic theory, an RRR triple junction is geometrically stable for all plate orientations.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Trench Suction and Slab Pull Forces</div>
+        <p>Calculate the driving force of plate tectonics: which single force accounts for over $90\%$ of total lithospheric plate drive?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong>Slab Pull ($F_{SP}$)</strong>: As cold oceanic lithosphere subducts, basalt and gabbro undergo metamorphic phase transition into high-density eclogite ($\rho \sim 3.5\text{ g/cm}^3$ vs. mantle peridotite $\rho \sim 3.3\text{ g/cm}^3$). This negative buoyancy pulls the entire trailing plate seaward, dominating over ridge push ($F_{RP}$) and basal mantle drag ($F_D$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Seismic Gap Method in Deep Trenches</div>
+        <p>How does the seismic gap hypothesis assist in forecasting mega-thrust earthquakes along oceanic trenches?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Subduction plate boundaries accumulate elastic strain at a steady rate defined by the plate convergence velocity ($v$). A segment of an oceanic trench (like the Kermadec or Kuril trench) that has historically produced great earthquakes ($M_w \ge 8.0$) but has experienced an anomalously long period of seismic quiescence represents a <em>seismic gap</em>. Elastic strain is locked and accumulating, making it a high-probability candidate for a future mega-thrust rupture.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

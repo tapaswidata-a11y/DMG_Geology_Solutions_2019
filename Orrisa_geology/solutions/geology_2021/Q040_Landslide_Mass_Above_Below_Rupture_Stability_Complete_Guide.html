@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q40: Landslide Morphology: Kinematics of Displaced Mass vs. Subjacent Bedrock | OPSC Geology 2021 Masterclass</title>
+<title>Q040: Landslide Mechanics: Rupture Surface Kinematics & Stability Inversion | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,266 +89,604 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q40" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Engineering Geology & Slope Stability</div>
-    <h1>Q40: Landslide Morphology: Kinematics of Displaced Mass vs. Subjacent Bedrock</h1>
+    <h1>Q040: Landslide Mechanics: Mass Above vs. Below Rupture Surface</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> D.J. Varnes (1978, Landslides: Analysis and Control); Cruden & Varnes (1996); K.M. Bangar (Ch. 12)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 40<br>
+<strong>Authoritative References:</strong> D.J. Varnes, <em>Slope Movement Types and Processes</em> (Transportation Research Board, Special Report 176, 1978); D.M. Cruden & D.J. Varnes, <em>Landslide Types and Processes</em> (TRB Special Report 247, 1996, pp. 36–75); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 10: Landslides, pp. 172–181, Fig. 10.20 & 10.21); Hoek & Bray, <em>Rock Slope Engineering</em> (3rd Ed., Spon Press).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>40.1 Varnes (1978) Morphological Anatomy of a Landslide</h3>
-        <p>In geotechnical engineering and engineering geology (Cruden & Varnes, 1996; Varnes, 1978; Bangar, <i>Principles of Engineering Geology</i>, Ch. 12), a landslide is defined as the downslope movement of a mass of rock, debris, or earth under the direct influence of gravity. The slope is partitioned by a distinct <b>surface of rupture (shear plane)</b> into two mechanically distinct masses:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Zonal Component</th>
-                <th>Physical Description & Terminology</th>
-                <th>Mechanical State & Factor of Safety ($FS$)</th>
-                <th>Geotechnical Stability</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Displaced Mass (Mass Above Slip Surface)</b></td>
-                <td>The volume of rock or soil that has broken away from the parent slope and moved downslope along or beyond the surface of rupture.</td>
-                <td>Shear stress exceeded shear strength ($\tau > \tau_f$); $FS < 1.0$. Highly fractured, remolded, dilation occurred; lost cohesive bond.</td>
-                <td><b>UNSTABLE / ACTIVELY DEFORMING</b></td>
-              </tr>
-              <tr>
-                <td><b>Subjacent Mass (Mass Below Slip Surface)</b></td>
-                <td>The intact, undisturbed rock or soil mass situated beneath the surface of rupture and forming the stable foundation/bedrock.</td>
-                <td>Resisting shear strength intact; $\tau < \tau_f$; $FS > 1.0$. Preserves native confinement and structural integrity.</td>
-                <td><b>STABLE / INTACT</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>40.2 Mohr-Coulomb Rupture Localization</h3>
-        <p>The failure occurs along the surface of rupture when driving stresses overcome shear resistance:</p>
-        $$\tau_f = c' + (\sigma_n - u) \tan \phi'$$
-        <p>The mass <b>above</b> the rupture surface experiences loss of shear strength, catastrophic displacement, and extensive disaggregation, rendering it <b>unstable</b>. The mass <b>below</b> the surface of rupture remains fully anchored to the autochthonous geological formation, remaining completely <b>stable</b>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q40/bangar_fig10_20_21_landslide_shear_plane.png" alt="Anatomy of a Rotational Landslide (K.M. Bangar, Figs. 10.20 & 10.21)">
-      <figcaption>
-        <strong>Figure 40.1: Anatomy of a Rotational Landslide (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 10, Section 10.9, p. 196, Figs. 10.20 & 10.21).</strong> Authentic plate illustrating landslide components: displaced mass, crown cracks, head scarp, transverse fissures, and the basal <strong>surface of rupture</strong> (shear slip plane) along which downward and outward shear displacement occurs.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: LANDSLIDE ANATOMY AND SHEAR FAILURE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Anatomical Anatomy of a Landslide: Rupture Surface Mechanics</div>
+    <div class="card-body">
+      <p>In slope engineering and geotechnical geomorphology, a <strong>landslide</strong> is defined according to the Varnes (1978) and Cruden & Varnes (1996) international classification as the down-slope movement of a mass of rock, debris, or earth under the direct influence of gravity.</p>
+
+      <ul>
+        <li><strong>Surface of Rupture (Slip Surface / Shear Plane):</strong> The continuous or composite subterranean boundary surface separating the unstable moving slide mass from the stable, undisturbed, stationary parent rock or soil beneath it.
+          <ul>
+            <li>In <em>rotational slides (slumps):</em> The rupture surface is characteristically curved, spoon-shaped, and concave upward.</li>
+            <li>In <em>translational slides (planar slides):</em> The rupture surface is predominantly planar, controlled by preexisting structural discontinuities (bedding planes, joints, foliation, or fault contacts).</li>
+          </ul>
+        </li>
+        <li><strong>Mass Above the Surface of Rupture (The Displaced Mass):</strong> The portion of soil or rock that has undergone internal shear strain, structural disruption, and downslope translation. Because mobilizing gravitational shear stresses have exceeded shear resistance ($\tau > \tau_f$), this entire displaced body is dynamically <strong>unstable</strong>.</li>
+        <li><strong>Mass Below the Surface of Rupture (The Stable In-Situ Substratum):</strong> The underlying intact bedrock, unyielding regolith, or firm basement that remains anchored, coherent, and stationary. The shear stress within this lower mass remains well within its elastic yield limit ($\tau \ll \tau_f$), rendering it fundamentally <strong>stable</strong>.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q40/landslide_anatomy_crown_scarp_rupture_surface.png" alt="Landslide Anatomy Diagram">
+        <div class="tb-caption">
+          <strong>Figure 40.1:</strong> Complete anatomical nomenclature of a rotational landslide (after Varnes 1978) illustrating Crown, Main Scarp, Surface of Rupture, Displaced Unstable Mass, and the underlying In-Situ Stable Substratum.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: FACTOR OF SAFETY AND MOHR-COULOMB -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Geotechnical Criterion: Factor of Safety Inversion Across the Failure Plane</div>
+    <div class="card-body">
+      <p>The stability state of any slope element is mathematically quantified by the <strong>Factor of Safety ($FS$)</strong>:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Mohr-Coulomb Limit Equilibrium & Factor of Safety</div>
+        $$FS = \frac{\tau_f}{\tau_d} = \frac{c' + (\sigma_n - u)\tan\phi'}{\tau_d}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $c'$ is effective cohesion, $\sigma_n$ is total normal stress, $u$ is pore water pressure, $\phi'$ is effective internal friction angle, and $\tau_d$ is the driving gravitational shear stress ($\tau_d = \rho g z \sin\beta$).</p>
+      </div>
+
+      <ul>
+        <li><strong>Along and Above the Rupture Surface ($FS \le 1.0$):</strong> When triggering factors (heavy precipitation, pore pressure rise $\Delta u$, toe undercut, seismic acceleration) reduce effective stress ($\sigma' = \sigma_n - u \to 0$), the factor of safety drops below unity ($FS < 1.0$), initiating shear failure and active sliding.</li>
+        <li><strong>Below the Rupture Surface ($FS > 1.5$):</strong> The intact bedrock below the basal detachment experiences high confining stresses, low pore pressure, and possesses unweathered rock mass cohesion ($c_{\text{rock}} \gg c_{\text{soil}}$), ensuring $FS \gg 1.0$.</li>
+        <li><strong>The Fundamental Rule:</strong> Therefore, across the landslide rupture plane, the distinguishing feature is invariant: <strong>the mass above is unstable, whereas the mass below is stable</strong>.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q40/bangar_fig10_20_21_landslide_shear_plane.png" alt="Landslide Shear Plane from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 40.2 (K.M. Bangar, Fig. 10.20 & 10.21):</strong> Engineering cross-sections showing planar slide along dipping strata and rotational slump along a curved slip surface, clearly demarcating the moving unstable slide mass from the stable bedrock foundation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: VARNES CLASSIFICATION OF SLOPE MOVEMENTS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Varnes Classification of Slope Movements</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Type of Movement</th>
+            <th>Rupture Surface Geometry</th>
+            <th>Kinematic Behavior of Mass Above</th>
+            <th>Behavior of Mass Below</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Rotational Slide (Slump)</strong></td>
+            <td>Curved, concave upward; circular cylindrical.</td>
+            <td>Backward rotation of blocks toward the scarp; highly disrupted and unstable.</td>
+            <td>Stationary, intact substratum forming the spoon-shaped sliding basin.</td>
+          </tr>
+          <tr>
+            <td><strong>Translational Slide (Planar)</strong></td>
+            <td>Planar discontinuity (bedding, foliation, fault).</td>
+            <td>Translates downslope parallel to planar dip; disaggregates into blocks.</td>
+            <td>Unyielding footwall block with dip angle $\theta < \phi'$.</td>
+          </tr>
+          <tr>
+            <td><strong>Debris Flow / Mudflow</strong></td>
+            <td>Channeled or unconfined basal shear boundary.</td>
+            <td>Viscous non-Newtonian fluid slurry; turbulent, fully unstable flow.</td>
+            <td>Eroded bedrock canyon channel or channel floor.</td>
+          </tr>
+          <tr>
+            <td><strong>Rockfall</strong></td>
+            <td>Detachment along vertical release joints.</td>
+            <td>Free fall, bounding, rolling; completely detached dynamic mass.</td>
+            <td>Vertical cliff face / rock escarpment.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q40. What is the distinguishing feature of the mass above and below a landslide ?</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Both masses are stable</div>
-        <div class="opt-item "><strong>(B)</strong> Mass above is stable, whereas mass below is unstable</div>
-        <div class="opt-item correct"><strong>(C)</strong> Mass above is unstable, whereas mass below is stable</div>
-        <div class="opt-item "><strong>(D)</strong> Both masses are unstable</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 40</div>
+        <div class="q-text">What is the distinguishing feature of the mass above and below a landslide ?</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Both masses are stable</div>
+          <div class="opt-node">(B) Mass above is stable, whereas mass below is unstable</div>
+          <div class="opt-node correct">(C) Mass above is unstable, whereas mass below is stable</div>
+          <div class="opt-node">(D) Both masses are unstable</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(C) Mass above is unstable, whereas mass below is stable</strong> [The displaced sliding mass situated above the shear rupture plane has suffered shear failure and motion ($FS < 1$), while the intact substratum below the plane remains anchored and stable ($FS > 1$).]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
-          <p><b>Correct Answer: (C) Mass above is unstable, whereas mass below is stable</b> — In landslide kinematics, the displaced mass situated above the shear failure plane is mechanically <b>unstable</b>, while the underlying intact bedrock mass situated below the slip plane is <b>stable</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Both masses are stable — INCORRECT:</b> If both were stable, no landslide failure or downslope movement could ever take place.</li>
-          <li><b>(B) Mass above is stable, whereas mass below is unstable — INCORRECT:</b> Complete inversion of physical reality; the displaced material that slides downslope is above the slip surface, not below it.</li>
-          <li><b>(C) Mass above is unstable, whereas mass below is stable — CORRECT:</b> Precisely captures the mechanical demarcation defined by the basal shear rupture surface (Varnes 1978).</li>
-          <li><b>(D) Both masses are unstable — INCORRECT:</b> The underlying deep bedrock below the shear plane is not in a state of sliding failure; it forms the stable substrate across which the slide moves.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (C) Mass above is unstable, whereas mass below is stable</div>
+    <div class="card-body">
+      <p><strong>Detailed Geotechnical Forensic Analysis:</strong></p>
+      <ul>
+        <li>By standard geological and geotechnical definition (Varnes 1978; Cruden & Varnes 1996; K.M. Bangar Ch. 10), a landslide consists of a body of displaced rock or soil moving along a discrete <strong>surface of rupture</strong> (slip plane).</li>
+        <li>The material situated <strong>above the surface of rupture</strong> represents the active slide mass that has overcome its shear strength threshold ($\tau > \tau_f$); it undergoes translation, rotation, cracking, and downslope displacement, making it unambiguously <strong>unstable</strong>.</li>
+        <li>The material situated <strong>below the surface of rupture</strong> is the intact, undisturbed bedrock or unyielding substratum that did not fail and remains structurally anchored in place, making it unequivocally <strong>stable</strong>.</li>
+        <li>Thus, the distinguishing feature is that <strong>the mass above is unstable, whereas the mass below is stable</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Mass above is stable, whereas mass below is unstable</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>This option completely reverses the physical reality of slope failure.</li>
+        <li>If the mass above were stable, no downhill displacement or sliding would occur. Gravitational potential energy drives the movement of the overlying mass, not the subterranean substrate beneath the rupture surface.</li>
+        <li>Therefore, claiming the mass above is stable while the mass below is unstable is physically absurd.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Both masses are stable</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>If both the mass above and below the shear surface were stable, there would be no slope movement, and by definition, no landslide could occur.</li>
+        <li>A landslide intrinsically implies active or past failure and displacement of the slope mass. Thus, both masses cannot be stable.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) Both masses are unstable</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>A landslide requires a stationary reference foundation across which displacement takes place.</li>
+        <li>The slip surface marks the exact boundary where shear failure ceases. Below this basal boundary, the Earth's crust is stationary and stable. If the entire underlying crust were also moving, it would represent whole-lithosphere tectonic drift or subduction, not a surficial landslide.</li>
+        <li>Hence, claiming both masses are unstable is incorrect.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Slope Remediation Table</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Engineering Remediation Method</th>
-                <th>Target Landslide Zone</th>
-                <th>Mechanical Principle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Rock Anchors & Fully Grouted Dowels</b></td>
-                <td>Drilled through <b>unstable upper mass into stable lower mass</b></td>
-                <td>Pins the unstable slide mass securely to the stable bedrock, increasing normal stress and shear resistance.</td>
-              </tr>
-              <tr>
-                <td><b>Horizontal Drainage Bores</b></td>
-                <td>Punctures the slip surface into the upper mass</td>
-                <td>Dissipates pore water pressure ($u$), increasing effective stress $\sigma_n' = (\sigma_n - u)$.</td>
-              </tr>
-              <tr>
-                <td><b>Toe Bench / Retaining Gabion Wall</b></td>
-                <td>Base of unstable displaced mass</td>
-                <td>Provides passive resisting force ($P_p$) against driving gravitational moment.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Geotechnical Terminology of Landslide Components</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Anatomical Component</th>
+            <th>Location Relative to Rupture Plane</th>
+            <th>Kinematic & Stability State</th>
+            <th>Engineering Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Crown & Main Scarp</strong></td>
+            <td>Above the head of the rupture surface (in-situ slope).</td>
+            <td>Steep, exposed scarp face; subject to secondary tension cracking and retrogressive spalling.</td>
+            <td>Indicates retrogressive slope failure progression uphill.</td>
+          </tr>
+          <tr>
+            <td><strong>Displaced Slide Mass</strong></td>
+            <td><strong>Strictly Above</strong> the surface of rupture.</td>
+            <td><strong>Unstable ($FS < 1.0$)</strong>; broken by transverse and longitudinal fissures.</td>
+            <td>The moving mass that exerts destructive impact on downhill structures.</td>
+          </tr>
+          <tr>
+            <td><strong>Surface of Rupture</strong></td>
+            <td>The dividing interface between moving and stationary ground.</td>
+            <td>Locus of maximum plastic shear strain; shear stress equals residual shear strength ($\tau = \tau_r$).</td>
+            <td>Target depth for installing subsurface drainage, shear keys, or anchoring piles.</td>
+          </tr>
+          <tr>
+            <td><strong>In-Situ Substratum (Bedrock)</strong></td>
+            <td><strong>Strictly Below</strong> the surface of rupture.</td>
+            <td><strong>Stable ($FS \gg 1.0$)</strong>; rigid, undisturbed parent geological formation.</td>
+            <td>Anchor horizon where rock bolts, tie-back tendons, and bored piles must be socketed.</td>
+          </tr>
+          <tr>
+            <td><strong>Toe of Surface of Rupture</strong></td>
+            <td>Intersection of rupture surface with original ground surface.</td>
+            <td>Passive resistance zone; removal by river erosion or road cutting triggers reactivation.</td>
+            <td>Key site for constructing retaining walls, gabions, and rockfill counterweight berms.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Slope Stability & Landslide Engineering</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Infinite Slope Factor of Safety in Dry Sand</div>
+        <p>A planar landslide occurs in dry cohesionless sand ($c' = 0$) with internal friction angle $\phi' = 35^\circ$. If the slope angle is $\beta = 28^\circ$, calculate the Factor of Safety ($FS$) against sliding.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>For an infinite slope in dry cohesionless material, the Factor of Safety is independent of depth:</p>
+        $$FS = \frac{\tan\phi'}{\tan\beta}$$
+        $$\tan 35^\circ \approx 0.7002, \qquad \tan 28^\circ \approx 0.5317$$
+        $$FS = \frac{0.7002}{0.5317} \approx 1.317$$
+        <p><strong>Final Answer:</strong> The slope is stable with a Factor of Safety of $1.32$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Influence of Groundwater Seepage on Stability</div>
+        <p>For the same slope ($\beta = 28^\circ$, $\phi' = 35^\circ$), calculate the Factor of Safety when groundwater seepage occurs parallel to the slope with the water table at the ground surface. Assume saturated unit weight $\gamma_{\text{sat}} = 20\text{ kN/m}^3$ and water unit weight $\gamma_w = 9.81\text{ kN/m}^3$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>With steady seepage parallel to the slope face, the buoyant unit weight $\gamma' = \gamma_{\text{sat}} - \gamma_w = 20 - 9.81 = 10.19\text{ kN/m}^3$ operates in the shear resistance:</p>
+        $$FS = \left(\frac{\gamma'}{\gamma_{\text{sat}}}\right) \frac{\tan\phi'}{\tan\beta}$$
+        $$FS = \left(\frac{10.19}{20.0}\right) \times 1.317 = 0.5095 \times 1.317 \approx 0.671$$
+        <p><strong>Final Answer:</strong> The Factor of Safety drops to $0.67$ ($FS < 1.0$), causing catastrophic liquefaction sliding!</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Critical Slide Depth for a Cohesive Soil</div>
+        <p>A clay slope with cohesion $c' = 24\text{ kPa}$, $\phi' = 0$, unit weight $\gamma = 18\text{ kN/m}^3$, and slope angle $\beta = 30^\circ$ experiences planar translation. Calculate the critical depth $z_c$ at which failure ($FS = 1.0$) initiates.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Driving shear stress along a plane at depth $z$: $\tau_d = \gamma z \sin\beta \cos\beta$. Resisting shear strength: $\tau_f = c'$.</p>
+        $$FS = \frac{c'}{\gamma z \sin\beta \cos\beta} = 1.0 \implies z_c = \frac{c'}{\gamma \sin\beta \cos\beta}$$
+        $$\sin 30^\circ = 0.5, \qquad \cos 30^\circ = 0.8660 \implies \sin 30^\circ \cos 30^\circ = 0.4330$$
+        $$z_c = \frac{24\text{ kPa}}{18\text{ kN/m}^3 \times 0.4330} = \frac{24}{7.794} \approx 3.08\text{ m}$$
+        <p><strong>Final Answer:</strong> The critical depth of the rupture surface is $3.08\text{ m}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Remediation by Toe Unloading vs. Toe Weighting</div>
+        <p>Explain why excavating the toe of a landslide increases instability, while dumping rockfill at the toe stabilizes the slope.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>In a rotational slump, the failure surface curves upward at the toe. The mass of soil at the toe creates a <em>restoring moment</em> about the center of rotation: $M_R = W_{\text{toe}} \cdot x_{\text{toe}}$. Excavating the toe removes this stabilizing resisting moment, reducing the overall Factor of Safety and triggering sliding. Conversely, adding a rockfill berm (counterweight) at the toe increases the restoring moment, driving $FS > 1.5$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Pore Water Pressure Ratio ($r_u$) Calculation</div>
+        <p>Define the pore pressure ratio $r_u$ and calculate its value at a slip surface depth $z = 8\text{ m}$ in soil with $\gamma = 19.6\text{ kN/m}^3$ when the pore water pressure is $u = 45\text{ kPa}$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The pore pressure ratio is defined as the ratio of pore water pressure to total overburden vertical stress:</p>
+        $$r_u = \frac{u}{\gamma z}$$
+        $$r_u = \frac{45\text{ kPa}}{19.6\text{ kN/m}^3 \times 8\text{ m}} = \frac{45}{156.8} \approx 0.287$$
+        <p><strong>Final Answer:</strong> The pore pressure ratio is $r_u = 0.29$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Seismic Pseudostatic Coefficient ($k_h$)</div>
+        <p>During an earthquake with peak horizontal acceleration $a_h = 0.25g$, calculate the pseudostatic seismic driving force on a landslide block of mass $M = 50,000\text{ metric tons}$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$F_{eq} = k_h W = \left(\frac{a_h}{g}\right) M g = 0.25 \times (50,000 \times 10^3\text{ kg}) \times 9.81\text{ m/s}^2$$
+        $$F_{eq} = 0.25 \times 4.905 \times 10^8\text{ N} = 1.226 \times 10^8\text{ N} = 122.6\text{ MN}$$
+        <p><strong>Final Answer:</strong> The earthquake exerts an additional downslope horizontal inertial force of $122.6\text{ Meganewtons}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Rock Slope Planar Failure Daylighting Rule</div>
+        <p>State the structural kinematic daylighting condition required for a planar slide to occur on a rock slope with face dip $\alpha_f$ and joint plane dip $\alpha_p$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>For planar rock slope failure to be kinematically possible (Markland's test):</p>
+        <ol>
+          <li>The joint plane must strike approximately parallel to the slope face (within $\pm 20^\circ$).</li>
+          <li>The joint dip must be less than the slope face dip ($\alpha_p < \alpha_f$), meaning the joint <strong>daylights</strong> on the slope face.</li>
+          <li>The joint dip must exceed the friction angle of the joint surface ($\alpha_p > \phi$).</li>
+          <li>Combined kinematic criterion: $\phi < \alpha_p < \alpha_f$.</li>
+        </ol>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Landslide Early Warning via Inclinometers</div>
+        <p>How does a borehole inclinometer detect the exact depth of the landslide surface of rupture prior to catastrophic ground collapse?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>A grooved casing is anchored deep into the stable bedrock below the suspected slide zone. An inclinometer probe measures casing tilt profile with depth over time. Above the rupture surface, the moving unstable mass displaces laterally, producing a sharp, discrete step (shear kink) in the cumulative displacement profile at the exact elevation of the slip plane. Below this depth, displacement remains zero, proving that the underlying substratum is stable.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

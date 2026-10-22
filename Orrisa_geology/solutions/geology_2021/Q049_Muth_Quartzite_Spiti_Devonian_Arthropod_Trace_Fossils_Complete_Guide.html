@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q49: Tethyan Himalayan Paleozoic: Muth Quartzite & Arthropod Trace Fossils | OPSC Geology 2021 Masterclass</title>
+<title>Q049: Tethyan Himalayan Stratigraphy: Muth Quartzite Devonian Arthropod Trace Fossils (Cruziana) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,286 +89,583 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q49" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Himalayan Stratigraphy & Ichnology</div>
-    <h1>Q49: Tethyan Himalayan Paleozoic: Muth Quartzite & Arthropod Trace Fossils</h1>
+    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Paleozoic Ichnology</div>
+    <h1>Q049: Muth Quartzite: Devonian Arthropod Trace Fossils (Cruziana)</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> O.N. Bhargava (The Indian Subcontinent and Tethys, 2011); Adolf Seilacher (Cruziana Stratigraphy, 1970)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 49<br>
+<strong>Authoritative References:</strong> O.N. Bhargava & U.K. Bassi, <em>The Tethyan Himalayan Succession in Spiti</em> (Mem. Geol. Surv. India, Vol. 124, 1998, pp. 112–128); Adolf Seilacher, <em>Trace Fossil Analysis</em> (Springer-Verlag, 2007, Ch. 2: Cruziana Stratigraphy); S.V. Srikantia, <em>The Muth Quartzite: A Reappraisal of its Stratigraphic Position</em> (Jour. Geol. Soc. India, 1981); G.B. Mahapatra, <em>Textbook of Indian Stratigraphy</em> (pp. 172–175).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>49.1 Stratigraphic Setting of the Muth Quartzite in Spiti</h3>
-        <p>In Himalayan Paleozoic stratigraphy (O.N. Bhargava, 2011, <i>The Indian Subcontinent and Tethys</i>; Gansser, 1964; Srikantia, 1981; Ramakrishnan & Vaidyanadhan, Vol. 2, Ch. 27), the <b>Muth Quartzite</b> is one of the most prominent, snow-white regional marker horizons running continuously along the Tethyan Himalayan belt from Kashmir, Zanskar, and Spiti through Kumaon into Nepal:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Lithostratigraphic Formation</th>
-                <th>Chronostratigraphic Age</th>
-                <th>Diagnostic Lithological Facies</th>
-                <th>Paleoenvironmental & Paleontological Characteristics</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Lipak Formation (Overlying)</b></td>
-                <td>Early Carboniferous (Tournaisian-Visean)</td>
-                <td>Fossiliferous marine limestones, gypsum, and dark shales.</td>
-                <td>Syringothyris fauna, productive crinoidal biostromes.</td>
-              </tr>
-              <tr>
-                <td><b>Muth Quartzite (Marker Horizon)</b></td>
-                <td><b>Middle to Late Devonian</b></td>
-                <td><b>Super-mature, massive, pure white orthoquartzite (> 95-98% quartz) with silica cement and cross-bedding.</b></td>
-                <td>High-energy coastal barrier, shoreface, and beach sands. Body fossils are exceedingly rare due to wave winnowing and quartz recrystallization. <b>Dominated by Arthropod Trace Fossils (Ichnofossils).</b></td>
-              </tr>
-              <tr>
-                <td><b>Takche Formation (Underlying)</b></td>
-                <td>Late Ordovician to Silurian</td>
-                <td>Coralline limestones, siltstones, and dolomites.</td>
-                <td>Halysites, Favosites coral-stromatoporoid bioherms.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>49.2 Ichnology of the Muth Quartzite</h3>
-        <p>Because body fossils are virtually absent, the environmental and biological dynamics of the Devonian Muth Quartzite are deciphered exclusively from trace fossils (ichnofossils) belonging to the shallow-marine <b>Cruziana and Skolithos ichnofacies</b>:</p>
-        <ul>
-          <li><b>Cruziana:</b> Bilobed furrowing and feeding traces produced by primitive benthic <b>arthropods (trilobites)</b>.</li>
-          <li><b>Rusophycus:</b> Bilobed resting and nesting traces of <b>arthropods</b>.</li>
-          <li><b>Diplichnites:</b> Parallel trackways of walking <b>arthropod appendages</b>.</li>
-        </ul>
-        <p>Hence, the trace fossils famously described and identified from the Lower/Middle Devonian Muth Quartzite in Spiti are unequivocally <b>arthropod trace fossils</b>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q49/mahapatra_p173_spiti_muth_quartzite.png" alt="Paleozoic Stratigraphy of Spiti Basin: Muth Quartzite (G.B. Mahapatra, p. 173)">
-      <figcaption>
-        <strong>Figure 49.1: Paleozoic Stratigraphy of Spiti Basin: Muth Quartzite (G.B. Mahapatra, <em>A Text-Book of Geology</em>, Chapter 22, p. 173).</strong> Authentic plate describing the Devonian Muth Quartzite of the Spiti Tethyan sedimentary zone: pure snow-white orthoquartzite (&gt;98% SiO<sub>2</sub>) deposited in an open shallow-marine barrier beach environment, preserving diagnostic ichnofossils and arthropod trackways.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: MUTH QUARTZITE GEOLOGY AND ENVIRONMENT -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Muth Quartzite: Regional Stratigraphic Marker of the Tethyan Himalayas</div>
+    <div class="card-body">
+      <p>The <strong>Muth Quartzite</strong> (named after the village of Muth in the Pin Valley of Spiti, Himachal Pradesh, by Ferdinand Stoliczka in 1865) represents the most conspicuous, widely traceable, and visually spectacular lithostratigraphic marker bed across the entire <strong>Tethyan Himalayan Paleozoic succession</strong> from Kashmir, Spiti, Kinnaur, and Garhwal to Nepal and Bhutan:</p>
+
+      <ul>
+        <li><strong>Lithological Characteristics:</strong> A remarkably uniform, massive, snow-white to light-grey, cliff-forming <strong>super-mature quartz arenite / orthoquartzite</strong> ($150-300\text{ m}$ thick). Composed of $>98\%$ monocrystalline quartz grains that are extremely well-rounded, well-sorted, and cemented by syntaxial siliceous quartz overgrowths, with secondary dolomitic and calcareous patches near the top.</li>
+        <li><strong>Stratigraphic Position & Age:</strong> Overlies the Silurian Sanugba Group (Takche Formation coral limestones) and underlies the Lower Carboniferous Lipak Formation (fossiliferous crinoidal limestone). Its chronostratigraphic age is established as <strong>Early to Middle Devonian</strong>.</li>
+        <li><strong>Depositional Setting:</strong> Represents high-energy coastal barrier-beach complexes, tidal shoals, and shallow subtidal-to-intertidal sand sheets deposited along the northern passive continental margin of eastern Gondwanaland facing the Paleo-Tethys Ocean.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q49/spiti_muth_quartzite_devonian_paleoenvironmental.png" alt="Spiti Muth Quartzite Paleogeography">
+        <div class="tb-caption">
+          <strong>Figure 49.1:</strong> Stratigraphic section and paleoenvironmental reconstruction of the Devonian Muth Quartzite in the Spiti Valley, showing the transition from Silurian shelf carbonates to pure quartz arenite tidal barrier complexes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MAHAPATRA EXCERPT AND ARTHROPOD ICHNOLOGY -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Arthropod Trace Fossils (Ichnofossils) in the Muth Quartzite</div>
+    <div class="card-body">
+      <p>Because intense wave agitation in high-energy quartz beach regimes destroyed delicate body fossils (shells and carapaces), the Muth Quartzite is almost devoid of macro-invertebrate body fossils. However, it preserves an outstanding and biostratigraphically diagnostic suite of <strong>arthropod trace fossils</strong>:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Diagnostic Arthropod Ichnofacies of the Muth Quartzite</div>
+        $$\mathbf{Cruziana} \text{ (Locomotion/Feeding Burrow)} \quad \longleftrightarrow \quad \mathbf{Rusophycus} \text{ (Resting Excavation Nest)}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Constructed by benthic marine arthropods (trilobites, aglaspidids, or eurypterids) dragging paired appendages across shallow-water sand beds.</p>
+      </div>
+
+      <ul>
+        <li><strong><em>Cruziana</em> (Ribbon-like Crawling Traces):</strong> Bilobed, furrowed crawling and feeding trails (pascichnia) showing distinctive chevron-patterned scratch marks made by the rhythmic digging of arthropod endopodites as they ploughed through the sand in search of detritus.</li>
+        <li><strong><em>Rusophycus</em> (Resting Traces):</strong> Bilobed, coffee-bean shaped excavations (cubichnia) formed when the arthropod settled onto the sand bed and excavated a temporary resting burrow.</li>
+        <li><strong><em>Diplichnites</em> & <em>Dimorphichnus</em>:</strong> Trackways composed of two parallel rows of individual walking dot/dash footprints produced during rapid locomotion.</li>
+        <li><strong>Authoritative Classification:</strong> All these diagnostic trace fossils are created exclusively by the phylum <strong>Arthropoda</strong> (primarily Trilobita and primitive marine chelicerates).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q49/mahapatra_p173_spiti_muth_quartzite.png" alt="Mahapatra Muth Quartzite">
+        <div class="tb-caption">
+          <strong>Figure 49.2 (G.B. Mahapatra, p. 173):</strong> Textbook summary of the Muth Quartzite in Spiti, confirming its Devonian age and the classic occurrence of arthropod trace fossils.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON OF FOSSIL TYPES IN SPITI PALEOZOIC -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Paleozoic Fossil Succession of Spiti</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Formation</th>
+            <th>Geological System / Age</th>
+            <th>Dominant Rock Type</th>
+            <th>Primary Fossil Content & Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lipak Formation</strong></td>
+            <td>Early Carboniferous (Tournaisian-Visean)</td>
+            <td>Crinoidal limestones and dolomites.</td>
+            <td>Brachiopods (<em>Syringothyris cuspidata</em>), crinoids, rugose corals.</td>
+          </tr>
+          <tr>
+            <td><strong>Muth Quartzite</strong></td>
+            <td><strong>Early to Middle Devonian</strong></td>
+            <td><strong>Snow-white, pure orthoquartzite.</strong></td>
+            <td><strong>Arthropod Trace Fossils (<em>Cruziana, Rusophycus, Diplichnites</em>).</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Takche Formation</strong></td>
+            <td>Silurian (Llandovery-Ludlow)</td>
+            <td>Coralline limestones, calcareous mudstones.</td>
+            <td>Tabulate corals (<em>Favosites, Halysites</em>), brachiopods (<em>Pentamerus</em>).</td>
+          </tr>
+          <tr>
+            <td><strong>Shian Formation</strong></td>
+            <td>Late Ordovician</td>
+            <td>Reddish-brown quartzites and conglomerates.</td>
+            <td>Brachiopods (<em>Orthis</em>), solitary corals.</td>
+          </tr>
+          <tr>
+            <td><strong>Kunzum La Formation</strong></td>
+            <td>Cambrian</td>
+            <td>Greenish shales, siltstones, quartzites.</td>
+            <td>Trilobite body fossils (<em>Redlichia noetlingi, Ptychoparia</em>).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q49. Which trace fossils are described from the Lower Devonian Muth Quartzite in Spiti, India ?</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Nautilus</div>
-        <div class="opt-item "><strong>(B)</strong> Unio</div>
-        <div class="opt-item "><strong>(C)</strong> Pelecypod</div>
-        <div class="opt-item correct"><strong>(D)</strong> Arthropod</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 49</div>
+        <div class="q-text">Which trace fossils are described from the Lower Devonian Muth Quartzite in Spiti, India ?</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Nautilus</div>
+          <div class="opt-node">(B) Unio</div>
+          <div class="opt-node">(C) Pelecypod</div>
+          <div class="opt-node correct">(D) Arthropod</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(D) Arthropod</strong> [The Muth Quartzite preserves diagnostic arthropod (trilobite/eurypterid) locomotion and resting trace fossils, specifically bilobed Cruziana and Rusophycus.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) Arthropod</b> — The trace fossils described from the Lower-Middle Devonian Muth Quartzite in Spiti represent the <i>Cruziana</i> and <i>Rusophycus</i> ichnofacies, which are trackways and burrows created by <b>Arthropods</b> (trilobites and benthic arthropod ancestors).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Nautilus — INCORRECT:</b> <i>Nautilus</i> is a pelagic shelled cephalopod mollusc whose fossil forms leave body fossils (shells), not typical sandstone trace fossil trackways in the Muth Quartzite.</li>
-          <li><b>(B) Unio — INCORRECT:</b> <i>Unio</i> is a modern freshwater bivalve mollusc (unionid) found in Cenozoic fresh waters; it did not exist in the Devonian marine Tethys.</li>
-          <li><b>(C) Pelecypod — INCORRECT:</b> While bivalves (pelecypods) produce <i>Lockeia</i> bivalve resting traces, the predominant, diagnostic trace fossil assemblage described from the Muth Quartzite is the arthropod suite.</li>
-          <li><b>(D) Arthropod — CORRECT:</b> The diagnostic bilobed tracks and walking traces (*Cruziana*, *Rusophycus*, *Diplichnites*) recorded from the Muth Quartzite are universally attributed to marine <b>arthropods</b>.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (D) Arthropod</div>
+    <div class="card-body">
+      <p><strong>Detailed Paleontological Forensic Analysis:</strong></p>
+      <ul>
+        <li>The <strong>Muth Quartzite</strong> of the Spiti Valley (Himachal Pradesh) is composed of mature, high-energy marine quartz arenite. Due to intense wave churning, calcareous shells of marine organisms were completely ground to sand; however, bedding surfaces preserve magnificent <strong>ichnofossils (trace fossils)</strong>.</li>
+        <li>The dominant, world-renowned trace fossils documented from the Muth Quartzite are <em>Cruziana</em>, <em>Rusophycus</em>, and <em>Diplichnites</em> (Bhargava & Bassi 1998; Bagati & Thakur 1993; Seilacher 2007).</li>
+        <li>In biological taxonomy, <em>Cruziana</em> (furrowed crawling/scratch trails) and <em>Rusophycus</em> (bilobed resting excavation nests) were produced by benthic <strong>Arthropods</strong> (specifically marine trilobites, eurypterids, or phyllocarid crustaceans) raking their paired walking appendages through the sand.</li>
+        <li>Therefore, Option <strong>(D) Arthropod</strong> is the scientifically precise, definitive correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Nautilus</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><em>Nautilus</em> is a modern genus of coiled cephalopod molluscs (Class Cephalopoda). It represents a <strong>body fossil</strong> (calcareous shell), not a trace fossil.</li>
+        <li>Furthermore, true <em>Nautilus</em> did not exist in the Devonian, and cephalopods do not make bilobed crawling trace burrows in sandstones.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Unio</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><em>Unio</em> is a genus of freshwater unionid bivalve molluscs that evolved much later in the Mesozoic and Cenozoic. It is a body fossil organism living in continental rivers and lakes, not a Paleozoic marine trace fossil.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Pelecypod</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Pelecypoda (Bivalvia) is a taxonomic class of molluscs having bivalved shells. While bivalves can produce resting traces (e.g., <em>Lockeia</em>), the primary diagnostic ichnogenus documented and classically celebrated from the Muth Quartzite is <strong><em>Cruziana</em></strong>, which is exclusively formed by <strong>arthropods</strong>, not pelecypods.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Spiti Paleozoic Succession Suite</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Formation</th>
-                <th>Age</th>
-                <th>Diagnostic Fauna / Marker Attribute</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Kuling Formation</b></td>
-                <td>Late Permian</td>
-                <td><i>Cyclolobus</i> ammonoids, <i>Costiferina</i> brachiopods</td>
-              </tr>
-              <tr>
-                <td><b>Po Formation</b></td>
-                <td>Carboniferous</td>
-                <td><i>Fenestella</i> bryozoan shale, <i>Protoretepora</i></td>
-              </tr>
-              <tr>
-                <td><b>Lipak Formation</b></td>
-                <td>Early Carboniferous</td>
-                <td><i>Syringothyris cuspidata</i> brachiopod limestone</td>
-              </tr>
-              <tr>
-                <td><b>Muth Quartzite</b></td>
-                <td><b>Devonian</b></td>
-                <td><b>Snow-white orthoquartzite; Arthropod trace fossils (*Cruziana*)</b></td>
-              </tr>
-              <tr>
-                <td><b>Takche Formation</b></td>
-                <td>Silurian</td>
-                <td>Tabulate corals (<i>Favosites, Halysites</i>)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Ethological Classification of Trace Fossils (Ichnofossils)</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Ethological Category</th>
+            <th>Biological Behavior</th>
+            <th>Characteristic Ichnogenera</th>
+            <th>Typical Producing Organism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cubichnia</strong></td>
+            <td>Resting traces made while stationary.</td>
+            <td><strong><em>Rusophycus</em></strong>, <em>Lockeia</em>, <em>Asteriacites</em>.</td>
+            <td><strong>Arthropods (Trilobites)</strong>, Bivalves, Ophiuroids (Brittle stars).</td>
+          </tr>
+          <tr>
+            <td><strong>Pascichnia</strong></td>
+            <td>Locomotion combined with active deposit-feeding.</td>
+            <td><strong><em>Cruziana</em></strong>, <em>Helminthopsis</em>, <em>Phycosiphon</em>.</td>
+            <td><strong>Arthropods</strong>, Deposit-feeding marine worms.</td>
+          </tr>
+          <tr>
+            <td><strong>Repichnia</strong></td>
+            <td>Pure directed crawling / walking locomotion traces.</td>
+            <td><strong><em>Diplichnites</em></strong>, <em>Dimorphichnus</em>, <em>Cruziana</em>.</td>
+            <td><strong>Arthropods</strong>, Gastropods, Vertebrates.</td>
+          </tr>
+          <tr>
+            <td><strong>Fodinichnia</strong></td>
+            <td>Subsurface semi-permanent feeding burrows.</td>
+            <td><em>Thalassinoides</em>, <em>Planolites</em>, <em>Ophiomorpha</em>.</td>
+            <td>Decapod crustaceans, polychaete annelids.</td>
+          </tr>
+          <tr>
+            <td><strong>Domichnia</strong></td>
+            <td>Permanent dwelling cylindrical tubes / borings.</td>
+            <td><em>Skolithos</em>, <em>Arenicolites</em>, <em>Trypanites</em>.</td>
+            <td>Suspension feeders, phoronids, tube-dwelling worms.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Ichnology & Tethyan Stratigraphy</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Distinguishing Cruziana from Rusophycus</div>
+        <p>Explain the morphological and behavioral distinction between <em>Cruziana</em> and <em>Rusophycus</em> on a sandstone bedding plane.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong><em>Cruziana</em> (Pascichnia / Repichnia):</strong> Elongate, continuous, ribbon-like bilobed trail exhibiting a central longitudinal groove flanked by two lateral lobes covered in chevron-like scratch marks. Formed by an arthropod <em>actively crawling and ploughing forward</em> through sediment.</li>
+          <li><strong><em>Rusophycus</em> (Cubichnia):</strong> Isolated, ovate to coffee-bean shaped, bilobed excavation nest reflecting the exact dimensions of the stationary organism. Formed when the arthropod <em>halted and dug itself into the substrate</em> for concealment or resting.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Seilacherian Ichnofacies of the Muth Quartzite</div>
+        <p>Which standard Seilacherian marine ichnofacies is represented by the <em>Cruziana-Skolithos</em> assemblage in the Muth Quartzite, and what bathymetric zone does it define?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>It represents the <strong><em>Cruziana</em> Ichnofacies</strong> grading shoreward into the <strong><em>Skolithos</em> Ichnofacies</strong>. The <em>Cruziana</em> ichnofacies characterizes shallow subtidal continental shelf regimes situated between the daily fair-weather wave base and the storm wave base (water depths typically $5-50\text{ m}$), with moderate wave energy, fine-to-medium sand substrates, and abundant benthic nutrients.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Super-Maturity of Quartz Arenites</div>
+        <p>The Muth Quartzite has a quartz index $>98\%$ and a rounded grain roundness index $>0.6$. What chemical and mechanical processes produce such super-mature quartz arenites?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Such extreme quartz purity requires: (1) Intensely warm, humid, tropical chemical weathering of the crystalline source landmass (destroying all unstable feldspars, micas, and ferromagnesians); (2) Prolonged eolian or polycyclic abrasion rounding the resistant quartz grains; and (3) Extensive marine beach and shoreface wave winnowing that completely strips out fine clay matrix.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Biostratigraphic Range of Cruziana</div>
+        <p>Why can <em>Cruziana</em> serve as an effective biostratigraphic tool ("Cruziana Stratigraphy" of Adolf Seilacher) in Lower Paleozoic rocks devoid of body fossils?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Because the paired walking appendages (endopodites and exopodites) of trilobites underwent rapid morphological evolution throughout the Cambrian, Ordovician, Silurian, and Devonian, the precise angle, spacing, bundling, and symmetry of the claw scratches on the lobes of <em>Cruziana</em> change systematically through geological time, allowing species-level ichnostratigraphic biozonation.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Identification of the Type Locality of Muth Quartzite</div>
+        <p>Where is the historical type section of the Muth Quartzite located, and who first designated it?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The type locality is situated near the village of <strong>Muth (Mudh)</strong> along the Pin River in the Spiti Valley, Lahaul & Spiti District of Himachal Pradesh. It was first named and described by the pioneering Austro-Czech paleontologist <strong>Ferdinand Stoliczka in 1865</strong>.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Overlying Carboniferous Formations in Spiti</div>
+        <p>What formation directly overlies the Muth Quartzite in the Spiti Valley, and what major fossil group marks its base?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The Muth Quartzite is conformably overlain by the <strong>Lipak Formation (Kanawar Group)</strong> of Early Carboniferous (Tournaisian-Visean) age. Its base is composed of dark, bituminous, fossiliferous limestones packed with the diagnostic spiriferid brachiopod <strong><em>Syringothyris cuspidata</em></strong> and crinoid columnals.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Preservation Potential of Trace Fossils vs. Body Fossils</div>
+        <p>Why are trace fossils preserved in high-energy quartz arenites where body fossils are absent?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Body fossils are composed of soluble mineral phases (aragonite, calcite, chitin) that are easily dissolved by acidic pore waters or mechanically pulverized by surf waves in porous sands. In contrast, trace fossils are <strong>sedimentary structures</strong> (topographic reliefs in the rock fabric itself) cast by sand and cemented during diagenetic quartz syntaxial overgrowth, making them immune to post-depositional carbonate dissolution.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Tectonic Significance of the Muth Quartzite in Himalayan Geology</div>
+        <p>In which structural-tectonic zone of the Himalayas does the Muth Quartzite occur: Sub-Himalaya, Lesser Himalaya, Higher Himalaya, or Tethyan Himalaya?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>It occurs exclusively within the <strong>Tethyan (Tibetan) Himalayan Zone</strong>, situated north of the Main Central Thrust (MCT) and Higher Himalayan Crystalline basement, bounded to the north by the Indus-Tsangpo Suture Zone (ITSZ).</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

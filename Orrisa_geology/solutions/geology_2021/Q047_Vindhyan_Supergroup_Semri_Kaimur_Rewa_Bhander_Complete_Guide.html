@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q47: Vindhyan Supergroup Lithostratigraphy: Semri, Kaimur, Rewa & Bhander | OPSC Geology 2021 Masterclass</title>
+<title>Q047: Proterozoic Purana Basins: Vindhyan Supergroup Lithostratigraphy (Semri, Kaimur, Rewa, Bhander) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,255 +89,596 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q47" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Purana Basins</div>
-    <h1>Q47: Vindhyan Supergroup Lithostratigraphy: Semri, Kaimur, Rewa & Bhander</h1>
+    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Proterozoic Purana Basins</div>
+    <h1>Q047: Vindhyan Supergroup: Semri, Kaimur, Rewa, and Bhander Groups</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> J.B. Auden (Vindhyan Sedimentation, 1933); Ramakrishnan & Vaidyanadhan (Vol. 1, Ch. 12); M.S. Krishnan (Ch. 7)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 47<br>
+<strong>Authoritative References:</strong> J.B. Auden, <em>Vindhyan Sedimentation in the Son Valley, Mirzapur District</em> (Mem. Geol. Surv. India, Vol. 62, 1933); Ramakrishnan & Vaidyanadhan, <em>Geology of India</em> (Vol. 1, Ch. 12: Purana Basins — Vindhyan Supergroup, pp. 315–354); M.S. Krishnan, <em>Geology of India and Burma</em> (Ch. 7: The Vindhyan System); G.B. Mahapatra, <em>Textbook of Physical Geology & Indian Stratigraphy</em> (pp. 164–167).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>47.1 The Mesoproterozoic-Neoproterozoic Vindhyan Supergroup</h3>
-        <p>In Indian Precambrian stratigraphy (Auden, 1933; Ramakrishnan & Vaidyanadhan, <i>Geology of India</i>, Vol. 1, Ch. 12; M.S. Krishnan, Ch. 7), the <b>Vindhyan Supergroup</b> represents one of the world's most spectacular, undeformed intracratonic Purana sedimentary basins, covering $> 100,000\text{ km}^2$ in central India. Resting with profound unconformity upon the Archean Bundelkhand Granite and Bijawar Group, it is subdivided into four well-defined groups:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Supergroup Division</th>
-                <th>Group Name</th>
-                <th>Dominant Lithologies</th>
-                <th>Major Formations & Economic Minerals</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td rowspan="3"><b>UPPER VINDHYAN<br>(Predominantly Arenaceous)</b></td>
-                <td><b>4. Bhander Group (Top)</b></td>
-                <td>Shales, sandstones, stromatolitic limestones.</td>
-                <td><b>Upper Bhander Sandstone</b> (premier building stone: Red Fort, Sanchi Stupa), Sirbu Shale, Bhander Limestone.</td>
-              </tr>
-              <tr>
-                <td><b>3. Rewa Group</b></td>
-                <td>Quartzites, sandstones, and carbonaceous/ferruginous shales.</td>
-                <td>Govindgarh Sandstone, Jhiri Shale, Panna Shale (<b>diamondiferous conglomerate horizons</b>).</td>
-              </tr>
-              <tr>
-                <td><b>2. Kaimur Group</b></td>
-                <td>Thick, massive orthoquartzites, arenites, and subordinate shales.</td>
-                <td>Dhandraul Quartzite, Scarp Sandstone, Bijaigarh Shale (pyrite-bearing).</td>
-              </tr>
-              <tr>
-                <td><b>LOWER VINDHYAN<br>(Calc-Argillaceous)</b></td>
-                <td><b>1. Semri Group (Base)</b></td>
-                <td>Carbonates, volcaniclastics (porcellanites), and basal conglomerates.</td>
-                <td>Rohtas Limestone, Glauconitic Sandstone, <b>Porcellanite Formation</b> (felsic tuffs), Kajrahat Limestone.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>47.2 Structural Boundary: The Great Boundary Fault (GBF)</h3>
-        <p>The western margin of the Vindhyan basin is sharply truncated against the pre-Vindhyan rocks of the Aravalli-Delhi belt by the monumental <b>Great Boundary Fault (GBF)</b> of Rajasthan, a regional thrust with over $800\text{ km}$ of strike length. The succession is celebrated for the world's oldest putative multicellular algae/metazoan trace fossils and pristine stromatolite assemblages (e.g. <i>Collenia, Conophyton</i>).</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q47/mahapatra_p165_vindhyan_four_groups.png" alt="Vindhyan Supergroup Stratigraphic Succession (G.B. Mahapatra, p. 165)">
-      <figcaption>
-        <strong>Figure 47.1: Vindhyan Supergroup Stratigraphic Succession (G.B. Mahapatra, <em>A Text-Book of Geology</em>, Chapter 22, p. 165 / book p. 314).</strong> Authentic textbook table detailing the four-fold classification of the Vindhyan Supergroup in Central India: <strong>Semri Group</strong> (Lower Vindhyan, marine carbonates, porcellanite, and basal conglomerate), unconformably overlain by the Upper Vindhyan groups: <strong>Kaimur Group</strong> (scarp sandstones), <strong>Rewa Group</strong> (diamondiferous Panna shales and sandstones), and <strong>Bhander Group</strong> (red sandstones and stromatolitic limestones).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: VINDHYAN SUPERGROUP STRATIGRAPHIC ARCHITECTURE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Vindhyan Supergroup: Architecture of India's Premier Purana Basin</div>
+    <div class="card-body">
+      <p>The <strong>Vindhyan Supergroup</strong> occupies a vast, crescent-shaped intracratonic sag basin (the Great Vindhyan Basin) covering over $104,000\text{ km}^2$ across Madhya Pradesh, Uttar Pradesh, Rajasthan, and Bihar. Resting unconformably over Archean granitic basement (Bundelkhand Gneiss) and Paleoproterozoic folded metasediments (Bijawar and Gwalior Groups), it represents an undeformed to gently warped Proterozoic shallow marine-to-continental sedimentary pile up to $4,500\text{ m}$ thick:</p>
+
+      <ul>
+        <li><strong>Classical Subdivisions:</strong> Stratigraphically, the Vindhyan Supergroup is divided into two primary divisions and <strong>four canonical groups</strong> (in ascending stratigraphic order):
+          <ol>
+            <li><strong>Lower Vindhyan:</strong>
+              <ul>
+                <li><strong>Semri Group:</strong> Dominated by marine carbonate-clastic cycles (basal conglomerate, Kajrahat Limestone, Porcellanite Formation, Olive Shales, Fawn Limestone, and Rohtas Limestone). Contains diverse stromatolites, microfossils, and volcaniclastic tuffs dated between $\sim 1700\text{ Ma}$ and $1600\text{ Ma}$.</li>
+              </ul>
+            </li>
+            <li><strong>Upper Vindhyan:</strong> Separated from the Semri Group by a regional erosional unconformity marked by the disappearance of extensive marine carbonates and the onset of mature clastic sedimentation:
+              <ul>
+                <li><strong>Kaimur Group:</strong> Dominated by quartzose sandstones, conglomerates, and orthoquartzites (Dhandraul Quartzite) recording high-energy fluvial to coastal barrier regimes ($\sim 1150-1000\text{ Ma}$).</li>
+                <li><strong>Rewa Group:</strong> Rhythmic alternation of shales and sandstones (Panna Shale, Asan Sandstone, Jhiri Shale, Govindgarh Sandstone). Famous for diamondiferous conglomerates at Panna.</li>
+                <li><strong>Bhander Group:</strong> The uppermost group, marking the return of marine tidal carbonate-evaporite sedimentation (Ganurgarh Shale, Bhander Limestone, Sirbu Shale, Upper Bhander Sandstone) terminating around $\sim 650-550\text{ Ma}$ (Ediacaran).</li>
+              </ul>
+            </li>
+          </ol>
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q47/vindhyan_supergroup_four_groups_stratigraphy.png" alt="Vindhyan Supergroup Stratigraphy">
+        <div class="tb-caption">
+          <strong>Figure 47.1:</strong> Complete stratigraphic column of the Vindhyan Supergroup showing the ascending sequence of the four constituent groups: Semri $\to$ Kaimur $\to$ Rewa $\to$ Bhander Group.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MAHAPATRA EXCERPT AND ECONOMIC POTENTIAL -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Lithological Characteristics and Economic Minerals</div>
+    <div class="card-body">
+      <p>Each of the four Vindhyan groups hosts diagnostic lithologies and critical industrial minerals:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Ascending Quadripartite Vindhyan Succession</div>
+        $$\text{Archean Basement} \xrightarrow{\text{Great Eparchean Interval}} \mathbf{Semri} \xrightarrow{\text{Unconformity}} \mathbf{Kaimur} \xrightarrow{\text{Conformity}} \mathbf{Rewa} \xrightarrow{\text{Conformity}} \mathbf{Bhander}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Rule: Semri (Carbonates + Volcanics) $\to$ Kaimur (Arenaceous) $\to$ Rewa (Argillaceous + Arenaceous) $\to$ Bhander (Calcareous + Arenaceous).</p>
+      </div>
+
+      <ul>
+        <li><strong>Diamondiferous Conglomerates:</strong> The famous <strong>Panna diamond mines</strong> of Madhya Pradesh occur in conglomerates at the base of the Rewa Group (Panna Diamond Belt) and the base of the Bhander Group, derived from Kimberlite/Lamproite pipes (e.g., Majhgawan pipe, dated $\sim 1070\text{ Ma}$).</li>
+        <li><strong>Portland Cement Raw Material:</strong> High-grade calcitic limestones of the Semri (Rohtas Limestone, Kajrahat Limestone) and Bhander (Bhander Limestone) support India's largest cement manufacturing clusters.</li>
+        <li><strong>Architectural Building Stones:</strong> The durable, uniformly grained red and buff sandstones of the Kaimur and Bhander groups provided the construction stones for India's historic monuments, including the Red Fort of Delhi, the Sanchi Stupa, and the Rashtrapati Bhavan.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q47/mahapatra_p165_vindhyan_four_groups.png" alt="Mahapatra Vindhyan Stratigraphy">
+        <div class="tb-caption">
+          <strong>Figure 47.2 (G.B. Mahapatra, p. 165):</strong> Textbook litho-stratigraphic chart of the Vindhyan Supergroup highlighting the division into Semri, Kaimur, Rewa, and Bhander Groups.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPLETE STRATIGRAPHIC BREAKDOWN -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Stratigraphic Subdivisions of the Vindhyan Supergroup</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Group</th>
+            <th>Primary Subformations</th>
+            <th>Dominant Lithologies</th>
+            <th>Depositional Environment & Economic Minerals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Bhander Group</strong> (Uppermost)</td>
+            <td>Upper Bhander Sandstone, Sirbu Shale, Bhander Limestone, Ganurgarh Shale.</td>
+            <td>Red sandstones, stromatolitic limestones, shales, gypsum casts.</td>
+            <td>Tidal flat, sabkha, lagoonal. High-grade cement limestone and building flagstones.</td>
+          </tr>
+          <tr>
+            <td><strong>Rewa Group</strong></td>
+            <td>Govindgarh Sandstone, Jhiri Shale, Asan Sandstone, Panna Shale.</td>
+            <td>Shales, fine sandstones, basal conglomerates.</td>
+            <td>Shallow marine shelf to deltaic. <strong>Diamond-bearing conglomerates (Panna)</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Kaimur Group</strong></td>
+            <td>Dhandraul Quartzite, Scarp Sandstone, Bijaigarh Shale, Ghaghar Sandstone.</td>
+            <td>Orthoquartzites, quartz arenites, black carbonaceous shales.</td>
+            <td>High-energy coastal barrier beaches and fluvial bars. Pyrite in Bijaigarh Shale.</td>
+          </tr>
+          <tr>
+            <td><strong>Semri Group</strong> (Lowermost)</td>
+            <td>Rohtas Limestone, Glauconitic Sandstone, Fawn Limestone, Porcellanite, Kajrahat Limestone.</td>
+            <td>Limestones, dolomites, tuffs, porcellanites, glauconitic sandstones.</td>
+            <td>Transgressive shallow marine carbonate platform. Sub-volcanic tuffs and cement limestone.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q47. The Vindhyan Supergroup is divisible into four groups viz., Semri Group, Kaimur Group, Rewa Group and _____.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Bijawar Group</div>
-        <div class="opt-item correct"><strong>(B)</strong> Bhander Group</div>
-        <div class="opt-item "><strong>(C)</strong> Gwalior Group</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 47</div>
+        <div class="q-text">The Vindhyan Supergroup is divisible into four groups viz., Semri Group, Kaimur Group, Rewa Group and _____.</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Bijawar Group</div>
+          <div class="opt-node correct">(B) Bhander Group</div>
+          <div class="opt-node">(C) Gwalior Group</div>
+          <div class="opt-node">(D) None of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(B) Bhander Group</strong> [The four groups of the Vindhyan Supergroup in ascending order are the Semri Group, Kaimur Group, Rewa Group, and Bhander Group.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) Bhander Group</b> — The four lithostratigraphic groups composing the Vindhyan Supergroup in ascending order are: <b>Semri Group</b>, <b>Kaimur Group</b>, <b>Rewa Group</b>, and <b>Bhander Group</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Bijawar Group — INCORRECT:</b> The Bijawar Group is a Paleoproterozoic volcanosedimentary basin sequence that forms the folded crystalline <i>basement floor</i> underlying the Vindhyan Supergroup.</li>
-          <li><b>(B) Bhander Group — CORRECT:</b> The uppermost, fourth group of the Vindhyan Supergroup, completing the classical Semri-Kaimur-Rewa-Bhander succession.</li>
-          <li><b>(C) Gwalior Group — INCORRECT:</b> The Gwalior Group is another Paleoproterozoic sequence exposed near Gwalior that unconformably underlies the Kaimur Group of the Vindhyans.</li>
-          <li><b>(D) None of these — INCORRECT:</b> Option (B) is the universally accepted group name.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (B) Bhander Group</div>
+    <div class="card-body">
+      <p><strong>Detailed Stratigraphic Forensic Analysis:</strong></p>
+      <ul>
+        <li>The <strong>Vindhyan Supergroup</strong> is universally recognized across all Indian geological surveys and textbooks (Auden 1933; Krishnan 1982; Ramakrishnan & Vaidyanadhan 2008; Mahapatra 2019) as comprising exactly <strong>four constituent groups</strong> in ascending chronological order:
+          <ol>
+            <li><strong>Semri Group</strong> (Lower Vindhyan)</li>
+            <li><strong>Kaimur Group</strong> (Upper Vindhyan)</li>
+            <li><strong>Rewa Group</strong> (Upper Vindhyan)</li>
+            <li><strong>Bhander Group</strong> (Upper Vindhyan)</li>
+          </ol>
+        </li>
+        <li>The <strong>Bhander Group</strong> is the fourth and uppermost group of the Vindhyan Supergroup, composed of the Ganurgarh Shale, Bhander Limestone, Sirbu Shale, and Upper Bhander Sandstone.</li>
+        <li>Therefore, the missing fourth group is indisputably the <strong>Bhander Group</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Bijawar Group</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Bijawar Group</strong> is a Paleoproterozoic metasedimentary sequence (quartzites, dolomites, ferruginous beds, and basaltic traps) that forms the <em>folded structural basement</em> underlying the Vindhyan Supergroup in central India.</li>
+        <li>The Vindhyan Semri Group rests unconformably upon the deformed Bijawar Group with an intervening angular unconformity. Thus, Bijawar is not a constituent group of the Vindhyan Supergroup.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Gwalior Group</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Gwalior Group</strong> (comprising the Par Formation and Morar Formation with banded iron formations and volcanic sills) is another Paleoproterozoic sedimentary-volcanic succession in northern Madhya Pradesh.</li>
+        <li>Like the Bijawar, the Gwalior Group unconformably underlies the Kaimur Group of the Vindhyan Supergroup. It is an older basement succession, not a division of the Vindhyan Supergroup.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) None of these</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Because Option (B) Bhander Group is the exact, canonical fourth member of the Vindhyan Supergroup, selecting "None of these" is factually incorrect.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Vindhyan Stratigraphic Mnemonic & Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 47: Chronostratigraphic Boundary & Diamondiferous Horizons</div>
-          <p>In which group of the Vindhyan Supergroup are the famous primary and secondary diamond-bearing horizons of Panna (Madhya Pradesh) located, and what is the nature of the host rock?</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. The primary diamond source rocks in the Panna diamond belt are <b>ultramafic kimberlite / lamproite diatreme pipes</b> (e.g. the Majhgawan pipe, dated at $\sim 1070\text{ Ma}$), which intrude the Kaimur Group.</p>
-            <p>2. The secondary placer diamond deposits occur within the basal conglomerate beds of the <b>Rewa Group</b> (specifically the Panna Shale and Jhiri Shale conglomerates), derived from the erosional weathering of the kimberlite pipes prior to Rewa sedimentation.</p>
-          </div>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: The Major Proterozoic Purana Basins of India</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Purana Supergroup / Basin</th>
+            <th>Primary Groups / Formations</th>
+            <th>Cratonic Setting</th>
+            <th>Key Economic Minerals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Vindhyan Supergroup</strong></td>
+            <td><strong>Semri $\to$ Kaimur $\to$ Rewa $\to$ Bhander</strong></td>
+            <td>Bundelkhand / Central Indian Craton.</td>
+            <td>Diamonds (Panna), Cement Limestone, Building Sandstones, Pyrite.</td>
+          </tr>
+          <tr>
+            <td><strong>Cuddapah Supergroup</strong></td>
+            <td>Papaghni $\to$ Chitravati $\to$ Nallamalai $\to$ Sanjamala</td>
+            <td>Dharwar Craton (Eastern margin).</td>
+            <td>Barite (Mangampeta), Chrysotile Asbestos, Lead-Zinc, Limestone.</td>
+          </tr>
+          <tr>
+            <td><strong>Kurnool Group</strong></td>
+            <td>Banganapalle $\to$ Narji $\to$ Owk $\to$ Paniam $\to$ Koilkuntla $\to$ Nandyal</td>
+            <td>Unconformable basin overlying Cuddapah Supergroup.</td>
+            <td>Diamonds (Banganapalle conglomerate), High-grade Cement Limestone (Narji).</td>
+          </tr>
+          <tr>
+            <td><strong>Bhima Group</strong></td>
+            <td>Rabanpalli $\to$ Shahabad $\to$ Sogur $\to$ Halkal $\to$ Katamadevarahalli</td>
+            <td>Dharwar Craton (Karnataka).</td>
+            <td>High-grade Flaggy Limestone (Shahabad Stone), Uranium mineralization (Gogi).</td>
+          </tr>
+          <tr>
+            <td><strong>Chhattisgarh Supergroup</strong></td>
+            <td>Singhora $\to$ Chandarpur $\to$ Raipur Groups</td>
+            <td>Bastar Craton.</td>
+            <td>Limestone, Dolomite, Quartzite, Building Stone.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Purana Stratigraphy & Sedimentary Basins</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Geochronological Dating of the Semri Porcellanite</div>
+        <p>High-precision U-Pb zircon SHRIMP dating of felsic volcanic tuffs in the Porcellanite Formation of the Semri Group yields an age of $1630 \pm 5\text{ Ma}$. What does this establish regarding the age of the base of the Vindhyan Supergroup?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Historically, the Vindhyan Supergroup was considered Neoproterozoic to early Cambrian. The $1630\text{ Ma}$ U-Pb zircon age from the Porcellanite Formation (located in the lower-middle Semri Group) conclusively proved that the base of the Vindhyan Supergroup initiated in the <strong>Paleoproterozoic (Statherian Period)</strong>, extending the duration of Vindhyan sedimentation across nearly $1\text{ billion years}$ of Earth history.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: The Great Boundary Fault (GBF) of Rajasthan</div>
+        <p>What major structural tectonic dislocation bounds the Vindhyan Basin along its northwestern margin in Rajasthan?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The northwestern margin of the Vindhyan Basin is truncated by the <strong>Great Boundary Fault (GBF) of Rajasthan</strong>. This is a regional, northeast-trending, post-Vindhyan reverse fault/thrust exceeding $800\text{ km}$ in length that brings deformed pre-Vindhyan rocks (Aravalli/Delhi/Bhilwara metamorphic belts) into juxtaposition against undeformed Upper Vindhyan strata (Bhander and Kaimur groups).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Glauconite Mineralogy in the Semri Group</div>
+        <p>Glauconitic sandstones occur prominently in the Semri and Kaimur groups. What does the presence of authigenic glauconite indicate about the paleoenvironment?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Authigenic glauconite is a potassium iron phyllosilicate mineral that precipitates exclusively in <strong>marine shelf environments</strong> with slow, starved sedimentation rates (condensed sections), mild reducing (suboxic) conditions, and normal marine salinities at water depths typically between $50\text{ m}$ and $300\text{ m}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Diamond Source in the Panna Diamond Belt</div>
+        <p>In which igneous rock body did the diamonds found in the Rewa Group conglomerates originate, and what is its age?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The primary source of the diamonds is the <strong>Majhgawan and Hinota Kimberlite/Lamproite pipes</strong> intruded into the Paleoproterozoic basement. Radiometric dating (Rb-Sr and Ar-Ar) dates the Majhgawan intrusion at $\sim 1070\text{ Ma}$. Weathering and fluvial erosion of these pipes during Rewa Group sedimentation concentrated diamonds into basal fluvial gravels, forming the diamondiferous conglomerates.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Ediacaran Trace Fossil Debate in the Vindhyans</div>
+        <p>What controversy arose regarding the discovery of trace fossils and carbonaceous discs (<em>Chuaria circularis</em>) in the Rohtas and Bhander shales?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The discovery of circular carbonaceous compressions (<em>Chuaria, Tawuia</em>) and putative trace fossils in the Rohtas Formation (Semri) and Bhander Group led some workers to propose a late Neoproterozoic/Cambrian age for the whole sequence. However, <em>Chuaria</em> is now recognized as a long-ranging megascopic eukaryotic alga that extends back to the Mesoproterozoic ($\sim 1400\text{ Ma}$), fully compatible with modern radiometric age constraints.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Sedimentological Maturity of the Dhandraul Quartzite</div>
+        <p>The Dhandraul Quartzite of the Kaimur Group exhibits quartz arenite composition ($>98\% \text{ quartz}$) and well-rounded grains. What does this signify about the depositional and tectonic regime?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Extreme compositional and textural maturity (quartz arenites with well-rounded, well-sorted monocrystalline quartz) indicates intense chemical weathering of the source area, prolonged polycyclic sediment recycling, and deposition on a stable, slowly subsiding cratonic shelf under high-energy wave and tidal action.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Distinction Between Purana Basins and Gondwana Basins</div>
+        <p>Contrast the tectonic basins of the Proterozoic Purana Supergroups (Vindhyan, Cuddapah) with the Phanerozoic Gondwana Basins.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Purana Basins:</strong> Broad intracratonic sag/flexural basins; Proterozoic in age; dominated by marine carbonates, mature orthoquartzites, and shales; devoid of coal.</li>
+          <li><strong>Gondwana Basins:</strong> Linear fault-bounded grabens and half-grabens; Permian to Early Cretaceous in age; dominated by continental fluvial, lacustrine, and glacial clastics; host to India's major bituminous coal seams.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Identification of Evaporite Facies in the Sirbu Shale</div>
+        <p>What sedimentary structures in the Sirbu Shale and Bhander Limestone demonstrate arid sabkha depositional conditions?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The occurrence of <strong>halite pseudomorphs (hopper crystal casts)</strong>, gypsum discoidal casts, desiccation mud cracks, and flat-pebble intraformational conglomerates in the Sirbu Shale and Upper Bhander strata proves episodic subaerial exposure and intense evaporation on supratidal sabkha mudflats.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

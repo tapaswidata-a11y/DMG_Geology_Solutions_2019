@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q38: Seismology: Hypocenter (Focus), Epicenter & Isoseismal Attenuation | OPSC Geology 2021 Masterclass</title>
+<title>Q038: Earthquake Focus vs. Epicenter: Surface Rupture Geometry & Maximum Damage Zone | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,264 +89,604 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q38" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Geophysics & Seismology</div>
-    <h1>Q38: Seismology: Hypocenter (Focus), Epicenter & Isoseismal Attenuation</h1>
+    <div class="badge">GEO - 2/21 • Geophysics, Seismology & Earthquake Engineering</div>
+    <h1>Q038: Earthquake Focus vs. Epicenter: Maximum Damage Zone</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Peter M. Shearer (Introduction to Seismology, Ch. 1, pp. 1-8); K.M. Bangar (Ch. 10, pp. 142-148)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 38<br>
+<strong>Authoritative References:</strong> Peter M. Shearer, <em>Introduction to Seismology</em> (2nd Ed., Cambridge Univ. Press, Ch. 1: Overview, pp. 1–12); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 2: Earthquakes, pp. 38–48, Fig. 2.39); William Lowrie, <em>Fundamentals of Geophysics</em> (2nd Ed., Cambridge, Ch. 3: Seismology, pp. 128–142); Bruce A. Bolt, <em>Earthquakes</em> (W.H. Freeman, 5th Ed., Ch. 4).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>38.1 Geometric & Physical Definitions of Earthquake Origins</h3>
-        <p>In observational seismology and geophysics (Peter M. Shearer, <i>Introduction to Seismology</i>, 2nd Ed., Ch. 1; Lowrie, <i>Fundamentals of Geophysics</i>, Ch. 3; Bangar, <i>Principles of Engineering Geology</i>, Ch. 10), an earthquake involves the rapid release of accumulated elastic strain energy along a fault rupture surface:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Seismological Term</th>
-                <th>Spatial & Geometric Definition</th>
-                <th>Physical Role in Wave Dynamics</th>
-                <th>Damage & Intensity Relationship</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Focus (Hypocenter)</b></td>
-                <td><b>The exact point inside the Earth's interior</b> where the fault rupture nucleates and initial slip begins.</td>
-                <td>Origin point of radiating spherical $P$ and $S$ body wavefronts.</td>
-                <td>Subsurface point; depth ($h$) ranges from shallow ($0-70\text{ km}$) to deep ($> 300\text{ km}$).</td>
-              </tr>
-              <tr>
-                <td><b>Epicenter</b></td>
-                <td><b>The point on the Earth's surface directly vertically above the focus (hypocenter).</b></td>
-                <td>Point of initial arrival of seismic waves at the surface.</td>
-                <td><b>Location of maximum seismic ground shaking intensity ($I_{\text{max}}$) and catastrophic structural damage</b> for shallow crustal earthquakes.</td>
-              </tr>
-              <tr>
-                <td><b>Focal Depth ($h$)</b></td>
-                <td>The vertical distance between the epicenter on the surface and the subsurface focus.</td>
-                <td>Directly governs geometrical attenuation: $I \propto 1/\sqrt{\Delta^2 + h^2}$.</td>
-                <td>Shallower focal depth = greater concentration of energy at epicenter.</td>
-              </tr>
-              <tr>
-                <td><b>Isoseismal Lines</b></td>
-                <td>Closed contour curves connecting points on the Earth's surface experiencing equal earthquake intensity.</td>
-                <td>Reflects directional radiation pattern and local geology.</td>
-                <td>Form concentric rings centered around the <b>epicenter</b>.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>38.2 Why the Epicenter Suffers Maximum Damage</h3>
-        <p>Seismic energy density ($E_d$) attenuates with hypocentral distance ($R = \sqrt{\Delta^2 + h^2}$) due to geometrical spreading ($1/R^2$) and anelastic intrinsic attenuation ($e^{-\alpha R}$):</p>
-        $$E_d(\Delta) \propto \frac{E_0}{\Delta^2 + h^2} \exp\left(-\frac{\omega R}{Q v}\right)$$
-        <p>Where $\Delta$ is the epicentral distance. At the <b>epicenter</b>, epicentral distance is zero ($\Delta = 0$), so $R = h$ is at its absolute minimum possible value. Consequently, energy density, peak ground acceleration (PGA), and destructive surface wave amplitude are concentrated at the <b>epicenter</b>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q38/bangar_fig2_39_focus_epicentre.png" alt="Earthquake Focus, Epicentre, and Isoseismal Lines (K.M. Bangar, Fig. 2.39)">
-      <figcaption>
-        <strong>Figure 38.1: Earthquake Focus, Epicentre, and Isoseismal Lines (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 2, Section 2.40, p. 43, Fig. 2.39).</strong> Authentic plate detailing: <em>"The place of origin of an earthquake within the earth's crust is called the Focus (Hypocentre). The point on the earth's surface directly above the focus is called the Epicentre. From the focus, seismic waves radiate in all directions, and surface shaking is most intense near the epicentre."</em>
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: SEISMIC SOURCE TERMINOLOGY -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Geometric Definitions of Earthquake Rupture Sources</div>
+    <div class="card-body">
+      <p>Seismology rigorously distinguishes the point of subterranean energy release from its projection onto the inhabited terrestrial landscape:</p>
+
+      <ul>
+        <li><strong>Focus (Hypocenter):</strong> The precise spatial point or initial nucleation patch <em>within the interior of the Earth</em> where fault slip initiates and seismic elastic strain energy is abruptly released as propagating seismic waves. Its position is defined by three spatial coordinates $(x, y, z)$, where $z$ represents the <strong>focal depth</strong> ($h$).
+          <ul>
+            <li><em>Shallow-focus earthquakes:</em> $h < 70\text{ km}$ (responsible for $>90\%$ of global catastrophic damage).</li>
+            <li><em>Intermediate-focus earthquakes:</em> $70\text{ km} \le h \le 300\text{ km}$.</li>
+            <li><em>Deep-focus earthquakes:</em> $300\text{ km} < h \le 700\text{ km}$ (confined strictly to cold subducting lithospheric slabs).</li>
+          </ul>
+        </li>
+        <li><strong>Epicenter:</strong> The unique mathematical point on the <strong>Earth's surface situated vertically directly above the focus</strong> (azimuthally perpendicular to the geoid: $\Delta = 0$). Its location is designated by geographic latitude and longitude $(\phi, \lambda)$.</li>
+        <li><strong>Hypocentral Distance ($D$) vs. Epicentral Distance ($\Delta$):</strong> For any surface observation point or engineering structure, the distance to the focus is governed by Pythagoras' theorem:
+          $$D = \sqrt{\Delta^2 + h^2}$$
+          At the epicenter itself, epicentral distance is zero ($\Delta = 0$), so the hypocentral distance attains its absolute minimum: $D_{\min} = h$.
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q38/bangar_fig2_39_focus_epicentre.png" alt="Focus and Epicenter from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 38.1 (K.M. Bangar, Fig. 2.39):</strong> Geometric diagram showing the relationship between subterranean Earthquake Focus (Hypocenter), Focal Depth ($h$), Epicenter at the Earth's surface, and Epicentral Distance ($\Delta$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: WAVE ATTENUATION AND MAXIMUM DAMAGE -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Physical Mechanics of Maximum Damage at the Epicenter</div>
+    <div class="card-body">
+      <p>The destructive potential of an earthquake on surface civil infrastructure is maximized at or immediately surrounding the epicenter due to four convergent physical laws:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">1. Geometric Spherical Spreading & Wave Energy Attenuation</div>
+        $$E(D) = \frac{E_0}{4\pi D^2} \cdot e^{-\alpha D} = \frac{E_0}{4\pi (\Delta^2 + h^2)} \cdot e^{-\alpha \sqrt{\Delta^2 + h^2}}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $E_0$ is total seismic energy, $D$ is hypocentral distance, and $\alpha$ is the anelastic attenuation coefficient ($\alpha = \frac{\pi f}{Q v}$). Because $D$ is strictly minimized at the epicenter ($D = h$), wave energy density $E$ and Peak Ground Acceleration (PGA) reach their absolute peak at the epicenter.</p>
+      </div>
+
+      <ul>
+        <li><strong>Arrival of Direct Body Waves:</strong> At the epicenter, high-frequency $P$ and $S$ waves travel the shortest possible path through unattenuated basement rock, arriving with minimal anelastic energy dissipation ($Q$ attenuation).</li>
+        <li><strong>Constructive Interference of Surface Waves:</strong> Immediately outside the epicenter, body waves reflecting at the free surface convert into large-amplitude <strong>Rayleigh waves</strong> and <strong>Love waves</strong>. These surface waves decay with distance as $1/\sqrt{\Delta}$ (cylindrical geometric spreading) compared to $1/D^2$ for body waves, concentrating severe destructive horizontal shear motion in the meizoseismal zone.</li>
+        <li><strong>Meizoseismal Zone:</strong> The zone of maximum destruction and highest seismic intensity (Modified Mercalli Intensity $\text{MMI } X-XII$) surrounds the epicenter. The point where maximum damage occurs is unambiguously the <strong>Epicenter</strong>.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q38/earthquake_focus_epicenter_rupture_geometry.png" alt="Earthquake Rupture Geometry">
+        <div class="tb-caption">
+          <strong>Figure 38.2:</strong> 3D block model illustrating seismic fault rupture propagation, spherical wavefront radiation from the focus, and the concentration of peak ground acceleration (PGA) at the surface epicenter.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: ISOSEISMALS AND ISOSEISTS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Isoseismal Mapping and Intensity Field Geometry</div>
+    <div class="card-body">
+      <p>In engineering seismology, post-earthquake surveys delineate the damage field using <strong>isoseismal lines</strong> (contours joining points of equal seismic intensity):</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Seismological Concept</th>
+            <th>Physical Meaning</th>
+            <th>Spatial Domain</th>
+            <th>Significance in Disaster Management</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Focus (Hypocenter)</strong></td>
+            <td>Subterranean point of initial shear fault rupture.</td>
+            <td>Subsurface (depth $0-700\text{ km}$).</td>
+            <td>Determines stress drop, rupture velocity ($v_r \approx 0.9 v_s$), and source duration.</td>
+          </tr>
+          <tr>
+            <td><strong>Epicenter</strong></td>
+            <td>Vertical surface projection of the hypocenter.</td>
+            <td>Earth's surface (Latitude, Longitude).</td>
+            <td><strong>Primary location of maximum ground acceleration and structural collapse.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Meizoseismal Area</strong></td>
+            <td>The innermost isoseismal contour enclosing the epicentral damage tract.</td>
+            <td>Surface region enclosing $\text{MMI}_{\max}$.</td>
+            <td>Area requiring immediate priority deployment of search and rescue operations.</td>
+          </tr>
+          <tr>
+            <td><strong>Isoseist (Isoseismal Line)</strong></td>
+            <td>Contour curve connecting locations of equal earthquake damage/intensity.</td>
+            <td>2D geographic map.</td>
+            <td>Ellipticity reveals strike and rupture directivity of the underlying fault.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q38. What will be the location where an earthquake does the maximum damage ?</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Epicentre</div>
-        <div class="opt-item "><strong>(B)</strong> Focus</div>
-        <div class="opt-item "><strong>(C)</strong> 100 km from the epicenter</div>
-        <div class="opt-item "><strong>(D)</strong> Isocentre</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 38</div>
+        <div class="q-text">What will be the location where an earthquake does the maximum damage ?</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Epicentre</div>
+          <div class="opt-node">(B) Focus</div>
+          <div class="opt-node">(C) 100 km from the epicenter</div>
+          <div class="opt-node">(D) Isocentre</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(A) Epicentre</strong> [The point on Earth's surface vertically above the focus experiencing the shortest seismic travel path, minimum attenuation, highest peak ground acceleration, and maximum structural destruction.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) Epicentre</b> — The point on the Earth's surface directly above the focus is the <b>Epicenter</b>, which experiences the earliest wave arrival, highest peak ground acceleration, and maximum structural damage.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Epicentre — CORRECT:</b> The point on the Earth's surface vertically above the focus where seismic intensity (Modified Mercalli / MSK scale) reaches its maximum ($I_{\text{max}}$).</li>
-          <li><b>(B) Focus — INCORRECT:</b> The focus (hypocenter) is located deep underground inside the Earth's crust or mantle; damage to human civil infrastructure occurs at the Earth's <i>surface</i>.</li>
-          <li><b>(C) 100 km from the epicenter — INCORRECT:</b> Seismic intensity attenuates rapidly with distance; shaking at $100\text{ km}$ is orders of magnitude weaker than at the epicenter.</li>
-          <li><b>(D) Isocentre — INCORRECT:</b> In photogrammetry, an isocenter is the point on an aerial photograph where the bisector of the tilt angle meets the image; it is completely meaningless in seismology.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (A) Epicentre</div>
+    <div class="card-body">
+      <p><strong>Detailed Seismological Forensic Analysis:</strong></p>
+      <ul>
+        <li>The <strong>epicentre</strong> is defined as the point on the surface of the Earth lying vertically directly above the subterranean focus (hypocentre).</li>
+        <li>Because seismic wave energy decreases inversely with the square of the hypocentral distance ($E \propto 1/D^2$) and further decays due to anelastic material attenuation ($e^{-\alpha D}$), the energy density arriving at the surface is mathematically maximized at the epicentre where the distance to the focus is at its absolute minimum ($D = h$).</li>
+        <li>Consequently, peak ground acceleration (PGA), ground velocity (PGV), and macroseismic intensity (Modified Mercalli Intensity) attain their highest values at and around the epicentre, creating the <strong>meizoseismal zone of maximum civil destruction</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Focus</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>focus</strong> (or hypocentre) is the subterranean origin point of the fault rupture located deep within the crust or mantle (e.g., $10\text{ km}$, $30\text{ km}$, or deeper).</li>
+        <li>While the stress drop and elastic strain release are highest at the focus, human buildings, infrastructure, and surface inhabitants reside on the surface of the Earth, not deep within the subterranean focal chamber.</li>
+        <li>Therefore, human and structural "damage" occurs on the surface, and the locus of maximum surface damage is the <strong>epicentre</strong>, not the subterranean focus.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) 100 km from the epicenter</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>At a distance of $100\text{ km}$ from the epicentre, seismic wave amplitudes have undergone substantial geometric spherical attenuation ($1/D$) and intrinsic anelastic damping ($e^{-\alpha D}$).</li>
+        <li>Except in extraordinary cases of extreme local soft-sediment basin resonance (such as the 1985 Michoacán earthquake impacting Mexico City's lacustrine clays $350\text{ km}$ away), seismic intensity and structural damage are vastly lower at $100\text{ km}$ than at the epicentre.</li>
+        <li>Thus, $100\text{ km}$ is an incorrect distractor.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) Isocentre</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The term <strong>isocentre</strong> is a concept borrowed from photogrammetry (the intersection of the bisector of the tilt angle with the photograph plane) or radiation oncology; it is not a standard seismological term defining earthquake damage centers.</li>
+        <li>Seismology uses the term <em>meizoseismal area</em> or <em>epicentral area</em>, never isocentre. Hence, this option is entirely spurious.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Seismological Intensity Attenuation Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 38: Hypocentral Distance & Geometric Spreading</div>
-          <p>A shallow crustal earthquake has a focal depth of $h = 10\text{ km}$. Compare the geometrical wave amplitude at the epicenter ($\Delta_1 = 0\text{ km}$) with that at a seismic station located at an epicentral distance of $\Delta_2 = 30\text{ km}$, assuming simple spherical body wave geometrical spreading ($A \propto 1/R$).</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. Hypocentral distance to epicenter ($R_1$):</p>
-            $$R_1 = \sqrt{\Delta_1^2 + h^2} = \sqrt{0^2 + 10^2} = 10\text{ km}$$
-            <p>2. Hypocentral distance to distant station ($R_2$):</p>
-            $$R_2 = \sqrt{\Delta_2^2 + h^2} = \sqrt{30^2 + 10^2} = \sqrt{900 + 100} = \sqrt{1000} \approx 31.62\text{ km}$$
-            <p>3. Ratio of seismic wave amplitudes ($A_1 / A_2$):</p>
-            $$\frac{A_{\text{epicenter}}}{A_{\text{station}}} = \frac{R_2}{R_1} = \frac{31.62}{10.0} \approx 3.16$$
-            <p>The ground shaking amplitude at the epicenter is more than 3 times greater than at $30\text{ km}$ away (and energy density is $\sim 10$ times higher), explaining why maximum devastation is localized at the epicenter.</p>
-          </div>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Earthquake Parameters & Wave Characteristics</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Scientific Definition</th>
+            <th>Measurement Unit / Scale</th>
+            <th>Variation with Distance ($\Delta$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Magnitude ($M_w$)</strong></td>
+            <td>Logarithmic measure of total seismic energy released at the focus ($M_0 = \mu A \bar{u}$).</td>
+            <td>Moment Magnitude ($M_w$, dimensionless)</td>
+            <td><strong>Invariant</strong> (Single constant number for a given earthquake event).</td>
+          </tr>
+          <tr>
+            <td><strong>Intensity ($I$)</strong></td>
+            <td>Qualitative measure of ground shaking severity and structural damage observed at a specific site.</td>
+            <td>Modified Mercalli Intensity (MMI I to XII) / MSK-64 scale</td>
+            <td><strong>Decreases systematically with distance</strong> away from the epicenter.</td>
+          </tr>
+          <tr>
+            <td><strong>Peak Ground Acceleration (PGA)</strong></td>
+            <td>Maximum acceleration of the ground experienced during seismic wave passage.</td>
+            <td>$\%g$ or $\text{m/s}^2$ ($1g = 9.81\text{ m/s}^2$)</td>
+            <td>Decays with hypocentral distance: $\text{PGA} \propto D^{-b} e^{-c D}$. Peak at epicenter.</td>
+          </tr>
+          <tr>
+            <td><strong>Focal Depth ($h$)</strong></td>
+            <td>Vertical distance from the surface epicenter down to the focus.</td>
+            <td>Kilometers ($\text{km}$)</td>
+            <td>Deeper focus results in lower epicentral PGA but broader regional shaking footprint.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Seismology & Earthquake Engineering</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Hypocentral Distance Calculation</div>
+        <p>A seismic recording station is located at an epicentral distance $\Delta = 40\text{ km}$ from an earthquake with focal depth $h = 30\text{ km}$. Calculate the total hypocentral distance ($D$) from the recording station to the earthquake focus.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Applying the Pythagorean hypocentral distance formula:</p>
+        $$D = \sqrt{\Delta^2 + h^2}$$
+        $$D = \sqrt{40^2 + 30^2} = \sqrt{1600 + 900} = \sqrt{2500} = 50\text{ km}$$
+        <p><strong>Final Answer:</strong> The hypocentral distance is exactly $50\text{ km}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Seismic Moment ($M_0$) & Energy Calculation</div>
+        <p>A fault rupture plane has length $L = 60\text{ km}$, downdip width $W = 15\text{ km}$, and average shear slip $\bar{u} = 2.0\text{ m}$. Assuming crustal shear modulus $\mu = 3.2 \times 10^{10}\text{ Pa}$, calculate the seismic moment $M_0$ in $\text{N}\cdot\text{m}$ and determine the Moment Magnitude $M_w$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Fault surface area $A = L \times W = (60 \times 10^3\text{ m}) \times (15 \times 10^3\text{ m}) = 9.0 \times 10^8\text{ m}^2$.</p>
+        $$M_0 = \mu A \bar{u} = (3.2 \times 10^{10}\text{ N/m}^2) \times (9.0 \times 10^8\text{ m}^2) \times (2.0\text{ m}) = 5.76 \times 10^{19}\text{ N}\cdot\text{m}$$
+        <p>Using the Hanks-Kanamori (1979) relationship for Moment Magnitude:</p>
+        $$M_w = \frac{2}{3}\log_{10}(M_0) - 6.07 \quad (\text{with } M_0 \text{ in N}\cdot\text{m})$$
+        $$\log_{10}(5.76 \times 10^{19}) = 19 + \log_{10}(5.76) = 19 + 0.7604 = 19.7604$$
+        $$M_w = \frac{2}{3}(19.7604) - 6.07 = 13.1736 - 6.07 = 7.10$$
+        <p><strong>Final Answer:</strong> Seismic moment $M_0 = 5.76 \times 10^{19}\text{ N}\cdot\text{m}$, corresponding to a Moment Magnitude $M_w = 7.1$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: S-P Travel Time Difference & Epicentral Distance</div>
+        <p>At a seismological observatory, the arrival time difference between the first $P$-wave and the first $S$-wave is recorded as $\Delta t = t_s - t_p = 8.0\text{ seconds}$. If the crustal $P$-wave velocity is $v_p = 6.0\text{ km/s}$ and $S$-wave velocity is $v_s = 3.5\text{ km/s}$, calculate the hypocentral distance ($D$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\Delta t = \frac{D}{v_s} - \frac{D}{v_p} = D \left(\frac{v_p - v_s}{v_p v_s}\right)$$
+        $$D = \Delta t \cdot \left(\frac{v_p v_s}{v_p - v_s}\right)$$
+        $$D = 8.0 \times \left(\frac{6.0 \times 3.5}{6.0 - 3.5}\right) = 8.0 \times \left(\frac{21.0}{2.5}\right) = 8.0 \times 8.4 = 67.2\text{ km}$$
+        <p><strong>Final Answer:</strong> The hypocentral distance is $67.2\text{ km}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Three-Station Epicentral Triangulation</div>
+        <p>Explain the geometric principle of three-station triangulation in pinpointing an earthquake epicenter on a map.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>For each recording station, the $(t_s - t_p)$ time interval yields an epicentral radius $R_i$. A circle of radius $R_i$ is drawn centered on each station. Two stations yield two intersection points (ambiguity). A third station produces a unique circle whose boundary intersects the other two at a single common point, uniquely resolving the epicenter.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Gutenberg-Richter Recurrence Law</div>
+        <p>The Gutenberg-Richter relation for a seismic zone is $\log_{10} N = 5.2 - 0.9 M$, where $N$ is the annual number of earthquakes with magnitude $\ge M$. Calculate the expected return period for an earthquake of magnitude $M \ge 6.0$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\log_{10} N = 5.2 - 0.9(6.0) = 5.2 - 5.4 = -0.2$$
+        $$N = 10^{-0.2} \approx 0.631 \text{ earthquakes per year}$$
+        <p>The recurrence return period $T$ is the reciprocal of $N$:</p>
+        $$T = \frac{1}{N} = \frac{1}{0.631} \approx 1.58 \text{ years}$$
+        <p><strong>Final Answer:</strong> An earthquake of magnitude $M \ge 6.0$ is expected once every $\sim 1.6\text{ years}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Influence of Focal Depth on Damage Footprint</div>
+        <p>Compare the damage pattern of a shallow earthquake ($h = 10\text{ km}$) with an intermediate earthquake ($h = 150\text{ km}$) of identical magnitude ($M_w 7.0$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Shallow ($h = 10\text{ km}$):</strong> The hypocentral distance to the epicenter is tiny ($10\text{ km}$), producing catastrophic, extreme peak ground acceleration (PGA $> 0.8g$) concentrated within a small epicentral footprint ($<30\text{ km}$ radius). High structural collapse rates.</li>
+          <li><strong>Intermediate ($h = 150\text{ km}$):</strong> Hypocentral distance is large everywhere ($D \ge 150\text{ km}$), resulting in moderate PGA ($<0.15g$) at the epicenter. However, shaking is felt over a vast continental radius ($>600\text{ km}$) with minimal structural destruction.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Seismic Soil Liquefaction Triggering</div>
+        <p>Why do saturated sandy alluviums in river valleys experience severe liquefaction during epicentral shaking?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Under repeated cyclic shear strains induced by $S$-waves and Rayleigh waves, loosely packed sand grains tend to densify. In saturated undrained conditions, pore water cannot escape instantly, causing excess pore water pressure ($\Delta u$) to rise. When $\Delta u$ equals total normal stress ($\sigma$), effective stress drops to zero ($\sigma' = \sigma - u = 0$). The soil loses all shear strength, behaving as a viscous liquid, causing massive foundation bearing failure.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Energy Scaling with Earthquake Magnitude</div>
+        <p>By what factor does total radiated seismic energy increase when an earthquake increases by $2.0$ units of Richter magnitude?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Seismic energy scales with magnitude according to Gutenberg's empirical formula:</p>
+        $$\log_{10} E = 4.8 + 1.5 M$$
+        <p>For an increase $\Delta M = 2.0$:</p>
+        $$\frac{E_2}{E_1} = 10^{1.5 \Delta M} = 10^{1.5 \times 2.0} = 10^{3.0} = 1000$$
+        <p><strong>Final Answer:</strong> An increase of $2.0$ magnitude units releases exactly $1,000$ times more seismic energy.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

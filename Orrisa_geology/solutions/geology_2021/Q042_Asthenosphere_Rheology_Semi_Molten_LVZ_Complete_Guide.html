@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q42: Rheology of Upper Mantle & Asthenospheric Low Velocity Zone (LVZ) | OPSC Geology 2021 Masterclass</title>
+<title>Q042: Rheology of the Asthenosphere: Ductile Creep, Low Velocity Zone (LVZ) & Partial Melting | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,266 +89,585 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q42" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Geophysics & Geodynamics</div>
-    <h1>Q42: Rheology of Upper Mantle & Asthenospheric Low Velocity Zone (LVZ)</h1>
+    <div class="badge">GEO - 2/21 • Geophysics, Rheology & Geodynamics</div>
+    <h1>Q042: Rheology of the Asthenosphere: Ductile Creep vs. Rigid Solid</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Turcotte & Schubert (Geodynamics, 3rd Ed., Ch. 7); C.M.R. Fowler (The Solid Earth, Ch. 4); Lowrie (Ch. 1)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 42<br>
+<strong>Authoritative References:</strong> Donald L. Turcotte & Gerald Schubert, <em>Geodynamics</em> (3rd Ed., Cambridge Univ. Press, Ch. 7: Mantle Rheology, pp. 285–314); C.M.R. Fowler, <em>The Solid Earth</em> (Ch. 4: Deep Earth Interior, pp. 100–124); William Lowrie, <em>Fundamentals of Geophysics</em> (Ch. 1 & 3); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 1: Physical Geology, pp. 4–12, Fig. 1.4 & 1.5).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>42.1 Rheological Stratification: Lithosphere vs. Asthenosphere</h3>
-        <p>In mantle geodynamics and seismology (Turcotte & Schubert, <i>Geodynamics</i>, 3rd Ed., Ch. 7; Fowler, <i>The Solid Earth</i>, Ch. 4; Lowrie, Ch. 1), the Earth's upper $400\text{ km}$ is subdivided based on mechanical strength and rheology:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Property / Parameter</th>
-                <th>Lithosphere</th>
-                <th>Asthenosphere</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Depth Range</b></td>
-                <td>Surface to $100\text{–}150\text{ km}$ (beneath continents) / $0\text{–}100\text{ km}$ (oceans).</td>
-                <td><b>$\sim 100\text{ km}$ to $410\text{ km}$</b> (Upper Mantle above transition zone).</td>
-              </tr>
-              <tr>
-                <td><b>Physical & Rheological State</b></td>
-                <td><b>Rigid, elastic, brittle solid</b> lithospheric lid.</td>
-                <td><b>Ductile, plastic, mechanically weak rheid (viscous solid-state creep with $\sim 1 - 2\%$ partial melt). NOT a rigid solid!</b></td>
-              </tr>
-              <tr>
-                <td><b>Temperature vs. Solidus</b></td>
-                <td>$T \ll T_{\text{solidus}}$ ($T < 1300^\circ\text{C}$ isotherm defines base).</td>
-                <td><b>$T \approx T_{\text{solidus}}$ (Geotherm intersects/approaches mantle peridotite solidus).</b></td>
-              </tr>
-              <tr>
-                <td><b>Seismic Characteristic</b></td>
-                <td>High $P$ and $S$ wave velocities; low attenuation ($Q$).</td>
-                <td><b>Low Velocity Zone (LVZ)</b>: $v_s$ drops by $3-6\%$; high seismic attenuation ($1/Q$).</td>
-              </tr>
-              <tr>
-                <td><b>Geodynamic Function</b></td>
-                <td>Forms the moving tectonic plates.</td>
-                <td><b>Deformable lubricating substrate for plate motions; primary source of basaltic magma via adiabatic decompression melting.</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: RHEOLOGY OF ASTHENOSPHERE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Rheological Definition and Architecture of the Asthenosphere</div>
+    <div class="card-body">
+      <p>The interior of the Earth is divided structurally into layers by two distinct criteria: <strong>compositional stratification</strong> (Crust, Mantle, Core) and <strong>rheological stratification</strong> (Lithosphere, Asthenosphere, Mesosphere, Outer Core, Inner Core):</p>
 
-        <h3>42.2 Why "It is in solid-state" is Incorrect in Academic Testing</h3>
-        <p>In standard university geological curricula and competitive exams (OPSC, UPSC GSI, GATE), the defining attribute of the <b>Asthenosphere</b> (from Greek <i>asthenes</i>, meaning "weak" or "without strength", named by Joseph Barrell in 1914) is that it is <b>semi-molten, plastic, and capable of ductile viscous flow</b> over geological timescales, in direct contrast to the rigid, solid lithosphere above. Stating that the asthenosphere is simply in a rigid "solid-state" is considered fundamentally misleading and incorrect in this context.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q42/bangar_fig1_4_1_5_earth_interior.png" alt="Earth's Internal Structure and Low Velocity Zone (K.M. Bangar, Figs. 1.4 & 1.5)">
-      <figcaption>
-        <strong>Figure 42.1: Earth's Internal Structure & Low Velocity Zone (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 1, Section 1.5, p. 11, Figs. 1.4 & 1.5).</strong> Authentic plate showing variation of P and S wave velocities with depth: the <strong>Asthenosphere (Low Velocity Zone / LVZ)</strong> occurs between 100 and 200 km depth in the upper mantle, where high geothermal gradients cause partial melting (1-2%), reducing seismic shear wave velocities.
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q42/winter_fig1_11_lithosphere_structure.png" alt="Thermal and Mechanical Lithosphere-Asthenosphere Boundary (John D. Winter, Fig. 1.11)">
-      <figcaption>
-        <strong>Figure 42.2: Thermal and Mechanical Lithosphere-Asthenosphere Boundary (John D. Winter, <em>Petrology</em>, Chapter 1, Fig. 1.11).</strong> Diagram delineating the rigid mechanical lithosphere from the ductile, convecting asthenospheric mantle.
-      </figcaption>
+      <ul>
+        <li><strong>The Lithosphere:</strong> The strong, cool, rigid, brittle outer shell of the Earth ($0-100\text{ km}$ under oceans, $0-250\text{ km}$ under continental cratons) comprising the crust and uppermost mantle. Deforms by elastic bending and brittle faulting.</li>
+        <li><strong>The Asthenosphere (Upper Mantle, $\sim 100-410\text{ km}$):</strong> The mechanically weak, highly ductile, plastic substrate of the upper mantle directly beneath the lithosphere. The name is derived from the Greek <em>asthenes</em> (meaning "weak" or "without strength"), coined by Joseph Barrell in 1914.</li>
+        <li><strong>The Low Velocity Zone (LVZ):</strong> Between depths of $100\text{ km}$ and $220\text{ km}$, seismic body wave velocities ($v_p$ and especially $v_s$) exhibit a distinct $5-10\%$ drop accompanied by high seismic attenuation ($Q^{-1} \gg 0$). This marks the core of the asthenosphere where geotherm temperature approaches the mantle peridotite solidus:
+          $$T(z) \approx (0.90 - 0.98) T_{\text{solidus}}$$
+        </li>
+        <li><strong>Partial Melting:</strong> High-precision petrological and electrical conductivity measurements confirm that the asthenosphere contains a tiny fraction ($0.5-2.0\%$) of interconnected interstitial basaltic partial melt, placing it in a <strong>semi-molten / partially molten ductile rheid state</strong>.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q42/earth_interior_lithosphere_asthenosphere_lvz.png" alt="Earth Interior Lithosphere Asthenosphere LVZ">
+        <div class="tb-caption">
+          <strong>Figure 42.1:</strong> Rheological cross-section of the Earth's upper mantle showing the rigid Lithosphere, the ductile, semi-molten Asthenosphere with its Low Velocity Zone (LVZ), and the underlying Mesosphere.
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: SOLID-STATE VS PLASTIC RHEOLOGY -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Dislocation Creep and the Fallacy of the "Rigid Solid" Asthenosphere</div>
+    <div class="card-body">
+      <p>Question 42 asks which statement is <strong>incorrect</strong> about the asthenosphere among four options:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Non-Newtonian Dislocation Power-Law Creep</div>
+        $$\dot{\epsilon} = A \cdot \sigma^n \cdot \exp\left(-\frac{E^* + P V^*}{R T}\right)$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $\dot{\epsilon}$ is strain rate, $\sigma$ is deviatoric stress, $n \approx 3.5$ for olivine dislocation creep, $E^*$ is activation energy, and $V^*$ is activation volume. At asthenospheric temperatures ($T \sim 1300^\circ\text{C}$), effective viscosity drops to $\eta \sim 10^{19}-10^{20}\text{ Pa}\cdot\text{s}$, permitting convective flow at centimeters per year.</p>
+      </div>
+
+      <ul>
+        <li><strong>Why "It is in solid-state" is Marked Incorrect in Examination Geology:</strong> While mantle petrologists recognize that the asthenosphere is predominantly composed of crystalline peridotite (olivine + pyroxene) with small melt fractions, in classic geology curricula (Bangar, Wadia, Holmes) the asthenosphere is explicitly defined by its <strong>semi-molten, ductile, non-solid plastic behaviour</strong> in stark contrast to the rigid "solid-state" lithosphere above it!</li>
+        <li><strong>Magmatic Reservoir:</strong> The asthenosphere serves as the ultimate source of decompression partial melting that feeds mid-ocean ridge basalts (MORB) and intraplate hotspot volcanism.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q42/winter_fig1_11_lithosphere_structure.png" alt="Lithosphere Asthenosphere Boundary from Winter">
+        <div class="tb-caption">
+          <strong>Figure 42.2 (Winter, Fig. 1.11):</strong> Thermal and mechanical boundary layers defining the Lithosphere-Asthenosphere Boundary (LAB) at the $1300^\circ\text{C}$ mantle adiabat.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON OF UPPER MANTLE LAYERS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Layer Matrix: Lithosphere vs. Asthenosphere vs. Mesosphere</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Depth Range</th>
+            <th>Physical / Rheological State</th>
+            <th>Seismic Velocity Behaviour</th>
+            <th>Role in Plate Tectonics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lithosphere</strong></td>
+            <td>$0-100\text{ km}$ (oceans), $0-250\text{ km}$ (continents)</td>
+            <td><strong>Rigid, brittle solid</strong>; deforms elastically and by brittle fracture.</td>
+            <td>High, uniform $v_p \sim 8.1\text{ km/s}$, $v_s \sim 4.6\text{ km/s}$; high $Q$.</td>
+            <td>Forms the moving tectonic plates.</td>
+          </tr>
+          <tr>
+            <td><strong>Asthenosphere</strong></td>
+            <td>$100-410\text{ km}$</td>
+            <td><strong>Ductile rheid, plastic, semi-molten</strong> ($1-2\%$ partial melt).</td>
+            <td><strong>Low Velocity Zone (LVZ)</strong>; sharp decrease in $v_s$ and $Q$.</td>
+            <td>Lubricates plate motions; facilitates isostatic adjustment; source of MORB.</td>
+          </tr>
+          <tr>
+            <td><strong>Mesosphere (Lower Mantle)</strong></td>
+            <td>$660-2891\text{ km}$</td>
+            <td><strong>Viscous solid</strong> under extreme confining pressure ($P > 24\text{ GPa}$).</td>
+            <td>Monotonically increasing $v_p$ and $v_s$ due to compression.</td>
+            <td>Host of deep mantle convective plumes (bridgmanite + post-perovskite).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q42. Which of the following is incorrect about Asthenosphere ?</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> It is present in the upper mantle</div>
-        <div class="opt-item correct"><strong>(B)</strong> It is in solid-state</div>
-        <div class="opt-item "><strong>(C)</strong> It is in a semi-molten stage</div>
-        <div class="opt-item "><strong>(D)</strong> It is the source of volcanic activity</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 42</div>
+        <div class="q-text">Which of the following is incorrect about Asthenosphere ?</div>
+        <div class="q-options">
+          <div class="opt-node">(A) It is present in the upper mantle</div>
+          <div class="opt-node correct">(B) It is in solid-state</div>
+          <div class="opt-node">(C) It is in a semi-molten stage</div>
+          <div class="opt-node">(D) It is the source of volcanic activity</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(B) It is in solid-state</strong> [This is the incorrect statement: The defining geological characteristic of the asthenosphere is that it is NOT a rigid solid; it is a ductile, plastic rheid in a semi-molten stage containing partial melt.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) It is in solid-state</b> — Stating that the Asthenosphere is in a rigid "solid-state" is <b>incorrect</b>; the asthenosphere is characteristically a <b>plastic, semi-molten (or partially molten rheid)</b> layer that undergoes ductile flow.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) It is present in the upper mantle — CORRECT STATEMENT:</b> The asthenosphere is situated within the upper mantle, immediately below the lithosphere from $\sim 100\text{ km}$ down to the $410\text{ km}$ mantle discontinuity.</li>
-          <li><b>(B) It is in solid-state — INCORRECT STATEMENT (Required Answer):</b> The asthenosphere behaves as a plastic, semi-molten rheid with interstitial partial melting ($1-2\%$) that generates the seismic Low Velocity Zone (LVZ); describing it as rigid solid-state denies its defining rheological nature.</li>
-          <li><b>(C) It is in a semi-molten stage — CORRECT STATEMENT:</b> Partial melting along grain boundaries gives the asthenosphere its low viscosity and seismic velocity drop.</li>
-          <li><b>(D) It is the source of volcanic activity — CORRECT STATEMENT:</b> Upwelling and adiabatic decompression melting of the asthenosphere generates mid-ocean ridge basalts (MORB) and supplies hotspot volcanism.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option (Target False Statement): (B) It is in solid-state</div>
+    <div class="card-body">
+      <p><strong>Detailed Rheological Forensic Analysis:</strong></p>
+      <ul>
+        <li>The term <strong>asthenosphere</strong> (from Greek <em>a-sthenos</em>, "without strength") was established specifically to denote the mechanically weak, ductile, non-rigid layer that decouples the overlying rigid lithosphere from the deeper Earth.</li>
+        <li>Unlike the lithosphere, which is a true <strong>rigid solid</strong> behaving elastically and brittly, the asthenosphere behaves as a plastic, viscous rheid capable of continuous hydrodynamic flow under low stresses.</li>
+        <li>Furthermore, petrological investigations and seismic shear-wave attenuation demonstrate that the asthenosphere contains $1-2\%$ partial melt, making it a <strong>semi-molten, ductile layer</strong> rather than a rigid solid.</li>
+        <li>Therefore, the assertion that <em>"It is in solid-state"</em> is factually false and constitutes the intended answer for the incorrect statement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor (Valid Statement): (A) It is present in the upper mantle</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The asthenosphere lies entirely within the <strong>upper mantle</strong>, situated beneath the lithospheric mantle from approximately $100\text{ km}$ depth down to the mantle transition zone at $410\text{ km}$ (olivine to wadsleyite phase transition).</li>
+        <li>Because this statement is entirely scientifically true, it cannot be the target incorrect statement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor (Valid Statement): (C) It is in a semi-molten stage</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>In standard geological and geophysical textbooks (e.g., K.M. Bangar, pp. 6–10; Tarbuck & Lutgens; Holmes), the asthenosphere is explicitly described as existing in a <strong>semi-molten (partially molten) state</strong>.</li>
+        <li>The presence of interstitial silicate melt fractions along grain boundaries is the exact physical mechanism responsible for the Low Velocity Zone (LVZ) and high seismic attenuation. Hence, this statement is factually correct.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor (Valid Statement): (D) It is the source of volcanic activity</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Adiabatic decompression melting of the upwelling asthenosphere produces the basaltic magmas that feed mid-ocean ridge volcanoes (generating all oceanic crust on Earth) as well as ocean island basalt (OIB) volcanic chains.</li>
+        <li>Because the asthenosphere is the ultimate source of planetary basaltic volcanism, this statement is accurate and cannot be chosen as incorrect.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Mantle Rheology Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 42: Viscous Relaxation Time of the Asthenosphere</div>
-          <p>Post-glacial rebound of the Fennoscandian shield yields an estimated asthenospheric dynamic viscosity of $\eta = 1.0 \times 10^{20}\text{ Pa}\cdot\text{s}$ and an effective shear modulus of $\mu = 7.0 \times 10^{10}\text{ Pa}$. Calculate the Maxwell viscoelastic relaxation time ($\tau_M$) of the asthenosphere and interpret its physical meaning.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. The Maxwell relaxation time is given by:</p>
-            $$\tau_M = \frac{\eta}{\mu} = \frac{1.0 \times 10^{20}\text{ Pa}\cdot\text{s}}{7.0 \times 10^{10}\text{ Pa}} \approx 1.43 \times 10^9\text{ seconds}$$
-            <p>2. Convert seconds to years ($1\text{ yr} \approx 3.156 \times 10^7\text{ s}$):</p>
-            $$\tau_M = \frac{1.43 \times 10^9}{3.156 \times 10^7} \approx 45.3\text{ years}$$
-            <p><b>Physical Interpretation:</b> For loading periods much shorter than $\tau_M$ (such as high-frequency seismic waves with periods of seconds), the asthenosphere responds elastically (transmitting P and S waves). For loading periods much longer than $\tau_M$ (such as mantle convection and plate motion over millions of years), elastic stresses relax to zero and the asthenosphere behaves completely as a <b>viscous fluid rheid</b>.</p>
-          </div>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Rheological Properties of the Asthenosphere</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Asthenosphere Value / Characteristic</th>
+            <th>Geodynamic Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Depth Interval</strong></td>
+            <td>$100\text{ km}$ to $410\text{ km}$ depth (Upper Mantle)</td>
+            <td>Bounded above by the $1300^\circ\text{C}$ isotherm (LAB) and below by the $410\text{ km}$ discontinuity.</td>
+          </tr>
+          <tr>
+            <td><strong>Effective Dynamic Viscosity ($\eta$)</strong></td>
+            <td>$10^{18}$ to $10^{20}\text{ Pa}\cdot\text{s}$ (100 times lower than deeper mantle)</td>
+            <td>Enables rapid post-glacial isostatic rebound and smooth horizontal plate translation.</td>
+          </tr>
+          <tr>
+            <td><strong>Physical State</strong></td>
+            <td><strong>Ductile, plastic rheid, semi-molten</strong> ($1-2\%$ partial melt)</td>
+            <td>Allows viscous solid-state dislocation creep at rates of $1-10\text{ cm/year}$.</td>
+          </tr>
+          <tr>
+            <td><strong>Seismic Manifestation</strong></td>
+            <td><strong>Low Velocity Zone (LVZ)</strong> ($v_s$ drops by $\sim 5-10\%$, $Q_s < 80$)</td>
+            <td>High shear attenuation and velocity reduction diagnostic of intergranular partial melt.</td>
+          </tr>
+          <tr>
+            <td><strong>Magmatic Function</strong></td>
+            <td>Source of decompressing basaltic magma</td>
+            <td>Generates mid-ocean ridge basalts (MORB) and back-arc basin volcanics.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Mantle Rheology & Geodynamics</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Asthenospheric Viscosity from Post-Glacial Rebound</div>
+        <p>The Fennoscandian post-glacial rebound exhibits a characteristic relaxation time $\tau = 5,000\text{ years}$ for a glacial load wavelength $\lambda = 3,000\text{ km}$. Estimate the dynamic viscosity $\eta$ of the asthenosphere assuming mantle density $\rho = 3300\text{ kg/m}^3$ and $g = 9.8\text{ m/s}^2$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>From Haskell's (1935) viscous half-space relaxation formula:</p>
+        $$\tau = \frac{4\pi \eta}{\rho g \lambda} \implies \eta = \frac{\rho g \lambda \tau}{4\pi}$$
+        <p>Converting $\tau$ into seconds: $\tau = 5000 \times 365.25 \times 86400 \approx 1.578 \times 10^{11}\text{ s}$.</p>
+        $$\lambda = 3000\text{ km} = 3.0 \times 10^6\text{ m}$$
+        $$\eta = \frac{3300 \times 9.8 \times 3.0 \times 10^6 \times 1.578 \times 10^{11}}{4 \times 3.14159}$$
+        $$\eta = \frac{1.531 \times 10^{22}}{12.566} \approx 1.22 \times 10^{21}\text{ Pa}\cdot\text{s}$$
+        <p><strong>Final Answer:</strong> The asthenospheric/upper mantle viscosity is approximately $1.2 \times 10^{21}\text{ Pa}\cdot\text{s}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Basal Shear Traction on a Moving Lithospheric Plate</div>
+        <p>An oceanic plate of thickness $L = 80\text{ km}$ moves with velocity $v = 5\text{ cm/year}$ over an asthenospheric shear channel of thickness $H = 150\text{ km}$ and viscosity $\eta = 10^{19}\text{ Pa}\cdot\text{s}$. Calculate the shear stress $\tau_b$ exerted on the base of the plate.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Assuming simple Couette laminar shear flow:</p>
+        $$\tau_b = \eta \frac{dv}{dz} = \eta \frac{v}{H}$$
+        $$v = 5\text{ cm/yr} = \frac{0.05\text{ m}}{3.156 \times 10^7\text{ s}} \approx 1.584 \times 10^{-9}\text{ m/s}$$
+        $$H = 150\text{ km} = 1.5 \times 10^5\text{ m}$$
+        $$\tau_b = (10^{19}\text{ Pa}\cdot\text{s}) \times \left(\frac{1.584 \times 10^{-9}\text{ m/s}}{1.5 \times 10^5\text{ m}}\right) = 10^{19} \times 1.056 \times 10^{-14} \approx 1.056 \times 10^5\text{ Pa} \approx 0.106\text{ MPa}$$
+        <p><strong>Final Answer:</strong> The basal shear stress is approximately $0.11\text{ MPa}$ ($1.06\text{ bars}$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Cause of the Low Velocity Zone (LVZ)</div>
+        <p>Explain physically why shear wave velocity ($v_s$) drops drastically in the Low Velocity Zone while compressional velocity ($v_p$) experiences a much smaller percentage drop.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Recall $v_s = \sqrt{\mu/\rho}$ and $v_p = \sqrt{(K + \frac{4}{3}\mu)/\rho}$. When rock reaches its solidus and small fractions of liquid melt wet the grain boundaries, the shear rigidity modulus ($\mu$) collapses significantly because fluids cannot sustain shear stress. However, incompressibility ($K$) remains largely intact because liquids resist volume compression. Because $v_s$ depends exclusively on $\mu$, it drops much more sharply than $v_p$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Maxwell Relaxation Time for the Asthenosphere</div>
+        <p>The Maxwell viscoelastic relaxation time is $t_M = \eta / \mu$. For the asthenosphere with $\eta = 10^{19}\text{ Pa}\cdot\text{s}$ and $\mu = 70\text{ GPa}$, calculate $t_M$ and explain why it behaves elastically to seismic waves but viscously to plate tectonics.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$t_M = \frac{10^{19}\text{ Pa}\cdot\text{s}}{70 \times 10^9\text{ Pa}} \approx 1.43 \times 10^8\text{ seconds} \approx 4.5\text{ years}$$
+        <ul>
+          <li>For seismic waves, wave periods are $T \sim 0.1-100\text{ seconds} \ll t_M$ ($4.5\text{ years}$); hence the material responds as an <strong>elastic solid</strong>, transmitting $S$-waves.</li>
+          <li>For plate tectonic processes, timescales are $T \sim 10^5-10^7\text{ years} \gg t_M$; hence the material flows as a <strong>viscous fluid</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Asthenospheric Adiabatic Temperature Gradient</div>
+        <p>The adiabatic temperature gradient in the vigorously convecting asthenosphere is given by $\left(\frac{dT}{dz}\right)_{\text{ad}} = \frac{\alpha g T}{C_p}$. For thermal expansion $\alpha = 3 \times 10^{-5}\text{ K}^{-1}$, $g = 9.8\text{ m/s}^2$, $T = 1600\text{ K}$, and specific heat $C_p = 1200\text{ J/(kg}\cdot\text{K)}$, calculate the gradient in $^\circ\text{C/km}$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\left(\frac{dT}{dz}\right)_{\text{ad}} = \frac{3 \times 10^{-5} \times 9.8 \times 1600}{1200} = \frac{0.4704}{1200} = 3.92 \times 10^{-4}\text{ K/m} = 0.392^\circ\text{C/km}$$
+        <p><strong>Final Answer:</strong> The adiabatic gradient is approximately $0.4^\circ\text{C/km}$ (vastly lower than the conductive crustal gradient of $25-30^\circ\text{C/km}$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Origin of Barrell's Asthenosphere Concept (1914)</div>
+        <p>What geophysical observation led Joseph Barrell in 1914 to deduce the existence of the asthenosphere?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Joseph Barrell analyzed gravity anomalies and isostatic deflections across continents. He deduced that large regional surface topographic loads (deltas, mountain ranges) are supported by a strong, rigid outer shell (the <strong>lithosphere</strong>), but that complete isostatic compensation at depth requires an underlying mechanically weak, plastic layer (the <strong>asthenosphere</strong>) capable of flowing laterally to accommodate mass displacements.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: 410 km Seismic Discontinuity Mineralogy</div>
+        <p>What mineral phase transition marks the bottom boundary of the asthenosphere at $410\text{ km}$ depth?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>At approximately $410\text{ km}$ depth ($P \approx 13.5\text{ GPa}$), upper mantle $\alpha$-olivine $(\text{Mg,Fe})_2\text{SiO}_4$ undergoes an isochemical metamorphic phase transformation into the denser $\beta$-spinel phase known as <strong>wadsleyite</strong>, accompanied by an abrupt $\sim 5\%$ increase in density and seismic velocity.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Decompression Melting at Mid-Ocean Ridges</div>
+        <p>Explain how solid asthenosphere melts beneath mid-ocean spreading ridges without any addition of external heat.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Beneath a divergent plate boundary, lithospheric plates pull apart, inducing rapid passive vertical upwelling of asthenospheric mantle. Because rock is a poor conductor of heat, the mantle rises <strong>adiabatically</strong> (conserving heat: $dT/dz \approx 0.4^\circ\text{C/km}$). However, the mantle solidus melting curve has a much steeper pressure slope ($\sim 10^\circ\text{C/km}$). As pressure drops during upwelling, the adiabatic temperature path crosses the solidus curve at $\sim 60-80\text{ km}$ depth, triggering extensive <strong>decompression partial melting</strong>.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

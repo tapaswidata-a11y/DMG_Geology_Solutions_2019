@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q46: Cretaceous Stratigraphy of Cauvery Basin: Uttatur, Trichinopoly & Ariyalur | OPSC Geology 2021 Masterclass</title>
+<title>Q046: South Indian Marine Cretaceous Stratigraphy: Uttatur, Trichinopoly & Ariyalur Groups | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,281 +89,590 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q46" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Paleontology</div>
-    <h1>Q46: Cretaceous Stratigraphy of Cauvery Basin: Uttatur, Trichinopoly & Ariyalur</h1>
+    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Mesozoic Biostratigraphy</div>
+    <h1>Q046: South Indian Cretaceous: Trichinopoly Tripartite Succession</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> H.F. Blanford (1862); Ramakrishnan & Vaidyanadhan (Geology of India, Vol. 2, Ch. 24); M.S. Krishnan (Ch. 15)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 46<br>
+<strong>Authoritative References:</strong> M.S. Krishnan, <em>Geology of India and Burma</em> (6th Ed., CBS Publishers, Ch. 15: The Cretaceous System, pp. 402–424); Ramakrishnan & Vaidyanadhan, <em>Geology of India</em> (Geol. Soc. India, Vol. 2, Ch. 24: Cretaceous of South India, pp. 815–842); H.F. Blanford, <em>On the Cretaceous and other rocks of South Arcot and Trichinopoly districts</em> (Mem. Geol. Surv. India, Vol. 4, 1862); Ravindran et al., <em>Cauvery Basin Biostratigraphy</em> (ONGC Bulletin).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>46.1 Cretaceous Marine Transgression in the Cauvery Basin</h3>
-        <p>In Indian stratigraphy and paleontology (M.S. Krishnan, <i>Geology of India and Burma</i>, Ch. 15; Ramakrishnan & Vaidyanadhan, <i>Geology of India</i>, Vol. 2, Ch. 24; Blanford, 1862), the Cretaceous succession of the Tiruchirappalli (Trichinopoly) district in Tamil Nadu constitutes the most complete, world-renowned marine Cretaceous reference section in peninsular India. Deposited during global Cenomanian-Campanian marine transgressions across the newly rifted eastern margin of Gondwana, it rests unconformably upon Archean charnockites and gneisses:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Lithostratigraphic Formation</th>
-                <th>Standard Age</th>
-                <th>Diagnostic Lithologies</th>
-                <th>Key Index Fossils & Biostratigraphy</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>3. Ariyalur Formation (Top)</b></td>
-                <td><b>Campanian to Maastrichtian</b></td>
-                <td>Unconsolidated sands, fossiliferous calc-sandstones, white clays, and shell limestones.</td>
-                <td><b>Ammonites:</b> <i>Pachydiscus, Baculites, Sphenodiscus</i>.<br><b>Foraminifera:</b> <i>Globotruncana gansseri</i>.<br>Extends to K-Pg boundary.</td>
-              </tr>
-              <tr>
-                <td><b>2. Trichinopoly Formation (Middle)</b></td>
-                <td><b>Turonian to Coniacian</b></td>
-                <td>Coarse grits, shell limestones, calcareous sandstones, and gypseous clays.</td>
-                <td><b>Ammonites:</b> <i>Placenticeras tamulicum, Lewesiceras</i>.<br><b>Bivalves:</b> <i>Inoceramus, Spondylus</i>.</td>
-              </tr>
-              <tr>
-                <td><b>1. Uttatur (Ootatoor) Formation (Base)</b></td>
-                <td><b>Upper Albian to Cenomanian</b></td>
-                <td>Basal conglomerates, coral reef limestones, fine yellow sandstones, and phosphatic nodule-bearing gypseous clays.</td>
-                <td><b>Ammonites:</b> <i>Schloenbachia inflata, Acanthoceras rhotomagense, Turrilites costatus</i>.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>46.2 Historical Classification by H.F. Blanford (1862)</h3>
-        <p>H.F. Blanford of the Geological Survey of India established the canonical tripartite division of the Trichinopoly Cretaceous basin into:</p>
-        <ol>
-          <li><b>Uttatur Formation</b> (lower Cenomanian)</li>
-          <li><b>Trichinopoly Formation</b> (middle Turonian)</li>
-          <li><b>Ariyalur Formation</b> (upper Senonian / Campanian-Maastrichtian)</li>
-        </ol>
-        <p>Later workers (Rama Rao, 1956) recognized the topmost Danian (Paleocene) beds as the <i>Niniyur Formation</i>, but the classical Cretaceous sequence consists strictly of Uttatur, Trichinapoli, and <b>Ariyalur</b>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q46/mahapatra_p173_trichinopoly_cretaceous.png" alt="Marine Cretaceous Succession of South India (G.B. Mahapatra, p. 173)">
-      <figcaption>
-        <strong>Figure 46.1: Marine Cretaceous Succession of South India (Trichinopoly Type Area) (G.B. Mahapatra, <em>A Text-Book of Geology</em>, Chapter 22, p. 173 / book p. 322).</strong> Authentic textbook plate showing the complete stratigraphic succession: <strong>Uttatur Formation</strong> (Cenomanian marine transgression, basal coral reef limestone and gypsiferous clays), <strong>Trichinopoly Formation</strong> (Turonian–Coniacian shallow marine sandstones and shell limestone / 'Trichinopoly Marble'), and <strong>Ariyalur Formation</strong> (Senonian–Maastrichtian fossiliferous sands with abundant giant ammonites and dinosaurs).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: GEOLOGICAL FRAMEWORK OF CAUVERY BASIN CRETACEOUS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Stratigraphic Architecture of the Cretaceous Cauvery Basin</div>
+    <div class="card-body">
+      <p>The marine Cretaceous rocks of the <strong>Tiruchirappalli (Trichinopoly) District</strong> in the Cauvery Basin of Tamil Nadu represent one of the classic, most complete, and richly fossiliferous marine Cretaceous successions in the world. Deposited in a pericratonic rift basin initiated during the breakup of eastern Gondwanaland (separation of India from Antarctica and Australia), the succession rests unconformably upon Archean granitic gneisses or Upper Gondwana plant beds:</p>
+
+      <ul>
+        <li><strong>Historical Classification (H.F. Blanford, 1862):</strong> Henry F. Blanford established the foundational tripartite classification of the Trichinopoly Cretaceous succession in ascending chronostratigraphic order:
+          <ol>
+            <li><strong>Uttatur (Ootatoor) Group (Albian to Cenomanian):</strong> Basal marine transgressive facies resting directly on Archean basement. Characterized by basal coral reef limestones, gypsiferous clays, phosphatic nodules, and abundant ammonites (<em>Schloenbachia, Acanthoceras, Turrilites</em>).</li>
+            <li><strong>Trichinopoly Group (Turonian to Coniacian):</strong> Separated from the underlying Uttatur Group by an erosional disconformity marked by a basal conglomerate. Composed of shallow-water marine sandstones, shell limestones, and silts containing fossil wood (silicified tree trunks up to 25 m long) and gastropods/bivalves (<em>Inoceramus, Protocardia</em>).</li>
+            <li><strong>Ariyalur Group (Santonian to Maastrichtian):</strong> The thickest, most extensive group, conformably to disconformably overlying the Trichinopoly beds. Dominated by calcareous sandstones, marls, and richly fossiliferous arenites with abundant ammonites (<em>Pachydiscus, Baculites, Sphenodiscus</em>), echinoids (<em>Stigmatopygus</em>), and dinosaurian bone remains (Titanosaurids).</li>
+            <li><strong>Niniyur Formation (Danian / Early Paleocene):</strong> Overlies the Ariyalur Group, marking the post-ammonite Tertiary transition characterized by the nautiloid <em>Hercoglossa danica</em>.</li>
+          </ol>
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q46/cauvery_basin_trichinopoly_cretaceous_stratigraphy.png" alt="Cauvery Basin Trichinopoly Cretaceous Stratigraphy">
+        <div class="tb-caption">
+          <strong>Figure 46.1:</strong> Chronostratigraphic litho-column of the marine Cretaceous succession in Tiruchirappalli (Cauvery Basin), detailing the sequence: Archean Basement $\to$ Uttatur Group $\to$ Trichinopoly Group $\to$ Ariyalur Group $\to$ Niniyur Formation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MAHAPATRA EXCERPT AND BIOZONATION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Biostratigraphic Biozones and Transgressive-Regressive Cycles</div>
+    <div class="card-body">
+      <p>The Trichinopoly Cretaceous sequence records major global sea-level fluctuations (eustatic transgressions) coupled with thermal rift basin subsidence:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Chronostratigraphic Sequence of the Trichinopoly Cretaceous</div>
+        $$\text{Basement Gneiss} \xrightarrow{\text{Unconformity}} \mathbf{Uttatur} \xrightarrow{\text{Disconformity}} \mathbf{Trichinopoly} \xrightarrow{\text{Transition}} \mathbf{Ariyalur} \xrightarrow{\text{K-Pg Boundary}} \mathbf{Niniyur}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Ages: Uttatur (Albian-Cenomanian) $\to$ Trichinopoly (Turonian-Coniacian) $\to$ Ariyalur (Santonian-Maastrichtian) $\to$ Niniyur (Danian Paleocene).</p>
+      </div>
+
+      <ul>
+        <li><strong>Phosphatic Nodules of Uttatur:</strong> The Uttatur clays contain commercially exploited phosphatic nodules ($\sim 20-25\% \text{ P}_2\text{O}_5$) formed under warm, upwelling coastal shelf conditions.</li>
+        <li><strong>Fossil Silicified Wood:</strong> The Trichinopoly Group is globally renowned for its giant silicified coniferous tree trunks (e.g., National Fossil Wood Park at Sathanur) swept into shallow marine bays by rivers during regression.</li>
+        <li><strong>Global Correlation:</strong> The rich ammonite fauna allows precise high-resolution correlation with the European stage stratotypes (Albian, Cenomanian, Turonian, Senonian, Maastrichtian).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q46/mahapatra_p173_trichinopoly_cretaceous.png" alt="Mahapatra Trichinopoly Cretaceous">
+        <div class="tb-caption">
+          <strong>Figure 46.2 (G.B. Mahapatra, p. 173):</strong> Textbook stratigraphic classification of the Trichinopoly Cretaceous rocks illustrating the three canonical groups: Uttatur, Trichinopoly, and Ariyalur.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE STRATIGRAPHIC MATRIX -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Stratigraphic Subdivisions of South Indian Cretaceous</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Group / Formation</th>
+            <th>Standard Global Age</th>
+            <th>Dominant Lithologies</th>
+            <th>Diagnostic Index Fossils</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Niniyur Formation</strong></td>
+            <td>Danian (Early Paleocene)</td>
+            <td>White limestones, marls, calcareous sands.</td>
+            <td><em>Hercoglossa danica</em>, <em>Cardita jaquinoti</em> (Ammonites extinct!).</td>
+          </tr>
+          <tr>
+            <td><strong>Ariyalur Group</strong></td>
+            <td>Santonian to Maastrichtian</td>
+            <td>Fossiliferous arenites, sandy clays, calcareous sandstone.</td>
+            <td><em>Pachydiscus otacodensis</em>, <em>Baculites</em>, <em>Stigmatopygus elatus</em>, Titanosaur bones.</td>
+          </tr>
+          <tr>
+            <td><strong>Trichinopoly Group</strong></td>
+            <td>Turonian to Coniacian</td>
+            <td>Coarse sandstones, shell limestones, conglomerates.</td>
+            <td><em>Inoceramus concentricus</em>, <em>Protocardia hillana</em>, silicified wood (Sathanur).</td>
+          </tr>
+          <tr>
+            <td><strong>Uttatur Group</strong></td>
+            <td>Late Albian to Cenomanian</td>
+            <td>Basal coral limestone, yellow clays, gypsum, phosphate.</td>
+            <td><em>Schloenbachia inflata</em>, <em>Acanthoceras rhotomagense</em>, <em>Turrilites costatus</em>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q46. The Upper Cretaceous rocks of the Tiruchchirappalli area has been classified into three Formations viz., Uttatur, Trichinapoli and _____.</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Ariyalur Formation</div>
-        <div class="opt-item "><strong>(B)</strong> Haimanta Formation</div>
-        <div class="opt-item "><strong>(C)</strong> Lilang Formation</div>
-        <div class="opt-item "><strong>(D)</strong> Chikkim Formation</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 46</div>
+        <div class="q-text">The Upper Cretaceous rocks of the Tiruchchirappalli area has been classified into three Formations viz., Uttatur, Trichinapoli and _____.</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Ariyalur Formation</div>
+          <div class="opt-node">(B) Haimanta Formation</div>
+          <div class="opt-node">(C) Lilang Formation</div>
+          <div class="opt-node">(D) Chikkim Formation</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(A) Ariyalur Formation</strong> [The classic tripartite South Indian Cretaceous sequence of Blanford (1862) comprises the Uttatur, Trichinopoly, and Ariyalur Groups, followed by the Danian Niniyur Formation.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) Ariyalur Formation</b> — The Upper Cretaceous rocks of the Tiruchirappalli area are classically classified into three major Formations: <b>Uttatur</b>, <b>Trichinapoli</b>, and <b>Ariyalur Formation</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Ariyalur Formation — CORRECT:</b> Forms the uppermost division of the tripartite Cretaceous of Trichinopoly, famous for its rich Campanian-Maastrichtian invertebrate fauna.</li>
-          <li><b>(B) Haimanta Formation — INCORRECT:</b> The Haimanta Group is an early Paleozoic (Cambrian) unit of the Tethyan Himalayan succession in the Spiti Valley, over $2500\text{ km}$ away in northern India.</li>
-          <li><b>(C) Lilang Formation — INCORRECT:</b> The Lilang Group is the monumental Triassic marine limestone succession of the Spiti Tethyan belt.</li>
-          <li><b>(D) Chikkim Formation — INCORRECT:</b> The Chikkim Formation is the Cretaceous limestone-shale formation of the Spiti basin in the Himalayas, not Tamil Nadu.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (A) Ariyalur Formation</div>
+    <div class="card-body">
+      <p><strong>Detailed Stratigraphic Forensic Analysis:</strong></p>
+      <ul>
+        <li>The marine Cretaceous succession of the Cauvery Basin in the Tiruchirappalli (Trichinopoly) district of Tamil Nadu was classically subdivided by Henry F. Blanford (1862) into three principal units (in ascending stratigraphic order):
+          <ol>
+            <li><strong>Uttatur Formation (Group)</strong> — Albian to Cenomanian</li>
+            <li><strong>Trichinopoly Formation (Group)</strong> — Turonian to Coniacian</li>
+            <li><strong>Ariyalur Formation (Group)</strong> — Santonian to Maastrichtian</li>
+          </ol>
+        </li>
+        <li>The <strong>Ariyalur Formation</strong> forms the youngest and most aerially extensive Cretaceous unit of this tripartite sequence, beautifully exposed around the town of Ariyalur and overlain by the Paleocene Niniyur beds.</li>
+        <li>Therefore, the missing third member in the official sequence is unequivocally the <strong>Ariyalur Formation</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Haimanta Formation</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Haimanta Group (Formation)</strong> is a famous lithostratigraphic unit belonging to the <strong>Cambrian System of the Tethyan Himalayan succession</strong> in Spiti, Himachal Pradesh (named by C.L. Griesbach in 1891).</li>
+        <li>It represents early Paleozoic slates, phyllites, and quartzites containing trilobites (<em>Redlichia</em>), bearing zero geological, geographic, or chronostratigraphic connection to the Cretaceous of Tamil Nadu.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Lilang Formation</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Lilang Group (System)</strong> is the classical <strong>Triassic marine succession of Spiti</strong> (Himalayas), comprising richly fossiliferous limestones and shales containing ammonoids such as <em>Otoceras, Meekoceras, Ceratites</em>, and <em>Daonella</em>.</li>
+        <li>It has nothing to do with the South Indian Cretaceous Cauvery Basin.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) Chikkim Formation</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Although the <strong>Chikkim Formation</strong> is indeed of Cretaceous age, it is located entirely in the <strong>Tethyan Himalayan basin of Spiti</strong> (Himachal Pradesh), consisting of white pelagic limestones and shales containing planktonic foraminifera (<em>Globotruncana</em>).</li>
+        <li>It is not part of the Peninsular Tiruchirappalli (Cauvery Basin) succession.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Indian Cretaceous Stratigraphy Suite</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Geographic Basin</th>
-                <th>Lithostratigraphic Formations</th>
-                <th>Depositional Setting</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Cauvery Basin (Trichinopoly)</b></td>
-                <td><b>Uttatur → Trichinopoly → Ariyalur → Niniyur</b></td>
-                <td>Passive margin shallow marine shelf (Bay of Bengal opening)</td>
-              </tr>
-              <tr>
-                <td><b>Narmada Valley (Bagh Beds)</b></td>
-                <td>Nimar Sandstone → Nodular Limestone → Deola-Chirakhan Marl → Coralline Limestone</td>
-                <td>Estuarine to shallow marine inlet (Arabian Sea transgression)</td>
-              </tr>
-              <tr>
-                <td><b>Spiti Basin (Himalaya)</b></td>
-                <td>Giumal Sandstone → Chikkim Formation</td>
-                <td>Tethys deep to pelagic shelf ocean</td>
-              </tr>
-              <tr>
-                <td><b>Central India (Lameta Beds)</b></td>
-                <td>Infratrappean cherty limestones, green sands (Titanosaur dinosaur bones)</td>
-                <td>Fluvio-lacustrine terrestrial environments</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Indian Cretaceous Marine Basins</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Geographic Basin</th>
+            <th>Primary Lithostratigraphic Succession</th>
+            <th>Tectonic Setting</th>
+            <th>Key Index Fossils / Biota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Trichinopoly (Cauvery Basin, Tamil Nadu)</strong></td>
+            <td><strong>Uttatur $\to$ Trichinopoly $\to$ Ariyalur $\to$ Niniyur</strong></td>
+            <td>East coast passive margin pericratonic rift (Gondwana breakup).</td>
+            <td><em>Acanthoceras</em>, <em>Inoceramus</em>, <em>Pachydiscus</em>, <em>Hercoglossa danica</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Narmada Basin (Bagh Beds, MP/Gujarat)</strong></td>
+            <td>Nimar Sandstone $\to$ Nodular Limestone $\to$ Deola-Chirakhan Marl $\to$ Coralline Limestone</td>
+            <td>SONATA intraplate marine transgressive arm from western Tethys.</td>
+            <td>Echinoids (<em>Hemiaster</em>), ammonites (<em>Placenticeras</em>), bivalves (<em>Inoceramus</em>).</td>
+          </tr>
+          <tr>
+            <td><strong>Spiti (Tethyan Himalayas)</strong></td>
+            <td>Giumal Sandstone $\to$ <strong>Chikkim Formation</strong> (Limestone & Shale)</td>
+            <td>Tethyan deep-marine continental shelf and slope.</td>
+            <td>Planktonic foraminifera (<em>Globotruncana stuarti</em>), belemnites (<em>Neohibolites</em>).</td>
+          </tr>
+          <tr>
+            <td><strong>Jaisalmer / Kutch Basin</strong></td>
+            <td>Ukra Member $\to$ Bhuj Formation (Kutch); Pariwar $\to$ Habur (Jaisalmer)</td>
+            <td>Western continental passive margin rift basins.</td>
+            <td>Ammonites (<em>Australiceras, Tropaeum</em>), plant fossils (<em>Ptilophyllum</em>).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Indian Stratigraphy & Biostratigraphy</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Identification of the K-Pg Boundary in South India</div>
+        <p>In which specific lithostratigraphic contact in the Cauvery Basin is the Cretaceous-Paleogene (K-Pg) boundary located, and what biostratigraphic event marks it?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The K-Pg boundary occurs at the contact between the uppermost <strong>Ariyalur Group (Kallankurichchi / Ottakoil / Kallamedu Formations, late Maastrichtian)</strong> and the overlying <strong>Niniyur Formation (Danian, early Paleocene)</strong>. The boundary is marked by the catastrophic mass extinction of ammonites (e.g., <em>Pachydiscus</em>, <em>Sphenodiscus</em>), belemnites, and dinosaurs, and the sudden emergence of the Danian nautiloid <em>Hercoglossa danica</em> and globigerinid planktonic foraminifera.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Phosphorite Genesis in the Uttatur Clays</div>
+        <p>Explain the geochemical depositional environment responsible for the accumulation of phosphatic nodules in the Uttatur Formation.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>During the early Cretaceous (Albian-Cenomanian) marine transgression, strong coastal upwelling carried cold, nutrient-rich deep ocean waters onto the warm shallow shelf of the Cauvery Basin. Intense biological productivity of phytoplankton led to high organic matter burial in anoxic bottom muds. Anaerobic decay released high concentrations of dissolved phosphate, precipitating cryptocrystalline carbonate-fluorapatite (francolite) nodules within the gypsiferous Uttatur clays.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Distinguishing Himalayan Cretaceous from Peninsular Cretaceous</div>
+        <p>Match the following Cretaceous formations with their correct basin: (1) Chikkim, (2) Bagh, (3) Ariyalur, (4) Habur.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li>(1) <strong>Chikkim Formation:</strong> Spiti Basin, Tethyan Himalayas.</li>
+          <li>(2) <strong>Bagh Beds:</strong> Narmada Rift Valley, Madhya Pradesh.</li>
+          <li>(3) <strong>Ariyalur Formation:</strong> Cauvery Basin, Tiruchirappalli, Tamil Nadu.</li>
+          <li>(4) <strong>Habur Formation:</strong> Jaisalmer Basin, Rajasthan.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Chronostratigraphic Age Estimation from Transgression</div>
+        <p>The basal Uttatur coral reef limestones rest directly upon Archean charnockitic gneisses. What is the geological name for such an unconformity, and what is the magnitude of the missing time gap?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Because marine sedimentary strata rest directly upon crystalline igneous/high-grade metamorphic basement, the contact is a <strong>Nonconformity</strong>. The charnockites are Archean/Paleoproterozoic ($\sim 2500\text{ Ma}$), while the basal Uttatur limestones are Albian ($\sim 105\text{ Ma}$). The missing chronological record represents an enormous hiatus of approximately $2.4\text{ billion years}$!</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Inoceramid Bivalve Environmental Significance</div>
+        <p>The Trichinopoly Group is rich in large bivalves of the genus <em>Inoceramus</em>. What paleoenvironmental conditions are indicated by broad-shelled inoceramids?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Inoceramus</em> species were specialized benthic epifaunal bivalves capable of inhabiting low-oxygen (dysaerobic) muddy seafloors. Their broad, thin, flattened prismatic shells spread their weight over soft substrate (snowshoe effect) and harbored chemosymbiotic sulfur-oxidizing bacteria in their gills, indicating warm shelf waters with periodic oxygen restriction.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Origin of Sathanur Fossil Wood Park</div>
+        <p>How were the massive conifer logs in the Trichinopoly Group fossilized?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>During the Turonian, dense gymnosperm forests fringed the adjacent crystalline highland. Catastrophic river floods uprooted trees and transported them into coastal estuaries and shallow marine lagoons. Rapid burial under fine silts prevented aerobic bacterial decay. Percolating silica-rich groundwater gradually replaced cellulose cellular structures with microcrystalline silica/quartz (petrifaction / silicification), preserving delicate growth rings in solid stone.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Subdivisions of the Ariyalur Group</div>
+        <p>Name the four constituent formations comprising the Ariyalur Group in modern lithostratigraphic usage.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>In modern lithostratigraphic nomenclature (Sastry et al., ONGC), the Ariyalur Group is subdivided into four formations (in ascending order):</p>
+        <ol>
+          <li><strong>Sillakkudi Formation:</strong> Campanian arenites and clays.</li>
+          <li><strong>Kallankurichchi Formation:</strong> Late Campanian-Early Maastrichtian bioclastic gryphean limestone.</li>
+          <li><strong>Ottakoil Formation:</strong> Late Maastrichtian calcareous sandstone.</li>
+          <li><strong>Kallamedu Formation:</strong> Terminal Maastrichtian terrestrial/estuarine sands with dinosaur bones.</li>
+        </ol>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Cephalopod Suture Transition across the Niniyur Boundary</div>
+        <p>How do the sutures of cephalopods change from the Ariyalur Group to the Niniyur Formation?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Ariyalur cephalopods are dominated by true ammonites (e.g., <em>Pachydiscus</em>) possessing extremely complex <strong>ammonitic sutures</strong> (intricately fluted lobes and saddles). Across the K-Pg boundary into the Niniyur Formation, all ammonites are completely extinct; the surviving cephalopods are nautiloids (e.g., <em>Hercoglossa danica</em>) possessing smooth, simple undulating <strong>nautilitic sutures</strong>.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

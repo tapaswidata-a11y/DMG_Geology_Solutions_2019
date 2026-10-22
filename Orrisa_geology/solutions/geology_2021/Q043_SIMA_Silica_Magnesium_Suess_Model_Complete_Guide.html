@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q43: Earth's Geochemical Layering: Suess SIAL, SIMA & NIFE Model | OPSC Geology 2021 Masterclass</title>
+<title>Q043: Classical Geochemical Architecture of the Earth: Eduard Suess Model (SIAL, SIMA, NIFE) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,284 +89,583 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q43" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Physical Geology & Geochemistry</div>
-    <h1>Q43: Earth's Geochemical Layering: Suess SIAL, SIMA & NIFE Model</h1>
+    <div class="badge">GEO - 2/21 • Geochemistry & Physical Geology</div>
+    <h1>Q043: Classical Geochemical Shells: Eduard Suess Model of SIMA</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Eduard Suess (Die Entstehung der Alpen, 1875); Arthur Holmes (Physical Geology); Bangar (Ch. 2)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 43<br>
+<strong>Authoritative References:</strong> Eduard Suess, <em>Das Antlitz der Erde (The Face of the Earth)</em> (Vol. 1, 1885); Arthur Holmes, <em>Principles of Physical Geology</em> (Ch. 2: The Earth's Crust & Interior, pp. 22–38); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 1: Physical Geology, pp. 10–14); Brian Mason & Carleton B. Moore, <em>Principles of Geochemistry</em> (4th Ed., John Wiley, Ch. 3).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>43.1 Eduard Suess (1875) Classical Compositional Model of Earth</h3>
-        <p>In physical geology and historical geochemistry (Eduard Suess, 1875, <i>Die Entstehung der Alpen</i>; Holmes, <i>Principles of Physical Geology</i>; Bangar, Ch. 2), the Earth was first classified chemically into three concentric shells based on characteristic elemental abbreviations:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Historical Shell Name</th>
-                <th>Chemical Element Roots</th>
-                <th>Dominant Minerals & Rocks</th>
-                <th>Mean Density ($\rho$)</th>
-                <th>Modern Structural Equivalent</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>SIAL</b></td>
-                <td><b>SI</b>lica ($	ext{Si}$) + <b>AL</b>uminium ($	ext{Al}$)</td>
-                <td>Quartz, K-feldspar, Na-plagioclase, Granite, Granodiorite</td>
-                <td>$2.7 - 2.8\text{ g/cm}^3$</td>
-                <td><b>Upper Continental Crust</b> (light, buoyant, forms granitic continents).</td>
-              </tr>
-              <tr>
-                <td><b>SIMA</b></td>
-                <td><b>SI</b>lica ($	ext{Si}$) + <b>MA</b>gnesium ($	ext{Mg}$)</td>
-                <td>Pyroxene, Olivine, Ca-plagioclase, Basalt, Gabbro, Peridotite</td>
-                <td>$2.9 - 3.4\text{ g/cm}^3$</td>
-                <td><b>Oceanic Crust, Lower Crust & Upper Mantle</b> (denser, mafic substrate).</td>
-              </tr>
-              <tr>
-                <td><b>NIFE</b></td>
-                <td><b>NI</b>ckel ($	ext{Ni}$) + <b>FE</b>rrum / Iron ($	ext{Fe}$)</td>
-                <td>Iron-Nickel metallic alloy ($80-85\%\text{ Fe}, 5-10\%\text{ Ni}$)</td>
-                <td>$10.0 - 13.0\text{ g/cm}^3$</td>
-                <td><b>Earth's Core</b> (Outer liquid core + Inner solid core).</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>43.2 Evolution to Modern Plate Tectonics</h3>
-        <p>In Alfred Wegener's (1912) Continental Drift theory, the lighter granitic continents (SIAL) were envisioned as floating and plowing through the denser, plastic basaltic substrate of the oceanic floor (SIMA). Modern plate tectonics replaced this concept with rigid <i>lithospheric plates</i> (incorporating both crust and uppermost mantle) translating over the ductile <i>asthenosphere</i>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q43/bangar_p12_suess_sial_sima_nife.png" alt="Suess's Chemical Layering of the Earth (K.M. Bangar, p. 12)">
-      <figcaption>
-        <strong>Figure 43.1: Suess's Chemical Layering of the Earth (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 1, Section 1.5, p. 12).</strong> Verbatim textbook excerpt: <em>"The term SIAL represents rocks rich in silica and alumina (density ~2.7), and the term SIMA represents rocks containing silica and magnesia (density ~3.0). Under oceans only sima layer is found and sial layer is absent. The central core is composed of nickel and iron and is termed NIFE (density 10-12)."</em>
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: EDUARD SUESS MODEL -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Classical Tripartite Geochemical Model of Eduard Suess (1885)</div>
+    <div class="card-body">
+      <p>Before the development of modern seismological velocity models and plate tectonics, Austrian geologist <strong>Eduard Suess</strong> (1831–1914) proposed a pioneering geochemical shell model of the Earth based on bulk chemical composition and specific gravities:</p>
+
+      <ul>
+        <li><strong>SIAL (Silica + Aluminium):</strong> The outermost, lightest continental crustal layer. Dominated mineralogically by quartz, orthoclase, and sodic plagioclase (granitic-granodioritic composition). Characterized by low specific gravity ($\rho \approx 2.65 - 2.75\text{ g/cm}^3$) and thickness of $20-70\text{ km}$ under continents, terminating abruptly or absent under deep oceans.</li>
+        <li><strong>SIMA (Silica + Magnesium):</strong> The intermediate geochemical shell underlying the SIAL and forming the bedrock floor of the global oceans. Dominated mineralogically by pyroxenes, calcic plagioclase, and olivine (basaltic to peridotitic composition). Characterized by higher specific gravity ($\rho \approx 2.90 - 3.40\text{ g/cm}^3$).</li>
+        <li><strong>NIFE (Nickel + Ferrum):</strong> The innermost metallic core of the Earth. Dominated by dense iron-nickel alloy ($\text{Fe} \sim 85-90\%, \text{Ni} \sim 5-10\%$) with high specific gravity ($\rho \approx 10.0 - 13.0\text{ g/cm}^3$), responsible for the Earth's geomagnetic dynamo.</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Suess Chemical Etymology</div>
+        $$\mathbf{SIAL} = \mathbf{Si} \text{licon} + \mathbf{Al} \text{uminium} \quad (\text{Granitic Continental Crust})$$
+        $$\mathbf{SIMA} = \mathbf{Si} \text{licon} + \mathbf{Ma} \text{gnesium} \quad (\text{Basaltic Oceanic Crust \& Mantle})$$
+        $$\mathbf{NIFE} = \mathbf{Ni} \text{ckel} + \mathbf{Fe} \text{rrum (Iron)} \quad (\text{Metallic Core})$$
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q43/suess_compositional_layers_sial_sima_nife.png" alt="Suess Compositional Layers">
+        <div class="tb-caption">
+          <strong>Figure 43.1:</strong> Cross-section of Eduard Suess's concentric geochemical shell model showing granitic SIAL floating upon continuous basaltic-peridotitic SIMA, enclosing the metallic NIFE core.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: BANGAR EXCERPT AND PETROLOGICAL GROUNDING -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Modern Petrochemical Reinterpretation of SIAL and SIMA</div>
+    <div class="card-body">
+      <p>Modern geochemistry and petrology correlate Suess's historical nomenclature with verified geochemical subdivisions:</p>
+
+      <ul>
+        <li><strong>SIAL $\leftrightarrow$ Continental Crust:</strong> Enriched in Large Ion Lithophile Elements (LILE: $\text{K, Rb, Ba, Th, U}$) and High Field Strength Elements ($\text{Si, Al}$). Felsic bulk composition ($>60\text{ wt}\% \text{ SiO}_2$).</li>
+        <li><strong>SIMA $\leftrightarrow$ Oceanic Crust & Upper Mantle:</strong> Depleted in incompatible elements; strongly enriched in ferromagnesian components ($\text{MgO} \approx 8-40\text{ wt}\%, \text{FeO} \approx 8-12\text{ wt}\%$). Composed of mid-ocean ridge basalts (MORB), sheeted dikes, gabbros, and mantle peridotites.</li>
+        <li><strong>Conrad Discontinuity:</strong> The mid-crustal seismic boundary separating upper granitic SIAL ($v_p \approx 6.0\text{ km/s}$) from lower basaltic SIMA ($v_p \approx 6.7\text{ km/s}$).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q43/bangar_p12_suess_sial_sima_nife.png" alt="Bangar Suess SIAL SIMA NIFE">
+        <div class="tb-caption">
+          <strong>Figure 43.2 (K.M. Bangar, p. 12):</strong> Textbook explanation of Earth's internal composition illustrating Suess's SIAL, SIMA, and NIFE layers and their respective density thresholds.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE GEOCHEMICAL TABLE -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix of Earth's Geochemical Shells</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Shell</th>
+            <th>Acronym Derivation</th>
+            <th>Dominant Oxides / Elements</th>
+            <th>Mean Density</th>
+            <th>Modern Physical Correlate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SIAL</strong></td>
+            <td><strong>Si</strong>lica + <strong>Al</strong>uminium</td>
+            <td>$\text{SiO}_2$ ($65-72\%$), $\text{Al}_2\text{O}_3$ ($15-18\%$)</td>
+            <td>$2.70\text{ g/cm}^3$</td>
+            <td>Upper Continental Crust (Granitic / Felsic).</td>
+          </tr>
+          <tr>
+            <td><strong>SIMA</strong></td>
+            <td><strong>Si</strong>lica + <strong>Ma</strong>gnesium</td>
+            <td>$\text{SiO}_2$ ($45-52\%$), $\text{MgO}$ ($8-38\%$), $\text{FeO}$</td>
+            <td>$2.95 - 3.30\text{ g/cm}^3$</td>
+            <td>Lower Continental Crust, Oceanic Crust & Upper Mantle (Basaltic / Mafic).</td>
+          </tr>
+          <tr>
+            <td><strong>NIFE</strong></td>
+            <td><strong>Ni</strong>ckel + <strong>Fe</strong>rrum</td>
+            <td>$\text{Fe}$ ($85-90\%$), $\text{Ni}$ ($5-10\%$), light elements ($\text{S, Si, O}$)</td>
+            <td>$10.0 - 13.0\text{ g/cm}^3$</td>
+            <td>Outer and Inner Core (Liquid outer core, solid inner core).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q43. SIMA stands for:</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Silicon and Manganese</div>
-        <div class="opt-item "><strong>(B)</strong> Strontium and Magnesium</div>
-        <div class="opt-item "><strong>(C)</strong> Sulphur and Manganese</div>
-        <div class="opt-item correct"><strong>(D)</strong> Silicon and Magnesium</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 43</div>
+        <div class="q-text">SIMA stands for:</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Silicon and Manganese</div>
+          <div class="opt-node">(B) Strontium and Magnesium</div>
+          <div class="opt-node">(C) Sulphur and Manganese</div>
+          <div class="opt-node correct">(D) Silicon and Magnesium</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(D) Silicon and Magnesium</strong> [Classical geochemical portmanteau coined by Eduard Suess: SI (Silicon/Silica) + MA (Magnesium).]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) Silicon and Magnesium</b> — In Eduard Suess's classical compositional nomenclature, <b>SIMA</b> stands for <b>Silicon (Silica)</b> and <b>Magnesium</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Silicon and Manganese — INCORRECT:</b> Manganese is a minor trace transition metal ($	ext{Mn}$), not a major rock-forming macro-element of the oceanic crust.</li>
-          <li><b>(B) Strontium and Magnesium — INCORRECT:</b> Strontium ($	ext{Sr}$) is an incompatible trace element, not a major structural component of the silicate Earth.</li>
-          <li><b>(C) Sulphur and Manganese — INCORRECT:</b> Completely misses silica, which forms the $45-52\%$ foundational backbone of mafic rocks.</li>
-          <li><b>(D) Silicon and Magnesium — CORRECT:</b> The universal, canonical definition: <b>SI</b>lica ($	ext{Si}$) + <b>MA</b>gnesium ($	ext{Mg}$).</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (D) Silicon and Magnesium</div>
+    <div class="card-body">
+      <p><strong>Detailed Geochemical Forensic Analysis:</strong></p>
+      <ul>
+        <li>In historical physical geology and geochemistry (pioneered by Eduard Suess in 1885 and documented in all standard Indian geology textbooks, including K.M. Bangar, Ch. 1, p. 12), the Earth was divided into three compositional layers: <strong>SIAL</strong>, <strong>SIMA</strong>, and <strong>NIFE</strong>.</li>
+        <li>The acronym <strong>SIMA</strong> is derived directly from the first two letters of its two dominant characteristic chemical constituents:
+          $$\mathbf{SI} \text{licon (or Silica, } \text{SiO}_2) + \mathbf{MA} \text{gnesium (or Magnesia, } \text{MgO})$$
+        </li>
+        <li>The SIMA layer forms the continuous mafic-ultramafic shell underlying the continental granitic crust (SIAL) and floor of the ocean basins.</li>
+        <li>Thus, Option <strong>(D) Silicon and Magnesium</strong> is the unique, definitive correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Silicon and Manganese</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Manganese ($\text{Mn}$) is a minor trace element in the Earth's crust (average abundance $\sim 0.1\text{ wt}\% \text{ MnO}$). It was never a major rock-forming component used to designate planetary shells.</li>
+        <li>The letters 'MA' stand for <em>Magnesium</em>, not Manganese. Hence, option (A) is chemically and historically false.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Strontium and Magnesium</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Strontium ($\text{Sr}$) is an alkaline earth trace element occurring at trace levels (a few hundred parts per million) in plagioclase. It does not begin with 'SI' nor does it constitute a major Earth layer.</li>
+        <li>'SI' stands for <em>Silicon</em>. Therefore, option (B) is completely erroneous.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Sulphur and Manganese</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Neither Sulphur ($\text{S}$) nor Manganese ($\text{Mn}$) forms the silicate-magnesium rich oceanic and lower crustal rock mass.</li>
+        <li>This option is a deceptive distractor substituting random chemical elements for Silicon and Magnesium.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Major Element Geochemistry Suite</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Major Oxide</th>
-                <th>SIAL (Upper Continental Crust) [wt%]</th>
-                <th>SIMA (N-MORB Oceanic Crust) [wt%]</th>
-                <th>Primitive Mantle [wt%]</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>$\text{SiO}_2$</b></td>
-                <td><b>$66.0\%$ (High Silica)</b></td>
-                <td><b>$50.5\%$ (Moderate Silica)</b></td>
-                <td>$45.0\%$</td>
-              </tr>
-              <tr>
-                <td><b>$\text{Al}_2\text{O}_3$</b></td>
-                <td><b>$15.2\%$ (High Aluminium)</b></td>
-                <td>$15.3\%$</td>
-                <td>$4.5\%$</td>
-              </tr>
-              <tr>
-                <td><b>$\text{MgO}$</b></td>
-                <td>$2.2\%$</td>
-                <td><b>$7.6\%$ (High Magnesium)</b></td>
-                <td><b>$37.8\%$ (Ultra-High Mg)</b></td>
-              </tr>
-              <tr>
-                <td><b>$\text{FeO}^*$</b></td>
-                <td>$4.5\%$</td>
-                <td>$10.5\%$</td>
-                <td>$8.1\%$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Evolution of Earth Interior Terminology</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Historical Model (Suess, 1885)</th>
+            <th>Modern Chemical Classification</th>
+            <th>Modern Mechanical / Rheological Classification</th>
+            <th>Defining Boundary Discontinuity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SIAL</strong></td>
+            <td>Upper Continental Crust (Felsic, Granitic)</td>
+            <td rowspan="2"><strong>Lithosphere</strong> (Brittle, rigid, $0-100/250\text{ km}$)</td>
+            <td><strong>Conrad Discontinuity</strong> (separates upper and lower crust)</td>
+          </tr>
+          <tr>
+            <td rowspan="2"><strong>SIMA</strong></td>
+            <td>Lower Continental Crust & Oceanic Crust (Mafic, Basaltic)</td>
+            <td><strong>Mohorovičić (Moho) Discontinuity</strong> (Crust-Mantle boundary)</td>
+          </tr>
+          <tr>
+            <td>Upper & Lower Mantle (Ultramafic, Peridotite / Bridgmanite)</td>
+            <td><strong>Asthenosphere</strong> ($100-410\text{ km}$, ductile) & <strong>Mesosphere</strong></td>
+            <td><strong>Gutenberg Discontinuity</strong> ($2891\text{ km}$, Mantle-Core boundary)</td>
+          </tr>
+          <tr>
+            <td><strong>NIFE</strong></td>
+            <td>Outer Core (Liquid Fe-Ni) & Inner Core (Solid Fe-Ni)</td>
+            <td>Liquid Outer Core & Solid Inner Core</td>
+            <td><strong>Lehmann Discontinuity</strong> ($5150\text{ km}$, Outer-Inner core boundary)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Geochemistry & Crustal Architecture</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Calculation of Clarke Values for Crustal Elements</div>
+        <p>In the Earth's continental crust (SIAL), oxygen and silicon account for approximately $46.6\%$ and $27.7\%$ by weight, respectively. Calculate the total combined percentage of Silica ($\text{SiO}_2$) in an average granodioritic continental crust containing $28.0\text{ wt}\%$ elemental Silicon ($M_{\text{Si}} = 28.085\text{ g/mol}$, $M_{\text{O}} = 16.000\text{ g/mol}$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Molecular weight of $\text{SiO}_2 = 28.085 + 2(16.000) = 60.085\text{ g/mol}$.</p>
+        $$\text{Weight fraction of Si in } \text{SiO}_2 = \frac{28.085}{60.085} \approx 0.4674$$
+        $$\text{Total } \text{SiO}_2 \text{ wt}\% = \frac{\text{Elemental Si wt}\%}{0.4674} = \frac{28.0\%}{0.4674} \approx 59.9\% \approx 60.0\text{ wt}\%$$
+        <p><strong>Final Answer:</strong> Total $\text{SiO}_2$ is approximately $60.0\text{ wt}\%$, representing intermediate-to-felsic crustal composition.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Goldschmidt's Geochemical Affinity Classification</div>
+        <p>Classify the characteristic elements of SIAL, SIMA, and NIFE into V.M. Goldschmidt's four geochemical categories: Lithophile, Siderophile, Chalcophile, and Atmophile.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Lithophile (Rock-loving / Silicate phase):</strong> $\text{Si, Al, Mg, Ca, Na, K}$ — Concentrate overwhelmingly in the <strong>SIAL</strong> and <strong>SIMA</strong> layers as silicates and oxides.</li>
+          <li><strong>Siderophile (Iron-loving / Metallic phase):</strong> $\text{Fe, Ni, Co, Au, Pt}$ — Partitioned preferentially into the metallic <strong>NIFE</strong> core during planetary core segregation.</li>
+          <li><strong>Chalcophile (Sulfur-loving / Sulfide phase):</strong> $\text{Cu, Pb, Zn, S}$ — Form ore deposits and accessory sulfides in crust and mantle.</li>
+          <li><strong>Atmophile (Gas-loving):</strong> $\text{N, noble gases}$ — Concentrate in the atmosphere and hydrosphere.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Density Inversion and Floating SIAL</div>
+        <p>Applying Archimedes' principle, if a granitic SIAL block of thickness $H = 35\text{ km}$ and density $\rho_{\text{sial}} = 2700\text{ kg/m}^3$ floats in isostatic equilibrium on a denser SIMA substratum ($\rho_{\text{sima}} = 3000\text{ kg/m}^3$), calculate the depth of the submerged root ($r$) below the SIMA surface.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\rho_{\text{sial}} \cdot H = \rho_{\text{sima}} \cdot r$$
+        $$r = H \left(\frac{\rho_{\text{sial}}}{\rho_{\text{sima}}}\right) = 35\text{ km} \times \left(\frac{2700}{3000}\right) = 35 \times 0.90 = 31.5\text{ km}$$
+        <p>The freeboard elevation above the SIMA is $h = H - r = 35 - 31.5 = 3.5\text{ km}$.</p>
+        <p><strong>Final Answer:</strong> The submerged root depth is $31.5\text{ km}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Wegener's Continental Drift Hypothesis and SIAL</div>
+        <p>How did Alfred Wegener utilize Suess's SIAL and SIMA concept in his 1912 Continental Drift hypothesis?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Wegener envisioned the continents as rigid, buoyant blocks of <strong>SIAL</strong> that plowed directly through the weaker, yieldable basaltic <strong>SIMA</strong> ocean floor like icebergs through water. While correct in identifying continental displacement, his mechanical concept of SIAL plowing through rigid oceanic SIMA was geophysically flawed; modern plate tectonics proved that oceanic SIMA and continental SIAL are both frozen into rigid lithospheric plates that move together over the asthenosphere.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Conrad Discontinuity Seismic Velocity Jump</div>
+        <p>What is the typical seismic compressional velocity ($v_p$) jump across the Conrad Discontinuity between SIAL and SIMA?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Across the Conrad Discontinuity (located at depths of $15-25\text{ km}$ under stable continental cratons), $v_p$ steps up from $\sim 6.0-6.2\text{ km/s}$ in the upper granitic/felsic SIAL to $\sim 6.6-6.9\text{ km/s}$ in the lower amphibolitic-to-granulitic mafic SIMA.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Core Mass Fraction of NIFE</div>
+        <p>If Earth's total mass is $M_E = 5.97 \times 10^{24}\text{ kg}$ and the core (NIFE) mass is $M_C = 1.94 \times 10^{24}\text{ kg}$, calculate the mass percentage of the metallic core relative to the whole planet.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\% \text{ Mass}_{\text{Core}} = \left(\frac{1.94 \times 10^{24}}{5.97 \times 10^{24}}\right) \times 100\% = 32.5\%$$
+        <p><strong>Final Answer:</strong> The metallic NIFE core comprises approximately $32.5\%$ (nearly one-third) of Earth's total mass.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Mg# (Magnesium Number) of the SIMA Layer</div>
+        <p>Define the Magnesium Number ($\text{Mg}\#$) used in mantle petrology and calculate it for a peridotitic mantle SIMA sample with $\text{MgO} = 40.3\text{ wt}\%$ (molar mass $40.3\text{ g/mol}$) and $\text{FeO} = 7.2\text{ wt}\%$ (molar mass $71.85\text{ g/mol}$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\text{Moles of MgO} = \frac{40.3}{40.3} = 1.000\text{ mol}$$
+        $$\text{Moles of FeO} = \frac{7.2}{71.85} = 0.1002\text{ mol}$$
+        $$\text{Mg}\# = \frac{\text{Mg}^{2+}}{\text{Mg}^{2+} + \text{Fe}^{2+}} \times 100 = \frac{1.000}{1.000 + 0.1002} \times 100 = \frac{1.000}{1.1002} \times 100 \approx 90.9$$
+        <p><strong>Final Answer:</strong> $\text{Mg}\# \approx 91$, typical of primitive mantle peridotite.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Whole Earth Elemental Composition vs. Crustal Composition</div>
+        <p>Why is Iron ($\text{Fe}$) the most abundant element in the Whole Earth by mass ($\sim 32\%$), whereas Oxygen and Silicon dominate the crust?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>During the early Hadean accretion and magma ocean differentiation of the proto-Earth ($\sim 4.5\text{ Ga}$), planetary melting allowed high-density immiscible liquid iron-nickel metal to sink to the gravitational center (the "iron catastrophe"), forming the massive NIFE core. Lighter silicate melts rose to form the mantle and crust, concentrating oxygen, silicon, and aluminum in the outermost shells.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

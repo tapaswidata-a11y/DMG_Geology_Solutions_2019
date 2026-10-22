@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q45: Principles of Isostasy: Gravitational Balance & Archimedes Buoyancy | OPSC Geology 2021 Masterclass</title>
+<title>Q045: Principles of Isostatic Equilibrium: Buoyancy vs. Gravity Hydrostatic Balance | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,274 +89,600 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q45" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Geophysics & Geodynamics</div>
-    <h1>Q45: Principles of Isostasy: Gravitational Balance & Archimedes Buoyancy</h1>
+    <div class="badge">GEO - 2/21 • Geophysics, Geodesy & Isostasy</div>
+    <h1>Q045: Principles of Isostatic Equilibrium: Buoyancy vs. Gravity Balance</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> A.B. Watts (Isostasy and Flexure of the Lithosphere, 2001); Fowler (The Solid Earth, Ch. 5); Lowrie (Ch. 2)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 45<br>
+<strong>Authoritative References:</strong> Anthony B. Watts, <em>Isostasy and Flexure of the Lithosphere</em> (Cambridge Univ. Press, 2001, Ch. 1–3); Donald L. Turcotte & Gerald Schubert, <em>Geodynamics</em> (Ch. 5: Gravitation, pp. 200–225); William Lowrie, <em>Fundamentals of Geophysics</em> (Ch. 2: Gravity, pp. 88–108); C.M.R. Fowler, <em>The Solid Earth</em> (Ch. 5: Gravity and Isostasy); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 1, pp. 6–9, Fig. 1.6 & 1.7).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>45.1 Physical Foundation of Isostasy</h3>
-        <p>In global geophysics and geodynamics (A.B. Watts, 2001, <i>Isostasy and Flexure of the Lithosphere</i>; Fowler, Ch. 5; Lowrie, Ch. 2), <b>isostasy</b> (from Greek <i>isostasios</i>, "equal standing" or "equal balance", coined by C.E. Dutton in 1889) is the condition of gravitational equilibrium between the Earth's rigid lithosphere and the ductile, denser asthenospheric mantle beneath it:</p>
-        $$\sum \mathbf{F} = 0 \iff \mathbf{F_{\text{buoyancy}} = F_{\text{gravity}}}$$
-        <p>According to Archimedes' Principle of buoyancy, a floating lithospheric block displaces a mass of asthenospheric fluid equal to its own total weight:</p>
-        $$F_g = M_{\text{lith}} g = (\rho_c A h_t) g$$
-        $$F_b = M_{\text{displaced mantle}} g = (\rho_m A r) g$$
-        <p>At isostatic equilibrium:</p>
-        $$\rho_c h_t = \rho_m r \implies r = h_t \left(\frac{\rho_c}{\rho_m}\right)$$
-        <p>Where $\rho_c$ is crustal density, $\rho_m$ is mantle density, $h_t$ is total crustal column height, and $r$ is the depth of the submerged crustal root.</p>
+  
+  <!-- CARD 1: THE PHYSICAL PRINCIPLE OF ISOSTASY -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Principle of Isostatic Equilibrium: Archimedean Balance</div>
+    <div class="card-body">
+      <p>The term <strong>isostasy</strong> (from Greek <em>isostasios</em>, meaning "equal standing" or "in equipoise") was introduced into geology by American geologist <strong>Clarence Dutton</strong> in 1889 to describe the state of gravitational hydrostatic balance between the Earth's lithospheric crust and the underlying asthenospheric mantle:</p>
 
-        <h3>45.2 Classical Models of Isostatic Compensation</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Isostatic Model</th>
-                <th>Fundamental Mechanical Assumption</th>
-                <th>Compensation Mechanism</th>
-                <th>Geological Analogy</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Airy Isostasy (1855)</b></td>
-                <td><b>Constant crustal density ($\rho_c = \text{const}$)</b>; variable crustal thickness.</td>
-                <td>High topography is compensated by deep, low-density <b>crustal roots</b> extending into denser mantle.</td>
-                <td>Icebergs floating in water; blocks of wood with different heights.</td>
-              </tr>
-              <tr>
-                <td><b>Pratt Isostasy (1855)</b></td>
-                <td><b>Uniform depth of compensation ($D = \text{const}$)</b>; variable crustal density.</td>
-                <td>High mountains have lower density ($\rho_1$), while low oceanic plains have higher density ($\rho_2$).</td>
-                <td>Blocks of different metals (copper, iron, lead) floating in mercury to the same depth.</td>
-              </tr>
-              <tr>
-                <td><b>Vening Meinesz (1931)</b></td>
-                <td><b>Flexural isostasy</b>; lithosphere acts as an elastic plate with finite flexural rigidity ($D_f$).</td>
-                <td>Loads are supported regionally by flexural bending of the elastic plate rather than local columns.</td>
-                <td>Himalayan foreland basin flexure; volcanic seamount chains.</td>
-              </tr>
-            </tbody>
-          </table>
+      <ul>
+        <li><strong>Physical Definition:</strong> Isostatic equilibrium is the mechanical condition wherein the <strong>upward buoyancy force</strong> exerted by the fluid-like asthenosphere exactly balances the <strong>downward gravitational force</strong> (weight) exerted by the overlying lithospheric column:
+          $$\sum F_z = 0 \iff F_{\text{buoyancy}} = F_{\text{gravity}}$$
+        </li>
+        <li><strong>Archimedes' Hydrostatic Principle:</strong> Just as an iceberg or wooden block floats in water with a submerged volume proportional to its mass, columns of continental and oceanic lithosphere float upon the denser, ductile asthenosphere.</li>
+        <li><strong>Depth of Compensation ($D_c$):</strong> The horizontal datum horizon within the upper mantle below which the total lithostatic pressure exerted by any overlying vertical column of unit cross-sectional area is identical everywhere across the globe:
+          $$P(D_c) = \int_0^{D_c} \rho(z) g \, dz = \text{constant}$$
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q45/isostasy_airy_pratt_mechanisms.png" alt="Airy and Pratt Isostasy Mechanisms">
+        <div class="tb-caption">
+          <strong>Figure 45.1:</strong> Mechanical representation of isostatic compensation mechanisms: George Airy's crustal root hypothesis (variable thickness, uniform density) versus John Pratt's density variation hypothesis (uniform depth, variable density).
         </div>
-        <div class="tb-figure">
-      <img src="../../figures_Q45/bangar_fig1_7_airy_isostasy.png" alt="Airy's Hypothesis of Isostatic Equilibrium (K.M. Bangar, Fig. 1.7)">
-      <figcaption>
-        <strong>Figure 45.1: Airy's Hypothesis of Isostatic Equilibrium (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 1, Section 1.8, p. 13, Fig. 1.7).</strong> Authentic plate: Airy's model assumes uniform crustal density (&rho;<sub>c</sub> &approx; 2.7 g/cm<sup>3</sup>) floating in a denser mantle (&rho;<sub>m</sub> &approx; 3.3 g/cm<sup>3</sup>), where higher topographic mountains are supported by correspondingly deeper crustal roots (t = h &middot; &rho;<sub>c</sub> / (&rho;<sub>m</sub> - &rho;<sub>c</sub>)).
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q45/bangar_fig1_6_pratt_isostasy.png" alt="Pratt's Hypothesis of Isostasy (K.M. Bangar, Fig. 1.6)">
-      <figcaption>
-        <strong>Figure 45.2: Pratt's Hypothesis of Isostasy (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 1, Section 1.8, p. 12, Fig. 1.6).</strong> Authentic plate: Pratt's model assumes a uniform depth of compensation, where higher topography has lower rock column density.
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q45/vdp_fig14_12_isostasy_airy_concept.png" alt="Modern Quantitative Isostasy (Van der Pluijm & Marshak, Fig. 14.12)">
-      <figcaption>
-        <strong>Figure 45.3: Modern Quantitative Isostasy (Van der Pluijm & Marshak, <em>Earth Structure</em>, Chapter 14, Fig. 14.12).</strong> Airy and Pratt isostatic compensation block models.
-      </figcaption>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: AIRY VS PRATT FORMULATIONS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Classical Models: Airy-Heiskanen vs. Pratt-Hayford</div>
+    <div class="card-body">
+      <p>The two foundational classical formulations of isostatic equilibrium resolve how the hydrostatic balance is maintained:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">1. Airy-Heiskanen Isostasy (Variable Thickness, Constant Density)</div>
+        <p>Assumes the crust has a uniform constant density ($\rho_c$) floating in a denser mantle ($\rho_m$). High topographic mountains ($h$) are compensated by deep crustal roots ($r$):</p>
+        $$r = h \left(\frac{\rho_c}{\rho_m - \rho_c}\right)$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">For $\rho_c = 2700\text{ kg/m}^3$ and $\rho_m = 3300\text{ kg/m}^3$, the root ratio is $r/h = 2700 / (3300 - 2700) = 2700 / 600 = 4.5$. Every $1\text{ km}$ of mountain elevation requires a $4.5\text{ km}$ deep crustal root!</p>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">2. Pratt-Hayford Isostasy (Uniform Depth, Variable Density)</div>
+        <p>Assumes compensation occurs at a uniform horizontal depth ($D$). Higher topography consists of lighter, lower-density rock columns:</p>
+        $$\rho(h) \cdot (D + h) = \rho_0 \cdot D \implies \rho(h) = \rho_0 \left(\frac{D}{D + h}\right)$$
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q45/bangar_fig1_7_airy_isostasy.png" alt="Airy Isostasy from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 45.2 (K.M. Bangar, Fig. 1.7):</strong> George Airy's concept of isostatic equilibrium showing mountains floating with deep submerged roots like icebergs in water.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: GRAVITY ANOMALIES AND ISOSTATIC ADJUSTMENT -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Isostatic Gravity Anomalies and Geodynamic Rebound</div>
+    <div class="card-body">
+      <p>Deviations from perfect isostatic equilibrium generate <strong>isostatic gravity anomalies</strong> that drive vertical crustal motion:</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Isostatic State</th>
+            <th>Force Imbalance</th>
+            <th>Isostatic Gravity Anomaly ($\Delta g_{\text{iso}}$)</th>
+            <th>Dynamic Geodynamic Response</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Equilibrium (Compensated)</strong></td>
+            <td>$F_{\text{buoyancy}} = F_{\text{gravity}}$</td>
+            <td>$\Delta g_{\text{iso}} \approx 0\text{ mGal}$</td>
+            <td>Stable stationary crust.</td>
+          </tr>
+          <tr>
+            <td><strong>Under-compensated (Excess Mass)</strong></td>
+            <td>$F_{\text{gravity}} > F_{\text{buoyancy}}$</td>
+            <td>$\mathbf{\Delta g_{\text{iso}} > 0}$ (Positive Anomaly)</td>
+            <td>Crust must <strong>subside</strong> to restore balance (e.g., volcanic seamounts, deltas).</td>
+          </tr>
+          <tr>
+            <td><strong>Over-compensated (Mass Deficit)</strong></td>
+            <td>$F_{\text{buoyancy}} > F_{\text{gravity}}$</td>
+            <td>$\mathbf{\Delta g_{\text{iso}} < 0}$ (Negative Anomaly)</td>
+            <td>Crust experiences <strong>post-glacial rebound / uplift</strong> (e.g., Baltic Shield, Hudson Bay).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q45. Isostatic equilibrium is :</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> A buoyancy force pushing the lithosphere up equals the gravitational force pushing it down.</div>
-        <div class="opt-item "><strong>(B)</strong> A buoyancy force pushing the lithosphere up is less than the gravitational force pushing it down.</div>
-        <div class="opt-item "><strong>(C)</strong> A buoyancy force pushing the lithosphere up is greater than the gravitational force pushing it down.</div>
-        <div class="opt-item "><strong>(D)</strong> All the features of Earth's surface are at the same elevation</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 45</div>
+        <div class="q-text">Isostatic equilibrium is :</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) A buoyancy force pushing the lithosphere up equals the gravitational force pushing it down.</div>
+          <div class="opt-node">(B) A buoyancy force pushing the lithosphere up is less than the gravitational force pushing it down.</div>
+          <div class="opt-node">(C) A buoyancy force pushing the lithosphere up is greater than the gravitational force pushing it down.</div>
+          <div class="opt-node">(D) All the features of Earth's surface are at the same elevation</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(A) A buoyancy force pushing the lithosphere up equals the gravitational force pushing it down.</strong> [By fundamental definition of hydrostatic equilibrium, isostasy is the state where upward asthenospheric buoyancy exactly balances downward gravitational lithospheric weight.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) A buoyancy force pushing the lithosphere up equals the gravitational force pushing it down.</b> — By definition, isostatic equilibrium is achieved when the upward hydrostatic buoyancy force of the asthenosphere precisely balances the downward gravitational weight of the lithospheric column.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) A buoyancy force pushing the lithosphere up equals the gravitational force pushing it down — CORRECT:</b> The exact definition of hydrostatic and isostatic balance ($\sum F_y = 0$).</li>
-          <li><b>(B) A buoyancy force pushing the lithosphere up is less than the gravitational force pushing it down — INCORRECT:</b> Represents an under-compensated state where the lithosphere must actively subside (negative isostatic anomaly).</li>
-          <li><b>(C) A buoyancy force pushing the lithosphere up is greater than the gravitational force pushing it down — INCORRECT:</b> Represents an over-compensated state resulting in ongoing post-glacial isostatic rebound/uplift.</li>
-          <li><b>(D) All the features of Earth's surface are at the same elevation — INCORRECT:</b> Isostasy explicitly explains why the Earth exhibits diverse surface elevations (mountains vs. ocean basins) due to variations in crustal thickness and density.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (A) A buoyancy force pushing the lithosphere up equals the gravitational force pushing it down.</div>
+    <div class="card-body">
+      <p><strong>Detailed Geophysical Forensic Analysis:</strong></p>
+      <ul>
+        <li>The term <strong>isostasy</strong> describes the principle of hydrostatic equilibrium applied to the Earth's crust and mantle on a regional scale.</li>
+        <li>According to Archimedes' principle, a floating body is in mechanical equilibrium if and only if the upward buoyant force exerted by the displaced fluid medium is exactly equal in magnitude to the downward gravitational force (weight) acting on the body:
+          $$\sum F_z = F_{\text{buoyancy}} - F_{\text{gravity}} = 0 \implies F_{\text{buoyancy}} = F_{\text{gravity}}$$
+        </li>
+        <li>In geodynamics, the relatively rigid lithosphere floats atop the denser, ductile asthenospheric mantle. When in isostatic equilibrium, the upward buoyancy force supporting each lithospheric column precisely equals the downward gravitational force pulling it toward the center of the Earth.</li>
+        <li>Therefore, statement <strong>(A)</strong> is the exact physical definition of isostatic equilibrium.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) A buoyancy force pushing the lithosphere up is less than the gravitational force pushing it down.</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>If the buoyancy force were strictly less than the gravitational force ($F_{\text{buoyancy}} < F_{\text{gravity}}$), there would be a net downward uncompensated force.</li>
+        <li>This describes an <em>under-compensated</em> state characterized by a positive isostatic gravity anomaly, where the crust is forced to subside dynamically until equilibrium is restored. It does not represent equilibrium.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) A buoyancy force pushing the lithosphere up is greater than the gravitational force pushing it down.</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>If the buoyancy force were greater than gravity ($F_{\text{buoyancy}} > F_{\text{gravity}}$), there would be a net upward restoring force.</li>
+        <li>This represents an <em>over-compensated</em> condition (such as deglaciated terrain in Scandinavia), which causes rapid vertical uplift (post-glacial rebound). This is a non-equilibrium transient state.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) All the features of Earth's surface are at the same elevation</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Isostasy does <em>not</em> imply that the Earth's surface is flat or at uniform elevation.</li>
+        <li>On the contrary, isostasy explains why different geological features (high mountain belts, continental plateaus, oceanic basins) maintain vastly different elevations in a state of stable gravitational balance due to differences in crustal thickness (Airy) or crustal density (Pratt).</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Airy Isostasy Calculation Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 45: Mountain Root Calculation in Airy Model</div>
-          <p>A mountain range rises $h = 4.0\text{ km}$ above sea level. Assuming standard continental crust of density $\rho_c = 2.8\text{ g/cm}^3$, standard sea-level crustal thickness $T_0 = 30\text{ km}$, and mantle density $\rho_m = 3.3\text{ g/cm}^3$, calculate the depth of the crustal root ($r$) extending into the mantle beneath the mountain range.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. Under Airy isostatic compensation, the pressure at the depth of compensation beneath the mountain column equals the pressure beneath the sea-level column:</p>
-            $$(h + T_0 + r) \rho_c = T_0 \rho_c + r \rho_m$$
-            $$h \rho_c + r \rho_c = r \rho_m \implies h \rho_c = r (\rho_m - \rho_c)$$
-            $$r = h \times \frac{\rho_c}{\rho_m - \rho_c}$$
-            <p>2. Substitute the values:</p>
-            $$r = 4.0\text{ km} \times \frac{2.8}{3.3 - 2.8} = 4.0 \times \frac{2.8}{0.5} = 4.0 \times 5.6 = \mathbf{22.4\text{ km}}$$
-            <p>3. The total crustal thickness beneath the mountain is $T_{\text{total}} = h + T_0 + r = 4.0 + 30.0 + 22.4 = \mathbf{56.4\text{ km}}$, demonstrating why collisional mountain belts possess deep crustal roots.</p>
-          </div>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Theories of Isostatic Compensation</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Model Parameter</th>
+            <th>Airy-Heiskanen Model</th>
+            <th>Pratt-Hayford Model</th>
+            <th>Vening Meinesz (Flexural) Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Crustal Density ($\rho_c$)</strong></td>
+            <td>Constant everywhere ($\sim 2.70-2.80\text{ g/cm}^3$).</td>
+            <td><strong>Variable</strong>: $\rho \propto \frac{1}{D + h}$ (lighter under mountains).</td>
+            <td>Constant crustal and mantle densities.</td>
+          </tr>
+          <tr>
+            <td><strong>Depth of Compensation ($D_c$)</strong></td>
+            <td><strong>Variable</strong>: Deepest under mountains (deep roots), shallow under oceans.</td>
+            <td><strong>Uniform constant depth</strong> ($D \approx 100-113\text{ km}$).</td>
+            <td>Distributed regionally across flexural wavelength.</td>
+          </tr>
+          <tr>
+            <td><strong>Mechanical Coupling</strong></td>
+            <td>Independent vertical floating columns (zero shear strength between columns).</td>
+            <td>Independent vertical floating columns (zero lateral shear strength).</td>
+            <td><strong>Elastic plate flexure</strong> (regional compensation via flexural rigidity $D_f$).</td>
+          </tr>
+          <tr>
+            <td><strong>Real Earth Validity</strong></td>
+            <td>Excellent match for continental collision belts (Himalayan crustal root $\sim 70\text{ km}$).</td>
+            <td>Good match for mid-ocean ridges (thermal expansion) and volcanic island chains.</td>
+            <td>The most accurate physical model for real lithospheric plate behaviour.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Isostasy & Gravimetric Geodesy</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Himalayan Crustal Root Calculation (Airy Model)</div>
+        <p>The Tibetan Plateau has an average surface elevation $h = 5.0\text{ km}$. Assuming normal continental crust has thickness $T_0 = 35\text{ km}$, crustal density $\rho_c = 2750\text{ kg/m}^3$, and upper mantle density $\rho_m = 3300\text{ kg/m}^3$, calculate the root depth ($r$) and total crustal thickness ($T_{\text{total}}$) under Tibet.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Applying Airy isostatic root equilibrium:</p>
+        $$r = h \left(\frac{\rho_c}{\rho_m - \rho_c}\right) = 5.0\text{ km} \times \left(\frac{2750}{3300 - 2750}\right) = 5.0 \times \left(\frac{2750}{550}\right) = 5.0 \times 5.0 = 25.0\text{ km}$$
+        <p>Total crustal thickness is the sum of surface elevation, normal crustal thickness, and root depth:</p>
+        $$T_{\text{total}} = h + T_0 + r = 5.0\text{ km} + 35.0\text{ km} + 25.0\text{ km} = 65.0\text{ km}$$
+        <p><strong>Final Answer:</strong> The root extends $25\text{ km}$ below the normal Moho, giving a total crustal thickness of $65\text{ km}$ (in close agreement with seismic receiver function measurements under Tibet).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Oceanic Basin Depth Calculation (Airy Model)</div>
+        <p>An oceanic basin has water depth $d_w = 4.0\text{ km}$ ($\rho_w = 1030\text{ kg/m}^3$) and basaltic crust thickness $T_{\text{ocean}} = 7.0\text{ km}$ ($\rho_c = 2900\text{ kg/m}^3$). If normal continental crust has $T_0 = 35\text{ km}$ ($\rho_{\text{cont}} = 2750\text{ kg/m}^3$) at sea level, calculate the mantle anti-root (mantle upwelling height $m$) supporting the ocean basin ($\rho_m = 3300\text{ kg/m}^3$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Equating pressure at depth of compensation $D_c = 35\text{ km}$:</p>
+        $$\rho_{\text{cont}} g T_0 = \rho_w g d_w + \rho_c g T_{\text{ocean}} + \rho_m g m$$
+        $$2750 \times 35 = (1030 \times 4.0) + (2900 \times 7.0) + 3300 m$$
+        $$96,250 = 4,120 + 20,300 + 3300 m = 24,420 + 3300 m$$
+        $$3300 m = 96,250 - 24,420 = 71,830$$
+        $$m = \frac{71,830}{3300} \approx 21.77\text{ km}$$
+        <p><strong>Final Answer:</strong> The mantle rises by $21.8\text{ km}$ beneath the ocean basin to maintain isostatic balance.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Pratt Density Variation Calculation</div>
+        <p>In a Pratt model with compensation depth $D = 100\text{ km}$, standard crust at sea level has density $\rho_0 = 2800\text{ kg/m}^3$. What must be the density $\rho_m$ of a mountain plateau rising $h = 4.0\text{ km}$ above sea level?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\rho_m \cdot (D + h) = \rho_0 \cdot D$$
+        $$\rho_m = \rho_0 \left(\frac{D}{D + h}\right) = 2800 \times \left(\frac{100}{100 + 4.0}\right) = 2800 \times \left(\frac{100}{104}\right) \approx 2692.3\text{ kg/m}^3$$
+        <p><strong>Final Answer:</strong> The mountain column density is $2692\text{ kg/m}^3$ (a density reduction of $\approx 108\text{ kg/m}^3$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Bouguer vs. Free-Air Anomaly over Compensated Mountains</div>
+        <p>What are the typical Free-Air and Bouguer gravity anomalies observed over a high mountain range that is in perfect Airy isostatic equilibrium?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Free-Air Anomaly ($\Delta g_{FA}$):</strong> Close to zero ($\Delta g_{FA} \approx 0\text{ mGal}$), because at long wavelengths the extra mass of the mountain above sea level is completely balanced by the mass deficit of the low-density root at depth.</li>
+          <li><strong>Bouguer Anomaly ($\Delta g_B$):</strong> Strongly <strong>negative</strong> (typically $-200$ to $-450\text{ mGal}$), because the Bouguer correction mathematically removes the attraction of the mountain mass without removing the deep low-density root, leaving only the large negative gravitational pull of the crustal root.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Post-Glacial Rebound Uplift Remaining</div>
+        <p>A region previously covered by an ice sheet of thickness $H_{\text{ice}} = 2.0\text{ km}$ ($\rho_{\text{ice}} = 920\text{ kg/m}^3$) has experienced $400\text{ m}$ of post-glacial uplift since deglaciation. If mantle density is $\rho_m = 3300\text{ kg/m}^3$, how much further vertical uplift is required to achieve complete isostatic equilibrium?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Total equilibrium isostatic depression caused by the ice sheet:</p>
+        $$w_{\text{eq}} = H_{\text{ice}} \left(\frac{\rho_{\text{ice}}}{\rho_m}\right) = 2000\text{ m} \times \left(\frac{920}{3300}\right) = 2000 \times 0.2788 \approx 557.6\text{ m}$$
+        <p>Uplift already completed: $400\text{ m}$.</p>
+        $$\text{Remaining Uplift} = 557.6\text{ m} - 400.0\text{ m} = 157.6\text{ m}$$
+        <p><strong>Final Answer:</strong> An additional $158\text{ m}$ of vertical crustal uplift must occur before equilibrium is reached.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Flexural Rigidity ($D_f$) and Effective Elastic Thickness ($T_e$)</div>
+        <p>Calculate the flexural rigidity $D_f$ of a lithospheric plate with effective elastic thickness $T_e = 30\text{ km}$, Young's modulus $E = 1.0 \times 10^{11}\text{ Pa}$, and Poisson's ratio $\nu = 0.25$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$D_f = \frac{E T_e^3}{12(1 - \nu^2)}$$
+        $$T_e = 30\text{ km} = 3.0 \times 10^4\text{ m} \implies T_e^3 = 2.7 \times 10^{13}\text{ m}^3$$
+        $$1 - \nu^2 = 1 - (0.25)^2 = 1 - 0.0625 = 0.9375$$
+        $$12(1 - \nu^2) = 12 \times 0.9375 = 11.25$$
+        $$D_f = \frac{1.0 \times 10^{11} \times 2.7 \times 10^{13}}{11.25} = \frac{2.7 \times 10^{24}}{11.25} = 2.4 \times 10^{23}\text{ N}\cdot\text{m}$$
+        <p><strong>Final Answer:</strong> The flexural rigidity is $2.4 \times 10^{23}\text{ N}\cdot\text{m}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Historical Geodesy: Sir George Everest & the Plumb Line Deflection</div>
+        <p>What historic geodetic anomaly during the Great Trigonometrical Survey of India led to the formulation of isostasy?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Between 1840 and 1850, Sir George Everest measured the distance between Kalianpur and Kaliana by triangulation and astronomical plumb-line latitude determinations. Archdeacon John Henry Pratt calculated the theoretical gravitational attraction of the massive Himalayan mountain range and discovered that the observed deflection of the plumb line was <strong>less than one-third of the predicted gravitational pull</strong> ($5.236''$ observed vs. $15.885''$ calculated). This proved that the mountains must have low-density roots beneath them offsetting their mass.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Isostatic Response to Fluvial Denudation</div>
+        <p>If a mountain range is eroded by a thickness $\Delta h = 1000\text{ m}$ of rock ($\rho_c = 2700\text{ kg/m}^3$), by how much will isostatic rebound uplift the mountain crest ($\rho_m = 3300\text{ kg/m}^3$), and what is the net reduction in summit elevation?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Isostatic rebound uplift is given by:</p>
+        $$U = \Delta h \left(\frac{\rho_c}{\rho_m}\right) = 1000\text{ m} \times \left(\frac{2700}{3300}\right) = 1000 \times 0.8182 \approx 818.2\text{ m}$$
+        <p>Net loss in surface summit elevation is:</p>
+        $$\Delta h_{\text{net}} = \Delta h - U = 1000\text{ m} - 818.2\text{ m} = 181.8\text{ m}$$
+        <p><strong>Final Answer:</strong> Isostatic rebound lifts the mountain by $818.2\text{ m}$; hence, removing $1000\text{ m}$ of rock lowers the mountain summits by only $182\text{ m}$!</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q44: Deep Earth Seismology: P-Wave Core Transmission & PKIKP Phases | OPSC Geology 2021 Masterclass</title>
+<title>Q044: Seismic P-Wave Transmission Through Outer & Inner Core: Core Phases (PKIKP) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,287 +89,588 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q44" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Deep Earth Seismology</div>
-    <h1>Q44: Deep Earth Seismology: P-Wave Core Transmission & PKIKP Phases</h1>
+    <div class="badge">GEO - 2/21 • Deep Earth Seismology & Core Mechanics</div>
+    <h1>Q044: Seismic P-Wave Transmission Through Deep Earth Core Phases</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Inge Lehmann (P', 1936); Peter M. Shearer (Introduction to Seismology, Ch. 4, pp. 88-96); Fowler (Ch. 4)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 44<br>
+<strong>Authoritative References:</strong> Peter M. Shearer, <em>Introduction to Seismology</em> (2nd Ed., Cambridge Univ. Press, Ch. 4: Ray Theory & Core Phases, pp. 88–108); Inge Lehmann, <em>P'</em> (Publications du Bureau Central Séismologique International, 1936); Thorne Lay & Terry C. Wallace, <em>Modern Global Seismology</em> (Ch. 6); C.M.R. Fowler, <em>The Solid Earth</em> (Ch. 4: Deep Earth Interior, pp. 110–126).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>44.1 Core Discontinuities & Seismic Wave Propagation</h3>
-        <p>In global seismology and deep Earth geophysics (Inge Lehmann, 1936; Beno Gutenberg, 1914; Peter Shearer, <i>Introduction to Seismology</i>, Ch. 4; Fowler, Ch. 4), the Earth's core boundary architecture was discovered through seismic ray tracing:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Seismic Boundary</th>
-                <th>Depth</th>
-                <th>Physical Nature & Discontinuity</th>
-                <th>Wave Transmission Behavior</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Core-Mantle Boundary (CMB)</b></td>
-                <td>$2890\text{ km}$</td>
-                <td><b>Gutenberg Discontinuity</b>: Boundary between solid silicate lower mantle and liquid iron-nickel outer core.</td>
-                <td><b>S-waves are completely terminated</b> (shear modulus $\mu = 0$ in liquid). <b>P-waves are transmitted</b>, but sharply refracted downward because velocity drops from $13.7\text{ km/s}$ in mantle to $8.0\text{ km/s}$ in liquid core.</td>
-              </tr>
-              <tr>
-                <td><b>Inner Core Boundary (ICB)</b></td>
-                <td>$5150\text{ km}$</td>
-                <td><b>Lehmann Discontinuity</b>: Boundary between liquid outer core and solid crystalline iron-nickel inner core.</td>
-                <td><b>P-waves are transmitted across the ICB into the inner core</b>, with a sharp velocity jump from $10.3\text{ km/s}$ to $11.0\text{ km/s}$, reflecting and refracting through to the antipodal surface.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: SEISMIC RAY PATHS THROUGH THE CORE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Core Phase Nomenclature and Seismic Wave Transmission</div>
+    <div class="card-body">
+      <p>The internal radial structure of the Earth was unveiled by tracking how seismic body waves penetrate through the deep mantle and core:</p>
 
-        <h3>44.2 Nomenclature of Core Seismic Phases</h3>
-        <p>Standard International Seismological Centre (ISC) ray code notation defines:</p>
-        <ul>
-          <li><b>P:</b> Compressional wave traveling through the mantle.</li>
-          <li><b>K:</b> Compressional wave traveling through the <b>liquid outer core</b> (from German <i>Kern</i>).</li>
-          <li><b>I:</b> Compressional wave traveling through the <b>solid inner core</b>.</li>
-          <li><b>PKIKP:</b> A compressional wave that traverses the mantle (P), refracts through the outer core (K), penetrates through the solid inner core (I), passes back through the outer core (K), and ascends through the mantle (P) to arrive at antipodal seismographs ($142^\circ - 180^\circ$).</li>
-        </ul>
-        <p>Thus, it is an immutable physical fact that <b>the P-wave is transmitted through the outer core as well as the inner core</b>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q44/bangar_fig1_4_earth_core_velocity.png" alt="Seismic Wave Velocities and Core Refraction (K.M. Bangar, Fig. 1.4)">
-      <figcaption>
-        <strong>Figure 44.1: Seismic Wave Velocities and Core Refraction (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 1, p. 11, Fig. 1.4).</strong> Authentic plate demonstrating the dramatic drop in P-wave velocity from ~13.7 km/s to 8.1 km/s and the complete disappearance of S-waves at the Core-Mantle Boundary (2900 km Gutenberg discontinuity), producing the P-wave shadow zone (103°–142°).
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q44/winter_fig2_earth_subdivisions_depths.png" alt="Earth Subdivisions and Radial Ray Paths (John D. Winter, Fig. 2)">
-      <figcaption>
-        <strong>Figure 44.2: Earth Subdivisions and Radial Ray Paths (John D. Winter, <em>Petrology</em>, Chapter 1, Fig. 2).</strong> Seismic ray paths through the Earth: PKP, PKIKP refraction through the solid inner core (Lehmann discontinuity at 5150 km).
-      </figcaption>
+      <ul>
+        <li><strong>Standard Seismological Notation:</strong>
+          <ul>
+            <li>$P$: Compressional wave in the mantle.</li>
+            <li>$S$: Shear wave in the mantle.</li>
+            <li>$K$: Compressional wave propagating through the <strong>liquid outer core</strong> (from German <em>Kern</em>, core).</li>
+            <li>$I$: Compressional wave traversing the <strong>solid inner core</strong>.</li>
+            <li>$J$: Shear wave traversing the solid inner core ($S$-wave in inner core).</li>
+            <li>$c$: Reflection from the core-mantle boundary (CMB, e.g., $PcP, ScS$).</li>
+            <li>$i$: Reflection from the inner core boundary (ICB, e.g., $PKiKP$).</li>
+          </ul>
+        </li>
+        <li><strong>Transmission Through Outer Core:</strong> At the Core-Mantle Boundary ($2891\text{ km}$ depth), compressional $P$-waves refract sharply downward into the liquid iron outer core as <strong>$K$-waves</strong> because $P$-wave velocity drops abruptly from $13.7\text{ km/s}$ in the lowermost mantle ($D''$ layer) to $8.1\text{ km/s}$ in the fluid core due to the loss of shear rigidity ($\mu = 0$).</li>
+        <li><strong>Transmission Through Inner Core:</strong> At the Inner Core Boundary ($5150\text{ km}$ depth), $P$-waves penetrate directly into the crystalline solid iron-nickel inner core as <strong>$I$-waves</strong>, where velocity jumps up to $\sim 11.0\text{ km/s}$.</li>
+        <li><strong>The PKIKP Phase:</strong> A compressional wave traveling from the crust through the mantle ($P$), refracting into the outer core ($K$), traversing the solid inner core ($I$), emerging through the opposite outer core ($K$), and ascending through the mantle ($P$) to the antipodal surface is designated as <strong>$PKIKP$</strong>.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q44/seismic_p_s_core_shadow_zones.png" alt="Seismic P and S Core Shadow Zones">
+        <div class="tb-caption">
+          <strong>Figure 44.1:</strong> Global seismic ray tracing illustrating the $P$-wave shadow zone ($103^\circ-143^\circ$) and the complete transmission of compressional waves through the liquid outer core ($PKP$) and solid inner core ($PKIKP$).
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: THE DISCOVERY BY INGE LEHMANN -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Inge Lehmann's Discovery of the Solid Inner Core (1936)</div>
+    <div class="card-body">
+      <p>Before 1936, the core was believed to be entirely a uniform liquid cavity producing a complete shadow zone between epicentral angles $\Delta = 103^\circ$ and $143^\circ$:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Snell's Law at the Core-Mantle Boundary (CMB)</div>
+        $$p = \frac{r \sin i}{v(r)} = \text{constant}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Because $v_p$ drops from $13.7\text{ km/s}$ to $8.1\text{ km/s}$ at the CMB, the ray bends towards the normal ($\sin i_K = \frac{v_K}{v_P}\sin i_P$), focusing rays toward angles $\ge 143^\circ$ and creating the classic $P$-wave shadow zone between $103^\circ$ and $143^\circ$.</p>
+      </div>
+
+      <ul>
+        <li><strong>The Faint Arrivals:</strong> Danish seismologist <strong>Inge Lehmann</strong> analyzed sensitive seismograms in Europe from earthquakes in New Zealand and discovered faint, early $P$-wave arrivals within the shadow zone ($\Delta \approx 110^\circ-135^\circ$).</li>
+        <li><strong>The Explanation:</strong> Lehmann demonstrated that these arrivals were not diffraction artifacts, but compressional waves that had refracted through a higher-velocity <strong>solid inner core</strong> ($PKIKP$) or reflected off its boundary ($PKiKP$).</li>
+        <li><strong>The Invariant Fact:</strong> Therefore, <strong>the P wave is transmitted through the outer as well as the inner core</strong>!</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q44/winter_fig2_earth_subdivisions_depths.png" alt="Earth Subdivisions and Depths from Winter">
+        <div class="tb-caption">
+          <strong>Figure 44.2 (Winter, Fig. 2):</strong> Depths and physical properties of internal Earth subdivisions: Mantle, Liquid Outer Core, and Solid Inner Core.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE BEHAVIOUR OF P AND S WAVES IN CORE -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Comprehensive Comparison: P-Waves vs. S-Waves in Earth's Core</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Wave Phase</th>
+            <th>Outer Core Behaviour ($2891-5150\text{ km}$)</th>
+            <th>Inner Core Behaviour ($5150-6371\text{ km}$)</th>
+            <th>Surface Shadow Zone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>P-Wave (Compressional)</strong></td>
+            <td><strong>Transmitted</strong> as $K$-wave ($v_p = 8.1 \to 10.3\text{ km/s}$). Strongly refracted.</td>
+            <td><strong>Transmitted</strong> as $I$-wave ($v_p \approx 11.0\text{ km/s}$). Refracts through center.</td>
+            <td>Partial shadow zone ($103^\circ-143^\circ$) containing weak $PKIKP$ and $PKiKP$ arrivals.</td>
+          </tr>
+          <tr>
+            <td><strong>S-Wave (Shear)</strong></td>
+            <td><strong>Completely Blocked</strong> ($v_s = 0$ because shear modulus $\mu = 0$ in liquid).</td>
+            <td>Can propagate theoretically as $J$-wave converted from $P$ ($PKJKP$, exceedingly faint).</td>
+            <td><strong>Massive permanent shadow zone</strong> extending from $103^\circ$ across the entire antipode to $180^\circ$!</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q44. Which statement is true about P wave ?</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> The P wave reflected from the mantle-core boundary.</div>
-        <div class="opt-item "><strong>(B)</strong> The P wave is transmitted through the outer core but reflected from the inner core.</div>
-        <div class="opt-item correct"><strong>(C)</strong> The P wave is transmitted through the outer as well as the inner core.</div>
-        <div class="opt-item "><strong>(D)</strong> The P wave is reflected from the crust-mantle boundary.</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 44</div>
+        <div class="q-text">Which statement is true about P wave ?</div>
+        <div class="q-options">
+          <div class="opt-node">(A) The P wave reflected from the mantle-core boundary.</div>
+          <div class="opt-node">(B) The P wave is transmitted through the outer core but reflected from the inner core.</div>
+          <div class="opt-node correct">(C) The P wave is transmitted through the outer as well as the inner core.</div>
+          <div class="opt-node">(D) The P wave is reflected from the crust-mantle boundary.</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(C) The P wave is transmitted through the outer as well as the inner core.</strong> [As compressional longitudinal waves capable of passing through both fluids and solids, P-waves refract into the liquid outer core (as K-waves) and penetrate the solid inner core (as I-waves: PKIKP).]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
-          <p><b>Correct Answer: (C) The P wave is transmitted through the outer as well as the inner core.</b> — Compressional P-waves penetrate through the liquid outer core (as K waves) and traverse through the solid inner core (as I waves), generating the classic <b>PKIKP</b> phase.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) The P wave reflected from the mantle-core boundary — INCORRECT:</b> While a small fraction of energy reflects as PcP, the primary phenomenon is that P-waves <b>refract into and are transmitted through</b> the core.</li>
-          <li><b>(B) The P wave is transmitted through the outer core but reflected from the inner core — INCORRECT:</b> P-waves are not simply reflected at the inner core boundary; Inge Lehmann (1936) proved that P-waves refract directly <i>through</i> the solid inner core (PKIKP phase).</li>
-          <li><b>(C) The P wave is transmitted through the outer as well as the inner core — CORRECT:</b> Precisely describes the fundamental transmission capability of longitudinal P-waves through both the liquid and solid core compartments.</li>
-          <li><b>(D) The P wave is reflected from the crust-mantle boundary — INCORRECT:</b> P-waves pass directly through the Moho into the mantle, undergoing refraction rather than total reflection.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (C) The P wave is transmitted through the outer as well as the inner core.</div>
+    <div class="card-body">
+      <p><strong>Detailed Seismological Forensic Analysis:</strong></p>
+      <ul>
+        <li>Primary ($P$) waves are longitudinal compressional waves. Their velocity is governed by $v_p = \sqrt{(K + \frac{4}{3}\mu)/\rho}$. Because the bulk modulus of incompressibility $K > 0$ for all physical states of matter, $P$-waves possess the unique physical capability to <strong>propagate through both fluids and solids</strong>.</li>
+        <li>When a $P$-wave reaches the Core-Mantle Boundary (CMB, $2891\text{ km}$ depth), it refracts into the fluid outer core as a compressional wave ($K$).</li>
+        <li>Upon reaching the Inner Core Boundary (ICB, $5150\text{ km}$ depth), it is <strong>transmitted directly through the solid iron-nickel inner core</strong> as a compressional wave ($I$), giving rise to the well-documented global seismic phase <strong>$PKIKP$</strong>.</li>
+        <li>Hence, statement <strong>(C)</strong> is completely and indisputably true.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) The P wave is transmitted through the outer core but reflected from the inner core.</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>While a minor fraction of $P$-wave energy reflects off the inner core boundary (producing the faint $PKiKP$ phase), the vast majority of seismic energy is <strong>refracted and transmitted directly through the solid inner core</strong> as $I$-waves ($PKIKP$).</li>
+        <li>Claiming that $P$-waves are merely reflected from the inner core denies the existence of the inner core transmission phases that established its solid physical state. Thus, (B) is false.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) The P wave reflected from the mantle-core boundary.</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Although reflection at the CMB does occur (producing the $PcP$ phase), the defining characteristic of $P$-waves is that they are <strong>transmitted and refracted into the core</strong> as $PKP$ waves.</li>
+        <li>Saying "The P wave reflected from the mantle-core boundary" implies that $P$-waves do not penetrate the core, which contradicts the fundamental discovery of the liquid outer core by R.D. Oldham in 1906. Hence, (A) is inaccurate.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) The P wave is reflected from the crust-mantle boundary.</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>At the Mohorovičić discontinuity (Moho), incident $P$-waves are primarily <strong>refracted</strong> into the upper mantle ($Pn$ phase), with only a fraction undergoing post-critical reflection ($PmP$).</li>
+        <li>Describing the $P$-wave globally as merely "reflected from the crust-mantle boundary" is entirely misleading and trivial compared to its planetary core transmission properties.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Seismological Ray Tracing Suite</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Seismic Phase Code</th>
-                <th>Complete Ray Path Trajectory</th>
-                <th>Epicentral Distance Arrival Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>P</b></td>
-                <td>Direct mantle compressional wave</td>
-                <td>$0^\circ - 103^\circ$</td>
-              </tr>
-              <tr>
-                <td><b>PcP</b></td>
-                <td>Reflected from mantle-core boundary (CMB) back to surface</td>
-                <td>$0^\circ - 90^\circ$</td>
-              </tr>
-              <tr>
-                <td><b>PKP (PKPab, PKPdf)</b></td>
-                <td>Transmitted through mantle and liquid outer core</td>
-                <td>$142^\circ - 180^\circ$</td>
-              </tr>
-              <tr>
-                <td><b>PKIKP</b></td>
-                <td><b>Transmitted through Mantle → Liquid Outer Core → Solid Inner Core → Outer Core → Mantle</b></td>
-                <td><b>$110^\circ - 180^\circ$ (Antipodal arrivals)</b></td>
-              </tr>
-              <tr>
-                <td><b>S-Wave Shadow Zone</b></td>
-                <td><b>$103^\circ - 180^\circ$</b> (No direct S-waves arrive because liquid outer core cannot transmit shear waves)</td>
-                <td>Worldwide beyond $103^\circ$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Core Seismic Phases Nomenclature</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Seismic Phase Code</th>
+            <th>Ray Path Trajectory Through Earth</th>
+            <th>Observed Epicentral Distance ($\Delta$)</th>
+            <th>Significance in Discovering Core Structure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>$PcP$</strong></td>
+            <td>$P$-wave in mantle reflected upward at the Core-Mantle Boundary (CMB).</td>
+            <td>$0^\circ$ to $90^\circ$</td>
+            <td>Constrained the precise depth of the liquid core boundary ($2891\text{ km}$, Gutenberg 1914).</td>
+          </tr>
+          <tr>
+            <td><strong>$PKP$ ($P'$)</strong></td>
+            <td>Refracted into liquid outer core ($K$), misses inner core, emerges in mantle ($P$).</td>
+            <td>$>143^\circ$ (and caustic branch back to $142^\circ$)</td>
+            <td>Confirmed the fluid nature of the outer core (R.D. Oldham 1906).</td>
+          </tr>
+          <tr>
+            <td><strong>$PKIKP$</strong></td>
+            <td>Mantle ($P$) $\to$ Outer Core ($K$) $\to$ <strong>Inner Core ($I$)</strong> $\to$ Outer Core ($K$) $\to$ Mantle ($P$).</td>
+            <td>$110^\circ$ to $180^\circ$</td>
+            <td><strong>Discovered the solid inner core (Inge Lehmann 1936).</strong></td>
+          </tr>
+          <tr>
+            <td><strong>$PKiKP$</strong></td>
+            <td>Mantle ($P$) $\to$ Outer Core ($K$) $\to$ reflected off Inner Core Boundary ($i$).</td>
+            <td>$100^\circ$ to $140^\circ$</td>
+            <td>Pinpointed the exact depth of the Inner Core Boundary ($5150\text{ km}$).</td>
+          </tr>
+          <tr>
+            <td><strong>$PKJKP$</strong></td>
+            <td>Compressional wave converting to shear wave ($J$) in solid inner core.</td>
+            <td>Variable ($>120^\circ$)</td>
+            <td>Ultimate seismic proof of the non-zero shear modulus ($\mu > 0$) of the solid inner core.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Deep Earth Ray Tracing & Core Geophysics</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Critical Angle of Incidence at the Core-Mantle Boundary</div>
+        <p>A $P$-wave in the lowermost mantle ($v_1 = 13.7\text{ km/s}$) strikes the liquid outer core ($v_2 = 8.1\text{ km/s}$). Does total internal reflection occur? Calculate the angle of refraction $r$ for an angle of incidence $i = 45^\circ$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Total internal reflection can only occur when a wave travels from a lower-velocity to a higher-velocity medium ($v_1 < v_2$). Here $v_1 > v_2$ ($13.7 > 8.1\text{ km/s}$); therefore, total internal reflection is physically impossible, and energy is always transmitted!</p>
+        <p>Applying Snell's law:</p>
+        $$\frac{\sin i}{v_1} = \frac{\sin r}{v_2} \implies \sin r = \left(\frac{v_2}{v_1}\right)\sin i$$
+        $$\sin r = \left(\frac{8.1}{13.7}\right)\sin 45^\circ = 0.5912 \times 0.7071 \approx 0.4180$$
+        $$r = \arcsin(0.4180) \approx 24.71^\circ$$
+        <p><strong>Final Answer:</strong> The refracted ray bends steeply toward the normal at an angle $r \approx 24.7^\circ$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Travel Time Calculation for an Antipodal $PKIKP$ Ray</div>
+        <p>Calculate the vertical diametric travel time for a $PKIKP$ ray traversing the Earth from the North Pole to the South Pole ($\Delta = 180^\circ$). Assume two mantle sections (thickness $2891\text{ km}$ each, average $v_p = 10.5\text{ km/s}$), two outer core sections (thickness $2259\text{ km}$ each, average $v_p = 9.2\text{ km/s}$), and the inner core diameter ($2442\text{ km}$, average $v_p = 11.2\text{ km/s}$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$t_{\text{mantle}} = 2 \times \frac{2891\text{ km}}{10.5\text{ km/s}} = 2 \times 275.33\text{ s} = 550.67\text{ s}$$
+        $$t_{\text{outer core}} = 2 \times \frac{2259\text{ km}}{9.2\text{ km/s}} = 2 \times 245.54\text{ s} = 491.09\text{ s}$$
+        $$t_{\text{inner core}} = \frac{2442\text{ km}}{11.2\text{ km/s}} \approx 218.04\text{ s}$$
+        $$t_{\text{total}} = 550.67 + 491.09 + 218.04 = 1259.8\text{ seconds} \approx 21\text{ minutes } 0\text{ seconds}$$
+        <p><strong>Final Answer:</strong> Total antipodal diametric travel time is approximately $1260\text{ seconds}$ ($21\text{ minutes}$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: The P-Wave Shadow Zone Angle Limits</div>
+        <p>State the exact angular limits of the primary $P$-wave shadow zone on the surface of the Earth and explain its cause.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The $P$-wave shadow zone extends from epicentral distance $\Delta = 103^\circ$ to $\Delta = 143^\circ$ (or $\sim 104^\circ-140^\circ$). It is caused by the dramatic velocity reduction at the core-mantle boundary ($13.7 \to 8.1\text{ km/s}$), which refracts rays entering the core deeply downward, leaving a shadow zone between rays that graze the mantle-core boundary ($\sim 103^\circ$) and the first refracted rays exiting the core ($\sim 143^\circ$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Solid Inner Core Shear Wave Velocity ($v_s$)</div>
+        <p>Seismic observations indicate that in the solid inner core, $v_p \approx 11.2\text{ km/s}$ and Poisson's ratio is extraordinarily high ($\nu \approx 0.44$). Estimate the inner core shear wave velocity $v_s$.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\frac{v_p}{v_s} = \sqrt{\frac{2(1 - \nu)}{1 - 2\nu}} = \sqrt{\frac{2(1 - 0.44)}{1 - 2(0.44)}} = \sqrt{\frac{2(0.56)}{1 - 0.88}} = \sqrt{\frac{1.12}{0.12}} = \sqrt{9.333} \approx 3.055$$
+        $$v_s = \frac{v_p}{3.055} = \frac{11.2\text{ km/s}}{3.055} \approx 3.67\text{ km/s}$$
+        <p><strong>Final Answer:</strong> Inner core shear wave velocity is approximately $3.67\text{ km/s}$ (showing high ductility near its melting point).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Geodynamo Convection in the Outer Core</div>
+        <p>Why must the outer core be a fluid rather than a solid to generate Earth's magnetic field?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The Earth's dipolar magnetic field is maintained by the <strong>geodynamo mechanism</strong>. This requires vigorous, organized fluid convection of an electrically conducting liquid (molten iron-nickel alloy). Thermal convection driven by core cooling combined with compositional convection (light element expulsion during inner core crystallization) is organized into helical convective columns by the Coriolis force. A rigid solid cannot sustain convective fluid flow; thus, a fluid outer core is an absolute prerequisite.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Seismic Anisotropy of the Inner Core</div>
+        <p>What observation demonstrates that the Earth's solid inner core is seismically anisotropic?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>$PKIKP$ seismic waves traveling nearly parallel to the Earth's rotational axis (polar paths) travel approximately $3-4\%$ faster than $PKIKP$ waves traveling in the equatorial plane. This demonstrates cylindrical seismic anisotropy, caused by the preferred crystalline alignment (lattice preferred orientation, LPO) of hexagonal close-packed (hcp) iron crystals aligned with Earth's spin axis.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Reflection Coefficient at the Core-Mantle Boundary</div>
+        <p>For normal incidence, the acoustic reflection coefficient is $R = \frac{\rho_2 v_2 - \rho_1 v_1}{\rho_2 v_2 + \rho_1 v_1}$. Calculate $R$ at the CMB given mantle parameters ($\rho_1 = 5560\text{ kg/m}^3, v_1 = 13.7\text{ km/s}$) and core parameters ($\rho_2 = 9900\text{ kg/m}^3, v_2 = 8.1\text{ km/s}$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$Z_1 = \rho_1 v_1 = 5560 \times 13700 = 7.617 \times 10^7\text{ kg/(m}^2\cdot\text{s)}$$
+        $$Z_2 = \rho_2 v_2 = 9900 \times 8100 = 8.019 \times 10^7\text{ kg/(m}^2\cdot\text{s)}$$
+        $$R = \frac{8.019 - 7.617}{8.019 + 7.617} = \frac{0.402}{15.636} \approx +0.0257$$
+        <p><strong>Final Answer:</strong> The reflection coefficient is tiny ($R \approx +0.026$); over $97\%$ of normal-incident $P$-wave energy is transmitted across the CMB into the core!</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Super-Rotation of the Inner Core</div>
+        <p>What is the seismological evidence for the "super-rotation" of the inner core?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>By comparing the arrival waveforms of doublet earthquakes (earthquakes occurring decades apart on the same fault rupture) recorded at the same seismic stations, seismologists observed small progressive shifts in travel times of $PKIKP$ waves sampling the anisotropic inner core. This indicated that the inner core rotates slightly faster than the overlying mantle and crust (by $\sim 0.2-1.0^\circ$ per year), driven by electromagnetic torques from the geodynamo.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

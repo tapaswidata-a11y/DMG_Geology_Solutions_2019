@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q50: Biostratigraphy: Ammonites as Index Fossils in Jurassic Stratigraphy | OPSC Geology 2021 Masterclass</title>
+<title>Q050: Jurassic Biostratigraphy: Ammonites as Master Index (Zone) Fossils | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,288 +89,577 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q50" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Biostratigraphy & Mesozoic Paleontology</div>
-    <h1>Q50: Biostratigraphy: Ammonites as Index Fossils in Jurassic Stratigraphy</h1>
+    <div class="badge">GEO - 2/21 • Invertebrate Paleontology & Biostratigraphy</div>
+    <h1>Q050: Jurassic Biostratigraphy: Ammonites as Master Index Fossils</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> W.J. Arkell (Jurassic Geology of the World, 1956); Sam Boggs Jr. (Ch. 15, pp. 520-526)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 50<br>
+<strong>Authoritative References:</strong> W.J. Arkell, <em>Jurassic Geology of the World</em> (Oliver & Boyd, Edinburgh, 1956); Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th Ed., Pearson, Ch. 15: Biostratigraphy, pp. 520–535); Clarkson, <em>Invertebrate Palaeontology and Evolution</em> (4th Ed., Blackwell, Ch. 8: Cephalopods, pp. 240–265); G.B. Mahapatra, <em>Textbook of Physical Geology & Paleontology</em> (pp. 90–95, Fig. 91.4).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>50.1 Ammonite Evolution & Biostratigraphic Utility</h3>
-        <p>In invertebrate paleontology and biostratigraphy (Arkell, 1956, <i>Jurassic Geology of the World</i>; Sam Boggs Jr., Ch. 15; Raup & Stanley, <i>Principles of Paleontology</i>), <b>ammonites (Ammonoidea)</b> represent the premier, golden benchmark of <b>index fossils (guide fossils / zone fossils)</b> for the Mesozoic Era, and most spectacularly for the <b>Jurassic Period</b>:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Index Fossil Criterion</th>
-                <th>Theoretical Biological Definition</th>
-                <th>Fulfillment by Jurassic Ammonites</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>1. Rapid Evolutionary Rate</b></td>
-                <td>Rapid morphological innovation and speciation over short geological time spans.</td>
-                <td><b>Extremely rapid evolution of complex suture lines (Goniatitic → Ceratitic → Ammonitic with complex folioles and lobes).</b> Species turnover every $\sim 0.5 - 1.0\text{ Ma}$.</td>
-              </tr>
-              <tr>
-                <td><b>2. Narrow Stratigraphic Range</b></td>
-                <td>Individual species restricted to narrow chronostratigraphic intervals.</td>
-                <td>Enables ultra-fine division of Jurassic stages into sub-stages and <b>standard ammonite biozones</b> (e.g. 60+ biozones in the Jurassic).</td>
-              </tr>
-              <tr>
-                <td><b>3. Wide Geographic Distribution</b></td>
-                <td>Cosmopolitan dispersion across multiple basins and ocean realms.</td>
-                <td><b>Pelagic, free-swimming nektonic marine mode of life</b>; drift shells carried worldwide across the Tethys, Pacific, and Boreal seaways.</td>
-              </tr>
-              <tr>
-                <td><b>4. High Abundance & Distinct Morphologies</b></td>
-                <td>Easily identified and frequently preserved in sedimentary strata.</td>
-                <td>Robust, easily fossilized aragonitic coiled shells with distinct ribbing, keels, and suture lines.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>50.2 Application in Indian Jurassic Basins</h3>
-        <p>In the world-famous marine Jurassic succession of <b>Kutch (Kachchh)</b> in Gujarat (Waagen, 1875; Spath, 1924), the stratigraphy is subdivided into four formations calibrated entirely against standard European ammonite biozones:</p>
-        <ul>
-          <li><b>Patcham Formation (Bathonian):</b> <i>Macrocephalites triangularis</i> zone.</li>
-          <li><b>Chari Formation (Callovian-Oxfordian):</b> <i>Macrocephalites macrocephalus, Reineckeia, Peltoceras athleta</i> zones.</li>
-          <li><b>Katrol Formation (Kimmeridgian):</b> <i>Waagenia, Aspidoceras, Katroliceras</i> zones.</li>
-          <li><b>Umia Formation (Tithonian-Neocomian):</b> <i>Virgatosphinctes, Micracanthoceras</i> zones.</li>
-        </ul>
-        <p>Without ammonites serving as <b>index fossils</b>, high-resolution global chronocorrelation of the Jurassic would be physically impossible.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q50/mahapatra_fig91_4_ammonitic_sutures.png" alt="Cephalopod Suture Line Evolution & Jurassic Ammonite Biostratigraphy (G.B. Mahapatra, Fig. 91.4)">
-      <figcaption>
-        <strong>Figure 50.1: Cephalopod Suture Line Evolution & Jurassic Ammonite Biostratigraphy (G.B. Mahapatra, <em>A Text-Book of Geology</em>, Chapter 24, p. 186, Fig. 91.4).</strong> Authentic textbook plate showing suture line complexity: Goniatitic (Paleozoic, simple lobes & saddles), Ceratitic (Triassic, smooth saddles & serrated lobes), and <strong>Ammonitic</strong> (Jurassic–Cretaceous, complexly frilled and fluted lobes and saddles, e.g. <em>Phylloceras</em>, <em>Lytoceras</em>, <em>Perisphinctes</em> in Spiti Shales).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: THE CONCEPT OF AN INDEX FOSSIL -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Theoretical Criteria for an Ideal Index (Guide / Zone) Fossil</div>
+    <div class="card-body">
+      <p>In chronostratigraphy and biostratigraphy, an <strong>index fossil</strong> (or guide fossil / zone fossil) is a preserved organism used to define and identify specific geological periods and high-resolution biozones. To serve as an ideal index fossil, a biological taxon must rigorously fulfill five fundamental criteria:</p>
+
+      <ul>
+        <li><strong>1. Rapid Morphological Evolution:</strong> The lineage must undergo rapid speciation and morphological change over short geological intervals, resulting in <strong>extremely short vertical stratigraphic ranges (biochrons $<1-2\text{ Ma}$)</strong>.</li>
+        <li><strong>2. Wide Cosmopolitan Geographic Distribution:</strong> The organism must have inhabited diverse marine provinces globally, independent of local bottom sediment facies (nektonic or planktonic pelagic mode of life).</li>
+        <li><strong>3. Abundant Fossilization Potential:</strong> Possesses hard, durable mineralized shells (aragonite / calcite) produced in vast numbers that resist mechanical and chemical destruction.</li>
+        <li><strong>4. Distinct Morphological Recognizability:</strong> Easily diagnosable morphologic features (e.g., shell coiling, ribbing, whorl cross-section, complex suture patterns) enabling unequivocal identification by field stratigraphers.</li>
+        <li><strong>5. Facies Independence:</strong> Pelagic organisms float or swim in the water column and sink upon death into diverse substrates (muds, silts, carbonates), bridging correlations across differing sedimentary environments.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q50/jurassic_ammonite_biostratigraphy_zones.png" alt="Jurassic Ammonite Biostratigraphy">
+        <div class="tb-caption">
+          <strong>Figure 50.1:</strong> Ammonite biozonation chart of the Jurassic System illustrating rapid succession of ammonite species establishing ultra-high resolution biozones across Hettangian to Tithonian stages.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: AMMONITES IN THE JURASSIC -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Why Ammonites Are the Master Index Fossils of the Jurassic</div>
+    <div class="card-body">
+      <p>Ammonoids (Subclass Ammonoidea, Class Cephalopoda) represent the gold standard of index fossils for the entire Mesozoic, reaching their evolutionary zenith during the <strong>Jurassic Period</strong>:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Arkellian Biostratigraphic Resolution</div>
+        $$\text{Jurassic Duration } \approx 55\text{ Ma} \quad \div \quad \sim 60 \text{ Standard Ammonite Biozones} \implies \text{Resolution } \le 0.9\text{ Ma per Zone!}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">William Joscelyn Arkell (1956) established that ammonite biozones provide time resolution exceeding standard radiometric dating for Jurassic marine strata.</p>
+      </div>
+
+      <ul>
+        <li><strong>Evolution of Complex Suture Lines:</strong> As ammonites evolved from simple nautilitic sutures (Paleozoic) to goniatitic, ceratitic (Triassic), and finally <strong>ammonitic sutures</strong> (Jurassic-Cretaceous), the septal margins became extraordinarily complex with intricately frilled, dendritic lobes and saddles. Each species possessed a distinct, immutable suture "fingerprint."</li>
+        <li><strong>Nektonic Pelagic Buoyancy:</strong> Chambered phragmocones with siphuncular gas regulation enabled ammonites to swim freely across ocean basins, achieving global dispersal within months. Post-mortem shell drift further distributed shells across all oceanic facies.</li>
+        <li><strong>The Kutch Jurassic Succession:</strong> In India, the famous Jurassic marine succession of <strong>Kutch (Patcham, Chari, Katrol, and Umia Formations)</strong> is correlated stage-by-stage (Bathonian to Tithonian) with the global standard using ammonite index genera (<em>Macrocephalites, Reineckeia, Gregoryceras, Virgatosphinctes</em>).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q50/mahapatra_fig91_4_ammonitic_sutures.png" alt="Ammonitic Sutures from Mahapatra">
+        <div class="tb-caption">
+          <strong>Figure 50.2 (G.B. Mahapatra, Fig. 91.4):</strong> Evolution of cephalopod suture lines showing Nautilitic (smooth), Goniatitic (angular), Ceratitic (crenulated lobes), and Ammonitic (intricately frilled lobes and saddles) diagnostic of Jurassic ammonites.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE FOSSIL TYPES TABLE -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix: Index Fossils vs. Other Fossil Categories</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Fossil Category</th>
+            <th>Scientific Definition</th>
+            <th>Stratigraphic / Paleoenvironmental Role</th>
+            <th>Representative Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Index (Zone / Guide) Fossil</strong></td>
+            <td>Short vertical geological range, wide geographic distribution, abundant, distinct.</td>
+            <td><strong>Pinpoints exact chronostratigraphic age and defines biozones.</strong></td>
+            <td><strong>Ammonites (Jurassic)</strong>, Graptolites (Ordovician-Silurian), Trilobites (Cambrian), Forams (Cenozoic).</td>
+          </tr>
+          <tr>
+            <td><strong>Facies Fossil</strong></td>
+            <td>Long geological range restricted to a very specific depositional environment.</td>
+            <td>Indicates paleoenvironmental conditions (depth, salinity, energy) rather than age.</td>
+            <td>Reef-building Corals (warm, shallow marine), Lingula (intertidal muds).</td>
+          </tr>
+          <tr>
+            <td><strong>Trace Fossil (Ichnofossil)</strong></td>
+            <td>Preserved tracks, trails, burrows, or borings reflecting organism behavior.</td>
+            <td>Indicates ethology, sediment substrate coherence, and paleobathymetry.</td>
+            <td><em>Cruziana, Rusophycus, Skolithos, Chondrites</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Leaked Fossil (Infiltration)</strong></td>
+            <td>Younger fossil washed down into cavities/fractures of older subterranean strata.</td>
+            <td>Stratigraphic contamination that must be recognized to prevent false dating.</td>
+            <td>Microfossils infiltrating paleokarst fissures or boreholes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q50. Jurassic stratigraphy is primarily based on the use of ammonites as :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> leaked fossil</div>
-        <div class="opt-item correct"><strong>(B)</strong> index fossil</div>
-        <div class="opt-item "><strong>(C)</strong> trace fossil</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 50</div>
+        <div class="q-text">Jurassic stratigraphy is primarily based on the use of ammonites as :</div>
+        <div class="q-options">
+          <div class="opt-node">(A) leaked fossil</div>
+          <div class="opt-node correct">(B) index fossil</div>
+          <div class="opt-node">(C) trace fossil</div>
+          <div class="opt-node">(D) None of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(B) index fossil</strong> [Ammonites are the premier index (guide/zone) fossils of the Jurassic Period due to their rapid suture evolution, short stratigraphic ranges, cosmopolitan pelagic dispersal, and high preservation potential.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) index fossil</b> — Jurassic stratigraphy worldwide (and in Indian basins like Kutch and Spiti) is universally based on the use of ammonites as <b>index fossils</b> (zone fossils) due to their rapid evolutionary rates, short stratigraphic ranges, and widespread marine dispersal.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) leaked fossil — INCORRECT:</b> A leaked fossil (or stratigraphic leak) is an anomalous reworked fossil introduced into older strata through solution cavities, fractures, or burrows; it is a geological contamination phenomenon, not a biostratigraphic method.</li>
-          <li><b>(B) index fossil — CORRECT:</b> Standard paleontological terminology: a fossil characterized by wide geographic distribution, short temporal range, and rapid evolution, making it ideal for biozone correlation.</li>
-          <li><b>(C) trace fossil — INCORRECT:</b> Trace fossils (ichnofossils) are tracks, trails, burrows, and borings; ammonite shells are true body fossils (calcareous mineralized skeletal material).</li>
-          <li><b>(D) None of these — INCORRECT:</b> Option (B) is the universally acknowledged answer.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (B) index fossil</div>
+    <div class="card-body">
+      <p><strong>Detailed Biostratigraphic Forensic Analysis:</strong></p>
+      <ul>
+        <li>In historical geology and biostratigraphy (Arkell 1956; Boggs 2012; Mahapatra 2019), an <strong>index fossil</strong> (also termed guide fossil or zone fossil) is a fossil used to date and correlate the strata in which it is found.</li>
+        <li>The ammonites (Subclass Ammonoidea) represent the ultimate index fossils for the Jurassic System because they exhibit:
+          <ol>
+            <li><strong>Exceptionally rapid morphological evolution</strong>, especially in their intricate ammonitic suture lines, shell ribbing, and whorl shapes.</li>
+            <li><strong>Short vertical stratigraphic durations</strong> (individual species lived for only a few hundred thousand years).</li>
+            <li><strong>Cosmopolitan, worldwide pelagic marine distribution</strong> as free-swimming nekton.</li>
+          </ol>
+        </li>
+        <li>The standard global Jurassic chronostratigraphic timescale is subdivided into approximately 60 standard ammonite zones. Therefore, ammonites are used primarily and universally as <strong>index fossils</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) leaked fossil</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>A <strong>leaked fossil</strong> (or infiltration fossil) is a younger fossil that has percolated downward through subterranean fractures, solution cavities, or drillholes into older rock formations, representing an anomaly or stratigraphic contamination.</li>
+        <li>Ammonites are authentic, primary, in-situ macrofossils of the Jurassic seas, not secondary leaked contaminants.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) trace fossil</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>A <strong>trace fossil</strong> (ichnofossil) represents indirect sedimentary evidence of biological activity—such as foot prints, crawling trails, resting excavations, or dwelling burrows (e.g., <em>Cruziana, Skolithos</em>).</li>
+        <li>Ammonite fossils consist of the preserved physical shell, chambered septa, and siphuncle; they are bona fide <strong>body fossils</strong>, not trace fossils.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) None of these</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Because Option (B) index fossil is the universally established, textbook-verified role of ammonites in Jurassic stratigraphy, Option (D) is completely incorrect.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Jurassic Biostratigraphic Zonation Suite</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Jurassic Stage</th>
-                <th>Standard Age</th>
-                <th>Key Ammonite Index Genera (Kutch Basin)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Tithonian (Late Jurassic)</b></td>
-                <td>$152 - 145\text{ Ma}$</td>
-                <td><i>Virgatosphinctes, Aulacosphinctes</i> (Umia Formation)</td>
-              </tr>
-              <tr>
-                <td><b>Kimmeridgian</b></td>
-                <td>$157 - 152\text{ Ma}$</td>
-                <td><i>Katroliceras, Aspidoceras, Pachysphinctes</i> (Katrol Formation)</td>
-              </tr>
-              <tr>
-                <td><b>Oxfordian</b></td>
-                <td>$163 - 157\text{ Ma}$</td>
-                <td><i>Mayaites, Dhosaites, Perisphinctes</i> (Dhosan Sandstone)</td>
-              </tr>
-              <tr>
-                <td><b>Callovian</b></td>
-                <td>$166 - 163\text{ Ma}$</td>
-                <td><i>Macrocephalites, Reineckeia, Peltoceras</i> (Chari Formation)</td>
-              </tr>
-              <tr>
-                <td><b>Bathonian (Middle Jurassic)</b></td>
-                <td>$168 - 166\text{ Ma}$</td>
-                <td><i>Macrocephalites triangularis, Sivajiceras</i> (Patcham Formation)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Classic Indian Mesozoic Index Fossils</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Geological System</th>
+            <th>Premier Index Fossil Group</th>
+            <th>Key Diagnostic Morphological Feature</th>
+            <th>Classic Indian Stratigraphic Horizons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Triassic</strong></td>
+            <td><strong>Ceratitic Ammonoids</strong> & Conodonts</td>
+            <td><strong>Ceratitic sutures</strong> (smooth rounded saddles, serrated denticulate lobes).</td>
+            <td>Lilang Group (Spiti): <em>Otoceras woodwardi</em>, <em>Meekoceras</em>, <em>Ceratites</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Jurassic</strong></td>
+            <td><strong>Ammonitic Ammonoids</strong></td>
+            <td><strong>Ammonitic sutures</strong> (both lobes and saddles are intricately frilled/dendritic).</td>
+            <td>Kutch Succession: <em>Macrocephalites macrocephalus</em> (Chari), <em>Virgatosphinctes</em> (Katrol/Umia).</td>
+          </tr>
+          <tr>
+            <td><strong>Cretaceous</strong></td>
+            <td><strong>Ammonites</strong> & Planktonic Foraminifera</td>
+            <td>Heteromorph ammonite coiling; globotruncanid chambers.</td>
+            <td>Uttatur & Ariyalur (Cauvery): <em>Acanthoceras</em>, <em>Pachydiscus</em>, <em>Globotruncana</em>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Cephalopod Paleontology & Biozonation</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Suture Line Evolution Stages</div>
+        <p>Outline the sequential evolutionary development of cephalopod suture lines from the Cambrian to the Cretaceous.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ol>
+          <li><strong>Nautilitic Suture (Cambrian - Present):</strong> Simple, smooth, straight or gently undulating line without fluting (e.g., <em>Nautilus</em>).</li>
+          <li><strong>Goniatitic Suture (Devonian - Permian):</strong> Smooth, undivided angular lobes (pointing backward toward apex) and rounded saddles (pointing forward).</li>
+          <li><strong>Ceratitic Suture (Triassic):</strong> Saddles are smooth and rounded, while lobes are denticulate, serrated, or saw-toothed (e.g., <em>Ceratites</em>).</li>
+          <li><strong>Ammonitic Suture (Jurassic - Cretaceous):</strong> Maximum mechanical complexity; both lobes and saddles are deeply subdivided into intricate leaf-like or dendritic foliations (e.g., <em>Ammonites, Pachydiscus</em>).</li>
+        </ol>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Functional Significance of Complex Ammonitic Sutures</div>
+        <p>What mechanical advantage did the intricate fluting of ammonitic septal margins provide to the Jurassic ammonite shell?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The fluted septa met the outer shell wall at numerous corrugated contact lines, functioning like internal structural buttresses or corrugated bulkheads. This distributed hydrostatic crushing pressure evenly across the thin aragonitic shell wall, allowing the shell to remain extremely light and buoyant while resisting implosion at significant ocean depths.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: The Golden Spike (GSSP) of the Jurassic System</div>
+        <p>Which ammonite species defines the Global Boundary Stratotype Section and Point (GSSP) for the base of the Jurassic System (Hettangian Stage)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The base of the Jurassic System is formally defined at Kuhjoch in the Karwendel Mountains of Austria by the first appearance datum (FAD) of the smooth-ribbed ammonite <strong><em>Psiloceras spelae tirolicum</em></strong>, marking the rapid post-extinction recovery of ammonites following the end-Triassic catastrophe.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Oppel's Concept of Biozones</div>
+        <p>How did Albert Oppel (1856) use ammonites to invent modern biostratigraphy?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Albert Oppel carefully mapped the vertical ranges of ammonites across Western Europe and demonstrated that the Jurassic System could be subdivided into 33 discrete, universally reproducible time-stratigraphic intervals, which he named <strong>zones (Biozones)</strong>, each characterized by a distinct assemblage of co-occurring index ammonite species.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Macrocephalites in the Kutch Jurassic Succession</div>
+        <p>In which formation of the Kutch Jurassic succession does the famous index ammonite <em>Macrocephalites macrocephalus</em> occur, and what European stage does it denote?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Macrocephalites macrocephalus</em> occurs at the base of the <strong>Chari Formation (Macrocephalus Beds)</strong> in Kutch, Gujarat. It marks the base of the <strong>Callovian Stage</strong> (Middle Jurassic), correlating the Kutch sequence with the standard European Callovian stratotype.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Siphuncle Position in Ammonoids vs. Nautiloids</div>
+        <p>How does the position of the siphuncle allow a paleontologist to immediately distinguish an ammonite shell from a nautiloid shell?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Ammonoids:</strong> The siphuncle is strictly <strong>marginal and external (ventral)</strong>, running directly beneath the outer perimeter wall of the whorl (except in Clymeniida where it is dorsal).</li>
+          <li><strong>Nautiloids:</strong> The siphuncle is <strong>central or sub-central</strong>, passing through the middle of each septum.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Heteromorph Ammonites in the Late Mesozoic</div>
+        <p>What are <em>heteromorph ammonites</em>, and what evolutionary trend do they represent?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Heteromorph ammonites are ammonoids whose adult shells deviate from normal planispiral coiling—exhibiting open coils, helical spires, straight shafts, or hooked U-tubes (e.g., <em>Baculites, Scaphites, Hamites, Nipponites</em>). They represent specialized evolutionary radiations adapting to diverse nekto-planktonic and demersal marine ecological niches during the Late Jurassic and Cretaceous.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Taphonomy and Post-Mortem Ammonite Shell Drift</div>
+        <p>Why can necroplanktic post-mortem shell drift cause minor taphonomic anomalies in ammonite biostratigraphy?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>When an ammonite dies, the decomposition of soft body tissues generates gas inside the chambered phragmocone. The empty shell can float on the surface of the ocean for weeks to months (necroplankton) and be carried hundreds of kilometers by surface wind and ocean currents before waterlogging and sinking. This enables exceptional cosmopolitan dispersal across ocean basins, but can occasionally transport shells into foreign depositional realms.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

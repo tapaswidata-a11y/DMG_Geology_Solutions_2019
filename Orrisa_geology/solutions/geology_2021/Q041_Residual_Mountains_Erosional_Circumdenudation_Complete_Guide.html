@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q41: Genetic Classification of Mountain Systems (Tectonic vs. Residual) | OPSC Geology 2021 Masterclass</title>
+<title>Q041: Genetic Classification of Mountain Systems: Tectonic vs. Residual Mountains | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,256 +89,586 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q41" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Geomorphology & Physical Geology</div>
-    <h1>Q41: Genetic Classification of Mountain Systems (Tectonic vs. Residual)</h1>
+    <div class="badge">GEO - 2/21 • Geomorphology & Tectonics</div>
+    <h1>Q041: Genetic Classification of Mountain Systems: Tectonic vs. Residual</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology); Bangar (Ch. 2)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 41<br>
+<strong>Authoritative References:</strong> Arthur Holmes, <em>Principles of Physical Geology</em> (4th Ed., Chapman & Hall, Ch. 20–21); William D. Thornbury, <em>Principles of Geomorphology</em> (2nd Ed., John Wiley, Ch. 6, pp. 112–134); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Structural Features, pp. 182–188, Fig. 7.52); Richard J. Huggett, <em>Fundamentals of Geomorphology</em> (4th Ed., Routledge, Ch. 5).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>41.1 Genetic Classification of Mountain Systems</h3>
-        <p>In physical geology and geomorphology (Arthur Holmes, <i>Principles of Physical Geology</i>; Thornbury, <i>Principles of Geomorphology</i>; Bangar, Ch. 2), mountains are categorized based on their fundamental genetic origin into <b>Tectonic (Endogenic)</b> mountains and <b>Residual (Exogenic)</b> mountains:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Genetic Category</th>
-                <th>Mountain Type</th>
-                <th>Primary Formation Mechanism</th>
-                <th>Representative Global & Indian Examples</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td rowspan="3"><b>TECTONIC MOUNTAINS<br>(Endogenic Internal Forces)</b></td>
-                <td><b>Fold Mountains</b></td>
-                <td>Crustal convergence, buckling, and orogenic shortening of thick geosynclinal/basin strata.</td>
-                <td><b>Himalayas, Alps, Andes, Rockies</b></td>
-              </tr>
-              <tr>
-                <td><b>Fault-Block Mountains (Horsts)</b></td>
-                <td>Crustal extension or differential vertical displacement along steep fault systems.</td>
-                <td><b>Satpura Range, Vindhyan Scarp, Vosges, Sierra Nevada</b></td>
-              </tr>
-              <tr>
-                <td><b>Volcanic Mountains (Accumulation)</b></td>
-                <td>Extrusion and constructional accumulation of lava, tephra, and pyroclastic debris around a vent.</td>
-                <td><b>Mt. Fuji, Kilimanjaro, Mauna Loa, Barren Island</b></td>
-              </tr>
-              <tr>
-                <td><b>NON-TECTONIC / EROSIONAL<br>(Exogenic External Forces)</b></td>
-                <td><b>Residual Mountains (Relict / Circumdenudational)</b></td>
-                <td><b>NOT formed by active tectonic deformation.</b> Formed by prolonged differential weathering and stream denudation of ancient plateaus, leaving hard, resistant rocks standing as relief hills.</td>
-                <td><b>Aravalli Range (relict hills), Nilgiris, Parasnath Hills, Scottish Highlands</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>41.2 The Concept of Residual (Relict) Relief</h3>
-        <p>Residual mountains (monadnocks, bornhardts, mesas, buttes) are products of the <i>degradation of old landmasses</i>. They represent the unconsumed erosional remnants of ancient peneplains or plateaus that have resisted denudation due to superior lithological hardness or structural compactness (e.g. quartzite ridges standing above eroded schists). Therefore, they belong to the <b>erosional/denudational category</b>, not tectonic mountains.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q41/bangar_fig7_52_mountain_building.png" alt="Mountain Building and Plate Tectonics (K.M. Bangar, Fig. 7.52)">
-      <figcaption>
-        <strong>Figure 41.1: Mountain Building and Plate Tectonics (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 7, Section 7.17, p. 126, Fig. 7.52).</strong> Genetic classification of mountains: <strong>Tectonic Fold Mountains</strong> (Himalayas, Alps, Rockies) formed by intense compressional crustal shortening and plate collision, contrasted with <strong>Relict / Residual Mountains</strong> (Aravallis, Eastern Ghats) formed by differential erosion of ancient uplifted plateau surfaces.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: GENETIC TAXONOMY OF MOUNTAINS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Genetic Taxonomy: Endogenic Tectonic vs. Exogenic Residual Mountains</div>
+    <div class="card-body">
+      <p>In physical geology and structural geomorphology, all terrestrial mountain systems are classified genetically into two fundamental categories based on the primary geodynamic agency responsible for their relief:</p>
+
+      <ul>
+        <li><strong>Tectonic Mountains (Endogenic Constructional Relief):</strong> Mountain ranges formed directly by <strong>internal crustal forces</strong> (diastrophism and volcanism) that deform, uplift, or accumulate rock masses above the regional base level:
+          <ol>
+            <li><strong>Fold Mountains (Orogenic Belts):</strong> Formed by horizontal crustal shortening, buckling, thrusting, and nappe stacking along convergent plate boundaries (e.g., Himalayas, Alps, Andes, Appalachians).</li>
+            <li><strong>Fault-Block Mountains (Horsts):</strong> Formed by tensional crustal extension or differential vertical block displacement along high-angle normal faults (e.g., Sierra Nevada, Harz Mountains, Vosges and Black Forest, Satpura Range).</li>
+            <li><strong>Volcanic Mountains (Accumulation Relief):</strong> Built up by the surface eruption, effusion, and cooling of lava, pyroclastics, and cinders around central vents (e.g., Mt. Fuji, Mt. Kilimanjaro, Mauna Loa).</li>
+            <li><strong>Complex (Relief / Composite) Tectonic Mountains:</strong> Polycyclic mountain systems exhibiting intense interference of multiple deformation phases, deep metamorphism, and igneous plutonism.</li>
+          </ol>
+        </li>
+        <li><strong>Residual Mountains (Mountains of Circumdenudation / Relict Relief):</strong> Residual mountains are <strong>NOT tectonic mountains</strong>. They owe their elevated relief not to contemporary tectonic uplift, but to the protracted <strong>exogenic differential erosion and circumdenudation</strong> of ancient, eroded plateaus or peneplains. Resistant rock masses (monadnocks, inselbergs, quartzite ridges) withstand weathering while the softer surrounding strata are stripped away (e.g., the <strong>Aravalli Range</strong>, the <strong>Eastern Ghats</strong>, the <strong>Catskill Mountains</strong> of New York, and the Scottish Highlands).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q41/mountain_genetic_classification_tectonic_vs_residual.png" alt="Mountain Classification Diagram">
+        <div class="tb-caption">
+          <strong>Figure 41.1:</strong> Genetic classification tree of global mountain systems distinguishing endogenic tectonic mountains (Fold, Block, Volcanic, Complex) from exogenic residual mountains formed by differential circumdenudation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE ARAVALLI AND CIRCUMDENUDATION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Circumdenudation Process: Evolution of Residual Highlands</div>
+    <div class="card-body">
+      <p>The transition of an ancient orogenic belt into a residual mountain system involves long-term denudation cycles governed by Davisian or Penckian landscape evolution:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Differential Denudation Dynamic Equilibrium</div>
+        $$\Delta h(t) = \int_0^t \left( U(t) - E_{\text{hard}}(t) \right) dt - \int_0^t \left( U(t) - E_{\text{soft}}(t) \right) dt = \int_0^t \left( E_{\text{soft}} - E_{\text{hard}} \right) dt$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $U(t) \to 0$ in stable cratonic post-orogenic regimes, and residual topographic relief $\Delta h$ develops solely due to the differential erosion rate between resistant quartzites/charns ($E_{\text{hard}}$) and erodible phyllites/shales ($E_{\text{soft}}$).</p>
+      </div>
+
+      <ul>
+        <li><strong>The Aravalli Example:</strong> The Aravalli Range represents one of the oldest Proterozoic fold belts in the world ($\sim 1.8-1.0\text{ Ga}$). While originally formed as a high-altitude collision fold mountain belt, contemporary Aravalli topography is purely a <strong>residual mountain system</strong>: millions of years of subaerial weathering have planed down the softer surrounding Archean basement, leaving hard Alwar quartzites standing as isolated strike ridges.</li>
+        <li><strong>Catskill Mountains:</strong> The Catskills in New York consist of undeformed, flat-lying Devonian clastic sedimentary strata. Deep fluvial canyon incision by the Hudson and Delaware drainage networks carved isolated plateau blocks that resemble mountains, yet possess zero internal folding or fault-block tectonism.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q41/bangar_fig7_52_mountain_building.png" alt="Mountain Building from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 41.2 (K.M. Bangar, Fig. 7.52):</strong> Stages of geosynclinal orogeny and tectonic mountain building, illustrating fold nappes and thrust slices that later undergo post-orogenic circumdenudation into residual relief.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE MORPHOLOGY TABLE -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Morpho-Genetic Classification Matrix</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Mountain Category</th>
+            <th>Primary Genetic Mechanism</th>
+            <th>Energy Driver</th>
+            <th>Typical Global & Indian Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fold Mountains</strong></td>
+            <td>Horizontal crustal shortening, nappe formation, crustal thickening.</td>
+            <td><strong>Endogenic Tectonic</strong> (Plate Convergence)</td>
+            <td>Himalayas, Alps, Zagros, Urals.</td>
+          </tr>
+          <tr>
+            <td><strong>Fault-Block Mountains</strong></td>
+            <td>Differential vertical uplift along normal or strike-slip faults; horst blocks.</td>
+            <td><strong>Endogenic Tectonic</strong> (Crustal Extension / Rifting)</td>
+            <td>Sierra Nevada (USA), Vosges (France), Satpura & Vindhya (India).</td>
+          </tr>
+          <tr>
+            <td><strong>Volcanic Mountains</strong></td>
+            <td>Central vent effusion of lava and accumulation of tephra/pyroclastics.</td>
+            <td><strong>Endogenic Tectonic</strong> (Mantle Magmatism / Plumes)</td>
+            <td>Mt. Etna, Mt. Vesuvius, Barren Island (India).</td>
+          </tr>
+          <tr>
+            <td><strong>Complex Mountains</strong></td>
+            <td>Superimposed polyphase orogeny, intense metamorphism, and batholith intrusion.</td>
+            <td><strong>Endogenic Tectonic</strong> (Polycyclic Collision)</td>
+            <td>Rocky Mountains (USA), Scottish Caledonides.</td>
+          </tr>
+          <tr>
+            <td><strong>Residual Mountains</strong></td>
+            <td>Differential exogenic weathering and fluvial incision leaving hard rock relicts.</td>
+            <td><strong>Exogenic Denudational</strong> (Solar / Gravity / Base Level)</td>
+            <td><strong>Aravalli Hills, Nilgiri Hills, Parasnath Hill, Catskills</strong>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q41. The mountain type which does not belong to the tectonic mountain categories are :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Complex mountains</div>
-        <div class="opt-item "><strong>(B)</strong> Volcanic mountains</div>
-        <div class="opt-item "><strong>(C)</strong> Fault block mountains</div>
-        <div class="opt-item correct"><strong>(D)</strong> Residual mountains</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 41</div>
+        <div class="q-text">The mountain type which does not belong to the tectonic mountain categories are :</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Complex mountains</div>
+          <div class="opt-node">(B) Volcanic mountains</div>
+          <div class="opt-node">(C) Fault block mountains</div>
+          <div class="opt-node correct">(D) Residual mountains</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(D) Residual mountains</strong> [Residual mountains are exogenic relict landforms sculpted by long-term differential weathering and circumdenudation, not by endogenic tectonic uplift or deformation.]
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) Residual mountains</b> — <b>Residual mountains</b> (relict hills) are formed by exogenic differential weathering and stream erosion, and do <i>not</i> belong to the tectonic mountain categories.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Complex mountains — INCORRECT:</b> Complex mountains (or polyphase orogenic belts) are classic tectonic mountains formed by multi-stage folding, thrusting, and metamorphism.</li>
-          <li><b>(B) Volcanic mountains — INCORRECT:</b> Volcanic mountains are endogenic/tectonic constructive edifices formed by magmatic activity associated with subduction or mantle plumes.</li>
-          <li><b>(C) Fault block mountains — INCORRECT:</b> Fault block mountains (horsts) are direct tectonic mountains formed by crustal faulting and differential vertical displacement.</li>
-          <li><b>(D) Residual mountains — CORRECT:</b> Residual mountains are exclusively exogenic/erosional in genesis, formed by the circumdenudation of ancient plateaus.</li>
-        </ul>
-        
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (D) Residual mountains</div>
+    <div class="card-body">
+      <p><strong>Detailed Geomorphological Forensic Analysis:</strong></p>
+      <ul>
+        <li>In genetic geomorphology, mountains are broadly classified into <strong>Tectonic (or Constructional) Mountains</strong> and <strong>Residual (or Relict / Circumdenudation) Mountains</strong>.</li>
+        <li>Tectonic mountains owe their elevated topography to direct <em>endogenic geodynamic activity</em>—such as compressional crustal folding, extensional block faulting, or volcanic accumulation.</li>
+        <li><strong>Residual mountains</strong> (e.g., the Aravalli Hills, Eastern Ghats, or Catskill Mountains) are <em>not</em> formed by tectonic forces. Instead, they represent the remnants of ancient elevated plateaus or eroded mountain roots where prolonged <em>exogenic weathering and fluvial erosion</em> have removed softer surrounding rock, leaving harder, resistant rock standing as residual highlands (monadnocks).</li>
+        <li>Because their formation is driven by exogenic denudation rather than endogenic tectonic processes, residual mountains do <strong>not</strong> belong to the tectonic mountain categories.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Complex mountains</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><strong>Complex mountains</strong> (composite tectonic mountains) are formed by polyphase tectonic orogeny involving deep crustal folding, nappe transport, high-grade regional metamorphism, and extensive granitic batholithic intrusions.</li>
+        <li>Because their internal architecture and topographic relief are entirely the consequence of intense endogenic plate tectonic processes, they are canonical tectonic mountains.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Volcanic mountains</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><strong>Volcanic mountains</strong> (such as stratovolcanoes and shield volcanoes) are formed by endogenic magmatic and volcanic eruptions at subduction zones, mid-ocean ridges, or mantle plumes.</li>
+        <li>Because volcanism is an endogenic tectonic/igneous process that directly constructs mountain relief, volcanic mountains represent a primary subcategory of tectonic mountains.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Fault block mountains</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><strong>Fault-block mountains</strong> (horsts and tilted fault blocks) are formed by crustal extensional tectonics, where displacement along normal faults lifts crustal blocks relative to adjacent grabens (e.g., the Sierra Nevada, Satpura Range).</li>
+        <li>Since their relief is directly generated by tectonic faulting, they are classic tectonic mountains.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Geomorphic Evolution Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 41: Morphoclimatic Inversion of Relief</div>
-          <p>The Aravalli Range is one of the oldest mountain belts in the world (Proterozoic Delhi-Aravalli Orogen). Explain why the present-day topography of the Aravallis is classified geomorphically as a "Residual Mountain" system rather than an active "Fold Mountain" chain.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>1. While the rocks of the Aravalli Supergroup were intensely folded, faulted, and metamorphosed during the Proterozoic orogeny ($~1.5\text{–}1.0\text{ Ga}$), active tectonic folding ceased over $500\text{ million years ago}$.</p>
-            <p>2. Over the subsequent hundreds of millions of years, prolonged subaerial weathering and denudation planed the ancient orogen down to a peneplain.</p>
-            <p>3. Differential erosion then carved away the soft mica schists and phyllites, leaving the highly resistant Alwar quartzites standing as narrow, elevated relict ridges (e.g. Guru Shikhar, $1,722\text{ m}$). Because their current elevation is maintained purely by differential erosional resistance rather than active tectonic uplift, they are quintessential <b>Residual Mountains</b>.</p>
-          </div>
-        </div>
-        
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Geodynamic Drivers of Mountain Relief</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Tectonic Mountains (Fold / Block / Volcanic)</th>
+            <th>Residual Mountains (Relict / Circumdenudation)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary Energy Source</strong></td>
+            <td>Earth's internal geothermal heat, mantle convection, plate motions.</td>
+            <td>Solar radiation, hydrological cycle, atmospheric weathering, gravity.</td>
+          </tr>
+          <tr>
+            <td><strong>Process Type</strong></td>
+            <td><strong>Endogenic Constructional</strong> (Deformation, uplift, eruption).</td>
+            <td><strong>Exogenic Denudational</strong> (Circumdenudation, etching, stripping).</td>
+          </tr>
+          <tr>
+            <td><strong>Tectonic State</strong></td>
+            <td>Active or recent orogeny / rifting; high seismicity and crustal strain.</td>
+            <td>Stable craton / post-orogenic; low to zero active tectonic strain.</td>
+          </tr>
+          <tr>
+            <td><strong>Internal Structure</strong></td>
+            <td>Folds, thrusts, grabens, volcanic strata conformable with current topography.</td>
+            <td>Truncated fold hinges, bevelled strata discordant with surface relief.</td>
+          </tr>
+          <tr>
+            <td><strong>Indian Examples</strong></td>
+            <td>Himalayan Mountain Belt (Fold), Satpura & Vindhya (Block).</td>
+            <td><strong>Aravalli Range, Nilgiri Hills, Parasnath Hill, Rajmahal Hills</strong>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Geomorphology & Orogenesis</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Denudation Chronology and Relief Inversion</div>
+        <p>Explain the geological mechanism of <em>relief inversion</em>: how can an ancient synclinal fold become a mountain ridge while adjacent anticlines become valleys?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>During folding, anticlinal crests experience tensional fracturing and joint opening, making them highly vulnerable to mechanical weathering and fluvial incision. Conversely, synclinal troughs experience compressional compaction, closing fractures and increasing rock density. Over tens of millions of years of exogenic circumdenudation, streams excavate the weakened anticlines into valleys, leaving the tightly packed synclinal hinges standing as high-relief ridges (<strong>synclinal mountains</strong>).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Fluvial Incision vs. Rock Mass Erodibility</div>
+        <p>In a residual mountain terrain, a river cuts through alternating beds of quartzite (erodibility $K_q = 1.2 \times 10^{-6}\text{ m}^{1-2m}/\text{yr}$) and shale ($K_s = 9.6 \times 10^{-5}\text{ m}^{1-2m}/\text{yr}$). Calculate the ratio of incision rate between shale and quartzite under identical hydraulic shear stress.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Under the stream power incision law, incision rate is proportional to erodibility: $E = K \tau^a$.</p>
+        $$\frac{E_s}{E_q} = \frac{K_s}{K_q} = \frac{9.6 \times 10^{-5}}{1.2 \times 10^{-6}} = 80$$
+        <p><strong>Final Answer:</strong> The shale erodes $80$ times faster than quartzite, creating dramatic residual quartzite ridges flanked by deeply excavated shale valleys.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Horst and Graben Block Throw Calculation</div>
+        <p>A fault-block mountain (horst) is bounded by two normal faults dipping at $60^\circ$ that have experienced a heave $H = 500\text{ m}$. Calculate the vertical tectonic uplift (throw $T$) of the mountain block.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$T = H \tan\theta = 500\text{ m} \times \tan 60^\circ = 500 \times 1.732 = 866\text{ m}$$
+        <p><strong>Final Answer:</strong> The horst block is tectonically uplifted by $866\text{ m}$ relative to the adjacent graben floors.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Monadnock Definition in Davisian Peneplanation</div>
+        <p>In W.M. Davis's geographical cycle of erosion, what is a <em>monadnock</em> and how does it relate to residual mountains?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>A monadnock (named after Mount Monadnock in New Hampshire) is an isolated hill or ridge of resistant bedrock that rises conspicuously above the level of a surrounding nearly flat erosional plain (peneplain) during the old-age stage of the geomorphic cycle. Monadnocks are the ultimate micro-scale manifestation of residual mountains.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Appalachian vs. Himalayan Tectonic Maturity</div>
+        <p>Contrast the tectonic geomorphic state of the Himalayas with that of the Appalachian Mountains.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Himalayas:</strong> Active tectonic collision belt ($U \approx 5-10\text{ mm/yr}$), high seismicity, active thrust faults (MFT, MBT, MCT), youthful V-shaped gorges, immature drainage.</li>
+          <li><strong>Appalachians:</strong> Paleozoic orogen (Alleghanian orogeny $\sim 300\text{ Ma}$), zero active plate convergence. Present topography is a rejuvenated residual mountain belt shaped by differential erosion of folded Paleozoic quartzites and shales (Ridge and Valley Province).</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Volcanic Cone Geomorphic Degradation</div>
+        <p>What landform remains when a volcanic mountain is subjected to prolonged circumdenudation that strips away its pyroclastic cone?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The softer pyroclastics (ash, cinders, tuff) of the cone are rapidly eroded away, leaving the solidified, crystalline basaltic or phonolitic conduit plug standing as a vertical cylindrical column of rock known as a <strong>volcanic neck (or volcanic plug / diatreme)</strong>, such as Shiprock in New Mexico.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Pediplanation vs. Peneplanation</div>
+        <p>Contrast L.C. King's concept of pediplanation with W.M. Davis's concept of peneplanation in creating residual highlands.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Davis's peneplanation involves <em>down-wearing</em> (slope decline) where slope angles progressively diminish over time. King's pediplanation involves <em>scarp retreat</em> (parallel slope retreat) driven by scarp-foot pedimentation, leaving steep-sided residual hills (inselbergs / bornhardts) that maintain steep slope angles throughout the denudation cycle.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Tectonic Geomorphic Indices for Distinguishing Mountains</div>
+        <p>Which quantitative morphotectonic index can unambiguously distinguish an active tectonic mountain front from a relict residual mountain front?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The <strong>Mountain Front Sinuosity ($S_{mf} = L_{mf}/L_s$)</strong>: Active tectonic mountain fronts bounded by active faults are straight ($S_{mf} \approx 1.0-1.4$). In contrast, ancient residual mountain fronts shaped by long-term embayment and differential weathering are highly sinuous and irregular ($S_{mf} > 2.0-3.0$).</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>
