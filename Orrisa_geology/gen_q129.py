@@ -1,0 +1,373 @@
+#!/usr/bin/env python3
+"""
+Q129 Generator: In-Situ Field Testing vs. Laboratory Methods in Geotechnical Engineering
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q129():
+    title = r"Q129: Engineering Geology: In-Situ Field Testing vs. Laboratory Methods | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Engineering Geology & Site Investigation"
+    h1_title = "Q129: In-Situ Field Geotechnical Testing vs. Laboratory Tensile Methods"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 129<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 10: Engineering Properties & Field Investigations, pp. 186–188); Bureau of Indian Standards (IS: 2131-1981: <em>Method for Standard Penetration Test for Soils</em>; IS: 4968: <em>Method for Subsurface Sounding for Soils - Dutch Cone</em>; IS: 5529: <em>Code of Practice for In-Situ Permeability Tests - Water Pressure Test</em>); ASTM D1586; ASTM D5778; Terzaghi, Peck & Mesri, <em>Soil Mechanics in Engineering Practice</em>."""
+
+    part1 = r"""
+  <!-- CARD 1: IN-SITU FIELD TESTING VS LABORATORY TESTING -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Architecture of Subsurface Site Investigation: In-Situ Field Testing vs. Laboratory Testing</div>
+    <div class="card-body">
+      <p>
+        In engineering geology, site characterization, and foundation geotechnics, experimental investigation methods are rigorously categorized into two distinct operational domains:
+      </p>
+      <ol>
+        <li><strong>In-Situ Field Testing:</strong> Tests conducted <em>directly within the natural, in-place ground formation</em> at the project site. These evaluate rock masses, soils, and groundwater regimes under undisturbed ambient confining stresses, in-situ pore pressures, natural moisture states, and macro-structural discontinuities (bedding, joints, faults).</li>
+        <li><strong>Laboratory Specimen Testing:</strong> Tests performed on discrete cores, blocks, or reconstituted samples extracted from the ground, transported to a laboratory, and machined to precise dimensions to be broken in benchtop mechanical testing machines.</li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q129/in_situ_field_testing_geotechnical_methods.png" alt="In-Situ Geotechnical Field Testing Methods">
+        <div class="figure-caption">
+          <strong>Figure 129.1 — Major In-Situ Geotechnical Field Testing Methods:</strong> Field deployment schematics of the Standard Penetration Test (SPT), Dutch Cone Penetration Test (CPT), and Borehole Water Pressure Packer Test (Lugeon test), contrasted with benchtop laboratory tensile testing.
+        </div>
+      </div>
+
+      <div class="figure-box">
+        <img src="../../figures_Q129/bangar_p186_in_situ_field_testing_methods.png" alt="Engineering Properties and Field Testing from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 129.2 — In-Situ Field Investigations in Engineering Geology:</strong> Authentic textbook scan from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 186). Categorizes field sounding tests, penetration methods, and in-situ permeability testing in dam and bridge site evaluations.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE AUTHENTIC IN-SITU FIELD TESTS -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Comprehensive Operational Review of Legitimate In-Situ Field Tests</div>
+    <div class="card-body">
+      <h4>1. Standard Penetration Test (SPT — IS: 2131 / ASTM D1586)</h4>
+      <p>
+        The most widely executed in-situ dynamic penetration borehole test worldwide. A standardized split-barrel sampler (outside diameter $50.8\text{ mm}$, inside diameter $34.9\text{ mm}$) is seated at the base of a borehole and driven into the natural soil by a drop hammer weighing <strong>$63.5\text{ kg}$ ($140\text{ lbs}$) falling through a free-fall height of $760\text{ mm}$ ($30\text{ inches}$)</strong>.
+      </p>
+      <ul>
+        <li>Driven in three successive $150\text{ mm}$ increments (total $450\text{ mm}$).</li>
+        <li>The first $150\text{ mm}$ is considered the seating drive.</li>
+        <li>The sum of hammer blows required for the subsequent two $150\text{ mm}$ intervals ($300\text{ mm}$ total penetration) is recorded as the <strong>Standard Penetration Resistance or $N$-value</strong>.</li>
+      </ul>
+
+      <h4>2. Dutch Cone Penetrometer Test (CPT / CPTu — IS: 4968 / ASTM D5778)</h4>
+      <p>
+        A continuous static sounding method where a standardized cylindrical steel probe with a $60^\circ$ apex angle cone ($10\text{ cm}^2$ projected base area) and a $150\text{ cm}^2$ friction sleeve is pushed smoothly into the ground at a steady rate of <strong>$20\text{ mm/s}$</strong> using hydraulic thrust rams:
+      </p>
+      <ul>
+        <li>Directly measures cone tip resistance ($q_c$), local sleeve friction ($f_s$), and dynamic pore-water pressure ($u$) via piezocone (CPTu).</li>
+        <li>Calculates the Friction Ratio ($R_f = [f_s / q_c] \times 100\%$) to identify continuous stratigraphic soil behavior types (SBT) in real time without sampling.</li>
+      </ul>
+
+      <h4>3. Water Pressure Test (Packer / Lugeon Test — IS: 5529 / ISRM)</h4>
+      <p>
+        The quintessential in-situ hydrogeological test executed in bedrock boreholes to evaluate rock mass permeability, fissure connectivity, and grouting requirements for dam foundations and tunnels:
+      </p>
+      <ul>
+        <li>Inflatable pneumatic or mechanical rubber packers isolate a test section (typically $3.0\text{ to } 5.0\text{ m}$ length) within the borehole.</li>
+        <li>Water is pumped into the isolated rock interval under controlled stepped pressures ($P$).</li>
+        <li>Permeability is expressed in <strong>Lugeon Units (Lu)</strong>:
+          $$\text{1 Lugeon (1 Lu)} = 1.0\text{ liter of water per minute per meter of test stage at an effective pressure of } 10\text{ bars} \approx 1.3 \times 10^{-7}\text{ m/s}$$
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY DIRECT PULL TEST IS STRICTLY A LAB TEST -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Why the Direct Pull Test is Exclusively a Laboratory Method</div>
+    <div class="card-body">
+      <h4>Physical Impossibility as an In-Situ Field Penetration Test</h4>
+      <p>
+        The <strong>Direct Pull Test (Uniaxial Tension Test)</strong> is strictly a <strong>laboratory specimen test</strong>:
+      </p>
+      <ul>
+        <li>It requires an intact rock cylinder diamond-cored from the site, transported to a climate-controlled laboratory, trimmed, and precision-machined into a dog-bone or cylindrical shape.</li>
+        <li>Heavy steel pulling caps are bonded to the polished ends with high-tensile structural epoxy resins (cured for 24–48 hours).</li>
+        <li>The specimen is mounted in a motorized universal laboratory testing frame and subjected to coaxial tensile pull until rupture occurs.</li>
+      </ul>
+      <p>
+        It is physically impossible to carry out a "direct pull test" as an in-situ field sounding test on undisturbed soil or rock mass in natural in-place ground. Therefore, including the Direct Pull Test within a list of in-situ field testings is <strong>technically incorrect</strong>, making Option (C) the correct answer.
+      </p>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card question-card">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-number">Question 129</div>
+      <div class="question-text">
+        Which of the following In-Situ Field Testings carried out under natural in-place conditions is not correct ?
+      </div>
+      <ul class="option-list">
+        <li class="option-item"><strong>(A)</strong> Standard Penetration Test (SPT)</li>
+        <li class="option-item"><strong>(B)</strong> Dutch Cone Penetrometer Test</li>
+        <li class="option-item correct"><strong>(C)</strong> Direct Pull Test</li>
+        <li class="option-item"><strong>(D)</strong> Water Pressure Test</li>
+      </ul>
+      <div class="answer-banner">
+        <strong>Correct Answer: (C) Direct Pull Test</strong> — The Direct Pull Test is strictly a <strong>laboratory specimen tensile test</strong> performed on machined cores in a universal testing machine; it is NOT an in-situ field test carried out under natural in-place conditions.
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Options</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="option-title">Option (A): Standard Penetration Test (SPT) — Legitimate In-Situ Field Test (Hence Incorrect Choice)</div>
+        <p>
+          The Standard Penetration Test (IS: 2131; ASTM D1586) is the quintessential in-situ borehole penetration test. It is carried out directly in boreholes under natural in-place ground conditions using a $63.5\text{ kg}$ hammer and split-spoon sampler. Because it is a legitimate in-situ field test, it is not the incorrect item sought by the prompt.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (B): Dutch Cone Penetrometer Test — Legitimate In-Situ Field Test (Hence Incorrect Choice)</div>
+        <p>
+          The Dutch Cone Penetrometer Test (CPT, IS: 4968; ASTM D5778) is a premier static in-situ field sounding method. A conical penetrometer is pushed directly into undisturbed ground from a mobile hydraulic reaction truck to measure tip resistance and skin friction in-situ. Because it is an authentic in-situ field test, it cannot be the answer.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="option-title">Option (C): Direct Pull Test — Fully Verified & Correct Option (Laboratory Test)</div>
+        <p>
+          The Direct Pull Test (uniaxial tensile test) is <strong>NOT an in-situ field test</strong>. It is strictly a destructive <strong>laboratory specimen test</strong> performed on diamond-drilled cylindrical rock or concrete cores whose ends are glued to steel pulling fixtures with epoxy inside a laboratory load frame. It cannot be conducted directly in the natural undisturbed ground. Therefore, its inclusion among in-situ field tests is incorrect, making (C) the correct choice.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (D): Water Pressure Test — Legitimate In-Situ Field Test (Hence Incorrect Choice)</div>
+        <p>
+          The Water Pressure Test (Lugeon packer test, IS: 5529) is a standardized in-situ field hydrogeological permeability test executed in drill holes beneath dam foundations and tunnels to measure fissure conductivity in natural bedrock under hydrostatic pressure stages. Because it is a valid in-situ field test, it is not the target of the question.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- CARD: SYNTHESIS COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Geotechnical Testing Classification: In-Situ Field Methods vs. Laboratory Tests</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Testing Category</th>
+            <th>Test Name</th>
+            <th>Governing Standard</th>
+            <th>Physical Medium & Environment</th>
+            <th>Primary Engineering Parameter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>In-Situ Field</strong></td>
+            <td><strong>Standard Penetration Test (SPT)</strong></td>
+            <td>IS: 2131 / ASTM D1586</td>
+            <td>Borehole base in natural in-place soil</td>
+            <td>$N$-value; relative density ($D_r$), friction angle ($\phi$), allowable bearing pressure.</td>
+          </tr>
+          <tr>
+            <td><strong>In-Situ Field</strong></td>
+            <td><strong>Cone Penetration Test (CPT / CPTu)</strong></td>
+            <td>IS: 4968 / ASTM D5778</td>
+            <td>Continuous static probe in natural ground</td>
+            <td>Cone resistance ($q_c$), sleeve friction ($f_s$), undrained shear strength ($c_u$).</td>
+          </tr>
+          <tr>
+            <td><strong>In-Situ Field</strong></td>
+            <td><strong>Water Pressure Test (Lugeon)</strong></td>
+            <td>IS: 5529 / ISRM</td>
+            <td>Borehole rock stage isolated by packers</td>
+            <td>Hydraulic conductivity ($k$), Lugeon value ($\text{Lu}$), fissure openness, groutability.</td>
+          </tr>
+          <tr>
+            <td><strong>In-Situ Field</strong></td>
+            <td><strong>Plate Load Test (PLT)</strong></td>
+            <td>IS: 1888 / ASTM D1194</td>
+            <td>Excavated pit base on undisturbed soil/rock</td>
+            <td>Modulus of subgrade reaction ($k_s$), ultimate bearing capacity ($q_{\text{ult}}$).</td>
+          </tr>
+          <tr>
+            <td><strong>In-Situ Field</strong></td>
+            <td><strong>Field Vane Shear Test</strong></td>
+            <td>IS: 4434 / ASTM D2573</td>
+            <td>Pushed into undisturbed soft clay at depth</td>
+            <td>In-situ undrained shear strength ($c_u$) and sensitivity ($S_t$).</td>
+          </tr>
+          <tr>
+            <td><strong>Laboratory Only</strong></td>
+            <td><strong>Direct Pull Test (Uniaxial Tension)</strong></td>
+            <td>ISRM 1978 / ASTM D2936</td>
+            <td>Machined core glued to steel grips in load frame</td>
+            <td>Direct Uniaxial Tensile Strength ($\sigma_t$).</td>
+          </tr>
+          <tr>
+            <td><strong>Laboratory Only</strong></td>
+            <td><strong>Brazilian Disc Splitting Test</strong></td>
+            <td>IS: 10082 / ASTM D3967</td>
+            <td>Machined core disc loaded diametrically in press</td>
+            <td>Indirect Tensile Strength ($\sigma_t = \frac{2P}{\pi D t}$).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD: 8 PRACTICE PROBLEMS WITH FULL STEP-BY-STEP DERIVATIONS -->
+  <div class="card">
+    <div class="card-header bg-purple">8 Advanced Practice Problems & Fully Worked Solutions</div>
+    <div class="card-body">
+      <!-- PROBLEM 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Standard Penetration Test (SPT) Field Blow Count Reduction</strong><br>
+        During an SPT test at depth $z = 6.0\text{ m}$, the recorded blow counts for three consecutive $150\text{ mm}$ drive increments are:
+        Increment 1 ($0 - 150\text{ mm}$): $6\text{ blows}$;
+        Increment 2 ($150 - 300\text{ mm}$): $9\text{ blows}$;
+        Increment 3 ($300 - 450\text{ mm}$): $12\text{ blows}$.
+        Determine: (a) which increment is the seating drive, and (b) the reported field SPT $N$-value.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Seating drive: In accordance with IS: 2131 and ASTM D1586, the first $150\text{ mm}$ drive ($6\text{ blows}$) is designated as the <strong>seating drive</strong> to seat the sampler past any loose borehole cuttings and bottom slough. It is discarded from the $N$-value.<br>
+          2. Field $N$-value: The sum of the blows for the second and third $150\text{ mm}$ increments:
+          $$N = N_{\text{inc2}} + N_{\text{inc3}} = 9 + 12 = 21\text{ blows/300 mm}$$
+          The recorded field penetration resistance is $N = 21$.
+        </div>
+      </div>
+
+      <!-- PROBLEM 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: SPT Overburden Normalization ($N_{60}$ and $(N_1)_{60}$)</strong><br>
+        At a test depth $z = 10.0\text{ m}$, the field blow count is $N = 18$. The drill rig utilizes a safety hammer with an energy efficiency of $60\%$ ($C_E = 1.0$), borehole diameter correction $C_B = 1.0$, rod length factor $C_R = 0.95$, and standard sampler without liner $C_S = 1.0$. The effective vertical overburden stress is $\sigma_{v0}' = 150\text{ kPa}$. Using the Liao and Whitman (1986) overburden correction formula:
+        $$C_N = \sqrt{\frac{100\text{ kPa}}{\sigma_{v0}'}} \quad (\text{with } C_N \le 1.7)$$
+        Calculate: (a) $N_{60}$, (b) overburden correction factor $C_N$, and (c) fully corrected $(N_1)_{60}$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Compute energy and setup corrected $N_{60}$:
+          $$N_{60} = N \times C_E \times C_B \times C_R \times C_S = 18 \times 1.0 \times 1.0 \times 0.95 \times 1.0 = 17.1$$
+          2. Compute overburden correction factor $C_N$:
+          $$C_N = \sqrt{\frac{100}{150}} = \sqrt{0.6667} = 0.8165$$
+          3. Compute normalized $(N_1)_{60}$:
+          $$(N_1)_{60} = C_N \times N_{60} = 0.8165 \times 17.1 = 13.96 \approx 14$$
+        </div>
+      </div>
+
+      <!-- PROBLEM 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Dilatancy Correction for Submerged Fine Sand / Silt</strong><br>
+        An SPT test is conducted below the groundwater table in saturated fine silty sand. The measured blow count after overburden correction is $N' = 27$. According to IS: 2131 (Terzaghi-Peck dilatancy correction), if $N' > 15$, apply:
+        $$N'' = 15 + \frac{1}{2}(N' - 15)$$
+        Calculate the dilatancy-corrected blow count ($N''$) and explain the physical cause.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Apply dilatancy formula:
+          $$N'' = 15 + \frac{1}{2}(27 - 15) = 15 + \frac{1}{2}(12) = 15 + 6 = 21$$
+          2. Physical Cause: When dense fine sands or silts below the water table are rapidly sheared by dynamic hammer impact, the soil skeleton tends to dilate (expand). Rapid dilation under undrained conditions generates negative transient pore-water pressures ($-\Delta u$), which temporarily increases effective stress and artificially inflates the field blow count. The formula removes this artificial temporary resistance.
+        </div>
+      </div>
+
+      <!-- PROBLEM 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Dutch Cone (CPT) Undrained Shear Strength Calculation</strong><br>
+        A CPT sounding in soft normally consolidated clay records a cone tip resistance $q_c = 1.25\text{ MPa}$ ($1250\text{ kPa}$) at depth $z = 8.0\text{ m}$. The total vertical overburden stress is $\sigma_{v0} = 145\text{ kPa}$. Using the empirical cone factor equation:
+        $$c_u = \frac{q_c - \sigma_{v0}}{N_k}$$
+        Taking the empirical cone factor $N_k = 15.0$, determine the undrained shear strength ($c_u$) of the clay.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Net cone resistance $q_{\text{net}}$:
+          $$q_{\text{net}} = q_c - \sigma_{v0} = 1250\text{ kPa} - 145\text{ kPa} = 1105\text{ kPa}$$
+          2. Compute undrained shear strength $c_u$:
+          $$c_u = \frac{1105\text{ kPa}}{15.0} = 73.67\text{ kPa}$$
+          The clay possesses an in-situ undrained shear strength of $73.7\text{ kPa}$ (Medium Stiff Clay).
+        </div>
+      </div>
+
+      <!-- PROBLEM 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: CPT Friction Ratio ($R_f$) & Soil Classification</strong><br>
+        At depth $z = 12.0\text{ m}$, a piezocone penetration test measures a cone tip resistance $q_c = 8.0\text{ MPa}$ and a sleeve friction $f_s = 64.0\text{ kPa}$ ($0.064\text{ MPa}$). Calculate: (a) the friction ratio ($R_f$), and (b) identify the likely soil behavior type based on Robertson's CPT classification chart.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate Friction Ratio ($R_f$):
+          $$R_f = \left(\frac{f_s}{q_c}\right) \times 100\% = \left(\frac{0.064\text{ MPa}}{8.0\text{ MPa}}\right) \times 100\% = 0.80\%$$
+          2. Soil Behavior Type (SBT):
+          High tip resistance ($q_c = 8.0\text{ MPa}$) coupled with a very low friction ratio ($R_f = 0.80\% < 1.0\%$) is diagnostic of <strong>Clean Sand to Silty Sand</strong> (Robertson Zone 6). (Clays exhibit low $q_c$ and high $R_f > 3 - 5\%$).
+        </div>
+      </div>
+
+      <!-- PROBLEM 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Water Pressure (Lugeon) Test Permeability Calculation</strong><br>
+        In an exploratory borehole for a concrete dam foundation, a water pressure test is performed in a jointed quartzite interval of length $L = 4.0\text{ m}$. At an effective gauge test pressure of $P = 1.0\text{ MPa}$ ($10\text{ bars}$), the steady water injection rate measured by a flow meter is $Q = 24.0\text{ liters/minute}$. Calculate: (a) the Lugeon value ($\text{Lu}$), and (b) the approximate hydraulic conductivity ($k$) in $\text{m/s}$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate Lugeon value:
+          $$\text{Lu} = \frac{Q}{L \cdot \left(\frac{P}{10\text{ bar}}\right)} = \frac{24.0\text{ L/min}}{4.0\text{ m} \times 1.0} = 6.0\text{ Lugeons}$$
+          2. Approximate hydraulic conductivity:
+          Since $1\text{ Lugeon} \approx 1.3 \times 10^{-7}\text{ m/s}$:
+          $$k \approx 6.0 \times (1.3 \times 10^{-7}\text{ m/s}) = 7.8 \times 10^{-7}\text{ m/s}$$
+          <em>Engineering Implication:</em> Values between $1\text{ and } 10\text{ Lu}$ indicate minor joint seepage requiring shallow consolidation grouting.
+        </div>
+      </div>
+
+      <!-- PROBLEM 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Field Vane Shear Test Undrained Cohesion</strong><br>
+        An in-situ field vane shear test (IS: 4434) is conducted in soft sensitive marine clay. The four-bladed rectangular vane has a diameter $D = 65\text{ mm}$ ($0.065\text{ m}$) and height $H = 130\text{ mm}$ ($0.130\text{ m}$, ratio $H/D = 2.0$). The maximum torque recorded at shear failure is $T = 38.5\text{ N}\cdot\text{m}$. Assuming uniform shear stress distribution on both ends and the cylindrical mantle, calculate the in-situ undrained shear strength ($c_u$) of the clay.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Use the standard vane shear formula:
+          $$T = \pi c_u D^2 \left(\frac{H}{2} + \frac{D}{6}\right)$$
+          2. Compute geometric factor:
+          $$\frac{H}{2} + \frac{D}{6} = \frac{0.130}{2} + \frac{0.065}{6} = 0.0650 + 0.01083 = 0.07583\text{ m}$$
+          $$D^2 \left(\frac{H}{2} + \frac{D}{6}\right) = (0.065)^2 \times 0.07583 = 0.004225 \times 0.07583 = 3.2038 \times 10^{-4}\text{ m}^3$$
+          3. Solve for $c_u$:
+          $$c_u = \frac{T}{\pi \times 3.2038 \times 10^{-4}} = \frac{38.5}{1.0065 \times 10^{-3}} = 38,251\text{ N/m}^2 = 38.25\text{ kPa}$$
+        </div>
+      </div>
+
+      <!-- PROBLEM 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Modulus of Subgrade Reaction from Plate Load Test</strong><br>
+        An in-situ Plate Load Test (IS: 1888) is carried out at the founding level of a proposed bridge pier using a square rigid steel plate of size $300\text{ mm} \times 300\text{ mm}$. A sustained bearing pressure of $q = 250\text{ kPa}$ produces a steady settlement of $s = 2.5\text{ mm}$ ($0.0025\text{ m}$). Calculate: (a) the modulus of subgrade reaction for the test plate ($k_{s(300)}$) in $\text{MN/m}^3$, and (b) estimate the modulus of subgrade reaction for an actual square footing of width $B = 1.5\text{ m}$ on clay ground.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Plate subgrade reaction modulus $k_{s(300)}$:
+          $$k_{s(300)} = \frac{q}{s} = \frac{250\text{ kPa}}{0.0025\text{ m}} = 100,000\text{ kN/m}^3 = 100\text{ MN/m}^3$$
+          2. Subgrade modulus for full-scale footing on cohesive clay ground:
+          For clay, Terzaghi's scaling relation gives $k_s(B) = k_{s(300)} \times \left(\frac{0.30\text{ m}}{B}\right)$:
+          $$k_s(1.5\text{ m}) = 100\text{ MN/m}^3 \times \left(\frac{0.30}{1.50}\right) = 100 \times 0.20 = 20.0\text{ MN/m}^3$$
+        </div>
+      </div>
+    </div>
+  </div>
+"""
+
+    html = wrap_html(
+        q_num=129,
+        title=title,
+        badge=badge,
+        h1_title=h1_title,
+        meta_text=meta_text,
+        part1_content=part1,
+        part2_content=part2,
+        part3_content=part3
+    )
+
+    out_file = os.path.join(SOLUTIONS_DIR, "Q129_In_Situ_Field_Testing_vs_Lab_Methods_Complete_Guide.html")
+    with open(out_file, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q129: {out_file} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q129()

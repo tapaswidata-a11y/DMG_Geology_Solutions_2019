@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q127: Construction Materials - Natural vs Artificial Pozzolans (Flyash) | OPSC Geology 2021 Masterclass</title>
+<title>Q127: Engineering Geology: Natural vs. Artificial Pozzolanic Materials | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,248 +89,648 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q127" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Engineering Geology & Construction Materials</div>
-    <h1>Q127: Construction Materials - Natural vs Artificial Pozzolans (Flyash)</h1>
+    <div class="badge">GEO - 2/21 • Engineering Geology & Building Materials</div>
+    <h1>Q127: Pozzolanic Materials: Natural Geological Deposits vs. Artificial Industrial By-Products</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> ASTM C618 Standards for Coal Fly Ash and Raw or Calcined Natural Pozzolan
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 127<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 10: Building Stones & Engineering Materials, p. 188); ASTM C618 (<em>Standard Specification for Coal Fly Ash and Raw or Calcined Natural Pozzolan for Use in Concrete</em>); A.M. Neville, <em>Properties of Concrete</em> (5th Ed., Ch. 13: Pozzolans and Slag); P.K. Mehta and P.J.M. Monteiro, <em>Concrete: Microstructure, Properties, and Materials</em>; Bureau of Indian Standards (IS: 3812-2003).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Material Classification</h3>
-<div class="question-box">
-  <p><strong>Question 127:</strong> Which of the following is not a Natural Pozzolanic Material ?</p>
-  <ul>
-    <li>(A) Calcined diatomaceous earths</li>
-    <li>(B) Volcanic ash, tuffs and pumicites</li>
-    <li>(C) Flyash</li>
-    <li>(D) Opaline cherts</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(C) Flyash</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q127/pozzolanic_materials_classification_flyash.png" alt="Classification of Pozzolanic Materials: Natural vs Artificial Fly Ash (ASTM C618)">
-      <figcaption>
-        <strong>Figure 127.1: Classification of Pozzolanic Materials — Natural Pozzolans (Class N) vs Artificial Fly Ash (ASTM C618).</strong> Visual taxonomy categorizing natural pozzolans (volcanic ash, pumice, diatomaceous earth, opaline chert) and artificial pozzolans (fly ash, blast furnace slag, silica fume), with the calcium silicate hydrate (C-S-H) chemical reaction equation.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: DEFINITIONS AND POZZOLANIC CHEMISTRY -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Fundamental Chemistry & Physical Classification of Pozzolans</div>
+    <div class="card-body">
+      <p>
+        In engineering geology, concrete technology, and construction materials science, a <strong>pozzolan</strong> is formally defined (ASTM C125 / ASTM C618; Neville, 2011; Bangar, p. 188) as:
+      </p>
+      <div class="quote-box">
+        <em>"A siliceous or siliceous and aluminous material which, in itself, possesses little or no cementitious value, but will, in finely divided form and in the presence of moisture, chemically react with calcium hydroxide at ordinary temperatures to form compounds possessing cementitious properties."</em>
+      </div>
+
+      <div class="figure-box">
+        <img src="../../figures_Q127/pozzolanic_materials_classification_flyash.png" alt="Classification of Pozzolanic Materials: Natural vs Artificial">
+        <div class="figure-caption">
+          <strong>Figure 127.1 — Classification Taxonomy of Pozzolanic Materials:</strong> Division into Natural Pozzolans (Class N: Volcanic Ash, Diatomite, Opaline Chert, Pumice) and Artificial / Industrial By-Product Pozzolans (Fly Ash, Silica Fume, GGBFS, Rice Husk Ash).
+        </div>
+      </div>
+
+      <h4>The Fundamental Pozzolanic Chemical Reaction</h4>
+      <p>
+        When Ordinary Portland Cement (OPC) hydrates, tricalcium silicate ($\text{C}_3\text{S}$) and dicalcium silicate ($\text{C}_2\text{S}$) react with water to produce calcium silicate hydrate gel ($\text{C-S-H}$) and release substantial amounts of crystalline <strong>calcium hydroxide ($\text{Ca(OH)}_2$ or Portlandite / CH)</strong>:
+      </p>
+      <div class="math-block">
+        $$\text{Cement Hydration: } 2\text{C}_3\text{S} + 6\text{H} \longrightarrow \text{C-S-H (Gel)} + 3\text{Ca(OH)}_2 \quad (\approx 20\text{--}25\% \text{ by weight})$$
+      </div>
+      <p>
+        Portlandite ($\text{Ca(OH)}_2$) contributes zero shear strength to concrete, is highly soluble, and leaches out in groundwater, creating porous pathways that trigger efflorescence and sulfate attack. When a pozzolan containing reactive amorphous silica ($\text{SiO}_2$) is introduced, it consumes the weak Portlandite, converting it into additional strong, water-insoluble binding gel:
+      </p>
+      <div class="math-block">
+        $$\text{Pozzolanic Reaction: } \text{Ca(OH)}_2 + \text{SiO}_2 \text{ (reactive amorphous)} + \text{H}_2\text{O} \longrightarrow \text{C-S-H Gel}$$
+      </div>
+
+      <div class="figure-box">
+        <img src="../../figures_Q127/bangar_p188_pozzolanic_materials_flyash.png" alt="Pozzolanic Materials and Flyash from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 127.2 — Pozzolanic Materials in Engineering Geology:</strong> Authentic textbook scan from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 188). Outlines the natural geological sources of pozzolans and identifies flyash as an artificial industrial combustion product.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: NATURAL VS ARTIFICIAL POZZOLANS -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Comprehensive Distinction: Natural Pozzolans vs. Artificial By-Products</div>
+    <div class="card-body">
+      <h4>Natural Pozzolanic Materials (ASTM C618 Class N)</h4>
+      <p>
+        Natural pozzolans are naturally occurring rocks and geological deposits that derive their reactivity from amorphous glass phases or cryptocrystalline silica:
+      </p>
+      <ul>
+        <li><strong>Volcanic Ash, Tuff, and Pumicite:</strong> Ejected during explosive volcanic eruptions and rapidly quenched by air. Quenching prevents ordered crystal lattice formation, leaving amorphous vitric aluminosilicate glass. Used by ancient Romans (pozzolana from the slopes of Mount Vesuvius at Pozzuoli) to build the Pantheon and Roman aqueducts.</li>
+        <li><strong>Calcined Diatomaceous Earths:</strong> Sedimentary rock composed of the microscopic amorphous opaline silica ($\text{SiO}_2 \cdot n\text{H}_2\text{O}$) skeletons of diatoms. When calcined at $600\text{--}800^\circ\text{C}$, free moisture and organics are expelled, producing exceptionally reactive pozzolanic powder.</li>
+        <li><strong>Opaline Cherts & Shales:</strong> Marine or lacustrine sedimentary rocks containing high concentrations of amorphous opal-A or opal-CT that react vigorously with free lime.</li>
+        <li><strong>Calcined Clays (Metakaolin):</strong> Kaolinite clay dehydroxylated by controlled thermal processing at $650\text{--}800^\circ\text{C}$ to produce an amorphous aluminosilicate framework ($2\text{SiO}_2 \cdot \text{Al}_2\text{O}_3$).</li>
+      </ul>
+
+      <h4>Artificial / Industrial By-Product Pozzolans</h4>
+      <p>
+        These materials do not exist in natural geological strata; they are synthesized as industrial waste products:
+      </p>
+      <ul>
+        <li><strong>Fly Ash (Pulverized Fuel Ash / PFA):</strong> The fine, spherical particulate residue captured by electrostatic precipitators from the flue gases of <strong>coal-fired thermal power stations</strong>. Governed by ASTM C618 as Class F (siliceous, low lime $< 10\%$, from anthracite/bituminous coal) or Class C (pozzolanic and self-cementitious, high lime $> 20\%$, from sub-bituminous/lignite coal).</li>
+        <li><strong>Silica Fume (Condensed Silica Fume / Microsilica):</strong> Extremely fine sub-micron spherical particles of non-crystalline silica condensed from the vapor phase in electric arc furnaces during the production of silicon metal or ferrosilicon alloys.</li>
+        <li><strong>Ground Granulated Blast Furnace Slag (GGBFS):</strong> Molten glassy by-product from iron smelting, water-quenched to produce vitreous granules.</li>
+        <li><strong>Rice Husk Ash (RHA):</strong> Combustion ash of agricultural rice husks containing amorphous biogenic silica.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: ENGINEERING BENEFITS IN MASS CONCRETE -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Engineering Benefits of Pozzolan Blending in Civil Structures</div>
+    <div class="card-body">
+      <p>
+        Replacing $15\text{ to } 35\%$ of Portland cement with pozzolans yields crucial engineering advantages:
+      </p>
+      <ul>
+        <li><strong>Drastic Reduction in Heat of Hydration:</strong> Crucial for massive gravity dams (e.g., Hirakud, Bhakra, Hoover Dams) to prevent thermal cracking during mass curing.</li>
+        <li><strong>Pore Refinement & Impermeability:</strong> Secondary $\text{C-S-H}$ gel precipitates within the capillary pore network, converting continuous capillary pores into isolated gel pores and lowering water permeability by orders of magnitude.</li>
+        <li><strong>Alkali-Silica Reaction (ASR) Mitigation:</strong> Pozzolanic silica binds free alkalis ($\text{Na}^+, \text{K}^+$) and reduces pore-fluid $\text{pH}$, preventing expansive gel formation around reactive siliceous aggregates.</li>
+        <li><strong>Sulfate & Acid Resistance:</strong> Consumption of $\text{Ca(OH)}_2$ deprives aggressive sulfate ions ($\text{SO}_4^{2-}$) of the calcium needed to form destructive gypsum and ettringite.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q127. Which of the following is not a Natural Pozzolanic Material ?</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Calcined diatomaceous earths</div>
-        <div class="opt-item "><strong>(B)</strong> Volcanic ash, tuffs and pumicites</div>
-        <div class="opt-item correct"><strong>(C)</strong> Flyash</div>
-        <div class="opt-item "><strong>(D)</strong> Opaline cherts</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card question-card">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-number">Question 127</div>
+      <div class="question-text">
+        Which of the following is not a Natural Pozzolanic Material ?
+      </div>
+      <ul class="option-list">
+        <li class="option-item"><strong>(A)</strong> Calcined diatomaceous earths</li>
+        <li class="option-item"><strong>(B)</strong> Volcanic ash, tuffs and pumicites</li>
+        <li class="option-item correct"><strong>(C)</strong> Flyash</li>
+        <li class="option-item"><strong>(D)</strong> Opaline cherts</li>
+      </ul>
+      <div class="answer-banner">
+        <strong>Correct Answer: (C) Flyash</strong> — Fly ash is an <strong>artificial, industrial combustion by-product</strong> captured from coal-fired thermal power stations (ASTM C618 Class F/C), unlike natural geological materials such as volcanic ash, diatomaceous earth, and opaline chert (Class N).
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Pozzolanic Materials in Engineering Geology</h3>
-<p>
-A <strong>pozzolan</strong> is a siliceous or siliceous-aluminous material which in itself possesses little or no cementitious value, but will, in finely divided form and in the presence of moisture, chemically react with calcium hydroxide ($Ca(OH)_2$) liberated during the hydration of Portland cement to form insoluble cementitious calcium silicate hydrates ($C-S-H$):
-</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Material Origin & Geological Types</th>
-      <th>Key Characteristics</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Natural Pozzolans</strong> (ASTM C618 Class N)</td>
-      <td>
-        &bull; <strong>Volcanic ash, tuffs, and pumicites:</strong> Pyroclastic glasses erupted from explosive volcanoes (e.g., Pozzuoli ash, Santorin earth).<br>
-        &bull; <strong>Calcined diatomaceous earths:</strong> Biogenic siliceous diatom frustules.<br>
-        &bull; <strong>Opaline cherts & shales:</strong> Amorphous silica deposits.
-      </td>
-      <td>Naturally occurring geological rocks/minerals processed only by grinding or moderate calcining.</td>
-    </tr>
-    <tr>
-      <td><strong>Artificial / Industrial Pozzolans</strong> (ASTM C618 Class F & C)</td>
-      <td>
-        &bull; <strong>Flyash (Pulverized Fuel Ash):</strong> Finely divided residue captured by electrostatic precipitators from coal combustion flue gases in thermal power stations.<br>
-        &bull; Ground granulated blast-furnace slag (GGBFS).<br>
-        &bull; Silica fume (micro-silica from silicon metal furnaces).
-      </td>
-      <td><strong>Man-made industrial by-products</strong>, NOT natural mineral deposits.</td>
-    </tr>
-  </tbody>
-</table>
-<p>
-Therefore, <strong>flyash</strong> is an artificial/industrial pozzolan, not a natural pozzolanic material.
-</p>
-
   </div>
+
+  <!-- FORENSIC OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Options</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="option-title">Option (A): Calcined diatomaceous earths — Natural Pozzolan (Hence Incorrect Choice)</div>
+        <p>
+          Diatomaceous earth (diatomite) is a natural biogenic sedimentary rock consisting of the microscopic amorphous hydrated silica ($\text{SiO}_2 \cdot n\text{H}_2\text{O}$) frustules of diatoms. When calcined to drive off structural moisture, it functions as a potent natural pozzolan (ASTM C618 Class N; Bangar, p. 188). Because it is derived directly from a natural geological deposit, it is a natural pozzolanic material.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (B): Volcanic ash, tuffs and pumicites — Prototypical Natural Pozzolans (Hence Incorrect Choice)</div>
+        <p>
+          Volcanic ashes, vitric tuffs, and pumicites are natural igneous pyroclastic deposits. Their rapid quenching upon atmospheric ejection locks silica and alumina into an amorphous glass structure. These materials represent the classical natural pozzolans used since Roman antiquity (pozzolana from Pozzuoli). Being naturally occurring geological deposits, they are natural pozzolans.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="option-title">Option (C): Flyash — Fully Verified & Correct Option (Artificial By-Product)</div>
+        <p>
+          Fly ash (pulverized fuel ash / PFA) is <strong>NOT a natural geological material</strong>. It is an artificial industrial by-product produced by burning finely ground coal in the boilers of modern thermal electricity generation plants. The non-combustible mineral impurities fuse into microscopic spherical glassy droplets in the furnace flue gases and are collected mechanically or electrostatically. In ASTM C618, it is classified under Class F or Class C (coal fly ash), distinct from Class N (Natural pozzolans). Thus, fly ash is the only non-natural material listed.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (D): Opaline cherts — Natural Pozzolan (Hence Incorrect Choice)</div>
+        <p>
+          Opaline chert is a naturally occurring siliceous sedimentary rock containing high concentrations of amorphous opal-A or opal-CT. Because of its disordered amorphous silica structure, finely ground opaline chert readily reacts with calcium hydroxide at ambient temperatures. It is formally classified as a Class N raw natural pozzolan.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option C (Flyash) is correct:</strong> Flyash is an artificial industrial combustion by-product from coal-fired power plants.</li>
-  <li><strong>Option A (Calcined diatomaceous earths):</strong> Natural biogenic siliceous deposits.</li>
-  <li><strong>Option B (Volcanic ash, tuffs and pumicites):</strong> Archetypal natural pozzolans used since Roman times.</li>
-  <li><strong>Option D (Opaline cherts):</strong> Natural amorphous/cryptocrystalline siliceous rock.</li>
-</ul>
+  
+  <!-- CARD: SYNTHESIS COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comparative Taxonomy: Pozzolanic Materials and Supplementary Cementitious Materials</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Origin / Source</th>
+            <th>Classification (ASTM C618)</th>
+            <th>Reactive Phase</th>
+            <th>Physical Morphology</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fly Ash (Class F)</strong></td>
+            <td><strong>Artificial:</strong> Combustion of bituminous/anthracite coal in thermal power plants</td>
+            <td>Class F</td>
+            <td>Amorphous aluminosilicate glass ($< 10\%\text{ CaO}$)</td>
+            <td>Solid microscopic spheres ($1 - 100\ \mu\text{m}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Fly Ash (Class C)</strong></td>
+            <td><strong>Artificial:</strong> Combustion of lignite/sub-bituminous coal</td>
+            <td>Class C</td>
+            <td>Aluminosilicate glass with reactive crystalline phases ($> 20\%\text{ CaO}$)</td>
+            <td>Solid microscopic spheres ($1 - 50\ \mu\text{m}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Volcanic Ash / Pumicite</strong></td>
+            <td><strong>Natural:</strong> Pyroclastic eruptive deposits</td>
+            <td>Class N (Natural)</td>
+            <td>Amorphous vitric volcanic glass</td>
+            <td>Angular, vesicular glass shards</td>
+          </tr>
+          <tr>
+            <td><strong>Calcined Diatomite</strong></td>
+            <td><strong>Natural:</strong> Biogenic siliceous lake/marine sediment</td>
+            <td>Class N (Natural)</td>
+            <td>Amorphous opaline silica ($\text{SiO}_2 \cdot n\text{H}_2\text{O}$)</td>
+            <td>Porous, highly cellular diatom frustules</td>
+          </tr>
+          <tr>
+            <td><strong>Opaline Chert</strong></td>
+            <td><strong>Natural:</strong> Sedimentary silica precipitation</td>
+            <td>Class N (Natural)</td>
+            <td>Disordered opal-A / opal-CT</td>
+            <td>Angular ground mineral powder</td>
+          </tr>
+          <tr>
+            <td><strong>Silica Fume</strong></td>
+            <td><strong>Artificial:</strong> Smelting vapor of silicon/ferrosilicon alloy</td>
+            <td>ASTM C1240</td>
+            <td>Ultra-pure amorphous $\text{SiO}_2$ ($> 85 - 95\%$)</td>
+            <td>Sub-micron spheres ($0.1 - 0.2\ \mu\text{m}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Ground Granulated Blast Furnace Slag</strong></td>
+            <td><strong>Artificial:</strong> Molten iron blast furnace slag, water-quenched</td>
+            <td>ASTM C989</td>
+            <td>Vitreous calcium aluminosilicate</td>
+            <td>Angular, glassy crushed particles</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD: 8 PRACTICE PROBLEMS WITH FULL STEP-BY-STEP DERIVATIONS -->
+  <div class="card">
+    <div class="card-header bg-purple">8 Advanced Practice Problems & Fully Worked Solutions</div>
+    <div class="card-body">
+      <!-- PROBLEM 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Chemical Composition Threshold for ASTM C618 Classification</strong><br>
+        Chemical analysis of an industrial by-product powder yields the following oxide percentages:
+        $\text{SiO}_2 = 54.0\%$, $\text{Al}_2\text{O}_3 = 26.5\%$, $\text{Fe}_2\text{O}_3 = 7.5\%$, $\text{CaO} = 4.0\%$, $\text{SO}_3 = 1.2\%$, and Loss on Ignition ($\text{LOI}$) = $2.5\%$.
+        According to ASTM C618 requirements, determine whether this material satisfies the chemical criterion for Class F pozzolan.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Check the major oxide sum ($\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{Fe}_2\text{O}_3$):
+          $$\sum (\text{S} + \text{A} + \text{F}) = 54.0\% + 26.5\% + 7.5\% = 88.0\%$$
+          2. ASTM C618 criterion for Class F:
+          $$\sum (\text{SiO}_2 + \text{Al}_2\text{O}_3 + \text{Fe}_2\text{O}_3) \ge 70.0\%$$
+          $$\text{Since } 88.0\% \ge 70.0\%, \text{ this criterion is fully satisfied.}$$
+          3. Check calcium oxide ($\text{CaO}$): $\text{CaO} = 4.0\% < 10.0\%$ (characteristic of low-calcium Class F fly ash).<br>
+          4. Check $\text{SO}_3 \le 5.0\%$ ($1.2\% \le 5.0\%$) and $\text{LOI} \le 6.0\%$ ($2.5\% \le 6.0\%$).<br>
+          The material qualifies as a standard <strong>Class F Fly Ash</strong>.
+        </div>
+      </div>
+
+      <!-- PROBLEM 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: Strength Activity Index (SAI) Calculation</strong><br>
+        In accordance with ASTM C618 / ASTM C311, mortar cubes are cast for two mixes:
+        (1) Control mix (100% Portland cement): 28-day compressive strength = $42.0\text{ MPa}$;
+        (2) Test mix (80% cement + 20% calcined diatomaceous earth): 28-day compressive strength = $36.5\text{ MPa}$.
+        Calculate the Strength Activity Index (SAI) and determine if it meets the ASTM C618 minimum threshold of $75.0\%$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate Strength Activity Index (SAI):
+          $$\text{SAI} = \left(\frac{\text{Compressive Strength of Test Mix}}{\text{Compressive Strength of Control Mix}}\right) \times 100\%$$
+          $$\text{SAI} = \left(\frac{36.5\text{ MPa}}{42.0\text{ MPa}}\right) \times 100\% = 86.90\%$$
+          2. Check against threshold:
+          $$\text{Since } 86.90\% > 75.0\%, \text{ the calcined diatomite comfortably satisfies the ASTM C618 pozzolanic activity requirement.}$$
+        </div>
+      </div>
+
+      <!-- PROBLEM 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Heat of Hydration Mitigation in Dam Gravity Section</strong><br>
+        A mass concrete gravity dam requires $400,000\text{ m}^3$ of concrete with a cementitious material content of $250\text{ kg/m}^3$. Plain Portland cement generates a 7-day heat of hydration of $350\text{ kJ/kg}$. If $30\%$ of the cement is replaced by Class F fly ash (which generates only $120\text{ kJ/kg}$ in 7 days), calculate: (a) total heat released using 100% cement, and (b) total heat released using the fly ash blend, and (c) the percentage reduction in heat generation.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Total cementitious mass $M = 400,000\text{ m}^3 \times 250\text{ kg/m}^3 = 1.0 \times 10^8\text{ kg} = 100,000\text{ tonnes}$.<br>
+          2. Total heat released with 100% OPC:
+          $$Q_{\text{plain}} = 1.0 \times 10^8\text{ kg} \times 350\text{ kJ/kg} = 3.50 \times 10^{10}\text{ kJ}$$
+          3. Total heat released with 30% fly ash blend ($70\text{ kg OPC} + 30\text{ kg FA}$ per $100\text{ kg}$):
+          $$Q_{\text{blend}} = [0.70(350) + 0.30(120)] \text{ kJ/kg} = [245 + 36] = 281\text{ kJ/kg}$$
+          $$Q_{\text{total}} = 1.0 \times 10^8\text{ kg} \times 281\text{ kJ/kg} = 2.81 \times 10^{10}\text{ kJ}$$
+          4. Percentage reduction in heat:
+          $$\Delta Q (\%) = \left(\frac{3.50 - 2.81}{3.50}\right) \times 100\% = \frac{0.69}{3.50} \times 100\% = 19.71\%$$
+          This $19.7\%$ heat reduction prevents massive thermal differential stress and core cracking.
+        </div>
+      </div>
+
+      <!-- PROBLEM 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Stoichiometry of Portlandite ($\text{Ca(OH)}_2$) Consumption</strong><br>
+        Hydration of $100\text{ g}$ of pure alite ($\text{C}_3\text{S}$, molecular weight $228.3\text{ g/mol}$) releases $1.5\text{ moles}$ of $\text{Ca(OH)}_2$ ($\text{MW} = 74.1\text{ g/mol}$) per mole of alite hydrated:
+        $$2\text{C}_3\text{S} + 6\text{H}_2\text{O} \longrightarrow \text{C}_3\text{S}_2\text{H}_3 + 3\text{Ca(OH)}_2$$
+        Calculate the mass of crystalline $\text{Ca(OH)}_2$ liberated by the complete hydration of $100\text{ g}$ of $\text{C}_3\text{S}$, and determine the minimum mass of pure reactive amorphous silica ($\text{SiO}_2$, $\text{MW} = 60.1\text{ g/mol}$) required to completely convert all liberated lime into tobermorite gel ($\text{C-S-H}$ with $\text{Ca/Si} = 1.5$ according to $1.5\text{Ca(OH)}_2 + \text{SiO}_2 \longrightarrow 1.5\text{CaO}\cdot\text{SiO}_2\cdot\text{H}_2\text{O}$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Moles of $\text{C}_3\text{S}$ in $100\text{ g}$:
+          $$n(\text{C}_3\text{S}) = \frac{100\text{ g}}{228.3\text{ g/mol}} = 0.4380\text{ mol}$$
+          2. Moles and mass of $\text{Ca(OH)}_2$ liberated:
+          $$n(\text{Ca(OH)}_2) = 1.5 \times 0.4380\text{ mol} = 0.6570\text{ mol}$$
+          $$m(\text{Ca(OH)}_2) = 0.6570\text{ mol} \times 74.1\text{ g/mol} = 48.69\text{ g}$$
+          3. Moles and mass of reactive $\text{SiO}_2$ required:
+          $$\text{Ratio } \text{Ca/Si} = 1.5 \implies n(\text{SiO}_2) = \frac{n(\text{Ca(OH)}_2)}{1.5} = \frac{0.6570}{1.5} = 0.4380\text{ mol}$$
+          $$m(\text{SiO}_2) = 0.4380\text{ mol} \times 60.1\text{ g/mol} = 26.32\text{ g}$$
+          $26.32\text{ g}$ of reactive pozzolanic silica is consumed to convert all liberated lime into cementitious $\text{C-S-H}$ gel.
+        </div>
+      </div>
+
+      <!-- PROBLEM 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: Carbon Footprint (Embodied $CO_2$) Reduction</strong><br>
+        The manufacture of Ordinary Portland Cement releases approximately $0.85\text{ tonnes of } CO_2$ per tonne of cement produced due to limestone calcination ($\text{CaCO}_3 \rightarrow \text{CaO} + CO_2$) and fossil fuel kiln combustion. Fly ash, as an industrial by-product, carries an embodied carbon allocation of only $0.02\text{ tonnes of } CO_2$ per tonne (associated solely with processing and haulage). For a major infrastructure project requiring $50,000\text{ tonnes}$ of binder, calculate the net reduction in $CO_2$ emissions achieved by replacing $25\%$ of the OPC with fly ash.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Emissions for 100% OPC mix ($50,000\text{ t}$):
+          $$E_{\text{plain}} = 50,000\text{ t} \times 0.85\text{ t } CO_2/\text{t} = 42,500\text{ tonnes } CO_2$$
+          2. Emissions for 25% Fly Ash blend ($37,500\text{ t OPC} + 12,500\text{ t FA}$):
+          $$E_{\text{blend}} = (37,500 \times 0.85) + (12,500 \times 0.02) = 31,875 + 250 = 32,125\text{ tonnes } CO_2$$
+          3. Net $CO_2$ emission savings:
+          $$\Delta E = 42,500 - 32,125 = 10,375\text{ tonnes of } CO_2 \quad (\approx 24.41\% \text{ reduction})$$
+        </div>
+      </div>
+
+      <!-- PROBLEM 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Morphological Influence: Spherical Fly Ash vs Angular Pumicite</strong><br>
+        A concrete mix design requires maintaining a slump of $100\text{ mm}$ at a fixed water-cementitious ratio of $0.45$. When $20\%$ of cement is replaced by Class F fly ash (spherical cenospheres), water demand for equivalent workability drops by $7\%$. Conversely, when replaced by ground volcanic pumicite (angular, vesicular shards), water demand increases by $12\%$. Explain the rheological mechanisms governing this divergence.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. <strong>Ball-Bearing Effect of Fly Ash:</strong> Fly ash forms via rapid surface-tension cooling of molten droplets in flue gases, creating perfectly smooth, spherical particles. These spherical particles act as microscopic ball bearings between angular cement grains, reducing inter-particle friction and plastic viscosity, thus decreasing water demand.
+          2. <strong>Internal Absorption of Pumicite:</strong> Volcanic pumicite contains high cellular vesicularity and jagged, broken glass shards. The high internal porosity physically absorbs mixing water through capillary action, and high specific surface area increases frictional interlock, requiring higher water contents to maintain equivalent workability.
+        </div>
+      </div>
+
+      <!-- PROBLEM 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Fineness and Specific Surface Area (Blaine Method)</strong><br>
+        A laboratory evaluates two pozzolans using the Blaine air permeability apparatus (ASTM C204):
+        (A) Raw volcanic ash: specific surface area $S_A = 320\text{ m}^2\text{/kg}$;
+        (B) Silica fume: specific surface area $S_B = 20,000\text{ m}^2\text{/kg}$.
+        (a) Compute the ratio $S_B / S_A$. (b) Explain why silica fume achieves rapid 1-day pozzolanic activity whereas volcanic ash requires several weeks.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Ratio:
+          $$\frac{S_B}{S_A} = \frac{20,000\text{ m}^2\text{/kg}}{320\text{ m}^2\text{/kg}} = 62.5$$
+          2. Explanation: Heterogeneous chemical reaction rates are directly proportional to the accessible reactive surface area per unit mass. With a specific surface area over $60\times$ greater and particle size in the sub-micron range ($0.1\ \mu\text{m}$ vs $20\ \mu\text{m}$), silica fume dissolves instantaneously into pore solution, reacting immediately with $\text{Ca}^{2+}$ ions, whereas coarser volcanic ash undergoes slow dissolution limited by diffusion across developing product rinds.
+        </div>
+      </div>
+
+      <!-- PROBLEM 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Alkali-Silica Reaction (ASR) Expansion Suppression</strong><br>
+        Standard mortar bars (ASTM C1260 / ASTM C1567) made with reactive borosilicate glass aggregate and high-alkali cement undergo a 14-day expansion of $\varepsilon_{\text{control}} = 0.38\%$ in $1\text{ N NaOH}$ bath at $80^\circ\text{C}$ (failing the $< 0.10\%$ safety threshold). Incorporating $25\%$ Class F fly ash reduces the 14-day expansion to $\varepsilon_{\text{flyash}} = 0.045\%$. Calculate the percentage suppression of ASR expansion and explain how the fly ash chemically neutralizes alkali attack.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Percentage suppression:
+          $$\Delta \varepsilon (\%) = \left(\frac{0.38\% - 0.045\%}{0.38\%}\right) \times 100\% = \frac{0.335}{0.38} \times 100\% = 88.16\%$$
+          2. Chemical Mechanism:
+          <ul>
+            <li><strong>Alkali Entrapment:</strong> The pozzolanic reaction consumes $\text{Ca(OH)}_2$ to produce $\text{C-S-H}$ gel with a lower $\text{Ca/Si}$ ratio ($1.0 - 1.2$ vs $1.7 - 2.0$ in plain cement). Lower $\text{Ca/Si}$ hydrates possess a strong negative surface charge that preferentially adsorbs alkali metal cations ($\text{Na}^+, \text{K}^+$) from pore fluid.</li>
+            <li><strong>Reduction in Hydroxyl Ion Concentration ($\text{pH}$):</strong> Entrapping alkalis lowers the pore-water $\text{OH}^-$ concentration, preventing alkaline dissolution of reactive silica in the rock aggregates.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

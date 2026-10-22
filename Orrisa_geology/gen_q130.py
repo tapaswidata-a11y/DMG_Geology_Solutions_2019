@@ -1,0 +1,394 @@
+#!/usr/bin/env python3
+"""
+Q130 Generator: Schlumberger vs. Wenner Resistivity Array Configurations
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q130():
+    title = r"Q130: Applied Geophysics: Schlumberger Array Resistivity Configuration | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Applied Geophysics & Resistivity Sounding"
+    h1_title = "Q130: Electrical Resistivity Arrays: The Schlumberger Configuration and Electrode Geometry"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 130<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 11: Geophysical Investigations, pp. 210–212, p. 394); W.M. Telford, L.P. Geldart, and R.E. Sheriff, <em>Applied Geophysics</em> (2nd Ed., Cambridge University Press, Ch. 13: Electrical Properties of Rocks and Minerals, pp. 522–577); Philip Kearey, Michael Brooks, and Ian Hill, <em>An Introduction to Geophysical Exploration</em> (3rd Ed., Ch. 7); M.B. Dobrin and C.H. Savit, <em>Introduction to Geophysical Prospecting</em>."""
+
+    part1 = r"""
+  <!-- CARD 1: WORKING PRINCIPLE AND GEOMETRY -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Principles of DC Resistivity Exploration & The Schlumberger Array Geometry</div>
+    <div class="card-body">
+      <p>
+        In applied geophysics, hydrogeological exploration, and engineering site characterization, the <strong>Direct Current (DC) Electrical Resistivity Method</strong> involves introducing a direct (or low-frequency alternating) electrical current into the ground via two outer current electrodes ($A$ and $B$) and measuring the resulting potential difference ($\Delta V$) across two inner potential electrodes ($M$ and $N$) (Telford et al., 1990; Bangar, p. 211).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q130/schlumberger_vs_wenner_resistivity_array.png" alt="Schlumberger vs Wenner Electrode Configuration">
+        <div class="figure-caption">
+          <strong>Figure 130.1 — Geometric Comparison: Schlumberger vs. Wenner Array:</strong> In the Schlumberger array, the potential electrodes $M$ and $N$ are clustered closely around the center ($MN = 2l$), while current electrodes $A$ and $B$ are positioned at large distances ($AB = 2L$), satisfying $l \ll L$ (typically $MN \le AB / 5$). In the Wenner array, all four electrodes maintain identical inter-electrode spacing ($a$).
+        </div>
+      </div>
+
+      <h4>Geometric Architecture of the Schlumberger Configuration</h4>
+      <p>
+        In the <strong>Schlumberger configuration</strong> (invented in 1912 by French geophysicists Conrad and Marcel Schlumberger):
+      </p>
+      <ul>
+        <li>All four electrodes ($A, M, N, B$) are arranged symmetrically along a single straight line on the ground surface about a central benchmark point $O$.</li>
+        <li>The two outer electrodes $A$ and $B$ are current electrodes, placed at equal distances from the center:
+          $$OA = OB = L \implies AB = 2L$$
+        </li>
+        <li>The two inner electrodes $M$ and $N$ are potential electrodes, positioned closely together around the center:
+          $$OM = ON = l \implies MN = 2l$$
+        </li>
+        <li><strong>Defining Geometric Condition:</strong> The distance from the potential electrodes to the center ($l$) is <strong>strictly less than the distance between the current and potential electrodes ($L - l$)</strong>:
+          $$l < (L - l) \implies 2l < L \quad (\text{standard survey practice requires } MN \le \frac{AB}{5} \implies 2l \le \frac{2L}{5})$$
+        </li>
+      </ul>
+
+      <div class="figure-box">
+        <img src="../../figures_Q130/bangar_p211_schlumberger_resistivity_array.png" alt="Schlumberger Resistivity Array from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 130.2 — Schlumberger Resistivity Array Layout:</strong> Authentic textbook diagram from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 211). Illustrates the arrangement: <em>"The distances between the potential electrodes and the centre of the array are less than those between the current and potential electrodes."</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MATHEMATICAL DERIVATION & GEOMETRIC FACTOR -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Mathematical Formulation: Derivation of the Apparent Resistivity Formula</div>
+    <div class="card-body">
+      <h4>Derivation from Point Source Potential Theory</h4>
+      <p>
+        The electric potential $V$ at a distance $r$ on the surface of a semi-infinite homogeneous half-space of resistivity $\rho$ due to a point current source $+I$ is:
+      </p>
+      <div class="math-block">
+        $$V = \frac{\rho I}{2\pi r}$$
+      </div>
+      <p>
+        For a four-electrode array where current $+I$ enters at $A$ and $-I$ exits at $B$:
+      </p>
+      <div class="math-block">
+        $$V_M = \frac{\rho I}{2\pi} \left[\frac{1}{AM} - \frac{1}{BM}\right], \quad V_N = \frac{\rho I}{2\pi} \left[\frac{1}{AN} - \frac{1}{BN}\right]$$
+        $$\Delta V = V_M - V_N = \frac{\rho I}{2\pi} \left[\left(\frac{1}{AM} - \frac{1}{BM}\right) - \left(\frac{1}{AN} - \frac{1}{BN}\right)\right]$$
+      </div>
+      <p>
+        In the Schlumberger array, from symmetry with center $O$, $OA = OB = L$ and $OM = ON = l$:
+      </p>
+      <ul>
+        <li>$AM = L - l$</li>
+        <li>$BM = L + l$</li>
+        <li>$AN = L + l$</li>
+        <li>$BN = L - l$</li>
+      </ul>
+      <p>
+        Substituting these distances:
+      </p>
+      <div class="math-block">
+        $$\frac{1}{AM} - \frac{1}{BM} = \frac{1}{L - l} - \frac{1}{L + l} = \frac{(L + l) - (L - l)}{(L - l)(L + l)} = \frac{2l}{L^2 - l^2}$$
+        $$\frac{1}{AN} - \frac{1}{BN} = \frac{1}{L + l} - \frac{1}{L - l} = -\frac{2l}{L^2 - l^2}$$
+        $$\Delta V = \frac{\rho I}{2\pi} \left[\frac{2l}{L^2 - l^2} - \left(-\frac{2l}{L^2 - l^2}\right)\right] = \frac{\rho I}{2\pi} \left[\frac{4l}{L^2 - l^2}\right] = \frac{2 \rho I l}{\pi(L^2 - l^2)}$$
+      </div>
+      <p>
+        Solving for apparent resistivity ($\rho_a$):
+      </p>
+      <div class="math-block">
+        $$\rho_a = \frac{\pi (L^2 - l^2)}{2l} \left(\frac{\Delta V}{I}\right) = K_{\text{Schlumberger}} \left(\frac{\Delta V}{I}\right)$$
+        $$\text{When } l \ll L \text{ (gradient approximation): } \rho_a \approx \frac{\pi L^2}{2l} \left(\frac{\Delta V}{I}\right)$$
+      </div>
+
+      <div class="figure-box">
+        <img src="../../figures_Q130/bangar_sheet_204_wenner_array.png" alt="Wenner vs Schlumberger Array from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 130.3 — Electrode Arrays in Geophysical Prospecting:</strong> Textbook sheet from K.M. Bangar (p. 204) comparing the Wenner array ($a = AM = MN = NB$) with the Schlumberger configuration.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: SCHLUMBERGER VS WENNER IN FIELD PRACTICE -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Operational Superiority in Vertical Electrical Sounding (VES)</div>
+    <div class="card-body">
+      <p>
+        The Schlumberger array is universally preferred over the Wenner array for <strong>Vertical Electrical Sounding (VES)</strong> (sounding to determine layering with depth) because of distinct field advantages:
+      </p>
+      <ul>
+        <li><strong>Fewer Electrode Movements:</strong> In a Wenner sounding, to increase depth of penetration, <em>all four electrodes must be moved outward simultaneously</em> at every single measurement step. In a Schlumberger sounding, the inner potential electrodes ($M$ and $N$) remain completely stationary at the center for many readings, while <em>only the two outer current electrodes ($A$ and $B$) are moved outward</em>.</li>
+        <li><strong>Lower Cable and Manpower Costs:</strong> Because potential cables are kept short ($MN \le 2\text{--}10\text{ m}$), contact resistance errors, inductive cable coupling, and field labor are dramatically reduced.</li>
+        <li><strong>Immunity to Local Near-Surface Inhomogeneities:</strong> Moving potential electrodes across uneven topsoil introduces spurious local "wiggles" into sounding curves. By keeping $M$ and $N$ fixed, the Schlumberger VES curve produces smooth, highly interpretable layering signatures.</li>
+      </ul>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card question-card">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-number">Question 130</div>
+      <div class="question-text">
+        In a resistivity survey, the current and potential electrodes are such arranged that the distances between the potential electrodes and the centre of the array are less than those between the current and potential electrodes. What type of configuration is this ?
+      </div>
+      <ul class="option-list">
+        <li class="option-item"><strong>(A)</strong> Wenner</li>
+        <li class="option-item correct"><strong>(B)</strong> Schlumberger</li>
+        <li class="option-item"><strong>(C)</strong> Dipole-dipole</li>
+        <li class="option-item"><strong>(D)</strong> Pole-dipole</li>
+      </ul>
+      <div class="answer-banner">
+        <strong>Correct Answer: (B) Schlumberger</strong> — In the Schlumberger array, the potential electrodes $M$ and $N$ are situated closely about the array center ($OM = ON = l$), such that the distance to the center ($l$) is strictly less than the distance between current and potential electrodes ($L - l$).
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Options</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="option-title">Option (A): Wenner — Incorrect Electrode Geometry</div>
+        <p>
+          In the Wenner array (developed by Frank Wenner in 1915), all four electrodes ($A, M, N, B$) are <strong>equidistantly spaced</strong> along the survey traverse ($AM = MN = NB = a$). Here, the distance from each potential electrode to the center is $a/2$, while the distance between current and potential electrode is $a$. More importantly, the Wenner configuration is defined by <em>uniform, equal electrode spacing</em> across all four points, which violates the specific geometric inequality described in the question stem.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="option-title">Option (B): Schlumberger — Fully Verified & Correct</div>
+        <p>
+          The Schlumberger array is characterized precisely by the relationship defined in the question stem (Bangar, p. 211; Telford et al., p. 535). Current electrodes ($A, B$) are spaced far apart ($OA = OB = L$), while potential electrodes ($M, N$) are closely spaced about the center ($OM = ON = l$). The distance from potential electrode to center is $l$, whereas the distance between current and potential electrodes is $L - l$. Under standard survey protocols ($MN \le AB/5 \implies 2l \le 0.4L \implies l \le 0.2L$), the distance to the center ($l$) is significantly less than the distance between current and potential electrodes ($L - l \ge 0.8L$).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (C): Dipole-dipole — Non-Centralized Dual Dipoles</div>
+        <p>
+          In the Dipole-dipole configuration, the current electrodes $A$ and $B$ form a distinct pair (dipole) of spacing $a$, and the potential electrodes $M$ and $N$ form another distinct dipole of spacing $a$, separated from each other by a large variable integer multiple distance $R = n a$ ($n = 1, 2, 3 \dots 6$). The potential electrodes are not clustered about the center of the total array with current electrodes on opposite outer sides.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (D): Pole-dipole — Asymmetric Infinite Current Return</div>
+        <p>
+          In a Pole-dipole array, one current electrode ($B$) is placed at "optical/electrical infinity" ($\ge 5 - 10 \times$ the survey line length), while a single active current electrode ($A$) and a potential dipole ($M, N$) traverse the survey line. It is asymmetric and does not have current electrodes flanking a central potential pair.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- CARD: SYNTHESIS COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparison: Electrical Resistivity Electrode Configurations</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Array Type</th>
+            <th>Electrode Layout</th>
+            <th>Geometric Factor ($K$)</th>
+            <th>Apparent Resistivity Formula ($\rho_a$)</th>
+            <th>Primary Application & Advantages</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Schlumberger</strong></td>
+            <td>$A \dots\dots M - O - N \dots\dots B$<br>($MN \le AB/5$, centered at $O$)</td>
+            <td>$K = \frac{\pi (L^2 - l^2)}{2l} \approx \frac{\pi L^2}{2l}$</td>
+            <td>$\rho_a = \frac{\pi (L^2 - l^2)}{2l} \frac{\Delta V}{I}$</td>
+            <td><strong>Vertical Electrical Sounding (VES):</strong> Groundwater aquifer mapping, depth to bedrock; only $A, B$ moved outward.</td>
+          </tr>
+          <tr>
+            <td><strong>Wenner</strong></td>
+            <td>$A - a - M - a - N - a - B$<br>(Equal spacing $a$)</td>
+            <td>$K = 2\pi a$</td>
+            <td>$\rho_a = 2\pi a \frac{\Delta V}{I}$</td>
+            <td><strong>Electrical Profiling (Constant Separation Traversing):</strong> Lateral mapping of faults, dykes, gravel channels; high signal strength.</td>
+          </tr>
+          <tr>
+            <td><strong>Dipole-Dipole</strong></td>
+            <td>$A - a - B \dots\dots n a \dots\dots M - a - N$</td>
+            <td>$K = \pi n (n + 1)(n + 2) a$</td>
+            <td>$\rho_a = \pi n (n + 1)(n + 2) a \frac{\Delta V}{I}$</td>
+            <td><strong>2D/3D Electrical Resistivity Tomography (ERT):</strong> Mineral exploration, deep imaging; low electromagnetic inductive coupling.</td>
+          </tr>
+          <tr>
+            <td><strong>Pole-Dipole</strong></td>
+            <td>$A \dots\dots n a \dots\dots M - a - N$<br>($B$ at infinity)</td>
+            <td>$K = 2\pi n (n + 1) a$</td>
+            <td>$\rho_a = 2\pi n (n + 1) a \frac{\Delta V}{I}$</td>
+            <td>Deeper penetration with lower transmitted current; moderate signal-to-noise ratio.</td>
+          </tr>
+          <tr>
+            <td><strong>Pole-Pole</strong></td>
+            <td>$A - r - M$<br>($B, N$ at infinity)</td>
+            <td>$K = 2\pi r$</td>
+            <td>$\rho_a = 2\pi r \frac{\Delta V}{I}$</td>
+            <td>Cross-borehole tomography; mathematically simple but sensitive to background telluric noise.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD: 8 PRACTICE PROBLEMS WITH FULL STEP-BY-STEP DERIVATIONS -->
+  <div class="card">
+    <div class="card-header bg-purple">8 Advanced Practice Problems & Fully Worked Solutions</div>
+    <div class="card-body">
+      <!-- PROBLEM 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Exact vs. Approximate Schlumberger Geometric Factor</strong><br>
+        In a Schlumberger sounding, current electrodes are positioned at $AB = 100.0\text{ m}$ ($L = 50.0\text{ m}$) and potential electrodes at $MN = 10.0\text{ m}$ ($l = 5.0\text{ m}$). Calculate: (a) the exact geometric factor ($K_{\text{exact}}$), (b) the approximate geometric factor ($K_{\text{approx}} = \frac{\pi L^2}{2l}$), and (c) the percentage error introduced by the approximation.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Exact geometric factor:
+          $$K_{\text{exact}} = \frac{\pi (L^2 - l^2)}{2l} = \frac{\pi (50.0^2 - 5.0^2)}{2 \times 5.0} = \frac{\pi (2500 - 25)}{10.0} = \frac{\pi \times 2475}{10.0} = 247.5 \pi \approx 777.54\text{ m}$$
+          2. Approximate geometric factor:
+          $$K_{\text{approx}} = \frac{\pi L^2}{2l} = \frac{\pi \times 2500}{10.0} = 250 \pi \approx 785.40\text{ m}$$
+          3. Percentage error:
+          $$\text{Error } (\%) = \left(\frac{K_{\text{approx}} - K_{\text{exact}}}{K_{\text{exact}}}\right) \times 100\% = \left(\frac{785.40 - 777.54}{777.54}\right) \times 100\% = \frac{7.86}{777.54} \times 100\% = 1.01\%$$
+          <em>Observation:</em> When $MN = AB / 10$, the gradient approximation yields only a $1\%$ error.
+        </div>
+      </div>
+
+      <!-- PROBLEM 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: Apparent Resistivity Calculation from Field Meter Readings</strong><br>
+        A Schlumberger array setup has half-current electrode spacing $L = 80.0\text{ m}$ and half-potential electrode spacing $l = 4.0\text{ m}$. A current of $I = 250\text{ mA}$ ($0.250\text{ A}$) is injected into the ground, and the digital receiver measures a potential difference $\Delta V = 18.5\text{ mV}$ ($0.0185\text{ V}$). Calculate the apparent resistivity ($\rho_a$) of the ground in $\Omega\cdot\text{m}$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate exact geometric factor $K$:
+          $$K = \frac{\pi (L^2 - l^2)}{2l} = \frac{\pi (80^2 - 4^2)}{2 \times 4} = \frac{\pi (6400 - 16)}{8} = \frac{\pi \times 6384}{8} = 798 \pi \approx 2507.0\text{ m}$$
+          2. Compute resistance $R = \Delta V / I$:
+          $$R = \frac{0.0185\text{ V}}{0.250\text{ A}} = 0.074\ \Omega$$
+          3. Calculate apparent resistivity $\rho_a$:
+          $$\rho_a = K \times R = 2507.0\text{ m} \times 0.074\ \Omega = 185.52\ \Omega\cdot\text{m}$$
+        </div>
+      </div>
+
+      <!-- PROBLEM 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Wenner vs. Schlumberger Array Equivalence Comparison</strong><br>
+        A Wenner array with electrode spacing $a = 20.0\text{ m}$ yields a resistance reading $R_{\text{Wenner}} = 0.85\ \Omega$. (a) Calculate the apparent resistivity. (b) If a Schlumberger array with identical total outer length ($AB = 3a = 60.0\text{ m}$, so $L = 30.0\text{ m}$) and $MN = 4.0\text{ m}$ ($l = 2.0\text{ m}$) is deployed over the same homogeneous ground, predict the resistance reading ($R_{\text{Schlumberger}}$) that will be measured.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Wenner apparent resistivity:
+          $$\rho_a = 2\pi a R_{\text{Wenner}} = 2\pi (20.0\text{ m}) \times 0.85\ \Omega = 40 \pi \times 0.85 = 34 \pi \approx 106.81\ \Omega\cdot\text{m}$$
+          2. Schlumberger geometric factor for $L = 30\text{ m}, l = 2\text{ m}$:
+          $$K_{\text{Schl}} = \frac{\pi (30^2 - 2^2)}{2 \times 2} = \frac{\pi (900 - 4)}{4} = \frac{896 \pi}{4} = 224 \pi \approx 703.72\text{ m}$$
+          3. Resistance measured by Schlumberger receiver:
+          $$R_{\text{Schlumberger}} = \frac{\rho_a}{K_{\text{Schl}}} = \frac{106.81\ \Omega\cdot\text{m}}{703.72\text{ m}} = 0.1518\ \Omega = 151.8\text{ m}\Omega$$
+        </div>
+      </div>
+
+      <!-- PROBLEM 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Classification of 3-Layer VES Sounding Curves</strong><br>
+        A geophysicist conducts vertical electrical soundings over four different sedimentary terranes and records the following true resistivity profiles ($\rho_1, \rho_2, \rho_3$):
+        (A) Topsoil ($150\ \Omega\cdot\text{m}$), Saline Aquifer ($15\ \Omega\cdot\text{m}$), Granite Bedrock ($1200\ \Omega\cdot\text{m}$);
+        (B) Clay loam ($40\ \Omega\cdot\text{m}$), Dry Sandstone ($800\ \Omega\cdot\text{m}$), Saturated Shale ($60\ \Omega\cdot\text{m}$);
+        (C) Laterite ($300\ \Omega\cdot\text{m}$), Weathered Gneiss ($120\ \Omega\cdot\text{m}$), Clayey Silt ($25\ \Omega\cdot\text{m}$);
+        (D) Topsoil ($50\ \Omega\cdot\text{m}$), Fresh Sandstone ($350\ \Omega\cdot\text{m}$), Dense Quartzite ($2500\ \Omega\cdot\text{m}$).
+        Classify each profile into its canonical curve type (H, K, Q, or A type).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          According to standard 3-layer VES curve taxonomy:
+          <ul>
+            <li><strong>Profile A ($\rho_1 > \rho_2 < \rho_3$):</strong> $150 > 15 < 1200\ \Omega\cdot\text{m}$ &rarr; <strong>H-Type Curve (Bowl-shaped / Minimum curve)</strong>. Diagnostic of a low-resistivity intermediate target (freshwater or saline aquifer).</li>
+            <li><strong>Profile B ($\rho_1 < \rho_2 > \rho_3$):</strong> $40 < 800 > 60\ \Omega\cdot\text{m}$ &rarr; <strong>K-Type Curve (Bell-shaped / Maximum curve)</strong>. Diagnostic of a high-resistivity resistive layer (dry sand/gravel or basalt cap).</li>
+            <li><strong>Profile C ($\rho_1 > \rho_2 > \rho_3$):</strong> $300 > 120 > 25\ \Omega\cdot\text{m}$ &rarr; <strong>Q-Type Curve (Descending / Step-down curve)</strong>. Diagnostic of progressively conducting strata with depth.</li>
+            <li><strong>Profile D ($\rho_1 < \rho_2 < \rho_3$):</strong> $50 < 350 < 2500\ \Omega\cdot\text{m}$ &rarr; <strong>A-Type Curve (Ascending / Step-up curve)</strong>. Diagnostic of increasingly resistive bedrock with depth.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PROBLEM 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: Effective Depth of Investigation ($z_e$) Comparison</strong><br>
+        According to Roy and Apparao (1971) and Barker (1989), the median depth of investigation ($z_e$) for homogeneous ground is approximately:
+        $$z_{e(\text{Wenner})} \approx 0.519 a, \quad z_{e(\text{Schlumberger})} \approx 0.190 (AB) = 0.380 L$$
+        For an exploration target at depth $z = 38.0\text{ m}$, calculate: (a) the required Wenner electrode spacing ($a$), and (b) the required Schlumberger current electrode half-spacing ($L$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Wenner array spacing:
+          $$a = \frac{z_e}{0.519} = \frac{38.0\text{ m}}{0.519} = 73.22\text{ m}$$
+          Total array span $AB_{\text{Wenner}} = 3a = 3 \times 73.22 = 219.66\text{ m}$.
+          2. Schlumberger array spacing:
+          $$L = \frac{z_e}{0.380} = \frac{38.0\text{ m}}{0.380} = 100.0\text{ m}$$
+          Total array span $AB_{\text{Schlumberger}} = 2L = 200.0\text{ m}$.
+        </div>
+      </div>
+
+      <!-- PROBLEM 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Potential Electrode Stepping / Jump Shift Correction</strong><br>
+        During a Schlumberger sounding, at $L = 60.0\text{ m}$, the measured voltage $\Delta V$ becomes too small to measure reliably with $MN = 2.0\text{ m}$ ($l = 1.0\text{ m}$). The potential electrodes are expanded to $MN' = 10.0\text{ m}$ ($l' = 5.0\text{ m}$). Two overlapping readings are taken at $L = 60.0\text{ m}$:
+        (1) With $MN = 2\text{ m}$: $\rho_{a1} = 142.0\ \Omega\cdot\text{m}$;
+        (2) With $MN' = 10\text{ m}$: $\rho_{a2} = 156.2\ \Omega\cdot\text{m}$.
+        Calculate the segment shift multiplier ($S = \rho_{a1} / \rho_{a2}$) to tie the subsequent expanded branch back to the master curve.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Compute shift scaling multiplier:
+          $$S = \frac{\rho_{a1}}{\rho_{a2}} = \frac{142.0}{156.2} = 0.9091$$
+          2. Application: Due to local surface resistivity variations near the new potential electrode positions, all subsequent apparent resistivity values measured with $MN' = 10\text{ m}$ must be multiplied by $S = 0.9091$ to eliminate the discontinuous "jump" and maintain a smooth, continuous VES curve.
+        </div>
+      </div>
+
+      <!-- PROBLEM 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Dipole-Dipole Geometric Factor Calculation</strong><br>
+        In an Electrical Resistivity Tomography (ERT) survey across an ore body, a dipole-dipole array has a dipole length $a = 10.0\text{ m}$ and an electrode separation index $n = 4$. Calculate the geometric factor ($K$) in meters.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Use the dipole-dipole geometric factor formula:
+          $$K = \pi n (n + 1)(n + 2) a$$
+          2. Substitute $n = 4$ and $a = 10.0\text{ m}$:
+          $$n(n + 1)(n + 2) = 4 \times (4 + 1) \times (4 + 2) = 4 \times 5 \times 6 = 120$$
+          $$K = \pi \times 120 \times 10.0\text{ m} = 1200 \pi \approx 3769.91\text{ m}$$
+          <em>Notice:</em> Because $K$ is extremely large ($3770\text{ m}$), received potential difference $\Delta V$ is very small, requiring sensitive multichannel receivers.
+        </div>
+      </div>
+
+      <!-- PROBLEM 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Groundwater Exploration in Hard-Rock Granitic Terrain</strong><br>
+        A Schlumberger VES survey over a granite gneiss terrain reveals a three-layer H-type curve:
+        $\rho_1 = 280\ \Omega\cdot\text{m}$ (topsoil, thickness $h_1 = 2.5\text{ m}$);
+        $\rho_2 = 45\ \Omega\cdot\text{m}$ (weathered and fractured gneiss, thickness $h_2 = 18.0\text{ m}$);
+        $\rho_3 = 2400\ \Omega\cdot\text{m}$ (massive unweathered granitic basement).
+        (a) Identify the target aquifer layer, (b) calculate the depth to hard basement rock, and (c) calculate the Total Longitudinal Conductance ($S = \sum h_i / \rho_i$) of the overburden above basement.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Target Aquifer: Layer 2 ($\rho_2 = 45\ \Omega\cdot\text{m}$) represents saturated, highly weathered and fractured granite gneiss, which is the primary groundwater aquifer in hard-rock terrains.
+          2. Depth to hard basement rock:
+          $$Z_{\text{basement}} = h_1 + h_2 = 2.5\text{ m} + 18.0\text{ m} = 20.5\text{ m}$$
+          3. Total Longitudinal Conductance ($S$):
+          $$S = \frac{h_1}{\rho_1} + \frac{h_2}{\rho_2} = \frac{2.5\text{ m}}{280\ \Omega\cdot\text{m}} + \frac{18.0\text{ m}}{45\ \Omega\cdot\text{m}} = 0.00893 + 0.4000 = 0.4089\ \Omega^{-1} \text{ (or Siemens)}$$
+          <em>Hydrogeological Rule:</em> Longitudinal conductance $S > 0.3\text{ Siemens}$ indicates high aquifer protective capacity and prolific groundwater yields.
+        </div>
+      </div>
+    </div>
+  </div>
+"""
+
+    html = wrap_html(
+        q_num=130,
+        title=title,
+        badge=badge,
+        h1_title=h1_title,
+        meta_text=meta_text,
+        part1_content=part1,
+        part2_content=part2,
+        part3_content=part3
+    )
+
+    out_file = os.path.join(SOLUTIONS_DIR, "Q130_Schlumberger_Array_Resistivity_Survey_Complete_Guide.html")
+    with open(out_file, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q130: {out_file} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q130()
