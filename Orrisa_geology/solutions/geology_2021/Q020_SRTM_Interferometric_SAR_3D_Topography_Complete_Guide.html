@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q20: Topographic Remote Sensing: The Shuttle Radar Topography Mission (SRTM) | OPSC Geology 2021 Masterclass</title>
+<title>Q020: Spaceborne 3D Geodesy: Shuttle Radar Topography Mission (SRTM) & InSAR | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,255 +89,559 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q20" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Radar Interferometry & Digital Elevation Models</div>
-    <h1>Q20: Topographic Remote Sensing: The Shuttle Radar Topography Mission (SRTM)</h1>
+    <div class="badge">GEO - 2/21 • Digital Elevation Models & Radar Interferometry</div>
+    <h1>Q020: Spaceborne 3D Geodesy: Shuttle Radar Topography Mission (SRTM) & InSAR</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Farr et al. (2007, Reviews of Geophysics); Lillesand, Kiefer & Chipman (Remote Sensing, Ch. 7, pp. 520-525)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 20<br>
+<strong>Authoritative References:</strong> Farr, T.G. et al. (2007, <em>The Shuttle Radar Topography Mission</em>, Reviews of Geophysics, 45, RG2004); Thomas M. Lillesand et al., <em>Remote Sensing and Image Interpretation</em> (7th Ed., Ch. 7: InSAR & DEMs, pp. 448–454); Paul R. Wolf et al., <em>Elements of Photogrammetry</em> (4th Ed., Ch. 14).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>20.1 Principle of Single-Pass InSAR on SRTM</h3>
-        <p>In radar remote sensing and geomorphometry (Farr et al., 2007, <i>The Shuttle Radar Topography Mission</i>, Reviews of Geophysics; Lillesand, Kiefer & Chipman, Ch. 7, pp. 520–525), the <b>Shuttle Radar Topography Mission (SRTM)</b> was flown in February 2000 aboard Space Shuttle *Endeavour* (STS-99).</p>
-        <p>SRTM revolutionized Earth observation by acquiring the first near-global high-precision <b>three-dimensional Digital Elevation Model (DEM)</b> using single-pass <b>Interferometric Synthetic Aperture Radar (InSAR)</b>:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Mission Characteristic</th>
-                <th>SRTM Operational Configuration</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Interferometric Baseline ($B$)</b></td>
-                <td>$60\text{-meter}$ deployable carbon-fiber truss mast extending from shuttle cargo bay</td>
-              </tr>
-              <tr>
-                <td><b>Antenna Configuration</b></td>
-                <td>Dual-antenna single-pass InSAR (Main antenna in payload bay; Outboard antenna at mast tip)</td>
-              </tr>
-              <tr>
-                <td><b>Radar Frequencies</b></td>
-                <td>C-band ($\lambda = 5.6\text{ cm}$, NASA/JPL) and X-band ($\lambda = 3.1\text{ cm}$, DLR/ASI)</td>
-              </tr>
-              <tr>
-                <td><b>Global Coverage & Resolution</b></td>
-                <td>$80\%$ of Earth's landmass ($60^\circ\text{N}$ to $56^\circ\text{S}$); 1-arc-second ($pprox 30\text{ m}$) resolution</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>20.2 InSAR Height Derivation Formula</h3>
-        <p>Interferometric phase difference ($\Delta \phi$) between the two antennas directly determines topographic surface height ($z$):</p>
-        $$z = H - R \cos \theta, \quad \text{where } \Delta \phi = \frac{2\pi}{\lambda} B \sin(\theta - \alpha)$$
-        <p>Eliminating temporal decorrelation via simultaneous single-pass acquisition enabled unprecedented 3D elevation accuracy.</p>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q20/srtm_shuttle_radar_3d_insar_geometry.png" alt="Shuttle Radar Topography Mission Single-Pass InSAR Geometry">
-      <figcaption>
-        <strong>Figure 20.1: Space Shuttle Endeavour SRTM (2000) Single-Pass Interferometric SAR Configuration.</strong> Featuring the main antenna in the cargo bay and a secondary receiver at the tip of a deployed $60	ext{-meter}$ mast, recording simultaneous radar returns to generate near-global high-resolution Digital Elevation Models ($1	ext{ arc-sec } / 30	ext{ m}$).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: THE SHUTTLE RADAR TOPOGRAPHY MISSION (SRTM) -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Shuttle Radar Topography Mission (SRTM): Breakthrough in 3D Geodesy</div>
+    <div class="card-body">
+      <p>In February 2000, NASA, the National Imagery and Mapping Agency (NIMA, now NGA), the German Aerospace Center (DLR), and the Italian Space Agency (ASI) conducted the <strong>Shuttle Radar Topography Mission (SRTM)</strong> aboard Space Shuttle <em>Endeavour</em> (Flight STS-99). SRTM accomplished an unprecedented geodetic triumph: acquiring a consistent, high-precision <strong>Three-Dimensional (3D) Digital Elevation Model (DEM)</strong> of Earth's land surface between latitudes $60^\circ\text{N}$ and $56^\circ\text{S}$, encompassing over $80\%$ of Earth's total landmass in just 11 days of flight.</p>
+
+      <ul>
+        <li><strong>Single-Pass Spaceborne Radar Interferometry (InSAR):</strong> Previous spaceborne radar interferometry (such as ERS-1/2) required "repeat-pass" orbits days or weeks apart, suffering severe decorrelation from wind, vegetation growth, and variable atmospheric water vapor. SRTM revolutionized radar geodesy by using <strong>Single-Pass Interferometry</strong>:
+          <ul>
+            <li><strong>Primary Main Antenna:</strong> Mounted rigidly inside the space shuttle's payload bay.</li>
+            <li><strong>Secondary Outboard Antenna:</strong> Deployed at the tip of a lightweight, rigid carbon-fiber truss mast extending <strong>60 meters (197 feet)</strong> outward into space—representing the largest rigid human-made structure ever deployed in space!</li>
+          </ul>
+        </li>
+        <li><strong>Simultaneous Transmission and Reception:</strong> Radar pulses transmitted from the main antenna were backscattered from the Earth's terrain and received simultaneously by both the main and outboard antennas, freezing the atmosphere and surface in an identical instant of time.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q20/srtm_shuttle_radar_3d_insar_geometry.png" alt="SRTM Space Shuttle 3D InSAR Geometry">
+        <div class="tb-caption">
+          <strong>Figure 20.1: SRTM Single-Pass Radar Interferometry Geometry.</strong> Showing the 60-meter mast separating the primary payload bay antenna from the outboard antenna, establishing a fixed interferometric baseline ($B$) to triangulate terrain elevation ($z$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE MATHEMATICAL PRINCIPLE OF RADAR INTERFEROMETRY -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Interferometric Phase Difference ($\Delta\phi$) & Height Derivation</div>
+    <div class="card-body">
+      <p>The mathematical physics of extracting 3D ground topography ($z$) from dual-antenna radar interferometry relies on measuring the <strong>interferometric phase difference ($\Delta\phi$)</strong> between the two received microwave signals:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Interferometric Phase Difference & Elevation Derivation</div>
+        $$\Delta\phi = \phi_1 - \phi_2 = \frac{2\pi}{\lambda} (R_1 - R_2) \approx \frac{2\pi}{\lambda} B \sin(\theta - \alpha)$$
+        $$z = H - R_1 \cos\theta$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $\lambda$ is radar wavelength (C-band: $5.6\text{ cm}$; X-band: $3.1\text{ cm}$), $B$ is physical baseline length ($60\text{ m}$), $\alpha$ is baseline tilt angle, $\theta$ is look angle, and $H$ is shuttle altitude ($233\text{ km}$). Measuring $\Delta\phi$ to within fractions of a wavelength enables vertical height determination ($z$) to meter-level accuracy.</p>
+      </div>
+
+      <p>SRTM produced two primary global elevation datasets:</p>
+      <ul>
+        <li><strong>SRTM-1 (1 Arc-Second):</strong> Nominal ground spatial resolution of <strong>$30\text{ meters}$</strong> with an absolute vertical accuracy better than $\pm 16\text{ meters}$ (typically achieving $\pm 6 - 8\text{ m}$ in flat to moderate terrain).</li>
+        <li><strong>SRTM-3 (3 Arc-Seconds):</strong> Averaged ground spatial resolution of <strong>$90\text{ meters}$</strong>, made globally accessible to researchers in 2003.</li>
+      </ul>
+
+      <div class="quote-box">
+        "The Shuttle Radar Topography Mission (SRTM) successfully collected interferometric radar data covering more than 80% of Earth's land surface... providing the first high-resolution, homogeneous 3D digital topographic map of the world."
+        <span class="quote-ref">— T.G. Farr et al., <em>The Shuttle Radar Topography Mission</em> (Reviews of Geophysics, 2007, 45, RG2004)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER SATELLITES FAIL (2D OPTICAL IMAGERY) -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Landsat, IKONOS & ERS as Primary Answers</div>
+    <div class="card-body">
+      <p>Understanding the distinction between 2D imagery and native 3D topographic mission architectures:</p>
+      <ul>
+        <li><strong>(A) LANDSAT:</strong> A classic nadir-looking <strong>2D multispectral optical imaging system</strong>. Landsat sensors (MSS, TM, ETM+, OLI) acquire 2D planar images of land reflectance ($x, y$ coordinates). They cannot measure vertical relief directly without external stereoscopic pairs or auxiliary DEMs.</li>
+        <li><strong>(C) IKONOS:</strong> A commercial high-resolution 2D optical satellite ($0.8\text{ m}$ panchromatic, $4\text{ m}$ multispectral). While stereo pairs can be post-processed via optical photogrammetry into DEMs, IKONOS is an optical imager, not an inherently 3D topographic mission.</li>
+        <li><strong>(D) ERS:</strong> ERS-1 and ERS-2 carried single radar antennas that required repeat-pass orbital passes (35 days apart) to perform interferometry, which suffered severe temporal decorrelation. SRTM was the definitive, dedicated mission created specifically to generate comprehensive 3D global topography.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q20. Name the satellite providing three-dimensional topographic data :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> LANDSAT</div>
-        <div class="opt-item correct"><strong>(B)</strong> SRTM</div>
-        <div class="opt-item "><strong>(C)</strong> IKONOS</div>
-        <div class="opt-item "><strong>(D)</strong> ERS</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 20)</div>
+    <div class="q-stmt">
+      Q20. Name the satellite providing three-dimensional topographic data :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) LANDSAT</div>
+      <div class="raw-opt correct">(B) SRTM &nbsp;✔</div>
+      <div class="raw-opt">(C) IKONOS</div>
+      <div class="raw-opt">(D) ERS</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) SRTM</div>
+      <div class="sub">
+        The <strong>Shuttle Radar Topography Mission (SRTM)</strong> utilized single-pass dual-antenna radar interferometry (InSAR) aboard Space Shuttle <em>Endeavour</em> in 2000 to generate the world's premier high-resolution <strong>Three-Dimensional (3D) Digital Elevation Model (DEM)</strong> covering over 80% of Earth's landmass.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) SRTM</b> — The <b>Shuttle Radar Topography Mission (SRTM)</b> is the dedicated space radar mission engineered specifically to provide high-resolution <b>three-dimensional topographic elevation data (DEMs)</b> globally.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) LANDSAT — INCORRECT:</b> Landsat is a 2D optical multispectral imaging satellite providing surface reflectance, not direct 3D elevation data.</li>
-          <li><b>(B) SRTM — CORRECT:</b> The benchmark space mission for global 3D topographic models.</li>
-          <li><b>(C) IKONOS — INCORRECT:</b> A high-resolution 2D commercial optical imaging satellite ($0.82\text{ m}$ panchromatic).</li>
-          <li><b>(D) ERS — INCORRECT:</b> European Remote Sensing satellite; while capable of repeat-pass InSAR, it is not a dedicated single-pass global 3D topographic mission like SRTM.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) LANDSAT</span>
+      <span class="tag wrong">Incorrect (Planar 2D Multispectral Optical Satellite)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The Landsat series (Landsat-1 through 9) consists of nadir-pointing optical sensors producing planar two-dimensional (2D) multispectral reflectance images ($x, y$). They do not record native 3D topographic elevation data ($z$).
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) SRTM</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Flown in February 2000, SRTM was specifically engineered to map the Earth's topography in 3D. By deploying a 60-meter mast with an outboard radar antenna, it recorded single-pass interferometric phase shifts, creating the famous 30-meter and 90-meter near-global 3D Digital Elevation Models that serve as the universal topographic standard in geoscience and GIS.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) IKONOS</span>
+      <span class="tag wrong">Incorrect (High-Resolution 2D Optical Satellite)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> IKONOS (launched in 1999) is an optical earth observation satellite designed for 2D high-resolution urban mapping and surveillance. It does not measure topographic heights natively via radar interferometry.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) ERS</span>
+      <span class="tag wrong">Incorrect (Repeat-Pass Radar with High Temporal Decorrelation)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The European Remote Sensing satellites (ERS-1/2) carried single-antenna Synthetic Aperture Radars that required repeat-pass orbits (35-day repeat cycles), making global 3D topographic mapping unfeasible due to atmospheric changes and vegetative decorrelation.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Digital Elevation Model (DEM) Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 20: Digital Elevation Data Comparison</div>
-          <p>Compare SRTM DEM with ASTER GDEM and Cartosat-1 DEM in terms of remote sensing technology.</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <ul>
-              <li><b>SRTM:</b> Generated via <b>Active Radar Interferometry (InSAR)</b> at C-band wavelengths, penetrating clouds and haze.</li>
-              <li><b>ASTER GDEM:</b> Generated via <b>Passive Optical Stereoscopy</b> from nadir and backward-looking telescopes ($3N$ and $3B$ bands).</li>
-              <li><b>Cartosat-1 (ISRO):</b> Generated via <b>High-resolution along-track Optical Stereoscopy</b> using Fore ($+26^\circ$) and Aft ($-5^\circ$) cameras.</li>
-            </ul>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparison of Global 3D Digital Elevation Models (DEMs)</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Space Mission / Sensor</th>
+            <th>Primary 3D Technology</th>
+            <th>Global Spatial Resolution</th>
+            <th>Vertical Accuracy ($LE90$)</th>
+            <th>Global Coverage & Acquisition Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SRTM (Endeavour STS-99)</strong></td>
+            <td><strong>Single-Pass InSAR (C-band / X-band)</strong></td>
+            <td><strong>$1\text{ arc-sec } (30\text{ m}) / 3\text{ arc-sec } (90\text{ m})$</strong></td>
+            <td><strong>$\pm 6 - 16\text{ meters}$</strong></td>
+            <td>$60^\circ\text{N} - 56^\circ\text{S}$ ($80\%$ of land); Feb 2000</td>
+          </tr>
+          <tr>
+            <td><strong>TanDEM-X (DLR)</strong></td>
+            <td>Bistatic Twin-Satellite InSAR (X-band)</td>
+            <td>$0.4\text{ arc-sec } (12\text{ m})$</td>
+            <td>$\pm 2 - 4\text{ meters}$</td>
+            <td>Global pole-to-pole ($100\%$); 2010–2015</td>
+          </tr>
+          <tr>
+            <td><strong>ASTER GDEM (Terra)</strong></td>
+            <td>Optical Along-Track Stereoscopy (Bands 3N & 3B)</td>
+            <td>$1\text{ arc-sec } (30\text{ m})$</td>
+            <td>$\pm 15 - 20\text{ meters}$</td>
+            <td>$83^\circ\text{N} - 83^\circ\text{S}$ (Optical stereo correlation); 2009–2019</td>
+          </tr>
+          <tr>
+            <td><strong>ALOS AW3D30 (JAXA)</strong></td>
+            <td>PRISM Optical Triplet Stereoscopy</td>
+            <td>$1\text{ arc-sec } (30\text{ m})$ (resampled from $5\text{ m}$)</td>
+            <td>$\pm 5\text{ meters}$</td>
+            <td>Global land ($82^\circ\text{N} - 82^\circ\text{S}$); 2006–2011</td>
+          </tr>
+          <tr>
+            <td><strong>Copernicus DEM (ESA)</strong></td>
+            <td>Edited TanDEM-X InSAR</td>
+            <td>$30\text{ m}$ (GLO-30) / $90\text{ m}$ (GLO-90)</td>
+            <td>$\pm 4\text{ meters}$</td>
+            <td>Global pole-to-pole; Released 2020</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> What was the physical length of the deployable mast deployed from Space Shuttle <em>Endeavour</em> during SRTM?
+          <div class="pq-ans">✔ Correct Answer: 60 meters (197 feet).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The 60-meter mast separated the primary radar antenna inside the cargo bay from the outboard antenna, establishing the physical baseline ($B$) necessary to measure interferometric phase differences.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What two radar microwave frequency bands were simultaneously flown on SRTM?
+          <div class="pq-ans">✔ Correct Answer: C-band ($\lambda = 5.6\text{ cm}$, by NASA/JPL) and X-band ($\lambda = 3.1\text{ cm}$, by DLR/ASI).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The C-band radar operated with ScanSAR mode to cover wide swaths ($225\text{ km}$), while the German/Italian X-band radar operated in high-resolution stripmap mode ($50\text{ km}$ swath).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is the difference between a <em>Digital Surface Model (DSM)</em> and a <em>Digital Terrain Model (DTM)</em>, and which one does SRTM naturally produce?
+          <div class="pq-ans">✔ Correct Answer: A DSM includes vegetation canopy tops and buildings; a DTM represents bare ground elevation. SRTM radar reflects off the upper tree canopy and is inherently a DSM.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because C-band microwaves ($\lambda = 5.6\text{ cm}$) scatter off forest foliage and tree branches, SRTM elevations in forested terrain are offset upward above bare Earth by a significant fraction of tree height.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> Why does SRTM data contain "voids" (no-data gaps) in steep mountainous terrain (e.g., the Himalayas)?
+          <div class="pq-ans">✔ Correct Answer: Due to radar shadow and extreme layover where steep slopes face away from or directly toward the radar antenna.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Extreme geometric distortion prevents phase unwrapping in steep relief, creating voids that have since been filled in Version 3 (SRTM Plus) using ASTER GDEM and topographic maps.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> In radar interferometry, what is the <em>altitude of ambiguity ($h_a$)</em>?
+          <div class="pq-ans">✔ Correct Answer: The vertical elevation change that produces exactly one full $2\pi$ ($360^\circ$) interferometric phase cycle ($h_a = \frac{\lambda R \sin\theta}{B_{\perp}}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Shorter baselines have larger altitude of ambiguity (easier to unwrap phase but lower height precision); longer baselines have smaller $h_a$ (higher height precision but difficult phase unwrapping).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What mathematical process converts a cyclic, wrapped interferometric phase map ($-\pi$ to $+\pi$) into continuous, absolute terrain elevation?
+          <div class="pq-ans">✔ Correct Answer: Phase Unwrapping (e.g., Minimum Cost Flow or Branch-Cut algorithms).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because radar phase is measured modulo $2\pi$, phase unwrapping integrates phase gradients across the interferogram to resolve the integer number of $2\pi$ phase cycles for every pixel.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is <em>DInSAR (Differential InSAR)</em>, and what geophysical phenomena can it measure with millimeter-level precision?
+          <div class="pq-ans">✔ Correct Answer: Subtracting topographic phase from repeat-pass interferograms to measure surface crustal displacement from earthquakes, volcanic inflation, and land subsidence.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> DInSAR eliminates stationary topography, isolating tiny sub-centimeter line-of-sight surface deformations between satellite overpasses.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why did SRTM not acquire topographic data over the polar ice caps of Greenland and Antarctica?
+          <div class="pq-ans">✔ Correct Answer: The Space Shuttle *Endeavour* had an orbital inclination of $57.0^\circ$, physically limiting ground coverage to between $60^\circ\text{N}$ and $56^\circ\text{S}$ latitudes.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The shuttle's launch azimuth from Cape Canaveral constrained orbital inclination to $57^\circ$, leaving the high polar latitudes to be mapped later by polar satellites like CryoSat-2 and TanDEM-X.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

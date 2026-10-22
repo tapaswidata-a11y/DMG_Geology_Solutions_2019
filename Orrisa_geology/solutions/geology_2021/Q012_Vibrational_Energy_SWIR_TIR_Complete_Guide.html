@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q12: Spectroscopy & Molecular Vibrational Energy in SWIR and TIR Bands | OPSC Geology 2021 Masterclass</title>
+<title>Q012: Quantum Molecular Energy States: SWIR & TIR Vibrational Transitions | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,252 +89,546 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q12" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Remote Sensing & Spectroscopy</div>
-    <h1>Q12: Spectroscopy & Molecular Vibrational Energy in SWIR and TIR Bands</h1>
+    <h1>Q012: Quantum Molecular Energy States: SWIR & TIR Vibrational Transitions</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Lillesand et al. (Remote Sensing, Ch. 1 & 8); Roger N. Clark (USGS Spectroscopy of Rocks & Minerals); White (Geochemistry)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 12<br>
+<strong>Authoritative References:</strong> Roger N. Clark, <em>Spectroscopy of Rocks and Minerals, and Principles of Spectroscopy</em> (USGS Manual, 1999); Floyd F. Sabins, <em>Remote Sensing: Principles and Interpretation</em> (3rd Ed., Ch. 4: Mineral Exploration, pp. 88–95); John R. Jensen, <em>Remote Sensing of the Environment</em> (Ch. 13); Hunt, G.R. (1977, <em>Spectral signatures of particulate minerals</em>, Geophysics, 42, pp. 501–513).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>12.1 Electronic vs. Vibrational Transitions Across the Electromagnetic Spectrum</h3>
-        <p>In optical remote sensing and mineral spectroscopy (Clark, 1999, <i>USGS Spectroscopy of Rocks and Minerals</i>; Lillesand, Kiefer & Chipman, Ch. 1 & 8; White, <i>Geochemistry</i>, Ch. 13), electromagnetic radiation interacts with matter via two fundamental physical mechanisms:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Energy Transition Type</th>
-                <th>Electromagnetic Spectral Domain</th>
-                <th>Physical Mechanism & Diagnostic Geological Absorption</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Electronic Transitions</b></td>
-                <td><b>UV, Visible & Near-Infrared (VNIR: $0.2 - 1.0\ \mu\text{m}$)</b></td>
-                <td>Valence electrons jump between orbital states. Crystal field effects ($d-d$ transitions in $Fe^{2+}, Fe^{3+}, Cr^{3+}$), charge transfer (iron-oxygen charge transfer in hematite, goethite), and conduction bands.</td>
-              </tr>
-              <tr>
-                <td><b>Molecular Vibrational Energy (Fundamental & Overtones)</b></td>
-                <td><b>Short-Wave Infrared (SWIR: $1.4 - 2.5\ \mu\text{m}$) & Thermal Infrared (TIR: $8.0 - 14.0\ \mu\text{m}$)</b></td>
-                <td><b>Stretching and bending vibrations of interatomic chemical bonds</b>:
-                <br>• SWIR: Overtones and combination vibrational modes of $Al-OH$ ($2.20\ \mu\text{m}$), $Mg-OH$ ($2.31\ \mu\text{m}$), and $CO_3^{2-}$ ($2.35\ \mu\text{m}$).
-                <br>• TIR: Fundamental $Si-O-Si$ asymmetric stretching (Reststrahlen bands, $8.5 - 12\ \mu\text{m}$) and kinetic molecular thermal emission.</td>
-              </tr>
-              <tr>
-                <td><b>Rotational Transitions</b></td>
-                <td>Microwave & Far-Infrared ($> 100\ \mu\text{m}$)</td>
-                <td>Pure rotational energy level transitions in free gas molecules.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>12.2 Quantum Harmonic Oscillator Mechanics</h3>
-        <p>The vibrational frequency $(\nu)$ of a diatomic chemical bond is governed by Hooke's spring law and reduced mass $(\mu)$:</p>
-        $$\nu = \frac{1}{2\pi} \sqrt{\frac{k}{\mu}}, \quad \text{where } \mu = \frac{m_1 m_2}{m_1 + m_2}$$
-        <p>The energy associated with vibrational quantum transitions $(\Delta E = h\nu)$ corresponds precisely to photon wavelengths in the <b>SWIR and TIR regions</b> of the spectrum.</p>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q12/swir_tir_vibrational_spectroscopy.png" alt="SWIR-TIR Mineral Vibrational Spectroscopy">
-      <figcaption>
-        <strong>Figure 12.1: Vibrational and Reststrahlen Spectroscopy in the Shortwave Infrared (SWIR: 1.0–2.5 $\mu	ext{m}$) and Thermal Infrared (TIR: 8.0–14.0 $\mu	ext{m}$).</strong> Diagnostic Al-OH overtone absorption features at $2.20\,\mu	ext{m}$ (kaolinite, illite) and Si-O asymmetric stretching reststrahlen bands in thermal infrared for quartz and feldspar mapping.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: QUANTUM ENERGY STATES & THE EMS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Quantum Energy States & Spectral Transitions Across the EMS</div>
+    <div class="card-body">
+      <p>When electromagnetic radiation interacts with matter, photons are selectively absorbed at resonant frequencies corresponding to discrete quantum energy transitions within atoms, crystal lattices, and molecules. In optical remote sensing and mineral spectroscopy (Hunt, 1977; Clark, 1999), radiation is partitioned into fundamental physical interaction domains:</p>
+
+      <ul>
+        <li><strong>Electronic Transitions (UV, Visible, & NIR: $0.1 - 1.0\ \mu\text{m}$):</strong> Transitions of valence electrons between discrete atomic orbitals (crystal field splitting, charge transfer, conduction band transitions). Examples: $\text{Fe}^{2+}$ and $\text{Fe}^{3+}$ absorption bands in iron oxides (hematite, goethite) at $0.85 - 0.95\ \mu\text{m}$.</li>
+        <li><strong>Vibrational Transitions (SWIR & TIR: $1.4 - 14.0\ \mu\text{m}$):</strong> Mechanical stretching and bending vibrations of covalent chemical bonds within molecular radicals (e.g., $\text{O-H}, \text{Al-OH}, \text{Mg-OH}, \text{CO}_3^{2-}, \text{Si-O}$). Fundamental vibrations occur in the Thermal Infrared (TIR, $8 - 14\ \mu\text{m}$), while their overtone and combination modes occur in the Short-Wave Infrared (SWIR, $1.4 - 2.5\ \mu\text{m}$).</li>
+        <li><strong>Rotational Transitions (Far-IR & Microwave: $> 100\ \mu\text{m} - 1\text{ m}$):</strong> End-over-end rotational motions of free dipolar gaseous molecules (e.g., water vapor rotations in the microwave band).</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Quantum Harmonic Oscillator Energy Equation</div>
+        $$E_v = \left(v + \frac{1}{2}\right) h \nu_0 = \left(v + \frac{1}{2}\right) \frac{h}{2\pi} \sqrt{\frac{k}{\mu}}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $v$ is vibrational quantum number, $h$ is Planck's constant, $k$ is interatomic chemical bond force constant, and $\mu = \frac{m_1 m_2}{m_1 + m_2}$ is reduced mass. Bond vibrations require infrared photon energies.</p>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q12/swir_tir_vibrational_spectroscopy.png" alt="SWIR and TIR Vibrational Spectroscopy Transitions">
+        <div class="tb-caption">
+          <strong>Figure 12.1: Quantum Energy Transitions Across the Electromagnetic Spectrum.</strong> Illustrates electronic orbital transitions in the UV-VNIR, overtone/combination vibrational bands in the SWIR ($1.4 - 2.5\ \mu\text{m}$), and fundamental vibrational reststrahlen bands in the TIR ($8 - 14\ \mu\text{m}$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: SWIR OVERTONES & MINERAL SPECTRAL MAPPING -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. SWIR Vibrational Overtones ($1.4 - 2.5\ \mu\text{m}$) in Mineral Exploration</div>
+    <div class="card-body">
+      <p>The Short-Wave Infrared (SWIR, $1.4 - 2.5\ \mu\text{m}$) region is the most critical window in geological remote sensing for hydrothermal alteration mapping:</p>
+
+      <ul>
+        <li><strong>Al-OH Minerals (Phyllic Alteration):</strong> Illite, muscovite, kaolinite, and pyrophyllite display diagnostic vibrational absorption doublets at <strong>$2.20\ \mu\text{m}$</strong> due to combination stretching and bending of aluminum-hydroxyl bonds.</li>
+        <li><strong>Mg-OH Minerals (Propylitic Alteration):</strong> Chlorite, epidote, and talc display sharp vibrational absorption features at <strong>$2.30 - 2.35\ \mu\text{m}$</strong> due to magnesium-hydroxyl vibrations.</li>
+        <li><strong>Carbonates ($\text{CO}_3^{2-}$):</strong> Calcite and dolomite show intense asymmetric stretching overtones at <strong>$2.33\ \mu\text{m}$</strong> and $2.50\ \mu\text{m}$.</li>
+      </ul>
+
+      <div class="quote-box">
+        "Vibrational processes produce absorption bands in the short-wave infrared (SWIR, 1.3 to 2.5 $\mu$m) and thermal infrared (TIR, 8 to 14 $\mu$m). In the SWIR, overtones and combination tones of OH, H2O, CO3, and Al-OH or Mg-OH bonds allow precise identification of clay and carbonate minerals."
+        <span class="quote-ref">— Floyd F. Sabins, <em>Remote Sensing: Principles and Interpretation</em> (3rd Ed., 1997, p. 89)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: TIR FUNDAMENTAL RESTSTRAHLEN BANDS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. TIR Fundamental Vibrations ($8 - 14\ \mu\text{m}$): The Reststrahlen Band</div>
+    <div class="card-body">
+      <p>In the Thermal Infrared (TIR, $8 - 14\ \mu\text{m}$), fundamental stretching vibrations of silicon-oxygen ($\text{Si-O-Si}$) tetrahedral bonds produce intense reflectance peaks accompanied by emissivity minima known as <strong>Reststrahlen bands</strong>:</p>
+      <ul>
+        <li><strong>Silica Polymerization Shift:</strong> In quartz and felsic rocks (framework silicates), the reststrahlen minimum occurs around $8.5 - 9.0\ \mu\text{m}$. In mafic and ultramafic rocks (isolated tetrahedral olivine, pyroxene), it shifts systematically to longer wavelengths ($10.5 - 11.5\ \mu\text{m}$), allowing direct mapping of rock lithology using ASTER thermal bands.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q12. The vibrational energy of an object is associated with the _____ of the electromagnetic spectrum.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> UV and Photo UV region</div>
-        <div class="opt-item correct"><strong>(B)</strong> SWIR and TIR region</div>
-        <div class="opt-item "><strong>(C)</strong> Visible and NIR region</div>
-        <div class="opt-item "><strong>(D)</strong> Microwave and Radio wave region</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 12)</div>
+    <div class="q-stmt">
+      Q12. The vibrational energy of an object is associated with the _____ of the electromagnetic spectrum.
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) UV and Photo UV region</div>
+      <div class="raw-opt correct">(B) SWIR and TIR region &nbsp;✔</div>
+      <div class="raw-opt">(C) Visible and NIR region</div>
+      <div class="raw-opt">(D) Microwave and Radio wave region</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) SWIR and TIR region</div>
+      <div class="sub">
+        In molecular spectroscopy and remote sensing, <strong>vibrational energy transitions</strong> (bond stretching and bending of $\text{O-H}, \text{Al-OH}, \text{Mg-OH}, \text{CO}_3$, and $\text{Si-O}$) are strictly associated with the <strong>Short-Wave Infrared (SWIR: $1.4 - 2.5\ \mu\text{m}$)</strong> and <strong>Thermal Infrared (TIR: $8 - 14\ \mu\text{m}$)</strong> regions.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) SWIR and TIR region</b> — Molecular vibrational modes (fundamental stretching/bending and combination overtones of $Si-O$, $O-H$, $C-O$ bonds) are uniquely associated with the <b>SWIR and TIR regions</b> of the electromagnetic spectrum.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) UV and Photo UV region — INCORRECT:</b> Governed by high-energy electronic transitions and photo-ionization, not vibrational modes.</li>
-          <li><b>(B) SWIR and TIR region — CORRECT:</b> SWIR ($1.4 - 2.5\ \mu\text{m}$) features overtone/combination vibrational bands, and TIR ($8 - 14\ \mu\text{m}$) features fundamental bond-stretching vibrations and thermal emissions.</li>
-          <li><b>(C) Visible and NIR region — INCORRECT:</b> Dominated by crystal field electronic transitions ($Fe^{2+}/Fe^{3+}$) and chlorophyll $\pi$-electron orbital excitation.</li>
-          <li><b>(D) Microwave and Radio wave region — INCORRECT:</b> Associated with rotational states and magnetic dipole spin flips (e.g. 21-cm hydrogen line), possessing far too low photon energy for vibrational bond excitations.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) UV and Photo UV region</span>
+      <span class="tag wrong">Incorrect (High-Energy Electronic Ionization Transitions)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The ultraviolet ($< 0.40\ \mu\text{m}$) region contains exceptionally high photon energies ($E = h\nu = 3.1 - 100\text{ eV}$) that drive deep valence electron excitation, photo-ionization, and molecular dissociation—not mechanical vibrational bond oscillations.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) SWIR and TIR region</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Molecular vibrational bonds have resonant frequencies whose energy quanta precisely match infrared photons. The fundamental bending and stretching vibrational modes occur directly in the Thermal Infrared (TIR, $8 - 14\ \mu\text{m}$), while their overtone and combination vibrational modes dominate the Short-Wave Infrared (SWIR, $1.4 - 2.5\ \mu\text{m}$).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Visible and NIR region</span>
+      <span class="tag wrong">Incorrect (Electronic Orbital Transitions)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Spectral features in the Visible ($0.4 - 0.7\ \mu\text{m}$) and Near-Infrared ($0.7 - 1.1\ \mu\text{m}$) regions are driven by <em>electronic processes</em>, such as crystal-field transitions in transition metal cations ($\text{Fe}^{2+}, \text{Fe}^{3+}$ in iron oxides) and chlorophyll pigment absorption in green leaves.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Microwave and Radio wave region</span>
+      <span class="tag wrong">Incorrect (Low-Energy Rotational & Macroscopic Interactions)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Microwave and radio waves have very low photon energies ($< 10^{-4}\text{ eV}$), which correspond to end-over-end molecular rotation in free gases or macroscopic surface scattering and dielectric interactions, lacking sufficient energy to excite interatomic vibrational modes.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Mineral Spectroscopy Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 12: Hydrothermal Alteration Mapping in SWIR</div>
-          <p>Which diagnostic vibrational absorption feature in the SWIR spectrum ($2.20\ \mu\text{m}$) allows exploration geologists to identify clay minerals like kaolinite and alunite in copper-gold porphyry systems?</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <p>The combination overtone of the <b>$Al-OH$ bond stretching + $Al-OH$ bending vibration</b> occurs at precisely $2.20\ \mu\text{m}$. Kaolinite produces a diagnostic doublet ($2.16\ \mu\text{m}$ and $2.20\ \mu\text{m}$), whereas alunite exhibits absorption at $2.17\ \mu\text{m}$.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Quantum Spectrum Matrix: Energy States vs. Spectral Windows</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Spectral Region</th>
+            <th>Wavelength Range ($\lambda$)</th>
+            <th>Primary Quantum / Physical Mechanism</th>
+            <th>Diagnostic Geological & Remote Sensing Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ultraviolet (UV)</strong></td>
+            <td>$0.01 - 0.40\ \mu\text{m}$</td>
+            <td>Outer electron excitation, photo-ionization</td>
+            <td>Atmospheric ozone absorption; carbonate fluorescence</td>
+          </tr>
+          <tr>
+            <td><strong>Visible & NIR (VNIR)</strong></td>
+            <td>$0.40 - 1.10\ \mu\text{m}$</td>
+            <td><strong>Electronic transitions</strong>, crystal field splitting</td>
+            <td>Chlorophyll absorption ($0.45, 0.65\ \mu\text{m}$); $\text{Fe}^{3+}$ hematite absorption ($0.86\ \mu\text{m}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Short-Wave Infrared (SWIR)</strong></td>
+            <td><strong>$1.40 - 2.50\ \mu\text{m}$</strong></td>
+            <td><strong>Vibrational overtones & combination modes</strong></td>
+            <td><strong>Al-OH clays ($2.20\ \mu\text{m}$); Mg-OH chlorite ($2.32\ \mu\text{m}$); $\text{CO}_3^{2-}$ carbonates</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Thermal Infrared (TIR)</strong></td>
+            <td><strong>$8.0 - 14.0\ \mu\text{m}$</strong></td>
+            <td><strong>Fundamental molecular bond stretching/bending</strong></td>
+            <td><strong>$\text{Si-O-Si}$ Reststrahlen band; quartz/silicate differentiation; surface kinetic temp</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Microwave</strong></td>
+            <td>$1.0\text{ mm} - 1.0\text{ m}$</td>
+            <td>Molecular rotation; macroscopic dielectric polarization</td>
+            <td>SAR backscatter; soil moisture dielectric constant ($\epsilon_r$); surface roughness</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> Which specific molecular bond combination causes the diagnostic $2.20\ \mu\text{m}$ absorption band in illite, kaolinite, and muscovite?
+          <div class="pq-ans">✔ Correct Answer: The combination of the $\text{Al-O-H}$ bending fundamental with the $\text{O-H}$ stretching fundamental.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The fundamental $\text{O-H}$ stretch occurs at $\sim 2.7\ \mu\text{m}$ and the $\text{Al-OH}$ bend at $\sim 11\ \mu\text{m}$; their quantum mechanical combination produces the diagnostic $2.20\ \mu\text{m}$ overtone used globally to map phyllic alteration.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a <em>Reststrahlen band</em> in thermal infrared spectroscopy?
+          <div class="pq-ans">✔ Correct Answer: A sharp fundamental reflectance peak (emissivity trough) caused by resonant mechanical vibration of $\text{Si-O}$ crystal lattices.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Coined from the German for "residual rays", Reststrahlen bands occur between $8.5 - 12\ \mu\text{m}$ where resonant silicate vibrations prevent photon transmission, maximizing specular reflectance and producing an emissivity minimum.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> How does the position of the Reststrahlen minimum shift from felsic (granitic) to ultramafic (peridotitic) rocks?
+          <div class="pq-ans">✔ Correct Answer: It shifts systematically from shorter wavelengths ($\sim 8.5\ \mu\text{m}$ in quartz) to longer wavelengths ($\sim 11.0\ \mu\text{m}$ in olivine).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Highly polymerized framework silicates (quartz, feldspar) have stronger, stiffer bond networks than isolated $\text{SiO}_4$ tetrahedra, shifting resonant vibrational frequencies to higher energy (shorter wavelengths).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> Why do liquid water and water vapor produce broad absorption bands at $1.4\ \mu\text{m}$ and $1.9\ \mu\text{m}$?
+          <div class="pq-ans">✔ Correct Answer: Overtones and combination modes of the asymmetric stretch ($\nu_3$) and bending ($\nu_2$) of the water molecule ($\text{H}_2\text{O}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Free water molecules have fundamental vibrations at $2.66\ \mu\text{m}$ ($\nu_1$), $6.27\ \mu\text{m}$ ($\nu_2$), and $2.74\ \mu\text{m}$ ($\nu_3$). The $1.9\ \mu\text{m}$ band is the combination $\nu_2 + \nu_3$, while $1.4\ \mu\text{m}$ is the first overtone of $\text{O-H}$ stretching.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> In satellite multispectral imaging, which ASTER sensor subsystems cover the vibrational absorption bands?
+          <div class="pq-ans">✔ Correct Answer: The SWIR subsystem (Bands 4–9: $1.60 - 2.43\ \mu\text{m}$) and TIR subsystem (Bands 10–14: $8.125 - 11.65\ \mu\text{m}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> ASTER was specifically engineered with 6 contiguous SWIR bands to resolve clay/carbonate overtones and 5 TIR bands to resolve silicate Reststrahlen features.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What quantum transition explains why hematite ($\alpha\text{-Fe}_2\text{O}_3$) appears red in the visible spectrum and displays a broad reflectance trough around $0.86\ \mu\text{m}$?
+          <div class="pq-ans">✔ Correct Answer: Electronic crystal field splitting of the $3d$ orbital energy levels of the ferric ion ($\text{Fe}^{3+}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Electric fields from surrounding oxygen ligands split the $3d$ electron orbitals, absorbing green and blue photons ($^6A_1 \to\ ^4T_1, ^4T_2$), while reflecting red photons.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Why can remote sensors not observe ground vibrational features in the $5.5 - 7.5\ \mu\text{m}$ spectral region?
+          <div class="pq-ans">✔ Correct Answer: Severe atmospheric opacity caused by the fundamental bending vibration ($\nu_2$) of atmospheric water vapor centered at $6.27\ \mu\text{m}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> This region is a complete atmospheric absorption window closure, where solar and terrestrial radiation cannot penetrate to or from the ground.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> How does the spectral signature of calcite ($\text{CaCO}_3$) differ from dolomite ($\text{CaMg}(\text{CO}_3)_2$) in the SWIR vibrational band?
+          <div class="pq-ans">✔ Correct Answer: Calcite absorbs at $2.335\ \mu\text{m}$, while dolomite absorbs at a slightly shorter wavelength of $2.315\ \mu\text{m}$ due to magnesium cation substitution.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Smaller $\text{Mg}^{2+}$ ions increase the interatomic bond force constant, shifting the carbonate vibrational combination band toward shorter wavelengths.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

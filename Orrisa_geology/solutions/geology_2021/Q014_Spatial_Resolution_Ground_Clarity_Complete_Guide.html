@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q14: Spatial Resolution & Geometric Ground Clarity in Remote Sensing | OPSC Geology 2021 Masterclass</title>
+<title>Q014: Sensor Resolution Hierarchy: Spatial, Spectral, Temporal & Radiometric | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,254 +89,544 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q14" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Remote Sensing & Image Quality</div>
-    <h1>Q14: Spatial Resolution & Geometric Ground Clarity in Remote Sensing</h1>
+    <h1>Q014: Sensor Resolution Hierarchy: Spatial, Spectral, Temporal & Radiometric</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Lillesand, Kiefer & Chipman (Remote Sensing & Image Interpretation, Ch. 1, pp. 30-35)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 14<br>
+<strong>Authoritative References:</strong> Thomas M. Lillesand, Ralph W. Kiefer & Jonathan W. Chipman, <em>Remote Sensing and Image Interpretation</em> (7th Ed., Ch. 1, pp. 32–37); John R. Jensen, <em>Remote Sensing of the Environment</em> (2nd Ed., pp. 12–22); Paul R. Wolf, Bon A. Dewitt & Benjamin E. Wilkinson, <em>Elements of Photogrammetry with Applications in GIS</em> (4th Ed., McGraw-Hill).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>14.1 The Four Fundamental Resolutions in Remote Sensing</h3>
-        <p>In digital image processing (Lillesand, Kiefer & Chipman, <i>Remote Sensing</i>, Ch. 1, pp. 30–35), sensor performance is defined by four orthogonal resolutions:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Resolution Dimension</th>
-                <th>Physical Definition & Governing Metric</th>
-                <th>Primary Impact on Image Utility</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Spatial Resolution</b></td>
-                <td><b>Size of the smallest ground area recorded by a detector (Instantaneous Field of View, IFOV; Ground Sampling Distance, GSD)</b></td>
-                <td><b>Clarity, geometric discernibility, and edge sharpness of ground objects</b></td>
-              </tr>
-              <tr>
-                <td><b>Spectral Resolution</b></td>
-                <td>Width and number of discrete wavelength bands recorded across the electromagnetic spectrum ($\Delta \lambda$)</td>
-                <td>Ability to discriminate distinct rock types, minerals, and chemical compositions</td>
-              </tr>
-              <tr>
-                <td><b>Radiometric Resolution</b></td>
-                <td>Bit-depth sensitivity to subtle differences in radiance intensity ($8\text{-bit} = 256$, $12\text{-bit} = 4096$)</td>
-                <td>Contrast sensitivity in deep shadow and bright snow/salt domains</td>
-              </tr>
-              <tr>
-                <td><b>Temporal Resolution</b></td>
-                <td>Revisit period between consecutive image acquisitions over the same geographic location</td>
-                <td>Monitoring dynamic seasonal changes, floods, landslides, and volcanic eruptions</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>14.2 Ground Sampling Distance (GSD) & Nyquist Criterion</h3>
-        <p>The ground clarity of an object requires that its dimension exceeds approximately <b>$2.0 \times \text{GSD}$</b> (the two-dimensional Nyquist sampling limit) to be reliably resolved and identified without spatial aliasing.</p>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q14/spatial_resolution_ifov_gsd.png" alt="Sensor IFOV and Ground Sampling Distance Geometry">
-      <figcaption>
-        <strong>Figure 14.1: Optical Sensor Geometric Relations: Instantaneous Field of View (IFOV) and Ground Sampling Distance (GSD).</strong> Nadir optical ray trace showing how sensor altitude ($H$) and angular pixel aperture ($eta$) dictate ground footprint: $GSD = 2 H 	an(eta / 2) pprox H 	imes eta$.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: THE FOUR RESOLUTIONS OF REMOTE SENSING -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Four Fundamental Resolutions of Remote Sensing</div>
+    <div class="card-body">
+      <p>The capability of an imaging sensor to capture and discriminate ground features is governed by the <strong>Four Fundamental Resolutions</strong> of remote sensing (Lillesand et al., 2015; Jensen, 2007):</p>
+
+      <ul>
+        <li><strong>(A) Spatial Resolution:</strong> The measure of the smallest angular or linear separation between two objects that can be resolved by the sensor, dictating the <strong>clarity, sharpness, and spatial detail of ground objects</strong>. It is quantitatively represented by the Instantaneous Field of View (IFOV) and the Ground Sampling Distance (GSD).</li>
+        <li><strong>(B) Spectral Resolution:</strong> The number and width of spectral bands in the electromagnetic spectrum recorded by the sensor (e.g., panchromatic vs. multispectral vs. hyperspectral). It governs the ability to discriminate materials by their absorption signatures.</li>
+        <li><strong>(C) Temporal Resolution:</strong> The revisit time or frequency at which a satellite sensor images the exact same geographic location (e.g., 16 days for Landsat, 5 days for Sentinel-2, 15 minutes for INSAT-3D).</li>
+        <li><strong>(D) Radiometric Resolution:</strong> The sensitivity of the detector to subtle differences in radiant energy flux, expressed as quantization bit depth (e.g., 8-bit = 256 gray levels; 12-bit = 4096 levels; 14-bit = 16,384 levels).</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Ground Sampling Distance (GSD) & IFOV Geometry</div>
+        $$D = H' \times \beta = H' \times \frac{d}{f}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $D$ is ground spatial resolution (GSD), $H'$ is flying height above ground level, $\beta$ is instantaneous field of view in radians, $d$ is physical detector element dimension, and $f$ is focal length of the optics.</p>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q14/spatial_resolution_ifov_gsd.png" alt="Spatial Resolution IFOV and GSD Geometry">
+        <div class="tb-caption">
+          <strong>Figure 14.1: Spatial Resolution and Ground Clarity.</strong> Relationship between sensor Instantaneous Field of View ($\beta$), altitude ($H$), and Ground Sampling Distance (GSD), demonstrating that smaller pixel footprints directly enhance ground object clarity.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: GROUND CLARITY & RAYLEIGH CRITERION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Physical Determinants of Ground Object Clarity</div>
+    <div class="card-body">
+      <p>The visual "clarity" or geometric sharpness of an object in satellite imagery depends strictly on whether the object's spatial dimensions exceed the sensor's ground resolution element:</p>
+
+      <ul>
+        <li><strong>Sub-Pixel Mixing:</strong> If an object is smaller than the spatial resolution cell (e.g., a $5\text{ m}$ road inside a $30\text{ m}$ Landsat pixel), its radiance is averaged with surrounding soil and vegetation, losing all geometric clarity (a "mixed pixel").</li>
+        <li><strong>Nyquist Sampling Criterion:</strong> To reliably detect and identify a geometric target (such as a building or fault trace), the spatial resolution must be at least <strong>twice as fine</strong> as the target dimension ($GSD \le \frac{1}{2} L_{\text{object}}$).</li>
+        <li><strong>Diffraction-Limited Resolution:</strong> By the Rayleigh optical criterion, angular resolution $\theta = 1.22 \frac{\lambda}{D_{\text{aperture}}}$. Achieving sharper ground clarity requires larger telescope apertures ($D_{\text{aperture}}$) or lower orbital altitudes ($H$).</li>
+      </ul>
+
+      <div class="quote-box">
+        "Spatial resolution is an indication of how well a sensor can resolve small objects on the ground. Images where only large features are distinguishable have coarse or low spatial resolution; images where small objects can be identified have fine or high spatial resolution."
+        <span class="quote-ref">— Thomas M. Lillesand et al., <em>Remote Sensing and Image Interpretation</em> (7th Ed., 2015, p. 32)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: RESOLUTION TRADE-OFF TRIANGLE -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. The Engineering Trade-off: Spatial vs. Spectral vs. Temporal</div>
+    <div class="card-body">
+      <p>In satellite sensor design, physics imposes a fundamental trade-off governed by data rate and optical signal-to-noise ratio ($SNR$):</p>
+      <ul>
+        <li>Fine spatial resolution (e.g., WorldView-3 at $0.3\text{ m}$) requires collecting photons from a tiny ground area, forcing bands to be spectrally broad (panchromatic) to capture sufficient photons.</li>
+        <li>Fine spectral resolution (e.g., AVIRIS hyperspectral with 224 narrow $10\text{ nm}$ bands) requires larger spatial pixels ($20\text{ m}$) to gather sufficient photons per band.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q14. Clarity of ground object will depend upon :</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Spatial Resolution</div>
-        <div class="opt-item "><strong>(B)</strong> Spectral Resolution</div>
-        <div class="opt-item "><strong>(C)</strong> Temporal Resolution</div>
-        <div class="opt-item "><strong>(D)</strong> Radiometric Resolution</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 14)</div>
+    <div class="q-stmt">
+      Q14. Clarity of ground object will depend upon :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) Spatial Resolution &nbsp;✔</div>
+      <div class="raw-opt">(B) Spectral Resolution</div>
+      <div class="raw-opt">(C) Temporal Resolution</div>
+      <div class="raw-opt">(D) Radiometric Resolution</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) Spatial Resolution</div>
+      <div class="sub">
+        The geometric clarity, boundary definition, and spatial sharpness of ground objects in remote sensing imagery are directly governed by the sensor's <strong>Spatial Resolution</strong> (ground pixel footprint size / GSD).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) Spatial Resolution</b> — The clarity, sharpness, and geometric recognizability of individual ground objects on an image depends directly upon its <b>Spatial Resolution</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Spatial Resolution — CORRECT:</b> Directly dictates the minimum ground sampling distance and resolving power of individual spatial objects.</li>
-          <li><b>(B) Spectral Resolution — INCORRECT:</b> Governs the ability to identify chemical composition and absorption bands, not geometric sharpness.</li>
-          <li><b>(C) Temporal Resolution — INCORRECT:</b> Governs the frequency of overpasses (revisit interval), not image clarity.</li>
-          <li><b>(D) Radiometric Resolution — INCORRECT:</b> Governs brightness quantization and bit depth, not ground detail size.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) Spatial Resolution</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Spatial resolution specifies the smallest physical dimension on the ground that can be resolved as an independent image pixel. Finer spatial resolution (e.g., $0.5\text{ m}$ vs. $30\text{ m}$) yields crisp, sharp object boundaries, allowing fine features like roads, buildings, drainage rills, and fault scarps to be identified with complete visual clarity.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Spectral Resolution</span>
+      <span class="tag wrong">Incorrect (Governs Compositional Discrimination, Not Geometric Clarity)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Spectral resolution refers to the bandwidth and number of spectral channels. High spectral resolution allows an analyst to differentiate between subtle rock types or minerals (e.g., kaolinite vs. illite), but does not make a blurred spatial shape appear geometrically sharp.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Temporal Resolution</span>
+      <span class="tag wrong">Incorrect (Governs Revisit Frequency)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Temporal resolution is the revisit frequency of the satellite (e.g., daily vs. every 16 days). It controls how frequently a dynamic phenomenon (flood, crop growth) can be monitored over time, but has zero influence on the geometric spatial clarity of a single image.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Radiometric Resolution</span>
+      <span class="tag wrong">Incorrect (Governs Gray-Level Brightness Sensitivity)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Radiometric resolution measures the detector's sensitivity to subtle brightness variations (bit depth: 8-bit, 12-bit). While higher bit depth prevents saturation in bright clouds or dark shadows, it cannot resolve features smaller than the spatial pixel footprint.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Photogrammetric Resolution Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 14: Ground Sampling Distance (GSD) Calculation</div>
-          <p>An airborne aerial camera with focal length $f = 150\text{ mm}$ flies at an altitude of $H = 3,000\text{ m}$ above mean terrain. If the physical detector pixel pitch is $p = 6.0\ \mu\text{m}$, calculate the Ground Sampling Distance (GSD).</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            $$\text{GSD} = p \cdot \frac{H}{f} = (6.0 \times 10^{-6}\text{ m}) \cdot \frac{3000\text{ m}}{0.150\text{ m}} = 6.0 \times 10^{-6} \times 20,000 = 0.12\text{ m} = 12\text{ cm}$$
-            <p>The spatial resolution of the camera at this flying height is <b>$12\text{ cm}$</b> per pixel.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">The Four Dimensions of Remote Sensing Resolution Matrix</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Resolution Type</th>
+            <th>Governing Metric</th>
+            <th>What It Controls in Image Analysis</th>
+            <th>Comparison Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Spatial Resolution</strong></td>
+            <td><strong>Ground Sampling Distance (GSD) / IFOV</strong></td>
+            <td><strong>Geometric clarity, spatial sharpness, boundary definition</strong></td>
+            <td>WorldView-3 ($0.3\text{ m}$) vs. Landsat-8 ($30\text{ m}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Spectral Resolution</strong></td>
+            <td>Number of bands & band-width ($\Delta \lambda$)</td>
+            <td>Material discrimination, chemical/mineral spectroscopy</td>
+            <td>Panchromatic ($1$ band) vs. Hyperspectral ($> 200$ bands)</td>
+          </tr>
+          <tr>
+            <td><strong>Radiometric Resolution</strong></td>
+            <td>Quantization bit depth ($2^n$ gray levels)</td>
+            <td>Contrast sensitivity, shadow penetration, radiometric precision</td>
+            <td>8-bit ($256$ levels) vs. 14-bit ($16,384$ levels)</td>
+          </tr>
+          <tr>
+            <td><strong>Temporal Resolution</strong></td>
+            <td>Revisit cycle / repeat period</td>
+            <td>Change detection frequency, disaster monitoring, phenology</td>
+            <td>MODIS ($1 - 2\text{ days}$) vs. Landsat ($16\text{ days}$)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> An aerial mapping camera with a focal length $f = 152.4\text{ mm}$ and a CCD pixel pitch $d = 6.0\ \mu\text{m}$ flies at an altitude $H' = 1524\text{ m}$ above the terrain. Calculate the theoretical Ground Sampling Distance (GSD).
+          <div class="pq-ans">✔ Worked Answer: $\text{GSD} = 0.060\text{ m}$ ($6.0\text{ cm}$).</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\text{Scale Factor } S_f = \frac{H'}{f} = \frac{1524\text{ m}}{0.1524\text{ m}} = 10,000$$<br>
+            $$\text{GSD} = d \times S_f = (6.0 \times 10^{-6}\text{ m}) \times 10,000 = 0.060\text{ m} = 6.0\text{ cm}$$
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a <em>mixed pixel (mixel)</em>, and how does it degrade image clarity?
+          <div class="pq-ans">✔ Correct Answer: A pixel covering more than one land-cover class whose recorded digital number is an area-weighted composite average.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Coarse spatial resolution forces multiple disparate surfaces (e.g., $30\%$ water, $40\%$ asphalt, $30\%$ grass) into a single pixel, obscuring object boundaries.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What process is used in digital image processing to fuse high-spatial-resolution panchromatic data with lower-spatial-resolution multispectral data?
+          <div class="pq-ans">✔ Correct Answer: Pan-sharpening (e.g., Gram-Schmidt, IHS, or Wavelet transform fusion).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Pan-sharpening replaces the low-resolution intensity component of multispectral imagery with high-resolution panchromatic data, producing sharp color imagery.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> By what factor does image file data volume increase if the spatial resolution (GSD) of an area is improved by a factor of 2 (e.g., from $30\text{ m}$ to $15\text{ m}$)?
+          <div class="pq-ans">✔ Worked Answer: Increases by a factor of 4 ($2^2 = 4$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Halving linear pixel dimension doubles pixel count along both the X and Y axes ($2 \times 2 = 4$), quadrupling the total number of pixels.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How is Modulation Transfer Function (MTF) used to define spatial image clarity?
+          <div class="pq-ans">✔ Correct Answer: It measures the ratio of output image contrast to input target contrast as a function of spatial frequency (line pairs per mm).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> MTF quantifies how well an optical sensor transfers contrast from the ground to the image; an MTF value $\ge 0.10$ at the Nyquist frequency is required for acceptable visual clarity.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What satellite currently holds the record for the highest commercial optical spatial resolution in orbit?
+          <div class="pq-ans">✔ Correct Answer: WorldView-3 / WorldView-Legion ($0.30\text{ m}$ panchromatic GSD).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Operating at $617\text{ km}$ altitude with a $1.1\text{ m}$ diameter telescope, WorldView-3 resolves individual manhole covers and sidewalk curbs.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Why can linear features (like high-voltage power transmission lines or railway tracks) sometimes be detected in imagery even when their physical width is much smaller than the GSD?
+          <div class="pq-ans">✔ Correct Answer: Because high radiometric contrast against background terrain alters the digital number of the entire pixel, forming a recognizable linear trend.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> While the object cannot be resolved geometrically, extreme contrast allows sub-pixel detection of continuous linear features.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is the difference between Point Spread Function (PSF) and Instantaneous Field of View (IFOV)?
+          <div class="pq-ans">✔ Correct Answer: IFOV is the geometric angle of the detector; PSF describes the optical blur (spatial irradiance distribution) of a point source on the focal plane.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Atmospheric turbulence and lens diffraction spread a point source of light over adjacent detector elements according to the PSF.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

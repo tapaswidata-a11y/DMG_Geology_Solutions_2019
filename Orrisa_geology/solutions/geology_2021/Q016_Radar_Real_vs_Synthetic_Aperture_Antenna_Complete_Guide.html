@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q16: Radar Systems: Real Aperture Radar (RAR) vs. Synthetic Aperture Radar (SAR) | OPSC Geology 2021 Masterclass</title>
+<title>Q016: Radar Resolution Mechanics: Real Aperture (RAR) vs. Synthetic Aperture (SAR) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,255 +89,555 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q16" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Radar Remote Sensing & Microwave Systems</div>
-    <h1>Q16: Radar Systems: Real Aperture Radar (RAR) vs. Synthetic Aperture Radar (SAR)</h1>
+    <div class="badge">GEO - 2/21 • Microwave Remote Sensing & Radar</div>
+    <h1>Q016: Radar Resolution Mechanics: Real Aperture (RAR) vs. Synthetic Aperture (SAR)</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Lillesand, Kiefer & Chipman (Remote Sensing, Ch. 7, pp. 488-496); Curlander & McDonough (Synthetic Aperture Radar)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 16<br>
+<strong>Authoritative References:</strong> Floyd F. Sabins, <em>Remote Sensing: Principles and Interpretation</em> (3rd Ed., Ch. 6: Radar Imagery, pp. 177–205); Thomas M. Lillesand et al., <em>Remote Sensing and Image Interpretation</em> (7th Ed., Ch. 7, pp. 415–435); Curlander, J.C. & McDonough, R.N., <em>Synthetic Aperture Radar: Systems and Signal Processing</em> (Wiley).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>16.1 The Azimuth Resolution Paradox in Spaceborne Radar</h3>
-        <p>In radar remote sensing (Lillesand, Kiefer & Chipman, <i>Remote Sensing</i>, Ch. 7, pp. 488–496; Curlander & McDonough, <i>Synthetic Aperture Radar</i>), radar pulses achieve range (cross-track) resolution via pulse duration ($\tau$): $R_r = \frac{c \tau}{2 \sin \theta}$.</p>
-        <p>However, along-track (azimuth) resolution ($R_a$) for a <b>Real Aperture Radar (RAR)</b> depends directly on the beamwidth ($\beta$) and physical antenna length ($L$):</p>
-        $$R_{a,\text{RAR}} = R \cdot \beta = \frac{\lambda \cdot R}{L}$$
-        <p>Where $R$ is slant range, $\lambda$ is radar wavelength, and $L$ is the physical length of the antenna.</p>
-
-        <h3>16.2 Why RAR Fails from Space and How SAR Solves It</h3>
-        <p>For a spaceborne satellite at slant range $R = 800\text{ km}$ operating at C-band ($\lambda = 0.056\text{ m}$), achieving a modest ground azimuth resolution of $R_a = 10\text{ m}$ with RAR would require a physical antenna length of:</p>
-        $$L = \frac{\lambda \cdot R}{R_a} = \frac{0.056\text{ m} \times 800,000\text{ m}}{10\text{ m}} = 4,480\text{ meters} = 4.48\text{ km!}$$
-        <p>Launching a 4.5-kilometer rigid antenna into orbit is physically impossible.</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Real Aperture Radar (RAR)</th>
-                <th>Synthetic Aperture Radar (SAR)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Antenna Configuration</b></td>
-                <td><b>Physical antenna only</b>; beam determined by real aperture length $L$</td>
-                <td><b>Synthesizes a virtual antenna kilometers long</b> using spacecraft forward motion and Doppler phase histories</td>
-              </tr>
-              <tr>
-                <td><b>Azimuth Resolution</b></td>
-                <td>$R_a = \frac{\lambda R}{L}$ (degrades with distance)</td>
-                <td><b>$R_a = \frac{L}{2}$ (completely independent of distance and wavelength!)</b></td>
-              </tr>
-              <tr>
-                <td><b>Spaceborne Feasibility</b></td>
-                <td>Impractical from orbit (requires km-sized antenna)</td>
-                <td>Universal orbital standard (Sentinel-1, NISAR, ALOS)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q16/radar_real_vs_synthetic_aperture.png" alt="Real Aperture vs Synthetic Aperture Radar Geometry">
-      <figcaption>
-        <strong>Figure 16.1: Comparative Azimuth Resolution Geometry: Real Aperture Radar (RAR) vs. Synthetic Aperture Radar (SAR).</strong> For RAR, along-track resolution degrades with slant range ($R_a = \lambda R / L$). For SAR, Doppler signal processing synthesizes an antenna length of $L_{	ext{syn}} = eta_{	ext{beam}} R$, yielding range-independent spatial resolution ($R_a = L / 2$).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: RADAR GEOMETRY & RESOLUTION MECHANICS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Radar Imaging Geometry: Range vs. Azimuth Resolution</div>
+    <div class="card-body">
+      <p>Active side-looking radar systems (SLAR) image terrain by transmitting coherent microwave pulses ($\lambda = 1 - 100\text{ cm}$) and measuring the time delay, amplitude, and phase of the backscattered echo. In radar geometry, spatial resolution is fundamentally decoupled into two orthogonal directions:</p>
+
+      <ul>
+        <li><strong>Range (Cross-Track) Resolution ($R_r$):</strong> Governed by the transmitted pulse duration ($\tau$) or pulse bandwidth ($B$):
+        $$R_r = \frac{c \cdot \tau}{2 \sin \theta} = \frac{c}{2 B \sin \theta}$$
+        Where $c$ is the speed of light and $\theta$ is the incidence angle. Range resolution is improved simply by shortening pulse width via frequency modulation (chirp compression).</li>
+        <li><strong>Azimuth (Along-Track) Resolution ($R_a$):</strong> Controlled by the physical beamwidth ($\beta$) of the radar antenna in the direction of flight. The antenna beamwidth in radians is:
+        $$\beta = \frac{\lambda}{L_a}$$
+        Where $\lambda$ is radar wavelength and $L_a$ is the physical length of the antenna.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q16/radar_real_vs_synthetic_aperture.png" alt="Real Aperture vs Synthetic Aperture Radar Geometry">
+        <div class="tb-caption">
+          <strong>Figure 16.1: Real Aperture (RAR) vs. Synthetic Aperture (SAR) Resolution.</strong> In RAR, azimuth resolution degrades proportionally with slant range ($R_a = \beta R$). In SAR, coherent Doppler processing synthesizes an antenna kilometers long, achieving range-independent azimuth resolution equal to half the antenna length ($R_a = L_a/2$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE PHYSICAL SIZE OF THE ANTENNA IN RAR VS SAR -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Crucial Difference: Physical Antenna Size ($L_a$)</div>
+    <div class="card-body">
+      <p>The monumental distinction between Real Aperture Radar (RAR) and Synthetic Aperture Radar (SAR) lies in the <strong>size, design, and physical requirements of the antenna</strong>:</p>
+
+      <ul>
+        <li><strong>Real Aperture Radar (RAR / Non-Coherent SLAR):</strong> The azimuth resolution equals the physical ground footprint of the radar beam at slant range ($R$):
+        $$R_{a,\text{RAR}} = \beta \cdot R = \frac{\lambda \cdot R}{L_a}$$
+        Notice that $R_a$ degrades directly with increasing range ($R$) and is inversely proportional to physical antenna length ($L_a$). At spacecraft altitudes ($R = 800\text{ km}$) using C-band ($\lambda = 5.6\text{ cm}$), achieving a modest $10\text{ m}$ azimuth resolution would require an impossible physical antenna length of:
+        $$L_a = \frac{\lambda \cdot R}{R_a} = \frac{0.056\text{ m} \times 800,000\text{ m}}{10\text{ m}} = 4,480\text{ meters } (4.5\text{ km!})$$
+        No spacecraft can deploy a 4.5-kilometer rigid antenna. RAR is therefore physically restricted to low-altitude aircraft.</li>
+        <li><strong>Synthetic Aperture Radar (SAR - Carl Wiley, 1951):</strong> Instead of relying on a giant physical antenna, SAR transmits pulses continuously as the platform flies forward. Because the radar is coherent, it records both the amplitude and <em>Doppler phase history</em> of returned echoes. Signal processing synthesizes an effective aperture length equal to the distance the satellite travels while illuminating a ground target ($L_{\text{syn}} = \frac{\lambda R}{L_a}$).</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">The Fundamental SAR Azimuth Resolution Equation</div>
+        $$R_{a,\text{SAR}} = \frac{\lambda \cdot R}{2 L_{\text{syn}}} = \frac{\lambda \cdot R}{2 \left(\frac{\lambda R}{L_a}\right)} = \frac{L_a}{2}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">In SAR, azimuth resolution is completely <strong>independent of platform altitude ($R$) and wavelength ($\lambda$)</strong>, and is strictly equal to <strong>half the physical antenna length ($L_a / 2$)</strong>! Counter-intuitively, a smaller physical antenna yields a broader beam, creating a longer synthesized aperture and yielding finer spatial resolution.</p>
+      </div>
+
+      <div class="quote-box">
+        "The major difference between real aperture radar and synthetic aperture radar is the size of the antenna. Real aperture systems require long physical antennas to produce narrow beams. Synthetic aperture systems use a relatively small physical antenna and synthesize a much longer antenna electronically through signal processing."
+        <span class="quote-ref">— Floyd F. Sabins, <em>Remote Sensing: Principles and Interpretation</em> (3rd Ed., 1997, p. 182)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Energy Source and Recording Distractors</div>
+    <div class="card-body">
+      <p>Candidates must clearly refute the other answer choices:</p>
+      <ul>
+        <li><strong>Source of Energy:</strong> Both RAR and SAR are <em>active microwave sensors</em> that generate their own illumination using onboard high-power transmitters (magnetrons, klystrons, or solid-state T/R modules). Their energy source is identical.</li>
+        <li><strong>Recording of Data:</strong> While SAR requires digital phase history storage and complex 2D Fourier range-Doppler focusing algorithms, the primary technological limitation that led to SAR invention was overcome strictly by revolutionizing the <strong>effective antenna size</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q16. Major difference between Real Aperture Radar and Synthetic Aperture Radar is in their :</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Size of the Antenna</div>
-        <div class="opt-item "><strong>(B)</strong> Source of energy</div>
-        <div class="opt-item "><strong>(C)</strong> Recording of data</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 16)</div>
+    <div class="q-stmt">
+      Q16. Major difference between Real Aperture Radar and Synthetic Aperture Radar is in their :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) Size of the Antenna &nbsp;✔</div>
+      <div class="raw-opt">(B) Source of energy</div>
+      <div class="raw-opt">(C) Recording of data</div>
+      <div class="raw-opt">(D) None of these</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) Size of the Antenna</div>
+      <div class="sub">
+        The fundamental operational difference between Real Aperture Radar (RAR) and Synthetic Aperture Radar (SAR) is in the <strong>size of the antenna</strong>. RAR requires an impractically massive physical antenna ($L_a = \lambda R / R_a$) to narrow its beam, whereas SAR employs a compact physical antenna ($1 - 15\text{ m}$) and synthesizes a virtual antenna kilometers in length through Doppler signal processing.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (A)</span>
-          <p><b>Correct Answer: (A) Size of the Antenna</b> — The major fundamental difference between Real Aperture Radar (RAR) and Synthetic Aperture Radar (SAR) lies in the <b>size of the antenna</b> (physical real antenna vs. motion-synthesized long virtual aperture).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Size of the Antenna — CORRECT:</b> In RAR, resolution is constrained by physical antenna dimensions ($R_a \propto 1/L$), whereas SAR electronically synthesizes an antenna hundreds of times longer than its physical size.</li>
-          <li><b>(B) Source of energy — INCORRECT:</b> Both RAR and SAR are active sensors that supply their own microwave energy transmitters (magnetrons / TWT / solid-state amplifiers).</li>
-          <li><b>(C) Recording of data — INCORRECT:</b> Both record returning electromagnetic echoes, though SAR records coherent Doppler phase.</li>
-          <li><b>(D) None of these — INCORRECT.</b></li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) Size of the Antenna</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Antenna dimensions dictate beamwidth and azimuth resolution. In RAR, the physical antenna length must be enormous to achieve high resolution over long ranges ($R_a = \lambda R / L_a$). In SAR, platform forward motion and Doppler phase histories synthesize an artificial antenna thousands of meters long from a small physical antenna, yielding range-independent resolution ($R_a = L_a / 2$).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Source of energy</span>
+      <span class="tag wrong">Incorrect (Identical Active Microwave Transmitters)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Both RAR and SAR are active radar systems operating in the microwave spectrum ($1 - 100\text{ cm}$) using identical artificial microwave transmitters powered by the platform's electrical generators and solar panels.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Recording of data</span>
+      <span class="tag wrong">Incorrect (Secondary Processing Consequence)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> While SAR requires recording coherent phase data and complex Doppler matrix reconstruction, the fundamental engineering hurdle that distinguishes the two paradigms is overcoming the physical size constraints of the antenna aperture.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) None of these</span>
+      <span class="tag wrong">Incorrect (Valid Answer Exists in Option A)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Option (A) is the classic textbook definition found verbatim in remote sensing literature (Sabins, 1997, p. 182; Lillesand et al., 2015).
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>SAR Azimuth Resolution Proof</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 16: Theoretical Azimuth Resolution of SAR</div>
-          <p>A satellite carries a Synthetic Aperture Radar (SAR) with a physical antenna length of $L = 10.0\text{ meters}$. What is the theoretical maximum azimuth resolution achievable by this SAR system?</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>For a fully focused synthetic aperture radar, the azimuth resolution is simply half the physical antenna length:</p>
-            $$R_a = \frac{L}{2} = \frac{10.0\text{ m}}{2} = 5.0\text{ meters}$$
-            <p>Remarkably, this $5\text{ m}$ resolution is independent of orbital altitude ($H$) and radar wavelength ($\lambda$).</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Radar Comparison: Real Aperture (RAR) vs. Synthetic Aperture (SAR)</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>System Parameter</th>
+            <th>Real Aperture Radar (RAR / SLAR)</th>
+            <th>Synthetic Aperture Radar (SAR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Azimuth Resolution Formula</strong></td>
+            <td><strong>$R_a = \frac{\lambda \cdot R}{L_a}$</strong> (Degrades with distance)</td>
+            <td><strong>$R_a = \frac{L_a}{2}$</strong> (Independent of range and wavelength!)</td>
+          </tr>
+          <tr>
+            <td><strong>Physical Antenna Length ($L_a$)</strong></td>
+            <td>Must be extremely long ($> 10 - 100\text{ m}$)</td>
+            <td>Compact: <strong>$1 - 15\text{ m}$</strong> (smaller gives finer resolution)</td>
+          </tr>
+          <tr>
+            <td><strong>Effective Aperture ($L_{\text{eff}}$)</strong></td>
+            <td>Strictly equal to physical length $L_a$</td>
+            <td>Synthesized length: <strong>$L_{\text{syn}} = \frac{\lambda \cdot R}{L_a}$</strong> (kilometers long)</td>
+          </tr>
+          <tr>
+            <td><strong>Platform Suitability</strong></td>
+            <td>Low-altitude aircraft only ($H < 5 - 10\text{ km}$)</td>
+            <td>High-altitude aircraft and spacecraft ($H = 500 - 800\text{ km}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Signal Coherence Requirement</strong></td>
+            <td>Non-coherent (measures intensity only)</td>
+            <td>Fully coherent (measures both amplitude and Doppler phase)</td>
+          </tr>
+          <tr>
+            <td><strong>Operational Examples</strong></td>
+            <td>Early SLAR border surveillance systems</td>
+            <td>Sentinel-1, RADARSAT, RISAT-1/2, ALOS-PALSAR, TerraSAR-X</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A C-band Synthetic Aperture Radar satellite has a physical antenna length in the azimuth direction $L_a = 10.0\text{ m}$. What is the theoretical best along-track (azimuth) spatial resolution achievable by this SAR system?
+          <div class="pq-ans">✔ Worked Answer: $R_a = 5.0\text{ meters}$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            By the fundamental SAR theorem:
+            $$R_a = \frac{L_a}{2} = \frac{10.0\text{ m}}{2} = 5.0\text{ m}$$
+            This resolution is invariant whether the satellite is at $500\text{ km}$ or $1000\text{ km}$ altitude.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> Why does a <em>smaller</em> physical antenna produce <em>finer</em> spatial azimuth resolution in a SAR system?
+          <div class="pq-ans">✔ Correct Answer: A smaller antenna produces a broader beamwidth ($\beta = \lambda / L_a$), keeping the ground target in the beam for a longer distance and synthesizing a longer virtual aperture ($L_{\text{syn}}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the synthesized array length $L_{\text{syn}} \propto 1 / L_a$, reducing physical antenna size expands the Doppler bandwidth, sharpening the focused image.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What are the two primary SAR geometric distortions caused by side-looking radar imaging of mountainous terrain?
+          <div class="pq-ans">✔ Correct Answer: Foreshortening, Layover, and Shadowing.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Foreshortening compresses slopes facing the radar; Layover occurs when the radar beam reaches the mountain peak before its base, causing the top to be imaged closer to near range; Shadowing occurs on slopes facing away from the radar beam.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In radar polarization, what do the abbreviations $HH, VV, HV$, and $VH$ signify?
+          <div class="pq-ans">✔ Correct Answer: The electric field vector orientation on transmission and reception ($H = \text{Horizontal}, V = \text{Vertical}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> $HH$ and $VV$ are like-polarized channels; $HV$ and $VH$ are cross-polarized channels produced by multiple volumetric scattering in dense forest canopies.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> According to the Rayleigh Roughness Criterion, what condition determines whether a surface appears "smooth" (specular reflector / dark tone) or "rough" (diffuse scatterer / bright tone) to radar?
+          <div class="pq-ans">✔ Correct Answer: $h < \frac{\lambda}{8 \cos\theta}$ (Smooth) vs. $h > \frac{\lambda}{8 \cos\theta}$ (Rough).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Where $h$ is root-mean-square surface height and $\theta$ is incidence angle. Smooth surfaces reflect microwaves away from the antenna (calm water appears black), while rough surfaces scatter energy back to the antenna (bright return).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What radar frequency band is used by ISRO's indigenous RISAT-1 earth observation satellite?
+          <div class="pq-ans">✔ Correct Answer: C-band ($\lambda \approx 5.35\text{ GHz}, \lambda \approx 5.6\text{ cm}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> C-band provides an optimal compromise for all-weather agricultural monitoring, soil moisture estimation, and flood inundation mapping across India.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is <em>radar speckle</em>, and what spatial filtering techniques are applied to remove it?
+          <div class="pq-ans">✔ Correct Answer: Salt-and-pepper graininess caused by random constructive and destructive interference of dephased returns within a resolution cell; removed by multi-looking or adaptive Lee/Frost spatial filters.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Coherent interference creates granular speckle noise, which is reduced by averaging independent sub-aperture looks or using statistical window filters.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why can L-band radar ($\lambda \approx 24\text{ cm}$) penetrate deep dry desert sand sheets (e.g., in the Sahara) whereas optical sensors cannot?
+          <div class="pq-ans">✔ Correct Answer: Dry quartz sand has an extremely low dielectric constant ($\epsilon_r \approx 2 - 3$) and negligible electrical conductivity, allowing microwaves to penetrate several meters to map buried paleodrainage channels.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Demonstrated by the Space Shuttle SIR-A/SIR-B missions in 1981, L-band microwaves penetrated up to 2–5 meters of hyper-arid sand, revealing ancient buried river channels.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

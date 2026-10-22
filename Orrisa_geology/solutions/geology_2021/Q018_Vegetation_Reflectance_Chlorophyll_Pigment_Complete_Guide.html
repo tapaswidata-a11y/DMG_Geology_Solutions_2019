@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q18: Vegetation Spectral Signature & Chlorophyll Pigment Control | OPSC Geology 2021 Masterclass</title>
+<title>Q018: Biophysical Controls on Plant Spectral Reflectance: Pigments vs. Cell Structure | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,252 +89,535 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q18" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Vegetation Remote Sensing & Bio-optics</div>
-    <h1>Q18: Vegetation Spectral Signature & Chlorophyll Pigment Control</h1>
+    <div class="badge">GEO - 2/21 • Optical Remote Sensing & Vegetation Biophysics</div>
+    <h1>Q018: Biophysical Controls on Plant Spectral Reflectance: Pigments vs. Cell Structure</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Gates et al. (1965); Knipling (1970); Lillesand, Kiefer & Chipman (Remote Sensing, Ch. 1, pp. 17-19)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 18<br>
+<strong>Authoritative References:</strong> Thomas M. Lillesand et al., <em>Remote Sensing and Image Interpretation</em> (7th Ed., Ch. 1, pp. 16–18); John R. Jensen, <em>Remote Sensing of the Environment</em> (2nd Ed., Ch. 11: Vegetation Biophysics, pp. 357–372); Gates, D.M. et al. (1965, <em>Spectral properties of plants</em>, Applied Optics, 4, pp. 11–20); Knipling, E.B. (1970, <em>Physiological Remote Sensing</em>).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>18.1 The Spectral Reflectance Curve of Healthy Green Vegetation</h3>
-        <p>In bio-optical remote sensing (Gates et al., 1965; Knipling, 1970; Lillesand, Kiefer & Chipman, <i>Remote Sensing</i>, Ch. 1, pp. 17–19), the spectral reflectance of a healthy plant leaf is divided into three distinct optical domains:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Spectral Domain</th>
-                <th>Wavelength Band</th>
-                <th>Primary Governing Biological Factor</th>
-                <th>Optical Phenomenon</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Visible Domain</b></td>
-                <td><b>$0.40 - 0.70\ \mu\text{m}$</b></td>
-                <td><b>Leaf Pigments (Chlorophyll a & b, Carotenoids)</b></td>
-                <td>Intense absorption bands at $0.45\ \mu\text{m}$ (blue) and $0.65\ \mu\text{m}$ (red); intermediate <b>green reflection peak at $0.55\ \mu\text{m}$ ($10 - 20\%$)</b> gives foliage its green appearance.</td>
-              </tr>
-              <tr>
-                <td><b>Near-Infrared (NIR)</b></td>
-                <td>$0.70 - 1.30\ \mu\text{m}$</td>
-                <td><b>Internal Spongy Mesophyll Cell Structure</b></td>
-                <td>Refractive index mismatches between hydrated cell walls and air cavities cause multiple internal scattering ($40 - 60\%$ reflectance).</td>
-              </tr>
-              <tr>
-                <td><b>Shortwave-Infrared (SWIR)</b></td>
-                <td>$1.30 - 2.50\ \mu\text{m}$</td>
-                <td><b>Leaf Moisture & Water Content</b></td>
-                <td>Strong liquid water absorption valleys at $1.45\ \mu\text{m}$ and $1.94\ \mu\text{m}$.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>18.2 Chlorophyll Pigment Absorption Peaks</h3>
-        <p>Chlorophyll 'a' exhibits peak absorption at $0.43\ \mu\text{m}$ and $0.66\ \mu\text{m}$; chlorophyll 'b' absorbs at $0.45\ \mu\text{m}$ and $0.65\ \mu\text{m}$. The unabsorbed green photons between $0.50$ and $0.58\ \mu\text{m}$ are reflected, directly creating the <b>green peak</b>.</p>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q18/vegetation_reflectance_curve.png" alt="Healthy Green Vegetation Spectral Reflectance Curve">
-      <figcaption>
-        <strong>Figure 18.1: Diagnostic Spectral Reflectance Signature of Healthy Green Vegetation.</strong> Featuring strong photosynthetic chlorophyll pigment absorption in blue ($0.45\,\mu	ext{m}$) and red ($0.67\,\mu	ext{m}$), steep "red edge" reflectance rise ($0.68$–$0.75\,\mu	ext{m}$), high spongy mesophyll NIR plateau ($0.8$–$1.1\,\mu	ext{m}$), and water absorption troughs at $1.45\,\mu	ext{m}$ and $1.94\,\mu	ext{m}$.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: THE TRIPARTITE VEGETATION REFLECTANCE SPECTRUM -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Tripartite Biophysical Architecture of Green Leaves</div>
+    <div class="card-body">
+      <p>The spectral reflectance curve of healthy green vegetation is one of the most distinctive and extensively studied signatures in physical remote sensing. The curve is divided into three discrete spectral domains, each governed by an entirely different biophysical leaf component (Gates et al., 1965; Knipling, 1970):</p>
+
+      <ul>
+        <li><strong>1. Visible Region ($0.40 - 0.70\ \mu\text{m}$):</strong> Controlled entirely by <strong>Leaf Pigments</strong> (principally <em>Chlorophyll a</em> and <em>Chlorophyll b</em>, accompanied by accessory carotenes and xanthophylls). Chlorophyll pigments strongly absorb blue light ($\sim 0.45\ \mu\text{m}$) and red light ($\sim 0.65\ \mu\text{m}$) to drive photosynthetic electron transport, leaving an unabsorbed <strong>reflection peak in the green band ($\sim 0.55\ \mu\text{m}$, reflecting $10 - 20\%$ of energy)</strong>. This green reflectance peak is why healthy vegetation appears green to the human eye!</li>
+        <li><strong>2. Near-Infrared Region ($0.70 - 1.30\ \mu\text{m}$):</strong> Controlled exclusively by <strong>Internal Leaf Cell Structure</strong> (the spongy mesophyll parenchyma). Leaves absorb almost zero NIR energy; multiple refraction at internal hydration cell-wall/air-space boundaries scatters $40 - 60\%$ of incident NIR photons back out, creating the massive "NIR plateau".</li>
+        <li><strong>3. Short-Wave Infrared ($1.30 - 2.50\ \mu\text{m}$):</strong> Controlled exclusively by <strong>Leaf Moisture (Water Content)</strong>, displaying strong water absorption troughs at $1.4\ \mu\text{m}$ and $1.9\ \mu\text{m}$.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q18/vegetation_reflectance_curve.png" alt="Vegetation Spectral Reflectance Curve and Biophysical Controls">
+        <div class="tb-caption">
+          <strong>Figure 18.1: The Tripartite Spectral Response Curve of Green Vegetation.</strong> Showing the three distinct biophysical control zones: (1) Leaf pigments governing the visible spectrum with the green peak at $0.55\ \mu\text{m}$; (2) Spongy mesophyll cell structure creating the high NIR plateau ($0.7 - 1.3\ \mu\text{m}$); and (3) Leaf water content governing SWIR absorption ($1.4 - 2.5\ \mu\text{m}$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: PHOTOSYNTHETIC PIGMENTS & THE GREEN REFLECTION PEAK -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Photosynthetic Pigments: Why the Green Peak Exists</div>
+    <div class="card-body">
+      <p>In the palisade parenchyma layer of the upper leaf, chloroplasts contain photosynthetic pigment complexes tuned to capture photon energy:</p>
+
+      <ul>
+        <li><strong>Chlorophyll a & b Absorption Bands:</strong> Chlorophyll a has absorption peaks at $0.43\ \mu\text{m}$ (blue) and $0.66\ \mu\text{m}$ (red). Chlorophyll b absorbs at $0.45\ \mu\text{m}$ (blue) and $0.64\ \mu\text{m}$ (red). Up to $90 - 95\%$ of blue and red incident photons are absorbed in the chloroplasts.</li>
+        <li><strong>The 0.55 $\mu$m Green Reflectance Peak:</strong> Photosynthetic pigments possess a gap in their absorption spectra between $0.50\ \mu\text{m}$ and $0.60\ \mu\text{m}$ (the green wavelengths). Because green photons are not absorbed, approximately $10 - 20\%$ are backscattered out through the upper epidermis.</li>
+        <li><strong>Senescence / Chlorosis Shift:</strong> When a plant undergoes environmental stress, disease, or autumn senescence, chlorophyll degrades rapidly. The unmasking of yellow and orange carotenes and xanthophylls increases red reflectance, causing leaves to turn yellow or brown.</li>
+      </ul>
+
+      <div class="quote-box">
+        "In the visible portion of the spectrum (0.4 to 0.7 $\mu$m), the spectral reflectance of green vegetation is governed primarily by the absorption characteristics of plant pigments, principally chlorophyll... A green reflectance peak occurs at approximately 0.55 $\mu$m, between the blue and red absorption bands."
+        <span class="quote-ref">— Thomas M. Lillesand et al., <em>Remote Sensing and Image Interpretation</em> (7th Ed., 2015, p. 16)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Leaf Moisture and Cell Structure in the Green Band</div>
+    <div class="card-body">
+      <p>Candidates must clearly map which leaf component governs each specific spectral band:</p>
+      <ul>
+        <li><strong>Leaf Moisture (Option A):</strong> Governs the Short-Wave Infrared (SWIR, $1.4 - 2.5\ \mu\text{m}$). In the visible green band, liquid water absorption is virtually zero ($k \approx 10^{-8}$), having no effect on leaf green reflectance.</li>
+        <li><strong>Leaf Cell Structure (Option C):</strong> Governs the Near-Infrared (NIR, $0.7 - 1.3\ \mu\text{m}$). The spongy mesophyll cell structure is transparent to visible light, which is absorbed by chloroplast pigments before it can undergo mesophyll scattering.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q18. In the visible region (green band), leaf reflectance is governed by :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Leaf moisture</div>
-        <div class="opt-item correct"><strong>(B)</strong> Leaf pigment</div>
-        <div class="opt-item "><strong>(C)</strong> Leaf cell structure</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 18)</div>
+    <div class="q-stmt">
+      Q18. In the visible region (green band), leaf reflectance is governed by :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Leaf moisture</div>
+      <div class="raw-opt correct">(B) Leaf pigment &nbsp;✔</div>
+      <div class="raw-opt">(C) Leaf cell structure</div>
+      <div class="raw-opt">(D) None of these</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) Leaf pigment</div>
+      <div class="sub">
+        In the visible region of the spectrum ($0.4 - 0.7\ \mu\text{m}$), including the green band ($\sim 0.55\ \mu\text{m}$), leaf reflectance is strictly governed by <strong>Leaf pigments</strong> (principally chlorophyll a and b, carotenoids, and xanthophylls).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) Leaf pigment</b> — In the visible region of the spectrum (including the green band), leaf reflectance is governed almost exclusively by <b>leaf pigments (primarily chlorophyll)</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Leaf moisture — INCORRECT:</b> Leaf moisture governs reflectance in the Short-Wave Infrared (SWIR: $1.4 - 2.5\ \mu\text{m}$), not the visible green band.</li>
-          <li><b>(B) Leaf pigment — CORRECT:</b> Chlorophyll and accessory carotenoid pigments completely dominate optical absorption and reflection throughout the $0.4 - 0.7\ \mu\text{m}$ visible spectrum.</li>
-          <li><b>(C) Leaf cell structure — INCORRECT:</b> Spongy mesophyll cell structure controls the high reflectance plateau in the Near-Infrared (NIR: $0.7 - 1.3\ \mu\text{m}$).</li>
-          <li><b>(D) None of these — INCORRECT.</b></li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Leaf moisture</span>
+      <span class="tag wrong">Incorrect (Governs the SWIR Region: 1.4 – 2.5 $\mu$m)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Leaf water content controls reflectance in the Short-Wave Infrared (SWIR, $1.4 - 2.5\ \mu\text{m}$) region, producing pronounced absorption troughs at $1.4\ \mu\text{m}$ and $1.9\ \mu\text{m}$. Pure water is transparent in the visible green band and exerts zero influence on green reflectance.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) Leaf pigment</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By fundamental biophysical optics (Lillesand et al., 2015; Jensen, 2007), leaf reflectance in the visible spectrum is completely dominated by photosynthetic leaf pigments. Chlorophyll a and b absorb blue ($0.45\ \mu\text{m}$) and red ($0.65\ \mu\text{m}$) light heavily, allowing an unabsorbed reflectance peak at $0.55\ \mu\text{m}$ (green), which gives vegetation its characteristic green color.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Leaf cell structure</span>
+      <span class="tag wrong">Incorrect (Governs the NIR Plateau: 0.7 – 1.3 $\mu$m)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The internal anatomical structure of the leaf—specifically the arrangement of hydrated cell walls and air voids in the spongy mesophyll layer—governs the Near-Infrared (NIR, $0.7 - 1.3\ \mu\text{m}$) plateau, causing massive scattering of $40 - 60\%$ of incident NIR energy. It does not govern the visible green band.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) None of these</span>
+      <span class="tag wrong">Incorrect (Valid Answer Exists in Option B)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> "Leaf pigment" is the universally accepted, established scientific answer.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Vegetation Remote Sensing Application</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 18: The "Red Edge" Phenomenon</div>
-          <p>What is the "Red Edge" in vegetative remote sensing, and what biological transition causes it?</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <p>The <b>Red Edge</b> is the extremely steep rise in reflectance between $0.68\ \mu\text{m}$ and $0.75\ \mu\text{m}$. It marks the abrupt physical transition from <b>intense chlorophyll pigment absorption</b> in the visible red band to <b>massive internal mesophyll cellular scattering</b> in the near-infrared band.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Biophysical Controls: The Three Vegetation Spectral Zones</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Spectral Region</th>
+            <th>Wavelength Interval</th>
+            <th>Primary Biophysical Governing Factor</th>
+            <th>Physiological Mechanism & Key Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Visible (VNIR)</strong></td>
+            <td><strong>$0.40 - 0.70\ \mu\text{m}$</strong></td>
+            <td><strong>Leaf Pigments</strong> (Chlorophyll a, b, Carotenes)</td>
+            <td><strong>Blue/Red photosynthetic absorption; Green reflectance peak at $0.55\ \mu\text{m}$</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Red Edge</strong></td>
+            <td>$0.68 - 0.75\ \mu\text{m}$</td>
+            <td>Transition boundary</td>
+            <td>Steep rise in reflectance from chlorophyll absorption to mesophyll scatter</td>
+          </tr>
+          <tr>
+            <td><strong>Near-Infrared (NIR)</strong></td>
+            <td><strong>$0.70 - 1.30\ \mu\text{m}$</strong></td>
+            <td><strong>Internal Spongy Mesophyll Structure</strong></td>
+            <td>High internal refraction at cell-wall/air interfaces ($40 - 60\%$ reflectance plateau)</td>
+          </tr>
+          <tr>
+            <td><strong>Short-Wave Infrared (SWIR)</strong></td>
+            <td><strong>$1.30 - 2.50\ \mu\text{m}$</strong></td>
+            <td><strong>Leaf Moisture (Water Content)</strong></td>
+            <td>Deep vibrational absorption bands at $1.4\ \mu\text{m}$ and $1.9\ \mu\text{m}$; turgidity monitoring</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> How is the Normalized Difference Vegetation Index (NDVI) formulated, and how does it exploit the contrasting controls of leaf pigment and cell structure?
+          <div class="pq-ans">✔ Worked Answer: $\text{NDVI} = \frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + \rho_{\text{Red}}}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Pigments strongly absorb red light ($\rho_{\text{Red}} \approx 0.05$), while spongy mesophyll scatters NIR light intensely ($\rho_{\text{NIR}} \approx 0.50$). Healthy dense vegetation yields high positive NDVI values ($+0.6 \text{ to } +0.9$).
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What happens to the "Red Edge" position ($\lambda_{\text{re}}$) when vegetation suffers heavy metal stress or drought-induced chlorosis?
+          <div class="pq-ans">✔ Correct Answer: It shifts toward shorter wavelengths (a "blue shift").</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Chlorophyll loss reduces the depth and width of the $0.68\ \mu\text{m}$ absorption trough, shifting the inflection point of the red-edge slope toward the blue/green spectrum (from $\sim 720\text{ nm}$ down to $\sim 700\text{ nm}$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What are the primary accessory pigments responsible for the brilliant yellow, orange, and red colors of autumn leaves?
+          <div class="pq-ans">✔ Correct Answer: Carotenoids (carotenes and xanthophylls) and anthocyanins.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> As photoperiod and temperatures drop, green chlorophyll breaks down first, unmasking the stable yellow carotenoids and newly synthesized red anthocyanin pigments.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In optical physics, what causes the intense scattering of near-infrared radiation inside the spongy mesophyll layer of a leaf?
+          <div class="pq-ans">✔ Correct Answer: The substantial difference in refractive index between hydrated cellulose cell walls ($n \approx 1.42 - 1.48$) and intercellular air spaces ($n \approx 1.00$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> As NIR photons cross back and forth between cell walls and air cavities, multiple refractions and reflections scatter photons in all directions, redirecting half of them back out through the leaf surface.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> Why does a stacked canopy of multiple leaf layers (Leaf Area Index $\text{LAI} > 4$) display higher NIR reflectance than a single isolated leaf, while visible red reflectance remains unchanged?
+          <div class="pq-ans">✔ Correct Answer: Transmitted NIR radiation passes through the upper leaf and reflects off lower leaves back through the canopy (optical stacking); red light is completely absorbed by the first leaf layer.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Near-infrared has high transmissivity ($\sim 40 - 50\%$), allowing multi-story canopies to contribute additive reflectance, whereas visible red is absorbed almost entirely ($> 90\%$) by the topmost layer.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What vegetation index, formulated by Gao (1996), specifically monitors equivalent leaf water thickness in the SWIR spectrum?
+          <div class="pq-ans">✔ Correct Answer: NDWI (Normalized Difference Water Index): $\text{NDWI} = \frac{\rho_{860} - \rho_{1240}}{\rho_{860} + \rho_{1240}}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> By ratioing an NIR band ($860\text{ nm}$, insensitive to moisture) with a SWIR water absorption band ($1240\text{ nm}$), NDWI directly tracks canopy moisture stress.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> How does severe plant senescence affect the internal spongy mesophyll and the resulting NIR plateau?
+          <div class="pq-ans">✔ Correct Answer: Dehydration causes cells to collapse and intercellular air voids to diminish, dramatically lowering NIR plateau reflectance.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Cellular collapse eliminates refractive index interfaces, causing the NIR reflectance of senescent vegetation to plunge toward bare soil levels.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why does artificial green turf (plastic fake grass) appear dark on a False Color Composite (FCC) while natural grass appears bright red?
+          <div class="pq-ans">✔ Correct Answer: Artificial turf contains green dye (reflecting visible green) but completely lacks the internal spongy mesophyll cell structure required to reflect near-infrared radiation.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because plastic turf absorbs or has low reflectance in the NIR, it fails to activate the red display channel on an FCC, immediately unmasking military camouflage.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

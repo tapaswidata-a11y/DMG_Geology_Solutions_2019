@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q19: Indian Remote Sensing (IRS-1D) Satellite Sensor Specifications | OPSC Geology 2021 Masterclass</title>
+<title>Q019: Indian Remote Sensing (IRS-1D) Payloads: LISS-III Spatial Resolution | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,259 +89,584 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q19" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Indian Satellite Sensors & Remote Sensing Missions</div>
-    <h1>Q19: Indian Remote Sensing (IRS-1D) Satellite Sensor Specifications</h1>
+    <div class="badge">GEO - 2/21 • ISRO Satellite Missions & Sensor Payloads</div>
+    <h1>Q019: Indian Remote Sensing (IRS-1D) Payloads: LISS-III Spatial Resolution</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> NRSC/ISRO IRS-1C/1D Data User Handbook; Joseph (Fundamentals of Remote Sensing, Universities Press)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 19<br>
+<strong>Authoritative References:</strong> ISRO National Remote Sensing Centre (NRSC), <em>IRS-1C/1D Data User's Handbook</em> (Department of Space, Govt. of India); Kasturirangan, K. et al. (1996, <em>IRS-1C - The Indian Space Programme's Advanced Remote Sensing Satellite</em>, Current Science, 70, pp. 492–500); Lillesand, Kiefer & Chipman (7th Ed., pp. 396–399).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>19.1 Payloads and Sensors of the IRS-1C / IRS-1D Satellite</h3>
-        <p>In Indian space program history and sensor technology (ISRO NRSC Handbook; George Joseph, <i>Fundamentals of Remote Sensing</i>; Lillesand et al., Ch. 6), the <b>IRS-1D</b> (launched 29 September 1997 into an 821 km polar sun-synchronous orbit) carried three state-of-the-art optical payloads:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Sensor Name</th>
-                <th>Sensor Type & Spectral Bands</th>
-                <th>Spatial Resolution</th>
-                <th>Swath Width & Revisit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>PAN (Panchromatic Camera)</b></td>
-                <td>Single visible band ($0.50 - 0.75\ \mu\text{m}$)</td>
-                <td><b>$5.8\text{ meters}$</b> (steerable off-nadir up to $\pm 26^\circ$)</td>
-                <td>$70\text{ km}$ ($24\text{ days}$)</td>
-              </tr>
-              <tr>
-                <td><b>LISS-III (Linear Imaging Self-Scanning Sensor III)</b></td>
-                <td><b>Multispectral: 4 bands</b>
-                <br>• B2 (Green: $0.52 - 0.59\ \mu\text{m}$)
-                <br>• B3 (Red: $0.62 - 0.68\ \mu\text{m}$)
-                <br>• B4 (NIR: $0.77 - 0.86\ \mu\text{m}$)
-                <br>• B5 (SWIR: $1.55 - 1.70\ \mu\text{m}$)</td>
-                <td><b>$23.5\text{ meters}$</b> (VNIR Bands 2, 3, 4)
-                <br><i>($70.5\text{ meters}$ for SWIR Band 5)</i></td>
-                <td>$141\text{ km}$ ($24\text{ days}$)</td>
-              </tr>
-              <tr>
-                <td><b>WiFS (Wide Field Sensor)</b></td>
-                <td>2 bands (Red: $0.62-0.68\ \mu\text{m}$, NIR: $0.77-0.86\ \mu\text{m}$)</td>
-                <td><b>$188\text{ meters}$</b></td>
-                <td>$810\text{ km}$ ($5\text{ days}$)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q19/irs_1d_sensor_payloads_resolution.png" alt="ISRO IRS-1D Sensor Payload Suite">
-      <figcaption>
-        <strong>Figure 19.1: Indian Remote Sensing Satellite (IRS-1D) Payload Architecture.</strong> Comparative spatial and spectral envelopes of PAN ($5.8	ext{ m}$ panchromatic camera), LISS-III ($23.5	ext{ m}$ multispectral in VNIR + SWIR), and WiFS ($188	ext{ m}$ wide-field vegetation monitoring sensor).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: THE IRS-1D SATELLITE MISSION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Indian Remote Sensing (IRS-1D) Mission & Sensor Suite</div>
+    <div class="card-body">
+      <p>Launched on <strong>29 September 1997</strong> aboard India's Polar Satellite Launch Vehicle (PSLV-C1) from Sriharikota, <strong>IRS-1D</strong> (along with its identical predecessor IRS-1C, launched in 1995) was an internationally acclaimed second-generation earth observation satellite developed by the <strong>Indian Space Research Organisation (ISRO)</strong>. Operating in a Sun-synchronous circular orbit at an altitude of $817\text{ km}$ ($i = 98.69^\circ$, 24-day repeat cycle), IRS-1D carried three cutting-edge imaging payloads:</p>
+
+      <ul>
+        <li><strong>1. LISS-III (Linear Imaging Self-Scanning Sensor III):</strong> The primary multispectral sensor (MSS) designed for regional natural resources management, agricultural monitoring, and geological mapping. LISS-III delivers a benchmark spatial resolution of <strong>$23.5\text{ meters}$</strong> in the Visible and Near-Infrared (VNIR) bands.</li>
+        <li><strong>2. PAN (Panchromatic Camera):</strong> A high-resolution imaging camera operating across $0.50 - 0.75\ \mu\text{m}$ with a spatial resolution of <strong>$5.8\text{ meters}$</strong> and a $70\text{ km}$ swath, equipped with off-nadir steering ($\pm 26^\circ$) for stereoscopic 3D terrain mapping. In 1995, it was the highest-resolution civilian earth observation sensor in the world!</li>
+        <li><strong>3. WiFS (Wide Field Sensor):</strong> A dual-band sensor (Red: $0.62 - 0.68\ \mu\text{m}$, NIR: $0.77 - 0.86\ \mu\text{m}$) with a spatial resolution of <strong>$188\text{ meters}$</strong> and an ultra-wide swath of $810\text{ km}$ (5-day revisit) for national-scale vegetation and drought dynamics.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q19/irs_1d_sensor_payloads_resolution.png" alt="IRS-1D Sensor Payloads and Spatial Resolution Spectrum">
+        <div class="tb-caption">
+          <strong>Figure 19.1: ISRO IRS-1D Sensor Payload Architecture.</strong> Comparison of the three complementary sensors: PAN ($5.8\text{ m}$), LISS-III ($23.5\text{ m}$ VNIR / $70.5\text{ m}$ SWIR), and WiFS ($188\text{ m}$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: DETAILED LISS-III SENSOR SPECIFICATIONS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Technical Specifications of LISS-III: The 23.5m Multispectral Benchmark</div>
+    <div class="card-body">
+      <p>LISS-III utilized linear charge-coupled device (CCD) pushbroom line arrays (6000 elements per array) to image terrain without moving optical scan mirrors. Its four spectral bands and spatial resolutions are structured as follows:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>LISS-III Spectral Band</th>
+            <th>Wavelength Range ($\mu\text{m}$)</th>
+            <th>Spatial Resolution (GSD)</th>
+            <th>Swath Width</th>
+            <th>Primary Geological & Land Use Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Band 2 (Green)</strong></td>
+            <td>$0.52 - 0.59\ \mu\text{m}$</td>
+            <td><strong>$23.5\text{ meters}$</strong></td>
+            <td>$141\text{ km}$</td>
+            <td>Vegetation green reflectance peak; water turbidity</td>
+          </tr>
+          <tr>
+            <td><strong>Band 3 (Red)</strong></td>
+            <td>$0.62 - 0.68\ \mu\text{m}$</td>
+            <td><strong>$23.5\text{ meters}$</strong></td>
+            <td>$141\text{ km}$</td>
+            <td>Chlorophyll absorption; soil/vegetation contrast; cultural features</td>
+          </tr>
+          <tr>
+            <td><strong>Band 4 (Near-Infrared)</strong></td>
+            <td>$0.77 - 0.86\ \mu\text{m}$</td>
+            <td><strong>$23.5\text{ meters}$</strong></td>
+            <td>$141\text{ km}$</td>
+            <td>Biomass mapping; water-land boundary delimitation</td>
+          </tr>
+          <tr>
+            <td><strong>Band 5 (Short-Wave IR)</strong></td>
+            <td>$1.55 - 1.70\ \mu\text{m}$</td>
+            <td>$70.5\text{ meters}$</td>
+            <td>$148\text{ km}$</td>
+            <td>Soil moisture; snow vs. cloud discrimination; hydrothermal alteration</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-box">
+        "The LISS-III camera operates in four spectral bands: three in the VNIR (0.52-0.59, 0.62-0.68, 0.77-0.86 $\mu$m) with a spatial resolution of 23.5 m at nadir, and one in the SWIR (1.55-1.70 $\mu$m) with a resolution of 70.5 m."
+        <span class="quote-ref">— K. Kasturirangan et al., <em>IRS-1C - The Indian Space Programme's Advanced Remote Sensing Satellite</em> (Current Science, 1996, Vol. 70, No. 7, p. 494)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Forensic Dissection of Distractor Resolutions</div>
+    <div class="card-body">
+      <p>Candidates must clearly associate other famous remote sensing resolutions:</p>
+      <ul>
+        <li><strong>(A) 1m:</strong> Characteristic of modern sub-meter commercial high-resolution imaging satellites such as IKONOS-2 ($1\text{ m}$ PAN in 1999) or ISRO's Cartosat-2 series ($0.8\text{ m}$). It is far too fine for IRS-1D LISS-III.</li>
+        <li><strong>(B) 30m:</strong> The classic spatial resolution of NASA's Landsat Thematic Mapper (TM/ETM+/OLI Bands 1–5, 7), which defined multispectral resolution from 1982 onwards.</li>
+        <li><strong>(C) 79m (or 80m):</strong> The historical spatial resolution of the original Multispectral Scanner (MSS) onboard early Landsat-1, 2, and 3 (1972–1978).</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q19. In IRS 1D satellite, the spatial resolution of MSS sensor is :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> 1m.</div>
-        <div class="opt-item "><strong>(B)</strong> 30m</div>
-        <div class="opt-item "><strong>(C)</strong> 79m</div>
-        <div class="opt-item correct"><strong>(D)</strong> 23.5m</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 19)</div>
+    <div class="q-stmt">
+      Q19. In IRS 1D satellite, the spatial resolution of MSS sensor is :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) 1m.</div>
+      <div class="raw-opt">(B) 30m</div>
+      <div class="raw-opt">(C) 79m</div>
+      <div class="raw-opt correct">(D) 23.5m &nbsp;✔</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) 23.5m</div>
+      <div class="sub">
+        In the Indian Remote Sensing satellite <strong>IRS-1D</strong>, the primary multispectral sensor (MSS)—the <strong>LISS-III</strong> camera—operates with a spatial resolution of <strong>23.5 meters</strong> in its three visible and near-infrared bands (Bands 2, 3, and 4).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (D)</span>
-          <p><b>Correct Answer: (D) 23.5m</b> — The primary multispectral scanner (LISS-III) onboard the IRS-1D satellite has a spatial resolution of <b>23.5 meters</b> across its VNIR bands.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) 1m — INCORRECT:</b> 1-meter resolution belongs to modern high-resolution commercial satellites like IKONOS / Cartosat-2.</li>
-          <li><b>(B) 30m — INCORRECT:</b> 30 meters is the canonical spatial resolution of the NASA Landsat Thematic Mapper (TM/ETM+/OLI).</li>
-          <li><b>(C) 79m — INCORRECT:</b> 79 meters (nominal 80m) is the spatial resolution of the legacy Landsat Multispectral Scanner (MSS).</li>
-          <li><b>(D) 23.5m — CORRECT:</b> The hallmark spatial resolution of ISRO's IRS-1C and IRS-1D LISS-III multispectral sensor.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) 1m.</span>
+      <span class="tag wrong">Incorrect (High-Resolution Satellite Domain like IKONOS / Cartosat-2)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A 1-meter spatial resolution belongs to very high-resolution military and commercial mapping satellites (e.g., IKONOS-2 launched in 1999, OrbView, or Cartosat-2). The highest optical resolution on IRS-1D was the Panchromatic (PAN) camera at $5.8\text{ m}$.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) 30m</span>
+      <span class="tag wrong">Incorrect (Thematic Mapper / Landsat Benchmark)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> $30\text{ meters}$ is the global benchmark spatial resolution of NASA's Landsat Thematic Mapper (Landsat-4, 5, 7, 8, 9). ISRO purposely engineered LISS-III with an enhanced $23.5\text{ m}$ resolution to surpass Landsat TM in ground detail.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) 79m</span>
+      <span class="tag wrong">Incorrect (Landsat-1/2/3 First-Generation MSS Resolution)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> $79\text{ meters}$ (nominally $80\text{ m}$) was the resolution of the historical Multispectral Scanner (MSS) flown on Landsat-1, 2, and 3 in the 1970s, as well as ISRO's earliest first-generation LISS-I sensor on IRS-1A/1B ($72.5\text{ m}$).
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) 23.5m</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> On IRS-1C and IRS-1D, the flagship multispectral sensor LISS-III provided <strong>$23.5\text{ m}$</strong> ground spatial resolution across its VNIR bands (Green: $0.52 - 0.59\ \mu\text{m}$, Red: $0.62 - 0.68\ \mu\text{m}$, and NIR: $0.77 - 0.86\ \mu\text{m}$) over a $141\text{ km}$ swath, establishing India as a world leader in civilian remote sensing.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Satellite Specification Comparative Card</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 19: Sensor Comparison Matrix</div>
-          <p>Match the satellite sensor to its exact spatial resolution: (1) Landsat-8 OLI Multispectral, (2) Sentinel-2 MSI VNIR, (3) IRS-1D LISS-III VNIR, (4) Cartosat-1 PAN.</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <ul>
-              <li>(1) Landsat-8 OLI Multispectral = <b>$30\text{ meters}$</b></li>
-              <li>(2) Sentinel-2 MSI VNIR = <b>$10\text{ meters}$</b></li>
-              <li>(3) IRS-1D LISS-III VNIR = <b>$23.5\text{ meters}$</b></li>
-              <li>(4) Cartosat-1 PAN = <b>$2.5\text{ meters}$</b></li>
-            </ul>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Evolution of ISRO Earth Observation Sensor Resolutions</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Satellite Mission</th>
+            <th>Launch Year</th>
+            <th>Sensor Payloads</th>
+            <th>Spatial Resolution (GSD)</th>
+            <th>Key Technological Milestone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>IRS-1A / 1B</strong></td>
+            <td>1988 / 1991</td>
+            <td>LISS-I<br>LISS-IIA/B</td>
+            <td>$72.5\text{ m}$<br>$36.25\text{ m}$</td>
+            <td>India's first indigenous operational remote sensing satellites</td>
+          </tr>
+          <tr>
+            <td><strong>IRS-1C / 1D</strong></td>
+            <td>1995 / 1997</td>
+            <td><strong>PAN</strong><br><strong>LISS-III (MSS)</strong><br><strong>WiFS</strong></td>
+            <td><strong>$5.8\text{ m}$</strong><br><strong>$23.5\text{ m}$ (VNIR) / $70.5\text{ m}$ (SWIR)</strong><br><strong>$188\text{ m}$</strong></td>
+            <td>World's best civilian resolution ($5.8\text{ m}$) in 1995; solid-state pushbroom CCDs</td>
+          </tr>
+          <tr>
+            <td><strong>Resourcesat-1 / 2</strong></td>
+            <td>2003 / 2011</td>
+            <td>LISS-IV<br>LISS-III<br>AWiFS</td>
+            <td><strong>$5.8\text{ m}$ (Multispectral!)</strong><br>$23.5\text{ m}$<br>$56\text{ m}$</td>
+            <td>Multispectral LISS-IV imaging; AWiFS for rapid agricultural monitoring</td>
+          </tr>
+          <tr>
+            <td><strong>Cartosat-1</strong></td>
+            <td>2005</td>
+            <td>PAN-Fore / PAN-Aft</td>
+            <td>$2.5\text{ m}$ (Stereo)</td>
+            <td>In-orbit along-track stereo for national 3D DEM generation</td>
+          </tr>
+          <tr>
+            <td><strong>Cartosat-2 / 3</strong></td>
+            <td>2007 / 2019</td>
+            <td>Panchromatic / VNIR</td>
+            <td>$< 0.8\text{ m}$ (Cartosat-2)<br><strong>$0.28\text{ m}$ (Cartosat-3)</strong></td>
+            <td>Sub-meter cadastre, smart city urban planning, and defense reconnaissance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> What was the spatial resolution of the SWIR band (Band 5: $1.55 - 1.70\ \mu\text{m}$) on the IRS-1D LISS-III sensor?
+          <div class="pq-ans">✔ Correct Answer: $70.5\text{ meters}$ (with a swath of $148\text{ km}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> To maintain adequate signal-to-noise ratio with uncooled InGaAs linear array detectors in the lower solar flux SWIR region, pixel size was set at $70.5\text{ m}$ (exactly three times the $23.5\text{ m}$ VNIR pixel size).
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What scanning technology did LISS-III utilize instead of the oscillating scan mirrors used by Landsat TM?
+          <div class="pq-ans">✔ Correct Answer: Pushbroom scanning (Linear Imaging Self-Scanning) using solid-state Charge-Coupled Device (CCD) arrays.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Pushbroom linear arrays image an entire cross-track line simultaneously as the satellite moves, achieving much longer dwell times per pixel and superior radiometric sensitivity.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What upgrade did ISRO introduce in the LISS-IV sensor flown on Resourcesat-1 (2003) compared to LISS-III?
+          <div class="pq-ans">✔ Correct Answer: It delivered $5.8\text{ m}$ spatial resolution in three multispectral bands (Green, Red, NIR), whereas IRS-1D PAN was only panchromatic (monochrome) at $5.8\text{ m}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Resourcesat-1 was among the first satellites worldwide to achieve $< 6\text{ m}$ multi-band color imagery across a $23\text{ km}$ or $70\text{ km}$ swath.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What was the off-nadir steering capability of the IRS-1D PAN camera, and what capability did it enable?
+          <div class="pq-ans">✔ Correct Answer: Up to $\pm 26^\circ$ across-track steering; enabled stereoscopic 3D terrain viewing and rapid revisit within 5 days.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> An optical mirror rotated to view the same ground target from two consecutive orbits, generating stereo pairs for topographic elevation extraction.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is the revisit capability of the Wide Field Sensor (WiFS) on IRS-1D, and why was it chosen for national crop forecasting?
+          <div class="pq-ans">✔ Correct Answer: 5-day revisit period with an $810\text{ km}$ swath.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Frequent 5-day coverage ensured cloud-free composite imagery during critical phenological growth stages of India's kharif and rabi crops.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What Indian ground station network receives, processes, and disseminates IRS-1D and Resourcesat satellite data?
+          <div class="pq-ans">✔ Correct Answer: NRSC (National Remote Sensing Centre), Shadnagar Earth Station near Hyderabad.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> NRSC is the nodal agency under ISRO responsible for acquisition, processing, and archiving of all Indian Earth observation missions.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> How does the radiometric quantization of IRS-1D LISS-III (7-bit / 8-bit) compare with Landsat-8 OLI (12-bit)?
+          <div class="pq-ans">✔ Correct Answer: LISS-III quantizes signal into 128 (7-bit) or 256 (8-bit) gray levels; Landsat-8 OLI records 4,096 levels (12-bit scaled to 16-bit).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Higher bit depth prevents saturation over highly reflective targets and extracts subtle geological detail in steep shadow zones.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What was the operational life of IRS-1D, exceeding its designed mission life of 3 years?
+          <div class="pq-ans">✔ Correct Answer: Over 10 years of active operational service (1997 to 2007+).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Excellent orbital insertion and onboard fuel management allowed IRS-1D to deliver valuable high-resolution imagery for more than a decade.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

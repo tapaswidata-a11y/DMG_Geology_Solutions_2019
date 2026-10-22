@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q17: Optical Remote Sensing: Soil Moisture Absorption & NIR Image Tonal Response | OPSC Geology 2021 Masterclass</title>
+<title>Q017: Spectral Reflectance of Soils: Moisture Attenuation & NIR Tone | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,251 +89,542 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q17" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Remote Sensing & Optical Interpretation</div>
-    <h1>Q17: Optical Remote Sensing: Soil Moisture Absorption & NIR Image Tonal Response</h1>
+    <div class="badge">GEO - 2/21 • Optical Remote Sensing & Soil Spectroscopy</div>
+    <h1>Q017: Spectral Reflectance of Soils: Moisture Attenuation & NIR Tone</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Lillesand, Kiefer & Chipman (Remote Sensing, Ch. 1, pp. 16-20); Sabins (Ch. 2)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 17<br>
+<strong>Authoritative References:</strong> John R. Jensen, <em>Remote Sensing of the Environment: An Earth Resource Perspective</em> (2nd Ed., Ch. 12: Soils & Minerals, pp. 411–425); Thomas M. Lillesand et al., <em>Remote Sensing and Image Interpretation</em> (7th Ed., Ch. 1, pp. 16–18); Bowers, S.A. & Hanks, R.J. (1965, <em>Reflection of radiant energy from soils</em>, Soil Science, 100, pp. 130–138).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>17.1 Spectral Reflectance Behavior of Water & Soil Moisture</h3>
-        <p>In optical remote sensing and soil physics (Lillesand, Kiefer & Chipman, <i>Remote Sensing</i>, Ch. 1, pp. 16–20; Sabins, Ch. 2), the spectral reflectance curve of bare soil is dramatically altered by the introduction of moisture:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Soil Moisture State</th>
-                <th>Optical Mechanism & Water Absorption</th>
-                <th>Tonal Appearance on NIR Imagery</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Dry Bare Soil</b></td>
-                <td>High surface scattering, minimal absorption; reflectance steadily increases from visible into NIR ($30 - 45\%$)</td>
-                <td><b>Light / Bright / White tone</b></td>
-              </tr>
-              <tr>
-                <td><b>Moist / Wet Soil</b></td>
-                <td>Water films coat soil particles, lowering refractive index contrast and causing multiple internal refractions; <b>water strongly absorbs NIR radiation</b></td>
-                <td><b>Dark / Grey to Black tone</b></td>
-              </tr>
-              <tr>
-                <td><b>Standing Open Water</b></td>
-                <td>Near-total absorption of NIR wavelengths ($> 0.8\ \mu\text{m}$, reflectance $< 2-3\%$)</td>
-                <td><b>Jet Black tone</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>17.2 The Physics of Water Film Refraction</h3>
-        <p>When soil pores fill with water, the relative refractive index between mineral grains ($n_{\text{quartz}} \approx 1.54$) and the surrounding medium ($n_{\text{water}} \approx 1.33$) is much lower than grain-to-air ($n_{\text{air}} = 1.00$):</p>
-        $$\frac{n_{\text{quartz}}}{n_{\text{water}}} = 1.16 \quad \text{vs.} \quad \frac{n_{\text{quartz}}}{n_{\text{air}}} = 1.54$$
-        <p>This index matching increases the path length of light within the absorbing liquid, drastically reducing reflectance and darkening the image tone to <b>grey</b>.</p>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q17/soil_moisture_nir_reflectance_tone.png" alt="Soil Spectral Reflectance and Moisture Absorption Bands">
-      <figcaption>
-        <strong>Figure 17.1: Soil Moisture Spectral Behavior and Satellite Photographic Tone.</strong> As volumetric soil water content increases, internal scattering is suppressed by liquid pore filling and interstitial absorption, producing overall albedo attenuation and dark photographic tones across visible and near-infrared bands.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: SOIL SPECTRAL REFLECTANCE PHYSICS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Spectral Reflectance Curve of Soil & Water Interaction</div>
+    <div class="card-body">
+      <p>The spectral reflectance of natural bare soil is governed by five fundamental physicochemical parameters: <strong>moisture content</strong>, <strong>organic matter</strong>, <strong>iron oxide content</strong>, <strong>texture/particle size</strong>, and <strong>surface roughness</strong>. Among these, soil moisture exerts the most dramatic, non-linear dampening effect on reflectance across the entire solar spectrum ($0.4 - 2.5\ \mu\text{m}$):</p>
+
+      <ul>
+        <li><strong>Dry Soil Baseline:</strong> Completely dry mineral soils display a smooth, continuous, monotonically increasing reflectance curve from the visible through the Near-Infrared (NIR, $0.7 - 1.1\ \mu\text{m}$) and SWIR, appearing in bright light-grey to white tones on imagery.</li>
+        <li><strong>Moisture Reflectance Suppression:</strong> As volumetric soil moisture increases from $0\%$ to field capacity, <strong>reflectance decreases dramatically across all wavelengths</strong>, plunging the entire spectral curve downwards.</li>
+        <li><strong>Liquid Water Absorption Bands:</strong> Prominent liquid water absorption bands centered at <strong>$1.4\ \mu\text{m}$</strong> and <strong>$1.9\ \mu\text{m}$</strong> (vibrational overtones and combinations) broaden, with a weaker absorption band at <strong>$0.95\ \mu\text{m}$</strong> extending directly into the NIR band.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q17/soil_moisture_nir_reflectance_tone.png" alt="Soil Moisture NIR Reflectance Attenuation and Tone">
+        <div class="tb-caption">
+          <strong>Figure 17.1: Soil Reflectance vs. Moisture Content.</strong> Progressive reduction in spectral reflectance across the VNIR and SWIR as volumetric moisture increases from $0\%$ (dry sand) to $35\%$ (saturated soil), transforming the surface tone from bright white to dark grey/black.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE OPTICAL MECHANISM: WHY WET SOILS ARE DARK -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Optical Physics: Refractive Index Matching & Internal Trapping</div>
+    <div class="card-body">
+      <p>Why does water make soil look darker? The darkening of moist soil is governed by two physical optics mechanisms (Ångström, 1925; Lekner & Dorf, 1988):</p>
+
+      <ul>
+        <li><strong>1. Refractive Index Matching:</strong> In dry soil, quartz grains ($n_{\text{quartz}} \approx 1.54$) are surrounded by air ($n_{\text{air}} \approx 1.00$). The high refractive index contrast ($\Delta n = 0.54$) causes strong Fresnel reflection and multiple scattering at grain boundaries, returning light to the sensor (high reflectance). When water ($n_{\text{water}} \approx 1.33$) fills the pore spaces, the index contrast drops to $\Delta n = 1.54 - 1.33 = 0.21$. Scattering drops by more than $60\%$, allowing light to penetrate deeply into the soil rather than being reflected.</li>
+        <li><strong>2. Total Internal Reflection in Water Menisci:</strong> Surface water films create curved capillary menisci that trap backscattered rays via total internal reflection, forcing photons to undergo repeated absorption passes through the soil grains before they can escape.</li>
+        <li><strong>Visual Image Rendering:</strong> In remote sensing imagery, pixel brightness is directly proportional to recorded radiance ($DN \propto L$). Low NIR reflectance means the sensor records low digital numbers, rendering moist ground in distinct <strong>grey to dark-grey</strong> (or black) tones.</li>
+      </ul>
+
+      <div class="quote-box">
+        "As the moisture content of an agricultural soil increases, its overall spectral reflectance decreases across all wavelengths. In photographic or multispectral images, wet soil surfaces appear distinctly darker (lower grey values or darker tones) than surrounding dry soils."
+        <span class="quote-ref">— John R. Jensen, <em>Remote Sensing of the Environment</em> (2nd Ed., 2007, p. 415)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY OTHER OPTIONS FAIL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Refutation of Color Tone Distractors</div>
+    <div class="card-body">
+      <p>Understanding image display formats eliminates distractors:</p>
+      <ul>
+        <li><strong>White (Option A):</strong> White signifies maximum reflectance ($DN \approx 255$). This is characteristic of bone-dry sand dunes, salt playas, or snow/clouds, the polar opposite of wet soil.</li>
+        <li><strong>Red (Option C):</strong> In a standard False Color Composite (FCC: NIR=Red, Red=Green, Green=Blue), healthy green vegetation appears bright red due to intense spongy mesophyll reflectance ($40 - 60\%$). Moist bare soil lacks chlorophyll and displays low NIR reflectance, appearing dark grey, brown, or black on FCCs.</li>
+        <li><strong>Blue (Option D):</strong> In standard single-band grayscale display, pixels are exclusively rendered in shades of grey (0 = black to 255 = white). Colors like red or blue do not exist in single-band NIR imagery.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q17. The moisture present in the ground surface is shown as _______ tone in the NIR region of imagery.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> white</div>
-        <div class="opt-item correct"><strong>(B)</strong> grey</div>
-        <div class="opt-item "><strong>(C)</strong> red</div>
-        <div class="opt-item "><strong>(D)</strong> blue</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 17)</div>
+    <div class="q-stmt">
+      Q17. The moisture present in the ground surface is shown as _______ tone in the NIR region of imagery.
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) white</div>
+      <div class="raw-opt correct">(B) grey &nbsp;✔</div>
+      <div class="raw-opt">(C) red</div>
+      <div class="raw-opt">(D) blue</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) grey</div>
+      <div class="sub">
+        Moisture present in the ground absorbs near-infrared radiation and decreases surface reflectance via refractive index matching, causing moist soils to appear in <strong>grey</strong> (medium grey to dark grey/black) tones on single-band NIR imagery.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) grey</b> — Ground moisture strongly absorbs near-infrared (NIR) radiation, causing moist surfaces to appear in a dark <b>grey</b> tone on black-and-white NIR imagery (as opposed to the bright white tone of dry soil).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) white — INCORRECT:</b> White tone represents dry bare soil, salt flats, or snow with high NIR reflectance.</li>
-          <li><b>(B) grey — CORRECT:</b> Water absorption lowers reflectance, producing medium-to-dark grey tones on NIR imagery.</li>
-          <li><b>(C) red — INCORRECT:</b> On a standard False Color Composite (FCC), healthy vigorous vegetation appears red, not ground moisture.</li>
-          <li><b>(D) blue — INCORRECT:</b> "Tone" in photographic interpretation strictly refers to the relative brightness or colour on a black-and-white photographic gray scale (white, light grey, grey, dark grey, black).</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) white</span>
+      <span class="tag wrong">Incorrect (Indicates Maximum Reflectance / Bone-Dry Targets)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A white tone on grayscale imagery represents high radiant reflectance ($DN \approx 255$). In the NIR band, white tones are produced by bone-dry sand dunes, bleached carbonate outcrops, salt crusts, and clouds. Moisture suppresses reflectance, creating dark tones.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) grey</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> When water occupies soil pores, the refractive index contrast between quartz and the pore medium decreases, reducing multiple scattering while water absorption bands ($0.95, 1.4\ \mu\text{m}$) absorb incident energy. Consequently, moist ground reflects significantly less NIR energy than dry soil, producing a diagnostic <strong>grey</strong> (dark grey) tone.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) red</span>
+      <span class="tag wrong">Incorrect (Confuses FCC Vegetation Display with Grayscale Tone)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> On a standard False Color Composite (FCC), healthy green vegetation appears red because NIR radiance is mapped to the red display gun. Bare moist ground has low NIR reflectance and never appears red. Furthermore, a single NIR band is displayed in grayscale tones, not color.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) blue</span>
+      <span class="tag wrong">Incorrect (Single Band Imagery Contains No Chromatic Color)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Single-band NIR satellite imagery possesses no chromatic blue color; it is recorded as scalar radiance quantized into shades of grey. Clear deep water appears dark/black, but moist soil appears grey.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Remote Sensing Image Interpretation Practice</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 17: Normalized Difference Water Index (NDWI)</div>
-          <p>Write the mathematical formula for McFeeters' (1996) Normalized Difference Water Index (NDWI) and explain how it delineates water-saturated zones from surrounding dry land.</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            $$\text{NDWI} = \frac{\text{Green} - \text{NIR}}{\text{Green} + \text{NIR}}$$
-            <p>Because water features have high green reflectance and near-zero NIR reflectance, water bodies and saturated soils yield positive NDWI values ($> 0$), while terrestrial dry soil and vegetation (with high NIR reflectance) yield negative values, creating sharp binary contrast.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Physical Factors Governing Soil Spectral Reflectance</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Soil Soil Physicochemical Parameter</th>
+            <th>Effect on Overall Reflectance</th>
+            <th>Specific Spectral Manifestation</th>
+            <th>Tone on Grayscale NIR Imagery</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Moisture Content (Increasing)</strong></td>
+            <td><strong>Substantial decrease across all bands</strong></td>
+            <td>Strong absorption at $0.95, 1.4, 1.9\ \mu\text{m}$; index matching</td>
+            <td><strong>Medium to Dark Grey / Black</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Organic Matter ($> 2\%$)</strong></td>
+            <td>Significant decrease across visible & NIR</td>
+            <td>Masks mineral absorption features; flattens spectral slope</td>
+            <td>Dark Grey to Black</td>
+          </tr>
+          <tr>
+            <td><strong>Iron Oxide ($\text{Fe}^{3+}$ / Hematite)</strong></td>
+            <td>Steep increase in red; absorption in UV/blue</td>
+            <td>Diagnostic absorption trough at $0.85 - 0.90\ \mu\text{m}$</td>
+            <td>Medium Grey</td>
+          </tr>
+          <tr>
+            <td><strong>Texture: Fine Sand vs. Coarse Silt</strong></td>
+            <td>Increases with decreasing particle size</td>
+            <td>Smaller particles create more scattering surfaces</td>
+            <td>Light Grey to White (when dry)</td>
+          </tr>
+          <tr>
+            <td><strong>Surface Roughness (Plowed field)</strong></td>
+            <td>Decreases reflectance</td>
+            <td>Micro-shadowing traps incident solar radiation</td>
+            <td>Medium to Dark Grey</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> How does Ångström's (1925) optical equation explain the reduction in surface reflectance when dry soil is wetted with water?
+          <div class="pq-ans">✔ Correct Answer: Refraction at the air-water boundary and lower relative refractive index ($n_{\text{mineral}} / n_{\text{water}}$) promotes multiple internal reflections, trapping light inside the liquid film.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Light reflected back from a mineral grain within a water layer strikes the water-air interface from below; if the angle exceeds the critical angle ($\theta_c \approx 48.6^\circ$), it undergoes total internal reflection back into the soil, causing repeated absorption.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> At what critical percentage of Soil Organic Matter (SOM) does organic carbon completely mask the diagnostic iron and clay absorption features of a soil?
+          <div class="pq-ans">✔ Correct Answer: Approximately $2.0\% \text{ to } 2.5\%$ organic carbon content.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Soils containing $> 2\%$ decomposed organic humus display a dark, monotonic low-reflectance curve devoid of distinct mineral absorption troughs.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What satellite radar frequency band is globally utilized by NASA's SMAP (Soil Moisture Active Passive) mission to map volumetric soil moisture?
+          <div class="pq-ans">✔ Correct Answer: L-band ($1.41\text{ GHz}, \lambda \approx 21\text{ cm}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Liquid water has an exceptionally high dielectric constant ($\epsilon_r \approx 80$) compared to dry soil ($\epsilon_r \approx 3 - 5$). L-band microwaves penetrate vegetation to measure the dielectric jump in the top $5\text{ cm}$ of soil.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In a False Color Composite (FCC: Bands NIR, Red, Green displayed as RGB), how do wet water-logged paddy fields appear?
+          <div class="pq-ans">✔ Correct Answer: In dark blue to black tones (or dark purple-grey).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Water absorbs both NIR and Red light strongly. Because minimal energy is reflected to activate the red or green color guns, the water-logged soil appears dark bluish-black.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is the "Soil Line" in spectral space, and what are its coordinates?
+          <div class="pq-ans">✔ Correct Answer: The linear correlation line formed by plotting Red reflectance vs. NIR reflectance for bare soils ranging from wet to dry ($\rho_{\text{NIR}} = a \rho_{\text{Red}} + b$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Bare soils of varying moisture and roughness fall along a straight line in Red-NIR feature space, serving as the baseline for vegetation indices like PVI (Perpendicular Vegetation Index) and SAVI.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> How does crusting (such as a white halite/gypsum evaporite crust on an alkali soil) affect NIR reflectance?
+          <div class="pq-ans">✔ Correct Answer: It dramatically increases reflectance, shifting image tone from dark grey to brilliant white.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> High-albedo precipitated salt crystals seal surface pores, eliminating moisture absorption and causing intense surface scattering.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Which two Short-Wave Infrared (SWIR) wavelengths correspond to the deepest fundamental vibrational overtones of liquid water in soil?
+          <div class="pq-ans">✔ Correct Answer: $1.45\ \mu\text{m}$ and $1.95\ \mu\text{m}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> These two water absorption bands form deep troughs in the soil reflectance curve, with the $1.95\ \mu\text{m}$ band being the most diagnostic indicator of soil hydration.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why does a freshly plowed agricultural field appear darker on satellite imagery than an adjacent untilled, smooth field of identical soil composition?
+          <div class="pq-ans">✔ Correct Answer: Macroscopic surface roughness creates self-shadowing clods and furrow crevices that trap incident photons.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Clods and furrows act as micro-cavities that absorb radiation through multiple cavity reflections, lowering effective surface albedo.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
