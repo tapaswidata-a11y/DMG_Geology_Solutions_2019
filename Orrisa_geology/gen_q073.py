@@ -1,0 +1,357 @@
+#!/usr/bin/env python3
+"""
+Q073 Generator: Agglutinated Foraminifera Thermal Maturity (FCI / FCAI)
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q073():
+    title = r"Q073: Agglutinated Foraminifera: Thermal Maturity & Foraminiferal Colour Alteration Index (FCAI) | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Micropaleontology & Petroleum Geochemistry"
+    h1_title = "Q073: Agglutinated Foraminifera: Thermal Maturity & Petroleum Windows"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 73<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th Ed., Ch. 15: Petroleum Geology, pp. 524–528); David H. McNeil (1997, <em>Geological Survey of Canada Bulletin</em> 510, "New occurrences of Foraminiferal Colour Alteration Index (FCAI)"); Howard A. Armstrong & Martin D. Brasier, <em>Microfossils</em> (2nd Ed., Blackwell, pp. 160–165); Peters, Walters & Moldowan, <em>The Biomarker Guide</em> (Vol. 1, Cambridge)."""
+
+    part1 = r"""
+  <!-- CARD 1: BIOCHEMICAL COMPOSITION & THE COLOUR ALTERATION PHENOMENON -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Organic Geochemistry of Agglutinated Wall Cements & Color Alteration</div>
+    <div class="card-body">
+      <p>
+        <strong>Agglutinated Foraminifera</strong> (Suborder <em>Textulariina</em> and Order <em>Astrorhizida</em>) build their multichambered tests by capturing detrital mineral grains (predominantly quartz silt, heavy mineral grains, sponge spicules, or mica flakes) from the ambient seabed and bonding them with a biogenically secreted matrix.
+      </p>
+      <p>
+        In many primitive and deep-water taxa, this adhesive cement consists of a complex, cross-linked organic matrix composed of <strong>ferruginous mucopolysaccharides, glycosaminoglycans, and structural proteins (tectin)</strong>. When these organisms are buried deeply in subsiding sedimentary basins, this organic cement is subjected to progressive geothermal heating. Under thermal stress, the biopolymer undergoes irreversible <strong>carbonization, condensation, dehydration, and aromatization</strong>—a process directly analogous to the coalification of plant vitrinite and the thermal alteration of fossil conodonts and spores.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q73/agglutinated_foraminifera_thermal_maturation_index.png" alt="Foraminiferal Colour Alteration Index Calibration from McNeil and Boggs">
+        <div class="figure-caption">
+          <strong>Figure 73.1 — Foraminiferal Colour Alteration Index (FCAI / FCI) Scale & Hydrocarbon Windows:</strong> Systematic paleothermometric progression of agglutinated foraminiferal test coloration under burial heating, calibrated against Vitrinite Reflectance ($R_o$), Conodont Alteration Index (CAI), and primary petroleum generation windows.
+        </div>
+      </div>
+
+      <h4>The Foraminiferal Colour Alteration Index (FCAI / FCI)</h4>
+      <p>
+        Pioneered by D.H. McNeil (1989, 1997) at the Geological Survey of Canada, the <strong>Foraminiferal Colour Alteration Index (FCAI)</strong> provides a standardized, calibrated 10-point optical scale that quantifies the thermal maturity of sedimentary successions:
+      </p>
+      <ul>
+        <li><strong>FCAI 1 (Clear / White / Straw-Yellow):</strong> Paleotemperature $T < 50^\circ\text{C}$; Vitrinite Reflectance $R_o < 0.5\%$. <em>Immature stage</em> (biogenic methane only; liquid hydrocarbons have not generated).</li>
+        <li><strong>FCAI 2 (Light Amber / Golden Yellow):</strong> Paleotemperature $50\text{--}80^\circ\text{C}$; $R_o \approx 0.5\text{--}0.7\%$. <em>Early Oil Window</em> (onset of petroleum generation).</li>
+        <li><strong>FCAI 3 (Medium Brown / Cinnamon Brown):</strong> Paleotemperature $80\text{--}120^\circ\text{C}$; $R_o \approx 0.7\text{--}1.0\%$. <em>Peak Oil Window</em> (maximum liquid petroleum expulsion).</li>
+        <li><strong>FCAI 4 (Dark Brown / Dark Amber-Brown):</strong> Paleotemperature $120\text{--}150^\circ\text{C}$; $R_o \approx 1.0\text{--}1.3\%$. <em>Late Oil / Condensate Window</em> (cracking of heavy hydrocarbons into wet gas).</li>
+        <li><strong>FCAI 5 (Soot Black / Opaque):</strong> Paleotemperature $150\text{--}200^\circ\text{C}$; $R_o \approx 1.3\text{--}2.0\%$. <em>Dry Gas Window</em> (thermal cracking of liquid petroleum to methane).</li>
+        <li><strong>FCAI 6–7 (Vitreous Grey to Pearly White / Recrystallized):</strong> Paleotemperature $T > 200\text{--}250^\circ\text{C}$; $R_o > 2.0\%$. <em>Overmature / Supermature / Metamorphic</em> (greenschist facies pre-metamorphism; all hydrocarbons destroyed).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: WHY AGGLUTINATED FORAMINIFERA ARE INDISPENSABLE IN DEEP BASINS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Exploration Applications: Why Agglutinated Forams Solve the "Deep Basin Dilemma"</div>
+    <div class="card-body">
+      <p>
+        In petroleum exploration, assessing the <strong>thermal maturity</strong> of source rocks and reservoir seals is the single most critical gating factor determining whether a drill target contains light sweet crude, condensates, dry gas, or barren overmature graphite.
+      </p>
+
+      <h4>The Unique Superiority of Agglutinated Foraminifera in Siliciclastic Basins</h4>
+      <ul>
+        <li><strong>The Deep Flysch / Sub-CCD Realm:</strong> In deep-water turbidite basins, continental slope canyons, and abyssal plain trenches, seawater depths routinely exceed the <strong>Calcite Compensation Depth (CCD)</strong> (~4,000–4,500 m). At these depths, calcium carbonate dissolves completely, obliterating all calcareous microfossils (planktic and benthic calcareous foraminifera, coccoliths). <em>Agglutinated foraminifera (Flysch-type DWAF faunas) flourish below the CCD</em>, providing the only biogenic microfossils recovered from deep-water shales.</li>
+        <li><strong>Pre-Devonian Siliciclastics Lacking Vitrinite:</strong> Vitrinite is derived exclusively from the woody tissue (lignin and cellulose) of vascular terrestrial plants (tracheophytes). Consequently, <strong>true vitrinite does not exist in Cambrian, Ordovician, or Silurian rocks</strong>. In Lower Paleozoic deep marine shales, agglutinated foraminiferal color alteration and conodont alteration (CAI) represent the only reliable optical maturity proxies.</li>
+        <li><strong>Carbonate-Free Sequences Lacking Conodonts:</strong> Conodonts were nektonic marine chordates restricted entirely to shallow-to-slope marine carbonates and calcareous shales from the Late Cambrian to Late Triassic. In pure siliciclastic sandstone-shale sequences (e.g., Arctic Beaufort-Mackenzie Basin, North Sea Paleogene turbidites, East Coast of India deep-water plays), conodonts are absent, making agglutinated foraminifera the paramount organic paleothermometer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: GEOCHEMICAL KINETICS & THERMAL MATURITY DEFINITION -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Geochemical Kinetics: Thermal Maturity vs. Diagenetic Processes</div>
+    <div class="card-body">
+      <p>
+        It is essential in economic geology and organic geochemistry to maintain strict distinction between <strong>thermal maturity</strong> and general <strong>diagenesis</strong>:
+      </p>
+      <ul>
+        <li><strong>Thermal Maturity:</strong> Specifically refers to the extent to which organic matter (kerogen, bitumen, tectin) has been altered by <strong>irreversible thermal degradation driven by ambient temperature ($T$) and effective heating time ($t$)</strong>. It dictates the thermodynamic conversion of solid kerogen into fluid petroleum and gas according to first-order Arrhenius kinetics ($k = A e^{-E_a/RT}$).</li>
+        <li><strong>Diagenesis:</strong> A broad, general geological umbrella encompassing all physical, chemical, and biological changes undergone by sediment after deposition, prior to metamorphism. Diagenesis includes mechanical compaction, porewater expulsion, quartz overgrowth, calcite cementation, and smectite-to-illite clay transformation—processes that depend heavily on pore fluid chemistry, pH, Eh, and pressure, rather than serving as direct calibrated meters of hydrocarbon generation windows.</li>
+      </ul>
+      <div class="formula-box">
+        <strong>First-Order Arrhenius Maturation Equation:</strong><br>
+        $$\frac{d[\text{Organic Precursor}]}{dt} = -k [\text{Organic Precursor}] = -A \exp\left(-\frac{E_a}{R T(t)}\right) [\text{Organic Precursor}]$$<br>
+        $$\text{FCAI} = f\left(\int_0^{t_{\text{burial}}} \exp\left(-\frac{E_a}{R T(t)}\right) dt\right)$$
+      </div>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 73</div>
+        <div class="q-text">Agglutinated Fossil Foraminifera buried deeply in sedimentary basins can be used to estimate _____, a key factor for hydrocarbon generation.</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) thermal maturity</div>
+          <div class="opt-node">(B) diagenesis</div>
+          <div class="opt-node">(C) burial diagenesis</div>
+          <div class="opt-node">(D) kerogen content of organic shales</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (A)</div>
+        <div><strong>Thermal maturity:</strong> The progressive carbonization and color shift of organic cements in agglutinated foraminifera (Foraminiferal Colour Alteration Index, FCAI) directly reflects maximum paleotemperature, serving as an authoritative proxy for source rock thermal maturity.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option correct">
+        <div class="opt-title">(A) thermal maturity — CORRECT</div>
+        <p>
+          Agglutinated foraminifera utilize organic cements (cross-linked mucopolysaccharides and tectin) to bind detrital sand and silt grains. With increasing burial depth and geothermal heating, these organic cements undergo progressive thermal maturation and carbonization, shifting predictably from clear/amber through dark brown to black and glassy white. This optical progression—quantified as the <strong>Foraminiferal Colour Alteration Index (FCAI)</strong>—is directly calibrated to Vitrinite Reflectance ($R_o$) to determine the exact <strong>thermal maturity</strong> and the boundaries of the oil and gas generation windows (Boggs, 2012, p. 524; McNeil, 1997).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(B) diagenesis — INCORRECT</div>
+        <p>
+          <em>Diagenesis</em> is a vast, generic term describing all post-depositional physical, chemical, and biological processes occurring at temperatures below $\sim 150\text{--}200^\circ\text{C}$ (e.g., bioturbation, compaction, dissolution, carbonate cementation). While thermal maturation occurs during deep diagenesis and catagenesis, "diagenesis" itself is neither a specific quantitative metric nor the direct parameter that governs hydrocarbon cracking.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) burial diagenesis — INCORRECT</div>
+        <p>
+          <em>Burial diagenesis</em> specifically focuses on lithification, mechanical compaction, porosity loss, pressure solution (stylolitization), and mineral authigenesis (such as the transformation of smectite to illite via mixed-layer I/S clays). While occurring concurrently with basin burial, it is not the term for the organic thermal state that governs petroleum expulsion.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) kerogen content of organic shales — INCORRECT</div>
+        <p>
+          <em>Kerogen content</em> refers to the quantitative mass percentage of insoluble organic matter preserved in the rock, measured as <strong>Total Organic Carbon (TOC wt%)</strong> via Rock-Eval pyrolysis or LECO combustion. Foraminiferal color alteration measures the <em>qualitative thermal state (maturity)</em> of the basin, not the <em>quantitative abundance (richness)</em> of kerogen. A rock can have very high kerogen content ($TOC = 15\%$) but be completely thermally immature ($FCAI = 1, R_o = 0.3\%$).
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Correlation Framework of Petroleum Thermal Maturity Indicators</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Maturation Stage</th>
+            <th>Peak Paleotemp ($^\circ\text{C}$)</th>
+            <th>Vitrinite Reflectance ($R_o\%$)</th>
+            <th>FCAI (Foram Colour)</th>
+            <th>CAI (Conodont Colour)</th>
+            <th>TAI / SCI (Spore Colour)</th>
+            <th>Hydrocarbon Product</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Immature</strong></td>
+            <td>$< 60^\circ\text{C}$</td>
+            <td>$< 0.50\%$</td>
+            <td><strong>FCAI 1</strong> (Clear/White/Pale Yellow)</td>
+            <td>CAI 1 (Pale Yellow)</td>
+            <td>TAI 1.0 – 1.5 (Yellow)</td>
+            <td>Biogenic Methane; Immature kerogen</td>
+          </tr>
+          <tr>
+            <td><strong>Early Oil Window</strong></td>
+            <td>$60\text{--}90^\circ\text{C}$</td>
+            <td>$0.50\text{--}0.70\%$</td>
+            <td><strong>FCAI 2</strong> (Light Amber / Golden)</td>
+            <td>CAI 1.5</td>
+            <td>TAI 2.0 (Orange)</td>
+            <td>Heavy to Medium Crude Oil</td>
+          </tr>
+          <tr>
+            <td><strong>Peak Oil Window</strong></td>
+            <td>$90\text{--}120^\circ\text{C}$</td>
+            <td>$0.70\text{--}1.00\%$</td>
+            <td><strong>FCAI 3</strong> (Medium Brown)</td>
+            <td>CAI 2.0 (Brown)</td>
+            <td>TAI 2.5 – 3.0 (Brown)</td>
+            <td>Light Sweet Crude Oil</td>
+          </tr>
+          <tr>
+            <td><strong>Late Oil / Condensate</strong></td>
+            <td>$120\text{--}150^\circ\text{C}$</td>
+            <td>$1.00\text{--}1.35\%$</td>
+            <td><strong>FCAI 4</strong> (Dark Brown)</td>
+            <td>CAI 3.0 (Dark Brown)</td>
+            <td>TAI 3.5 (Dark Brown)</td>
+            <td>Wet Gas & Condensate</td>
+          </tr>
+          <tr>
+            <td><strong>Dry Gas Window</strong></td>
+            <td>$150\text{--}200^\circ\text{C}$</td>
+            <td>$1.35\text{--}2.00\%$</td>
+            <td><strong>FCAI 5</strong> (Black / Opaque)</td>
+            <td>CAI 4.0 – 5.0 (Black)</td>
+            <td>TAI 4.0 (Black)</td>
+            <td>Thermal Dry Gas (Methane)</td>
+          </tr>
+          <tr>
+            <td><strong>Overmature / Barren</strong></td>
+            <td>$> 200^\circ\text{C}$</td>
+            <td>$> 2.00\%$</td>
+            <td><strong>FCAI 6–7</strong> (Grey to Glassy White)</td>
+            <td>CAI 6 – 8 (White/Clear)</td>
+            <td>TAI 5.0 (Graphitized)</td>
+            <td>Barren; graphite and $CO_2/N_2$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Basin Paleotemperature & Geothermal Depth Derivation</div>
+        <p>
+          Exploration drilling in a deep-water turbidite basin recovers agglutinated foraminifera with an average FCAI of 3.0 (Peak Oil Window, corresponding to a peak paleotemperature of $105^\circ\text{C}$). If the surface mean temperature is $15^\circ\text{C}$ and the average geothermal gradient is $30^\circ\text{C/km}$, calculate the maximum paleoburial depth of the source interval.
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Geothermal Calculation:</strong><br>
+          The fundamental geothermal burial equation is:<br>
+          $$T_{\text{burial}} = T_{\text{surface}} + (G \times Z)$$<br>
+          where:<br>
+          - $T_{\text{burial}} = 105^\circ\text{C}$<br>
+          - $T_{\text{surface}} = 15^\circ\text{C}$<br>
+          - $G = 30^\circ\text{C/km}$<br>
+          - $Z = \text{Paleoburial depth in km}$<br>
+          Rearranging for $Z$:<br>
+          $$Z = \frac{T_{\text{burial}} - T_{\text{surface}}}{G} = \frac{105 - 15}{30} = \frac{90}{30} = 3.0\text{ km} = 3,000\text{ meters}$$<br>
+          <strong>Conclusion:</strong> The source interval reached peak oil generation at a maximum burial depth of <strong>3,000 meters</strong>.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Vitrinite Reflectance ($R_o$) and FCAI Cross-Correlation</div>
+        <p>
+          A petroleum geochemist receives cutting samples from a Mesozoic well in which vitrinite particles are absent due to deep marine deposition far from land. Agglutinated foraminifera exhibit an FCAI value of 4.0. Using the empirical relationship $\ln(R_o) \approx 0.35 \times \text{FCAI} - 1.25$, estimate the equivalent vitrinite reflectance ($R_o\%$) and state whether the interval is prone to oil or gas.
+        </p>
+        <div class="p-ans">
+          <strong>Mathematical Estimation:</strong><br>
+          $$\ln(R_o) = 0.35 \times 4.0 - 1.25 = 1.40 - 1.25 = +0.15$$<br>
+          $$R_o = e^{0.15} \approx 1.16\%$$<br>
+          <strong>Petroleum Phase Evaluation:</strong><br>
+          An $R_o$ of $1.16\%$ falls strictly into the <strong>Late Oil / Wet Gas and Condensate Window</strong> ($R_o = 1.0\text{--}1.3\%$). Liquid oil has largely cracked into lighter condensate hydrocarbons and wet gas fractions ($\text{C}_2\text{--}\text{C}_5$).
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: First-Order Arrhenius Kinetics of Organic Carbonization</div>
+        <p>
+          The thermal degradation of tectin organic cement in agglutinated foraminiferal walls follows first-order kinetics with an activation energy $E_a = 180\text{ kJ/mol}$ and frequency factor $A = 1.0 \times 10^{14}\text{ s}^{-1}$. Calculate the reaction rate constant $k$ at $T = 100^\circ\text{C}$ (373.15 K). ($R = 8.314\text{ J}\cdot\text{mol}^{-1}\cdot\text{K}^{-1}$).
+        </p>
+        <div class="p-ans">
+          <strong>Arrhenius Calculation:</strong><br>
+          $$k = A \exp\left(-\frac{E_a}{R T}\right)$$<br>
+          $$E_a = 180,000\text{ J/mol}$$<br>
+          $$R T = 8.314 \times 373.15 = 3,102.37\text{ J/mol}$$<br>
+          $$\frac{E_a}{R T} = \frac{180,000}{3,102.37} \approx 58.02$$<br>
+          $$k = 1.0 \times 10^{14} \times e^{-58.02} = 1.0 \times 10^{14} \times (6.32 \times 10^{-26}) \approx 6.32 \times 10^{-12}\text{ s}^{-1}$$<br>
+          <strong>Interpretation:</strong> Over geological time ($1\text{ million years} \approx 3.15 \times 10^{13}\text{ s}$), $k \times t \approx 199$, indicating that heating at $100^\circ\text{C}$ for several million years ensures complete maturation of the organic matrix.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Sub-CCD Flysch Basin Exploration Evaluation</div>
+        <p>
+          Explain why an exploration team targeting deep-water turbidites in the Krishna-Godavari deep offshore basin must rely on agglutinated foraminifera and palynomorphs rather than planktic foraminifera to evaluate source rock thermal maturity.
+        </p>
+        <div class="p-ans">
+          <strong>Taphonomic and Oceanographic Mechanism:</strong><br>
+          1. <strong>Calcite Dissolution below the CCD:</strong> In deep marine environments exceeding the lysocline and Calcite Compensation Depth (CCD, $\sim 3,500\text{--}4,500\text{ m}$), cold, highly pressurized seawater enriched in dissolved $CO_2$ is undersaturated with respect to calcium carbonate. Calcareous microfossils (e.g., *Globigerina*, *Globorotalia*) are completely dissolved post-mortem.<br>
+          2. <strong>Agglutinated Foraminiferal Preservation:</strong> Agglutinated foraminifera (composed of insoluble quartz grains bound by organic linings or silica cements) thrive on benthic abyssal plains and survive intact below the CCD.<br>
+          3. <strong>Optical Maturation Measurement:</strong> Because calcareous tests lack organic walls to carbonize, only agglutinated forams and acid-resistant organic-walled palynomorphs (spores, pollen, dinocysts) provide direct optical paleothermometry (FCAI and TAI).
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Distinguishing Regional Burial Maturation from Hydrothermal Flash Heating</div>
+        <p>
+          In a deep borehole, a shale bed at 1,500 m yields agglutinated foraminifera with an anomalously high FCAI of 5.0 (Black, $T > 160^\circ\text{C}$), whereas shales at 1,400 m and 1,600 m yield FCAI values of 2.0 ($T \approx 65^\circ\text{C}$). Diagnose the geological cause of this anomaly.
+        </p>
+        <div class="p-ans">
+          <strong>Geological Diagnosis:</strong><br>
+          - <strong>Normal Burial Maturation:</strong> Regional burial maturation produces a gradual, monotonic downward increase in FCAI following the regional geothermal gradient ($d\text{FCAI}/dZ > 0$).<br>
+          - <strong>The Sharp Local Spike:</strong> A localized jump to FCAI 5.0 confined to a single horizon indicates <strong>contact thermal metamorphism</strong> caused by an adjacent igneous intrusion (e.g., a mafic dolerite sill or basaltic dike) or localized channelized hydrothermal fluid flow through a fracture zone. The heat dissipation was rapid, baking only the immediately adjacent host sediment.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Contrast between Kerogen Richness (TOC) and Thermal Maturity</div>
+        <p>
+          A black shale sample from the Barakar Formation yields a Total Organic Carbon (TOC) of $12.5\text{ wt}\%$ and an FCAI of 1.5. A second shale sample from a fold-and-thrust belt yields a TOC of $1.2\text{ wt}\%$ and an FCAI of 5.5. Contrast their petroleum generation potentials.
+        </p>
+        <div class="p-ans">
+          <strong>Source Rock Evaluation:</strong><br>
+          - <strong>Sample 1 (TOC = 12.5%, FCAI = 1.5):</strong> World-class organic richness ($TOC > 4\%$ is excellent source rock), but it is <strong>thermally immature</strong> ($FCAI < 2.0, T < 60^\circ\text{C}$). It has not reached the oil window and cannot have generated or expelled commercial liquid petroleum.<br>
+          - <strong>Sample 2 (TOC = 1.2%, FCAI = 5.5):</strong> Moderate residual organic richness ($TOC = 1.2\%$), but it is <strong>severely overmature / supermature</strong> ($FCAI = 5.5, T > 180^\circ\text{C}$). Any hydrocarbons generated have been cracked into methane or destroyed into graphite and inert carbonaceous residue.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Taphonomic Weathering and Oxidation Bleaching Artifacts</div>
+        <p>
+          How can an exploration geologist identify whether a pale-white agglutinated foraminifer represents a pristine immature specimen (FCAI 1) or a post-mature, metamorphically bleached specimen (FCAI 7)?
+        </p>
+        <div class="p-ans">
+          <strong>Petrographic Criteria for Discrimination:</strong><br>
+          1. <strong>FCAI 1 (Immature):</strong> The test walls are flexible, resilient, or fragile; the organic cement retains aliphatic bonds; detrital quartz grains show no syntaxial quartz overgrowths; associated clay minerals are predominantly smectite or illite-smectite ($R=0$); associated vitrinite has $R_o < 0.4\%$.<br>
+          2. <strong>FCAI 7 (Supermature / Metamorphic):</strong> The test displays a glassy, pearly, or vitreous luster; organic cement is completely graphitized or volatilized; detrital quartz grains exhibit recrystallization, triple junctions ($120^\circ$), and micro-fracturing; associated clay minerals are well-crystallized illite (anchizone / epizone) or chlorite; associated vitrinite has $R_o > 4.0\%$.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Multi-Proxy Maturation Synthesis in Well Correlation</div>
+        <p>
+          Synthesize a cross-plot strategy integrating FCAI, Rock-Eval $T_{\max}$, and Vitrinite Reflectance ($R_o$) to validate oil window boundaries in an offshore wildcat well.
+        </p>
+        <div class="p-ans">
+          <strong>Multi-Proxy Validation Methodology:</strong><br>
+          1. <strong>Top of Oil Window (Onset):</strong> Demarcated when $\text{FCAI} = 2.0$, $R_o = 0.60\%$, and Rock-Eval $T_{\max} = 435^\circ\text{C}$. S2 hydrocarbon pyrolysis peak begins to decrease while free hydrocarbon S1 peak rises.<br>
+          2. <strong>Peak Oil Generation:</strong> Corresponds to $\text{FCAI} = 3.0$, $R_o = 0.85\%$, and $T_{\max} = 445^\circ\text{C}$. Maximum oil yield and production index ($PI = S_1/(S_1 + S_2) \approx 0.2\text{--}0.4$).<br>
+          3. <strong>Base of Oil Window (Cracking to Gas):</strong> Established at $\text{FCAI} = 4.0\text{--}4.5$, $R_o = 1.35\%$, and $T_{\max} = 465^\circ\text{C}$. S2 peak drops toward zero as kerogen generative capacity is exhausted.
+        </div>
+      </div>
+
+    </div>
+  </div>
+"""
+
+    html = wrap_html(title, badge, h1_title, meta_text, 73, part1, part2, part3)
+    out_path = os.path.join(SOLUTIONS_DIR, "Q073_Agglutinated_Foraminifera_Thermal_Maturity_FCI_Complete_Guide.html")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q073: {out_path} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q073()

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q74: Basin Stratigraphy - Dinoflagellates & Early Cretaceous Transgression in KG Basin | OPSC Geology 2021 Masterclass</title>
+<title>Q074: Dinoflagellate Biostratigraphy: Early Cretaceous Transgression in KG Basin | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,260 +89,612 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q74" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Palynology & Krishna-Godavari Basin Stratigraphy</div>
-    <h1>Q74: Basin Stratigraphy - Dinoflagellates & Early Cretaceous Transgression in KG Basin</h1>
+    <div class="badge">GEO - 2/21 • Palynology & Basin Stratigraphy</div>
+    <h1>Q074: Dinoflagellates: Early Cretaceous Marine Transgression in Krishna-Godavari Basin</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology & Stratigraphy, p. 511); DGH KG Basin Biostratigraphy
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 74<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th Ed., Ch. 15, pp. 510–514); Directorate General of Hydrocarbons (DGH), <em>Krishna-Godavari Basin Hydrocarbon Potential & Stratigraphic Atlas</em>; R. Garg, Khowaja-Ateequzzaman & K.P. Jain, "Early Cretaceous dinoflagellate cysts from Raghavapuram Mudstone, KG Basin" (<em>J. Palaeontol. Soc. India</em>); A. Kumar, "Palynostratigraphy of Upper Gondwana of East Coast basins" (<em>Geol. Surv. India Spec. Publ.</em>).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Tectonic Evolution of the Krishna-Godavari (KG) Passive Margin Basin</h3>
-<p>The <strong>Krishna-Godavari (KG) Basin</strong>, situated along the east coast of Peninsular India in Andhra Pradesh and the adjacent Bay of Bengal, is a premier petroliferous basin. The basin evolved through four major geodynamic stages:</p>
-<ol>
-  <li><strong>Syn-Rift Continental Phase (Late Carboniferous to Late Jurassic):</strong> Gondwana intracratonic rifting producing NE–SW trending grabens and half-grabens (Chintalapudi and Mandapeta grabens).</li>
-  <li><strong>Rift-Drift Transition & Breakup (Early Cretaceous / Neocomian–Aptian):</strong> Breakup of Eastern Gondwanaland (separation of Greater India from Antarctica-Australia), initiating the opening of the proto-Bay of Bengal.</li>
-  <li><strong>Major Marine Transgression (Early Cretaceous / Aptian–Albian):</strong> Catastrophic regional marine flooding event that drowned early fluvial valleys and deposited thick, organic-rich marine black shales across the basin.</li>
-  <li><strong>Passive Margin Post-Rift Progradation (Late Cretaceous to Cenozoic):</strong> Deltaic progradation of the proto-Krishna and Godavari rivers.</li>
-</ol>
-
-<h3>2. Dinoflagellate Cysts as Marine Transgression Markers</h3>
-<p>During the <strong>Early Cretaceous (Aptian–Albian) marine transgression</strong>, open-marine oceanic waters flooded the pericratonic KG Basin, depositing the prolific petroleum source rock known as the <strong>Raghavapuram Shale Formation</strong> (and lateral subsurface correlatives). Because macrofossils are sparse in these distal, oxygen-depleted shales, biostratigraphic dating relies on organic-walled microplankton—specifically resting cysts of marine <strong>dinoflagellates</strong> (Dinocysts; Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em>, p. 511; DGH KG Basin Petroleum Atlas).</p>
-
-<p>The transgressive Raghavapuram shales are defined by a rich, cosmopolitan marine dinoflagellate cyst assemblage that includes:</p>
-<ul>
-  <li><strong>Cassiculosphaeridia magna:</strong> A diagnostic spherical chorate to proximate dinocyst with reticulate ornamentation, internationally calibrated to the Aptian–Albian stages of the <strong>Early Cretaceous</strong>.</li>
-  <li><strong>Hystrichodinium voigti:</strong> A spinose, cavate dinoflagellate cyst characteristic of boreal and Tethyan Early Cretaceous transgressive horizons.</li>
-  <li><strong>Odontochitina operculata</strong> and <strong>Cribroperidinium edwardsii:</strong> Diagnostic Early Cretaceous marker taxa.</li>
-</ul>
-<p>The sudden abundance of these marine dinoflagellate cysts over non-marine terrestrial spore-pollen suites provides unequivocal micropaleontological proof of the <strong>Early Cretaceous</strong> marine transgressive event.</p>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q74/kg_basin_early_cretaceous_dinoflagellate_assemblage.png" alt="Early Cretaceous Dinoflagellate Transgression in KG Basin">
-      <figcaption>
-        <strong>Figure 74.1: Early Cretaceous Marine Transgression in the Krishna-Godavari Basin.</strong> Stratigraphic and palynological chart showing the diagnostic dinoflagellate cyst assemblage (<em>Cassiculosphaeridia magna</em>, <em>Hystrichodinium voigti</em>, <em>Odontochitina operculata</em>) defining the Aptian-Albian marine flooding event in the Raghavapuram Shale of the KG Basin.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-        
   </div>
+  
+  <!-- CARD 1: TECTONOSTRATIGRAPHY OF THE KRISHNA-GODAVARI (KG) BASIN -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Tectonostratigraphy of the Krishna-Godavari (KG) Basin & the Mesozoic Transgression</div>
+    <div class="card-body">
+      <p>
+        The <strong>Krishna-Godavari (KG) Basin</strong>, located along the eastern passive continental margin of peninsular India (Andhra Pradesh), is a polyhistory pericratonic rift and drift basin. It initiated during the <strong>Late Jurassic to Early Cretaceous breakup of Eastern Gondwana</strong>, when the Indian continental plate rifted and separated from East Antarctica and Australia (~135–120 Ma).
+      </p>
+      <p>
+        During the early evolution of this passive margin, a series of NE–SW trending extensional horsts and grabens (e.g., Mandapeta Graben, Chintalapudi Sub-basin, Gudivada Graben) developed. As continental separation accelerated, marine waters from the nascent Indian Ocean flooded the subsiding rift valleys, culminating in a major, regionally extensive <strong>marine transgressive event during the Early Cretaceous (Aptian–Albian stages)</strong>.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q74/kg_basin_early_cretaceous_dinoflagellate_assemblage.png" alt="KG Basin Early Cretaceous Dinoflagellate Assemblage">
+        <div class="figure-caption">
+          <strong>Figure 74.1 — Early Cretaceous Dinoflagellate Cyst Assemblage and Stratigraphy in the KG Basin:</strong> Microphotographs and stratigraphic distribution of diagnostic marker dinocysts (including <em>Cassiculosphaeridia magna</em> and <em>Hystrichodinium voigtii</em>) establishing the marine flooding of the Raghavapuram Mudstone in the Krishna-Godavari Basin.
+        </div>
+      </div>
+
+      <h4>The Mesozoic Lithostratigraphic Triad of the KG Basin</h4>
+      <p>
+        The classic Mesozoic sequence exposed in the Krishna-Godavari Basin comprises three conformable to paraconformable lithostratigraphic units:
+      </p>
+      <ul>
+        <li><strong>Gollapalli Sandstone (Late Jurassic – Early Cretaceous / Neocomian):</strong> Basal syn-rift continental to deltaic sandstones, conglomerates, and minor clays deposited in fluvial channel and lacustrine systems. Dominated by terrestrial plant fossils and coniferous spore-pollen.</li>
+        <li><strong>Raghavapuram Mudstone (Early Cretaceous / Aptian – Albian):</strong> The paramount marine transgressive shale unit! Consists of dark grey to carbonaceous, fissile marine shales, silty mudstones, and minor calcareous bands. It preserves a prolific assemblage of marine dinoflagellate cysts, ammonites, and marine bivalves, representing the prime syn-rift source rock of the basin.</li>
+        <li><strong>Tirupati Sandstone (Late Cretaceous / Cenomanian – Campanian):</strong> Regressive, littoral to fluvio-deltaic ferruginous sandstones, grit, and conglomerates representing shoreface progradation over the drowning mudstone.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: DINOFLAGELLATE CYSTS AS CHRONOSTRATIGRAPHIC PROXIES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Dinoflagellate Cyst Biostratigraphy: Diagnostic Early Cretaceous Markers</div>
+    <div class="card-body">
+      <p>
+        <strong>Dinoflagellates</strong> are unicellular, biflagellated eukaryotic protists (Phylum Dinoflagellata). During their sexual life cycle, many planktic marine species form a dormant, benthic resting cyst (<strong>dinocyst</strong>) composed of <em>dinosporin</em>—a complex, highly resistant, lipoidal biomacromolecule functionally analogous to sporopollenin.
+      </p>
+      <p>
+        Because dinocysts resist non-oxidizing acids ($HCl$, $HF$), they survive severe diagenetic leaching that completely dissolves calcareous microfossils (foraminifera, nannoplankton). In the dark, dysoxic shales of the Raghavapuram Mudstone, dinoflagellate cysts provide absolute biostratigraphic resolution:
+      </p>
+
+      <h4>Diagnostic Early Cretaceous Marker Taxa</h4>
+      <ul>
+        <li><strong><em>Cassiculosphaeridia magna</em> Dave & Kumar (often cited as <em>magma</em> in exam papers):</strong> A proximate, spheroidal to subspheroidal dinocyst displaying an irregular reticulate/reticulocavate surface network and an apical archaeopyle. Strictly diagnostic of Aptian–Albian marine transgressive strata along the East Coast of India.</li>
+        <li><strong><em>Hystrichodinium voigtii</em> (Alberti) Davey:</strong> A classic chorate (spinose) dinocyst bearing long, slender, distally pointed hollow processes radiating from a fibro-reticulate central body. A cosmopolitan Early Cretaceous marker characteristic of open-marine shelf waters from the Valanginian through Albian.</li>
+        <li><strong>Associated Index Taxa:</strong> <em>Dingodinium cerviculum</em>, <em>Canningia colliveri</em>, <em>Circulodinium hirtellum</em>, <em>Odontochitina operculata</em>, <em>Cribroperidinium orthoceras</em>, and <em>Muderongia</em> spp.</li>
+      </ul>
+
+      <div class="formula-box">
+        <strong>Transgressive Index Criterion:</strong><br>
+        $$\text{Raghavapuram Transgressive Event} \iff \text{Dinocyst Acme } (C.\text{ magna} + H.\text{ voigtii}) + \text{D/S Ratio} > 0.65$$<br>
+        $$\text{Chronostratigraphic Age} = \mathbf{Early\ Cretaceous\ (Aptian\ to\ Albian,\ \sim 125\text{--}100\ Ma)}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: PALYNOFACIES & SEQUENCE STRATIGRAPHIC FLOODING SURFACES -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Palynofacies, Maximum Flooding Surfaces & Hydrocarbon Source Potential</div>
+    <div class="card-body">
+      <p>
+        In petroleum sequence stratigraphy, dinoflagellate cysts are the definitive tool for delineating <strong>Transgressive Systems Tracts (TST)</strong> and identifying <strong>Maximum Flooding Surfaces (MFS)</strong>:
+      </p>
+      <ul>
+        <li><strong>The Dinocyst-to-Spore Ratio ($\text{D/S}$ Ratio):</strong> As the marine shoreline migrates landward during transgression, the relative abundance of terrestrial spore-pollen (derived from land plants) plummets, while marine dinocysts increase exponentially. The maximum peak in the $\text{D/S}$ ratio precisely identifies the condensed section and Maximum Flooding Surface within the Raghavapuram Mudstone.</li>
+        <li><strong>Source Rock Kinetics:</strong> The transgressive marine shales of the Raghavapuram Formation contain high concentrations of hydrogen-rich <strong>Type II amorphous organic matter (AOM)</strong> derived from marine phytoplankton (dinoflagellates and prasinophytes). With Total Organic Carbon ($TOC$) values reaching $2.0\text{--}6.5\text{ wt}\%$ and Hydrogen Indices ($HI > 350\text{ mg HC/g TOC}$), this Early Cretaceous transgressive event generated the primary petroleum source beds charged into the Mandapeta and Ravva reservoirs.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q74. Dinoflagellate cysts like Cassiculosphaeridia magma, Hystrichodinium voigti etc. are important in establishing which age of transgressive event in the Krishna-Godavari Basin, India ?</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Palaeocene</div>
-        <div class="opt-item "><strong>(B)</strong> Jurassic</div>
-        <div class="opt-item correct"><strong>(C)</strong> Early Cretaceous</div>
-        <div class="opt-item "><strong>(D)</strong> Late Palaeocene</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 74</div>
+        <div class="q-text">Dinoflagellate cysts like Cassiculosphaeridia magma, Hystrichodinium voigti etc. are important in establishing which age of transgressive event in the Krishna-Godavari Basin, India ?</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Palaeocene</div>
+          <div class="opt-node">(B) Jurassic</div>
+          <div class="opt-node correct">(C) Early Cretaceous</div>
+          <div class="opt-node">(D) Late Palaeocene</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (C)</div>
+        <div><strong>Early Cretaceous:</strong> The dinocyst assemblage comprising <em>Cassiculosphaeridia magna</em> and <em>Hystrichodinium voigtii</em> is the diagnostic biostratigraphic marker for the Aptian–Albian (Early Cretaceous) marine transgression that deposited the Raghavapuram Mudstone in the Krishna-Godavari Basin.</div>
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "Dinoflagellate cysts like Cassiculosphaeridia magma, Hystrichodinium voigti etc. are important in establishing which age of transgressive event in the Krishna-Godavari Basin, India ?"</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Palaeocene (INCORRECT):</strong> Paleocene strata in the KG Basin (e.g., the Palakollu Shale) are characterized by Cenozoic planktonic foraminifera (<em>Morozovella</em>, <em>Subbotina</em>) and Tertiary dinocysts (e.g., <em>Apectodinium</em>). The index species <em>Cassiculosphaeridia magna</em> and <em>Hystrichodinium voigti</em> are extinct prior to the Paleocene.</li>
-  <li><strong>(B) Jurassic (INCORRECT):</strong> Jurassic strata in the KG basin (Gollapalli Sandstone) are dominantly continental syn-rift sandstones dominated by terrestrial pteridophytic spores and gymnosperm pollen (e.g., <em>Callialasporites</em>), lacking these marine Cretaceous dinocysts.</li>
-  <li><strong>(C) Early Cretaceous (CORRECT):</strong> Cosmopolitan dinoflagellate cysts such as <em>Cassiculosphaeridia magna</em> and <em>Hystrichodinium voigti</em> are globally documented biostratigraphic index markers for the <strong>Early Cretaceous (Aptian–Albian)</strong>. In the Krishna-Godavari Basin, their appearance marks the initial major marine transgressive flooding of the Raghavapuram Shale during Gondwana breakup.</li>
-  <li><strong>(D) Late Palaeocene (INCORRECT):</strong> Late Paleocene strata postdate these Early Cretaceous dinoflagellate species by more than 50 million years.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="opt-title">(A) Palaeocene — INCORRECT</div>
+        <p>
+          The Paleocene transgressive succession in the KG Basin is represented by the Palakollu Shale and basal Pasarlapudi Formation, deposited following Deccan volcanism. Its microplankton assemblage is characterized by typical Cenozoic marker dinocysts such as <em>Damassadinium californicum</em>, <em>Carpatella cornuta</em>, and <em>Senegalinium</em>, completely lacking the Mesozoic species <em>Cassiculosphaeridia magna</em> and <em>Hystrichodinium voigtii</em>.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(B) Jurassic — INCORRECT</div>
+        <p>
+          In the KG Basin, Jurassic strata (represented by the lower Gollapalli Sandstone and subsurface Mandapeta Red Beds) are strictly non-marine, syn-rift continental deposits formed in fluvial-lacustrine settings. They contain terrestrial spore-pollen (e.g., <em>Classopollis</em>, <em>Callialasporites</em>, <em>Araucariacites</em>) but are devoid of marine dinoflagellate cysts, as marine waters had not yet breached the rift valley.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="opt-title">(C) Early Cretaceous — CORRECT</div>
+        <p>
+          The regional marine transgressive event that drowned the early rift system along the eastern coast of India occurred in the <strong>Early Cretaceous (Aptian to Albian stages, ~125–100 Ma)</strong>, depositing the hydrocarbon-prolific <strong>Raghavapuram Mudstone</strong>. Palynological investigations by Garg et al., Kumar, and ONGC/DGH firmly established that the acme of <em>Cassiculosphaeridia magna</em>, <em>Hystrichodinium voigtii</em>, <em>Dingodinium cerviculum</em>, and <em>Canningia</em> establishes this Early Cretaceous transgressive datum.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) Late Palaeocene — INCORRECT</div>
+        <p>
+          The Late Paleocene (Thanetian stage) in the Tethyan and Indo-Pacific realms coincides with the Paleocene-Eocene Thermal Maximum (PETM). Its diagnostic palynological signature is an extraordinary global acme of the peridinioid genus <em>Apectodinium</em> (e.g., <em>Apectodinium augustum</em>, <em>A. homomorphum</em>), not Cretaceous gonyaulacoids.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Early Cretaceous Biostratigraphy of the Krishna-Godavari Basin</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Geological Stage</th>
-      <th>KG Basin Lithostratigraphic Unit</th>
-      <th>Depositional Facies</th>
-      <th>Diagnostic Dinoflagellate Cyst Biozones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:#d1e7dd; font-weight:bold;">
-      <td>Late Albian</td>
-      <td>Upper Raghavapuram Shale</td>
-      <td>Outer shelf to bathyal marine condensed section</td>
-      <td><em>Cassiculosphaeridia magna</em>, <em>Hystrichodinium voigti</em>, <em>Odontochitina operculata</em></td>
-    </tr>
-    <tr style="background:#e0f2fe; font-weight:bold;">
-      <td>Aptian to Early Albian</td>
-      <td>Lower Raghavapuram Shale</td>
-      <td>Transgressive shallow marine to prodelta muds</td>
-      <td><em>Cribroperidinium edwardsii</em>, <em>Batiacasphaera scrobiculata</em></td>
-    </tr>
-    <tr>
-      <td><strong>Barremian</strong></td>
-      <td>Upper Gollapalli Sandstone</td>
-      <td>Marginal marine, deltaic, estuarine</td>
-      <td><em>Muderongia mcwhaei</em>, <em>Canningia colliveri</em></td>
-    </tr>
-    <tr>
-      <td><strong>Valanginian–Hauterivian</strong></td>
-      <td>Lower Gollapalli Sandstone</td>
-      <td>Fluvial braided stream to alluvial fan</td>
-      <td>Dominated by non-marine terrestrial spore/pollen (<em>Microcachryidites</em>)</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Mesozoic–Cenozoic Stratigraphic & Palynological Framework of the Krishna-Godavari Basin</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Formation Name</th>
+            <th>Geological Age</th>
+            <th>Depositional Environment</th>
+            <th>Diagnostic Palynomorph Assemblage</th>
+            <th>Petroleum System Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Gollapalli Sandstone</strong></td>
+            <td>Late Jurassic – Early Cretaceous (Neocomian)</td>
+            <td>Fluvial, alluvial fan & lacustrine rift valleys</td>
+            <td>Terrestrial spore-pollen: <em>Classopollis</em>, <em>Callialasporites</em>, <em>Microcachryidites</em>; no marine dinocysts</td>
+            <td>Syn-rift Reservoir Rock</td>
+          </tr>
+          <tr>
+            <td><strong>Raghavapuram Mudstone</strong></td>
+            <td><strong>Early Cretaceous (Aptian – Albian)</strong></td>
+            <td><strong>Shallow marine, prodelta to shelf (Major Transgression)</strong></td>
+            <td><strong>Dinocysts:</strong> <em>Cassiculosphaeridia magna</em>, <em>Hystrichodinium voigtii</em>, <em>Dingodinium cerviculum</em></td>
+            <td><strong>Primary Regional Source Rock & Top Seal</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Tirupati Sandstone</strong></td>
+            <td>Late Cretaceous (Cenomanian – Campanian)</td>
+            <td>Littoral, estuarine to shallow marine (Regression)</td>
+            <td>Mixed terrestrial pollen and marginal-marine cysts: <em>Palaeoperidinium</em>, <em>Odontochitina costata</em></td>
+            <td>Regional Reservoir Sandstone</td>
+          </tr>
+          <tr>
+            <td><strong>Razole Volcanics</strong></td>
+            <td>Late Cretaceous – Early Paleocene (66 Ma)</td>
+            <td>Subaerial to shallow subaqueous basaltic lava flows</td>
+            <td>Intertrappean fresh-to-brackish algae: <em>Botryococcus</em>, <em>Azolla</em></td>
+            <td>Volcanic marker / tight unit</td>
+          </tr>
+          <tr>
+            <td><strong>Palakollu Shale</strong></td>
+            <td>Paleocene (Danian – Thanetian)</td>
+            <td>Outer shelf to bathyal marine</td>
+            <td>Cenozoic dinocysts: <em>Damassadinium</em>, <em>Glaphyrocysta</em>, <em>Apectodinium</em></td>
+            <td>Post-rift Source Rock / Regional Seal</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Sequence Stratigraphic Maximum Flooding Surface (MFS) Quantitative Calculation</div>
+        <p>
+          In a deep exploration well in the KG Basin, palynological counts of 300 specimens per sample across a continuous core yielded the following terrestrial spore-pollen ($S$) and marine dinoflagellate cyst ($D$) counts:<br>
+          - Depth 2,800 m: $S = 270, D = 30$<br>
+          - Depth 2,850 m: $S = 180, D = 120$<br>
+          - Depth 2,900 m: $S = 45, D = 255$<br>
+          - Depth 2,950 m: $S = 150, D = 150$<br>
+          - Depth 3,000 m: $S = 285, D = 15$<br>
+          Calculate the Marine Inundation Index ($\text{MII} = \frac{D}{D+S} \times 100\%$) for each depth and identify the exact position of the Maximum Flooding Surface (MFS).
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Calculation:</strong><br>
+          $$\text{MII} = \frac{D}{D+S} \times 100\%$$<br>
+          - Depth 2,800 m: $\text{MII} = \frac{30}{300} \times 100\% = 10.0\%$ (Regressive / Highstand Systems Tract)<br>
+          - Depth 2,850 m: $\text{MII} = \frac{120}{300} \times 100\% = 40.0\%$<br>
+          - Depth 2,900 m: $\text{MII} = \frac{255}{300} \times 100\% = \mathbf{85.0\%}$ (Maximum Peak!)<br>
+          - Depth 2,950 m: $\text{MII} = \frac{150}{300} \times 100\% = 50.0\%$ (Transgressive Systems Tract)<br>
+          - Depth 3,000 m: $\text{MII} = \frac{15}{300} \times 100\% = 5.0\%$ (Lowstand / Fluvial Sandstone)<br>
+          <strong>Conclusion:</strong> The <strong>Maximum Flooding Surface (MFS)</strong> is located precisely at <strong>2,900 meters</strong>, marked by an $85\%$ marine dinocyst peak reflecting maximum water depth and minimum clastic terrestrial dilution.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Morphogroup Classification: Chorate vs. Proximate Cysts</div>
+        <p>
+          Classify <em>Cassiculosphaeridia magna</em> and <em>Hystrichodinium voigtii</em> into their respective dinoflagellate cyst morphological archetypes (proximate, cavate, or chorate) and explain their paleoenvironmental implications regarding distance from shoreline.
+        </p>
+        <div class="p-ans">
+          <strong>Morphological & Environmental Classification:</strong><br>
+          1. <em>Cassiculosphaeridia magna:</em> A <strong>proximate cyst</strong>, formed in close contact with the original thecal wall, bearing low-relief reticulate ridges. Proximate cysts are typically dominant in inner neritic, protected shelf, or prodeltaic marine environments near the coast.<br>
+          2. <em>Hystrichodinium voigtii:</em> A classic <strong>chorate cyst</strong>, characterized by a small central body ($25\text{--}35\ \mu\text{m}$) bearing long, radiating, spine-like processes ($15\text{--}25\ \mu\text{m}$) that held the cyst within the motile theca. Chorate cysts are buoyant adaptations for flotation in high-energy, open-marine outer neritic and pelagic shelf waters.<br>
+          <strong>Environmental Synthesis:</strong> The co-occurrence of both morphogroups indicates an open-marine shelf inundation directly receiving marine microplankton while remaining within reach of fine terrigenous sediment influx.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: East Coast Geodynamics: Kinematics of Greater India Breakup</div>
+        <p>
+          Relate the Early Cretaceous Raghavapuram transgressive event in the KG Basin to the plate tectonic geodynamics of the Eastern Gondwana margin. What magnetic anomaly in the Bay of Bengal dates the onset of seafloor spreading?
+        </p>
+        <div class="p-ans">
+          <strong>Plate Tectonic Derivation:</strong><br>
+          1. <strong>Rifting Phase:</strong> During the Late Jurassic (Kimmeridgian–Tithonian, ~150 Ma), lithospheric extension between Greater India and East Antarctica (Enderby Land) created the Krishna-Godavari and Cauvery rift basins along ancient Eastern Ghats structural trends.<br>
+          2. <strong>Breakup & Sea-Floor Spreading:</strong> Active seafloor spreading began in the Early Cretaceous, confirmed by seafloor magnetic anomaly <strong>$M_0$ (Early Aptian, ~125–120 Ma)</strong> and $M_2$–$M_4$ in the southern Bay of Bengal.<br>
+          3. <strong>Thermal Subsidence & Transgression:</strong> The transition from active crustal necking to post-rift lithospheric thermal cooling induced rapid tectonic subsidence of the margin ($dZ_{\text{thermal}} \propto \sqrt{t}$), causing the Indian Ocean to drown the coastal grabens and depositing the marine Raghavapuram Mudstone.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Taphonomic Preservation: Why Dinocysts Outlast Foraminifera in Dysoxic Shales</div>
+        <p>
+          In organic-rich black shales of the Raghavapuram Formation, calcareous foraminifera are virtually absent, whereas dinoflagellate cysts are preserved in millions of specimens per gram. Provide the biogeochemical explanation for this selective preservation.
+        </p>
+        <div class="p-ans">
+          <strong>Biogeochemical Explanation:</strong><br>
+          1. <strong>Calcareous Vulnerability:</strong> In stagnant, restricted transgressive basins with high organic matter deposition, bacterial sulfate reduction ($2\text{CH}_2\text{O} + \text{SO}_4^{2-} \to \text{H}_2\text{S} + 2\text{HCO}_3^-$) and subsequent post-oxic organic decomposition produce high concentrations of carbonic and organic acids. Low porewater pH ($< 6.8$) dissolved the thin, metastable calcitic tests of planktic foraminifera.<br>
+          2. <strong>Dinosporin Invariance:</strong> Dinoflagellate cysts are composed of <strong>dinosporin</strong>, an ultra-resistant, highly cross-linked, complex macromolecular network of aliphatic polycarbonates and aromatic ether bridges. Dinosporin is impervious to low pH, high $p\text{CO}_2$, and severe diagenetic leaching, allowing immaculate morphological preservation in black shales.
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Palynofacies Analysis and Kerogen Type in the Raghavapuram Mudstone</div>
+        <p>
+          A transmitted-light palynofacies analysis of the Raghavapuram Mudstone yields $75\%$ fluffy, orange Amorphous Organic Matter (AOM), $20\%$ marine dinocysts, and $5\%$ inert black woody phytoclasts. Determine the Kerogen Type and evaluate its petroleum yield potential.
+        </p>
+        <div class="p-ans">
+          <strong>Palynofacies Evaluation:</strong><br>
+          - <strong>AOM and Dinocyst Dominance:</strong> High concentrations of marine phytoplankton-derived amorphous organic matter ($>70\%$) combined with dinoflagellate cysts and minimal terrestrial phytoclasts ($<10\%$) is the definitive petrographic signature of <strong>Type II Marine Sapropelic Kerogen</strong>.<br>
+          - <strong>Petroleum Potential:</strong> Type II kerogen has an initial Hydrogen Index ($HI$) of $400\text{--}600\text{ mg HC/g TOC}$. Upon thermal maturation in the catagenetic zone ($T = 100\text{--}130^\circ\text{C}$), it possesses world-class generative potential for <strong>light paraffinic and naphthenic crude oil</strong> and associated rich gas.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Well-Log Correlation of the Raghavapuram Transgression</div>
+        <p>
+          On wireline logging suites, how is the Early Cretaceous Raghavapuram transgressive shale interval differentiated from the underlying Gollapalli Sandstone and overlying Tirupati Sandstone?
+        </p>
+        <div class="p-ans">
+          <strong>Petrophysical Log Response:</strong><br>
+          1. <strong>Gamma Ray (GR):</strong> Gollapalli and Tirupati sandstones display low gamma ray readings ($20\text{--}45\text{ API}$). In contrast, the Raghavapuram Mudstone displays a sharp, sustained "hot shale" gamma ray deflection ($90\text{--}180\text{ API}$) due to the concentration of uranium ($U$) adsorbed onto marine organic matter and thorium-potassium ($Th, K$) in detrital illite clays.<br>
+          2. <strong>Resistivity ($R_t$):</strong> Low baseline in water-wet shales ($1\text{--}3\ \Omega\cdot\text{m}$), with elevated resistivity ($8\text{--}25\ \Omega\cdot\text{m}$) where mature hydrocarbons are actively generating within the shale matrix.<br>
+          3. <strong>Sonic Transit Time ($\Delta t$):</strong> High acoustic slowness ($90\text{--}120\ \mu\text{s/ft}$) characteristic of undercompacted, high-porosity fissile marine shale.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Paleobathymetric Zonation using Dinocyst Associations</div>
+        <p>
+          How do micropaleontologists use the peridinioid-to-gonyaulacoid ratio ($P/G$ ratio) in Cretaceous dinocysts to track transgressive-regressive cycles?
+        </p>
+        <div class="p-ans">
+          <strong>Paleoecological Principles:</strong><br>
+          - <strong>Peridinioid Dinocysts ($P$):</strong> Predominantly heterotrophic microzooplankton that feed on marine diatoms. They proliferate in nutrient-rich, high-turbidity, upwelling or estuarine/inner neritic coastal waters.<br>
+          - <strong>Gonyaulacoid Dinocysts ($G$, e.g., <em>Hystrichodinium</em>):</strong> Primarily autotrophic phototrophic algae that dominate clear, oligotrophic, open-ocean neritic and oceanic waters.<br>
+          - <strong>Tracking Transgressions:</strong> During a marine transgressive phase, the $P/G$ ratio decreases as clear, open-shelf marine waters flood the basin. During regressive highstands and deltaic progradation, terrestrial nutrient runoff spikes, driving a sharp increase in the $P/G$ ratio.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Thermal Alteration Index (TAI) of Dinocyst Palynomorphs</div>
+        <p>
+          Palynological slides from an exploration well show <em>Cassiculosphaeridia</em> specimens with a dark golden-brown coloration (TAI 2.8). Correlate this value with the oil generation window and vitrinite reflectance.
+        </p>
+        <div class="p-ans">
+          <strong>Thermal Calibration:</strong><br>
+          - <strong>TAI 2.8:</strong> On Staplin's (1969) Thermal Alteration Index scale, a TAI of $2.6\text{--}3.0$ corresponds to a golden-brown to cinnamon-brown coloration of sporopollenin and dinosporin.<br>
+          - <strong>Vitrinite Reflectance ($R_o$):</strong> Corresponds precisely to $R_o \approx 0.80\text{--}0.95\%$.<br>
+          - <strong>Hydrocarbon Generation Window:</strong> Represents the <strong>Peak Oil Generation Window</strong>, confirming that the Raghavapuram source beds at this well location have undergone optimal thermal maturation and actively expelled liquid petroleum into adjoining sandstone reservoirs.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q68: Mammalian Evolution - Origin of Earliest Mammals in the Upper Triassic | OPSC Geology 2021 Masterclass</title>
+<title>Q068: Origin of Mammals: Upper Triassic to Lower Jurassic Radiation (Morganucodontids) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,265 +89,583 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q68" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Mesozoic Mammalian Evolution</div>
-    <h1>Q68: Mammalian Evolution - Origin of Earliest Mammals in the Upper Triassic</h1>
+    <div class="badge">GEO - 2/21 • Vertebrate Paleontology & Mammalian Evolution</div>
+    <h1>Q068: Origin of Mammals: Upper Triassic to Lower Jurassic</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Michael J. Benton (Vertebrate Palaeontology, 4th ed., Ch. 10, p. 295); Kemp (The Origin and Evolution of Mammals)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 68<br>
+<strong>Authoritative References:</strong> Michael J. Benton, <em>Vertebrate Palaeontology</em> (4th Ed., Ch. 10: The Origin of Mammals, pp. 288–315); T.S. Kemp, <em>The Origin and Evolution of Mammals</em> (Oxford Univ. Press, 2005); Zhe-Xi Luo, <em>Transformation and Diversification in Early Mammal Evolution</em> (Nature, 2007); G.B. Mahapatra, <em>A Text-Book of Geology</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. The Synapsid-Mammal Evolutionary Transition</h3>
-<p>The evolutionary trajectory leading from basal amniotes to mammals represents the most completely documented morphological transition in the global vertebrate fossil record. The lineage originated in the Carboniferous with basal synapsids (pelycosaurs, e.g., <em>Dimetrodon</em>), advanced through Permian therapsids, and culminated in the Triassic with carnivorous, highly encephalized <strong>cynodont therapsids</strong> (e.g., <em>Probainognathus</em>, <em>Brasilitherium</em>; Michael J. Benton, <em>Vertebrate Palaeontology</em>, 4th ed., Chapter 10, pp. 295–315; Kemp, <em>The Origin and Evolution of Mammals</em>).</p>
-
-<h3>2. Appearance of the Earliest True Mammaliaforms</h3>
-<p>In standard historical geology and vertebrate paleontology, <strong>the earliest true mammals (Mammaliaformes) are universally recognized in the Upper Triassic (Carnian–Norian–Rhaetian, ~220 to 205 Ma) and Lower Jurassic</strong>. The most celebrated early mammaliaforms include:</p>
-<ul>
-  <li><strong>Morganucodon watsoni:</strong> Recovered from Late Triassic to Early Jurassic fissure fills in South Wales, England, and Yunnan, China. A tiny, shrew-like nocturnal insectivore (~10 cm long).</li>
-  <li><strong>Kuehneotherium:</strong> Late Triassic of Europe, exhibiting the earliest triangular, tribosphenic-like molar cusps.</li>
-  <li><strong>Adelobasileus cromptoni:</strong> From the Carnian (~225 Ma) Tecovas Formation of Texas, possessing an expanded mammalian braincase.</li>
-  <li><strong>Sinoconodon:</strong> From the Lower Jurassic Lufeng Formation of China.</li>
-</ul>
-
-<h3>3. Defining Anatomical Hallmarks of the Earliest Mammals</h3>
-<p>The definitive anatomical boundary separating mammals from non-mammalian cynodonts is the <strong>origin of the Dentary-Squamosal Jaw Joint</strong>:</p>
-<ol>
-  <li><strong>Jaw Articulation:</strong> In non-mammalian synapsids, the lower jaw is composed of multiple bones, and the jaw articulates via the <strong>Articular</strong> (lower jaw) and <strong>Quadrate</strong> (skull). In the earliest mammals, the dentary bone expanded to form the entire lower jaw, articulating directly with the squamosal bone via the <strong>dentary condyle</strong>.</li>
-  <li><strong>Evolution of Middle Ear Ossicles:</strong> The unburdened reptilian articular and quadrate bones detached from the jaw, shrank, and migrated into the middle ear cavity to become the <strong>Malleus (hammer)</strong> and <strong>Incus (anvil)</strong>, joining the ancestral stapes to form the three mammalian auditory ossicles!</li>
-  <li><strong>Diphyodont Dentition & Enamel:</strong> Transition from continuous reptilian tooth replacement (polyphyodonty) to two sets of teeth (milk teeth and permanent teeth: diphyodonty), with precise molar cuspal occlusion and prismatic enamel for mastication.</li>
-</ol>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q68/benton_morganucodon_earliest_mammal_triassic.png" alt="Origin of Earliest Mammals in the Upper Triassic">
-      <figcaption>
-        <strong>Figure 68.1: Evolution of the Earliest Mammals (Upper Triassic - Lower Jurassic).</strong> Anatomical plate illustrating the transition from cynodont therapsids to the earliest true mammaliaforms (e.g., <em>Morganucodon</em>, <em>Kuehneotherium</em>) in the <strong>Upper Triassic</strong> (~210 Ma), marked by the development of the dentary-squamosal jaw joint and diphyodont occlusion.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-        
   </div>
+  
+  <!-- CARD 1: THE ORIGIN OF TRUE MAMMALS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Dawn of Mammaliaformes in the Fossil Record</div>
+    <div class="card-body">
+      <p>The evolutionary transition from advanced non-mammalian cynodont therapsids to true crownward mammals (clade <strong>Mammaliaformes</strong>) represents one of the most thoroughly documented anatomical transformations in vertebrate history:</p>
+
+      <ul>
+        <li><strong>Chronological Origin:</strong> The earliest definitive mammals are universally recognized in the fossil record in the <strong>Upper Triassic (Carnian-Norian-Rhaetian stages, $\sim 225-205\text{ Ma}$)</strong> and radiated extensively across the <strong>Lower Jurassic ($\sim 201-175\text{ Ma}$)</strong>.</li>
+        <li><strong>Iconic Late Triassic - Early Jurassic Taxa:</strong>
+          <ul>
+            <li><strong><em>Morganucodon watsoni</em> (Late Triassic of Wales and China):</strong> An agile, shrew-sized nocturnal insectivore ($\sim 10\text{ cm}$ long) that established the mammalian body plan.</li>
+            <li><strong><em>Kuehneotherium praecursoris</em> (Late Triassic of UK):</strong> Earliest mammal with reverse-triangle molar cusp patterns ancestral to tribosphenic molars.</li>
+            <li><strong><em>Adelobasileus cromptoni</em> (Carnian, $\sim 225\text{ Ma}$, Texas):</strong> The earliest known mammaliaform braincase showing lateral expansion of the cerebral hemispheres.</li>
+            <li><strong><em>Sinoconodon</em> (Early Jurassic of Yunnan, China):</strong> Primitive mammaliaform with specialized jaw mechanics.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q68/benton_morganucodon_earliest_mammal_triassic.png" alt="Morganucodon Earliest Mammal">
+        <div class="tb-caption">
+          <strong>Figure 68.1 (Michael J. Benton, Fig. 10.4):</strong> Skeletal anatomy and skull of <em>Morganucodon</em> from the Late Triassic, illustrating the definitive mammalian dentary-squamosal jaw joint and specialized tricuspid cheek teeth.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: ANATOMICAL DEFINITION OF A MAMMAL -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Anatomical Hallmarks of the Earliest Mammals</div>
+    <div class="card-body">
+      <p>The boundary between cynodont reptiles and mammals is defined osteologically by two revolutionary anatomical transformations:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Classical Osteological Definition of Mammalia</div>
+        $$\mathbf{\text{Reptilian Jaw Joint}} \text{ (Articular - Quadrate)} \quad \longrightarrow \quad \mathbf{\text{Mammalian Jaw Joint}} \text{ (Dentary - Squamosal)}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">The articular bone evolved into the <strong>Malleus (Hammer)</strong>, the quadrate into the <strong>Incus (Anvil)</strong>, joining the stapes to create the three-ossicle middle ear!</p>
+      </div>
+
+      <ul>
+        <li><strong>Double Jaw Joint in Morganucodontids:</strong> <em>Morganucodon</em> preserves the extraordinary transitional stage: it had simultaneously evolved the new <strong>dentary-squamosal jaw joint</strong> while still retaining the ancient reduced <strong>articular-quadrate joint</strong> acting as a dual-function hinge and sound transducer.</li>
+        <li><strong>Diphyodont Dentition:</strong> Unlike reptiles which continuously replace teeth throughout life (polyphyodonty), early mammals evolved <strong>diphyodonty</strong> (a single set of deciduous milk teeth replaced once by permanent adult teeth), enabling precise occlusal alignment of molar cusps.</li>
+        <li><strong>Encephalization & Nocturnal Sensory Expansion:</strong> Expanded cerebral cortex and enlarged olfactory bulbs accommodated night vision, sensitive whiskers (vibrissae), and acute hearing.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON TABLE OF CYNODONT TO MAMMAL -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix: Cynodont Therapsid vs. Earliest Mammal vs. Modern Mammal</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Anatomical Feature</th>
+            <th>Advanced Cynodont (e.g., <em>Probainognathus</em>)</th>
+            <th>Earliest Mammaliaform (e.g., <em>Morganucodon</em>)</th>
+            <th>Living Crown Mammal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Jaw Joint</strong></td>
+            <td>Articular (lower) against Quadrate (upper).</td>
+            <td><strong>Double Joint: Dentary-Squamosal AND Articular-Quadrate.</strong></td>
+            <td><strong>Exclusively Dentary-Squamosal.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Middle Ear Ossicles</strong></td>
+            <td>Single ossicle (Stapes only); postdentary bones on jaw.</td>
+            <td>Postdentary bones reduced, resting in dentary sulcus.</td>
+            <td><strong>Three ossicles in cranium: Malleus, Incus, Stapes.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Tooth Replacement</strong></td>
+            <td>Polyphyodont (continuous multiple tooth replacement).</td>
+            <td><strong>Diphyodont (Milk teeth replaced once by adult teeth).</strong></td>
+            <td>Diphyodont or monophyodont.</td>
+          </tr>
+          <tr>
+            <td><strong>Secondary Palate</strong></td>
+            <td>Incomplete or partially ossified.</td>
+            <td><strong>Fully ossified bony secondary palate.</strong></td>
+            <td>Complete bony and soft secondary palate (suckling enabled).</td>
+          </tr>
+          <tr>
+            <td><strong>Geological Age</strong></td>
+            <td>Middle to Late Triassic.</td>
+            <td><strong>Upper Triassic to Lower Jurassic (Target).</strong></td>
+            <td>Jurassic to Present.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q68. The earliest mammals are recognized in the ___.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Permian</div>
-        <div class="opt-item correct"><strong>(B)</strong> Upper Triassic and Lower Jurassic</div>
-        <div class="opt-item "><strong>(C)</strong> Cambrian to Silurian</div>
-        <div class="opt-item "><strong>(D)</strong> Devonian</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 68</div>
+        <div class="q-text">The earliest mammals are recognized in the ___.</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Permian</div>
+          <div class="opt-node correct">(B) Upper Triassic and Lower Jurassic</div>
+          <div class="opt-node">(C) Cambrian to Silurian</div>
+          <div class="opt-node">(D) Devonian</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(B) Upper Triassic and Lower Jurassic</strong> [The earliest true mammals (Mammaliaformes, such as Morganucodon and Adelobasileus) appear in the fossil record in the Upper Triassic and radiate in the Lower Jurassic.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "The earliest mammals are recognized in the ________"</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Permian (INCORRECT):</strong> The Permian was dominated by primitive synapsid therapsids (pelycosaurs, gorgonopsians, therocephalians, dicynodonts). No true mammals existed in the Permian; true mammals did not emerge until ~50 million years later.</li>
-  <li><strong>(B) Upper Triassic and Lower Jurassic (CORRECT):</strong> The earliest true mammals and mammaliaforms (e.g., <em>Adelobasileus</em>, <em>Morganucodon</em>, <em>Kuehneotherium</em>, <em>Eozostrodon</em>) are universally dated to the <strong>Upper Triassic (~220–205 Ma) and Lower Jurassic</strong>. They evolved alongside the earliest dinosaurs during the Late Triassic biotic turnover.</li>
-  <li><strong>(C) Cambrian to Silurian (INCORRECT):</strong> The Cambrian to Silurian periods predate even the origin of terrestrial tetrapods! Life was confined to marine invertebrates, agnathans, and early jawed fishes.</li>
-  <li><strong>(D) Devonian (INCORRECT):</strong> The Devonian witnessed the water-to-land transition of primitive labyrinthodont amphibians (<em>Ichthyostega</em>, <em>Acanthostega</em>). Mammals did not appear until over 150 million years later in the Late Triassic.</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (B) Upper Triassic and Lower Jurassic</div>
+    <div class="card-body">
+      <p><strong>Detailed Paleontological Forensic Analysis:</strong></p>
+      <ul>
+        <li>In vertebrate paleontology (Benton 2014, Ch. 10, p. 295; Kemp 2005; Carroll 1988), the earliest definitive fossils of mammals (Mammaliaformes) appear in the <strong>Upper Triassic</strong> (specifically in the Carnian, Norian, and Rhaetian stages, $\sim 225-201\text{ Ma}$) and extend continuously into the <strong>Lower Jurassic</strong>.</li>
+        <li>Classic representatives include <em>Adelobasileus</em> (Carnian, $\sim 225\text{ Ma}$, Texas), <em>Morganucodon</em> (Rhaetian, $\sim 205\text{ Ma}$, Wales and China), <em>Kuehneotherium</em>, and <em>Sinoconodon</em> (Lower Jurassic).</li>
+        <li>These organisms evolved the definitive mammalian dentary-squamosal jaw articulation, diphyodont dentition, and hair/endothermy.</li>
+        <li>Therefore, Option <strong>(B) Upper Triassic and Lower Jurassic</strong> is the factually accurate, textbook-verified correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Permian</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The Permian Period was dominated by primitive <strong>synapsids</strong> (pelycosaurs like <em>Dimetrodon</em> and early therapsids like gorgonopsians).</li>
+        <li>While they belong to the synapsid stem-lineage leading towards mammals, they were reptiles (with reptilian articular-quadrate jaw joints, polyphyodont teeth, and small brains), not mammals. True mammals did not appear until the end of the Triassic.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Cambrian to Silurian</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>During the Cambrian to Silurian, life was primarily marine; only early jawless and primitive jawed fishes existed in the vertebrate world.</li>
+        <li>Tetrapods did not even walk on land until the Late Devonian, making the appearance of mammals in the early Paleozoic temporally impossible by over 200 million years.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) Devonian</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The Devonian is famously the "Age of Fishes" and saw the earliest emergence of stem-amphibians (e.g., <em>Ichthyostega</em>).</li>
+        <li>Amniotes (reptiles and synapsids) did not evolve until the Carboniferous, and mammals did not appear until the Late Triassic.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Synapsid-to-Mammal Evolutionary Milestones</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Evolutionary Stage</th>
-      <th>Representative Genus</th>
-      <th>Geological Period</th>
-      <th>Jaw Joint Structure</th>
-      <th>Auditory Mechanism</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Basal Synapsid ("Pelycosaur")</strong></td>
-      <td><em>Dimetrodon</em></td>
-      <td>Early Permian (~280 Ma)</td>
-      <td>Pure Articular-Quadrate joint</td>
-      <td>Single ear ossicle (stapes); jaw hears ground vibration</td>
-    </tr>
-    <tr>
-      <td><strong>Advanced Cynodont</strong></td>
-      <td><em>Probainognathus</em></td>
-      <td>Middle–Late Triassic (~235 Ma)</td>
-      <td>Double jaw joint: Articular-Quadrate + Dentary-Squamosal contact</td>
-      <td>Articular & quadrate reduced, functioning in both jaw and sound</td>
-    </tr>
-    <tr style="background:#d1e7dd; font-weight:bold;">
-      <td>Earliest Mammal (Mammaliaform)</td>
-      <td><em>Morganucodon</em></td>
-      <td><strong>Upper Triassic – Lower Jurassic (~210 Ma)</strong></td>
-      <td><strong>Definitive Dentary-Squamosal joint</strong></td>
-      <td>Articular becomes <strong>Malleus</strong>; Quadrate becomes <strong>Incus</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Crown Mammal (Therian)</strong></td>
-      <td><em>Eomaia</em>, <em>Juramaia</em></td>
-      <td>Jurassic–Cretaceous (~160 Ma)</td>
-      <td>Dentary-Squamosal; angular becomes ectotympanic ring</td>
-      <td>Fully suspended three-ossicle middle ear (Malleus-Incus-Stapes)</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Mesozoic Radiation of Mammalian Clades</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Mammalian Clade</th>
+            <th>Geological Range</th>
+            <th>Diagnostic Evolutionary Specialization</th>
+            <th>Representative Genera</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Morganucodonta</strong></td>
+            <td><strong>Upper Triassic to Lower Jurassic</strong></td>
+            <td>Double jaw joint, diphyodont teeth, tricuspid molars.</td>
+            <td><strong><em>Morganucodon</em>, <em>Megazostrodon</em></strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Docodonta</strong></td>
+            <td>Middle Jurassic to Early Cretaceous</td>
+            <td>Complex rectangular crushing molars; semi-aquatic swimming (<em>Castorocauda</em>).</td>
+            <td><em>Docodon</em>, <em>Castorocauda</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Multituberculata</strong></td>
+            <td>Middle Jurassic to Late Eocene ($120\text{ Ma}$ span!)</td>
+            <td>Rodent-like incisors, blade-like shearing premolars, multicusped grinding molars.</td>
+            <td><em>Kuehneodon</em>, <em>Taeniolabis</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Monotremata</strong> (Prototheria)</td>
+            <td>Early Cretaceous to Present</td>
+            <td>Egg-laying mammals; cloaca; electroreceptive bill.</td>
+            <td><em>Steropodon</em> (fossil opalized jaw), Platypus, Echidna.</td>
+          </tr>
+          <tr>
+            <td><strong>Theria</strong> (Marsupials & Placentals)</td>
+            <td>Early Cretaceous to Present</td>
+            <td>True <strong>tribosphenic molars</strong>; live birth (viviparity).</td>
+            <td><em>Eomaia</em> (Placental), <em>Sinodelphys</em> (Marsupial).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Synapsid Evolution & Mammalian Origins</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Reichert-Gaupp Theory of Middle Ear Ossicles</div>
+        <p>Explain the Reichert-Gaupp theory for the evolutionary transformation of the reptilian jaw elements into the mammalian middle ear.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>In non-mammalian synapsids, the lower jaw consisted of seven bones, hinged at the <strong>articular bone</strong> against the cranial <strong>quadrate bone</strong>. As the dentary expanded to form the entire lower jaw in mammals, the reduced articular detached from the jaw and migrated into the middle ear cavity to become the <strong>malleus (hammer)</strong>. The cranial quadrate shrank to become the <strong>incus (anvil)</strong>, and the ancient angular bone became the <strong>ectotympanic ring</strong> supporting the eardrum.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Tribosphenic Molar Mechanics</div>
+        <p>Describe the function of the two distinct parts of a tribosphenic molar (trigonid and talonid basin) in early therian mammals.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ol>
+          <li><strong>Trigonid (Anterior Shearing Triangle):</strong> Composed of three sharp cusps (protoconid, paraconid, metaconid) that shear past the upper molar like scissor blades to slice insect chitin and meat.</li>
+          <li><strong>Talonid Basin (Posterior Crushing Heel):</strong> A low basin surrounded by cusps (hypoconid, entoconid, hypoconulid) into which the upper protocone pestle grinds, crushing food in mortar-and-pestle action.</li>
+        </ol>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Indian Jurassic Mammals (Kota Formation)</div>
+        <p>What important primitive mammals were discovered in the Lower Jurassic Kota Formation of the Pranhita-Godavari Valley in India?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong><em>Kotatherium haldanei</em></strong> and <strong><em>Indotherium pranhitai</em></strong> (Order Morganucodonta / Symmetrodonta). Discovered in Early Jurassic freshwater fluvio-lacustrine limestones alongside sauropod dinosaurs (<em>Barapasaurus tagorei</em>), they confirm that early mammaliaforms had colonized eastern Gondwanaland by the Early Jurassic.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Lactation and Diphyodonty Evolutionary Link</div>
+        <p>Why is diphyodont tooth replacement (having milk teeth replaced by adult teeth) directly linked to the origin of lactation (nursing milk)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Reptilian hatchlings have teeth from day one to feed on solid food, requiring continuous tooth replacement as jaws grow. In mammals, mothers nurse newborn young with liquid milk, eliminating the need for functional teeth during early rapid jaw growth. Deciduous teeth erupt only when the jaw nears adult size, followed by a single permanent adult set that occludes with micrometer precision.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Secondary Palate and Breathing During Chewing</div>
+        <p>What physiological advantage did the fully ossified secondary palate give to early mammals like <em>Morganucodon</em>?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The bony secondary palate completely separates the nasal respiratory passage from the oral food-processing cavity. This enabled early mammals to chew and process food in the mouth continuously without suffocating, while also allowing newborn infants to suckle milk while breathing simultaneously.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Encephalization Quotient in Early Mammals</div>
+        <p>How did the brain-to-body size ratio (encephalization quotient) of <em>Morganucodon</em> compare to contemporary therapsids?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>CT-scan endocasts reveal that <em>Morganucodon</em> had a relative brain size <strong>three to four times larger</strong> than contemporary non-mammalian cynodonts. The expansion was concentrated in the neocortex, olfactory bulbs, and cerebellar hemispheres, reflecting the sensory integration required for nocturnal navigation and acute tactile coordination.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: *Castorocauda* and Ecological Diversification in the Jurassic</div>
+        <p>How did the 2006 discovery of *Castorocauda lutrasimilis* shatter the stereotype that Mesozoic mammals were all small, generalized shrew-like insectivores?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Castorocauda</em> (Middle Jurassic of Daohugou, China, $\sim 164\text{ Ma}$) was a large docodont ($\sim 50\text{ cm}$ long, $\sim 1\text{ kg}$) possessing webbed feet, a flattened scaly beaver-like tail for swimming, seal-like fish-catching teeth, and dense modern fur, proving early mammals had diversified into complex aquatic and swimming niches over $100\text{ million years}$ before the extinction of dinosaurs.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Endothermy Evidence from Bone Histology</div>
+        <p>What histological feature in the limb bones of Late Triassic mammaliaforms demonstrates endothermy (warm-bloodedness)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Limb cross-sections exhibit well-vascularized <strong>fibrolamellar bone tissue with secondary osteons</strong>, indicating continuous rapid bone growth powered by high basal metabolic rates, contrasting with the poorly vascularized lamellar-zonal bone of ectothermic reptiles.</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q65: Paleozoic Fish Paleontology - Class Placodermi: Heavily Armored Jawed Fishes | OPSC Geology 2021 Masterclass</title>
+<title>Q065: Paleozoic Fish Evolution: Placoderms as Armored Jawed Fishes | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,264 +89,572 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q65" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Paleozoic Fish Paleontology</div>
-    <h1>Q65: Paleozoic Fish Paleontology - Class Placodermi: Heavily Armored Jawed Fishes</h1>
+    <div class="badge">GEO - 2/21 • Vertebrate Paleontology & Paleozoic Icthyology</div>
+    <h1>Q065: Placoderms: Armored Jawed Fishes of the Paleozoic</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Michael J. Benton (Vertebrate Palaeontology, 4th ed., Ch. 3, p. 55); Clarkson (Invertebrate Palaeontology)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 65<br>
+<strong>Authoritative References:</strong> Michael J. Benton, <em>Vertebrate Palaeontology</em> (4th Ed., Ch. 3: Early Gnathostomes and Placoderms, pp. 50–65); John A. Long, <em>The Rise of Fishes: 500 Million Years of Evolution</em> (Johns Hopkins Univ. Press, Ch. 5); Alfred S. Romer, <em>Vertebrate Paleontology</em> (3rd Ed., Ch. 3); G.B. Mahapatra, <em>A Text-Book of Geology</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Evolutionary Emergence of Gnathostomes & Class Placodermi</h3>
-<p>The evolutionary invention of <strong>jaws</strong> (derived through the anterior modification of the mandibular gill arch) enabled early vertebrates to transition from passive filter-feeding and detritivory to active predation. The earliest and most diverse clade of primitive jawed vertebrates (Gnathostomata) is the extinct <strong>Class Placodermi</strong> (from Greek <em>plax</em>, "flat plate", and <em>derma</em>, "skin"; Michael J. Benton, <em>Vertebrate Palaeontology</em>, 4th ed., Chapter 3, pp. 52–65).</p>
-
-<p>Placoderms appeared in the Silurian (~440 Ma), achieved spectacular global evolutionary radiation and trophic dominance during the Devonian Period (the "Age of Fishes"), and were completely wiped out during the end-Devonian Hangenberg Mass Extinction (~359 Ma). They are recognized as <strong>a particular assemblage of heavily armored jawed fishes</strong>.</p>
-
-<h3>2. Diagnostic Morphological Hallmarks of Placoderms</h3>
-<p>Placoderms are distinguished from all other fish groups by unique anatomical features:</p>
-<ol>
-  <li><strong>Dermal Bony Armor Shields:</strong> The anterior half of the body was encased in a formidable box of thick, interlocking dermal bone plates divided into:
-    <ul>
-      <li>A <strong>Head Shield (Cephalic Armor):</strong> Enclosing the braincase, orbits, and nasal capsules.</li>
-      <li>A <strong>Thoracic Trunk Shield:</strong> Surrounding the gill chamber, heart, and anterior body cavity.</li>
-    </ul>
-  </li>
-  <li><strong>The Ginglymoid Neck Joint:</strong> In the advanced placoderm order <strong>Arthrodira</strong> (e.g., <em>Coccosteus</em>, <em>Dunkleosteus</em>), the head shield articulated with the thoracic trunk shield via a pair of precision-engineered, ball-and-socket dermal joints (the <strong>ginglymus</strong>). This unique joint allowed the massive head to be thrown backwards and elevated upwards while the lower jaw dropped, producing an immense gape and biting velocity!</li>
-  <li><strong>Self-Sharpening Dermal Gnathal Plates:</strong> Unlike modern bony fish and sharks, placoderms lacked true teeth set in sockets or shed from tooth whorls. Instead, their jaws were equipped with razor-sharp, shearing <strong>gnathal plates</strong> (supragnathals and inferognathals) made of dense, self-sharpening dermal bone capable of exerting bite forces comparable to modern apex predators.</li>
-  <li><strong>Unarmored Posterior Body:</strong> The posterior body and heterocercal caudal fin were unarmored and covered with small scales or naked skin, enabling flexible, serpentine propulsion.</li>
-</ol>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q65/placoderm_dunkleosteus_armored_jawed_fish.png" alt="Morphology of Class Placodermi Armored Jawed Fishes">
-      <figcaption>
-        <strong>Figure 65.1: Functional Anatomy of Class Placodermi (Dunkleosteus / Coccosteus).</strong> Morphological schematic illustrating the defining characteristics of placoderms: heavily <strong>armored jawed fishes</strong> possessing a dermal bony head shield and thoracic trunk shield articulated by a unique ginglymoid (ball-and-socket) neck joint, with shearing dermal gnathal plates.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-        
   </div>
+  
+  <!-- CARD 1: PLACODERM ANATOMY AND CLASSIFICATION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Placodermi: The Armored Kings of the Devonian Seas</div>
+    <div class="card-body">
+      <p>The class <strong>Placodermi</strong> (derived from Greek <em>plax</em> [genitive <em>plakos</em>], meaning "flat plate" or "tablet" + <em>derma</em>, meaning "skin") represents an extinct, highly diverse, and evolutionary pivotal group of <strong>armored jawed fishes</strong> that dominated global marine, estuarine, and freshwater ecosystems during the Silurian and Devonian periods ($\sim 440-359\text{ Ma}$):</p>
+
+      <ul>
+        <li><strong>Diagnostic Anatomical Hallmark:</strong> Placoderms are uniquely characterized by an extensive, heavily ossified <strong>dermal bony armor</strong> divided into two interlocking units:
+          <ol>
+            <li><strong>Head Shield (Cranial Carapace):</strong> Tightly sutured bony dermal plates enclosing the brain, sensory capsules, and jaws.</li>
+            <li><strong>Thoracic Shield (Shoulder Carapace):</strong> A bony ring of dermal plates girdling the anterior trunk and enclosing the heart, gills, and pectoral fin bases.</li>
+          </ol>
+        </li>
+        <li><strong>The Unique Cranio-Thoracic Neck Joint:</strong> Connecting the head shield to the thoracic shield is a unique, specialized ball-and-socket hinge joint (the <strong>cranio-thoracic articulation</strong>) formed by the paranuchal plate of the head and the anterior dorsolateral plate of the body. This permitted the head to tilt upward while the lower jaw dropped, creating a massive, terrifying gape.</li>
+        <li><strong>True Jaws (Gnathostomata):</strong> Placoderms were among the earliest true <strong>gnathostomes (jawed vertebrates)</strong>, possessing formidable jaw arches equipped with self-sharpening, serrated dermal gnathal plates (shearing bone blades) that functioned like guillotine shears.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q65/placoderm_dunkleosteus_armored_jawed_fish.png" alt="Placoderm Dunkleosteus Skeleton">
+        <div class="tb-caption">
+          <strong>Figure 65.1 (John A. Long / Benton 2014):</strong> Complete skeletal anatomy of the apex arthrodire placoderm <em>Dunkleosteus terrelli</em> (Late Devonian), showing the heavy head and thoracic armor plates and the unique cranio-thoracic ball-and-socket neck joint.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: BITE FORCE AND DUNKLEOSTEUS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Biomechanics: The Apex Predator Dunkleosteus</div>
+    <div class="card-body">
+      <p>The ecological climax of placoderm evolution was reached in the Late Devonian (Famennian) with the giant arthrodire <strong><em>Dunkleosteus terrelli</em></strong> (Cleveland Shale of Ohio, USA):</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Biomechanics of the Placoderm Four-Bar Linkage Jaw Mechanism</div>
+        $$F_{\text{bite}} \approx 4,400\text{ N} \text{ (at tooth tip)} \quad \text{to} \quad >7,400\text{ N} \text{ (at rear blade)} \quad [P_{\text{pressure}} > 150\text{ MPa!}]$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">A four-bar linkage mechanism enabled <em>Dunkleosteus</em> to snap its jaws shut in just $20\text{ milliseconds}$ with a bite force rivaling <em>Tyrannosaurus rex</em> and large crocodilians, shearing through armored ammonites and sharks.</p>
+      </div>
+
+      <ul>
+        <li><strong>Internal Fertilization & Viviparity:</strong> Spectacular fossil placoderms from the Gogo Formation of Western Australia (e.g., <em>Materpiscis attenboroughi</em>, "Attenborough's Mother Fish") preserve mineralized embryos inside the female body cavity attached by an umbilical cord, proving that placoderms invented <strong>internal fertilization and live birth (viviparity)</strong> $380\text{ million years ago}$!</li>
+        <li><strong>Total Extinction:</strong> Placoderms suffered a complete, catastrophic mass extinction at the end-Devonian <strong>Hangenberg event ($\sim 359\text{ Ma}$)</strong>, leaving zero post-Devonian survivors.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON TABLE OF EARLY FISH CLASSES -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix: The Four Major Classes of Paleozoic Fishes</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Fish Class</th>
+            <th>Jaw Status</th>
+            <th>Exoskeleton / Armor Characteristics</th>
+            <th>Primary Geologic Span</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Placodermi</strong> (Target)</td>
+            <td><strong>Jawed (Gnathostomes)</strong>; shearing dermal gnathal plates.</td>
+            <td><strong>Heavily armored head & thoracic shields with ball-and-socket neck joint.</strong></td>
+            <td>Silurian to <strong>Late Devonian Extinction</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Agnatha (Ostracoderms)</strong></td>
+            <td><strong>Jawless (Agnathans)</strong>; round sucker or filter mouth.</td>
+            <td>Complete head shield of aspidin bone; no neck joint.</td>
+            <td>Ordovician to Late Devonian.</td>
+          </tr>
+          <tr>
+            <td><strong>Acanthodii ("Spiny Sharks")</strong></td>
+            <td>Jawed; equipped with small teeth.</td>
+            <td>Tiny diamond-shaped scales; stout spine in front of all fins.</td>
+            <td>Silurian to Early Permian.</td>
+          </tr>
+          <tr>
+            <td><strong>Chondrichthyes (Sharks & Rays)</strong></td>
+            <td>Jawed; replaceable rows of enameloid teeth.</td>
+            <td>Cartilaginous endoskeleton; skin covered in placoid denticles.</td>
+            <td>Devonian to <strong>Present</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Osteichthyes (Bony Fishes)</strong></td>
+            <td>Jawed; marginal tooth-bearing bones (maxilla, dentary).</td>
+            <td>Opercular bone covering gills; ganoid/cycloid/ctenoid scales.</td>
+            <td>Silurian to <strong>Present</strong> (dominant modern vertebrates).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q65. Placoderms are a particular assemblage of heavily __.</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Armord jawed fish</div>
-        <div class="opt-item "><strong>(B)</strong> Benthonic fish</div>
-        <div class="opt-item "><strong>(C)</strong> Plankton</div>
-        <div class="opt-item "><strong>(D)</strong> Nekton</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 65</div>
+        <div class="q-text">Placoderms are a particular assemblage of heavily __.</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Armord jawed fish</div>
+          <div class="opt-node">(B) Benthonic fish</div>
+          <div class="opt-node">(C) Plankton</div>
+          <div class="opt-node">(D) Nekton</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(A) Armord jawed fish</strong> [Placoderms are universally defined in vertebrate paleontology as an extinct group of heavily armored jawed fishes that flourished during the Silurian and Devonian.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "Placoderms are a particular assemblage of heavily ________"</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Armord jawed fish (CORRECT):</strong> By definitive textbook classification, <strong>Placoderms are heavily armored jawed fishes</strong>. They are characterized by a massive dermal bony head-and-trunk shield, articulated jaws with shearing bone plates, and paired pelvic and pectoral fins. Verbatim textbook authority: Benton (<em>Vertebrate Palaeontology</em>, p. 55) introduces Placoderms as <em>"heavily armored jawed fishes that dominated the Devonian seas."</em></li>
-  <li><strong>(B) Benthonic fish (INCORRECT):</strong> While some placoderm orders (such as Antiarchi, e.g., <em>Bothriolepis</em>) were benthic mud-grubbers, many advanced arthrodires (e.g., <em>Dunkleosteus</em>, which reached lengths of 8 to 10 meters) were active, pelagic macropredators. "Benthonic fish" fails to state their diagnostic anatomical traits of heavy armor and jaws.</li>
-  <li><strong>(C) Plankton (INCORRECT):</strong> Plankton are microscopic, passively drifting organisms. Placoderms were massive, actively swimming nektonic vertebrates.</li>
-  <li><strong>(D) Nekton (INCORRECT):</strong> While placoderms belonged to the nekton (free-swimming animals), "Nekton" is a broad ecological lifestyle category (including whales, squids, and sharks) that completely omits their defining physical anatomy: being <strong>armored jawed fishes</strong>.</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (A) Armord jawed fish</div>
+    <div class="card-body">
+      <p><strong>Detailed Paleontological Forensic Analysis:</strong></p>
+      <ul>
+        <li>In vertebrate paleontology (Benton 2014, Ch. 3; Long 2011; Romer 1966), the Class <strong>Placodermi</strong> is universally defined as an assemblage of <strong>heavily armored jawed fishes</strong> (gnathostomes).</li>
+        <li>The name *Placodermi* explicitly refers to the heavy armor plates (Greek *plakos* = flat plate, *derma* = skin) enclosing their head and thorax.</li>
+        <li>Unlike the earlier ostracoderms (which were armored but *jawless*), placoderms possessed true functional jaws equipped with self-sharpening gnathal cutting plates.</li>
+        <li>Therefore, Option <strong>(A) Armord jawed fish</strong> (spelled verbatim as in the official exam key) is the exact, definitive correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Benthonic fish</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>While some placoderm groups (like the antiarchs, e.g., <em>Bothriolepis</em>) lived on benthic substrates, many others (such as the giant arthrodire <em>Dunkleosteus</em>) were active pelagic apex predators swimming freely in the water column (nekton).</li>
+        <li>More importantly, "benthonic" is an ecological lifestyle, not the fundamental defining taxonomic characteristic of the class Placodermi.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Plankton</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Plankton consists of passively drifting microscopic organisms (e.g., diatoms, radiolarians, foraminifera, larvae) unable to swim against ocean currents.</li>
+        <li>Placoderms were massive, powerfully muscled predatory vertebrates reaching up to $8-10\text{ meters}$ in length; calling them plankton is biologically absurd.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) Nekton</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Although many placoderms were nektonic (active swimmers), the word "nekton" merely denotes swimming behavior and fails to identify them as fish, jawed vertebrates, or armored animals.</li>
+        <li>Option (A) is vastly more precise and forms the standard textbook definition.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Major Devonian Fish Classes Compared</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Class / Taxon</th>
-      <th>Jaw Status</th>
-      <th>Skeletal Composition & Armor</th>
-      <th>Key Evolutionary Features</th>
-      <th>Representative Genera</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:#fff3cd; font-weight:bold;">
-      <td>Placodermi</td>
-      <td><strong>Jawed (Gnathostome)</strong></td>
-      <td><strong>Heavy Dermal Bony Armor</strong> (Head & Trunk shields)</td>
-      <td>Ginglymoid neck joint; shearing gnathal plates; pelvic claspers</td>
-      <td><em>Dunkleosteus</em>, <em>Coccosteus</em>, <em>Bothriolepis</em></td>
-    </tr>
-    <tr>
-      <td><strong>Ostracodermi</strong></td>
-      <td>Jawless (Agnathan)</td>
-      <td>Dermal bone head shields / scales</td>
-      <td>Muscular pharynx pump; no pelvic fins; no jaws</td>
-      <td><em>Cephalaspis</em>, <em>Astraspis</em>, <em>Pteraspis</em></td>
-    </tr>
-    <tr>
-      <td><strong>Chondrichthyes</strong></td>
-      <td>Jawed (Gnathostome)</td>
-      <td>Cartilaginous endoskeleton; placoid scales</td>
-      <td>Polyphyodont replaceable teeth; claspers</td>
-      <td><em>Cladoselache</em>, modern sharks and rays</td>
-    </tr>
-    <tr>
-      <td><strong>Osteichthyes</strong></td>
-      <td>Jawed (Gnathostome)</td>
-      <td>True ossified bony endoskeleton & scales</td>
-      <td>Operculum covering gills; swim bladder/lungs; lepidotrichia</td>
-      <td><em>Cheirolepis</em>, <em>Eusthenopteron</em>, modern teleosts</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Major Orders of the Class Placodermi</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Placoderm Order</th>
+            <th>Armor & Body Specialization</th>
+            <th>Ecological Niche</th>
+            <th>Representative Genera</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Arthrodira</strong> ("Jointed Neck")</td>
+            <td>Ball-and-socket cranio-thoracic neck joint; scissor-like cutting gnathal blades.</td>
+            <td>Active nektonic apex predators.</td>
+            <td><strong><em>Dunkleosteus</em>, <em>Coccosteus</em></strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Antiarchi</strong> ("Opposite Anus")</td>
+            <td>Box-like thoracic carapace; pectoral fins encased in jointed crab-like armor tubes.</td>
+            <td>Benthic bottom-feeders / sediment sifters in freshwater rivers and estuaries.</td>
+            <td><strong><em>Bothriolepis</em>, <em>Asterolepis</em></strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Ptyctodontida</strong></td>
+            <td>Armor reduced; large eyes; crushing tooth plates; claspers in males.</td>
+            <td>Mollusc crushers (durophagy); living birth documented (Gogo Formation).</td>
+            <td><strong><em>Materpiscis</em>, <em>Austroptyctodus</em></strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Rhenanida</strong></td>
+            <td>Flattened body resembling modern stingrays; mosaic of small polygonal tubercles.</td>
+            <td>Benthic ambush predators camouflaged on sandy sea beds.</td>
+            <td><strong><em>Gemuendina</em></strong>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Paleozoic Icthyology & Evolutionary Innovations</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Absence of True Replacement Teeth</div>
+        <p>How did the biting plates of placoderms differ from the teeth of modern sharks and bony fishes?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Placoderms lacked true polyphyodont replacement teeth anchored in dental laminae (like shark conveyor-belt teeth). Instead, their jaws were lined with <strong>dermal gnathal plates</strong> (supragnathals and infragnathals) made of dense, compact bone and dentine that grew by basal accretion. As the jaws opened and closed, the plates rubbed against each other, continuously self-sharpening their cutting edges like industrial shears.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Gogo Formation 3D Acid Preparation</div>
+        <p>Why does the Late Devonian Gogo Formation of Western Australia preserve the world's most spectacular placoderm fossils?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Placoderms were buried in deep, anoxic inter-reef basins within calcareous concretions. The limestone nodules prevented mechanical flattening by compaction. When paleontologists dissolve the limestone matrix using dilute ($10\%$) acetic acid, the uncrushed, 3-dimensional calcium phosphate bones are revealed in pristine anatomical perfection, preserving delicate braincases, muscle tissues, nerve canals, and embryos.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Discovery of Pelvic Claspers</div>
+        <p>What reproductive organ discovered in male ptyctodontid and arthrodire placoderms demonstrated copulatory behavior in the Paleozoic?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Male placoderms possessed paired, cartilaginous and dermal-bone-covered <strong>pelvic claspers</strong> extending backward from the pelvic girdle. These functioned as intromittent organs to transfer sperm into the female reproductive tract, proving internal fertilization evolved over $380\text{ Ma}$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: *Bothriolepis* Worldwide Biostratigraphy</div>
+        <p>Why is the antiarch placoderm <em>Bothriolepis</em> used as an index fossil for Upper Devonian continental rocks globally?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Bothriolepis</em> was a hardy, euryhaline fish capable of migrating through coastal marine seaways into freshwater river basins across all Gondwanan and Euramerican continents. Over 60 distinct species evolved rapidly during the Frasnian-Famennian stages, making their robust, easily fossilized box-like carapaces ideal index fossils.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: End-Devonian Hangenberg Extinction Event</div>
+        <p>What catastrophic global event caused the complete annihilation of the Placodermi at the end of the Devonian ($\sim 359\text{ Ma}$)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The <strong>Hangenberg Event</strong> (at the Devonian-Carboniferous boundary). It was triggered by intense global cooling, southern hemisphere continental glaciation, rapid sea-level regression, and severe marine anoxia (widespread deposition of black Hangenberg shales). Specialized, heavy placoderms were completely wiped out, clearing ecological niches for the post-Devonian radiation of actinopterygians (ray-finned fishes) and chondrichthyans (sharks).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Endoskeleton vs. Exoskeleton Mineralization</div>
+        <p>Was the internal endoskeleton (vertebrae and braincase) of placoderms heavily ossified like their dermal armor?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>No. While their dermal exoskeleton was composed of thick, dense, heavily mineralized bone plates, their internal endoskeleton (axial column and braincase) remained largely <strong>cartilaginous or perichondrally calcified</strong>. The vertebral column consisted of a persistent unrestricted notochord flanked by cartilaginous neural and hemal arches.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: *Entelognathus* and the Origin of Modern Fish Jaws</div>
+        <p>How did the 2013 discovery of *Entelognathus primordialis* in China revolutionize our understanding of placoderms and modern bony fishes?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Entelognathus</em> (Silurian, $\sim 419\text{ Ma}$) possesses a typical placoderm body armor, but its face displays the marginal jaw bones of <strong>osteichthyans (premaxilla, maxilla, and dentary)</strong>! This proved that placoderms are not an aberrant dead-end side branch, but are paraphyletic stem-gnathostomes from which all bony fishes (and land vertebrates) directly inherited their facial and jaw bones.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Dermal Bone Puncture Resistance</div>
+        <p>How did the sandwich microstructure of placoderm dermal plates provide high fracture toughness against predator bites?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The plate consists of dense compact outer and inner bone lamellae sandwiching a middle layer of porous, vascular spongy bone. This engineered <strong>sandwich-panel structure</strong> absorbs and dissipates mechanical energy through micro-yielding in the porous middle core, stopping propagating cracks and preventing catastrophic puncture by large predators.</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

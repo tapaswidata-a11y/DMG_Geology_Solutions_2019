@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q56: Stratigraphic Correlation - Chronostratigraphic Correlation & Time Equivalence | OPSC Geology 2021 Masterclass</title>
+<title>Q056: Principles of Stratigraphic Correlation: Chronostratigraphic vs. Lithostratigraphic Equivalence | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,262 +89,570 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q56" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Principles of Stratigraphy & Basin Analysis</div>
-    <h1>Q56: Stratigraphic Correlation - Chronostratigraphic Correlation & Time Equivalence</h1>
+    <h1>Q056: Chronostratigraphic Correlation: Establishing Time-Equivalence</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology & Stratigraphy, 4th ed., p. 518, 524)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 56<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (4th Ed., Pearson, Ch. 15: Stratigraphic Correlation, pp. 518–534, Fig. 15.2); International Commission on Stratigraphy (ICS), <em>International Stratigraphic Guide</em> (A. Salvador, Ed., 2nd Ed., 1994); North American Commission on Stratigraphic Nomenclature (NACSN), <em>North American Stratigraphic Code</em> (2005); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 13).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Conceptual Hierarchy of Stratigraphic Correlation</h3>
-<p>Stratigraphic correlation is the fundamental procedure by which geologists demonstrate the equivalence of rock units across separated geographical localities, boreholes, and outcrops. According to the International Commission on Stratigraphy (ICS) and standard sedimentology doctrine (Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em>, 4th ed., Chapter 15, pp. 518–525), correlation is partitioned into three distinct scientific categories:</p>
-
-<ol>
-  <li><strong>Lithostratigraphic Correlation:</strong> Establishes equivalence based strictly on <em>lithologic characteristics</em> (rock type, mineral composition, grain size, sedimentary structures) and geometric stratigraphic position, independent of time. Because depositional environments migrate laterally through time (Walther's Law of Facies), lithostratigraphic boundaries are frequently <strong>diachronous (time-transgressive)</strong>.</li>
-  <li><strong>Biostratigraphic Correlation:</strong> Establishes equivalence based on fossil content and taxonomic biozones (Range Zones, Concurrent Range Zones, Assemblage Zones), relying on the Principle of Faunal Succession.</li>
-  <li><strong>Chronostratigraphic Correlation:</strong> The specific process of <em>establishing which sedimentary strata are of the exact same age (time-equivalent / isochronous)</em> across distant geographical basins, regardless of whether their physical lithologies are identical or different!</li>
-</ol>
-
-<h3>2. Mechanisms for Establishing Chronostratigraphic Equivalence</h3>
-<p>Establishing time equivalence across distant sedimentary basins is vital for reconstructing paleogeography and global sea-level changes (sequence stratigraphy). True chronostratigraphic correlation relies on physical surfaces and geochemical markers that represent near-instantaneous geologic events:</p>
-<ul>
-  <li><strong>Volcanic Ash Beds (Bentonites / Tonsteins):</strong> Plinian volcanic eruptions disperse fine ash over thousands of square kilometers within hours or days. When deposited in marine or lacustrine basins, these altered tephra layers form pristine, isochronous time planes that can be dated with high-precision radioisotopic techniques ($\mathrm{^{40}Ar/^{39}Ar}$, $\mathrm{U-Pb}$ on zircon).</li>
-  <li><strong>Impact Ejecta & Spherule Beds:</strong> Extraterrestrial bolide impacts (e.g., the Chicxulub K-Pg boundary iridium clay) distribute global isochronous fallout markers.</li>
-  <li><strong>Magnetostratigraphic Polar Reversals:</strong> Periodic reversals of Earth's magnetic dipole (e.g., Brunhes-Matuyama boundary) occur synchronously worldwide within ~1,000 to 5,000 years, providing global isochronous correlation lines.</li>
-  <li><strong>Maximum Flooding Surfaces (MFS):</strong> In sequence stratigraphy, the condensed section deposited during peak marine transgression represents an essentially synchronous chronostratigraphic datum.</li>
-</ul>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q56/boggs_fig15_chronostratigraphic_vs_lithostratigraphic.png" alt="Chronostratigraphic vs Lithostratigraphic Correlation Block Diagram">
-      <figcaption>
-        <strong>Figure 56.1: Principles of Chronostratigraphic vs. Lithostratigraphic Correlation.</strong> Authentic diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, 4th ed., Chapter 15, Fig. 15.1, p. 518). Illustrates how chronostratigraphic correlation matches isochronous surfaces (time-equivalent units) across distant basins, contrasting with diachronous lithofacies boundaries.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q56/boggs_p524_chronostratigraphic_correlation_principles.png" alt="Methods of Chronostratigraphic Correlation">
-      <figcaption>
-        <strong>Figure 56.2: Chronostratigraphic Correlation in Sedimentary Geology.</strong> Authentic text from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, Chapter 15, p. 524) describing isochronous marker beds, biozones, and bentonite ash layers used to establish time equivalence.
-      </figcaption>
-    </div>
-        
   </div>
+  
+  <!-- CARD 1: TAXONOMY OF STRATIGRAPHIC CORRELATION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Fundamentals of Stratigraphic Correlation</div>
+    <div class="card-body">
+      <p>In stratigraphy and basin analysis, <strong>correlation</strong> is the demonstrative process of establishing geometric, lithological, paleontological, or temporal correspondence between geographically separated stratigraphic units. The International Stratigraphic Guide rigorously separates correlation into three distinct categories:</p>
+
+      <ul>
+        <li><strong>Chronostratigraphic Correlation (Time Correlation):</strong> The specific scientific procedure of demonstrating that separated rock bodies, lithofacies, or physical events were deposited or occurred at the <strong>exact same geological time / identical absolute age</strong>. It establishes true chronocorrelation across diverse depositional realms (e.g., correlating deep pelagic shales with coastal barrier sandstones that formed synchronously).</li>
+        <li><strong>Lithostratigraphic Correlation:</strong> The matching of rock strata based strictly on their <strong>lithological similarity, petrographic properties, and geometric position</strong> without regard to their age. Crucially, lithostratigraphic units (formations, members) are frequently <em>diachronous (time-transgressive)</em> due to marine transgressions and regressions (Walther's Law).</li>
+        <li><strong>Biostratigraphic Correlation:</strong> The matching of strata based on identical fossil content and biozone boundaries (assemblage zones, taxon-range zones, concurrent-range zones).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q56/boggs_fig15_chronostratigraphic_vs_lithostratigraphic.png" alt="Chronostratigraphic vs Lithostratigraphic Correlation">
+        <div class="tb-caption">
+          <strong>Figure 56.1 (Sam Boggs Jr., Fig. 15.2):</strong> Fundamental dichotomy in stratigraphy: Lithostratigraphic boundaries (transgressive beach sandstones, dashed red) migrate diachronously across time horizons, whereas Chronostratigraphic isochrons (bentonite ash beds, solid blue) cut across lithologies at true constant time lines.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: TOOLS OF CHRONOSTRATIGRAPHY -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Primary Geoscientific Tools for Establishing Chronostratigraphic Age Equivalence</div>
+    <div class="card-body">
+      <p>Establishing that distant rock bodies share the same age requires identifying <strong>isochronous marker surfaces (time horizons)</strong> that were deposited virtually instantaneously across wide geographic areas:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Mathematical Statement of Chronostratigraphic Equivalence</div>
+        $$\text{Unit } A(\mathbf{x}_1) \sim \text{Unit } B(\mathbf{x}_2) \iff t_1 = t_2 \quad \left(\text{Instantaneous Time Horizon: } \frac{dt}{dx} \to 0\right)$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Contrasted with diachronous lithofacies migration: $\frac{dt}{dx} = \frac{1}{v_{\text{transgression}}} \neq 0$.</p>
+      </div>
+
+      <ul>
+        <li><strong>1. Volcanic Ash Beds (Bentonites / Tonsteins):</strong> Airborne plinian volcanic eruptions disperse pyroclastic ash across entire continents and ocean basins within days. High-precision CA-ID-TIMS U-Pb dating on sanidine/zircon crystals provides absolute chronostratigraphic datum surfaces with sub-permil accuracy ($\pm 20,000\text{ years}$).</li>
+        <li><strong>2. Magnetostratigraphic Polarity Reversals:</strong> Earth's geomagnetic field reverses synchronously worldwide. A magnetic chron boundary (e.g., the Matuyama-Brunhes reversal at $0.78\text{ Ma}$) represents an absolute global chronostratigraphic isochron.</li>
+        <li><strong>3. Chemostratigraphic Isotopic Excursions:</strong> Rapid, planetary-scale carbon ($\delta^{13}\text{C}$), oxygen ($\delta^{18}\text{O}$), or strontium ($^{87}\text{Sr}/^{86}\text{Sr}$) excursions (e.g., the PETM hyperthermal negative carbon isotope excursion at $56\text{ Ma}$).</li>
+        <li><strong>4. Microfossil Datum Planes (FADs and LADs):</strong> First Appearance Datums (FAD) and Last Appearance Datums (LAD) of planktonic organisms (foraminifera, calcareous nannoplankton).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q56/boggs_p524_chronostratigraphic_correlation_principles.png" alt="Boggs Chronostratigraphic Correlation Principles">
+        <div class="tb-caption">
+          <strong>Figure 56.2 (Sam Boggs Jr., p. 524):</strong> Textbook principles of chronostratigraphic correlation, defining how isochronous surfaces establish time equivalence across distant basins.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON MATRIX OF CORRELATION METHODS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Comparison: Litho- vs. Bio- vs. Chronostratigraphic Correlation</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Correlation Category</th>
+            <th>Fundamental Basis</th>
+            <th>Units Correlated</th>
+            <th>Temporal Validity</th>
+            <th>Primary Limitations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chronostratigraphic Correlation</strong></td>
+            <td><strong>Age Equivalence (Same Geological Time)</strong></td>
+            <td><strong>Erathem, System, Series, Stage, Chronozone.</strong></td>
+            <td><strong>Strictly Isochronous (True Time Equivalent).</strong></td>
+            <td>Requires radiometric dates, ash beds, or magnetic reversals.</td>
+          </tr>
+          <tr>
+            <td><strong>Lithostratigraphic Correlation</strong></td>
+            <td>Lithologic composition, rock type, and stratigraphic position.</td>
+            <td>Group, Formation, Member, Bed.</td>
+            <td>Frequently <strong>Diachronous</strong> (Time-Transgressive).</td>
+            <td>Misleads age interpretation due to lateral facies shifts (Walther's Law).</td>
+          </tr>
+          <tr>
+            <td><strong>Biostratigraphic Correlation</strong></td>
+            <td>Similar fossil content and taxon assemblage ranges.</td>
+            <td>Biozone (Range Zone, Interval Zone, Assemblage Zone).</td>
+            <td>Approximately isochronous within the resolution of the biochron ($0.5-2\text{ Ma}$).</td>
+            <td>Fossil preservation bias; provincialism and facies control on living taxa.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q56. _____ is the process of establishing which sedimentary strata are the same age at distant geographical areas by means of their stratigraphic relationship.</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Chronostratigraphic correlation</div>
-        <div class="opt-item "><strong>(B)</strong> Lithostratigraphic correlation</div>
-        <div class="opt-item "><strong>(C)</strong> Biostratigraphic correlation</div>
-        <div class="opt-item "><strong>(D)</strong> Stratigraphic correlation</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 56</div>
+        <div class="q-text">_____ is the process of establishing which sedimentary strata are the same age at distant geographical areas by means of their stratigraphic relationship.</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Chronostratigraphic correlation</div>
+          <div class="opt-node">(B) Lithostratigraphic correlation</div>
+          <div class="opt-node">(C) Biostratigraphic correlation</div>
+          <div class="opt-node">(D) Stratigraphic correlation</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(A) Chronostratigraphic correlation</strong> [The process of establishing that strata in geographically separated areas were deposited at the exact same geological age is by formal definition chronostratigraphic correlation.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "________ is the process of establishing which sedimentary strata are the same age at distant geographical areas by means of their stratigraphic relationship."</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Chronostratigraphic correlation (CORRECT):</strong> By strict scientific definition (from Greek <em>chronos</em>, "time", <em>stratum</em>, "layer", and <em>graphia</em>, "writing"), <strong>chronostratigraphic correlation</strong> is the process of establishing time-equivalence—matching strata that were deposited during the exact same interval of geologic time across separated geographic regions.</li>
-  <li><strong>(B) Lithostratigraphic correlation (INCORRECT):</strong> Lithostratigraphic correlation matches physical rock types (formations, members) based on physical attributes. It does not establish that strata are the same age, because lithofacies naturally migrate over millions of years across basins (diachronism).</li>
-  <li><strong>(C) Biostratigraphic correlation (INCORRECT):</strong> While biostratigraphy is a powerful tool often utilized to infer relative age, biostratigraphic correlation strictly matches <em>biozones and fossil assemblages</em>. If a fossil taxon was ecologically restricted or facies-controlled, its local biozone boundary may not be strictly isochronous.</li>
-  <li><strong>(D) Stratigraphic correlation (INCORRECT):</strong> "Stratigraphic correlation" is the broad, generic umbrella term encompassing lithic, biologic, and chronologic correlation. The prompt provides the precise, specialized definition of <strong>chronostratigraphic correlation</strong> by specifying strata of the <em>"same age."</em></li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (A) Chronostratigraphic correlation</div>
+    <div class="card-body">
+      <p><strong>Detailed Stratigraphic Forensic Analysis:</strong></p>
+      <ul>
+        <li>In formal stratigraphic nomenclature (Boggs Jr. 2012, Ch. 15; Salvador 1994, International Stratigraphic Guide), correlation that specifically establishes that rock bodies in distant geographic regions share the <strong>exact same age</strong> (temporal equivalence) is designated as <strong>Chronostratigraphic correlation</strong> (or chronocorrelation / time correlation).</li>
+        <li>It utilizes isochronous horizons—such as tephra ash falls (bentonites), paleomagnetic reversals, and isotope chemostratigraphy—to tie disparate facies together along lines of equal time.</li>
+        <li>Therefore, Option <strong>(A) Chronostratigraphic correlation</strong> is the textbook-verified, precise scientific term.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Lithostratigraphic correlation</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><strong>Lithostratigraphic correlation</strong> matches strata based solely on physical rock characteristics (lithology, grain size, mineralogy) and geometric position.</li>
+        <li>Lithostratigraphic units are famously <em>diachronous</em> (time-transgressive). For example, a basal sandstone in a transgressive sea grows progressively younger in the direction of the shoreline; tracing that sandstone across a basin does <em>not</em> establish strata of the same age. Hence, (B) is false.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Biostratigraphic correlation</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><strong>Biostratigraphic correlation</strong> establishes similarity in fossil content and biozones.</li>
+        <li>While biostratigraphy is a crucial tool used to achieve time correlation, biostratigraphic correlation in itself specifically denotes fossil assemblage matching, which can occasionally be facies-controlled or diachronous (due to migration rates). The overarching process of establishing *same age* is chronostratigraphic correlation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) Stratigraphic correlation</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><strong>Stratigraphic correlation</strong> is the broad umbrella term encompassing all forms of geological correlation (litho-, bio-, chrono-, chemo-, and seismic).</li>
+        <li>Because the question specifically asks for the process of establishing strata of the <em>same age</em>, the specific and exact term required is <strong>Chronostratigraphic correlation</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Stratigraphic Correlation Types Compared</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Correlation Mode</th>
-      <th>Primary Criterion</th>
-      <th>Fundamental Unit</th>
-      <th>Relationship to Geological Time</th>
-      <th>Key Practical Examples</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:#e0f2fe; font-weight:bold;">
-      <td>Chronostratigraphic Correlation</td>
-      <td>Equal Age (Time Equivalence)</td>
-      <td>Chronozone, Stage, Series, System</td>
-      <td><strong>Strictly Isochronous</strong> (Time-parallel)</td>
-      <td>Zircon-dated bentonite ash beds; magnetic chrons; K-Pg iridium layer</td>
-    </tr>
-    <tr>
-      <td>Lithostratigraphic Correlation</td>
-      <td>Physical Lithologic Similarity</td>
-      <td>Bed, Member, Formation, Group</td>
-      <td>Frequently <strong>Diachronous</strong> (Time-transgressive)</td>
-      <td>Matching Coconino Sandstone or Barakar Sandstone across well logs</td>
-    </tr>
-    <tr>
-      <td>Biostratigraphic Correlation</td>
-      <td>Fossil Content & Biozones</td>
-      <td>Taxon-range Zone, Concurrent Zone</td>
-      <td>Approximates time; constrained by evolutionary events</td>
-      <td>Global Jurassic ammonite zones; planktonic foraminiferal datum planes</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Stratigraphic Classification Hierarchies</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Stratigraphic Category</th>
+            <th>Formal Hierarchy of Units</th>
+            <th>Diagnostic Defining Criterion</th>
+            <th>Primary Field / Lab Tool</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chronostratigraphic</strong></td>
+            <td>Eonothem $\to$ Erathem $\to$ System $\to$ Series $\to$ <strong>Stage</strong> $\to$ Chronozone</td>
+            <td><strong>Time of formation (Isochronous rock body).</strong></td>
+            <td>Isotope geochronology, magnetostratigraphy, stable isotopes ($\delta^{13}\text{C}$).</td>
+          </tr>
+          <tr>
+            <td><strong>Geochronologic</strong> (Pure Time)</td>
+            <td>Eon $\to$ Era $\to$ Period $\to$ Epoch $\to$ <strong>Age</strong> $\to$ Chron</td>
+            <td>Abstract divisions of geological time (years / Ma).</td>
+            <td>Astronomical tuning, decay constants ($\lambda$).</td>
+          </tr>
+          <tr>
+            <td><strong>Lithostratigraphic</strong></td>
+            <td>Supergroup $\to$ Group $\to$ <strong>Formation</strong> $\to$ Member $\to$ Bed</td>
+            <td>Lithological homogeneity and mappability.</td>
+            <td>Field mapping, petrography, well-log gamma ray signatures.</td>
+          </tr>
+          <tr>
+            <td><strong>Biostratigraphic</strong></td>
+            <td>Biohorizon $\to$ <strong>Biozone</strong> (Range, Interval, Assemblage)</td>
+            <td>Specific fossil taxa and evolutionary lineages.</td>
+            <td>Micropaleontology, palynology, ammonite / graptolite biozonation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Correlation Methods & Geochronology</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Transgressive Shoreface Velocity Calculation</div>
+        <p>A transgressive quartz sandstone unit has a basal age of $505.0\text{ Ma}$ at location A and $501.0\text{ Ma}$ at location B, situated $200\text{ km}$ inland. Calculate the rate of shoreline migration in $\text{mm/year}$ and determine whether this formation is isochronous or diachronous.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$\Delta t = 505.0 - 501.0 = 4.0\text{ Ma} = 4.0 \times 10^6\text{ years}$$
+        $$\text{Distance } D = 200\text{ km} = 2.0 \times 10^8\text{ mm}$$
+        $$v_{\text{migration}} = \frac{D}{\Delta t} = \frac{2.0 \times 10^8\text{ mm}}{4.0 \times 10^6\text{ yr}} = 50\text{ mm/year} = 5.0\text{ cm/year}$$
+        <p><strong>Final Answer:</strong> The shoreline migrated at $50\text{ mm/year}$. Because the age of the sandstone differs by $4.0\text{ million years}$ between locations, the formation is <strong>strongly diachronous (time-transgressive)</strong>.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Bentonite Ash Bed Correlation</div>
+        <p>Why do altered volcanic ash beds (bentonites / tonsteins) provide the gold standard for chronostratigraphic correlation across differing sedimentary facies?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Volcanic ash plumes from explosive plinian eruptions are carried across the stratosphere and settle out over marine basins, deltas, and lakes within a matter of days or weeks (essentially instantaneous in geological time: $dt \to 0$). The resulting thin clay-rich bentonite layer cuts across all environmental boundaries, providing a literal physical time plane containing radiometrically datable zircons and sanidines.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Walther's Law of Facies Application</div>
+        <p>State Walther's Law of Facies and explain how it prevents erroneous chronostratigraphic correlations.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Walther's Law states: <em>"Facies that occur in conformable vertical succession must have been formed in laterally adjacent depositional environments at the same time."</em> This warns stratigraphers that vertical changes in rock type (e.g., sandstone $\to$ shale $\to$ limestone) represent lateral shifts of environmental belts over time, meaning lithostratigraphic contacts cannot be assumed to be horizontal time planes.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Magnetostratigraphic Reversal Resolution</div>
+        <p>How does magnetostratigraphic correlation establish time equivalence without requiring body fossils?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>When volcanic rocks cool below their Curie temperature ($T_c$) or magnetic minerals settle in sediments, they align with Earth's magnetic dipole field. Geomagnetic field polarity reversals (Normal vs. Reverse chrons) occur globally at the exact same instant ($<5,000\text{ years}$ transition duration). By matching the unique bar-code pattern of normal and reversed polarity zones to the global geomagnetic polarity timescale (GPTS), strata are chronocorrelated worldwide.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Carbon Isotope Chemostratigraphic Correlation ($\delta^{13}\text{C}$)</div>
+        <p>In a Precambrian basin devoid of index fossils, how can a negative carbon isotope excursion establish chronostratigraphic equivalence with another continent?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The oceanic carbon reservoir has a residence time of $\sim 10^5\text{ years}$, which is much longer than the ocean mixing time ($\sim 1,000\text{ years}$). Therefore, catastrophic carbon perturbations (such as the Shuram negative $\delta^{13}\text{C}$ excursion of the Ediacaran) alter the isotopic composition of seawater synchronously worldwide. Carbonate rocks precipitating from seawater preserve this identical isotopic curve, allowing global chronocorrelation.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Seismic Reflection Clinoforms as Time Lines</div>
+        <p>In seismic stratigraphy, do seismic reflections represent lithological boundaries or chronostratigraphic time horizons?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Seismic reflections are generated at acoustic impedance contrasts ($Z = \rho v$) which coincide with bedding planes, stratal unconformities, and hiatuses. Because stratal surfaces were once continuous depositional surfaces (paleo-seafloors) formed over a single increment of time, <strong>seismic reflections represent chronostratigraphic time-surfaces</strong>, cutting across diachronous lithofacies boundaries.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: GSSP (Golden Spike) Definition</div>
+        <p>What is a Global Boundary Stratotype Section and Point (GSSP) in chronostratigraphy?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>A GSSP (popularly termed a "Golden Spike") is an internationally agreed-upon, physically designated reference point in a specific geological rock outcrop that defines the lower boundary of a formal chronostratigraphic <strong>Stage</strong> (and hence Series and System). It is anchored to a primary marker event (e.g., FAD of a microfossil or magnetic reversal).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Graphic Correlation Method of Shaw (1964)</div>
+        <p>What is Alan Shaw's graphic correlation technique and what does the Slope of the Line of Correlation (LOC) indicate?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>In Shaw's graphic correlation, the stratigraphic positions of fossil datums (FADs and LADs) in Section A are plotted along the X-axis against the same datums in Section B on the Y-axis. The data points define a Line of Correlation (LOC). The <strong>slope of the LOC ($dy/dx$)</strong> represents the <strong>ratio of relative sediment accumulation rates</strong> between the two sections.</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

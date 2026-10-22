@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q62: Chordate Morphology - Notochord Extension in Amphioxus (Cephalochordata) | OPSC Geology 2021 Masterclass</title>
+<title>Q062: Chordate Morphology: Amphioxus Cephalochordate Notochord Anterior Extension | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,257 +89,557 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q62" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Chordate Morphology & Evolution</div>
-    <h1>Q62: Chordate Morphology - Notochord Extension in Amphioxus (Cephalochordata)</h1>
+    <div class="badge">GEO - 2/21 • Comparative Chordate Anatomy & Evolution</div>
+    <h1>Q062: Amphioxus: Cephalochordate Notochord Anterior Extension</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Michael J. Benton (Vertebrate Palaeontology, Ch. 1); Romer & Parsons (The Vertebrate Body)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 62<br>
+<strong>Authoritative References:</strong> Michael J. Benton, <em>Vertebrate Palaeontology</em> (4th Ed., Ch. 1: The Origin of Vertebrates, pp. 1–15); Alfred S. Romer & Thomas S. Parsons, <em>The Vertebrate Body</em> (Ch. 2: The Chordate Background); K.V. Kardong, <em>Vertebrates: Comparative Anatomy, Function, Evolution</em> (7th Ed., McGraw-Hill, Ch. 2); G.B. Mahapatra, <em>A Text-Book of Geology</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Phylogenetic Position of Amphioxus (Subphylum Cephalochordata)</h3>
-<p><strong>Amphioxus</strong> (commonly represented by the genus <em>Branchiostoma</em>, formerly <em>Amphioxus lanceolatus</em>) is a small (5 to 7 cm long), translucent, fish-like marine organism inhabiting shallow, clean sand substrates in coastal waters worldwide. In evolutionary biology and comparative vertebrate paleontology (Michael J. Benton, <em>Vertebrate Palaeontology</em>, 4th ed., Chapter 1; Romer & Parsons, <em>The Vertebrate Body</em>), amphioxus occupies a celebrated role as the archetype model for the ancestral chordate body plan.</p>
-
-<p>Phylum Chordata is defined by five diagnostic morphological synapomorphies present at some stage of development:</p>
-<ol>
-  <li>A dorsal, flexible, rod-like skeletal axis termed the <strong>notochord</strong>.</li>
-  <li>A single, hollow <strong>dorsal nerve cord</strong>.</li>
-  <li>Pharyngeal gill slits or pouches.</li>
-  <li>An endostyle (or its derivative, the thyroid gland).</li>
-  <li>A muscular, post-anal tail.</li>
-</ol>
-
-<h3>2. The Diagnostic Cephalochordate Distinction: The Anterior Notochord</h3>
-<p>While amphioxus shares all primary chordate traits, its subphylum name—<strong>Cephalochordata</strong> (from Greek <em>kephale</em>, "head", and <em>chorda</em>, "cord")—highlights its single most defining anatomical divergence from Subphylum Vertebrata (Craniata):</p>
-
-<p>In true vertebrates, the notochord terminates beneath the midbrain, immediately posterior to the infundibulum and pituitary gland, leaving the anterior cerebral lobes unbraced by chordal tissue. In contrast, in <strong>amphioxus, the notochord extends persistently along the entire length of the dorsal body axis to the extreme ANTERIOR tip of the rostrum</strong> (ahead of the cerebral vesicle and anterior pigment cup!).</p>
-
-<p>Functional morphology explains this unique adaptation: Amphioxus is an active, rapid burrower that darts backwards and forwards into marine sand. The extension of the rigid, incompressible, muscularized notochord beyond the brain to the extreme anterior tip transforms the snout into a stiffened hydrodynamic shovel or drill, allowing the lancelet to penetrate compacted sand sediments without collapsing its delicate cephalic neural tissues!</p>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q62/amphioxus_sagittal_notochord_anterior_rostrum.png" alt="Anatomy of Amphioxus showing Notochord extending to Anterior Rostrum">
-      <figcaption>
-        <strong>Figure 62.1: Chordate Anatomy of Amphioxus (Branchiostoma lanceolatum).</strong> Detailed anatomical diagram showing the diagnostic feature of subphylum Cephalochordata: the notochord extends persistently past the anterior end of the dorsal nerve cord to the extreme <strong>anterior</strong> tip of the snout (rostrum), providing axial rigidity for sand burrowing.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-        
   </div>
+  
+  <!-- CARD 1: CEPHALOCHORDATE NOTOCHORD ANATOMY -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Notochord of Amphioxus (Branchiostoma)</div>
+    <div class="card-body">
+      <p>The lancelet, popularly known as <strong>Amphioxus</strong> (genus <em>Branchiostoma</em>, Subphylum <strong>Cephalochordata</strong>), represents the classical archetype of the primitive chordate body plan. While sharing all five fundamental diagnostic chordate characteristics (notochord, dorsal hollow nerve cord, pharyngeal gill slits, endostyle, and post-anal tail), its notochord exhibits a unique and profound anatomical distinction from all true vertebrates:</p>
+
+      <ul>
+        <li><strong>Etymology and Definition:</strong> The subphylum name <strong>Cephalochordata</strong> is derived directly from Greek <em>kephale</em> (meaning "head") + <em>chorde</em> (meaning "string" or "cord"), which literally translates as <strong>“head-chordates”</strong>.</li>
+        <li><strong>Anterior Extension Past the Brain:</strong> In <em>Amphioxus</em>, the notochord does not terminate beneath the brain as in vertebrates. Instead, it extends along the entire length of the animal to the <strong>extreme anterior end (tip of the snout / rostrum)</strong>, extending well beyond the anterior-most cerebral vesicle of the neural tube.</li>
+        <li><strong>Hydrodynamic Burrowing Function:</strong> This extreme anterior extension serves a vital mechanical adaptation: when <em>Amphioxus</em> burrows forward into marine coarse sand, the stiff, hydrostatic notochord acts as a rigid pointed hydraulic battering ram, protecting the delicate front end of the nerve cord from compression injury.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q62/amphioxus_sagittal_notochord_anterior_rostrum.png" alt="Amphioxus Notochord Anatomy">
+        <div class="tb-caption">
+          <strong>Figure 62.1:</strong> Sagittal anatomical section of <em>Amphioxus</em> (Cephalochordata), showing the continuous hydrostatic notochord extending to the extreme anterior tip of the rostrum beyond the brain vesicle.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: CEPHALOCHORDATES VS CRANIATES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Anatomical Comparison: Cephalochordates vs. Vertebrates (Craniates)</div>
+    <div class="card-body">
+      <p>The anterior termination of the notochord marks the fundamental evolutionary divergence between invertebrates and craniate vertebrates:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Rostral Notochord Boundary Condition</div>
+        $$\text{Cephalochordates (Amphioxus): } \quad x_{\text{notochord}} \ge x_{\text{rostrum}} \quad (\text{Notochord extends past brain to extreme anterior})$$
+        $$\text{Vertebrates (Craniata): } \quad x_{\text{notochord}} \le x_{\text{midbrain}} \quad (\text{Notochord stops at pituitary infundibulum / basicranium})$$
+      </div>
+
+      <ul>
+        <li><strong>In True Vertebrates (Craniata):</strong> The notochord terminates anteriorly beneath the posterior part of the diencephalon / midbrain, directly behind the hypophysis (pituitary gland). The anterior cranium (ethmoid and orbital cartilage) develops independently from neural crest cells.</li>
+        <li><strong>Muscularized Notochord in Amphioxus:</strong> Unlike the gelatinous, fluid-vacuolated notochord of vertebrate embryos, the notochord of <em>Amphioxus</em> is unique in consisting of disk-shaped, transversely stacked <strong>paramyosin muscle plates</strong> that can contract to adjust the stiffness of the rod during swimming!</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON TABLE OF CHORDATE SUBPHYLA -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix: The Three Chordate Subphyla</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Subphylum</th>
+            <th>Notochord Anterior Limit</th>
+            <th>Persistence in Adult</th>
+            <th>Cranium / Braincase</th>
+            <th>Representative Genera</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cephalochordata</strong> (Target)</td>
+            <td><strong>Extends to extreme anterior tip of snout (rostrum).</strong></td>
+            <td><strong>Persistent throughout life</strong> as primary axial support.</td>
+            <td><strong>Absent</strong> (No cranium or tripartite brain).</td>
+            <td><em>Branchiostoma</em> (Amphioxus), <em>Epigonichthys</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Urochordata (Tunicata)</strong></td>
+            <td>Confined exclusively to the larval tail; absent in trunk.</td>
+            <td>Lost completely during metamorphosis into sessile adult.</td>
+            <td><strong>Absent</strong>.</td>
+            <td><em>Ascidia, Ciona, Salpa</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Vertebrata (Craniata)</strong></td>
+            <td>Terminates beneath midbrain/hindbrain behind pituitary.</td>
+            <td>Replaced by cartilaginous or bony vertebral column (remnants as nucleus pulposus).</td>
+            <td><strong>Present</strong> (True cartilaginous or bony skull).</td>
+            <td>Hagfish, lampreys, fishes, amphibians, reptiles, mammals.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q62. The notochord of amphioxus differs from that of vertebrates by extending to the extreme _______ end of the body.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> posterior</div>
-        <div class="opt-item correct"><strong>(B)</strong> anterior</div>
-        <div class="opt-item "><strong>(C)</strong> open</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 62</div>
+        <div class="q-text">The notochord of amphioxus differs from that of vertebrates by extending to the extreme _______ end of the body.</div>
+        <div class="q-options">
+          <div class="opt-node">(A) posterior</div>
+          <div class="opt-node correct">(B) anterior</div>
+          <div class="opt-node">(C) open</div>
+          <div class="opt-node">(D) None of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(B) anterior</strong> [In Amphioxus (Cephalochordata), the notochord extends to the extreme anterior end of the body (tip of the snout), whereas in vertebrates it terminates behind the brain.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "The notochord of amphioxus differs from that of vertebrates by extending to the extreme ________ end of the body."</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) posterior (INCORRECT):</strong> In vertebrates, urochordates, and cephalochordates alike, the notochord extends posteriorly into the caudal tail region. Extending posteriorly does not differentiate amphioxus from vertebrates; both possess a posterior notochordal axis.</li>
-  <li><strong>(B) anterior (CORRECT):</strong> The defining morphological hallmark that separates <strong>Cephalochordata</strong> (Amphioxus) from Vertebrata (Craniata) is that the notochord extends forward beyond the brain to the extreme <strong>anterior</strong> end of the body (the tip of the rostrum). In vertebrates, the anterior end of the notochord stops behind the brain.</li>
-  <li><strong>(C) open (INCORRECT):</strong> "Open" is an anatomical non sequitur; the notochord is a sealed, fluid-filled, turgid cylindrical organ, not an open aperture.</li>
-  <li><strong>(D) None of these (INCORRECT):</strong> Option B is the universally documented anatomical diagnostic feature.</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (B) anterior</div>
+    <div class="card-body">
+      <p><strong>Detailed Anatomical Forensic Analysis:</strong></p>
+      <ul>
+        <li>In comparative chordate anatomy (Benton 2014; Romer & Parsons 1986; Kardong 2015), the defining morphological characteristic of <em>Amphioxus</em> (Subphylum <strong>Cephalochordata</strong>) is that its notochord extends to the <strong>extreme anterior end</strong> of the body, protruding beyond the anterior tip of the nerve cord into the pointed rostrum.</li>
+        <li>In contrast, in all true vertebrates (Craniata), the notochord terminates anteriorly beneath the midbrain/hindbrain, never reaching the front of the head.</li>
+        <li>This anterior extension gives the cephalochordates their name (<em>cephalo-</em> = head) and provides structural rigidity for forward sand-burrowing.</li>
+        <li>Therefore, Option <strong>(B) anterior</strong> is the definitive correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) posterior</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The notochord extends into the posterior tail in *both* vertebrates (embryos) and amphioxus.</li>
+        <li>Extending to the posterior tail does not differentiate amphioxus from vertebrates; it is the unique extension to the extreme <strong>anterior</strong> rostrum that distinguishes it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) open</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>"Open" is a nonsensical anatomical descriptor for the terminus of a skeletal rod. The notochord is enclosed within a continuous collagenous sheath.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) None of these</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Because Option (B) anterior is the precise textbook anatomical term, Option (D) is false.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Comparative Anatomy: Chordate Subphyla Notochord Organization</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Subphylum / Clade</th>
-      <th>Representative Taxon</th>
-      <th>Notochord Extent (Anterior Termination)</th>
-      <th>Notochord Extent (Posterior Termination)</th>
-      <th>Fate in Adult Organism</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:#e0f2fe; font-weight:bold;">
-      <td>Cephalochordata</td>
-      <td>Amphioxus (<em>Branchiostoma</em>)</td>
-      <td>Extends to the <strong>extreme anterior tip of the rostrum</strong> (past cerebral vesicle)</td>
-      <td>Extends to tip of caudal fin</td>
-      <td>Persists throughout entire adult life as sole axial support</td>
-    </tr>
-    <tr>
-      <td><strong>Urochordata (Tunicata)</strong></td>
-      <td>Sea squirts (<em>Ascidia</em>)</td>
-      <td>Confined strictly to the posterior tail of the larva</td>
-      <td>Tip of larval tail</td>
-      <td>Completely reabsorbed/lost during metamorphosis into sessile adult</td>
-    </tr>
-    <tr>
-      <td><strong>Vertebrata (Craniata)</strong></td>
-      <td>Lampreys, Sharks, Mammals</td>
-      <td>Terminates behind brain (at hypophyseal fossa / infundibulum)</td>
-      <td>Extends into caudal tail</td>
-      <td>Largely replaced by cartilaginous or bony vertebral centra (persists as nucleus pulposus)</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Anatomical Distinctions Between Amphioxus and Vertebrates</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Anatomical Feature</th>
+            <th><em>Amphioxus</em> (Cephalochordata)</th>
+            <th>Vertebrata (Craniata)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Notochord Extent</strong></td>
+            <td><strong>Extends to extreme anterior tip (rostrum).</strong></td>
+            <td>Terminates beneath midbrain/pituitary.</td>
+          </tr>
+          <tr>
+            <td><strong>Brain Differentiation</strong></td>
+            <td>Simple anterior cerebral vesicle; unsegmented.</td>
+            <td>Tripartite brain (Prosencephalon, Mesencephalon, Rhombencephalon).</td>
+          </tr>
+          <tr>
+            <td><strong>Heart & Circulatory System</strong></td>
+            <td>No single heart; contractile sinus venosus and pulsating bulbils.</td>
+            <td>Multi-chambered muscular heart (atrium + ventricle).</td>
+          </tr>
+          <tr>
+            <td><strong>Respiratory Organ</strong></td>
+            <td>Pharyngeal slits used primarily for filter-feeding; skin respires.</td>
+            <td>Gills or lungs dedicated to gas exchange with specialized capillary beds.</td>
+          </tr>
+          <tr>
+            <td><strong>Excretory System</strong></td>
+            <td>Segmental protonephridia with solenocytes (ciliated flame cells).</td>
+            <td>Mesodermal kidneys (pronephros, mesonephros, or metanephros) with glomeruli.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Chordate Evolution & Comparative Anatomy</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Cambrian Chordate Ancestry (*Pikaia*)</div>
+        <p>What Burgess Shale fossil from the Middle Cambrian of Canada is recognized as the earliest known stem-cephalochordate closely related to <em>Amphioxus</em>?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong><em>Pikaia gracilens</em></strong>. This ribbon-shaped, laterally compressed organism ($\sim 5\text{ cm}$ long) possesses a distinct dorsal notochord, a dorsal nerve cord, and over 100 zigzag chevron-shaped myomeres, demonstrating that cephalochordate-like ancestors had already radiated in the early Cambrian seas ($508\text{ Ma}$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: The Endostyle and Thyroid Homology</div>
+        <p>What homologous organ in adult vertebrates evolves from the ciliated mucus-secreting endostyle found in <em>Amphioxus</em> and larval lampreys?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The <strong>thyroid gland</strong>. In <em>Amphioxus</em>, the endostyle is a ventral pharyngeal groove that binds environmental iodine into iodinated tyrosine compounds to trap food. During vertebrate development, this iodine-binding epithelium invaginates to form the endocrine thyroid gland producing thyroxine ($\text{T}_4$) and triiodothyronine ($\text{T}_3$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Hydrostatic Stiffness of the Notochord</div>
+        <p>Explain the physical mechanism that provides flexural stiffness to the chordate notochord without bone or cartilage.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The notochord consists of a core of tightly packed, fluid-engorged vacuolated cells surrounded by an outer acellular sheath of densely woven, helically wound <strong>collagen fibers</strong>. The osmotic absorption of water creates high internal hydrostatic turgor pressure. Because water is incompressible, the rod resists longitudinal shortening under muscle contraction while allowing lateral sinusoidal bending for undulatory swimming.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Neural Crest Cells and the "New Head" Hypothesis</div>
+        <p>What embryological tissue, completely absent in <em>Amphioxus</em>, is responsible for forming the vertebrate skull, sensory capsules, and jaws (Gans & Northcutt "New Head" hypothesis)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong>Neural Crest Cells</strong>. In vertebrate embryos, neural crest cells migrate from the margins of the folding neural tube throughout the body to generate the cartilaginous cranium, jaw skeleton, sensory ganglia, melanocytes, and tooth dentine. The evolutionary emergence of neural crest cells transformed passive filter-feeders like amphioxus into active, predatory craniate vertebrates.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Nucleus Pulposus in Human Anatomy</div>
+        <p>What anatomical structure in the adult human body represents the direct embryonic remnant of the notochord?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The <strong>nucleus pulposus</strong>—the gelatinous, shock-absorbing central core of each intervertebral disc in the human spine. Herniation of an intervertebral disc ("slipped disc") involves the rupture of the outer annulus fibrosus and extrusion of this ancient notochordal remnant.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Solenocytes vs. Glomerular Kidneys</div>
+        <p>Why is the excretory system of <em>Amphioxus</em> considered non-vertebrate?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Amphioxus</em> excretes waste via ectodermally derived <strong>protonephridia with solenocytes</strong> (flagellated cells identical to the flame cells of flatworms and polychaetes) that discharge directly into the atrium. Vertebrates possess mesodermally derived nephric tubules with blood-filtering glomeruli, a completely independent evolutionary innovation.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: *Haikouichthys* and the Origin of Craniates</div>
+        <p>How does the Early Cambrian fossil <em>Haikouichthys</em> from the Chengjiang Biota of China advance beyond the <em>Amphioxus</em> grade?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Unlike <em>Amphioxus</em>, <em>Haikouichthys</em> ($\sim 518\text{ Ma}$) exhibits a distinct <strong>cartilaginous head skeleton (cranium)</strong>, paired eyes, otic capsules, branchial arches supporting true gills, a dorsal fin with fin rays, and vertebral arcualia, establishing it as the world's oldest known craniate vertebrate.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Myomere Folding Geometry</div>
+        <p>Contrast the shape of the myomeres (muscle blocks) in <em>Amphioxus</em> with those in teleost fishes.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>In <em>Amphioxus</em>, the myomeres are simple V-shaped chevrons pointing anteriorly. In jawed fishes (teleosts and sharks), myomeres evolve into complex <strong>W-shaped 3D folded cones</strong> intersected by a horizontal connective tissue septum (dividing epaxial and hypaxial muscles), enabling powerful three-dimensional undulatory thrust.</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

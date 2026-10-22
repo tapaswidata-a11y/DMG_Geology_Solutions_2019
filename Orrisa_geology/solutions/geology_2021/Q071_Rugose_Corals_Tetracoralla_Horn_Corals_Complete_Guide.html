@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q71: Cnidarian Paleontology - Subclass Rugosa: Tetracoralla or Horn Corals | OPSC Geology 2021 Masterclass</title>
+<title>Q071: Anthozoa: Rugosa (Tetracoralla) Horn Corals Morphology & Septal Insertion | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,272 +89,630 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q71" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Cnidarian Paleontology & Corals</div>
-    <h1>Q71: Cnidarian Paleontology - Subclass Rugosa: Tetracoralla or Horn Corals</h1>
+    <div class="badge">GEO - 2/21 • Invertebrate Paleontology & Anthozoa</div>
+    <h1>Q071: Rugose Corals (Tetracoralla): Horn Coral Morphology & Septal Insertion</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> G.B. Mahapatra (A Text-Book of Geology, p. 358); P.K. Mukherjee (A Text Book of Geology, p. 170)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 71<br>
+<strong>Authoritative References:</strong> G.B. Mahapatra, <em>A Text-Book of Geology</em> (Ch. 9: Paleontology / Anthozoa, pp. 186–188, 358); P.K. Mukherjee, <em>A Text Book of Geology</em> (Ch. 13: Paleontology, p. 170); E.N.K. Clarkson, <em>Invertebrate Palaeontology and Evolution</em> (4th Ed., Ch. 5: Corals, pp. 109–137); Moore, Lalicker & Fischer, <em>Invertebrate Fossils</em> (McGraw-Hill, Ch. 4: Coelenterata).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Subclass Rugosa (Order Rugosa / Tetracorallia)</h3>
-<p>Corals belong to the Phylum Cnidaria, Class <strong>Anthozoa</strong>. In the geological past, three major subclasses of skeleton-secreting corals dominated marine carbonate reef and shelf environments: <strong>Rugosa</strong> (Paleozoic), <strong>Tabulata</strong> (Paleozoic), and <strong>Scleractinia</strong> (Hexacorallia; Mesozoic to Recent). Among these, the extinct solitary and colonial corals of the Subclass <strong>Rugosa</strong> (Milne-Edwards & Haime, 1850; G.B. Mahapatra, <em>A Text-Book of Geology</em>, Chapter 91, p. 358 / PDF p. 187; P.K. Mukherjee, <em>A Text Book of Geology</em>, Chapter 14, p. 170) are famous for their unique morphological and structural features.</p>
-
-<h3>2. Why Rugose Corals are Called "Horn Corals" and "Tetracoralla"</h3>
-<p>The name <strong>Rugosa</strong> derives from Latin <em>rugosus</em> ("wrinkled" or "creased"), referring to the distinctive, coarse, wrinkled concentric growth lines visible on the outer protective wall (the <strong>epitheca</strong>). They are universally known by two iconic alternate designations:</p>
-
-<ol>
-  <li><strong>Horn Corals:</strong> Solitary rugose corallites possess an arched, expanding, conical skeleton that closely resembles a cow's horn (calceoloid or ceratoid shape). The animal (polyp) sat in the cup-shaped depression at the top, called the <strong>calyx</strong>, secreting a robust calcitic corallum as it grew upwards.</li>
-  <li><strong>Tetracoralla:</strong> Unlike modern reef-building corals (Scleractinia or Hexacorallia) whose septa are inserted in multiples of six (hexameral symmetry), rugose corals insert their radial vertical skeletal partitions (septa) in <strong>multiples of four (tetrameral symmetry)</strong> into four distinct quadrants!</li>
-</ol>
-
-<h3>3. Septal Insertion Mechanics in Tetracorals</h3>
-<p>During the ontogeny of a rugose coral, six primary (protosepta) septa appear initially: the <strong>cardinal septum</strong>, the <strong>counter septum</strong>, two <strong>alar septa</strong>, and two <strong>counter-lateral septa</strong>. Subsequent major and minor septa (metasepta) are inserted exclusively in four locations: on either side of the cardinal septum and on the counter side of the two alar septa, creating a pronounced bilateral symmetry and leaving a visible gap or depression called the <strong>cardinal fossula</strong>.</p>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q71/mahapatra_p187_rugosa_tetracoralla_horn_corals.png" alt="Morphology and Classification of Rugose Corals">
-      <figcaption>
-        <strong>Figure 71.1: Subclass Rugosa (Tetracoralla or Horn Corals).</strong> Authentic page excerpt from G.B. Mahapatra (<em>A Text-Book of Geology</em>, Chapter 91, p. 358 / PDF p. 187). Explains the horn-shaped corallum, wrinkled epithecal wall, and quadripartite septal insertion distinguishing <strong>Tetracoralla / Horn corals</strong> from hexacorals.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q71/pkm_p170_anthozoa_tetracorals_septal_arrangement.png" alt="Tetracoral Septal Architecture and Calyx Structure">
-      <figcaption>
-        <strong>Figure 71.2: Septal Arrangement in Tetracorals.</strong> Authentic text from P.K. Mukherjee (<em>A Text Book of Geology</em>, Chapter 14, p. 170). Details cardinal, counter, and alar septal insertion in four quadrants within solitary Paleozoic rugose corals.
-      </figcaption>
-    </div>
-        
   </div>
+  
+  <!-- CARD 1: SYSTEMATIC PALEONTOLOGY AND MORPHOLOGY -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Systematic Paleontology & Anatomy of Order Rugosa (Tetracoralla)</div>
+    <div class="card-body">
+      <p>
+        The <strong>Order Rugosa</strong> (Milne-Edwards & Haime, 1850), universally referred to in classical invertebrate paleontology as <strong>Tetracoralla</strong> (Haeckel, 1866), constitutes an extinct, major group of solitary and colonial anthozoan cnidarians that flourished throughout the Paleozoic marine realm. The name <em>Rugosa</em> derives from the Latin <em>ruga</em> (wrinkle), referring directly to the prominent concentric growth ridges and coarse wrinkles that ornament the outer skeletal wall (<strong>epitheca</strong>).
+      </p>
+      <p>
+        The classic morphological archetype of the solitary rugosan is a curved, conical or ceratoid skeletal cup, popularly designated as the <strong>"horn coral"</strong> due to its uncanny resemblance to a bovine or ram horn. The animal inhabited the concave upper depression of this skeleton, termed the <strong>calice</strong>, while secreting a continuous basal and peripheral framework of calcium carbonate.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q71/mahapatra_p187_rugosa_tetracoralla_horn_corals.png" alt="Morphology of Rugose Horn Corals from Mahapatra">
+        <div class="figure-caption">
+          <strong>Figure 71.1 — Morphological Architecture of Solitary Rugose Corals (Horn Corals):</strong> Authentic textbook scan from G.B. Mahapatra (<em>A Text-Book of Geology</em>, p. 187). Illustrating the curved conical corallite, wrinkled outer epitheca, deep terminal calice, prominent radial septa, tabulae, and the cardinal fossula.
+        </div>
+      </div>
+
+      <h4>Fundamental Anatomical Components of the Rugose Corallite</h4>
+      <ul>
+        <li><strong>Epitheca:</strong> The thin, outer cuticular calcitic sheath secreted by the basal ectoderm of the polyp, displaying pronounced horizontal growth rugae (annulations) and longitudinal septal grooves.</li>
+        <li><strong>Calice (Calyx):</strong> The cup-like terminal depression at the broad anterior end of the corallite where the living anthozoan polyp sat.</li>
+        <li><strong>Septa:</strong> Radial vertical calcitic plates that project inwards from the peripheral wall into the central lumen, providing mechanical support to the soft mesenteries of the polyp.</li>
+        <li><strong>Tabulae:</strong> Horizontal or gently arched, convex/concave transverse partitions that floor the lower, abandoned portions of the visceral cavity as the polyp grew upward.</li>
+        <li><strong>Dissepiments:</strong> Small, curved, blister-like vesicular plates lining the peripheral zone (the <em>dissepimentarium</em>), providing lateral reinforcement between septa.</li>
+        <li><strong>Columella / Axial Structure:</strong> A solid central rod or complex meshwork of twisted septal lamellae (axial vortex) along the central axis of the corallite.</li>
+        <li><strong>Cardinal Fossula:</strong> A prominent depression or gap within the septal array, formed by the abortion, abbreviation, or depression of the <em>cardinal septum</em>, reflecting the location of the siphonoglyph in the living polyp.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: SEPTAL INSERTION DYNAMICS AND TETRAMERAL SYMMETRY -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Septal Insertion Dynamics and Bilateral Quadrant Symmetry</div>
+    <div class="card-body">
+      <p>
+        The defining taxonomic criterion separating <strong>Tetracoralla (Rugosa)</strong> from <strong>Hexacorallia (Scleractinia)</strong> lies in the ontogenetic sequence of septal insertion. While modern scleractinians insert septa in radial cycles of six ($6 \to 12 \to 24 \dots$), rugose corals insert their adult septa (<strong>metasepta</strong>) in strictly <strong>four quadrants</strong>, imparting a conspicuous <strong>bilateral symmetry</strong> to the adult corallum.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q71/pkm_p170_anthozoa_tetracorals_septal_arrangement.png" alt="Septal Arrangement and Insertion in Tetracoralla from P.K. Mukherjee">
+        <div class="figure-caption">
+          <strong>Figure 71.2 — Septal Insertion and Tetrameral Quadrant Architecture:</strong> Authentic textbook scan from P.K. Mukherjee (<em>A Text Book of Geology</em>, p. 170). Depicting the initial insertion of the cardinal ($C$), counter ($K$), and two alar ($A$) protosepta, followed by the serial addition of metasepta within four distinct growth sectors.
+        </div>
+      </div>
+
+      <h4>Ontogenetic Sequence of Septal Development (Kunth's Law)</h4>
+      <p>
+        The classical insertion sequence established by A. Kunth (1869) proceeds as follows:
+      </p>
+      <ol>
+        <li><strong>Protoseptal Stage:</strong> The very first septum formed is an axial plate running across the entire calice floor. It subsequently divides into two opposing primary septa: the <strong>Cardinal Septum ($C$)</strong> and the <strong>Counter Septum ($K$)</strong>. Shortly thereafter, two lateral protosepta arise, termed the <strong>Alar Septa ($A$)</strong>, followed by two <strong>Counter-Lateral Septa ($KL$)</strong>. These primary plates divide the calice into four primary growth sectors or quadrants.</li>
+        <li><strong>Metaseptal Insertion (Tetrameral Growth):</strong> Subsequent major septa (metasepta) are inserted <em>only at four specific loci</em> directly adjacent to the protosepta:
+          <ul>
+            <li>In the two cardinal quadrants, metasepta are added on both sides of the <strong>cardinal septum</strong>, leaning pinnately against the alar septa (feather-like arrangement).</li>
+            <li>In the two counter quadrants, metasepta are added on the cardinal side of the <strong>alar septa</strong>, leaning towards the counter septum.</li>
+          </ul>
+        </li>
+        <li><strong>Bilateral Symmetry Plane:</strong> Because new septa are never added adjacent to the counter septum or counter-lateral septa, the corallite displays an unmistakable bilateral symmetry plane passing directly through the cardinal and counter septa.</li>
+      </ol>
+      <div class="formula-box">
+        <strong>Kunth's Quadrant Insertion Rule:</strong><br>
+        $$\text{Total Metasepta added per cycle} = 4 \quad (\text{One per quadrant})$$<br>
+        $$\text{Quadrants} = 2 \times \text{Cardinal Quadrants} + 2 \times \text{Counter-Alar Quadrants}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: GEOCHEMICAL MINERALOGY AND EXTINCTION DYNAMICS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Skeletal Mineralogy, Paleoecology & the Permian-Triassic Extinction</div>
+    <div class="card-body">
+      <p>
+        Rugose corals were exclusively marine, benthic, suspension-feeding organisms that flourished on shallow Paleozoic carbonate platforms, patch reefs, and level-bottom muddy/silty substrates from the Middle Ordovician (Darriwilian) to the Late Permian (Changhsingian).
+      </p>
+      <h4>Skeletal Mineralogy: Calcite vs. Aragonite</h4>
+      <p>
+        A fundamental distinction between Paleozoic Rugosa and post-Paleozoic Scleractinia is their primary skeletal mineralogy:
+      </p>
+      <ul>
+        <li><strong>Rugosa:</strong> Primarily secreted skeletons of stable <strong>high-magnesium calcite</strong> ($MgCO_3 \approx 5\text{--}15\text{ mol}\%$). Consequently, fossil rugose corallites retain exquisite original microstructural detail (fibro-normal and lamellar calcitic trabeculae) in Paleozoic limestones without undergoing gross dissolution or neomorphic destruction.</li>
+        <li><strong>Scleractinia:</strong> Primarily secrete skeletons of metastable <strong>aragonite</strong> ($\text{orthorhombic } CaCO_3$). In the fossil record, scleractinian skeletons are frequently dissolved to form hollow molds or are recrystallized into coarse, blocky sparry calcite mosaics.</li>
+      </ul>
+
+      <h4>The Permian-Triassic (P-Tr) Mass Extinction Catastrophe</h4>
+      <p>
+        At the end of the Permian Period (~251.9 Ma), the massive flood basalt eruptions of the Siberian Traps induced severe ocean acidification, hypercapnia, marine anoxia, and global warming. Because rugose corals possessed thick calcitic skeletons, lacked high physiological buffering against elevated oceanic $p\text{CO}_2$, and relied on vulnerable benthic carbonate ecosystems, the entire order <strong>Rugosa was completely annihilated</strong>. Not a single species of Rugosa survived into the Triassic Period. The scleractinian corals that appeared in the Middle Triassic (Anisian) evolved independently from non-skeletal actiniarian sea anemone ancestors, exhibiting a 14-million-year "reef gap" in the Early Triassic.
+      </p>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q71. The Rugose corals have unique horn-shaped chamber with a wrinkled or rugose wall are called ___.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Scleractinia or Hexacorallia</div>
-        <div class="opt-item correct"><strong>(B)</strong> Tetracoralla or Horn corals</div>
-        <div class="opt-item "><strong>(C)</strong> Octocoralla</div>
-        <div class="opt-item "><strong>(D)</strong> All of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 71</div>
+        <div class="q-text">The Rugose corals have unique horn-shaped chamber with a wrinkled or rugose wall are called ___.</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Scleractinia or Hexacorallia</div>
+          <div class="opt-node correct">(B) Tetracoralla or Horn corals</div>
+          <div class="opt-node">(C) Octocoralla</div>
+          <div class="opt-node">(D) All of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (B)</div>
+        <div><strong>Tetracoralla or Horn corals:</strong> The Order Rugosa is universally defined by its solitary horn-shaped corallites with wrinkled (rugose) epithecal walls and a characteristic four-quadrant (tetrameral) septal insertion pattern.</div>
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "The Rugose corals have unique horn-shaped chamber with a wrinkled or rugose wall are called ________"</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Scleractinia or Hexacorallia (INCORRECT):</strong> Scleractinian corals are the modern, living stony reef-building corals (Triassic to Recent). They possess an aragonitic skeleton with hexameral (six-fold) septal symmetry and lack the wrinkled calcitic horn-shaped morphology of the Paleozoic rugosans.</li>
-  <li><strong>(B) Tetracoralla or Horn corals (CORRECT):</strong> The definitive, universal synonym for Subclass Rugosa is <strong>Tetracoralla (or Horn corals)</strong>. The term "Horn corals" reflects their solitary horn-like conical corallum, while "Tetracoralla" reflects their diagnostic four-fold septal insertion and bilateral symmetry. Verbatim authority: G.B. Mahapatra, p. 358 classifies Rugosa explicitly as <em>"Tetracoralla or Horn corals."</em></li>
-  <li><strong>(C) Octocoralla (INCORRECT):</strong> Octocorallia (Alcyonaria) includes sea pens, sea fans, and soft corals possessing eight pinnate tentacles and eight internal mesenteries. They do not form the massive, horn-shaped wrinkled calcitic corallites of the rugose corals.</li>
-  <li><strong>(D) All of these (INCORRECT):</strong> Rugosa, Scleractinia, and Octocorallia are mutually exclusive subclasses of Class Anthozoa.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="opt-title">(A) Scleractinia or Hexacorallia — INCORRECT</div>
+        <p>
+          <em>Scleractinia</em> (also designated as <em>Hexacorallia</em>) are the modern stony reef-building corals that first appeared in the Middle Triassic (~240 Ma) and persist to the present day. They possess an aragonitic skeleton with septa inserted in cycles of <strong>six</strong> (hexameral radial symmetry), completely lacking the distinctive four-fold septal insertion, cardinal fossula, and coarse wrinkled epithecal horn morphology characteristic of Paleozoic Rugosa.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="opt-title">(B) Tetracoralla or Horn corals — CORRECT</div>
+        <p>
+          <em>Tetracoralla</em> is the classic paleontological synonym for the Order <em>Rugosa</em> (Milne-Edwards & Haime, 1850). The term refers directly to the four cardinal quadrants within which all adult metasepta are inserted. The solitary representatives possess a diagnostic curved, conical morphology resembling a horn (hence the universal vernacular name <strong>"horn corals"</strong>) enclosed by a wrinkled outer wall (epitheca). This is the exact textbook definition provided by G.B. Mahapatra (p. 187, 358) and P.K. Mukherjee (p. 170).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) Octocoralla — INCORRECT</div>
+        <p>
+          <em>Octocoralla</em> (Alcyonaria) constitutes an entirely separate anthozoan subclass characterized by polyps possessing exactly <strong>eight pinnate (feather-like) tentacles</strong> and eight complete mesenteries. Octocorals include sea pens (Pennatulacea), sea fans (Gorgonacea), and soft corals (Alcyonacea). With rare exceptions (e.g., the organ-pipe coral <em>Tubipora</em>), they secrete microscopic internal calcitic spicules (sclerites) or gorgonin axes rather than solitary conical horn-shaped skeletons with rugose walls.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) All of these — INCORRECT</div>
+        <p>
+          This choice is biologically and stratigraphically impossible. <em>Hexacorallia</em> (6-fold), <em>Tetracoralla</em> (4-fold), and <em>Octocoralla</em> (8-fold) are distinct, mutually exclusive taxonomic divisions defined by entirely different symmetries, skeletal mineralogies, and geological distributions.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Systematic Comparison of the Three Major Coral Groups</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Diagnostic Parameter</th>
-      <th>Subclass Rugosa (Tetracoralla)</th>
-      <th>Subclass Scleractinia (Hexacorallia)</th>
-      <th>Subclass Tabulata</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:#fff3cd; font-weight:bold;">
-      <td>Common Name</td>
-      <td><strong>Horn Corals / Tetracorals</strong></td>
-      <td>Modern Stony Corals / Hexacorals</td>
-      <td>Honey-comb / Chain Corals</td>
-    </tr>
-    <tr>
-      <td><strong>Stratigraphic Range</strong></td>
-      <td>Middle Ordovician to Late Permian (Extinct)</td>
-      <td>Middle Triassic to Recent (Extant)</td>
-      <td>Early Ordovician to Late Permian (Extinct)</td>
-    </tr>
-    <tr>
-      <td><strong>Skeletal Mineralogy</strong></td>
-      <td><strong>Low-Mg Calcite</strong></td>
-      <td>Aragonite</td>
-      <td>Calcite</td>
-    </tr>
-    <tr style="background:#fff3cd; font-weight:bold;">
-      <td>Septal Symmetry</td>
-      <td><strong>Four-fold (Tetrameral)</strong>; bilateral</td>
-      <td>Six-fold (Hexameral); radial</td>
-      <td>Absent or rudimentary spines only</td>
-    </tr>
-    <tr>
-      <td><strong>Internal Structures</strong></td>
-      <td>Tabulae, dissepiments, columella, fossula</td>
-      <td>Dissepiments, columella, synapticulae</td>
-      <td>Prominent horizontal <strong>tabulae</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Growth Habit</strong></td>
-      <td>Frequently solitary ("horns"); also compound</td>
-      <td>Dominantly colonial (massive reefs); some solitary</td>
-      <td>Strictly colonial (compound chains/tubes)</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Taxonomic Synthesis of Anthozoan Corals</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Taxonomic Group</th>
+            <th>Septal Symmetry & Insertion</th>
+            <th>Skeletal Mineralogy</th>
+            <th>Internal Structures</th>
+            <th>Growth Habit</th>
+            <th>Stratigraphic Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Rugosa (Tetracoralla)</strong></td>
+            <td><strong>Tetrameral (4 quadrants)</strong>; bilateral symmetry; metasepta added at 4 loci</td>
+            <td><strong>Calcite</strong> (high-Mg, stable)</td>
+            <td>Tabulae, dissepiments, columella, <strong>cardinal fossula</strong></td>
+            <td>Solitary ("horn corals") and Compound/Colonial</td>
+            <td>Middle Ordovician – Late Permian (Extinct at P-Tr)</td>
+          </tr>
+          <tr>
+            <td><strong>Scleractinia (Hexacorallia)</strong></td>
+            <td><strong>Hexameral (cycles of 6)</strong>; radial symmetry; septa inserted in concentric cycles</td>
+            <td><strong>Aragonite</strong> (metastable)</td>
+            <td>Dissepiments, columella, synapticulae; fossula absent</td>
+            <td>Predominantly colonial (reef-builders) & solitary</td>
+            <td>Middle Triassic – Recent (Dominant today)</td>
+          </tr>
+          <tr>
+            <td><strong>Tabulata</strong></td>
+            <td>Radial; septa poorly developed (spines, ridges) or absent; 12-fold when present</td>
+            <td><strong>Calcite</strong> (low- to high-Mg)</td>
+            <td><strong>Prominent horizontal tabulae</strong>; mural pores; no dissepiments</td>
+            <td>Exclusively <strong>colonial</strong> (honeycomb, chain, tube colonies)</td>
+            <td>Early Ordovician – Late Permian (Extinct at P-Tr)</td>
+          </tr>
+          <tr>
+            <td><strong>Octocoralla (Alcyonaria)</strong></td>
+            <td>Eight-fold (octameral); septa absent or represented by 8 internal ridges</td>
+            <td>Organic gorgonin and/or isolated calcitic sclerites</td>
+            <td>Spicular meshwork or horny central axis</td>
+            <td>Colonial (soft corals, sea fans, sea pens)</td>
+            <td>Ordovician – Recent</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Septal Quadrant Calculation and Kunth's Insertion Formula</div>
+        <p>
+          A transverse thin section of a solitary Carboniferous rugose coral displays a total of 42 major septa (metasepta + protosepta). If the cardinal septum and counter septum are uniquely identified along the bilateral plane, and 10 metasepta are counted in each of the two cardinal quadrants, calculate the number of metasepta present in each of the two counter quadrants.
+        </p>
+        <div class="p-ans">
+          <strong>Step 1: Identify the primary protosepta:</strong><br>
+          The primary protosepta establishing the four quadrants consist of four key plates: Cardinal ($C$), Counter ($K$), Left Alar ($A_L$), and Right Alar ($A_R$). Thus, $N_{\text{proto}} = 4$.<br>
+          <strong>Step 2: Calculate total metasepta:</strong><br>
+          $$\text{Total Metasepta} = N_{\text{total}} - N_{\text{proto}} = 42 - 4 = 38$$<br>
+          <strong>Step 3: Distribute metasepta across symmetrical quadrants:</strong><br>
+          Rugose corals display bilateral symmetry across the cardinal-counter axis. The two cardinal quadrants contain $10 \times 2 = 20$ metasepta.<br>
+          Therefore, the two counter quadrants contain:<br>
+          $$38 - 20 = 18 \text{ metasepta}$$<br>
+          $$\text{Metasepta per counter quadrant} = \frac{18}{2} = 9$$<br>
+          <strong>Conclusion:</strong> Each counter quadrant contains exactly <strong>9 metasepta</strong>.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Skeletal Mineralogy & Taphonomic Preservation Bias</div>
+        <p>
+          Explain why solitary rugose corals from the Devonian Hamilton Group commonly preserve fibrous crystalline trabecular microstructures, whereas Middle Triassic scleractinian corals from equivalent shallow marine limestones are frequently preserved as sparry calcite-filled molds.
+        </p>
+        <div class="p-ans">
+          <strong>Geochemical and Diagenetic Derivation:</strong><br>
+          1. <strong>Primary Mineralogy:</strong> Rugosa secreted a primary skeleton of <strong>high-magnesium calcite</strong> ($MgCO_3 \approx 8\text{--}12\text{ mol}\%$). Calcite is the thermodynamically stable polymorph of calcium carbonate at near-surface sedimentary temperatures and pressures ($G^\circ_{\text{calcite}} < G^\circ_{\text{aragonite}}$ by $\sim 1.0\text{ kJ/mol}$). During diagenesis, high-Mg calcite undergoes incongruent dissolution and loss of $Mg^{2+}$ to form low-Mg calcite via a microscopic, film-controlled dissolution-reprecipitation process that preserves original skeletal lamellae and trabeculae.<br>
+          2. <strong>Metastable Aragonite in Scleractinia:</strong> Scleractinians secrete <strong>aragonite</strong>. In meteoric or mixed diagenetic porewaters undersaturated with respect to aragonite, the aragonitic corallite dissolves completely, creating a moldic void ($CaCO_{3(\text{aragonite})} \to Ca^{2+} + CO_3^{2-}$). Subsequent cementation by coarse sparry low-Mg calcite fills the void, obliterating all original septal microstructure.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: Morphological Differentiation in Transverse Section</div>
+        <p>
+          Under petrographic inspection of an unknown Paleozoic coral thin section, a student observes: (a) radial septa displaying a feather-like pinnate convergence toward an open slot; (b) a gap devoid of septa on one side of the lumen; and (c) absence of cyclical insertion in multiples of six. Identify the structure and determine the coral order.
+        </p>
+        <div class="p-ans">
+          <strong>Diagnostic Identification:</strong><br>
+          - <strong>Structure:</strong> The open gap represents the <strong>cardinal fossula</strong>, formed by the shortening or abortion of the cardinal septum ($C$). The pinnate arrangement represents metasepta leaning toward the alar septa ($A$) according to Kunth's Law.<br>
+          - <strong>Taxonomic Classification:</strong> The specimen belongs to the <strong>Order Rugosa (Tetracoralla)</strong>.<br>
+          - <strong>Differentiation:</strong> Scleractinia never exhibit a cardinal fossula or pinnate metaseptal insertion; their septa are radially arranged in multiples of six ($6, 12, 24, 48$).
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Wells' Devonian Paleochronometry (Coral Growth Clocks)</div>
+        <p>
+          In a famous 1963 study, John Wells counted the microscopic epithecal daily growth ridges between major annual growth annulations on Middle Devonian horn corals (e.g., <em>Heliophyllum halli</em>), obtaining an average of 400 daily bands per annual cycle. Calculate the length of a Devonian solar day in hours, assuming Earth's orbital period (year length) has remained constant at $3.156 \times 10^7\text{ seconds}$ (365.25 modern days).
+        </p>
+        <div class="p-ans">
+          <strong>Mathematical Derivation:</strong><br>
+          $$\text{Total annual seconds} = 365.25 \times 24 \times 3600 = 31,557,600\text{ s}$$<br>
+          $$\text{Devonian solar days per year} = 400\text{ days}$$<br>
+          $$\text{Length of Devonian solar day} = \frac{31,557,600\text{ s}}{400} = 78,894\text{ seconds}$$<br>
+          $$\text{Length of day in hours} = \frac{78,894}{3600} \approx 21.92\text{ hours} \approx 21\text{ hours } 55\text{ minutes}$$<br>
+          <strong>Geophysical Significance:</strong> Tidal friction caused by the Moon dissipates Earth's rotational kinetic energy, steadily decelerating planetary rotation and lengthening the day at $\sim 2\text{ milliseconds per century}$ ($5.3 \times 10^{-22}\text{ rad/s}^2$).
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Functional Morphology of Operculate Corals: Calceola sandalina</div>
+        <p>
+          The Devonian fossil <em>Calceola sandalina</em> is a specialized rugose coral possessing a flat semicircular side, a pointed apex, and a hinged lid (operculum). Describe its life mode and explain how its morphology adapted it to high-energy muddy benthic substrates.
+        </p>
+        <div class="p-ans">
+          <strong>Functional Morphological Analysis:</strong><br>
+          1. <strong>Slipper-like Morphology:</strong> Unlike typical upright conical horn corals, <em>Calceola</em> rested horizontally on its flat, semicircular cardinal side, which acted as a snowshoe or barge preventing the coral from sinking into soft, unconsolidated Devonian carbonate muds.<br>
+          2. <strong>Operculum Function:</strong> The calcareous lid (composed of a single large semicircular plate) could be clamped tightly shut by retractor muscles during heavy sedimentation, storm turbulence, or predatory browsing, sealing the delicate polyp within a protected chamber. When conditions cleared, the lid swung open to allow lophophoric/tentacular suspension feeding.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Structural Architecture: Solitary vs. Compound Rugosa</div>
+        <p>
+          Compare the colonial architecture of the Carboniferous compound rugosan <em>Lithostrotion</em> with a solitary horn coral like <em>Zaphrentis</em>. Specify the terms for colonial corals where corallites are: (a) separated by distinct cylindrical walls; (b) polygonal and in contact; and (c) confluent with confluent septa.
+        </p>
+        <div class="p-ans">
+          <strong>Architectural Terminology:</strong><br>
+          - <em>Zaphrentis:</em> Solitary, horn-shaped, unattached or anchored by an apical rootlet, possessing a deep calice with a cardinal fossula.<br>
+          - <em>Lithostrotion:</em> Compound (colonial), forming massive reef-framework or bushy dendroid thickets.<br>
+          - <strong>Classification of Colonial Coralla:</strong><br>
+            (a) <strong>Fasciculate (Dendroid / Phaceloid):</strong> Corallites are cylindrical, separate, and branch upward without touching (e.g., <em>Lithostrotion junceum</em>).<br>
+            (b) <strong>Cerioid:</strong> Corallites are pressed tightly together, sharing distinct polygonal epithecal walls (e.g., <em>Lithostrotion basaltiforme</em>).<br>
+            (c) <strong>Astraeoid / Aphroid:</strong> Outer corallite walls are absent, and septa of neighboring corallites become confluent or merge into a common dissepimental tissue (e.g., <em>Orionastraea</em>, <em>Phillipsastraea</em>).
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Longitudinal Section Anatomy: Dissepimentarium vs. Tabularium</div>
+        <p>
+          In a longitudinal thin section cut parallel to the growth axis of a rugose coral, two distinct structural zones are observed: an outer peripheral zone and an inner axial zone. Define these zones and explain their respective structural functions.
+        </p>
+        <div class="p-ans">
+          <strong>Zonal Anatomy:</strong><br>
+          1. <strong>Peripheral Zone (Dissepimentarium):</strong> Occupied by numerous small, vesicular, convex-outward calcitic plates termed <strong>dissepiments</strong>. Function: Provides rigid structural buttressing to the outer corallite wall against crushing waves and anchors the radial septa.<br>
+          2. <strong>Axial Zone (Tabularium):</strong> The central core floored by broad, flat, arched, or sagging transverse partitions termed <strong>tabulae</strong>. Function: Elevates the living polyp as the corallite extends vertically, sealing off abandoned lower chambers to maintain visceral volume without metabolic over-expenditure.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: The "Reef Gap" and Evolutionary Origins of Scleractinia</div>
+        <p>
+          Following the total extinction of Rugosa and Tabulata at the Permian-Triassic boundary (251.9 Ma), no biogenic coral reefs are found in the fossil record during the Griesbachian, Dienerian, Smithian, and Spathian stages of the Early Triassic (~5 million years). Explain why scleractinians did not immediately take over rugose reef niches in the Early Triassic.
+        </p>
+        <div class="p-ans">
+          <strong>Evolutionary & Environmental Synthesis:</strong><br>
+          1. <strong>Lack of Direct Ancestry (Polyphyly):</strong> Scleractinians are <em>not</em> direct descendants of Rugosa. Molecular phylogenetic clocks and skeletal microstructure prove Scleractinia evolved independently from soft-bodied actiniarian-like anthozoans (sea anemones) that acquired aragonitic skeletal biomineralization during the Middle Triassic.<br>
+          2. <strong>Post-Extinction Environmental Stress:</strong> The Early Triassic ocean suffered prolonged super-greenhouse temperatures (equatorial sea surface temperatures exceeding $40^\circ\text{C}$), widespread deep-sea and shelf anoxia, and severe ocean acidification from continued Siberian Traps sill intrusions. These lethal conditions suppressed calcifying metazoans, producing the famous <strong>Early Triassic Reef Gap</strong>. Biogenic skeletal reef building did not resume until the Anisian stage (~247 Ma).
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q59: Upper Cretaceous Stratigraphy - Lameta Formation & Infratrappean Beds | OPSC Geology 2021 Masterclass</title>
+<title>Q059: Mesozoic-Cenozoic Transition: Lameta Formation (Infratrappean Beds) | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,259 +89,567 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q59" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Mesozoic-Tertiary Boundary Stratigraphy</div>
-    <h1>Q59: Upper Cretaceous Stratigraphy - Lameta Formation & Infratrappean Beds</h1>
+    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Vertebrate Paleontology</div>
+    <h1>Q059: Lameta Formation: The Infratrappean Beds of Central India</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> G.B. Mahapatra (A Text-Book of Geology, pp. 334–336); P.K. Mukherjee (A Text Book of Geology, p. 220)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 59<br>
+<strong>Authoritative References:</strong> G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 334–336, p. 175); P.K. Mukherjee, <em>A Text Book of Geology</em> (pp. 218–222); M.S. Krishnan, <em>Geology of India and Burma</em> (Ch. 16: The Deccan Traps); C.A. Matley, <em>Stratigraphy, Fossils and Geological Relationships of the Lameta Beds of Jubbulpore</em> (Rec. GSI, Vol. 53, 1921); Ashok Sahni, <em>Cretaceous Vertebrates of India</em> (Geol. Soc. India, 2001).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. The Mesozoic-Tertiary Transition & Deccan Volcanism</h3>
-<p>Towards the close of the Cretaceous Period (Maastrichtian, ~70–66 Ma), the Indian continental plate migrated over the Marion and Réunion mantle plumes, triggering the catastrophic eruption of the <strong>Deccan Continental Flood Basalt Province</strong>. Across central and western India (Madhya Pradesh, Maharashtra, Gujarat, Andhra Pradesh), sedimentary strata associated with these volcanic outbursts provide an invaluable window into terminal Cretaceous paleoenvironments, dinosaur faunas, and mass extinction dynamics.</p>
-
-<h3>2. The Lameta Formation: Definition & Geographic Occurrence</h3>
-<p>The <strong>Lameta Formation</strong> (named after the type locality at Lameta Ghat on the Narmada River near Jabalpur, Madhya Pradesh) is a distinctive, thin (10 to 45 meters thick) sedimentary succession found outcropping extensively across the margins of the Deccan volcanic plateau in Madhya Pradesh, Gujarat, and Maharashtra. Deposited immediately prior to the eruption of the earliest Deccan lava flows, the formation is universally known in historical and regional Indian geology as the <strong>Infratrappean Beds</strong> (from Latin <em>infra</em>, "below", indicating strata that lie directly beneath the basaltic "traps"; G.B. Mahapatra, <em>A Text-Book of Geology</em>, Chapter 88, pp. 334–336 / PDF pp. 175–176; P.K. Mukherjee, <em>A Text Book of Geology</em>, p. 220).</p>
-
-<p>The Lameta Formation rests with an erosional disconformity upon Precambrian basement rocks or Jurassic Gondwana strata (Jabalpur Formation) and is directly capped and baked by the basaltic lava flows of the Deccan Traps. The lithology comprises green and purple mottled clays, sandy limestones, calcareous sandstones, and cherty nodules, deposited in shallow freshwater lacustrine, estuarine, and semi-arid palustrine calcrete floodplain environments.</p>
-
-<h3>3. Infratrappean vs. Intertrappean Beds: Fundamental Distinction</h3>
-<ul>
-  <li><strong>Infratrappean Beds (Lameta Formation):</strong> Sediments deposited <em>below the base of the lowest lava flow</em> of the Deccan Traps. They record pre-volcanic Late Cretaceous (Maastrichtian) continental sedimentation. World-famous for rich sauropod and abelisaurid dinosaur remains (<em>Titanosaurus indicus</em>, <em>Isisaurus colberti</em>, <em>Rajasaurus narmadensis</em>) and extensive fossilized titanosaur egg clutches.</li>
-  <li><strong>Intertrappean Beds:</strong> Sedimentary layers (typically 1 to 5 meters thick) deposited in temporary lakes and ponds <em>in between successive Deccan basalt flows</em> during quiescent intervals between volcanic eruptions. They yield Paleocene freshwater gastropods (<em>Physa prinsepii</em>), charophyte algae, frog fossils (<em>Indobatrachus</em>), and early mammals.</li>
-  <li><strong>Bagh Beds:</strong> Coeval marine Cretaceous strata developed in the lower Narmada Valley (Gujarat and western MP), deposited during an arm of the Tethyan marine transgression.</li>
-</ul>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q59/mahapatra_p175_lameta_infratrappean_deccan_traps.png" alt="Lameta Formation beneath Deccan Traps">
-      <figcaption>
-        <strong>Figure 59.1: Stratigraphic Position of the Lameta Formation.</strong> Authentic page cut from G.B. Mahapatra (<em>A Text-Book of Geology</em>, Chapter 88, p. 335 / PDF p. 175). Documents the position of the <strong>Lameta Formation</strong> unconformably underlying the basal basalt flows of the Deccan Traps.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q59/mahapatra_p176_infratrappean_vs_intertrappean.png" alt="Infratrappean Beds vs Intertrappean Beds Definition">
-      <figcaption>
-        <strong>Figure 59.2: Distinction Between Infratrappean and Intertrappean Beds.</strong> Authentic text from G.B. Mahapatra (<em>A Text-Book of Geology</em>, Chapter 88, p. 336 / PDF p. 176). Verbatim text defines: <em>"the age of the underlying beds (called the infratraps)... Lameta beds lie beneath the Deccan traps and range in age to Upper Cretaceous."</em>
-      </figcaption>
-    </div>
-        
   </div>
+  
+  <!-- CARD 1: LAMETA FORMATION GEOLOGICAL DEFINITION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Lameta Formation: The Continental Infratrappean Benchmark</div>
+    <div class="card-body">
+      <p>The <strong>Lameta Formation</strong> (named after the type locality at Lameta Ghat on the Narmada River near Jabalpur, Madhya Pradesh, by J.G. Medlicott in 1860) is an internationally celebrated Late Cretaceous (Maastrichtian, $\sim 70-66\text{ Ma}$) sedimentary formation found extensively across Madhya Pradesh, Gujarat, and Maharashtra:</p>
+
+      <ul>
+        <li><strong>The Concept of Infratrappean Beds:</strong> In Indian stratigraphy, the Lameta Formation is classically and universally designated as the <strong>Infratrappean Beds</strong> (from Latin <em>infra</em>, meaning "below" or "beneath").
+          <div class="formula-card">
+            <div class="formula-title">The Fundamental Trappean Stratigraphic Relationship</div>
+            $$\mathbf{Infratrappean \text{ Beds (Lameta)}} \quad \xrightarrow{\text{Subjacent To}} \quad \mathbf{Deccan \text{ Basalt Traps}} \quad \xrightarrow{\text{Intercalated With}} \quad \mathbf{Intertrappean \text{ Beds}}$$
+          </div>
+        </li>
+        <li><strong>Structural & Stratigraphic Position:</strong> The Lameta Beds rest unconformably upon Precambrian crystalline basement (Jabalpur granite/schists) or Gondwana sandstones, and lie <strong>directly beneath the lowermost basaltic lava flows of the Deccan Traps</strong>.</li>
+        <li><strong>Contrast with Intertrappeans:</strong>
+          <ul>
+            <li><strong>Infratrappeans (Lameta):</strong> Sedimentary strata deposited <em>prior</em> to the onset of Deccan volcanism, immediately underlying the first lava flow.</li>
+            <li><strong>Intertrappeans:</strong> Thin, localized, highly fossiliferous lacustrine/fluvial sedimentary lenses deposited <em>during quiescent volcanic intervals between two successive basalt flows</em> (e.g., at Rajahmundry, Nagpur, Worli).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q59/mahapatra_p175_lameta_infratrappean_deccan_traps.png" alt="Lameta Infratrappean from Mahapatra">
+        <div class="tb-caption">
+          <strong>Figure 59.1 (G.B. Mahapatra, p. 175):</strong> Stratigraphic position of the Lameta Formation as the classic Infratrappean horizon underlying the Deccan volcanic trap pile.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: PALEONTOLOGY AND DINOSAURS OF LAMETA -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. World-Class Vertebrate Paleontology: Dinosaurs of the Lameta Beds</div>
+    <div class="card-body">
+      <p>The Lameta Formation is globally renowned as one of the most prolific Cretaceous vertebrate fossil localities in the world, documenting terrestrial life directly preceding the catastrophic K-Pg mass extinction:</p>
+
+      <ul>
+        <li><strong>Sauropod & Theropod Dinosaurs:</strong> Yielded holotypes of titanosaurs (<em>Titanosaurus indicus, Isisaurus colberti, Jainosaurus septentrionalis</em>) and abelisaurid predatory theropods (<em>Rajasaurus narmadensis, Indosuchus, Carnotaurus</em> relatives).</li>
+        <li><strong>Dinosaur Nesting Grounds & Megaloolithid Eggs:</strong> Extensive nesting sites at Balasinor (Rahioli, Gujarat) and Jabalpur containing clutches of spherical sauropod eggs (<em>Megaloolithus</em>) and embryonic bone remains.</li>
+        <li><strong>Depositional Environment:</strong> Represents semi-arid to sub-humid fluvio-lacustrine, palustrine, and caliche-rich paleosol environments bordering the shallow epicontinental marine seaway of the Narmada rift.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q59/mahapatra_p176_infratrappean_vs_intertrappean.png" alt="Infratrappean vs Intertrappean from Mahapatra">
+        <div class="tb-caption">
+          <strong>Figure 59.2 (G.B. Mahapatra, p. 176):</strong> Textbook cross-section illustrating the clear physical distinction between Infratrappean Lameta beds (under the basal flow) and Intertrappean sedimentary interbeds (between basalt flows).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON OF INFRATRAPPEAN VS INTERTRAPPEAN -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Comparative Matrix: Infratrappean vs. Intertrappean Beds</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Stratigraphic Property</th>
+            <th>Infratrappean Beds (Lameta Formation)</th>
+            <th>Intertrappean Beds</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Position Relative to Basalt</strong></td>
+            <td><strong>Directly beneath the lowermost basalt flow.</strong></td>
+            <td><strong>Intercalated between successive basalt flows.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Stratigraphic Thickness</strong></td>
+            <td>$20\text{ m}$ to $50\text{ m}$ (Continuous regional formation).</td>
+            <td>$1\text{ m}$ to $5\text{ m}$ (Discontinuous local lenses).</td>
+          </tr>
+          <tr>
+            <td><strong>Geological Age</strong></td>
+            <td>Late Cretaceous (Maastrichtian, $\sim 70-66\text{ Ma}$).</td>
+            <td>Latest Maastrichtian to Early Paleocene (Danian, $\sim 66-64\text{ Ma}$).</td>
+          </tr>
+          <tr>
+            <td><strong>Dominant Lithologies</strong></td>
+            <td>Greenish cherty limestones, mottled clays, calcretes.</td>
+            <td>Silicified cherts, bituminous shales, pyroclastic ash.</td>
+          </tr>
+          <tr>
+            <td><strong>Characteristic Biota</strong></td>
+            <td><strong>Titanosaurid dinosaurs, abelisaurs, dinosaur eggs.</strong></td>
+            <td>Freshwater gastropods (<em>Physa prinsepii</em>), pelobatid frogs, charophytes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q59. The Lameta Formation is also known as the ________, is a sedimentary geological formation found in Madhya Pradesh, Gujarat, and Maharashtra, India, associated with the Deccan Traps.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Bagh Beds</div>
-        <div class="opt-item "><strong>(B)</strong> Intertrappean Beds</div>
-        <div class="opt-item correct"><strong>(C)</strong> Infratrappean Beds</div>
-        <div class="opt-item "><strong>(D)</strong> All of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 59</div>
+        <div class="q-text">The Lameta Formation is also known as the ________, is a sedimentary geological formation found in Madhya Pradesh, Gujarat, and Maharashtra, India, associated with the Deccan Traps.</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Bagh Beds</div>
+          <div class="opt-node">(B) Intertrappean Beds</div>
+          <div class="opt-node correct">(C) Infratrappean Beds</div>
+          <div class="opt-node">(D) All of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(C) Infratrappean Beds</strong> [The Lameta Formation directly underlies the Deccan Traps and is universally designated as the Infratrappean Beds in Indian stratigraphy.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "The Lameta Formation is also known as the ________, is a sedimentary geological formation found in Madhya Pradesh, Gujarat, and Maharashtra, India, associated with the Deccan Traps."</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Bagh Beds (INCORRECT):</strong> The Bagh Beds represent marine Upper Cretaceous strata (nodular limestone, Coralline limestone, Deola/Chirakhan marls) deposited during a marine embayment in the lower Narmada Valley. While coeval with the Lametas, the Bagh Beds are distinct marine clastic-carbonate units and are not called the "Lameta Formation."</li>
-  <li><strong>(B) Intertrappean Beds (INCORRECT):</strong> Intertrappean beds are sedimentary units sandwiched <em>between successive lava flows</em> of the Deccan Traps. The Lameta Formation lies completely <em>beneath</em> the base of the volcanic pile, making it "infratrappean" by definition.</li>
-  <li><strong>(C) Infratrappean Beds (CORRECT):</strong> In standard Indian stratigraphy, the Lameta Formation is explicitly and synonymously referred to as the <strong>Infratrappean Beds</strong> because of its universal structural and stratigraphic position directly underlying the basaltic sheets of the Deccan Traps. Verbatim text in G.B. Mahapatra, p. 336 confirms: <em>"the age of the underlying beds (called the infratraps)... Lameta beds lie beneath the Deccan traps."</em></li>
-  <li><strong>(D) All of these (INCORRECT):</strong> The terms are mutually exclusive: Infratrappean is beneath the traps, Intertrappean is between the traps, and Bagh Beds are marine facies.</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (C) Infratrappean Beds</div>
+    <div class="card-body">
+      <p><strong>Detailed Stratigraphic Forensic Analysis:</strong></p>
+      <ul>
+        <li>In Indian geology and stratigraphy (Krishnan 1982; Wadia 1975; Mahapatra 2019, p. 175; Mukherjee 2013, p. 220), the <strong>Lameta Formation</strong> is universally synonymized with and formally termed the <strong>Infratrappean Beds</strong>.</li>
+        <li>The term *infratrappean* explicitly designates sedimentary strata that were deposited on the pre-volcanic land surface immediately prior to the massive outpourings of the Deccan volcanic eruptions, therefore lying directly *below* (infra) the basal trap flows.</li>
+        <li>These beds are famous for their cherty limestones, mottled clays, and world-class dinosaur nesting sites and skeletons (e.g., <em>Rajasaurus, Titanosaurus</em>).</li>
+        <li>Hence, Option <strong>(C) Infratrappean Beds</strong> is the precise, unambiguous correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Intertrappean Beds</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><strong>Intertrappean Beds</strong> are thin ($1-5\text{ m}$), localized sedimentary lenses that formed in freshwater lakes and rivers during dormant periods *between* two successive Deccan basalt lava flows.</li>
+        <li>They contain abundant freshwater gastropods such as <em>Physa prinsepii</em> and <em>Lymnaea</em>. Because the Lameta Formation lies *beneath* the entire volcanic pile rather than between flows, calling it "Intertrappean" is an egregious stratigraphic error.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Bagh Beds</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Bagh Beds</strong> represent a marine Cretaceous transgressive succession (Nodular Limestone, Deola-Chirakhan Marl, Coralline Limestone) deposited along the Narmada rift valley.</li>
+        <li>While partly coeval with the Lameta Formation, the Bagh Beds represent marine facies, whereas the Lameta Formation represents continental fluvio-lacustrine infratrappean facies. They are two distinct stratigraphic formations.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) All of these</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Because only Option (C) Infratrappean Beds correctly describes the Lameta Formation, Option (D) is incorrect.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Comparison of Deccan-Associated Sedimentary Formations</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Formation Name</th>
-      <th>Stratigraphic Position Relative to Traps</th>
-      <th>Depositional Environment</th>
-      <th>Key Diagnostic Fossil Content</th>
-      <th>Geographic Distribution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:#fff3cd; font-weight:bold;">
-      <td>Lameta Formation (Infratrappean Beds)</td>
-      <td>Directly UNDERNEATH the lowest basalt lava flow</td>
-      <td>Freshwater lacustrine, palustrine, and calcrete floodplains</td>
-      <td>Dinosaurs (<em>Titanosaurus</em>, <em>Rajasaurus</em>), sauropod egg nests, freshwater gastropods</td>
-      <td>Jabalpur (MP), Pisdura (Maharashtra), Balasinor (Gujarat)</td>
-    </tr>
-    <tr>
-      <td><strong>Intertrappean Beds</strong></td>
-      <td>INTERBEDDED between consecutive basalt flows</td>
-      <td>Ephemeral volcanic lakes and swamps</td>
-      <td>Fossil flora (<em>Azolla</em>, palms, charophytes), gastropods (<em>Physa prinsepii</em>), frogs (<em>Indobatrachus</em>)</td>
-      <td>Nagpur, Mumbai (Worli/Malabar Hill), Rajahmundry</td>
-    </tr>
-    <tr>
-      <td><strong>Bagh Beds</strong></td>
-      <td>Underlying or lateral to lower flows</td>
-      <td>Shallow marine estuary and carbonate shelf</td>
-      <td>Echinoids (<em>Hemiaster</em>), ammonites (<em>Placenticeras</em>), inoceramid bivalves</td>
-      <td>Narmada Valley (Man River, Bagh, Barwah)</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Cretaceous-Tertiary Formations Associated with Deccan Volcanism</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Stratigraphic Entity</th>
+            <th>Structural Relation to Deccan Traps</th>
+            <th>Depositional Facies</th>
+            <th>Diagnostic Fossil Assemblage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lameta Formation</strong></td>
+            <td><strong>Infratrappean</strong> (Directly below basal basalt flow)</td>
+            <td>Fluvio-lacustrine, palustrine, calcretes.</td>
+            <td><strong>Titanosaurids, <em>Rajasaurus</em>, <em>Megaloolithus</em> dinosaur eggs.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Bagh Beds</strong></td>
+            <td>Infratrappean (Marine equivalent along western Narmada)</td>
+            <td>Shallow marine carbonate shelf.</td>
+            <td>Echinoids (<em>Hemiaster</em>), ammonites (<em>Placenticeras</em>), oysters.</td>
+          </tr>
+          <tr>
+            <td><strong>Intertrappean Beds</strong></td>
+            <td><strong>Intercalated</strong> (Between successive lava flows)</td>
+            <td>Freshwater lacustrine, ponds, stream channels.</td>
+            <td><em>Physa prinsepii</em>, <em>Paludina</em>, fossil frogs (<em>Indobatrachus</em>).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Mesozoic Paleontology & Deccan Volcanism</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Paleosol Calcretes and Pedogenesis in Lameta Beds</div>
+        <p>The Mottled Nodular Beds of the Lameta Formation exhibit extensive pedogenic calcrete (caliche) nodules. What paleoclimatic conditions do calcretes signify?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Pedogenic calcretes precipitate in the B-horizon of soils where annual evapotranspiration significantly exceeds annual precipitation. In the modern world, mature calcretes form in <strong>semi-arid climates</strong> with seasonal rainfall between $100\text{ mm}$ and $500\text{ mm/year}$, proving that central India experienced a pronounced seasonal, semi-arid monsoon climate during the terminal Cretaceous.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Titanosaur Sauropod Bone Histology</div>
+        <p>What unique histological structure in <em>Isisaurus</em> long bones demonstrates rapid juvenile growth rates in Indian titanosaurs?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Cross-sections of titanosaur limb bones from the Lameta beds reveal <strong>fibrolamellar bone tissue</strong> with dense, reticulate and plexiform vascular canals, punctuated by annual Lines of Arrested Growth (LAGs). Fibrolamellar tissue is characteristic of warm-blooded mammals and birds, proving that sauropods maintained high metabolic rates and explosive growth.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Discovery of Rajasaurus narmadensis</div>
+        <p>Where was the famous predatory horned abelisaurid dinosaur <em>Rajasaurus narmadensis</em> discovered, and what is its anatomical hallmark?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Rajasaurus</em> was discovered in the Lameta limestone quarry at Rahioli, Kheda district, Gujarat, by GSI paleontologists Suresh Srivastava and Ashok Sahni. Its anatomical hallmark is a prominent, rounded <strong>median frontal horn</strong> on its skull roof, short robust jaws, and vestigial forelimbs characteristic of Gondwanan Abelisauridae.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: K-Pg Boundary Ash in Intertrappean Beds</div>
+        <p>High-precision $^{40}\text{Ar}/^{39}\text{Ar}$ dating of Deccan basalt flows bounding the Jhilmili intertrappean bed in MP yields an age of $66.05 \pm 0.05\text{ Ma}$. What is the significance of this date?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>This date is identical within analytical error to the globally defined <strong>Cretaceous-Paleogene (K-Pg) boundary</strong> ($66.043\text{ Ma}$). The presence of both Danian planktonic foraminifera and iridium spikes within the Jhilmili intertrappeans proves that Deccan flood basalt volcanism erupted across the K-Pg boundary, acting as a major contributor to the global mass extinction.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Thermal Metamorphism of Infratrappean Rocks</div>
+        <p>What metamorphic contact feature is commonly observed on the top surface of the Lameta limestone where it contacts the overlying basalt?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The intense thermal heat ($1150-1200^\circ\text{C}$) of the overriding basaltic lava flow thermally bakes the upper $0.5-2\text{ m}$ of the underlying Lameta limestone and shale, creating a hardened, red-burned <strong>baked zone (hornfels / jasperoid porcelainization)</strong>, providing unequivocal proof that the limestone was deposited *prior* to the lava flow.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Megaloolithus Eggshell Microstructure</div>
+        <p>What structural type characterizes the dinosaur eggshells found in the Lameta nesting grounds?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>They belong to the oofamily <strong>Megaloolithidae</strong>, characterized by spherulitic radiating calcitic prisms (dinosauroid-spherulitic type) with high-density tubocanaliculate pore systems, designed for gas exchange in moist, buried colonial sand nests.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Physa prinsepii as an Intertrappean Index Fossil</div>
+        <p>Why is the sinistral gastropod <em>Physa prinsepii</em> universally found in Intertrappean beds but absent from Infratrappean Lameta beds?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Physa prinsepii</em> is a specialized freshwater pulmonary snail that colonized warm, silica-rich volcanic crater lakes and shallow ponds that formed on the basalt flow surfaces between eruptions. It evolved during the peak volcanic phases and is thus diagnostic of the Intertrappeans.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Volume of Deccan Flood Basalts</div>
+        <p>If the Deccan volcanic province originally covered $1.5 \times 10^6\text{ km}^2$ with an average cumulative lava thickness of $1.0\text{ km}$, calculate the total erupted basalt volume in cubic kilometers ($\text{km}^3$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$V = \text{Area} \times \text{Thickness} = (1.5 \times 10^6\text{ km}^2) \times 1.0\text{ km} = 1.5 \times 10^6\text{ km}^3$$
+        <p><strong>Final Answer:</strong> Total erupted volume was approximately $1.5\text{ million cubic kilometers}$, representing one of the largest Large Igneous Provinces (LIPs) in Phanerozoic Earth history.</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

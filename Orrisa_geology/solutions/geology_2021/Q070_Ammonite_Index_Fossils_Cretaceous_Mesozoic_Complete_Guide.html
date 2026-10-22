@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q70: Cephalopod Biostratigraphy - Ammonites as Index Fossils in the Cretaceous | OPSC Geology 2021 Masterclass</title>
+<title>Q070: Cephalopod Biostratigraphy: Ammonites as Master Mesozoic & Cretaceous Index Fossils | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,269 +89,593 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q70" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Cephalopod Biostratigraphy & Index Fossils</div>
-    <h1>Q70: Cephalopod Biostratigraphy - Ammonites as Index Fossils in the Cretaceous</h1>
+    <h1>Q070: Ammonites: Master Mesozoic & Cretaceous Index Fossils</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> G.B. Mahapatra (A Text-Book of Geology, p. 356, Fig. 91.4); P.K. Mukherjee (p. 215)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 70<br>
+<strong>Authoritative References:</strong> G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 354–358, Fig. 91.4); P.K. Mukherjee, <em>A Text Book of Geology</em> (p. 215); W.J. Kennedy & C.W. Wright, <em>Evolution and Biostratigraphy of Cretaceous Ammonites</em> (Paleontology Special Paper, 1985); E.N.K. Clarkson, <em>Invertebrate Palaeontology and Evolution</em> (Ch. 8).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Evolutionary Radiation of Subclass Ammonoidea</h3>
-<p>Within the molluscan class Cephalopoda, the extinct subclass <strong>Ammonoidea</strong> represents the gold standard for global biostratigraphic correlation. Ammonoids originated in the Early Devonian (~410 Ma) from straight-shelled bactritid nautiloids, diversified through the Paleozoic and Mesozoic oceans as free-swimming pelagic predators, and suffered sudden, complete extinction during the end-Cretaceous bolide impact (~66 Ma; G.B. Mahapatra, <em>A Text-Book of Geology</em>, Chapter 91, p. 356 / PDF p. 186; P.K. Mukherjee, <em>A Text Book of Geology</em>, p. 215).</p>
-
-<p>The internal septa dividing the chambered phragmocone met the outer shell wall along an intricate contact line known as the <strong>suture line</strong>. Suture line complexity evolved through four progressive, diagnostic stages:</p>
-<ol>
-  <li><strong>Goniatitic Suture (Devonian–Carboniferous):</strong> Characterized by simple, smooth, undivided saddles and lobes (e.g., <em>Goniatites</em>).</li>
-  <li><strong>Ceratitic Suture (Permian–Triassic):</strong> Characterized by smooth, rounded saddles and denticulated, serrated lobes (e.g., <em>Ceratites</em>).</li>
-  <li><strong>Ammonitic Suture (Jurassic–Cretaceous):</strong> Characterized by intensely fluted, foliated, and frilled saddles AND lobes (resembling oak-leaf patterns), providing maximum hydrostatic strength to resist deep-water hydrostatic pressure (e.g., <em>Phylloceras</em>, <em>Ammonites</em>).</li>
-</ol>
-
-<h3>2. Why Ammonites are the Ultimate Mesozoic & Cretaceous Index Fossils</h3>
-<p>An <strong>Index Fossil</strong> (or guide fossil) is defined by four rigorous paleontological criteria: (1) rapid evolutionary turnover and short vertical stratigraphic range, (2) wide, cosmopolitan geographic dispersal, (3) abundant preservation in diverse marine facies, and (4) easily recognizable, distinctive morphology. Ammonites fulfill every criterion with unmatched precision:</p>
-
-<ul>
-  <li>During the <strong>Cretaceous Period</strong>, ammonites underwent their final, most spectacular burst of evolutionary diversification and morphological experimentation, giving rise to classic <strong>heteromorph ammonites</strong> (uncoiled, helical, hook-shaped, and straight shells, e.g., <em>Scaphites</em>, <em>Baculites</em>, <em>Turrilites</em>, <em>Nipponites</em>) alongside giant coiled planisprial forms (<em>Parapuzosia</em>, <em>Mortoniceras</em>, <em>Acanthoceras</em>).</li>
-  <li>In India, the Cretaceous marine successions of the <strong>Trichinopoly area (Cauvery Basin)</strong>—comprising the Uttatur, Trichinopoly, and Ariyalur formations—and the <strong>Spiti Valley (Giumal & Chikkim formations)</strong> are biozoned with ultra-high resolution based on cosmopolitan Cretaceous ammonite zones.</li>
-</ul>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q70/mahapatra_fig91_4_ammonitic_suture_lines.png" alt="Evolution of Ammonoid Suture Lines">
-      <figcaption>
-        <strong>Figure 70.1: Cephalopod Suture Line Evolution (Goniatitic to Ammonitic).</strong> Authentic figure from G.B. Mahapatra (<em>A Text-Book of Geology</em>, Chapter 91, Fig. 91.4, p. 356 / PDF p. 186). Illustrates the progressive fluting of septal walls from simple goniatitic through ceratitic to highly complex foliated <strong>ammonitic</strong> sutures characteristic of Mesozoic/Cretaceous ammonites.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q70/pkm_p215_jurassic_cretaceous_ammonite_zones.png" alt="Mesozoic Ammonite Biozones">
-      <figcaption>
-        <strong>Figure 70.2: Ammonite Biostratigraphy in the Indian Mesozoic.</strong> Authentic text from P.K. Mukherjee (<em>A Text Book of Geology</em>, Chapter 15, p. 215), documenting the worldwide use of ammonites as index fossils across Jurassic and Cretaceous strata.
-      </figcaption>
-    </div>
-        
   </div>
+  
+  <!-- CARD 1: AMMONITES IN THE CRETACEOUS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Ammonite Climax: Cretaceous Marine Biozonation</div>
+    <div class="card-body">
+      <p>Ammonoids (Subclass <strong>Ammonoidea</strong>, Order Ammonitida) represent the ultimate index fossils of the <strong>Mesozoic Era</strong>, exhibiting spectacular diversity, morphological plasticity, and rapid evolutionary turnover throughout the Triassic, Jurassic, and <strong>Cretaceous Periods</strong>:</p>
+
+      <ul>
+        <li><strong>Why Ammonites are Supreme Index Fossils:</strong>
+          <ol>
+            <li><strong>Rapid Morphological Evolution:</strong> Suture lines, ribbing patterns, keel developments, and whorl dimensions evolved so rapidly that individual species durations (biochrons) averaged less than <strong>$500,000$ to $1\text{ million years}$</strong>.</li>
+            <li><strong>Global Cosmopolitan Distribution:</strong> As free-swimming nektonic pelagic organisms with gas-filled chambered phragmocones, ammonites dispersed freely across ocean basins, untethered to local seafloor sediment facies.</li>
+            <li><strong>High Fossilization Potential:</strong> Abundant, mineralized aragonitic shells with durable internal septa preserved in clays, limestones, and concretions worldwide.</li>
+          </ol>
+        </li>
+        <li><strong>The Cretaceous Climax & Heteromorph Bloom:</strong> During the <strong>Cretaceous Period</strong>, ammonites underwent an extraordinary final evolutionary radiation characterized by:
+          <ul>
+            <li>Classic planispiral forms: <em>Acanthoceras, Mortoniceras, Pachydiscus, Placenticeras</em>.</li>
+            <li>Specialized <strong>heteromorph ammonites</strong> (uncoiled or bizarrely shaped shells): straight shafts (<em>Baculites</em>), hooked forms (<em>Scaphites, Hamites</em>), and helically coiled forms (<em>Turrilites</em>).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q70/pkm_p215_jurassic_cretaceous_ammonite_zones.png" alt="Jurassic Cretaceous Ammonite Zones">
+        <div class="tb-caption">
+          <strong>Figure 70.1 (P.K. Mukherjee, p. 215):</strong> Global biostratigraphic ammonite biozonation scheme of the Jurassic and Cretaceous Systems, documenting species-level index fossils defining stages worldwide.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: AMMONITIC SUTURE LINE EVOLUTION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Evolution of Ammonitic Suture Complexity</div>
+    <div class="card-body">
+      <p>The intersection of internal chambered septa with the outer shell wall produces the <strong>suture line</strong>, the master diagnostic key in ammonoid taxonomy:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Four Evolutionary Stages of Cephalopod Sutures</div>
+        $$\mathbf{\text{Nautilitic}} \text{ (Smooth)} \longrightarrow \mathbf{\text{Goniatitic}} \text{ (Angular)} \longrightarrow \mathbf{\text{Ceratitic}} \text{ (Denticulate Lobes)} \longrightarrow \mathbf{\text{Ammonitic}} \text{ (Frilled Lobes \& Saddles)}$$
+      </div>
+
+      <ul>
+        <li><strong>Nautilitic (Cambrian - Present):</strong> Simple, gently undulating or straight line (e.g., modern <em>Nautilus</em>).</li>
+        <li><strong>Goniatitic (Devonian - Permian):</strong> Both lobes and saddles are completely smooth and undivided; lobes are angular V-shaped pointing backward.</li>
+        <li><strong>Ceratitic (Triassic):</strong> Saddles are smooth and rounded, while lobes are denticulated, saw-toothed, or serrated (e.g., <em>Ceratites</em>).</li>
+        <li><strong>Ammonitic (Jurassic - Cretaceous):</strong> Maximum complexity; both lobes and saddles are deeply, intricately subdivided into frilled, dendritic, leaf-like foliations (e.g., <em>Acanthoceras, Pachydiscus</em>).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q70/mahapatra_fig91_4_ammonitic_suture_lines.png" alt="Ammonitic Suture Lines from Mahapatra">
+        <div class="tb-caption">
+          <strong>Figure 70.2 (G.B. Mahapatra, Fig. 91.4):</strong> Stepwise morphological evolution of cephalopod suture lines: Nautilitic $\to$ Goniatitic $\to$ Ceratitic $\to$ Ammonitic.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON OF MESOZOIC CEPHALOPODS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix: Diagnostic Cretaceous Ammonite Biozones</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Cretaceous Stage</th>
+            <th>Primary Global Index Ammonite Genera</th>
+            <th>Shell Form / Suture Type</th>
+            <th>Indian Outcrop Horizon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Maastrichtian</strong> (Terminal)</td>
+            <td><strong><em>Pachydiscus, Sphenodiscus, Baculites</em></strong></td>
+            <td>Planispiral ribbed / straight-shaft heteromorph; complex ammonitic.</td>
+            <td>Ariyalur Group (Cauvery Basin, Tamil Nadu).</td>
+          </tr>
+          <tr>
+            <td><strong>Campanian</strong></td>
+            <td><strong><em>Placenticeras, Scaphites, Hoplitoplacenticeras</em></strong></td>
+            <td>Involute compressed / hooked heteromorph; dendritic sutures.</td>
+            <td>Upper Trichinopoly & Sillakkudi Formations.</td>
+          </tr>
+          <tr>
+            <td><strong>Turonian - Coniacian</strong></td>
+            <td><strong><em>Collignoniceras, Romaniceras, Lewesiceras</em></strong></td>
+            <td>Evolute, prominently tuberculate and keeled shells.</td>
+            <td>Trichinopoly Group (Garudamangalam).</td>
+          </tr>
+          <tr>
+            <td><strong>Cenomanian</strong></td>
+            <td><strong><em>Acanthoceras, Mantelliceras, Calycoceras</em></strong></td>
+            <td>Robust, square whorls with heavy spines and tubercles.</td>
+            <td>Upper Uttatur Group (Karai, Tamil Nadu).</td>
+          </tr>
+          <tr>
+            <td><strong>Albian</strong></td>
+            <td><strong><em>Mortoniceras, Schloenbachia, Hysteroceras</em></strong></td>
+            <td>Compressed, strongly keeled, bifurcating ribs.</td>
+            <td>Lower Uttatur Group & Bagh Beds (MP).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q70. Ammonite is a characteristic marine fossil of ___ age around the world and considered an index fossil because of its diverse nature.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Palaeozoic</div>
-        <div class="opt-item "><strong>(B)</strong> Cambrian to Silurian</div>
-        <div class="opt-item correct"><strong>(C)</strong> Cretaceous-age</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 70</div>
+        <div class="q-text">Ammonite is a characteristic marine fossil of ___ age around the world and considered an index fossil because of its diverse nature.</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Palaeozoic</div>
+          <div class="opt-node">(B) Cambrian to Silurian</div>
+          <div class="opt-node correct">(C) Cretaceous-age</div>
+          <div class="opt-node">(D) None of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(C) Cretaceous-age</strong> [Ammonites are globally characteristic index fossils of the Mesozoic Era, reaching immense diversity and biostratigraphic utility in the Cretaceous Period before their end-Cretaceous extinction.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "Ammonite is a characteristic marine fossil of ________ age around the world and considered an index fossil because of its diverse nature."</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Palaeozoic (INCORRECT):</strong> The Paleozoic Era was characterized by <em>nautiloids</em> and primitive <em>goniatites</em>, not true ammonites sensu stricto (which have complex ammonitic sutures). True ammonites flourished during the Mesozoic.</li>
-  <li><strong>(B) Cambrian to Silurian (INCORRECT):</strong> Ammonoids did not exist during the Cambrian, Ordovician, or Silurian periods! The earliest ancestral ammonoid precursors (Bactritida) did not evolve until the Early Devonian.</li>
-  <li><strong>(C) Cretaceous-age (CORRECT):</strong> Among the given choices, <strong>Cretaceous-age</strong> represents the definitive period during which ammonites were world-famous, globally distributed, highly diverse index fossils. Cretaceous strata worldwide (including the Indian Cauvery and Spiti basins) are biozoned into zonal intervals based on rapid ammonite radiations before their abrupt extinction at the K-Pg boundary.</li>
-  <li><strong>(D) None of these (INCORRECT):</strong> Option C is the correct, intended answer in the examination key.</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (C) Cretaceous-age</div>
+    <div class="card-body">
+      <p><strong>Detailed Biostratigraphic Forensic Analysis:</strong></p>
+      <ul>
+        <li>Ammonites (Order Ammonitida, possessing true ammonitic sutures) are the definitive marine index fossils of the Mesozoic Era (Triassic, Jurassic, and <strong>Cretaceous</strong>).</li>
+        <li>Among the given options, the <strong>Cretaceous-age</strong> represents the premier epoch where ammonites diversified into dozens of global index zones (e.g., <em>Acanthoceras, Mortoniceras, Pachydiscus, Scaphites, Baculites</em>) before suffering sudden and complete mass extinction at the Cretaceous-Paleogene (K-Pg) boundary ($66\text{ Ma}$).</li>
+        <li>In Indian stratigraphy, the Cretaceous marine beds of the Cauvery Basin (Uttatur and Ariyalur groups) and the Narmada Bagh beds are dated worldwide using these Cretaceous ammonite index zones.</li>
+        <li>Therefore, Option <strong>(C) Cretaceous-age</strong> is the verified and correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Palaeozoic</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>In the Paleozoic Era (Devonian to Permian), ammonoids were represented by primitive <em>goniatites</em> (Order Goniatitida) possessing simple, smooth V-shaped sutures.</li>
+        <li>True <strong>ammonites</strong> with complex ammonitic sutures had not yet evolved in the Paleozoic; they are strictly Mesozoic organisms.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Cambrian to Silurian</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>During the Cambrian, Ordovician, and Silurian, the only cephalopods in existence were primitive <strong>nautiloids</strong> (straight orthoceratids and endoceratids with simple smooth sutures).</li>
+        <li>Ammonoids had not even originated yet; the first primitive ammonoids appeared in the Early Devonian. Thus, this option is chronologically impossible.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) None of these</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Because Option (C) Cretaceous-age correctly designates the Mesozoic age of ammonite index fossils, Option (D) is incorrect.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Cephalopod Suture Line Evolutionary Succession</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Suture Type</th>
-      <th>Stratigraphic Age</th>
-      <th>Saddle Architecture</th>
-      <th>Lobe Architecture</th>
-      <th>Representative Index Genera</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Nautilitic</strong></td>
-      <td>Cambrian to Recent</td>
-      <td>Straight or gently undulated</td>
-      <td>Simple, broad, smooth curves</td>
-      <td><em>Nautilus</em>, <em>Orthoceras</em></td>
-    </tr>
-    <tr>
-      <td><strong>Goniatitic</strong></td>
-      <td>Devonian to Permian</td>
-      <td>Smooth, rounded, unbroken</td>
-      <td>Pointed, smooth, undivided angles</td>
-      <td><em>Goniatites</em>, <em>Manticoceras</em></td>
-    </tr>
-    <tr>
-      <td><strong>Ceratitic</strong></td>
-      <td>Permian to Triassic</td>
-      <td>Smooth, rounded, unbroken arches</td>
-      <td>Serrated, denticulated, saw-toothed notches</td>
-      <td><em>Ceratites</em>, <em>Otoceras</em>, <em>Meekoceras</em></td>
-    </tr>
-    <tr style="background:#fff3cd; font-weight:bold;">
-      <td>Ammonitic</td>
-      <td><strong>Jurassic to Cretaceous</strong></td>
-      <td>Intensely frilled, fluted, oak-leaf foliations</td>
-      <td>Intensely frilled, subdivided multi-lobed projections</td>
-      <td><em>Macrocephalites</em>, <em>Acanthoceras</em>, <em>Baculites</em></td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Cephalopod Evolutionary Chronology</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Geological Era / Period</th>
+            <th>Dominant Cephalopod Group</th>
+            <th>Characteristic Suture Style</th>
+            <th>Extinction / Survival Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cambrian to Silurian</strong></td>
+            <td>Nautiloidea (Orthoconic & coiled)</td>
+            <td><strong>Nautilitic</strong> (Simple, straight, smooth lines).</td>
+            <td>Survived all mass extinctions; living today as <em>Nautilus</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Devonian to Permian</strong></td>
+            <td>Goniatitida (Primitive Ammonoids)</td>
+            <td><strong>Goniatitic</strong> (Smooth angular lobes and rounded saddles).</td>
+            <td>Decimated at end-Permian extinction ($252\text{ Ma}$).</td>
+          </tr>
+          <tr>
+            <td><strong>Triassic</strong></td>
+            <td>Ceratitida (Intermediate Ammonoids)</td>
+            <td><strong>Ceratitic</strong> (Rounded saddles, denticulate saw-toothed lobes).</td>
+            <td>Decimated at end-Triassic extinction ($201\text{ Ma}$).</td>
+          </tr>
+          <tr>
+            <td><strong>Jurassic to Cretaceous</strong> (Target)</td>
+            <td><strong>Ammonitida (True Ammonites & Heteromorphs)</strong></td>
+            <td><strong>Ammonitic</strong> (Deeply frilled, complex dendritic lobes and saddles).</td>
+            <td><strong>Completely Extinct at the K-Pg Boundary ($66\text{ Ma}$).</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Cephalopod Mechanics & Biochronology</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Siphuncular Buoyancy Regulation</div>
+        <p>How did the vascularized siphuncle tube regulate buoyancy in living ammonites?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The siphuncle is a living vascular cord running through the chambered phragmocone. Using active ion-transport enzymes, it pumps sodium and chloride ions out of the chamber liquid into the blood, creating an osmotic gradient. Water follows osmotically into the blood, leaving the closed chamber partially empty at vacuum pressure. Gas ($\text{N}_2, \text{O}_2, \text{CO}_2$) diffuses into the cavity, allowing the ammonite to maintain <strong>neutral buoyancy</strong> at variable depths.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Baculites as a Straight-Shelled Cretaceous Index Fossil</div>
+        <p>Why did the Cretaceous ammonite genus <em>Baculites</em> evolve a straight, uncoiled shell, and how is it distinguished from a Paleozoic orthocone nautiloid?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Adaptation:</strong> <em>Baculites</em> evolved a vertical, needle-like shell to feed on vertical migrations of zooplankton in the water column with minimal hydrodynamic drag.</li>
+          <li><strong>Distinction from Nautiloids:</strong> An orthoconic nautiloid has simple, straight, smooth nautilitic sutures and a central siphuncle. <em>Baculites</em> exhibits extraordinarily complex, deeply frilled <strong>ammonitic sutures</strong> and a strictly marginal ventral siphuncle.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: The Aptychus and Anaptychus</div>
+        <p>What were <em>aptychi</em> (singular: aptychus) in ammonite paleontology, and what was their function?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Aptychi are paired, calcified, bivalved-like plates found in the body chamber of ammonites. Originally mistaken for bivalve shells, modern soft-tissue fossils prove they functioned primarily as a rigid <strong>operculum (protective door)</strong> to seal the aperture when the head retracted, and secondarily as the lower jaw element of the biting beak.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Heteromorph Turrilites Coiling Geometry</div>
+        <p>What unusual coiling geometry characterizes the Cretaceous index genus <em>Turrilites</em>?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Turrilites</em> exhibits <strong>trochospiral (helicoid) coiling</strong>, resembling a high-spired gastropod (snail) shell. However, it is an authentic ammonite possessing chambered septa, an external marginal siphuncle, and intricate ammonitic sutures ornamented with multiple rows of sharp tubercles.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Involute vs. Evolute Ammonite Hydrodynamics</div>
+        <p>Compare the swimming efficiency of an <em>involute oxyconic</em> ammonite (e.g., <em>Placenticeras</em>) with an <em>evolute serpenticonic</em> ammonite (e.g., <em>Dactylioceras</em>).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Involute Oxycone:</strong> Inner whorls completely covered by the outer whorl, narrow knife-like cross-section with sharp venter. Very low drag coefficient ($C_d \approx 0.2$), designed for <strong>rapid nektonic pursuit swimming</strong> in open waters.</li>
+          <li><strong>Evolute Serpenticone:</strong> All whorls exposed in a flat coil like a coiled snake, wide contact with water. High drag coefficient ($C_d > 0.8$), designed for slow, stable maneuverability in demersal benthic habitats.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Cause of Ammonite K-Pg Extinction vs. Nautiloid Survival</div>
+        <p>Why did ammonites go completely extinct at the K-Pg boundary while nautiloids survived into the modern era?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Ammonites laid tiny eggs ($<1-2\text{ mm}$) that hatched into microscopic, planktotrophic larvae feeding in the uppermost sunlit ocean surface waters. When the Chicxulub asteroid impact and Deccan volcanism shut down ocean photosynthesis, the surface plankton collapsed, starving all ammonite hatchlings. In contrast, nautiloids laid large, yolk-rich eggs ($>25-30\text{ mm}$) directly on the deep sea floor that hatched as miniature scavenging adults feeding on deep-sea carrion, insulating them from surface food chain collapse.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Sphenodiscus in the Fox Hills Sandstone</div>
+        <p>What ammonite genus marks the terminal Maastrichtian biozone directly below the K-Pg boundary in North America and India?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong><em>Sphenodiscus lenticularis</em></strong> (Family Sphenodiscidae). It possesses a strongly compressed, lens-shaped shell with pseudoceratitic/ammonitic sutures, marking the final ammonite biozone of the Mesozoic Era.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Ammonite Shell Implosion Depth Calculation</div>
+        <p>If the aragonitic outer shell of an ammonite has tensile strength $\sigma_{\text{tensile}} = 100\text{ MPa}$, radius $R = 10\text{ cm}$, and wall thickness $t = 1.0\text{ mm}$, calculate the maximum theoretical implosion depth in meters ($g = 9.8\text{ m/s}^2, \rho_{\text{water}} = 1025\text{ kg/m}^3$).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Using thin-walled spherical shell stress formula: $\sigma = \frac{P R}{2t} \implies P_{\text{implosion}} = \frac{2 t \sigma}{R}$.</p>
+        $$P = \frac{2 \times (1.0 \times 10^{-3}\text{ m}) \times (100 \times 10^6\text{ Pa})}{0.10\text{ m}} = \frac{2.0 \times 10^5}{0.10} = 2.0 \times 10^6\text{ Pa} = 2.0\text{ MPa}$$
+        $$P = \rho g h \implies h = \frac{P}{\rho g} = \frac{2.0 \times 10^6\text{ Pa}}{1025\text{ kg/m}^3 \times 9.8\text{ m/s}^2} = \frac{2.0 \times 10^6}{10,045} \approx 199.1\text{ m}$$
+        <p><strong>Final Answer:</strong> The shell would implode at a water depth of approximately $200\text{ meters}$, confirming that ammonites were continental shelf inhabitants!</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

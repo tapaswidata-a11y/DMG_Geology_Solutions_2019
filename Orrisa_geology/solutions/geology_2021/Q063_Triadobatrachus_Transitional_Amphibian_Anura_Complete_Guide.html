@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q63: Amphibian Evolution - Triadobatrachus: The Transitional Link to Modern Anura | OPSC Geology 2021 Masterclass</title>
+<title>Q063: Amphibian Evolution: Triadobatrachus as the Transitional Link to Modern Anura | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,267 +89,586 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q63" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Amphibian Evolution & Transitional Fossils</div>
-    <h1>Q63: Amphibian Evolution - Triadobatrachus: The Transitional Link to Modern Anura</h1>
+    <div class="badge">GEO - 2/21 • Vertebrate Paleontology & Amphibian Evolution</div>
+    <h1>Q063: Triadobatrachus: The Transitional Link to Modern Anura</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Michael J. Benton (Vertebrate Palaeontology, 4th ed., Ch. 4, p. 102); Carroll (Vertebrate Paleontology)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 63<br>
+<strong>Authoritative References:</strong> Michael J. Benton, <em>Vertebrate Palaeontology</em> (4th Ed., Ch. 4: Early Amphibians and Lissamphibians, pp. 100–106); Robert L. Carroll, <em>Vertebrate Paleontology and Evolution</em> (W.H. Freeman, Ch. 9); Jean Piveteau, <em>Une forme ancestrale des amphibiens anoures: Triadobatrachus massinoti</em> (Ann. Paleontol., 1937); G.B. Mahapatra, <em>A Text-Book of Geology</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. The Labyrinthodont-Lissamphibian Transition</h3>
-<p>Modern amphibians (Lissamphibia) are subdivided into three living orders: Anura (frogs and toads), Caudata / Urodela (salamanders and newts), and Gymnophiona / Apoda (caecilians). While living frogs exhibit one of the most radically specialized, anatomically extreme body plans in the animal kingdom (saltatory jumping adaptation, tailless body, fused limb bones), their evolutionary origins remained an enigmatic phylogenetic puzzle for over a century.</p>
-
-<p>The breakthrough came with the discovery of <strong>Triadobatrachus massinoti</strong> (described by Jean Piveteau in 1936; Michael J. Benton, <em>Vertebrate Palaeontology</em>, 4th ed., Chapter 4, pp. 102–105). Recovered from Early Triassic (Induan stage, ~250 Ma) marine shales near Diego Suarez in northern Madagascar, <em>Triadobatrachus</em> stands as <strong>the only known fossil that provides a definitive evolutionary link between any modern order (Anura) and Paleozoic amphibians</strong> (specifically the dissorophoid temnospondyls, such as <em>Doleserpeton</em> and <em>Gerobatrachus</em>).</p>
-
-<h3>2. Transitional Anatomy of Triadobatrachus</h3>
-<p><em>Triadobatrachus</em> exhibits an extraordinary mosaic of primitive Paleozoic labyrinthodont characters and derived modern anuran specializations:</p>
-
-<ul>
-  <li><strong>Presacral Vertebral Column:</strong> Paleozoic temnospondyls possessed 20 to 24 presacral vertebrae, whereas modern frogs have a highly shortened, rigid trunk with only 5 to 9 presacral vertebrae. <em>Triadobatrachus</em> occupies the exact intermediate stage with <strong>14 presacral vertebrae</strong>!</li>
-  <li><strong>Caudal Tail vs. Urostyle:</strong> Modern adult frogs possess no tail; their caudal vertebrae are fused into a rigid, rod-like bone called the <strong>urostyle</strong> (coccyx). <em>Triadobatrachus</em> lacks a urostyle, retaining a short, distinct tail consisting of 6 separate caudal vertebrae!</li>
-  <li><strong>Cranial Architecture:</strong> The skull of <em>Triadobatrachus</em> is already profoundly modern: it is broad, short, and lightened by huge orbits and large interpterygoid vacuities, exactly like a modern frog.</li>
-  <li><strong>Fore- and Hindlimbs:</strong> In modern frogs, the radius and ulna are fused into a single radioulna, and the tibia and fibula are fused into a tibiofibula to absorb the mechanical shock of landing. In <em>Triadobatrachus</em>, the <strong>radius and ulna are separate</strong>, and the <strong>tibia and fibula remain separate</strong>! However, its ilium is already elongated anteriorly, demonstrating the nascent origins of saltatory (jumping) locomotion.</li>
-</ul>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q63/triadobatrachus_fossil_and_skeletal_reconstruction.png" alt="Triadobatrachus massinoti Transitional Skeleton">
-      <figcaption>
-        <strong>Figure 63.1: Triadobatrachus massinoti (Early Triassic of Madagascar).</strong> Authoritative morphological comparison showing how <em>Triadobatrachus</em> serves as the unique transitional fossil linking Paleozoic temnospondyl amphibians to modern Anura (frogs), retaining 14 presacral vertebrae and a rudimentary tail while exhibiting an expanded anuran-like skull and elongated ilia.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-        
   </div>
+  
+  <!-- CARD 1: THE DISCOVERY OF TRIADOBATRACHUS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Triadobatrachus: The "Protothecal" Bridge to Modern Frogs</div>
+    <div class="card-body">
+      <p>Among all three living orders of modern amphibians (Order <strong>Anura</strong> [frogs and toads], Order <strong>Urodela / Caudata</strong> [salamanders], and Order <strong>Gymnophiona / Apoda</strong> [caecilians]), the evolutionary transition from Paleozoic labyrinthodont/temnospondyl ancestors is notoriously obscured by the "lissamphibian gap". In global vertebrate paleontology, <strong>the only fossil that provides a direct morphological link between modern orders and Paleozoic amphibians</strong> is <strong><em>Triadobatrachus massinoti</em></strong>:</p>
+
+      <ul>
+        <li><strong>Discovery & Provenance:</strong> Discovered in 1936 by French paleontologist Jean Piveteau in the Early Triassic (Induan stage, $\sim 250\text{ Ma}$) marine Sakamena Group of northern Madagascar.</li>
+        <li><strong>Transitional Evolutionary Significance:</strong> <em>Triadobatrachus</em> (literally "Triassic Frog") displays an exquisite intermediate mosaic anatomy, bridging primitive Paleozoic dissorophoid temnospondyls (e.g., <em>Doleserpeton</em> or <em>Gerobatrachus</em>) with advanced hopping anurans (modern frogs):
+          <ul>
+            <li><strong>Frog-Like (Derived) Characters:</strong> Broad, skull with large orbits, frontoparietals fused, T-shaped squamosal, edentulous lower jaw, toothless premaxilla, and an <strong>elongated forward-directed ilium</strong> attached to the sacrum.</li>
+            <li><strong>Primitive (Paleozoic Temnospondyl) Characters:</strong> Retains a <strong>short tail composed of 6 distinct caudal vertebrae</strong> (modern frogs have zero tail vertebrae, fused into an internal rod called the <strong>urostyle</strong>); retains 14 presacral vertebrae (reduced to 8 or 9 in modern frogs); radius and ulna are separate (fused into a single radioulna in frogs); tibia and fibula are separate (fused into tibiofibula in frogs); hindlimbs are only moderately elongated, indicating it could not yet perform saltatorial (jumping) leaps.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q63/triadobatrachus_fossil_and_skeletal_reconstruction.png" alt="Triadobatrachus Fossil and Skeleton">
+        <div class="tb-caption">
+          <strong>Figure 63.1 (Carroll 1988 / Piveteau 1937):</strong> Fossil mold and anatomical skeletal reconstruction of <em>Triadobatrachus massinoti</em>, illustrating the ancestral tail vertebrae, elongate ilium, and broad anuran skull.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MORPHOLOGICAL MOSAIC ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Biomechanical Transition to Saltation (Jumping)</div>
+    <div class="card-body">
+      <p>Modern anurans are biomechanical specialists designed for explosive jumping and shock-absorbing landings. <em>Triadobatrachus</em> illustrates the step-by-step assembly of this body plan:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Anuran Skeletal Transformation Cascade</div>
+        $$\mathbf{\text{Paleozoic Temnospondyl}} \longrightarrow \mathbf{Triadobatrachus} \text{ (Tail + Elongate Ilium)} \longrightarrow \mathbf{\text{Crown Anura (Vieraella / Prosalirus)}} \text{ (Urostyle + Saltation)}$$
+      </div>
+
+      <ul>
+        <li><strong>The Origin of the Urostyle:</strong> In modern frogs, the caudal vertebrae fuse into a long, rigid post-sacral rod called the <strong>urostyle (coccyx)</strong>, which braces the pelvis against the shock of landing. In <em>Triadobatrachus</em>, the tail vertebrae are shortened and reduced to six, but have not yet fused into a urostyle!</li>
+        <li><strong>Pelvic Lengthening:</strong> The anteriorly directed elongation of the iliac blades represents the primary skeletal adaptation shifting thrust from lateral undulation to bilateral leg kicking.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON TABLE OF ANURAN EVOLUTION -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix: Temnospondyl vs. Triadobatrachus vs. Modern Frog</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Anatomical Feature</th>
+            <th>Paleozoic Temnospondyl (e.g., <em>Doleserpeton</em>)</th>
+            <th>Transitional <em>Triadobatrachus</em> (Early Triassic)</th>
+            <th>Modern Anura (Frog / Toad)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tail Skeleton</strong></td>
+            <td>Long tail with $20-30+$ caudal vertebrae.</td>
+            <td><strong>Short tail with 6 caudal vertebrae.</strong></td>
+            <td><strong>Tail absent; vertebrae fused into a rigid Urostyle.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Presacral Vertebrae Count</strong></td>
+            <td>$20$ to $25$ vertebrae.</td>
+            <td><strong>$14$ vertebrae.</strong></td>
+            <td><strong>Drastically reduced to $8$ (or $9$) vertebrae.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Ilium Orientation</strong></td>
+            <td>Short vertical or posterodorsal blade.</td>
+            <td><strong>Elongated forward parallel to vertebral column.</strong></td>
+            <td>Extreme anterior elongation acting as pelvic shock-absorber.</td>
+          </tr>
+          <tr>
+            <td><strong>Forearm (Radius & Ulna)</strong></td>
+            <td>Two separate, distinct bones.</td>
+            <td><strong>Separate radius and ulna.</strong></td>
+            <td><strong>Fused into a single stout Radioulna.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Shank (Tibia & Fibula)</strong></td>
+            <td>Two separate, distinct bones.</td>
+            <td><strong>Separate tibia and fibula.</strong></td>
+            <td><strong>Fused into a single elongate Tibiofibula.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Ankle Bones (Astragalus & Calcaneum)</strong></td>
+            <td>Small polygonal tarsals.</td>
+            <td>Slightly elongated.</td>
+            <td><strong>Extremely elongated into extra leg levers (Tibiale & Fibulare).</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q63. The only fossil that provides a link beween any of the modern orders and Paleozoic amphibians is</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Triadobatrachus</div>
-        <div class="opt-item "><strong>(B)</strong> Salamander hynobius</div>
-        <div class="opt-item "><strong>(C)</strong> Rhipidistrian fish</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 63</div>
+        <div class="q-text">The only fossil that provides a link beween any of the modern orders and Paleozoic amphibians is</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Triadobatrachus</div>
+          <div class="opt-node">(B) Salamander hynobius</div>
+          <div class="opt-node">(C) Rhipidistrian fish</div>
+          <div class="opt-node">(D) None of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(A) Triadobatrachus</strong> [Triadobatrachus massinoti from the Early Triassic of Madagascar is universally recognized as the sole fossil transitional link between modern anuran frogs and Paleozoic amphibians.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "The only fossil that provides a link beween any of the modern orders and Paleozoic amphibians is ________"</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Triadobatrachus (CORRECT):</strong> <strong>Triadobatrachus massinoti</strong> (Early Triassic, Madagascar) is universally acknowledged in vertebrate paleontology as the unique, definitive transitional fossil connecting modern orders (specifically Order Anura / Salientia) to Paleozoic temnospondyl amphibians. Its intermediate vertebral count, presence of a short tail, separate zeugopodial bones, and proto-anuran skull provide textbook proof of frog evolution.</li>
-  <li><strong>(B) Salamander hynobius (INCORRECT):</strong> <em>Hynobius</em> is a modern living genus of Asiatic salamanders (family Hynobiidae). It is an extant, living amphibian taxon, not a Paleozoic transitional fossil link.</li>
-  <li><strong>(C) Rhipidistrian fish (INCORRECT):</strong> Rhipidistrian lobe-finned fishes (such as <em>Eusthenopteron</em>, <em>Panderichthys</em>, and <em>Tiktaalik</em>) provide the evolutionary link between <em>fishes and the earliest tetrapods</em> (Devonian transition from water to land), not between modern amphibian orders and Paleozoic amphibians.</li>
-  <li><strong>(D) None of these (INCORRECT):</strong> Option A is the classic, celebrated answer.</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (A) Triadobatrachus</div>
+    <div class="card-body">
+      <p><strong>Detailed Paleontological Forensic Analysis:</strong></p>
+      <ul>
+        <li>In vertebrate paleontology (Benton 2014, Ch. 4, p. 102; Carroll 1988, p. 182; Colbert 2001), <strong><em>Triadobatrachus massinoti</em></strong> (from the Early Triassic of Madagascar) is classically celebrated as the <strong>only fossil providing a direct morphological link</strong> between any modern living amphibian order (Order Anura) and Paleozoic labyrinthodont/temnospondyl amphibians.</li>
+        <li>It represents a stem-anuran (Salientia) that retains ancestral Paleozoic traits (a short tail of 6 vertebrae, 14 presacral vertebrae, unfused limb bones) while displaying derived modern frog traits (broad skull with large orbits, frontoparietals, and an elongated forward-directed ilium).</li>
+        <li>Therefore, Option <strong>(A) Triadobatrachus</strong> is the singular correct answer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Salamander hynobius</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><em>Hynobius</em> is an extant (living) genus of primitive Asiatic salamanders (Family Hynobiidae).</li>
+        <li>It is a living modern animal, not a fossil transitional link between modern orders and Paleozoic amphibians.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Rhipidistrian fish</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Rhipidistians (e.g., <em>Eusthenopteron, Tiktaalik</em>) are lobe-finned sarcopterygian <em>fishes</em> that link fishes to the earliest tetrapods (such as <em>Acanthostega</em> and <em>Ichthyostega</em>) in the Devonian.</li>
+        <li>They do not link modern amphibian orders (frogs/salamanders) to Paleozoic amphibians.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) None of these</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Because Option (A) is the famous, universally verified textbook answer, Option (D) is incorrect.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Evolutionary Transition Matrix: Temnospondyls $\rightarrow$ Triadobatrachus $\rightarrow$ Modern Anura</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Anatomical Trait</th>
-      <th>Paleozoic Temnospondyls (e.g., <em>Doleserpeton</em>)</th>
-      <th>Transitional Fossil: <em>Triadobatrachus</em></th>
-      <th>Modern Anura (True Frogs)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Geological Age</strong></td>
-      <td>Carboniferous–Permian (~300 Ma)</td>
-      <td><strong>Early Triassic (~250 Ma)</strong></td>
-      <td>Jurassic to Recent</td>
-    </tr>
-    <tr>
-      <td><strong>Presacral Vertebrae</strong></td>
-      <td>20 to 24 (long, flexible trunk)</td>
-      <td><strong>14 vertebrae</strong> (moderately shortened)</td>
-      <td>5 to 9 (severely shortened, rigid trunk)</td>
-    </tr>
-    <tr style="background:#fff3cd; font-weight:bold;">
-      <td>Tail / Urostyle</td>
-      <td>Long swimming tail (numerous vertebrae)</td>
-      <td>Short tail (6 separate caudal vertebrae)</td>
-      <td>No tail; fused rod-like <strong>urostyle</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Forearm (Radius & Ulna)</strong></td>
-      <td>Separate radius and ulna</td>
-      <td>Separate radius and ulna</td>
-      <td>Fused <strong>radioulna</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Shank (Tibia & Fibula)</strong></td>
-      <td>Separate tibia and fibula</td>
-      <td>Separate tibia and fibula</td>
-      <td>Fused <strong>tibiofibula</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Pelvic Ilium</strong></td>
-      <td>Short, vertical, non-elongated</td>
-      <td>Moderately elongated anteriorly</td>
-      <td>Greatly elongated, forward-directed ilia</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Iconic Transitional Fossils in Vertebrate Evolution</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Transitional Fossil Genus</th>
+            <th>Geological Age & Locality</th>
+            <th>Ancestral Group</th>
+            <th>Derived Modern Group</th>
+            <th>Key Transitional Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><em>Triadobatrachus</em></strong></td>
+            <td><strong>Early Triassic (Madagascar)</strong></td>
+            <td><strong>Paleozoic Temnospondyls</strong></td>
+            <td><strong>Modern Anurans (Frogs)</strong></td>
+            <td><strong>Frog-like skull and elongate ilium, but retains a short tail of 6 vertebrae.</strong></td>
+          </tr>
+          <tr>
+            <td><strong><em>Tiktaalik roseae</em></strong></td>
+            <td>Late Devonian (Canada)</td>
+            <td>Sarcopterygian Fishes</td>
+            <td>Early Tetrapods</td>
+            <td>Fish scales and fin rays, but has a movable neck, wrist joints, and ribs.</td>
+          </tr>
+          <tr>
+            <td><strong><em>Archaeopteryx lithographica</em></strong></td>
+            <td>Late Jurassic (Solnhofen, Germany)</td>
+            <td>Theropod Dinosaurs</td>
+            <td>Modern Birds (Aves)</td>
+            <td>Feathered wings, but retains teeth, clawed fingers, and a long bony tail.</td>
+          </tr>
+          <tr>
+            <td><strong><em>Morganucodon</em></strong></td>
+            <td>Late Triassic (Wales / China)</td>
+            <td>Cynodont Therapsids</td>
+            <td>Crown Mammals</td>
+            <td>Double jaw joint (articular-quadrate and dentary-squamosal), diphyodont teeth.</td>
+          </tr>
+          <tr>
+            <td><strong><em>Pakicetus</em> / <em>Ambulocetus</em></strong></td>
+            <td>Early Eocene (Pakistan)</td>
+            <td>Artiodactyl Ungulates</td>
+            <td>Cetaceans (Whales)</td>
+            <td>Four-legged terrestrial runner with pachyosteosclerotic whale-like ear bulla.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Amphibian Paleontology & Skeletal Specialization</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Pedicellate Teeth as a Lissamphibian Synapomorphy</div>
+        <p>What unique tooth structure unites all modern amphibians (frogs, salamanders, caecilians) as a monophyletic clade (Lissamphibia)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong>Pedicellate bicuspid teeth</strong>. The tooth consists of a crown and a basal pedicel made of dentine, separated by an uncalcified fibrous ring of connective tissue. This allows the tooth crown to bend inward during prey ingestion while preventing prey escape.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: The Earliest True Jumping Frog</div>
+        <p>What is the earliest known fossil frog that had fully evolved saltatorial jumping mechanics and a complete urostyle, and what is its age?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong><em>Prosalirus bitis</em></strong> from the Early Jurassic (Kayenta Formation of Arizona, $\sim 190\text{ Ma}$) and <strong><em>Vieraella herbsti</em></strong> from the Early Jurassic of Patagonia, Argentina. They possessed a fused urostyle, elongate hindlimbs, and fused radioulna and tibiofibula capable of modern jumping.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Fusion of Distal Limb Bones</div>
+        <p>Why did frogs evolve fused bones in the forearm (radioulna) and lower leg (tibiofibula)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Jumping generates massive shear forces during takeoff, and landing subjects limbs to violent compressive shock. Fusing the radius with the ulna, and tibia with fibula, eliminates twisting and rotation between adjacent long bones, creating high-strength structural struts that prevent bone dislocation and fracture during impact.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Indian Fossil Frog Indobatrachus</div>
+        <p>What famous fossil frog occurs abundantly in the Intertrappean beds of Malabar Hill and Worli in Mumbai, and what is its age?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong><em>Indobatrachus pusillus</em></strong> (Family Pelobatidae / Myobatrachidae). It occurs in millions of exquisitely preserved articulated skeletons within the dark, bituminous lacustrine Intertrappean shales of Mumbai, dated to the <strong>Early Eocene ($\sim 55\text{ Ma}$)</strong>.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Middle Ear Columella (Stapes) Evolution</div>
+        <p>From which skeletal bone of rhipidistian fish did the amphibian middle ear bone (columella / stapes) evolve?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The <strong>hyomandibula</strong>. In lobe-finned fishes, the massive hyomandibula braced the jaw against the braincase. In land-dwelling amphibians, as the spiracle evolved into the tympanic middle ear cavity, the hyomandibula shrank into a slender, delicate rod (the stapes/columella) transmitting aerial sound vibrations from the tympanum to the inner ear.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Gerobatrachus hottoni ("The Frogmander")</div>
+        <p>What is the phylogenetic significance of the Permian fossil <em>Gerobatrachus hottoni</em> discovered in Texas?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Nicknamed the "Frogmander" (Early Permian, $\sim 290\text{ Ma}$), <em>Gerobatrachus</em> displays a mosaic mixture of frog-like features (broad skull, large tympanic ear space) and salamander-like features (two fused ankle bones, long body), providing strong evidence that both frogs (Anura) and salamanders (Caudata) share a common ancestor among dissorophoid temnospondyls.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Absence of Ribs in Modern Anurans</div>
+        <p>Why are thoracic ribs drastically reduced or absent in modern frogs?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Frogs ventilate their lungs via <strong>buccal-pump positive-pressure breathing</strong> (gulping air using the floor of the mouth) rather than rib-cage aspiration. Rigid ribs would add unnecessary weight and interfere with the shock-absorbing pelvic rotation during jumping and landing.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Urodela (Caudata) Fossil Record</div>
+        <p>What is the oldest known crown-group salamander fossil, and does it retain a tail?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong><em>Karaurus sharovi</em></strong> from the Late Jurassic of Kazakhstan ($\sim 150\text{ Ma}$). Unlike anurans, all salamanders (extinct and living) retain a fully developed, long caudal vertebral column used for aquatic undulatory propulsion.</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

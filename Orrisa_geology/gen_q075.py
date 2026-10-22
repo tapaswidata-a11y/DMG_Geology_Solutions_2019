@@ -1,0 +1,342 @@
+#!/usr/bin/env python3
+"""
+Q075 Generator: Discocyclina ranikotensis as Late Paleocene Zonal Index
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q075():
+    title = r"Q075: Larger Foraminifera: Discocyclina ranikotensis as Late Paleocene Zonal Index | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Larger Benthic Foraminifera & Tethyan Stratigraphy"
+    h1_title = "Q075: Discocyclina ranikotensis: Late Paleocene Biostratigraphic Marker"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 75<br>
+<strong>Authoritative References:</strong> G.B. Mahapatra, <em>A Text-Book of Geology</em> (Ch. 9: Paleontology / Foraminifera, pp. 177–179, 340); P.K. Mukherjee, <em>A Text Book of Geology</em> (Ch. 13: Paleontology, p. 170); L.M. Davies (1927, <em>Q. J. Geol. Soc. London</em>, "The Ranikot Series at Thal"); C.G. Adams (1970, <em>Bull. Brit. Mus. Nat. Hist.</em>, "A reconsideration of the East Indian Letter Classification"); Serra-Kiel et al. (1998, <em>Bull. Soc. Géol. France</em>, "Larger foraminiferal biostratigraphy of the Tethyan Paleocene and Eocene", Shallow Benthic Zones SBZ 3–4)."""
+
+    part1 = r"""
+  <!-- CARD 1: SYSTEMATIC PALEONTOLOGY AND MORPHOLOGY OF DISCOCYCLINA -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Systematic Paleontology & Complex Architecture of Genus Discocyclina</div>
+    <div class="card-body">
+      <p>
+        The genus <strong><em>Discocyclina</em> Gümbel, 1870</strong> (Superfamily <em>Orbitoidoidea</em>, Family <em>Discocyclinidae</em>, historically termed <em>Orthophragmina</em>) represents an extinct, highly specialized group of <strong>Larger Benthic Foraminifera (LBF)</strong> that inhabited warm, oligotrophic, shallow-water carbonate platforms across the Tethyan, Caribbean, and Indo-Pacific realms during the Paleogene Period.
+      </p>
+      <p>
+        Externally, the test of <em>Discocyclina</em> is discoidal, circular, lenticular, or gently saddle-shaped (undulated), ranging in diameter from a few millimeters up to several centimeters. The surface is adorned with elevated pustules or papillae that represent the external terminations of internal solid calcitic structural pillars.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q75/mahapatra_p178_discocyclina_larger_foraminifera.png" alt="Morphology and Equatorial View of Discocyclina from Mahapatra">
+        <div class="figure-caption">
+          <strong>Figure 75.1 — Structural Morphology and Surface Features of Discocyclina:</strong> Authentic textbook scan from G.B. Mahapatra (<em>A Text-Book of Geology</em>, p. 178). Depicting the lenticular discoidal test, external granulations/papillae, and diagnostic concentric annuli.
+        </div>
+      </div>
+
+      <h4>Three-Dimensional Internal Architecture</h4>
+      <p>
+        In petrographic thin section, the test of <em>Discocyclina</em> exhibits a sophisticated three-dimensional micro-architecture:
+      </p>
+      <ul>
+        <li><strong>Median (Equatorial) Layer:</strong> A single, thin horizontal plane composed of thousands of minute, rectangular or square chamberlets arranged in neat, concentric circular annuli. Radial and annular stolons connect adjacent chamberlets.</li>
+        <li><strong>Lateral Chambers:</strong> Multiple tiers of flattened, blister-like or tiered chamberlets that flank the equatorial layer on both the dorsal and ventral sides, providing hydrodynamic stability and buoyancy control in shallow photic waters.</li>
+        <li><strong>Structural Pillars:</strong> Conical or cylindrical pillars of dense, imperforate sparry calcite that traverse the lateral layers, strengthening the test against wave action.</li>
+        <li><strong>Embryonic Apparatus (Nucleoconch):</strong> The central biloculine juvenile chamber complex consisting of the first chamber (<strong>protoconch</strong>, $I$) and second chamber (<strong>deuteroconch</strong>, $II$). In <em>Discocyclina</em>, the deuteroconch partially or completely embraces the protoconch (semi-isodiscodine to nephrodiscodine configurations).</li>
+      </ul>
+
+      <div class="figure-box">
+        <img src="../../figures_Q75/pkm_p170_discocyclina_equatorial_section.png" alt="Internal Architecture and Chamberlet Geometry of Discocyclina from P.K. Mukherjee">
+        <div class="figure-caption">
+          <strong>Figure 75.2 — Equatorial and Axial Anatomy of Discocyclinidae:</strong> Authentic textbook diagram from P.K. Mukherjee (<em>A Text Book of Geology</em>, p. 170). Illustrating the single equatorial plane of rectangular chamberlets, lateral chamberlet tiers, and the embryonic biloculine nucleoconch.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: BIOSTRATIGRAPHY OF DISCOCYCLINA RANIKOTENSIS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Biostratigraphic Zonation: Discocyclina ranikotensis as a Late Paleocene Index</div>
+    <div class="card-body">
+      <p>
+        While the <strong>genus <em>Discocyclina</em></strong> ranges broadly from the Early Paleocene (Danian) through the end of the Late Eocene (Priabonian), individual species possess extraordinarily restricted chronostratigraphic ranges, making them premier index fossils for shallow-water carbonate correlation where planktic foraminifera are absent.
+      </p>
+
+      <h4>The Upper Ranikot Biozone & <em>Discocyclina ranikotensis</em> Davies (1927)</h4>
+      <p>
+        In the classic Paleogene stratigraphy of the Indian subcontinent (Sindh, Salt Range, Kohat, and Thal in the northwestern Tethys, as well as the Sylhet Limestone of Meghalaya and Nerinea Beds of Pondicherry):
+      </p>
+      <ul>
+        <li><strong>Early Paleocene (Danian Stage / Lower Ranikot Series):</strong> Represented by non-marine to marginal marine sandstones and shales with small, primitive rotaliids. The complex larger foraminiferal species <em>Discocyclina ranikotensis</em> is <strong>strictly absent</strong>.</li>
+        <li><strong>Late Paleocene (Thanetian Stage / Upper Ranikot Series):</strong> Marked by a major Tethyan carbonate transgression depositing the fossiliferous Upper Ranikot Limestone. This interval is biozonally defined by the prolific acme of <strong><em>Discocyclina ranikotensis</em></strong>, alongside <em>Miscellanea miscella</em>, <em>Lockhartia haimei</em>, and <em>Ranikothalia nuttalli</em>. In the standardized Tethyan Shallow Benthic Zonation (Serra-Kiel et al., 1998), this corresponds strictly to <strong>Shallow Benthic Zones SBZ 3 and SBZ 4 (Late Paleocene, ~59–56 Ma)</strong>.</li>
+        <li><strong>Early Eocene (Ypresian Stage / Laki Series):</strong> At the Paleocene-Eocene boundary, <em>D. ranikotensis</em> went completely extinct, superseded by true Eocene discocyclinid species (<em>Discocyclina dispansa</em>, <em>D. sowerbyi</em>) and advanced <em>Nummulites</em> (e.g., <em>Nummulites atacicus</em>, <em>Assilina granulosa</em>).</li>
+      </ul>
+
+      <div class="formula-box">
+        <strong>Biozonal Confinement Rule:</strong><br>
+        $$\text{Genus } \mathit{Discocyclina}: \text{Danian (Early Paleocene) to Priabonian (Late Eocene)}$$<br>
+        $$\mathbf{\mathit{Discocyclina\ ranikotensis}}: \mathbf{Late\ Paleocene\ (Thanetian,\ SBZ\ 3\text{--}4\ ONLY)}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: EXTINCTION AT EOCENE-OLIGOCENE & MIOCENE DISPLACEMENT -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Extinction Dynamics & Post-Eocene Replacement by Lepidocyclina</div>
+    <div class="card-body">
+      <p>
+        A frequent point of confusion in micropaleontology examinations is the temporal separation between <strong><em>Discocyclina</em></strong> and the convergent Neogene genus <strong><em>Lepidocyclina</em></strong>:
+      </p>
+      <ul>
+        <li><strong>Extinction of Discocyclinidae:</strong> At the <strong>Eocene-Oligocene boundary (~33.9 Ma)</strong>, global cooling (the onset of Antarctic glaciation and the "Oi-1" glaciation event) and oceanographic reorganization triggered the total, catastrophic extinction of the entire Family Discocyclinidae. <strong>Zero discocyclinids survived into the Oligocene or Miocene!</strong></li>
+        <li><strong>Miocene Larger Foraminifera:</strong> The discoidal larger foraminifera dominating Oligocene and Miocene carbonate platforms belong to the Family <strong>Lepidocyclinidae</strong> (e.g., <em>Lepidocyclina</em>, <em>Miogypsina</em>, <em>Nephrolepidina</em>) and Family Nummulitidae (<em>Cycloclypeus</em>). <em>Lepidocyclina</em> is readily distinguished from <em>Discocyclina</em> under equatorial thin section: <em>Lepidocyclina</em> possesses <strong>hexagonal, spatulate, or ogival chamberlets</strong>, whereas <em>Discocyclina</em> possesses strict <strong>rectangular or square chamberlets</strong>.</li>
+      </ul>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 75</div>
+        <div class="q-text">While genous Discocyclina is found in sediments of Danian to Early Eocene but its species Discoclina ranikotensis is only confined to</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Late Paleocene</div>
+          <div class="opt-node">(B) Early Paleocene</div>
+          <div class="opt-node">(C) Miocene</div>
+          <div class="opt-node">(D) Late Miocene</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (A)</div>
+        <div><strong>Late Paleocene:</strong> <em>Discocyclina ranikotensis</em> is the world-renowned index fossil of the Upper Ranikot Series (Thanetian stage, SBZ 3–4), confined strictly to the Late Paleocene.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option correct">
+        <div class="opt-title">(A) Late Paleocene — CORRECT</div>
+        <p>
+          <em>Discocyclina ranikotensis</em> was originally described by L.M. Davies (1927) from the Upper Ranikot beds of Thal and the Salt Range. It serves as the definitive zonal index fossil for the <strong>Late Paleocene (Thanetian stage)</strong> across the entire Tethyan carbonate realm (corresponding to Shallow Benthic Zones <strong>SBZ 3 and SBZ 4</strong>). It is strictly confined to this interval, disappearing abruptly at the Paleocene-Eocene boundary prior to the deposition of the Early Eocene Laki Series (Mahapatra, p. 178, 340).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(B) Early Paleocene — INCORRECT</div>
+        <p>
+          The Early Paleocene (Danian stage, Lower Ranikot Series) represents the post-Cretaceous recovery phase. Carbonate platforms were impoverished following the K-Pg extinction, and complex orbitoidal larger foraminifera had not yet fully diversified. <em>Discocyclina ranikotensis</em> does not occur in Danian sediments.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) Miocene — INCORRECT</div>
+        <p>
+          The entire genus <em>Discocyclina</em> and its parent family Discocyclinidae suffered complete global extinction at the <strong>Eocene-Oligocene boundary (33.9 Ma)</strong>. It is biologically and stratigraphically impossible for any <em>Discocyclina</em> species to occur in the Miocene. Miocene larger foraminifera are dominated by <em>Lepidocyclina</em>, <em>Miogypsina</em>, and <em>Austrotrillina</em>.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) Late Miocene — INCORRECT</div>
+        <p>
+          Late Miocene strata post-date the extinction of <em>Discocyclina</em> by over 25 million years, making this option an anachronistic error.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Biostratigraphic Framework of Larger Benthic Foraminifera in the Indo-Tethyan Realm</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Stratigraphic Interval</th>
+            <th>Regional Succession (India/Pakistan)</th>
+            <th>Shallow Benthic Zone (SBZ)</th>
+            <th>Diagnostic Larger Foraminiferal Assemblage</th>
+            <th>Chamberlet / Embryonic Characteristics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Early Paleocene (Danian)</strong></td>
+            <td>Lower Ranikot Series</td>
+            <td>SBZ 1 – SBZ 2</td>
+            <td>Small rotaliids, primitive <em>Lockhartia</em>, <em>Daviesina</em>; <em>D. ranikotensis</em> absent</td>
+            <td>Simple unilocular/bilocular juveniles; no complex concentric annuli</td>
+          </tr>
+          <tr>
+            <td><strong>Late Paleocene (Thanetian)</strong></td>
+            <td><strong>Upper Ranikot Series</strong></td>
+            <td><strong>SBZ 3 – SBZ 4</strong></td>
+            <td><strong><em>Discocyclina ranikotensis</em></strong>, <em>Miscellanea miscella</em>, <em>Lockhartia haimei</em>, <em>Ranikothalia nuttalli</em></td>
+            <td>Rectangular chamberlets in single equatorial layer; semi-isodiscodine nucleoconch</td>
+          </tr>
+          <tr>
+            <td><strong>Early Eocene (Ypresian)</strong></td>
+            <td>Laki Series (Dunghan / Nammal)</td>
+            <td>SBZ 5 – SBZ 10</td>
+            <td><em>Nummulites atacicus</em>, <em>Assilina granulosa</em>, <em>Discocyclina dispansa</em></td>
+            <td>Advanced multilocular planispiral coils with alar prolongations</td>
+          </tr>
+          <tr>
+            <td><strong>Middle to Late Eocene</strong></td>
+            <td>Kirthar Series</td>
+            <td>SBZ 13 – SBZ 20</td>
+            <td><em>Nummulites gizehensis</em>, <em>Discocyclina sowerbyi</em>, <em>Pellatispira</em></td>
+            <td>Giant lenticular tests up to 5–10 cm; thick lateral layers</td>
+          </tr>
+          <tr>
+            <td><strong>Oligocene to Miocene</strong></td>
+            <td>Gaj / Nari Series</td>
+            <td>SBZ 21 – SBZ 26</td>
+            <td><strong><em>Lepidocyclina</em></strong> (<em>Eulepidina</em>, <em>Nephrolepidina</em>), <em>Miogypsina</em> (<em>Discocyclina</em> EXTINCT)</td>
+            <td><strong>Hexagonal, spatulate, or diamond-shaped</strong> equatorial chamberlets</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Petrographic Thin-Section Differentiation: Discocyclina vs. Lepidocyclina</div>
+        <p>
+          Under petrographic inspection of a Paleogene carbonate grainstone, a student observes a discoidal larger foraminifer. In an equatorial thin section, the chamberlets in the median layer are strictly rectangular, arranged in concentric rings like bricks in a wall. In an adjacent Oligocene-Miocene slide, the chamberlets are hexagonal and spatulate. Differentiate these two genera.
+        </p>
+        <div class="p-ans">
+          <strong>Micromorphological Differentiation:</strong><br>
+          1. <strong>Rectangular Chamberlets:</strong> The presence of rectangular or square chamberlets in a single equatorial layer, flanked by lateral chamber tiers, is the diagnostic structural hallmark of <strong><em>Discocyclina</em></strong> (Family Discocyclinidae).<br>
+          2. <strong>Hexagonal / Spatulate Chamberlets:</strong> Hexagonal, spatulate, or ogival chamberlets connected by annular and diagonal stolons are diagnostic of <strong><em>Lepidocyclina</em></strong> (Family Lepidocyclinidae).<br>
+          <strong>Stratigraphic Consequence:</strong> The rectangular chamberlets confirm an Eocene or Paleocene age, while the spatulate chamberlets indicate an Oligocene or Miocene age.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Embryonic Nucleoconch Morphometrics ($A/C$ Enclosure Ratio)</div>
+        <p>
+          In larger foraminiferal phylogenetics, the degree to which the deuteroconch ($II$) embraces the initial protoconch ($I$) is quantified by the embracement index:
+          $$E = \frac{\text{Arc length of Protoconch enclosed by Deuteroconch}}{\text{Total circumference of Protoconch}} \times 100\%$$
+          If a specimen of <em>Discocyclina</em> exhibits an enclosed arc of $150^\circ$, calculate $E$ and classify its embryonic apparatus type (semi-isodiscodine, tryblio-isodiscodine, or umbilicodiscodine).
+        </p>
+        <div class="p-ans">
+          <strong>Mathematical Calculation:</strong><br>
+          $$\text{Total protoconch circumference} = 360^\circ$$<br>
+          $$E = \frac{150^\circ}{360^\circ} \times 100\% \approx 41.67\%$$<br>
+          <strong>Classification:</strong><br>
+          - <em>Nephrodiscodine:</em> Deuteroconch reniform, embracing $< 50\%$ of protoconch ($E < 50\%$).<br>
+          - <em>Tryblio-isodiscodine:</em> Deuteroconch cup-shaped, embracing $50\text{--}75\%$ ($E \approx 50\text{--}75\%$).<br>
+          - <em>Umbilicodiscodine:</em> Deuteroconch completely surrounds protoconch ($E \approx 100\%$).<br>
+          Since $E = 41.67\%$, the embryonic apparatus is classified as <strong>nephrodiscodine (or semi-isodiscodine)</strong>, typical of primitive Late Paleocene species such as <em>Discocyclina ranikotensis</em>.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: Dimorphic Generation Frequencies in High-Energy Carbonate Shoals</div>
+        <p>
+          In a sample of Upper Ranikot Limestone from Thal, an assemblage of <em>Discocyclina ranikotensis</em> is analyzed. The megalospheric generation ($A$-form) has an average test diameter of 4 mm, while the microspheric generation ($B$-form) has an average diameter of 14 mm. If the counted ratio is $A:B = 85:1$, explain the reproductive and taphonomic reasons for this disparity.
+        </p>
+        <div class="p-ans">
+          <strong>Reproductive & Hydrodynamic Analysis:</strong><br>
+          1. <strong>Reproductive Biology (Alternation of Generations):</strong> In foraminifera, the megalospheric ($A$-form) generation results from asexual multiple fission (schizogony), producing hundreds to thousands of offspring with a large initial protoconch. The microspheric ($B$-form) generation results from sexual gamogamy, requiring the fusion of flagellated gametes, which occurs far less frequently in seasonal cycles.<br>
+          2. <strong>Hydrodynamic Sorting:</strong> The smaller, robust $A$-forms were easily transported and concentrated by tidal currents and wave action across shallow carbonate sand shoals, whereas the larger, thin, fragile $B$-forms were selectively winnowed out into deeper lagoonal or quiet ramp settings.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Shallow Benthic Zonation (SBZ) and Tethyan Correlation</div>
+        <p>
+          Correlate the Shallow Benthic Zones SBZ 3 and SBZ 4 of the Tethyan standard scale with the global chronostratigraphic timescale and state the diagnostic larger foraminiferal index taxa defining their boundaries.
+        </p>
+        <div class="p-ans">
+          <strong>Biochronological Calibration:</strong><br>
+          - <strong>Chronostratigraphic Interval:</strong> SBZ 3 and SBZ 4 correspond precisely to the <strong>Thanetian Stage (Late Paleocene, ~59.2 to 56.0 Ma)</strong>.<br>
+          - <strong>SBZ 3 Markers:</strong> Characterized by the first appearance of <em>Discocyclina ranikotensis</em>, <em>Ranikothalia sindensis</em>, and <em>Assilina azilensis</em>.<br>
+          - <strong>SBZ 4 Markers:</strong> Characterized by the acme of <em>Discocyclina ranikotensis</em>, <em>Miscellanea miscella</em>, <em>Ranikothalia nuttalli</em>, and <em>Lockhartia haimei</em>.<br>
+          - <strong>Upper Boundary (SBZ 4/5):</strong> Coincides with the <strong>Paleocene-Eocene Thermal Maximum (PETM, 56.0 Ma)</strong>, marked by the total extinction of <em>D. ranikotensis</em> and <em>Ranikothalia</em>, followed by the radiation of true <em>Nummulites</em> (SBZ 5).
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Ranikot-Laki-Kirthar Succession in the Indian Subcontinent</div>
+        <p>
+          Outline the lithostratigraphic and biostratigraphic characteristics of the Ranikot, Laki, and Kirthar series in the northwestern Indian subcontinent, specifying their respective geological ages.
+        </p>
+        <div class="p-ans">
+          <strong>Stratigraphic Succession:</strong><br>
+          1. <strong>Ranikot Series (Paleocene):</strong><br>
+             - <em>Lower Ranikot:</em> Fluviatile sandstones and shales (Danian).<br>
+             - <em>Upper Ranikot:</em> Marine fossiliferous limestones and shales (Thanetian / Late Paleocene) characterized by <em>Discocyclina ranikotensis</em> and <em>Miscellanea miscella</em>.<br>
+          2. <strong>Laki Series (Early Eocene / Ypresian):</strong> Gypseous shales, marls, and foraminiferal limestones containing <em>Nummulites atacicus</em>, <em>Assilina granulosa</em>, and <em>Alveolina subpyrenaica</em>.<br>
+          3. <strong>Kirthar Series (Middle to Late Eocene / Lutetian – Priabonian):</strong> Massive, thick-bedded cliff-forming limestones packed with giant foraminifera including <em>Nummulites gizehensis</em>, <em>Nummulites obtusus</em>, and <em>Discocyclina sowerbyi</em>.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Axial Section Analysis: Lateral Chamberlets and Structural Pillars</div>
+        <p>
+          Describe the appearance of a <em>Discocyclina</em> test in an axial thin section cut perpendicular to the equatorial plane through the protoconch. How does this differ from an axial section of <em>Nummulites</em>?
+        </p>
+        <div class="p-ans">
+          <strong>Axial Petrographic Distinction:</strong><br>
+          - <strong><em>Discocyclina:</em></strong> Exhibits a distinct three-layered internal morphology: a prominent, central horizontal dark stripe representing the single-layered equatorial chamberlet plane, bordered above and below by multiple stacked layers of small, sub-rectangular to lenticular lateral chamberlets traversed by vertical calcitic pillars.<br>
+          - <strong><em>Nummulites:</em></strong> Possesses a planispirally coiled, involute test where each whorl completely encloses preceding whorls. There is NO separate equatorial vs. lateral chamberlet division; instead, an axial cut reveals the spiral cord, marginal canal plexus, and long alar prolongations wrapping around the central proloculus.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Photosymbiosis and Photic Zone Depth Zonation in Carbonate Ramps</div>
+        <p>
+          Modern larger benthic foraminifera harbor endosymbiotic microalgae (dinoflagellates, diatoms, chlorophytes). How does this photosymbiotic relationship explain the paleobathymetric distribution of flat vs. inflated <em>Discocyclina</em> tests on Eocene carbonate ramps?
+        </p>
+        <div class="p-ans">
+          <strong>Paleobathymetric Morphometrics:</strong><br>
+          - <strong>Shallow Inner Ramp ($0\text{--}20\text{ m}$, High Light & High Turbulence):</strong> Tests are small, thick, and highly inflated (biconvex/lenticular) with dense calcitic pillars to prevent ultraviolet light damage to symbionts and resist hydrodynamic rolling.<br>
+          - <strong>Deep Outer Ramp ($40\text{--}80\text{ m}$, Low Light Oligophotic Zone):</strong> Tests become exceptionally large, paper-thin, and flat (disc-shaped), maximizing the surface-area-to-volume ratio ($SA/V$) to capture diffuse downwelling solar photons for endosymbiont photosynthesis.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Taphonomic Lumachelles and Hydrocarbon Reservoir Quality</div>
+        <p>
+          In the Paleocene-Eocene petroleum systems of the Mumbai Offshore and Assam-Arakan basins, larger foraminiferal limestones (e.g., Sylhet Limestone, Bassein Limestone) serve as major oil and gas reservoirs. Explain how secondary dissolution of <em>Discocyclina</em> tests controls reservoir porosity and permeability.
+        </p>
+        <div class="p-ans">
+          <strong>Diagenesis & Reservoir Engineering:</strong><br>
+          1. <strong>Intra-skeletal & Moldic Porosity:</strong> During subaerial exposure associated with sequence boundary unconformities, meteoric water enriched in carbonic acid dissolved the thin-walled lateral and equatorial chamberlets of <em>Discocyclina</em>, generating high moldic and intra-particle porosity ($\phi = 15\text{--}25\%$).<br>
+          2. <strong>Permeability Enhancement via Inter-Chamberlet Stolon Networks:</strong> The original annular and radial stolons linking adjacent chamberlets serve as micro-conduits. When widened by diagenetic dissolution, they create exceptional connectivity and effective matrix permeability ($k = 50\text{--}500\text{ mD}$), producing highly productive carbonate reservoir intervals.
+        </div>
+      </div>
+
+    </div>
+  </div>
+"""
+
+    html = wrap_html(title, badge, h1_title, meta_text, 75, part1, part2, part3)
+    out_path = os.path.join(SOLUTIONS_DIR, "Q075_Discocyclina_ranikotensis_Late_Paleocene_Index_Complete_Guide.html")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q075: {out_path} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q075()

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q51: Indian Lower Gondwana Succession - Barren Measures Formation (Mid-Permian) | OPSC Geology 2021 Masterclass</title>
+<title>Q051: Lower Gondwana Stratigraphy: The Barren Measures Formation | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,289 +89,582 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q51" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Gondwana Supergroup</div>
-    <h1>Q51: Indian Lower Gondwana Succession - Barren Measures Formation (Mid-Permian)</h1>
+    <div class="badge">GEO - 2/21 • Indian Stratigraphy & Gondwana Coal Geology</div>
+    <h1>Q051: Lower Gondwana: The Barren Measures Formation</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> G.B. Mahapatra (A Text-Book of Geology, p. 320); K.M. Bangar (Principles of Engineering Geology, p. 338)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 51<br>
+<strong>Authoritative References:</strong> G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 318–322); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 13: Stratigraphy of India, pp. 336–339, p. 176); Ramakrishnan & Vaidyanadhan, <em>Geology of India</em> (Vol. 2, Ch. 18: Gondwana Supergroup, pp. 612–626); M.S. Krishnan, <em>Geology of India and Burma</em> (Ch. 10).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Stratigraphic Architecture of the Indian Gondwana Supergroup</h3>
-<p>The <strong>Gondwana Supergroup</strong> represents an extensive intracratonic, fluvio-lacustrine sedimentary depository preserved in discrete fault-bounded grabens and half-grabens across Peninsular India (Damodar, Son-Mahanadi, Pranhita-Godavari, Satpura, and Rajmahal basins). Deposited over an unbroken interval spanning from the Upper Carboniferous (~310 Ma) to the Lower Cretaceous (~110 Ma), the succession records India's paleogeographic migration from high-latitude southern circumpolar glacial realms to warm temperate and subtropical regimes.</p>
-
-<p>In standard Indian lithostratigraphy (G.B. Mahapatra, <em>A Text-Book of Geology</em>, p. 320; K.M. Bangar, <em>Principles of Engineering Geology</em>, p. 338), the prolific lower division—termed the <strong>Lower Gondwana Group</strong>—is dominated by the thick continental clastics of the <strong>Damuda Group</strong> (Permian age). The stratigraphic succession in the type Damodar Valley basin is established as follows:</p>
-
-<ul>
-  <li><strong>Talchir Formation (Asselian–Sakmarian, Early Permian):</strong> Basal glacial tillites (boulder beds), striated pavement pavements, glacio-fluvial turbidites, and olive-green needle shales (rhythmites) devoid of workable coal seams.</li>
-  <li><strong>Karharbari Formation (Artinskian, Early Permian):</strong> Basal coal-bearing unit of the Damuda Group, consisting of poorly sorted, immature sub-arkosic sandstones, pebbly sandstones, and thin, low-moisture bituminous coal seams (e.g., Seam I of Giridih and Talcher).</li>
-  <li><strong>Barakar Formation (Kungurian, Early Permian):</strong> The primary and most economically vital coal-bearing formation of India. Characterized by cyclic fining-upward fluvial cyclothems of coarse-to-medium grained kaolinitic felspathic sandstones, carbonaceous shales, and multi-meter thick bituminous coal seams (e.g., Jharia Seams I through XVI).</li>
-  <li><strong>Barren Measures Formation (Roadian–Wordian–Capitanian, Middle Permian):</strong> A prominent, 400 to 750 m thick non-coaliferous lithounit <em>sandwiched conformably between the two major coal-bearing formations</em> (the underlying Barakar and the overlying Raniganj). In the Raniganj basin, it is lithostratigraphically designated the <strong>Ironstone Shale Formation</strong> (or Kulti Formation), while in the Satpura basin, its stratigraphic correlative is termed the <strong>Motur Formation</strong>.</li>
-  <li><strong>Raniganj Formation (Wuchiapingian–Changhsingian, Late Permian):</strong> The upper coal-bearing formation of the Damuda Group, composed of fine-grained cross-bedded sandstones, siltstones, gray shales, and numerous high-volatile bituminous and coking coal seams (e.g., Dishergarh and Sanctoria seams).</li>
-  <li><strong>Panchet Formation (Induan–Olenekian, Early Triassic):</strong> Red and chocolate clays, khaki-green micaceous sandstones, marking the Permian-Triassic boundary and the arrival of early dicynodont reptile faunas (<em>Lystrosaurus</em>).</li>
-</ul>
-
-<h3>2. Lithofacies & Paleoenvironmental Significance of the Barren Measures</h3>
-<p>The Barren Measures Formation is uniquely characterized by dense, dark-gray to black carbonaceous, micaceous shales interstratified with nodular layers and bands of sideritic and limonitic <strong>clay ironstone</strong> (sphaerosiderite). Why is it called "Barren"? Because despite its abundant carbonaceous matter and rich dispersed plant cuticles, it is <strong>completely devoid of workable coal seams</strong>.</p>
-
-<p>This dramatic cessation of coal swamp peat accumulation during the Middle Permian reflects a regional climatic and geomorphic turnaround across eastern Gondwanaland. While the Barakar and Raniganj formations developed during humid, temperate, swamp-rich meandering to braided river systems with dense vegetation (the <em>Glossopteris</em> flora), the Barren Measures accumulated under an arid to semi-arid paleoclimate with pronounced seasonality. Fluvial drainage regimes transitioned into extensive, shallow lacustrine, playa, and muddy overbank floodplain basins where fluctuating redox conditions precipitated iron carbonate (siderite, $\mathrm{FeCO_3}$) rather than preserving thick peats.</p>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q51/mahapatra_p168_barren_measures_damuda_succession.png" alt="Damuda Group Gondwana Succession showing Barren Measures Formation">
-      <figcaption>
-        <strong>Figure 51.1: Indian Lower Gondwana Succession & Barren Measures Formation.</strong> Authentic page excerpt from G.B. Mahapatra (<em>A Text-Book of Geology</em>, Chapter 86, p. 320 / PDF p. 168). The stratigraphic table highlights the Middle Permian <strong>Barren Measures Formation</strong> (Ironstone Shale) sandwiched between the two prolific coal-bearing units: the underlying Lower Permian <strong>Barakar Formation</strong> and overlying Upper Permian <strong>Raniganj Formation</strong>.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q51/bangar_p176_lower_gondwana_coalfields.png" alt="Lower Gondwana Coalfields of India">
-      <figcaption>
-        <strong>Figure 51.2: Lower Gondwana Coalfields of India.</strong> Authentic textbook excerpt from K.M. Bangar (<em>Principles of Engineering Geology</em>, Chapter 9, p. 338). Details the distribution of Gondwana coal measures across the Damodar, Son-Mahanadi, and Pranhita-Godavari graben basins.
-      </figcaption>
-    </div>
-        
   </div>
+  
+  <!-- CARD 1: STRATIGRAPHIC SUCCESSION OF THE DAMUDA GROUP -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Damuda Group: The Permian Coal Measures of Peninsular India</div>
+    <div class="card-body">
+      <p>The <strong>Damuda Group</strong> (Permian) of the Lower Gondwana Supergroup contains the world-famous commercial bituminous coal measures of Peninsular India. Across the Damodar, Son-Mahanadi, and Pranhita-Godavari valleys, the Damuda succession is classically subdivided into three distinct lithostratigraphic formations in ascending order:</p>
+
+      <ul>
+        <li><strong>1. Barakar Formation (Early Permian / Artinskian-Kungurian):</strong> The primary lower coal-bearing formation ($250-700\text{ m}$ thick). Characterized by fining-upward channel cycles of coarse, white feldspathic (arkosic) sandstones, grey shales, fireclays, and multiple thick, workable bituminous coal seams (e.g., Seams I through XVI in Jharia and Raniganj).</li>
+        <li><strong>2. Barren Measures Formation (Middle Permian / Roadian-Wordian):</strong> The non-coaliferous stratigraphic interval sandwiched conformably between the two major coal-bearing units. It attains a thickness of $300-600\text{ m}$ in the Jharia and Bokaro coalfields. In the Raniganj Coalfield, this identical lithostratigraphic horizon is historically termed the <strong>Ironstone Shale Formation</strong> due to the abundant siderite and limonite nodules embedded in its dark carbonaceous shales.</li>
+        <li><strong>3. Raniganj Formation (Late Permian / Capitanian-Changhsingian):</strong> The upper coal-bearing formation ($500-1000\text{ m}$ thick). Dominated by fine to medium-grained calcareous and feldspathic sandstones, siltstones, and numerous high-volatile, long-flame superior coal seams accompanied by an advanced <em>Glossopteris</em> flora.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q51/mahapatra_p168_barren_measures_damuda_succession.png" alt="Barren Measures in Damuda Succession">
+        <div class="tb-caption">
+          <strong>Figure 51.1 (G.B. Mahapatra, p. 168):</strong> Lithostratigraphic column of the Damuda Group illustrating the Barren Measures (Ironstone Shales) sandwiched conformably between the Barakar and Raniganj coal measures.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: PALEOENVIRONMENT OF THE BARREN MEASURES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Depositional Mechanics and Climatic Hiatus of Coalification</div>
+    <div class="card-body">
+      <p>The total absence of workable coal in the Barren Measures reflects a profound paleoclimatic and paleoenvironmental shift across eastern Gondwanaland during the Mid-Permian:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Classic Tripartite Damuda Chronostratigraphic Sandwich</div>
+        $$\mathbf{Barakar \text{ Formation}} \quad \longrightarrow \quad \mathbf{Barren \text{ Measures (Ironstone Shales)}} \quad \longrightarrow \quad \mathbf{Raniganj \text{ Formation}}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Warm Humid Peat Swamps $\to$ Warm Semi-Arid Stagnant Lakes $\to$ Restored Humid River-Floodplain Peat Swamps.</p>
+      </div>
+
+      <ul>
+        <li><strong>Semi-Arid Climatic Pulsing:</strong> During the Middle Permian, an interval of seasonal aridity and intense seasonal drying curtailed the continuous, lush growth of swamp vegetation required for thick peat accumulation.</li>
+        <li><strong>Stagnant Lacustrine Ironstone Deposition:</strong> Sedimentation shifted from high-energy braided fluvial channels to extensive, shallow, stratified lacustrine bodies. High dissolved ferrous iron in anoxic, acidic bottom waters reacted with bicarbonate to precipitate bedded and nodular <strong>siderite ($\text{FeCO}_3$)</strong>, which weathered subaerially to limonite and goethite ironstones.</li>
+        <li><strong>Basin Equivalents:</strong> In the Godavari and Satpura basins, coeval non-coal strata are termed the <strong>Motur Formation</strong> and Lower Kamthi beds.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q51/bangar_p176_lower_gondwana_coalfields.png" alt="Lower Gondwana Coalfields from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 51.2 (K.M. Bangar, p. 176):</strong> Stratigraphic classification of Lower Gondwana formations across the Jharia, Raniganj, and Central Indian coalfields.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON OF LOWER GONDWANA UNITS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Stratigraphic Subdivisions of the Damuda Group</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Stratigraphic Unit</th>
+            <th>Stage / Epoch</th>
+            <th>Dominant Lithofacies</th>
+            <th>Workable Coal Seams</th>
+            <th>Primary Flora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Raniganj Formation</strong></td>
+            <td>Late Permian (Lopingian)</td>
+            <td>Fine-grained sandstones, carbonaceous shales.</td>
+            <td><strong>Abundant</strong> (High-volatile bituminous coal; Raniganj Seams).</td>
+            <td><em>Glossopteris retifera, Vertebraria indica, Schizoneura</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Barren Measures Formation</strong> (Ironstone Shales)</td>
+            <td><strong>Middle Permian (Guadalupian)</strong></td>
+            <td><strong>Carbonaceous black shales, siderite ironstone bands, micaceous siltstones.</strong></td>
+            <td><strong>Completely Barren of Workable Coal (Zero Coal)</strong></td>
+            <td>Sparse, stunted <em>Glossopteris conspicua, Cyclodendron</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Barakar Formation</strong></td>
+            <td>Early Permian (Cisuralian)</td>
+            <td>Coarse arkosic sandstones, fireclays, grey shales.</td>
+            <td><strong>Prolific</strong> (Prime coking coal seams of India; Seams I to XVI).</td>
+            <td><em>Glossopteris communis, Gangamopteris cyclopteroides</em>.</td>
+          </tr>
+          <tr>
+            <td><strong>Karharbari Formation</strong></td>
+            <td>Basal Cisuralian (Sakmarian)</td>
+            <td>Sub-arkosic sandstones, grits, conglomerate.</td>
+            <td>High-grade low-ash coking coal (Giridih Seams).</td>
+            <td><em>Gondwanidium validum, Buriadia sewardana</em>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q51. The Mid-Permian non-coaliferous lithounit sandwitched between two major coal-bearing formations in the Indian Lower Gondwana succession is known as.________ Formation.</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Barakar</div>
-        <div class="opt-item "><strong>(B)</strong> Lower Kamthi</div>
-        <div class="opt-item correct"><strong>(C)</strong> Barren Measures</div>
-        <div class="opt-item "><strong>(D)</strong> Raniganj</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 51</div>
+        <div class="q-text">The Mid-Permian non-coaliferous lithounit sandwitched between two major coal-bearing formations in the Indian Lower Gondwana succession is known as.________ Formation.</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Barakar</div>
+          <div class="opt-node">(B) Lower Kamthi</div>
+          <div class="opt-node correct">(C) Barren Measures</div>
+          <div class="opt-node">(D) Raniganj</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(C) Barren Measures</strong> [The Barren Measures Formation (known as Ironstone Shales in Raniganj) is the non-coal-bearing Mid-Permian unit sandwiched between the coal-bearing Barakar and Raniganj Formations.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "The Mid-Permian non-coaliferous lithounit sandwitched between two major coal-bearing formations in the Indian Lower Gondwana succession is known as ________ Formation."</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Barakar (INCORRECT):</strong> The Barakar Formation is the <em>lower major coal-bearing formation</em> of the Damuda Group, not a non-coaliferous unit. It accounts for over 70% of India's metallurgical and thermal coal production. It directly underlies the Barren Measures, rather than being sandwiched between two coal-bearing formations.</li>
-  <li><strong>(B) Lower Kamthi (INCORRECT):</strong> The Kamthi Formation is developed in the Pranhita-Godavari and Mahanadi-Son basins, representing Upper Permian to Early Triassic strata generally regarded as lateral equivalents of the Raniganj and Panchet formations. The Lower Kamthi contains coal seams in parts of the Godavari valley and does not occupy the Middle Permian sandwiched interval of the Damodar Valley succession.</li>
-  <li><strong>(C) Barren Measures (CORRECT):</strong> The Barren Measures Formation (Middle Permian, ~270–260 Ma) is universally recognized in Indian geology as the classic non-coaliferous lithounit precisely sandwiched between the prolific Lower Permian <strong>Barakar Formation</strong> below and the Upper Permian <strong>Raniganj Formation</strong> above. Its literal name "Barren" signifies its lack of mineable coal seams.</li>
-  <li><strong>(D) Raniganj (INCORRECT):</strong> The Raniganj Formation is the <em>upper major coal-bearing unit</em> of the Damuda Group. It overlies the Barren Measures and is extensively mined in the Raniganj, Jharia, and Bokaro coalfields. It is rich in high-grade coal seams, completely contradicting the prompt's condition of being "non-coaliferous."</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (C) Barren Measures</div>
+    <div class="card-body">
+      <p><strong>Detailed Stratigraphic Forensic Analysis:</strong></p>
+      <ul>
+        <li>Within the Permian Damuda Group of the Indian Gondwana Supergroup, coal deposition was famously punctuated during the Middle Permian by an interval devoid of economic coal seams.</li>
+        <li>This non-coal-bearing formation is formally designated the <strong>Barren Measures Formation</strong> (so named by Fox in 1931 because it is completely barren of workable coal seams). In the Raniganj basin, it is known as the Ironstone Shale Formation.</li>
+        <li>It lies directly and conformably above the richly coal-bearing <strong>Barakar Formation</strong> and directly below the major coal-bearing <strong>Raniganj Formation</strong>.</li>
+        <li>Therefore, the unit sandwiched between the two major coal-bearing formations is unequivocally the <strong>Barren Measures Formation</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (A) Barakar</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Barakar Formation</strong> is the premier <em>coal-bearing</em> formation of India, hosting the thickest and most valuable coking coal seams in the Damodar, Mahanadi, and Son basins.</li>
+        <li>It represents the underlying coaliferous member, not the non-coaliferous unit sandwiched in the middle.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) Raniganj</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Raniganj Formation</strong> is the upper major <em>coal-bearing</em> formation of the Damuda Group, celebrated for superior non-coking and long-flame thermal coals.</li>
+        <li>It overlies the Barren Measures; it is not the sandwiched non-coal unit.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Lower Kamthi</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>The <strong>Kamthi Formation</strong> is a lithostratigraphic unit of the Pranhita-Godavari and Wardha-Nagpur valleys, extending from the Late Permian into the Early Triassic.</li>
+        <li>In standard Pan-Indian Gondwana nomenclature, the canonical Damuda sandwich sequence is Barakar $\to$ <strong>Barren Measures</strong> $\to$ Raniganj. Lower Kamthi is a lateral provincial correlate in central India, not the standard textbook sandwich unit.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Indian Lower Gondwana Stratigraphic Reference Matrix</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Group</th>
-      <th>Formation</th>
-      <th>Standard Age</th>
-      <th>Dominant Lithology</th>
-      <th>Economic Status & Coal Potential</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Panchet</strong></td>
-      <td>Panchet Formation</td>
-      <td>Early Triassic</td>
-      <td>Chocolate clays, green micaceous sandstones</td>
-      <td>Non-coaliferous; rich in <em>Lystrosaurus</em> fauna</td>
-    </tr>
-    <tr>
-      <td rowspan="4"><strong>Damuda Group</strong></td>
-      <td><strong>Raniganj Formation</strong></td>
-      <td>Late Permian (Wuchiapingian–Changhsingian)</td>
-      <td>Fine sandstones, gray shales, coals</td>
-      <td><strong>Major Coal-Bearing Unit</strong> (Upper Coal Measures)</td>
-    </tr>
-    <tr style="background:#fff3cd; font-weight:bold;">
-      <td>Barren Measures (Ironstone Shale)</td>
-      <td>Middle Permian (Roadian–Capitanian)</td>
-      <td>Dark carbonaceous shales, sideritic ironstones</td>
-      <td><strong>Non-Coaliferous ("Barren")</strong> Sandwiched Unit</td>
-    </tr>
-    <tr>
-      <td><strong>Barakar Formation</strong></td>
-      <td>Early Permian (Kungurian)</td>
-      <td>Coarse felspathic sandstones, thick coals</td>
-      <td><strong>Major Coal-Bearing Unit</strong> (Lower Coal Measures, Prime Coking Coal)</td>
-    </tr>
-    <tr>
-      <td>Karharbari Formation</td>
-      <td>Early Permian (Artinskian)</td>
-      <td>Sub-arkosic grits, carbonaceous shales, coals</td>
-      <td>Coal-bearing (basal workable seams, e.g., Seam I)</td>
-    </tr>
-    <tr>
-      <td><strong>Talchir</strong></td>
-      <td>Talchir Formation</td>
-      <td>Earliest Permian (Asselian–Sakmarian)</td>
-      <td>Glacial boulder beds, needle shales, tillites</td>
-      <td>Non-coaliferous; basal glacial marker</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>2. Basin-Wise Correlative Units of the Barren Measures</h3>
-<ul>
-  <li><strong>Damodar Valley (Raniganj Basin):</strong> Designated as the <em>Ironstone Shale Formation</em> or <em>Kulti Formation</em> due to commercial iron ore extraction from siderite bands in the 19th century.</li>
-  <li><strong>Damodar Valley (Jharia & Bokaro Basins):</strong> Mapped formally as the <em>Barren Measures Formation</em> (divided into Shibbabudih shales and Begunia sandstones).</li>
-  <li><strong>Satpura Basin:</strong> Stratigraphically correlated with the <em>Motur Formation</em> (non-coaliferous mottled red/green clays and calcareous sandstones).</li>
-  <li><strong>Pranhita-Godavari Basin:</strong> Correlated with the <em>Barren Measures / Motur equivalent</em> intervening between Barakar and Lower Kamthi.</li>
-</ul>
-
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Coal-Bearing vs. Barren Formations of Gondwana</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Gondwana Basin</th>
+            <th>Lower Coal-Bearing Formation</th>
+            <th>Middle Barren / Non-Coal Formation</th>
+            <th>Upper Coal-Bearing Formation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Jharia / Bokaro / Karanpura</strong></td>
+            <td>Barakar Formation (Seams I to XVI)</td>
+            <td><strong>Barren Measures Formation</strong> (Carbonaceous shales)</td>
+            <td>Raniganj Formation (Mahuda Group)</td>
+          </tr>
+          <tr>
+            <td><strong>Raniganj Coalfield</strong></td>
+            <td>Barakar Formation</td>
+            <td><strong>Ironstone Shale Formation</strong> (Sideritic shales)</td>
+            <td>Raniganj Formation</td>
+          </tr>
+          <tr>
+            <td><strong>Satpura Basin</strong></td>
+            <td>Barakar Formation</td>
+            <td><strong>Motur Formation</strong> (Red & green mottled clays)</td>
+            <td>Bijori Formation</td>
+          </tr>
+          <tr>
+            <td><strong>Pranhita-Godavari Basin</strong></td>
+            <td>Barakar Formation</td>
+            <td><strong>Barren Measures / Kothagudem Barren beds</strong></td>
+            <td>Lower Kamthi / Somagudem beds</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Gondwana Stratigraphy & Coal Petrology</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Siderite to Limonite Diagenetic Oxidation</div>
+        <p>In the Ironstone Shales of Raniganj, bedded siderite ($\text{FeCO}_3$, density $\rho = 3.96\text{ g/cm}^3$) oxidizes upon exposure to goethite ($\text{FeO(OH)}$, density $\rho = 4.28\text{ g/cm}^3$). Write the balanced geochemical oxidation-hydration reaction.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>In the presence of atmospheric oxygen and surface groundwater:</p>
+        $$4\text{FeCO}_3 + \text{O}_2 + 2\text{H}_2\text{O} \longrightarrow 4\text{FeO(OH)} + 4\text{CO}_2 \uparrow$$
+        <p>This reaction dissolves soluble bicarbonate, precipitating insoluble hydrous iron oxyhydroxides (limonite and goethite) that cement the shales into dense, reddish-brown ironstone bands historically smelted at Kulti (Bengal Iron Works).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: Coal Seam Peat Compaction Ratio</div>
+        <p>If the peat-to-bituminous coal compaction ratio in the Barakar Formation is $10:1$, calculate the original peat swamp thickness required to generate a $12\text{ m}$ thick coal seam.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$T_{\text{peat}} = 10 \times T_{\text{coal}} = 10 \times 12\text{ m} = 120\text{ m}$$
+        <p><strong>Final Answer:</strong> A massive $120\text{ m}$ of waterlogged peat was accumulated to yield a $12\text{ m}$ thick bituminous coal seam.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: Vitrinite Reflectance and Coal Rank</div>
+        <p>Barakar coking coals typically exhibit mean random vitrinite reflectance $R_o = 1.15\%-1.35\%$, whereas Raniganj non-coking coals have $R_o = 0.70\%-0.85\%$. Explain the geological reason for this rank disparity.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The Barakar Formation was buried beneath more than $2000-3000\text{ m}$ of overlying Barren Measures, Raniganj, and Panchet strata. Due to deeper burial depth ($z$) and higher paleo-temperatures ($T \propto z \cdot dT/dz$), the Barakar coals underwent more intense thermal catagenesis, aromatization, and volatile loss, advancing to high-rank medium-volatile coking coal.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: Botanical Identity of Vertebraria</div>
+        <p>What anatomical part of the Gondwana seed-fern plant does the common fossil <em>Vertebraria</em> represent?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Vertebraria indica</em> represents the specialized <strong>root system (rhizome)</strong> of the <em>Glossopteris</em> tree. Its unique transverse rectangular partitions (resembling vertebrae) provided internal air cavities (aerenchyma) allowing the plant to breathe in waterlogged, anoxic peat bogs.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Proximate Analysis Calculation</div>
+        <p>A coal sample from the Barakar Formation yields: Moisture $M = 2.0\%$, Ash $A = 18.0\%$, Volatile Matter $VM = 26.0\%$. Calculate the Fixed Carbon ($FC$) content on an air-dried basis.</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        $$FC = 100\% - (M + A + VM)$$
+        $$FC = 100 - (2.0 + 18.0 + 26.0) = 100 - 46.0 = 54.0\%$$
+        <p><strong>Final Answer:</strong> Fixed Carbon is $54.0\%$.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: Differentiation of Gondwanidium vs. Glossopteris</div>
+        <p>How does the basal Gondwana index plant fossil <em>Gondwanidium</em> differ from <em>Glossopteris</em>?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong><em>Gondwanidium validum</em>:</strong> Possesses pinnate, lobed fronds with neuropteroid venation without a true midrib or reticulate anastomosing mesh. Diagnostic index fossil of the early Sakmarian Karharbari Formation.</li>
+          <li><strong><em>Glossopteris</em>:</strong> Possesses simple, tongue-shaped (lingulate) leaves with a distinct prominent central midrib and complex polygonal reticulate anastomosing secondary veins.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Palynological Biozone of the Barren Measures</div>
+        <p>Which miospore assemblage characterizes the Barren Measures Formation in Indian palynostratigraphy?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The Barren Measures is defined by the <strong><em>Densipollenites indicus</em> Assemblage Zone</strong> (monosaccate envelope pollen), with sub-dominant <em>Striatopodocarpites</em> and <em>Faunipollenites</em>, reflecting drought-tolerant gymnosperm floral elements surrounding shrinking lakes.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Coalfield Boundary Fault Reactivation</div>
+        <p>Why are Indian Gondwana coalfields characterized by half-graben geometry with a single master boundary fault on the southern margin?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Extensional intraplate stress during the Permo-Triassic reactivated pre-existing Proterozoic basement faults as asymmetric listric normal faults. Continued fault displacement rotated the sedimentary floor into a hanging-wall syncline, tilting strata southward towards the master normal boundary fault where maximum sediment thickness is preserved.</p>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q67: Primate Paleontology - Genus Pliopithecus: Miocene Anthropoid Primates | OPSC Geology 2021 Masterclass</title>
+<title>Q067: Cenozoic Primate Evolution: Pliopithecus as a Miocene Stem-Catarrhine Anthropoid | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,260 +89,574 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q67" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Cenozoic Primate Paleontology</div>
-    <h1>Q67: Primate Paleontology - Genus Pliopithecus: Miocene Anthropoid Primates</h1>
+    <div class="badge">GEO - 2/21 • Vertebrate Paleontology & Primate Evolution</div>
+    <h1>Q067: Pliopithecus: Miocene Stem-Catarrhine Anthropoid</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Fleagle (Primate Adaptation & Evolution); Szalay & Delson (Evolutionary History of the Primates)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 67<br>
+<strong>Authoritative References:</strong> John G. Fleagle, <em>Primate Adaptation and Evolution</em> (3rd Ed., Academic Press, Ch. 12: Miocene Catarrhines, pp. 320–342); Frederick S. Szalay & Eric Delson, <em>Evolutionary History of the Primates</em> (Academic Press); Michael J. Benton, <em>Vertebrate Palaeontology</em> (4th Ed., Ch. 10); David R. Begun, <em>Fossil Primates of Europe</em> (Cambridge Univ. Press).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. The Catarrhine Radiation & Genus Pliopithecus</h3>
-<p>The evolutionary history of higher primates (Suborder Haplorhini, Infraorder <strong>Anthropoidea</strong> / Simiiformes) is divided into the New World monkeys (Platyrrhini) and the Old World higher primates (<strong>Catarrhini</strong>), which includes Old World monkeys (Cercopithecoidea), apes and humans (Hominoidea), and extinct stem groups. Among the most historically important and widely dispersed fossil catarrhines of the Eurasian Neogene is the extinct genus <strong>Pliopithecus</strong> (described by French paleontologist Édouard Lartet in 1837; Szalay & Delson, <em>Evolutionary History of the Primates</em>; Fleagle, <em>Primate Adaptation and Evolution</em>, 3rd ed., pp. 297–302).</p>
-
-<p><em>Pliopithecus</em> is recovered extensively from <strong>Upper Miocene to Lower Pliocene strata across Europe</strong> (France, Spain, Germany, Austria, Poland, Switzerland) and Asia (China). It represents an extinct branch of <strong>Anthropoids</strong> (specifically stem catarrhines belonging to the superfamily Pliopithecoidea, family Pliopithecidae) that dispersed from Africa into Eurasia following the closure of the Tethyan seaway and the establishment of the Gomphotherium Land Bridge (~18 Ma).</p>
-
-<h3>2. Morphological Hallmarks of Pliopithecus</h3>
-<p><em>Pliopithecus</em> displays a critical mixture of derived anthropoid specializations and primitive arboreal quadrupedal traits:</p>
-<ul>
-  <li><strong>True Anthropoid Dentition:</strong> Possesses the definitive catarrhine anthropoid dental formula:
-    $$\mathbf{2.1.2.3 / 2.1.2.3 = 32\ teeth}$$
-    (two incisors, one canine, two premolars, and three molars in each quadrant), identical to modern Old World monkeys and apes.</li>
-  <li><strong>The "Pliopithecine Triangle":</strong> The lower molars exhibit a unique, diagnostic morphological specialization known as the <em>pliopithecine triangle</em>—a distinct triangular wear facet/crest formed by the convergence of crests on the anterior aspect of the lower molars.</li>
-  <li><strong>Cranial & Postcranial Anatomy:</strong> Possesses complete postorbital closure (confirming its status as an <strong>anthropoid</strong>), forward-facing stereoscopic orbits, and a short snout. Postcranially, it was an agile, arboreal quadruped with a short tail, retaining a primitive entepicondylar foramen on the humerus (a feature lost in hominoids).</li>
-</ul>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q67/pliopithecus_anthropoid_skull_dentition.png" alt="Taxonomic Classification of Genus Pliopithecus">
-      <figcaption>
-        <strong>Figure 67.1: Systematic Paleontology of Pliopithecus (Miocene of Europe and Asia).</strong> Taxonomic table detailing <em>Pliopithecus</em> as an extinct genus of primitive catarrhine <strong>anthropoids</strong> (Infraorder Anthropoidea / Simiiformes), characterized by a 2.1.2.3 dental formula and the diagnostic pliopithecine triangle on lower molars.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-        
   </div>
+  
+  <!-- CARD 1: PLIOPITHECUS CLASSIFICATION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Genus Pliopithecus: Evolutionary Position Among the Anthropoidea</div>
+    <div class="card-body">
+      <p>The fossil primate <strong><em>Pliopithecus</em></strong> (named by French paleontologist Paul Gervais in 1849 from Middle Miocene strata in Sansan, France) represents one of the most famous and historically pivotal genera in tertiary vertebrate paleontology:</p>
+
+      <ul>
+        <li><strong>Taxonomic Classification:</strong> <em>Pliopithecus</em> is a quintessential genus of the <strong>Anthropoidea (Anthropoids / Simians)</strong>, belonging to the Superfamily <strong>Pliopithecoidea</strong> within the Parvorder <strong>Catarrhini</strong> (Old World higher primates).</li>
+        <li><strong>Geochronological & Geographic Distribution:</strong> It flourished during the <strong>Early to Late Miocene ($\sim 18-10\text{ Ma}$)</strong> and persisted into the basal Pliocene across Europe (France, Spain, Germany, Poland, Slovakia) and eastern Asia (China, e.g., <em>Pliopithecus zhanxiangi</em>).</li>
+        <li><strong>The First Eurasian Catarrhine:</strong> Following the closure of the Tethyan seaway and the establishment of the Gomphothere land bridge connecting Afro-Arabia to Eurasia at $\sim 19\text{ Ma}$, <em>Pliopithecus</em> was among the very first anthropoid lineages to migrate out of Africa and successfully colonize the subtropical forested belts of Europe and Asia.</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q67/pliopithecus_anthropoid_skull_dentition.png" alt="Pliopithecus Skull and Dentition">
+        <div class="tb-caption">
+          <strong>Figure 67.1 (Szalay & Delson 1979 / Fleagle 2013):</strong> Cranial and dental anatomy of <em>Pliopithecus antiquus</em>, illustrating complete postorbital closure, catarrhine dental formula ($2.1.2.3$), and the diagnostic "Pliopithecus triangle" on lower molars.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: ANTHROPOID SYNAPOMORPHIES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Anatomical Hallmarks of the Anthropoidea in Pliopithecus</div>
+    <div class="card-body">
+      <p><em>Pliopithecus</em> exhibits the full suite of diagnostic morphological characters that define higher primates (Anthropoids):</p>
+
+      <div class="formula-card">
+        <div class="formula-title">The Anthropoid Cranio-Dental Formula</div>
+        $$\text{Dental Formula: } \frac{2 \cdot 1 \cdot 2 \cdot 3}{2 \cdot 1 \cdot 2 \cdot 3} \times 2 = 32 \text{ Teeth} \quad \left(\mathbf{I}\frac{2}{2}, \mathbf{C}\frac{1}{1}, \mathbf{P}\frac{2}{2}, \mathbf{M}\frac{3}{3}\right)$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Possesses the definitive catarrhine dental formula with two premolars, identical to modern Old World monkeys, apes, and humans.</p>
+      </div>
+
+      <ul>
+        <li><strong>Complete Postorbital Closure:</strong> A solid bony wall (postorbital septum) separates the eye orbit from the temporal fossa, a critical anthropoid feature protecting the eyes during mastication.</li>
+        <li><strong>Fused Frontal Bones:</strong> The right and left frontal bones fuse into a single solid frontal plate across the metopic suture.</li>
+        <li><strong>Fused Mandibular Symphysis:</strong> The two dentary halves fuse completely at the chin midline.</li>
+        <li><strong>The "Pliopithecus Triangle":</strong> A distinctive, narrow, triangular crest or cingulum on the buccal side of the lower molar cusps (talonid basin), characteristic of pliopithecoids.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARISON MATRIX OF FOSSIL PRIMATES -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Detailed Matrix: Evolutionary Radiation of Miocene Primates</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Fossil Primate Genus</th>
+            <th>Taxonomic Superfamily</th>
+            <th>Locality & Epoch</th>
+            <th>Locomotor / Ecological Specialization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><em>Pliopithecus</em></strong> (Target)</td>
+            <td><strong>Pliopithecoidea (Stem Catarrhine Anthropoid)</strong></td>
+            <td>Europe & Asia (Miocene, $\sim 18-10\text{ Ma}$).</td>
+            <td>Arboreal quadruped; retains primitive tail; eats soft fruits.</td>
+          </tr>
+          <tr>
+            <td><strong><em>Proconsul</em></strong></td>
+            <td>Proconsuloidea (Stem Hominoidea)</td>
+            <td>East Africa (Early Miocene, $\sim 20-17\text{ Ma}$).</td>
+            <td>Tailless arboreal quadruped; ape-like brain and shoulder.</td>
+          </tr>
+          <tr>
+            <td><strong><em>Dryopithecus</em></strong></td>
+            <td>Hominoidea (Crown Hominoid / Ape)</td>
+            <td>Europe (Middle-Late Miocene, $\sim 12-9\text{ Ma}$).</td>
+            <td>Suspensory brachiator; Y-5 molar pattern; thin enamel.</td>
+          </tr>
+          <tr>
+            <td><strong><em>Sivapithecus</em></strong></td>
+            <td>Hominoidea (Ponginae / Ancestor of Orangutan)</td>
+            <td>Siwaliks of India & Pakistan ($\sim 12.5-8.5\text{ Ma}$).</td>
+            <td>Arboreal quadruped; oval eye orbits, dished face, thick molar enamel.</td>
+          </tr>
+          <tr>
+            <td><strong><em>Australopithecus</em></strong></td>
+            <td>Hominini (True Bipedal Hominid)</td>
+            <td>East & South Africa (Pliocene, $\sim 4-2\text{ Ma}$).</td>
+            <td><strong>Obligate terrestrial bipedalism</strong>; small brain, reduced canines.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q67. Pliopithecus is a genus of —__________ found in the Upper Miocene and Lower Pliocene strata of Europe and possibly Asia.</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Anthropoids</div>
-        <div class="opt-item "><strong>(B)</strong> Bipedal ape-like animals</div>
-        <div class="opt-item "><strong>(C)</strong> Lazarus taxa</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 67</div>
+        <div class="q-text">Pliopithecus is a genus of —__________ found in the Upper Miocene and Lower Pliocene strata of Europe and possibly Asia.</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Anthropoids</div>
+          <div class="opt-node">(B) Bipedal ape-like animals</div>
+          <div class="opt-node">(C) Lazarus taxa</div>
+          <div class="opt-node">(D) None of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        Verified Correct Answer: <strong>(A) Anthropoids</strong> [Pliopithecus is a celebrated fossil genus of higher primates belonging to the Anthropoidea (specifically stem-catarrhines), possessing an anthropoid skull and dental formula.]
       </div>
     </div>
-    
-<h3>Exam Question Analysis</h3>
-<p><strong>Prompt:</strong> "Pliopithecus is a genus of —__________ found in the Upper Miocene and Lower Pliocene strata of Europe and possibly Asia."</p>
-
-<h3>Option-by-Option Scientific Dissection</h3>
-<ul>
-  <li><strong>(A) Anthropoids (CORRECT):</strong> <em>Pliopithecus</em> is systematically classified within the Infraorder <strong>Anthropoidea</strong> (higher primates). As a stem catarrhine anthropoid, it displays true anthropoid cranial features (postorbital closure, stereoscopic vision) and the standard catarrhine dental formula (2.1.2.3). Every standard primate paleontology textbook classifies <em>Pliopithecus</em> under the anthropoid catarrhine radiation.</li>
-  <li><strong>(B) Bipedal ape-like animals (INCORRECT):</strong> <em>Pliopithecus</em> was strictly a small, quadrupedal arboreal climber and clamberer; it was <em>not</em> bipedal! Obligate bipedalism arose much later among hominins (e.g., <em>Australopithecus</em>, ~4 Ma).</li>
-  <li><strong>(C) Lazarus taxa (INCORRECT):</strong> A Lazarus taxon is an evolutionary term for a group that disappears from the fossil record for a long hiatus and then miraculously reappears alive or in younger strata (e.g., coelacanths). <em>Pliopithecus</em> is a standard, extinct fossil primate, not a Lazarus taxon.</li>
-  <li><strong>(D) None of these (INCORRECT):</strong> Option A is the accurate taxonomic placement.</li>
-</ul>
-
   </div>
+
+  <!-- CRITICAL DISSECTION CARDS -->
+  <div class="card option correct">
+    <div class="card-header bg-green">Correct Option: (A) Anthropoids</div>
+    <div class="card-body">
+      <p><strong>Detailed Primate Paleontological Forensic Analysis:</strong></p>
+      <ul>
+        <li>In primate taxonomy and vertebrate paleontology (Fleagle 2013, Ch. 12; Szalay & Delson 1979; Benton 2014), <strong><em>Pliopithecus</em></strong> is universally classified under the suborder/infraorder <strong>Anthropoidea (Anthropoids / Simians)</strong>.</li>
+        <li>It represents an ancient stem-catarrhine (higher primate) characterized by definitive anthropoid synapomorphies: complete postorbital closure of the eye orbits, fused mandibular symphysis, and a catarrhine dental formula of $2.1.2.3$.</li>
+        <li>It was the first major anthropoid radiation to spread into the Miocene forests of Europe and Asia.</li>
+        <li>Therefore, Option <strong>(A) Anthropoids</strong> is the exact, scientifically verified classification.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (B) Bipedal ape-like animals</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li><em>Pliopithecus</em> was <strong>not bipedal</strong>; postcranial skeletons (such as <em>Epipliopithecus vindobonensis</em> from Slovakia) prove that it was an arboreal <strong>quadrupedal monkey-like climber</strong> possessing a short external tail.</li>
+        <li>Bipedalism evolved tens of millions of years later in the hominin lineage (e.g., <em>Sahelanthropus, Ardipithecus, Australopithecus</em>) in Africa.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (C) Lazarus taxa</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>A <strong>Lazarus taxon</strong> is an organism that disappears from the fossil record during a mass extinction only to reappear much later (e.g., the coelacanth).</li>
+        <li><em>Pliopithecus</em> is a legitimate, well-documented extinct genus of fossil anthropoid primates, not an evolutionary disappearance-reappearance anomaly.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card option wrong">
+    <div class="card-header bg-red">Incorrect Distractor: (D) None of these</div>
+    <div class="card-body">
+      <p><strong>Detailed Refutation:</strong></p>
+      <ul>
+        <li>Because Option (A) Anthropoids is the precise taxonomic group to which <em>Pliopithecus</em> belongs, Option (D) is false.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Primate Systematic Classification Matrix</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Taxonomic Hierarchy</th>
-      <th>Classification for <em>Pliopithecus</em></th>
-      <th>Diagnostic Skeletal / Dental Characters</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Order</strong></td>
-      <td>Primates</td>
-      <td>Grasping pentadactyl hands, flattened nails instead of claws</td>
-    </tr>
-    <tr>
-      <td><strong>Suborder</strong></td>
-      <td>Haplorhini</td>
-      <td>Dry nose, complete postorbital wall, lack of tapetum lucidum</td>
-    </tr>
-    <tr style="background:#e0f2fe; font-weight:bold;">
-      <td>Infraorder</td>
-      <td><strong>Anthropoidea (Simiiformes)</strong></td>
-      <td>True higher primates; fused mandibular symphysis; complex brain</td>
-    </tr>
-    <tr>
-      <td><strong>Parvorder</strong></td>
-      <td>Catarrhini (Stem)</td>
-      <td>Dental formula 2.1.2.3; downward-pointing nostrils; bony tubular ear canal</td>
-    </tr>
-    <tr>
-      <td><strong>Superfamily</strong></td>
-      <td>Pliopithecoidea</td>
-      <td>Extinct Eurasian Neogene catarrhines; "pliopithecine triangle" on molars</td>
-    </tr>
-    <tr>
-      <td><strong>Genus</strong></td>
-      <td><em>Pliopithecus</em> (Lartet 1837)</td>
-      <td>Arboreal quadruped; short snout; European Upper Miocene</td>
-    </tr>
-  </tbody>
-</table>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: High-Level Taxonomy of the Primates</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Taxonomic Rank</th>
+            <th>Name of Clade</th>
+            <th>Diagnostic Defining Characteristics</th>
+            <th>Representative Genera</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Suborder</strong></td>
+            <td><strong>Strepsirrhini</strong> ("Wet-nosed")</td>
+            <td>Grooming claw, tooth comb, unfused symphysis, open postorbital bar.</td>
+            <td>Lemurs, Lorises, Galagos.</td>
+          </tr>
+          <tr>
+            <td><strong>Suborder</strong></td>
+            <td><strong>Haplorhini</strong> ("Dry-nosed")</td>
+            <td>Dry rhinarium, retinal fovea, postorbital closure.</td>
+            <td>Tarsiers + Anthropoidea.</td>
+          </tr>
+          <tr>
+            <td><strong>Infraorder</strong> (Target)</td>
+            <td><strong>Anthropoidea (Simiiformes)</strong></td>
+            <td><strong>Complete postorbital closure, fused frontals, fused mandibular symphysis.</strong></td>
+            <td><strong><em>Pliopithecus</em>, New World Monkeys, Old World Monkeys, Apes, Humans.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Parvorder</strong></td>
+            <td><strong>Catarrhini</strong></td>
+            <td>Narrow downward-facing nostrils; 2 premolars ($2.1.2.3$ dental formula).</td>
+            <td>Pliopithecoids, Cercopithecoids, Hominoids.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- 8 WORKED PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Problems: Primate Evolution & Anthropoid Paleontology</div>
+    <div class="card-body">
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 1: Dental Formula of Platyrrhines vs. Catarrhines</div>
+        <p>Contrast the dental formula of New World monkeys (Platyrrhini) with that of <em>Pliopithecus</em> and Old World higher primates (Catarrhini).</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Platyrrhini (New World Monkeys):</strong> Dental formula is $\frac{2.1.3.3}{2.1.3.3} \times 2 = 36 \text{ teeth}$ (retains <strong>three premolars</strong> in each quadrant).</li>
+          <li><strong>Catarrhini (<em>Pliopithecus</em>, Old World Monkeys, Apes):</strong> Dental formula is $\frac{2.1.2.3}{2.1.2.3} \times 2 = 32 \text{ teeth}$ (loss of the second premolar leaves <strong>two premolars</strong>, $\text{P}_3$ and $\text{P}_4$).</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 2: The Ectotympanic Tube in Catarrhine Crania</div>
+        <p>What primitive cranial feature in <em>Pliopithecus</em> demonstrates that it branched off before the divergence of modern catarrhines?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Modern catarrhines (cercopithecoids and hominoids) possess an extended, bony tubular <strong>ectotympanic tube</strong> leading to the ear canal. In <em>Pliopithecus</em>, the ectotympanic bone is a simple, primitive annulus (ring-like bone) fused to the bulla without a bony tube, proving it is a stem-catarrhine.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 3: The Siwalik Primate *Sivapithecus*</div>
+        <p>What primate fossil discovered in the Middle Siwalik beds of the Potwar Plateau and Ramnagar (India) is recognized as the direct ancestor of the modern Orangutan (*Pongo*)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><strong><em>Sivapithecus indicus</em></strong> (and <em>Sivapithecus sivalensis</em>). It shares unique cranial synapomorphies with living orangutans: vertically elongated oval eye orbits, narrow interorbital distance, concave "dished" facial profile, and smooth unsegmented subnasal alveolar plane.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 4: *Gigantopithecus bilaspurensis* in India</div>
+        <p>What is the significance of the fossil ape <em>Gigantopithecus</em> discovered in the Siwalik Hills of Himachal Pradesh?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p><em>Gigantopithecus bilaspurensis</em> (Late Miocene, $\sim 6-8\text{ Ma}$) and its Pleistocene descendant <em>Gigantopithecus blacki</em> represent the <strong>largest primates that ever lived</strong> (estimated body mass $>250-300\text{ kg}$). They possessed massive jaws with thick, flat-crowned molars adapted for chewing tough fibrous vegetation like bamboo.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 5: Postorbital Bar vs. Postorbital Septum</div>
+        <p>How does the orbit of a strepsirrhine prosimian (e.g., lemur) differ from an anthropoid like <em>Pliopithecus</em>?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <ul>
+          <li><strong>Strepsirrhines:</strong> Possess only a lateral <strong>postorbital bar</strong>; the orbit remains wide open to the temporal fossa posteriorly.</li>
+          <li><strong>Anthropoids (<em>Pliopithecus</em>):</strong> Possess a complete, bony <strong>postorbital septum / closure</strong>, separating the eye orbit into an enclosed cone that insulates the eye from chewing muscle vibrations.</li>
+        </ul>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 6: The Fayum Depression and Anthropoid Radiation</div>
+        <p>What famous geological locality in Egypt preserves the ancestral Eocene-Oligocene radiation of early anthropoids?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The <strong>Fayum Depression (Jebel Qatrani Formation)</strong>, which yielded the iconic stem-anthropoids and early catarrhines <em>Aegyptopithecus zeuxis</em>, <em>Propliopithecus</em>, and <em>Catopithecus</em> ($\sim 34-30\text{ Ma}$).</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 7: Brachiation vs. Quadrupedalism in Pliopithecus</div>
+        <p>Why did early researchers mistakenly classify <em>Pliopithecus</em> as a fossil gibbon (hylobatid)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>Early workers observed that <em>Pliopithecus</em> had relatively slender limbs and short facial proportions similar to modern gibbons. However, complete limb skeletons proved that its intermembral index was $\sim 90-95$ (equal arm and leg lengths typical of <strong>quadrupedal tree-climbers</strong>), completely lacking the extreme arm elongation (index $>130$) and mobile wrist joints required for true ricochetal brachiation.</p>
+      </div>
+
+      <div class="practice-box">
+        <div class="practice-title">Problem 8: Miocene Climate and Primate Extinction in Europe</div>
+        <p>Why did <em>Pliopithecus</em> and other apes disappear from Europe by the end of the Miocene ($\sim 8-5\text{ Ma}$)?</p>
+        <p><strong>Step-by-Step Solution:</strong></p>
+        <p>The Messinian salinity crisis and global tectonic cooling caused the warm, subtropical evergreen rainforests of Europe to be replaced by cold, dry, deciduous woodlands and open grasslands. As arboreal fruit-bearing trees disappeared, tropical frugivorous anthropoids like <em>Pliopithecus</em> and <em>Dryopithecus</em> were driven to regional extinction in Europe.</p>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
