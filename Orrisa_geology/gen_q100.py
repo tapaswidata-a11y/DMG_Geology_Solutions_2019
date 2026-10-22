@@ -1,0 +1,312 @@
+#!/usr/bin/env python3
+"""
+Q100 Generator: Granulometric Analysis & Sediment Grain-Size Distribution
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q100():
+    title = r"Q100: Sedimentology: Granulometric Grain-Size Distribution Analysis | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Sedimentology & Granulometry"
+    h1_title = "Q100: Granulometric Analysis: Grain-Size Distribution, Sieving, Settling & Statistical Metrics"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 100<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th/6th Ed., Ch. 3: Grain Size, pp. 55–75; Fig. 3.4); R.L. Folk and W.C. Ward (1957), <em>Brazos River Bar: A Study in the Significance of Grain Size Parameters</em> (Journal of Sedimentary Petrology); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 67–70); Maurice E. Tucker, <em>Sedimentary Petrology: An Introduction to the Origin of Sedimentary Rocks</em>."""
+
+    part1 = r"""
+  <!-- CARD 1: DEFINITION AND PRINCIPLES OF GRANULOMETRIC ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Etymology & Experimental Framework of Granulometric Analysis</div>
+    <div class="card-body">
+      <p>
+        In physical sedimentology, soil mechanics, and sedimentary petrology (Boggs, 2014, pp. 55–75; Folk & Ward, 1957; Bangar, p. 67), <strong>granulometric analysis</strong> (also termed <em>granulometry</em>, <em>mechanical grain-size analysis</em>, or <em>particle-size distribution analysis</em>) is the rigorous scientific procedure used to <strong>quantitatively determine the size frequency distribution and weight percentage of individual particle-size fractions</strong> comprising a sediment or disaggregated clastic rock sample.
+      </p>
+      <p>
+        The term is derived from the Latin <em>granulum</em> ("small grain or seed") and the Greek <em>metron</em> ("measure"). It provides the primary quantitative baseline for reconstructing ancient hydrodynamic transport mechanisms, depositional energy regimes, paleocurrent dynamics, and geotechnical engineering classifications.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q100/boggs_p60_granulometric_grain_size_analysis.png" alt="Granulometric Grain Size Cumulative Curves from Sam Boggs Jr.">
+        <div class="figure-caption">
+          <strong>Figure 100.1 — Cumulative Frequency Curves and Grain-Size Distribution Plots:</strong> Authentic textbook diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, p. 60). Illustrates cumulative weight percentage frequency curves plotted on arithmetic and probability scales, enabling graphical extraction of $\phi_5, \phi_{16}, \phi_{50}, \phi_{84}, \text{and } \phi_{95}$ percentiles.
+        </div>
+      </div>
+
+      <h4>Standard Laboratory Methodologies in Granulometric Analysis</h4>
+      <p>
+        Because sedimentary particles span a gigantic physical size range—from boulders ($> 256\text{ mm}$) to sub-micron colloidal clays ($< 0.001\text{ mm}$)—no single analytical instrument can measure the entire spectrum. Granulometric analysis employs integrated complementary methods:
+      </p>
+      <ul>
+        <li><strong>Sieve Analysis (Dry and Wet Sieving):</strong> Applied to the coarse sand and gravel fraction ($> 0.0625\text{ mm}$ or $< 4\phi$). A known dry mass of disaggregated sediment is shaken through a nested stack of standardized brass wire-mesh sieves (U.S. Standard / ASTM / Tyler mesh) arranged in order of decreasing aperture on a mechanical Ro-Tap shaker. The sediment retained on each sieve is weighed to $0.01\text{ g}$ precision.</li>
+        <li><strong>Sedimentation Analysis (Pipette and Hydrometer Methods):</strong> Applied to the fine silt and clay fraction ($< 0.0625\text{ mm}$ or $> 4\phi$). Governed by <strong>Stokes' Law</strong>, which dictates the terminal settling velocity ($v$) of spherical particles through a viscous fluid:
+          $$v = \frac{(\rho_s - \rho_f) g d^2}{18 \mu}$$
+          where $\rho_s$ is particle density ($2.65\text{ g/cm}^3$ for quartz), $\rho_f$ is fluid density, $g$ is gravitational acceleration, $\mu$ is dynamic viscosity of water, and $d$ is particle diameter. By withdrawing aliquots at fixed depths and times (pipette method) or measuring suspension density (hydrometer), particle diameters are calculated.</li>
+        <li><strong>Modern Automated Optical Methods:</strong> Laser diffraction particle size analyzers (Fraunhofer diffraction / Mie scattering), digital dynamic image analyzers, and automated settling tubes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: STATISTICAL PARAMETERS & GEOLOGICAL SIGNIFICANCE -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Folk and Ward (1957) Graphic Statistical Parameters & Environmental Signatures</div>
+    <div class="card-body">
+      <h4>Mathematical Derivation of Graphic Percentile Metrics</h4>
+      <p>
+        The data obtained from granulometric analysis are plotted as a cumulative frequency curve on semi-logarithmic or probability paper, from which critical phi-percentiles ($\phi = -\log_2 d_{\text{mm}}$) are extracted:
+      </p>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Statistical Parameter</th>
+            <th>Folk & Ward (1957) Formula</th>
+            <th>Physical & Geological Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Graphic Mean ($M_z$)</strong></td>
+            <td>$$M_z = \frac{\phi_{16} + \phi_{50} + \phi_{84}}{3}$$</td>
+            <td>Overall average grain size of the sediment; reflects peak hydrodynamic competence of the depositing fluid.</td>
+          </tr>
+          <tr>
+            <td><strong>Inclusive Graphic Standard Deviation ($\sigma_I$)</strong></td>
+            <td>$$\sigma_I = \frac{\phi_{84} - \phi_{16}}{4} + \frac{\phi_{95} - \phi_5}{6.6}$$</td>
+            <td><strong>Sorting</strong> (uniformity of grain sizes); reflects the constancy and efficiency of fluid velocity fluctuations.</td>
+          </tr>
+          <tr>
+            <td><strong>Inclusive Graphic Skewness ($Sk_I$)</strong></td>
+            <td>$$Sk_I = \frac{\phi_{16} + \phi_{84} - 2\phi_{50}}{2(\phi_{84} - \phi_{16})} + \frac{\phi_5 + \phi_{95} - 2\phi_{50}}{2(\phi_{95} - \phi_5)}$$</td>
+            <td>Asymmetry of the distribution. Positive ($> 0$): excess fine tail (river channels). Negative ($< 0$): excess coarse tail (beach surf zones winnowed of fines).</td>
+          </tr>
+          <tr>
+            <td><strong>Graphic Kurtosis ($K_G$)</strong></td>
+            <td>$$K_G = \frac{\phi_{95} - \phi_5}{2.44(\phi_{75} - \phi_{25})}$$</td>
+            <td>Peakedness of the frequency curve relative to normal Gaussian bell curve ($K_G = 1.0$ is Mesokurtic). Measures mixing of bimodalities.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Folk's Sorting Classification Scale ($\sigma_I$)</h4>
+      <p>
+        $\sigma_I < 0.35\phi$: Very well sorted | $0.35\text{--}0.50\phi$: Well sorted | $0.50\text{--}0.71\phi$: Moderately well sorted | $0.71\text{--}1.00\phi$: Moderately sorted | $1.00\text{--}2.00\phi$: Poorly sorted | $> 2.00\phi$: Very poorly sorted.
+      </p>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 100:</strong> An analysis that helps to determine grain size and percentage of the individual size fractions in the specific sediment sample is called :
+      </div>
+      <div class="options-grid">
+        <div class="option-item correct-option"><strong>(A)</strong> Granulometric analysis</div>
+        <div class="option-item"><strong>(B)</strong> Gravimetric analysis</div>
+        <div class="option-item"><strong>(C)</strong> Sedimentation analysis</div>
+        <div class="option-item"><strong>(D)</strong> Both (A) and (B) are correct</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(A) Granulometric analysis</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-correct">
+        <div class="option-badge opt-a">Option (A) Confirmed — Granulometric Analysis</div>
+        <p>
+          <strong>Correct:</strong> By universal scientific, engineering, and sedimentological definition (Boggs, 2014, p. 55; Bangar, p. 67; Folk, 1980), <strong>granulometric analysis</strong> is the exact and comprehensive geological term for the laboratory determination of particle sizes and the relative weight percentages of individual size fractions in a sediment or soil sample. It encompasses all grain sizes (gravel, sand, silt, and clay) across both sieving and sedimentation procedures.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Gravimetric Analysis</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Gravimetric analysis</strong> is a classical quantitative analytical chemistry technique that determines the mass or concentration of an analyte based on measuring the mass of a solid precipitate (e.g., precipitating dissolved sulfate as insoluble barium sulfate $\text{BaSO}_4$ and weighing it). Gravimetric analysis measures chemical elemental mass, not the physical grain-size distribution or size fractions of sediment particles.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Sedimentation Analysis</div>
+        <p>
+          <strong>Incorrect:</strong> While <em>sedimentation analysis</em> (pipette/hydrometer method based on Stokes' Law) is a recognized laboratory technique, it is strictly <strong>one specific sub-method</strong> restricted exclusively to measuring the fine silt-and-clay fraction ($< 0.0625\text{ mm}$). It cannot determine the grain size of gravels or coarse sands, which settle too rapidly for laminar Stokes' flow. Therefore, it does not represent the overarching, comprehensive analysis for the entire sediment sample; that universal discipline is <strong>granulometric analysis</strong>.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Both (A) and (B) are Correct</div>
+        <p>
+          <strong>Incorrect:</strong> Because gravimetric analysis is a chemical technique having nothing to do with determining physical grain-size distributions, option (D) is entirely fallacious. The single, unequivocally verified correct answer is <strong>(A) Granulometric analysis</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comparative Matrix: Particle Size Analysis Techniques & Analytical Disciplines</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Analytical Discipline / Method</th>
+            <th>Scientific Objective</th>
+            <th>Target Physical Property</th>
+            <th>Applicable Particle Size Range</th>
+            <th>Primary Governing Principle / Law</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Granulometric Analysis (Comprehensive)</strong></td>
+            <td>Full particle-size distribution and percentage fractions</td>
+            <td>Physical particle intermediate diameter ($b$-axis) / settling diameter</td>
+            <td><strong>Entire spectrum: Boulders to fine clay ($> 256\text{ mm to } < 0.001\text{ mm}$)</strong></td>
+            <td>Integrated Sieve + Sedimentation + Laser diffraction methods</td>
+          </tr>
+          <tr>
+            <td><strong>Sieve Analysis</strong></td>
+            <td>Size distribution of coarse fractions</td>
+            <td>Intermediate physical diameter passing square mesh apertures</td>
+            <td>Gravel and sand ($> 0.0625\text{ mm}$ or $< 4\phi$)</td>
+            <td>Mechanical retention on standardized mesh screens</td>
+          </tr>
+          <tr>
+            <td><strong>Sedimentation Analysis</strong></td>
+            <td>Size distribution of fine mud fractions</td>
+            <td>Equivalent spherical settling velocity ($v$)</td>
+            <td>Silt and clay ($< 0.0625\text{ mm}$ or $> 4\phi$)</td>
+            <td><strong>Stokes' Law of settling in viscous fluids:</strong> $v = \frac{(\rho_s - \rho_f) g d^2}{18\mu}$</td>
+          </tr>
+          <tr>
+            <td><strong>Gravimetric Analysis</strong></td>
+            <td>Quantitative chemical analyte concentration</td>
+            <td>Total chemical precipitate mass</td>
+            <td>Molecular / ionic scale in dissolved solution</td>
+            <td>Stoichiometric chemical precipitation and analytical balance weighing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>A $200.0\text{ g}$ dry sediment sample is processed through a granulometric sieve stack. The weights retained are: Gravel ($> 2\text{ mm}$) = $20.0\text{ g}$; Sand ($2.0\text{ to } 0.0625\text{ mm}$) = $150.0\text{ g}$; Mud ($< 0.0625\text{ mm}$) in pan = $30.0\text{ g}$. Calculate the percentage fractions and classify the sediment on a Folk (1954) ternary diagram.</p>
+        <p><strong>Solution:</strong>
+          - Gravel fraction: $\frac{20.0}{200.0} \times 100 = 10.0\%$
+          - Sand fraction: $\frac{150.0}{200.0} \times 100 = 75.0\%$
+          - Mud fraction: $\frac{30.0}{200.0} \times 100 = 15.0\%$
+          - Sand : Mud ratio = $75 : 15 = 5 : 1$.
+          On Folk's Gravel-Sand-Mud (G-S-M) ternary classification diagram, a sediment containing between $5\%\text{ and } 30\%$ gravel with a sand-to-mud ratio $> 9:1$ is a "gravelly sand", but here the sand:mud ratio is $5:1$ (between $1:1$ and $9:1$), classifying it formally as a <strong>gravelly muddy sand</strong>.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>From the cumulative frequency curve of an estuarine sand sample, the following phi-percentile values are read: $\phi_5 = 1.2$, $\phi_{16} = 1.8$, $\phi_{50} = 2.5$, $\phi_{84} = 3.2$, $\phi_{95} = 4.0$. Calculate Folk and Ward's Inclusive Graphic Standard Deviation ($\sigma_I$) and interpret the sorting.</p>
+        <p><strong>Solution:</strong>
+          Using Folk and Ward's formula:
+          $$\sigma_I = \frac{\phi_{84} - \phi_{16}}{4} + \frac{\phi_{95} - \phi_5}{6.6}$$
+          $$\sigma_I = \frac{3.2 - 1.8}{4} + \frac{4.0 - 1.2}{6.6} = \frac{1.4}{4} + \frac{2.8}{6.6} = 0.350 + 0.424 = 0.774\phi$$
+          According to Folk's sorting scale, $\sigma_I$ between $0.71\phi$ and $1.00\phi$ is classified as <strong>Moderately Sorted</strong>.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>Using the percentile values from Problem 2, calculate Folk and Ward's Inclusive Graphic Skewness ($Sk_I$) and interpret its physical meaning.</p>
+        <p><strong>Solution:</strong>
+          The formula for Inclusive Graphic Skewness is:
+          $$Sk_I = \frac{\phi_{16} + \phi_{84} - 2\phi_{50}}{2(\phi_{84} - \phi_{16})} + \frac{\phi_5 + \phi_{95} - 2\phi_{50}}{2(\phi_{95} - \phi_5)}$$
+          Substituting values:
+          $$Sk_I = \frac{1.8 + 3.2 - 2(2.5)}{2(3.2 - 1.8)} + \frac{1.2 + 4.0 - 2(2.5)}{2(4.0 - 1.2)}$$
+          $$Sk_I = \frac{5.0 - 5.0}{2(1.4)} + \frac{5.2 - 5.0}{2(2.8)} = 0 + \frac{0.2}{5.6} \approx +0.036$$
+          A skewness between $-0.10$ and $+0.10$ is classified as <strong>Near-Symmetrical</strong>, indicating that the grain size distribution closely approximates a normal, symmetrical Gaussian bell curve without an excessive tail of coarse or fine grains.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>Calculate the terminal settling velocity ($v$) of a quartz sphere ($d = 0.02\text{ mm} = 2 \times 10^{-5}\text{ m}$, fine silt) falling through water at $20^\circ\text{C}$ according to Stokes' Law. Given: $\rho_s = 2650\text{ kg/m}^3$, $\rho_f = 1000\text{ kg/m}^3$, $g = 9.81\text{ m/s}^2$, dynamic viscosity of water $\mu = 1.002 \times 10^{-3}\text{ Pa}\cdot\text{s}$.</p>
+        <p><strong>Solution:</strong>
+          Stokes' Law formula:
+          $$v = \frac{(\rho_s - \rho_f) g d^2}{18 \mu}$$
+          Substituting values:
+          $$v = \frac{(2650 - 1000) \times 9.81 \times (2 \times 10^{-5})^2}{18 \times (1.002 \times 10^{-3})}$$
+          $$v = \frac{1650 \times 9.81 \times 4 \times 10^{-10}}{1.8036 \times 10^{-2}} = \frac{6.4746 \times 10^{-6}}{1.8036 \times 10^{-2}} \approx 3.59 \times 10^{-4}\text{ m/s} = 0.359\text{ mm/s}$$
+          The fine silt grain settles at approximately $0.36\text{ mm/s}$ (or $1.29\text{ m/hour}$).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>Why does Stokes' Law fail when applied to coarse sand particles ($d > 0.2\text{ mm}$) settling in water?</p>
+        <p><strong>Solution:</strong>
+          Stokes' Law strictly assumes <strong>pure laminar flow</strong> around the settling sphere with a Reynolds number:
+          $$Re = \frac{\rho_f v d}{\mu} < 0.5\text{ to } 1.0$$
+          For particles coarser than $\sim 0.1\text{--}0.2\text{ mm}$, settling velocities are sufficiently high that flow separation occurs behind the particle, shedding turbulent vortices and creating form drag (inertial drag) that exceeds viscous skin friction. Under turbulent drag, settling velocity becomes proportional to $\sqrt{d}$ rather than $d^2$, rendering Stokes' Law invalid.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>What is a Passega C-M diagram in sedimentology and how are the parameters $C$ and $M$ obtained from granulometric analysis?</p>
+        <p><strong>Solution:</strong>
+          A <strong>Passega C-M diagram</strong> (Passega, 1957, 1964) is a bivariate plot used to determine the hydrodynamic mechanism of sediment deposition (graded suspension, uniform suspension, rolled traction, or pelagic settling). The parameters are:
+          - <strong>$C$ (One-percentile grain size, $\phi_1$ in microns):</strong> Represents the coarsest fraction transported by the current, monitoring peak turbulence competence.
+          - <strong>$M$ (Median grain size, $\phi_{50}$ in microns):</strong> Represents the average hydrodynamic energy of the depositing fluid.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>Why do beach foreshore sands characteristically exhibit negative skewness ($Sk_I < 0$), whereas river channel sands exhibit positive skewness ($Sk_I > 0$)?</p>
+        <p><strong>Solution:</strong>
+          - <strong>Beach Foreshore Sands ($Sk_I < 0$, Negative / Coarse-skewed):</strong> Continuous swash and backwash wave currents relentlessly winnow away fine silt and clay particles into offshore deep water, leaving a lag of coarse particles (excess coarse tail, negative phi skewness).
+          - <strong>River Channel Sands ($Sk_I > 0$, Positive / Fine-skewed):</strong> Fluvial river currents experience periodic drops in discharge and velocity, causing fine suspension mud and silt to settle into intergranular pore spaces among bedload sand grains, adding an excess tail of fine grains (positive phi skewness).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>Explain why the Wentworth phi ($\phi$) logarithmic transformation ($\phi = -\log_2 d_{\text{mm}}$) is universally preferred over metric millimeter scales in sedimentary granulometry.</p>
+        <p><strong>Solution:</strong>
+          The Wentworth phi transformation provides two crucial advantages:
+          1. <strong>Natural Logarithmic Scaling:</strong> Natural sediments cover several orders of magnitude in diameter ($0.001\text{ mm to } 1000\text{ mm}$). Arithmetic millimeter plots severely bunch together the fine sand, silt, and clay fractions. Using a $\log_2$ scale expands these fine intervals equally.
+          2. <strong>Gaussian Normalization:</strong> Most natural hydrodynamic sorting processes generate grain-size distributions that follow a <strong>log-normal</strong> distribution. Transforming grain diameter to $-\log_2 d$ converts a skewed log-normal curve into a symmetrical Gaussian bell curve, enabling straightforward statistical analysis (mean, standard deviation, skewness, kurtosis).
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    html = wrap_html(
+        q_num=100,
+        title=title,
+        badge=badge,
+        h1_title=h1_title,
+        meta_text=meta_text,
+        part1_content=part1,
+        part2_content=part2,
+        part3_content=part3
+    )
+
+    out_file = os.path.join(SOLUTIONS_DIR, "Q100_Granulometric_Analysis_Grain_Size_Complete_Guide.html")
+    with open(out_file, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q100: {out_file} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q100()

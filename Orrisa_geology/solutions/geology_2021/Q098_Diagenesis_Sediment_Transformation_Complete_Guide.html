@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q98: Sedimentary Processes - Diagenesis vs Lithification | OPSC Geology 2021 Masterclass</title>
+<title>Q098: Sedimentary Petrology: Diagenesis & Physical-Chemical Sediment Transformation | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,228 +89,581 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q98" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentary Petrology</div>
-    <h1>Q98: Sedimentary Processes - Diagenesis vs Lithification</h1>
+    <div class="badge">GEO - 2/21 • Sedimentary Petrology & Diagenesis</div>
+    <h1>Q098: Diagenesis: Post-Depositional Physical, Chemical & Biological Transformations of Sediments</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, Ch. 8, p. 180)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 98<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th/6th Ed., Ch. 5: Sandstones / Diagenesis, pp. 175–190; Fig. 5.25); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 68–72, 170); Maurice E. Tucker, <em>Sedimentary Petrology: An Introduction to the Origin of Sedimentary Rocks</em>; F.J. Pettijohn, P.E. Potter, and R. Siever, <em>Sand and Sandstone</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Post-Depositional Processes</h3>
-<div class="question-box">
-  <p><strong>Question 98:</strong> The physical or chemical transformation of sediments or soil by geological processes is termed as :</p>
-  <ul>
-    <li>(A) Diagenesis</li>
-    <li>(B) Petrogenesis</li>
-    <li>(C) Lithification</li>
-    <li>(D) Crustificaton</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(A) Diagenesis</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q98/boggs_p180_diagenesis_stages.png" alt="Diagenesis Stages - Compaction and Cementation">
-      <figcaption>
-        <strong>Figure 98.1: Stages and Regimes of Sedimentary Diagenesis.</strong> Authentic diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, Ch. 8, p. 180). Defines diagenesis as the total post-depositional physical and chemical alteration of sediment prior to metamorphism.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: DEFINITION AND PETROLOGIC FRAMEWORK OF DIAGENESIS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Temperature-Pressure Boundaries & Framework of Diagenesis</div>
+    <div class="card-body">
+      <p>
+        In sedimentary geology and petroleum geoscience (Boggs, 2014, pp. 175–190; Tucker, 2001; Pettijohn et al., 1987), <strong>diagenesis</strong> is formally defined as the <strong>sum total of all physical, chemical, and biological changes and transformations</strong> that a sediment or soil undergoes after its initial deposition, during and after its burial, up to the lowest-grade boundary of metamorphism.
+      </p>
+      <p>
+        The term was introduced into geological science in 1888 by the Austrian geologist Carl Wilhelm von Gümbel. The pressure-temperature window of diagenesis encompasses surface conditions up to temperatures of approximately <strong>$200^\circ\text{C}$ to $250^\circ\text{C}$</strong> and lithostatic burial pressures of approximately <strong>$1\text{ to } 2\text{ kbar}$</strong> (depths of $\sim 5\text{ to } 7\text{ km}$), beyond which processes enter the realm of very low-grade metamorphism (anchizone / sub-greenschist facies).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q98/boggs_p180_diagenesis_stages.png" alt="Stages and Regimes of Diagenesis from Sam Boggs Jr.">
+        <div class="figure-caption">
+          <strong>Figure 98.1 — Chronological and Depth Stages of Sedimentary Diagenesis:</strong> Authentic textbook diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, p. 180). Shows the tripartite diagenetic framework: Eodiagenesis (surface/shallow burial), Mesodiagenesis (deep burial compaction and thermal maturation), and Telodiagenesis (uplift and meteoric weathering).
+        </div>
+      </div>
+
+      <h4>The Tripartite Stages of Diagenesis</h4>
+      <p>
+        According to the widely accepted classification of Choquette and Pray (1970) and Schmidt and McDonald (1979), diagenesis is subdivided into three distinct chronological and depth regimes:
+      </p>
+      <ol>
+        <li><strong>Eodiagenesis (Early Diagenesis):</strong> Operates at or immediately beneath the depositional surface (depths from $0\text{ to a few hundred meters}$). Governed by pore fluids chemically linked to the surface environment (marine, lacustrine, meteoric), active bioturbation by benthic organisms, microbial decomposition of organic matter (aerobic respiration, sulfate reduction, methanogenesis), and early cementation (e.g., micritic calcite crusts, siderite concretions).</li>
+        <li><strong>Mesodiagenesis (Burial Diagenesis):</strong> Occurs during progressive deep basin burial (depths of $1\text{ to } 5+\text{ km}$, temperatures $50\text{--}200^\circ\text{C}$). Driven by increasing overburden stress and geothermal heat:
+          <ul>
+            <li><strong>Mechanical Compaction:</strong> Reorientation and ductile degranulation of clasts, repacking grains from loose cubic to tight rhombohedral packing, causing drastic porosity reduction.</li>
+            <li><strong>Chemical Compaction (Pressure Solution):</strong> Intergranular dissolution at grain contact points under high differential stress, developing concavo-convex contacts, sutured contacts, and macroscopic stylolites.</li>
+            <li><strong>Authigenesis & Cementation:</strong> Precipitation of syntaxial quartz overgrowths, poikilotopic carbonate cements, and authigenic clay minerals (kaolinite, illite).</li>
+            <li><strong>Smectite-to-Illite Transition:</strong> Thermally driven clay dehydration releasing bound interlayer water into pore networks: $\text{Smectite} + \text{K}^+ \xrightarrow{60\text{--}120^\circ\text{C}} \text{Illite} + \text{Quartz} + \text{Water}$.</li>
+            <li><strong>Dissolution & Secondary Porosity:</strong> Leaching of unstable feldspars and carbonates by acidic pore waters generated from kerogen decarboxylation.</li>
+          </ul>
+        </li>
+        <li><strong>Telodiagenesis (Uplift Diagenesis / Retrograde Diagenesis):</strong> Occurs when deeply buried sedimentary rocks are tectonically uplifted and brought back into contact with oxidizing, cool meteoric groundwaters, driving dissolution of carbonate cements, oxidation of pyrite to iron oxides/hydroxides, and kaolinitization of remaining feldspars.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CARD 2: DIAGENESIS VS. LITHIFICATION -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Critical Distinction: Diagenesis vs. Lithification & Petrogenesis</div>
+    <div class="card-body">
+      <h4>Why Lithification is Only a Subset of Diagenesis</h4>
+      <p>
+        A frequent point of confusion among geology students is equating <em>diagenesis</em> with <em>lithification</em>. They are fundamentally distinct in scope:
+      </p>
+      <ul>
+        <li><strong>Lithification (Consolidation):</strong> The specific process of turning loose, unconsolidated sediment into solid rock through mechanical compaction and intergranular mineral cementation.</li>
+        <li><strong>Diagenesis (The Overarching Domain):</strong> Encompasses lithification, but also includes processes that operate in the <em>opposite</em> direction—such as <strong>leaching, dissolution, and secondary porosity creation</strong>, where solid rock is partially dissolved by acidic fluids, increasing void space and weakening rock competence. Diagenesis also includes recrystallization, mineral polymorphism, and isotopic re-equilibration.</li>
+      </ul>
+
+      <h4>Refutation of Distractor Terms</h4>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Geological Term</th>
+            <th>Rigorous Scientific Definition</th>
+            <th>Scope & Typical Usage</th>
+            <th>Governing Geological Regime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Diagenesis</strong></td>
+            <td>All post-depositional physical, chemical, and biological transformations of sediments and soils prior to metamorphism</td>
+            <td>Comprehensive sedimentary petrology, soil genesis, and petroleum reservoir evolution</td>
+            <td>Sedimentary domain ($T < 200\text{--}250^\circ\text{C}$, $P < 2\text{ kbar}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Petrogenesis</strong></td>
+            <td>The origin, evolution, and formation history of rocks in general</td>
+            <td>Predominantly utilized in igneous petrology (magmatic differentiation, partial melting) and metamorphic petrology</td>
+            <td>All geological domains (igneous, metamorphic, sedimentary)</td>
+          </tr>
+          <tr>
+            <td><strong>Lithification</strong></td>
+            <td>The physical consolidation of loose sediment into coherent rock via compaction and cementation</td>
+            <td>Sub-process of diagenesis; excludes dissolution and secondary porosity generation</td>
+            <td>Sedimentary diagenetic sub-process</td>
+          </tr>
+          <tr>
+            <td><strong>Crustification</strong></td>
+            <td>Concentric or crust-like banding of mineral crystals lining hydrothermal veins or cavities</td>
+            <td>Ore geology and hydrothermal mineral deposit textures</td>
+            <td>Hydrothermal / Epithermal vein filling</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q98. The physical or chemical transformation of sediments or soil by geological processes is termed as :</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 98:</strong> The physical or chemical transformation of sediments or soil by geological processes is termed as :
+      </div>
       <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Diagenesis</div>
-        <div class="opt-item "><strong>(B)</strong> Petrogenesis</div>
-        <div class="opt-item "><strong>(C)</strong> Lithification</div>
-        <div class="opt-item "><strong>(D)</strong> Crustificaton</div>
+        <div class="option-item correct-option"><strong>(A)</strong> Diagenesis</div>
+        <div class="option-item"><strong>(B)</strong> Petrogenesis</div>
+        <div class="option-item"><strong>(C)</strong> Lithification</div>
+        <div class="option-item"><strong>(D)</strong> Crustificaton</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(A) Diagenesis</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Diagenesis vs Lithification</h3>
-<p>
-<strong>Diagenesis</strong> encompasses the entire collective suite of physical, chemical, and biological processes that transform unconsolidated sediment or soil following deposition, through shallow and deep burial, up to the boundary of low-grade metamorphism ($T pprox 200^\circ	ext{C}$, $P pprox 1	ext{--}2	ext{ kbar}$):
-</p>
-<ul>
-  <li><strong>Major Diagenetic Processes:</strong>
-    <ol>
-      <li><strong>Compaction:</strong> Mechanical rearrangement of framework grains under overburden pressure, reducing porosity and expelling interstitial water.</li>
-      <li><strong>Cementation:</strong> Chemical precipitation of mineral phases (quartz, calcite, hematite) into pore spaces, binding clasts together.</li>
-      <li><strong>Dissolution:</strong> Leaching of unstable framework grains (feldspars, carbonate shells) creating secondary porosity.</li>
-      <li><strong>Authigenesis & Recrystallization:</strong> In-situ crystallization of new diagenetic minerals (zeolites, illite, chlorite) and recrystallization of aragonite to calcite.</li>
-    </ol>
-  </li>
-  <li><strong>Lithification:</strong> A specific sub-process of diagenesis that converts loose sediment strictly into solid coherent rock (primarily compaction + cementation). Diagenesis is the broader, overarching geological term for all physical and chemical transformations.</li>
-  <li><strong>Petrogenesis:</strong> The study of the origin and evolution of rocks in general (including igneous magmatic differentiation and high-grade metamorphism).</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-correct">
+        <div class="option-badge opt-a">Option (A) Confirmed — Diagenesis</div>
+        <p>
+          <strong>Correct:</strong> By universal scientific definition in geology (Boggs, 2014, p. 175; Bangar, p. 68; Pettijohn et al., 1987), <strong>diagenesis</strong> is the exact term designating the entire spectrum of physical, chemical, and biological transformations that alter sediments or soils after deposition, throughout burial and compaction, up to the threshold of regional metamorphism. The question's formulation ("physical or chemical transformation of sediments or soil by geological processes") matches this textbook definition word for word.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Petrogenesis</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Petrogenesis</strong> (from Greek <em>petra</em> = rock + <em>genesis</em> = origin) is the broad branch of petrology that deals with the origin, historical evolution, and chemical genesis of rocks in general. It is most commonly applied to igneous rocks (e.g., magma generation, partial melting, fractional crystallization) and metamorphic rocks (anatexis, metamorphic reactions). It does not specifically refer to the post-depositional transformation of sediments or soils.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Lithification</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Lithification</strong> refers strictly and narrowly to the process of converting loose, soft sediment into solid, cohesive rock (primarily via mechanical compaction and cement precipitation). It is merely <strong>one individual sub-stage</strong> within the much broader domain of diagenesis. Diagenesis includes many major chemical transformations that do not consolidate rock—such as the creation of secondary dissolution porosity, dolomitization, neoformation of clay minerals, and telodiagenetic weathering.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Crustification</div>
+        <p>
+          <strong>Incorrect:</strong> In economic geology and mineral deposit petrography, <strong>crustification</strong> refers to a distinct texture in epigenetic hydrothermal mineral veins, where successive crusts or crystalline layers of different minerals (e.g., quartz, sphalerite, galena, calcite) are deposited on the walls of an open fracture or cavity. It has no relevance to the post-depositional alteration of sedimentary beds or soils.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option A (Diagenesis) is correct:</strong> The comprehensive geological term for all post-depositional physical and chemical modifications of sediments.</li>
-  <li><strong>Option B (Petrogenesis):</strong> Broad science of rock origin across all realms.</li>
-  <li><strong>Option C (Lithification):</strong> Subset of diagenesis referring only to hardening/solidification.</li>
-  <li><strong>Option D (Crustification):</strong> Hydrothermal vein texture where mineral crusts line cavity walls.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Breakdown of Major Diagenetic Processes in Sedimentary Basins</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Diagenetic Process</th>
+            <th>Type of Transformation</th>
+            <th>Driving Mechanism / Physical Conditions</th>
+            <th>Impact on Porosity & Permeability</th>
+            <th>Typical Petrographic Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mechanical Compaction</strong></td>
+            <td>Physical transformation</td>
+            <td>Increasing vertical effective overburden stress ($\sigma'_v$)</td>
+            <td>Severe porosity destruction (porosity drops from $40\text{--}50\%$ to $15\text{--}25\%$)</td>
+            <td>Grain reorientation, bending of ductile mica flakes, fracture of brittle grains</td>
+          </tr>
+          <tr>
+            <td><strong>Pressure Solution (Stylolitization)</strong></td>
+            <td>Chemical transformation</td>
+            <td>High differential stress at grain contact points</td>
+            <td>Porosity reduction; source of dissolved silica/calcite for cements</td>
+            <td>Sutured grain contacts, serrated zig-zag stylolitic seams with clay residue</td>
+          </tr>
+          <tr>
+            <td><strong>Authigenic Cementation</strong></td>
+            <td>Chemical precipitation</td>
+            <td>Supersaturation of pore fluids with respect to mineral phases</td>
+            <td>Destruction of intergranular void space and pore throats</td>
+            <td>Syntaxial quartz overgrowths, poikilotopic calcite crystals, pore-filling kaolinite</td>
+          </tr>
+          <tr>
+            <td><strong>Dissolution (Leaching)</strong></td>
+            <td>Chemical transformation</td>
+            <td>Undersaturated acidic pore fluids (carbonic/organic acids from kerogen maturation)</td>
+            <td><strong>Enhancement</strong> of porosity (secondary porosity creation: $+5\text{ to } 15\%$)</td>
+            <td>Skeletal feldspar remnants, oversized pores, biomoldic/vuggy pores</td>
+          </tr>
+          <tr>
+            <td><strong>Dolomitization</strong></td>
+            <td>Chemical replacement</td>
+            <td>Circulation of warm, Mg-rich brines: $2\text{CaCO}_3 + \text{Mg}^{2+} \rightarrow \text{CaMg(CO}_3)_2 + \text{Ca}^{2+}$</td>
+            <td>Theoretical $13\%$ increase in intercrystalline pore space</td>
+            <td>Idiotopic to xenotopic mosaics of rhombohedral dolomite crystals</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>A quartz sandstone at $3000\text{ m}$ burial depth in a sedimentary basin exhibits intergranular porosity of $18\%$. Petrographic examination shows that $8\%$ of this porosity consists of oversized pores containing corroded, skeletal remnants of K-feldspar. Classify this porosity and explain the diagenetic reaction responsible.</p>
+        <p><strong>Solution:</strong>
+          The $8\%$ porosity represents <strong>secondary dissolution porosity</strong> generated during <strong>mesodiagenesis</strong>. The reaction is driven by acidic pore fluids generated during the thermal maturation of organic matter (kerogen), which releases carbon dioxide and organic carboxylic acids at temperatures of $80\text{--}120^\circ\text{C}$. The acidic fluids aggressively leach unstable detrital K-feldspar:
+          $$2\text{KAlSi}_3\text{O}_8 + 2\text{H}^+ + 9\text{H}_2\text{O} \rightarrow \text{Al}_2\text{Si}_2\text{O}_5(\text{OH})_4\text{ (kaolinite)} + 4\text{H}_4\text{SiO}_4 + 2\text{K}^+$$
+          dissolving the feldspar interior and leaving behind empty oversized dissolution moldic pores.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Explain how pressure solution (chemical compaction) in sandstones acts as an internal source of silica for syntaxial quartz overgrowth cements.</p>
+        <p><strong>Solution:</strong>
+          Under high vertical lithostatic stress, the stress concentrated at grain-to-grain contact points exceeds the hydrostatic pore-fluid pressure. According to the <strong>Riecke Principle</strong>, mineral solubility increases with directed compressive stress. Consequently, quartz selectively dissolves at grain contact points. The dissolved aqueous silica ($\text{H}_4\text{SiO}_4$) diffuses outward into adjacent low-stress, open pore spaces where fluid is supersaturated relative to hydrostatic stress, precipitating onto detrital quartz grains as syntaxial quartz overgrowths.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>What is a "stylolite" in sedimentary petrology, and in which rocks are stylolites most prominently developed?</p>
+        <p><strong>Solution:</strong>
+          A <strong>stylolite</strong> is an irregular, serrated, suture-like planar or undulating seam formed by localized, intense chemical compaction (pressure solution). Along the stylolite, substantial thicknesses of the host rock have been completely dissolved away, leaving behind a thin insoluble residue of clay minerals, iron oxides, organic carbon, and heavy minerals. Stylolites are most prominently developed in <strong>carbonates (limestones and dolomites)</strong> and well-sorted quartzose sandstones.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>Explain the smectite-to-illite transformation during burial diagenesis and state its significance as a geothermometer in petroleum exploration.</p>
+        <p><strong>Solution:</strong>
+          With increasing burial depth and temperature, expandable smectite reacts with available potassium (from dissolving K-feldspar) to form non-expandable illite through a series of mixed-layer illite/smectite (I/S) intermediates:
+          $$\text{Smectite} + \text{K}^+ + \text{Al}^{3+} \xrightarrow{60\text{--}140^\circ\text{C}} \text{Illite} + \text{Quartz} + \text{H}_2\text{O}$$
+          The percentage of illite layers in mixed-layer I/S clays increases progressively with temperature (e.g., $80\%$ illite layers corresponds to $\sim 100\text{--}120^\circ\text{C}$). This transformation serves as an invaluable <strong>inorganic geothermometer</strong> to map peak paleotemperatures and assess whether organic source rocks have entered the "oil generation window" ($60\text{--}120^\circ\text{C}$).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>Why does the Athy (1930) porosity-depth relationship show an exponential decline in mudrocks with depth: $\phi(z) = \phi_0 e^{-cz}$?</p>
+        <p><strong>Solution:</strong>
+          L.F. Athy established that mechanical compaction of fine-grained mudrocks is governed by the progressive expulsion of interstitial pore water under increasing effective overburden stress ($\sigma'_v = \sigma_v - P_p$). At shallow depths, high-porosity card-house clay fabrics collapse easily under small stress increments. As depth increases, grains become closely packed and interlocked, drastically increasing skeletal bulk stiffness; hence, progressively larger overburden increments are required to achieve further volumetric strain, producing an exponential decay curve.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>Contrast "eodiagenesis", "mesodiagenesis", and "telodiagenesis" in terms of their fluid chemistry and temperature conditions.</p>
+        <p><strong>Solution:</strong>
+          - <strong>Eodiagenesis:</strong> Low temperature ($< 50^\circ\text{C}$); fluids are depositional surface waters (marine or meteoric); active microbial and biological control.
+          - <strong>Mesodiagenesis:</strong> Elevated temperatures ($50\text{--}200^\circ\text{C}$); fluids are evolved, highly saline basinal formation brines; thermochemical reactions, hydrocarbon maturation, and burial pressure dominate.
+          - <strong>Telodiagenesis:</strong> Low temperature ($< 50^\circ\text{C}$); fluids are fresh, cold, oxidizing, carbonic-acid-charged meteoric waters introduced via tectonic uplift and erosional unconformities.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>What is "pseudomatrix" in a compacted sandstone and how does it originate diagenetically?</p>
+        <p><strong>Solution:</strong>
+          <strong>Pseudomatrix</strong> is an artificial, diagenetically generated interstitial matrix formed when ductile, mechanically weak framework grains (such as shale clasts, mudstone lithics, or deeply weathered volcanic fragments) are squashed, deformed, and squeezed into adjacent intergranular pore spaces between rigid quartz grains during mechanical compaction. Under the microscope, it mimics primary detrital clay matrix, but petrographic inspection reveals ghost outlines of compacted lithic grains.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>State the upper physical boundary that demarcates diagenesis from metamorphism in sedimentary basins.</p>
+        <p><strong>Solution:</strong>
+          The boundary between diagenesis and metamorphism is transitional but formally defined by:
+          1. <strong>Temperature:</strong> Approximately <strong>$200^\circ\text{C}$ to $250^\circ\text{C}$</strong>.
+          2. <strong>Vitrinite Reflectance ($R_o$):</strong> $R_o \approx 2.5\text{ to } 3.0\%$.
+          3. <strong>Clay Mineralogy:</strong> The disappearance of smectite and mixed-layer clays, marked by the onset of well-crystallized illite (Kübler Index illite crystallinity $\approx 0.42^\circ\Delta 2\theta$, defining the <em>anchizone</em>) and the appearance of metamorphic pyrophyllite, chloritoid, or paragonite.
+        </p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
