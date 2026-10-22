@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q145: Coastal Hydrogeology - Geometry of the Fresh-Saline Water Interface | OPSC Geology 2021 Masterclass</title>
+<title>Q145: Hydrogeology: Coastal Freshwater-Saline Interface Geometry | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,237 +89,678 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q145" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Hydrogeology & Coastal Aquifers</div>
-    <h1>Q145: Coastal Hydrogeology - Geometry of the Fresh-Saline Water Interface</h1>
+    <h1>Q145: Freshwater-Saline Water Interface Geometry: Glover's Dynamic Parabolic Profile</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> R.E. Glover (1959, The Pattern of Fresh-Water Flow in a Coastal Aquifer); Todd & Mays (Ch. 14)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 145<br>
+<strong>Authoritative References:</strong> Robert E. Glover, <em>The Pattern of Fresh-Water Flow in a Coastal Aquifer</em> (Journal of Geophysical Research, 1959, Vol. 64, No. 4, pp. 457–459); David K. Todd and Larry W. Mays, <em>Groundwater Hydrology</em> (3rd Ed., Wiley, Ch. 14: Saline Water Intrusion, pp. 555–578); C.W. Fetter, <em>Applied Hydrogeology</em> (4th Ed., Prentice Hall, Ch. 8, pp. 312–322); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 3: Hydrogeology, p. 32).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>1. Question & Interface Geometry</h3>
-<div class="question-box">
-  <p><strong>Question 145:</strong> Choose the correct answer regarding the shape and the nature of the fresh water-saline water interface near to a coastal area from the options given below :</p>
-  <ul>
-    <li>(A) Linear and horizontal</li>
-    <li>(B) Concave upward</li>
-    <li>(C) Linear and inclined</li>
-    <li>(D) Convex downward</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(B) Concave upward</strong></p>
-</div>
+  
+  <!-- CARD 1: HYDROSTATIC GHYBEN-HERZBERG PRINCIPLE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Ghyben-Herzberg Principle of Coastal Hydrostatic Balance</div>
+    <div class="card-body">
+      <p>
+        In coastal aquifers, lighter freshwater ($\rho_f \approx 1.000\text{ g/cm}^3$) floats upon denser saline seawater ($\rho_s \approx 1.025\text{ g/cm}^3$). The fundamental relationship governing this equilibrium was independently formulated by Dutch engineer <strong>Willem Badon Ghyben (1888)</strong> and German engineer <strong>Baurat Alexander Herzberg (1901)</strong> (Todd & Mays, 2005; Fetter, 2001; Bangar, p. 32).
+      </p>
 
-    <div class="tb-figure">
-      <img src="../../figures_Q145/glover_coastal_parabolic_freshwater_interface.png" alt="Glover's Coastal Parabolic Freshwater-Saltwater Interface">
-      <figcaption>
-        <strong>Figure 145.1: Glover's Coastal Parabolic Freshwater-Saltwater Interface.</strong> Coastal hydrogeological cross-section showing Glover's exact hydrodynamic solution: seaward freshwater discharge causes the saltwater wedge interface to curve into a parabolic shape (z^2 = [2qx/K'] + [q/K']^2) with a submarine discharge gap at the coastline.
-      </figcaption>
+      <div class="figure-box">
+        <img src="../../figures_Q145/ghyben_herzberg_saltwater_intrusion.png" alt="Ghyben-Herzberg Hydrostatic Principle">
+        <div class="figure-caption">
+          <strong>Figure 145.1 — Hydrostatic Equilibrium across Coastal Freshwater-Saltwater Systems:</strong> Balancing freshwater hydrostatic pressure $\rho_f g (h_f + z)$ against seawater hydrostatic pressure $\rho_s g z$ along the zero-velocity interface line at depth $z$ below mean sea level.
+        </div>
+      </div>
+
+      <h4>Hydrostatic Derivation of the 40:1 Ratio</h4>
+      <p>
+        At any point along the interface at depth $z$ below mean sea level (MSL), hydrostatic pressure in the freshwater column of total height $(h_f + z)$ must balance the hydrostatic pressure of the saltwater column of depth $z$:
+      </p>
+      <div class="math-block">
+        $$\rho_s \cdot g \cdot z = \rho_f \cdot g \cdot (h_f + z)$$
+      </div>
+      <p>
+        Expanding and solving for interface depth $z$:
+      </p>
+      <div class="math-block">
+        $$\rho_s z - \rho_f z = \rho_f h_f \implies z(\rho_s - \rho_f) = \rho_f h_f$$
+        $$z = \left(\frac{\rho_f}{\rho_s - \rho_f}\right) h_f$$
+      </div>
+      <p>
+        Substituting standard densities ($\rho_f = 1.000\text{ g/cm}^3$, $\rho_s = 1.025\text{ g/cm}^3$):
+      </p>
+      <div class="math-block" style="font-size: 1.2rem; font-weight: bold; background: #eff6ff; border-left: 5px solid #2563eb; padding: 12px;">
+        $$z = \left(\frac{1.000}{1.025 - 1.000}\right) h_f = \frac{1.000}{0.025} h_f = 40 \cdot h_f$$
+      </div>
+      <p>
+        Thus, for every <strong>$1\text{ meter}$</strong> that the freshwater table stands above mean sea level, the freshwater-saline water interface extends <strong>$40\text{ meters}$</strong> below sea level.
+      </p>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q145/ghyben_herzberg_saltwater_intrusion.png" alt="Ghyben-Herzberg Hydrostatic Principle in Coastal Aquifers">
-      <figcaption>
-        <strong>Figure 145.2: Ghyben-Herzberg Hydrostatic Principle in Coastal Aquifers.</strong> Illustrating the 40:1 hydrostatic buoyancy ratio (z = [ρf / (ρs - ρf)] * hf ≈ 40 hf) between freshwater and seawater.
-      </figcaption>
-    </div>
-    
   </div>
+
+  <!-- CARD 2: GLOVER'S DYNAMIC PARABOLIC SOLUTION -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. The Dynamic Hydrodynamic Flow & Glover's Parabolic Interface Solution (1959)</div>
+    <div class="card-body">
+      <div class="figure-box">
+        <img src="../../figures_Q145/glover_coastal_parabolic_freshwater_interface.png" alt="Glover Coastal Parabolic Freshwater Interface">
+        <div class="figure-caption">
+          <strong>Figure 145.2 — Robert E. Glover's Dynamic Parabolic Interface Model (1959):</strong> Incorporating seaward freshwater discharge $Q$ and vertical equipotential convergence. The interface forms a smooth, upward-opening parabola with an offshore submarine discharge gap $x_0$, steepening at the coast and flattening inland.
+        </div>
+      </div>
+
+      <h4>The Hydrostatic Paradox and the Seepage Gap</h4>
+      <p>
+        While the static Ghyben-Herzberg relation provides a first-order approximation, it suffers from a fatal physical paradox: at the shoreline where the water table intersects sea level ($h_f = 0$), the formula predicts $z = 0$. This would force the interface to intersect the shoreline exactly at the water surface, providing <strong>zero cross-sectional area for freshwater to discharge into the ocean</strong>, which violates continuity and Darcy's Law.
+      </p>
+      <p>
+        In reality, freshwater flows continuously seaward toward the ocean. In 1959, <strong>Robert E. Glover</strong> formulated the exact hydrodynamic solution using complex potential theory for steady 2-dimensional flow in an unconfined coastal aquifer:
+      </p>
+      <div class="math-block" style="font-size: 1.25rem; font-weight: bold; background: #ecfdf5; border-left: 5px solid #059669; padding: 15px;">
+        $$z^2 = \frac{2 Q}{\Delta \rho \cdot K} x + \left(\frac{Q}{\Delta \rho \cdot K}\right)^2$$
+      </div>
+      <p>
+        Where:
+      </p>
+      <ul>
+        <li>$z$ = Depth of the interface below mean sea level at distance $x$ inland ($\text{m}$).</li>
+        <li>$x$ = Horizontal distance measured inland from the shoreline ($x \ge 0$) ($\text{m}$).</li>
+        <li>$Q$ = Seaward freshwater discharge per unit length of coastline ($\text{m}^3/\text{day per m}$ or $\text{m}^2/\text{s}$).</li>
+        <li>$K$ = Saturated hydraulic conductivity of the coastal aquifer ($\text{m/day}$ or $\text{m/s}$).</li>
+        <li>$\Delta \rho = \frac{\rho_s - \rho_f}{\rho_f} \approx \frac{1.025 - 1.000}{1.000} = 0.025$ (dimensionless relative density difference).</li>
+      </ul>
+
+      <div class="figure-box">
+        <img src="../../figures_Q145/bangar_p32_coastal_freshwater_saline_interface.png" alt="Bangar Textbook Hydrogeology Coastal Saline Interface">
+        <div class="figure-caption">
+          <strong>Figure 145.3 — Facsimile from K.M. Bangar (Principles of Engineering Geology, Ch. 3, p. 32):</strong> Coastal hydrogeology cross-section showing freshwater flow lines, the parabolic interface, and the upward curvature of the boundary separating fresh groundwater from underlying marine seawater.
+        </div>
+      </div>
+
+      <h4>Mathematical Proof of the "Concave Upward" Geometry</h4>
+      <p>
+        The algebraic form $z^2 = 2 p x + p^2$ is the canonical equation of a <strong>parabola</strong> opening along the positive horizontal axis. Let us inspect its geometric curvature:
+      </p>
+      <ol>
+        <li>Express depth $z$ as a function of horizontal distance $x$:
+          $$z(x) = \sqrt{\frac{2 Q}{\Delta \rho K} x + \left(\frac{Q}{\Delta \rho K}\right)^2}$$
+        </li>
+        <li>The first derivative represents the interface slope:
+          $$\frac{dz}{dx} = \frac{Q}{\Delta \rho K \cdot z} > 0$$
+          Because $z$ increases with inland distance $x$, the slope is positive (the interface dips deeper inland).
+        </li>
+        <li>The second derivative represents the rate of change of slope (curvature):
+          $$\frac{d^2 z}{dx^2} = -\frac{Q^2}{(\Delta \rho K)^2 \cdot z^3} < 0$$
+        </li>
+        <li>In standard geological and geographical cross-sections, elevation $y$ is plotted vertically upward ($y = -z$). Transforming into vertical Cartesian coordinates:
+          $$\frac{d^2 y}{dx^2} = -\frac{d^2 z}{dx^2} = +\frac{Q^2}{(\Delta \rho K)^2 \cdot z^3} > 0$$
+        </li>
+      </ol>
+      <div class="definition-box">
+        <strong>Geometric Conclusion:</strong><br>
+        Because $\frac{d^2 y}{dx^2} > 0$, the mathematical curve is strictly <strong>CONCAVE UPWARD</strong> (it forms a bowl-like profile that curves steeply upward near the shoreline and flattens out gradually inland).
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: SUBMARINE SEEPAGE GAP -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Submarine Discharge Gap ($x_0$) and Transition Zone Dynamics</div>
+    <div class="card-body">
+      <p>
+        At the sea surface ($z = 0$), Glover's equation reveals that the interface extends seaward beyond the shoreline by an offshore distance $x_0$:
+      </p>
+      <div class="math-block">
+        $$0 = \frac{2 Q}{\Delta \rho K} x_0 + \left(\frac{Q}{\Delta \rho K}\right)^2 \implies x_0 = -\frac{Q}{2 \Delta \rho K}$$
+      </div>
+      <p>
+        This offshore distance represents the width of the <strong>submarine freshwater seepage gap</strong> through which freshwater discharges into the sea floor under the ocean, preventing seawater from choking the coastal aquifer.
+      </p>
+      <p>
+        Under natural conditions, tidal pulsations, seasonal recharge fluctuations, and molecular diffusion blur the sharp interface into a brackish <strong>transition zone (zone of dispersion)</strong>, but the overarching structural envelope remains strictly concave upward.
+      </p>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q145. Choose the correct answer regarding the shape and the nature of the fresh water-saline water interface near to a coastal area from the options given below :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Linear and horizontal</div>
-        <div class="opt-item correct"><strong>(B)</strong> Concave upward</div>
-        <div class="opt-item "><strong>(C)</strong> Linear and inclined</div>
-        <div class="opt-item "><strong>(D)</strong> Convex downward</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-amber">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-box">
+        <strong>Question 145:</strong> Choose the correct answer regarding the shape and the nature of the fresh water-saline water interface near to a coastal area from the options given below :
+        <div class="options-grid">
+          <div class="option-item"><strong>(A)</strong> Linear and horizontal</div>
+          <div class="option-item"><strong>(B)</strong> Concave upward</div>
+          <div class="option-item"><strong>(C)</strong> Linear and inclined</div>
+          <div class="option-item"><strong>(D)</strong> Convex downward</div>
+        </div>
+      </div>
+      <div class="answer-banner">
+        <strong>Correct Answer: (B) Concave upward</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: The Ghyben-Herzberg & Glover Coastal Interface</h3>
-<p>
-In coastal aquifers, freshwater originating from inland recharge flows toward the sea, floating above denser seawater (freshwater density $\rho_f = 1.000\text{ g/cm}^3$; seawater density $\rho_s = 1.025\text{ g/cm}^3$):
-</p>
-<ul>
-  <li><strong>The Classical Ghyben-Herzberg Relation:</strong> Under hydrostatic equilibrium:
-    $$z = \frac{\rho_f}{\rho_s - \rho_f} h_f \approx 40 h_f$$
-    where $h_f$ is the freshwater water table height above sea level, and $z$ is the depth of the interface below sea level. Every 1 meter of freshwater head above sea level supports 40 meters of freshwater column below sea level.</li>
-  <li><strong>Dynamic Glover (1959) Parabolic Interface:</strong>
-    <ul>
-      <li>In real aquifers, freshwater is discharging dynamically into the sea at an exit face on the seafloor.</li>
-      <li>Because freshwater flowlines converge toward the coastal discharge zone, vertical hydraulic gradients develop near the shore.</li>
-      <li>Mathematical solution of the flow net (Glover's equation) demonstrates that the dynamic interface profile is a parabola described by:
-        $$z^2 = \frac{2 Q x}{K \Delta \rho / \rho_f} + \left(\frac{Q}{K \Delta \rho / \rho_f}\right)^2$$
-      </li>
-      <li>This parabolic curve has a <strong>concave upward</strong> curvature (curving gently downward inland and steepening upward as it approaches the shoreline/seafloor).</li>
-    </ul>
-  </li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC OPTION-BY-OPTION REFUTATIONS -->
+  <div class="card">
+    <div class="card-header bg-red">Forensic Analysis & Option Refutations</div>
+    <div class="card-body">
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (A): Linear and horizontal
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (A) posits that the interface is completely flat and horizontal. A horizontal interface would require hydrostatic conditions throughout the entire aquifer where the freshwater table is also perfectly flat and horizontal ($h_f = 0$ everywhere). Under such conditions, the hydraulic gradient is zero ($i = dh/dx = 0$), meaning zero groundwater flow towards the sea ($Q = 0$). In active coastal aquifers where precipitation recharges the hinterland and drives seaward discharge, a horizontal interface is physically impossible.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-card-header">
+          <span class="badge bg-success">CORRECT</span> Option (B): Concave upward
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (B) represents the exact, hydrodynamically proven geometric configuration of the freshwater-saline water boundary in coastal aquifers:
+          </p>
+          <ul>
+            <li>Under Glover's exact potential flow solution (1959), the interface obeys the parabolic function $z^2 = \frac{2Q}{\Delta \rho K} x + \left(\frac{Q}{\Delta \rho K}\right)^2$.</li>
+            <li>In vertical elevation coordinates ($y = -z$), the second derivative is positive ($\frac{d^2 y}{dx^2} > 0$), which mathematically defines a <strong>concave upward profile</strong>.</li>
+            <li>Physically, flow lines converge near the coastal discharge gap, producing high vertical velocity gradients that cause the interface to plunge steeply near the coast and flatten asymptotically inland into a horizontal plateau.</li>
+          </ul>
+          <p>
+            Thus, Option (B) is indisputably the correct hydrogeological answer.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (C): Linear and inclined
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (C) reflects a common elementary misconception that arises from applying the basic Ghyben-Herzberg ratio ($z = 40 h_f$) to an idealized planar water table ($h_f = c \cdot x$), which produces a straight sloping line ($z = 40 c x$). However, this crude model completely ignores the vertical flow components near the shoreline, the existence of the submarine seepage face ($x_0$), and the convergence of flow net equipotentials. Rigorous field measurements and hydrodynamic physics prove that the interface is parabolic and distinctly curved (concave upward), not a straight inclined line.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (D): Convex downward
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (D) claims the interface is "convex downward" (which would mean $\frac{d^2 y}{dx^2} < 0$). This inverted curvature would imply that the interface is nearly horizontal at the coastline and curves increasingly steeper as one moves further inland into the continental interior. This is the exact opposite of natural groundwater hydraulics: groundwater flow velocity is highest near the coastal discharge face (causing steep interface dip) and lowest inland where hydraulic gradients flatten. Hence, convex downward violates the fundamental laws of potential flow.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option B (Concave upward) is correct:</strong> The rigorous dynamic Glover-Hubbert parabolic profile of the fresh-saline interface.</li>
-  <li><strong>Option A (Linear and horizontal):</strong> Static planar layer, impossible in dynamic discharging coastal aquifers.</li>
-  <li><strong>Option C (Linear and inclined):</strong> Oversimplified hydrostatic approximation that ignores shoreline flow convergence.</li>
-  <li><strong>Option D (Convex downward):</strong> Inverted curvature, physically incorrect for a lighter fluid discharging over a denser fluid wedge.</li>
-</ul>
+  
+  <!-- CARD: SYNTHESIS COMPARISON TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Coastal Hydrogeology: Interface Models & Governing Equations</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Model Formulation</th>
+              <th>Interface Shape</th>
+              <th>Governing Equation</th>
+              <th>Assumptions & Boundary Physics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ghyben-Herzberg (1888/1901)</strong></td>
+              <td>Linear inclined wedge (approximate)</td>
+              <td>$$z = \left(\frac{\rho_f}{\rho_s - \rho_f}\right) h_f \approx 40 h_f$$</td>
+              <td>Hydrostatic equilibrium; strictly horizontal flow; zero submarine discharge face ($z=0$ at coast).</td>
+            </tr>
+            <tr>
+              <td><strong>Glover Solution (1959)</strong></td>
+              <td><strong>Parabolic (Concave Upward)</strong></td>
+              <td>$$z^2 = \frac{2 Q}{\Delta \rho K} x + \left(\frac{Q}{\Delta \rho K}\right)^2$$</td>
+              <td>Exact hydrodynamic potential flow; steady 2D discharge $Q$; includes submarine seepage face $x_0$.</td>
+            </tr>
+            <tr>
+              <td><strong>Henry Problem (1964)</strong></td>
+              <td>Dispersive S-shaped transition zone</td>
+              <td>$$\nabla \cdot (K \nabla h) = 0, \quad \nabla \cdot (D \nabla C) - \mathbf{v} \cdot \nabla C = 0$$</td>
+              <td>Coupled density-dependent fluid flow and hydrodynamic salt solute dispersion; non-sharp interface.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
+  <!-- CARD: 8 FULLY WORKED EXAM PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Coastal Hydrogeology Practice Problems (8 Rigorous Exercises)</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Classic Ghyben-Herzberg Interface Depth</strong><br>
+        In an unconfined coastal sand aquifer, an observation well situated $250\text{ m}$ from the sea records a water table elevation of $h_f = 2.40\text{ m}$ above mean sea level. Assuming freshwater density $\rho_f = 1.000\text{ g/cm}^3$ and seawater density $\rho_s = 1.025\text{ g/cm}^3$: (a) Calculate the depth to the saltwater interface below mean sea level ($z$). (b) What is the total freshwater saturated column thickness ($H$) at this location?
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Interface depth below sea level:
+          $$z = \frac{\rho_f}{\rho_s - \rho_f} h_f = \frac{1.000}{1.025 - 1.000} \times 2.40\text{ m} = 40 \times 2.40\text{ m} = 96.0\text{ meters}$$
+          2. Total freshwater column thickness:
+          $$H = h_f + z = 2.40\text{ m} + 96.0\text{ m} = 98.4\text{ meters}$$
+          The entire column of $98.4\text{ m}$ consists of fresh potable water floating above dense saline seawater.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: Glover Submarine Discharge Gap Calculation</strong><br>
+        A coastal aquifer has a hydraulic conductivity of $K = 30\text{ m/day}$ and discharges freshwater into the ocean at a rate of $Q = 3.6\text{ m}^3/\text{day}$ per meter length of coastline. Taking relative density difference $\Delta \rho = 0.025$: (a) Calculate the seaward width of the submarine discharge gap ($x_0$). (b) What is the depth of the interface directly at the coastline ($x = 0$)?
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate parameter term:
+          $$\frac{Q}{\Delta \rho \cdot K} = \frac{3.6}{0.025 \times 30} = \frac{3.6}{0.75} = 4.8\text{ meters}$$
+          2. Seaward gap width ($x_0$):
+          $$x_0 = \frac{Q}{2 \Delta \rho K} = \frac{4.8}{2} = 2.4\text{ meters}$$
+          Freshwater discharges through a strip extending $2.4\text{ m}$ offshore along the ocean floor.<br>
+          3. Interface depth at the shoreline ($x = 0$):
+          $$z(0) = \sqrt{0 + \left(\frac{Q}{\Delta \rho K}\right)^2} = \frac{Q}{\Delta \rho K} = 4.8\text{ meters}$$
+          Unlike Ghyben-Herzberg which incorrectly predicts $z(0) = 0$, Glover's solution correctly shows the interface lies $4.8\text{ m}$ beneath the shoreline.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Glover Parabolic Profile Depth Inland</strong><br>
+        Using the coastal aquifer parameters from Problem 2 ($Q/(\Delta \rho K) = 4.8\text{ m}$), calculate the interface depth $z$ at inland distances of: (a) $x = 50\text{ m}$, (b) $x = 200\text{ m}$, and (c) $x = 800\text{ m}$. Demonstrate that the rate of interface deepening flattens inland.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Formula: $z(x) = \sqrt{2(4.8)x + (4.8)^2} = \sqrt{9.6 x + 23.04}$<br>
+          2. At $x = 50\text{ m}$:
+          $$z(50) = \sqrt{9.6(50) + 23.04} = \sqrt{480 + 23.04} = \sqrt{503.04} \approx 22.43\text{ m}$$
+          3. At $x = 200\text{ m}$:
+          $$z(200) = \sqrt{9.6(200) + 23.04} = \sqrt{1920 + 23.04} = \sqrt{1943.04} \approx 44.08\text{ m}$$
+          4. At $x = 800\text{ m}$:
+          $$z(800) = \sqrt{9.6(800) + 23.04} = \sqrt{7680 + 23.04} = \sqrt{7703.04} \approx 87.77\text{ m}$$
+          5. Slope evaluation:
+          From $x = 0$ to $50\text{ m}$, $\Delta z / \Delta x = (22.43 - 4.8) / 50 = 0.353\text{ m/m}$ (very steep).<br>
+          From $x = 200$ to $800\text{ m}$, $\Delta z / \Delta x = (87.77 - 44.08) / 600 = 0.0728\text{ m/m}$ ($5\times$ flatter).<br>
+          This mathematically proves the <strong>concave upward</strong> nature of the profile.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Upconing Beneath a Pumping Well (Dagan-Bear Criterion)</strong><br>
+        A production well in an unconfined coastal aquifer penetrates to a depth leaving a distance of $d = 20\text{ m}$ between the well bottom and the initial flat freshwater-saline interface. If $K = 25\text{ m/day}$ and $\Delta \rho = 0.025$, calculate the critical pumping rate ($Q_c$) above which the saltwater cone becomes unstable and surges directly into the well (upconing threshold $Q_c \approx 0.45 \pi d^2 K \Delta \rho$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Dagan & Bear (1968) critical upconing formula:
+          $$Q_c = 0.45 \cdot \pi \cdot d^2 \cdot K \cdot \Delta \rho$$
+          2. Substitute values:
+          $$Q_c = 0.45 \times 3.14159 \times (20)^2 \times 25 \times 0.025 = 0.45 \times 3.14159 \times 400 \times 0.625$$
+          $$Q_c = 565.49 \times 0.625 \approx 353.43\text{ m}^3/\text{day}$$
+          Pumping at rates exceeding $353\text{ m}^3/\text{day}$ will cause the saline cusp to enter the well screen, ruining drinking water quality.
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: Variable Salinity and Estuarine Water Densities</strong><br>
+        Calculate the Ghyben-Herzberg depth ratio $\alpha = \rho_f / (\rho_s - \rho_f)$ for three distinct coastal water bodies ($\rho_f = 1.000\text{ g/cm}^3$): (a) Open ocean ($\rho_s = 1.025\text{ g/cm}^3$), (b) Brackish coastal lagoon/estuary ($\rho_s = 1.012\text{ g/cm}^3$), and (c) Hypersaline tidal lagoon ($\rho_s = 1.036\text{ g/cm}^3$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Open ocean:
+          $$\alpha_1 = \frac{1.000}{1.025 - 1.000} = \frac{1.000}{0.025} = 40.0$$
+          2. Brackish lagoon:
+          $$\alpha_2 = \frac{1.000}{1.012 - 1.000} = \frac{1.000}{0.012} \approx 83.33$$
+          3. Hypersaline lagoon:
+          $$\alpha_3 = \frac{1.000}{1.036 - 1.000} = \frac{1.000}{0.036} \approx 27.78$$
+          <em>Physical Insight:</em> Along brackish estuaries, a $1\text{ m}$ head drop causes over $83\text{ m}$ of saline encroachment, making estuarine groundwater systems twice as sensitive to over-abstraction as open ocean coasts.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Sea Level Rise Impact on Interface Migration</strong><br>
+        A coastal plain has a Regional water table slope of $i = dh/dx = 0.0015$ inland. Global climate change produces a projected sea level rise of $\Delta h_{\text{sea}} = 0.60\text{ meters}$. Assuming the regional freshwater table elevation remains unchanged, calculate the horizontal inland migration distance of the saltwater interface toe ($\Delta x$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Effective loss of freshwater head relative to new sea level:
+          $$\Delta h_f = 0.60\text{ m}$$
+          2. Horizontal distance needed to regain $0.60\text{ m}$ of water table head under slope $i = 0.0015$:
+          $$\Delta x = \frac{\Delta h_f}{i} = \frac{0.60\text{ m}}{0.0015} = 400\text{ meters}$$
+          A seemingly modest $60\text{ cm}$ sea level rise drives the saltwater wedge <strong>$400\text{ meters}$ further inland</strong>, contaminating coastal shallow wells across the aquifer.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Tidal Mixing & Dispersion Zone Thickness</strong><br>
+        Instead of a knife-sharp interface, an unconfined coastal aquifer develops a transition zone governed by 1D advective-dispersive transport. If longitudinal dispersivity is $\alpha_L = 2.0\text{ m}$ and average pore velocity is $v = 0.4\text{ m/day}$, calculate: (a) The hydrodynamic dispersion coefficient ($D_L = \alpha_L v$), and (b) Estimate the transition zone width $W \approx 4 \sqrt{D_L t}$ after $t = 30\text{ days}$ of continuous tidal cycling.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Dispersion coefficient:
+          $$D_L = \alpha_L \cdot v = 2.0\text{ m} \times 0.4\text{ m/day} = 0.8\text{ m}^2/\text{day}$$
+          2. Transition zone thickness:
+          $$W \approx 4 \sqrt{D_L t} = 4 \sqrt{0.8 \times 30} = 4 \sqrt{24} = 4 \times 4.899 \approx 19.6\text{ meters}$$
+          Tidal action transforms the boundary into a $19.6\text{ m}$ wide zone of brackish water (salinity $1,000 - 30,000\text{ mg/L}$).
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Engineered Hydraulic Pressure Barrier</strong><br>
+        To repel an advancing saline wedge, an injection well array is installed along the coast. If the required seaward gradient to halt saltwater movement is $i_{\text{req}} = 0.003$ and the coastal aquifer transmissivity is $T = 600\text{ m}^2/\text{day}$, calculate the continuous freshwater recharge rate ($q_{\text{inj}}$) required per kilometer of coastline.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Recharge discharge per meter width of coast:
+          $$q' = T \cdot i_{\text{req}} = 600\text{ m}^2/\text{day} \times 0.003 = 1.8\text{ m}^3/\text{day per m}$$
+          2. Total injection discharge per kilometer ($L = 1000\text{ m}$):
+          $$Q_{\text{total}} = q' \times L = 1.8\text{ m}^3/\text{day/m} \times 1000\text{ m} = 1,800\text{ m}^3/\text{day}$$
+          A line of injection wells recharging $1.8\text{ MLD}$ (million liters per day) creates a freshwater hydraulic pressure ridge that repels saltwater seaward.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
