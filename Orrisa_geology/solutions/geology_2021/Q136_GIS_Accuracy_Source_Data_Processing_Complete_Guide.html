@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q136: Spatial Data Quality - GIS Accuracy and Error Propagation | OPSC Geology 2021 Masterclass</title>
+<title>Q136: GIS & Spatial Analysis: GIS Accuracy & Error Propagation | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,237 +89,656 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q136" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Remote Sensing & GIS</div>
-    <h1>Q136: Spatial Data Quality - GIS Accuracy and Error Propagation</h1>
+    <div class="badge">GEO - 2/21 • GIS, Cartography & Geoinformatics</div>
+    <h1>Q136: GIS Accuracy & Error Propagation: The Interdependence of Source Data and Encoded Processing</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> P.A. Burrough & R.A. McDonnell (Principles of Geographical Information Systems, Ch. 9: Data Quality)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 136<br>
+<strong>Authoritative References:</strong> Peter A. Burrough and Rachael A. McDonnell, <em>Principles of Geographical Information Systems</em> (Ch. 9: Data Quality, Errors, and Natural Variation, pp. 220–245); Kang-tsung Chang, <em>Introduction to Geographic Information Systems</em> (9th Ed., Ch. 14: Data Quality and Errors); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 11: GIS, p. 221); Michael F. Goodchild and S. Gopal, <em>Accuracy of Spatial Databases</em> (Taylor & Francis).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Error Determinants</h3>
-<div class="question-box">
-  <p><strong>Question 136:</strong> GIS accuracy depends on :</p>
-  <ul>
-    <li>(A) Encoded processes</li>
-    <li>(B) Source data</li>
-    <li>(C) Both (A) and (B)</li>
-    <li>(D) None of these</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(C) Both (A) and (B)</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q136/gis_accuracy_source_data_and_processing.png" alt="Key Factors Controlling GIS Accuracy: Source Data and Processing">
-      <figcaption>
-        <strong>Figure 136.1: Key Factors Controlling GIS Accuracy: Source Data Quality & Processing Methods.</strong> Showing that spatial accuracy is governed by input source quality (scale, sensor resolution, positional surveying accuracy) and digital processing methods (operator digitizing errors, projection transformations, interpolation algorithms).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: DEFINITIONS AND THE DUAL ERROR SOURCES -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Architecture of Spatial Data Quality: The Dual Pillars of GIS Accuracy</div>
+    <div class="card-body">
+      <p>
+        In Geographic Information Science (GIScience), spatial statistics, and digital geoinformatics, <strong>the ultimate accuracy, reliability, and precision of any GIS output product depends inextricably on both the quality of the Source Data and the fidelity of the Encoded Processing operations</strong> (Burrough & McDonnell, 1998; Goodchild & Gopal, 1989; Bangar, p. 221).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q136/gis_accuracy_source_data_and_processing.png" alt="GIS Accuracy: Source Data and Encoded Processing">
+        <div class="figure-caption">
+          <strong>Figure 136.1 — Error Propagation in GIS:</strong> The dual-source error cascade showing how primary Inherent Source Errors (surveying inaccuracy, paper map stretching, digitization noise) propagate and compound with Operational Processing Errors (map projection distortion, raster resampling, polygon overlay slivers, numerical precision rounding) to govern final GIS accuracy.
+        </div>
+      </div>
+
+      <h4>The Dual Determinants of GIS Accuracy</h4>
+      <p>
+        Standard spatial data quality frameworks (ISO 19157, FGDC Spatial Data Transfer Standard) categorize spatial errors into two interdependent domains:
+      </p>
+      <ol>
+        <li>
+          <strong>1. Source Data Quality (Inherent / Input Errors):</strong>
+          Represents the intrinsic truth, resolution, and precision of the raw data before it enters any GIS operation:
+          <ul>
+            <li><em>Positional Inaccuracy:</em> Instrument errors in GPS/total station surveying, flight turbulence in photogrammetry, or paper shrinkage/stretching of historical mylar maps.</li>
+            <li><em>Attribute Error:</em> Incorrect mineralogical rock type labeling, misclassified soil units, or out-of-date tenure records.</li>
+            <li><em>Temporal Obsolescence:</em> Geological boundaries or stream shorelines mapped decades ago that have undergone natural erosion, mine excavation, or seismic displacement.</li>
+            <li><em>Scale & Generalization Limits:</em> Using a coarse $1 : 250,000$ regional map to assess site-specific engineering foundations introduces gross spatial generalizations.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>2. Encoded Processing Operations (Operational / Algorithmic Errors):</strong>
+          Errors introduced, amplified, or propagated through computer algorithms during digital GIS data manipulation:
+          <ul>
+            <li><em>Map Projection Transformations:</em> Re-projecting between non-conformal or non-equivalent datums introduces angular and areal scale distortions.</li>
+            <li><em>Raster Resampling & Cell Aggregation:</em> Nearest-neighbor, bilinear, or cubic convolution resampling introduces radiometric blurring and positional shift.</li>
+            <li><em>Topological Overlay & Slivers:</em> Intersecting or unioning two polygon layers digitized at different times produces thousands of spurious, paper-thin "sliver polygons".</li>
+            <li><em>Floating-Point Truncation:</em> Computational rounding errors during complex spatial coordinate geometric intersections.</li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q136/bangar_p221_gis_accuracy_source_data_processing.png" alt="GIS Accuracy from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 136.2 — GIS Accuracy Factors:</strong> Authentic textbook scan from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 221). States clearly: <em>"GIS accuracy depends on both encoded processes and source data."</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE GIGO PRINCIPLE AND ERROR PROPAGATION -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. The GIGO Principle & Taylor Series Error Propagation Modeling</div>
+    <div class="card-body">
+      <h4>The Classical "Garbage In, Garbage Out" (GIGO) Reality</h4>
+      <p>
+        Even the most sophisticated, mathematically rigorous GIS processing pipeline cannot produce an accurate output if the input source data is erroneous or low-resolution:
+      </p>
+      <div class="quote-box">
+        <em>"No amount of sophisticated geoprocessing can extract truth from fundamentally flawed source data; conversely, flawed geoprocessing algorithms can rapidly degrade pristine, millimeter-accurate source data into useless noise."</em>
+      </div>
+
+      <h4>Mathematical Formulation of Error Propagation</h4>
+      <p>
+        According to Gauss's law of error propagation, if a derived GIS attribute or spatial index $U$ is computed from independent source variables $x_1, x_2, \dots, x_n$ via an encoded mathematical transformation $U = f(x_1, x_2, \dots, x_n)$:
+      </p>
+      <div class="math-block">
+        $$\sigma_U^2 = \sum_{i=1}^n \left(\frac{\partial f}{\partial x_i}\right)^2 \sigma_{x_i}^2 + \sigma_{\text{proc}}^2$$
+        $$\text{where: } \sigma_{x_i} = \text{Standard error in source data, } \sigma_{\text{proc}} = \text{Algorithm/rounding error in encoded process}$$
+      </div>
+      <p>
+        This equation mathematically proves that final error variance ($\sigma_U^2$) is the composite sum of source data variance ($\sum (\partial f / \partial x_i)^2 \sigma_{x_i}^2$) and operational processing variance ($\sigma_{\text{proc}}^2$).
+      </p>
+    </div>
+  </div>
+
+  <!-- CARD 3: THE FIVE ELEMENTS OF SPATIAL DATA QUALITY -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Standardized Elements of Spatial Data Quality (ISO 19157 / FGDC)</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Quality Element</th>
+            <th>Governing Domain</th>
+            <th>Description & Criteria</th>
+            <th>Primary Evaluation Metric</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Positional Accuracy</strong></td>
+            <td>Source Data + Processing</td>
+            <td>Closeness of coordinate values to their true ground positions.</td>
+            <td>Root Mean Square Error ($\text{RMSE} = \sqrt{\frac{1}{N}\sum (\Delta X^2 + \Delta Y^2)}$).</td>
+          </tr>
+          <tr>
+            <td><strong>Attribute Accuracy</strong></td>
+            <td>Source Data</td>
+            <td>Correctness of quantitative and qualitative non-spatial descriptors.</td>
+            <td>Classification Error Matrix (Confusion Matrix), Cohen's Kappa ($\kappa$).</td>
+          </tr>
+          <tr>
+            <td><strong>Logical Consistency</strong></td>
+            <td>Encoded Processing</td>
+            <td>Fidelity of topological relationships (no unclosed polygons, no self-intersections, no overshoots).</td>
+            <td>Topological rule checks, Euler planar consistency.</td>
+          </tr>
+          <tr>
+            <td><strong>Completeness</strong></td>
+            <td>Source Data</td>
+            <td>Absence of omissions (unmapped features) or commissions (spurious excess features).</td>
+            <td>Percentage feature coverage against ground-truth census.</td>
+          </tr>
+          <tr>
+            <td><strong>Lineage</strong></td>
+            <td>Source Data + Processing</td>
+            <td>Detailed documentation of source materials, transformations, software versions, and human operators.</td>
+            <td>Formal XML metadata compliant with ISO 19139.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q136. GIS accuracy depends on :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Encoded processes</div>
-        <div class="opt-item "><strong>(B)</strong> Source data</div>
-        <div class="opt-item correct"><strong>(C)</strong> Both (A) and (B)</div>
-        <div class="opt-item "><strong>(D)</strong> None of these</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card question-card">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-number">Question 136</div>
+      <div class="question-text">
+        GIS accuracy depends on :
+      </div>
+      <ul class="option-list">
+        <li class="option-item"><strong>(A)</strong> Encoded processes</li>
+        <li class="option-item"><strong>(B)</strong> Source data</li>
+        <li class="option-item correct"><strong>(C)</strong> Both (A) and (B)</li>
+        <li class="option-item"><strong>(D)</strong> None of these</li>
+      </ul>
+      <div class="answer-banner">
+        <strong>Correct Answer: (C) Both (A) and (B)</strong> — The overall accuracy and reliability of a GIS model depend critically on both the quality of the input Source Data and the precision and appropriateness of the Encoded Processing operations.
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: The Dual Determinants of GIS Accuracy</h3>
-<p>
-Spatial data quality and accuracy in GIS are governed by the principle of error propagation across two fundamental stages of data development:
-</p>
-<ol>
-  <li><strong>Source Data Quality:</strong>
-    <ul>
-      <li>The inherent precision, resolution, scale, currency, and accuracy of original input documents (e.g., GPS receiver precision, satellite ground sampling distance, accuracy of primary field surveying, precision of historical base maps).</li>
-      <li>The classic maxim <em>"Garbage in, garbage out" (GIGO)</em> applies: no GIS algorithm can produce results more accurate than the source data fed into it.</li>
-    </ul>
-  </li>
-  <li><strong>Encoded Processes (Processing & Transformation Quality):</strong>
-    <ul>
-      <li>Errors introduced during the digital encoding and computational lifecycle, including:
-        <ul>
-          <li>Human operator digitization errors (undershoots, overshoots, snapping tolerance offsets).</li>
-          <li>Map projection conversions and datum transformations (ellipsoidal distortions).</li>
-          <li>Raster resampling interpolation algorithms (nearest neighbor vs bilinear vs cubic convolution).</li>
-          <li>Raster-to-vector and vector-to-raster conversion artifacts.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ol>
-<p>
-Therefore, the ultimate accuracy of any GIS product is inextricably dependent upon <strong>Both (A) encoded processes and (B) source data</strong>.
-</p>
-
   </div>
+
+  <!-- FORENSIC OPTION ANALYSIS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Options</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="option-title">Option (A): Encoded processes — Incomplete (Only One Component)</div>
+        <p>
+          Encoded processes (the mathematical algorithms, projection equations, resampling methods, and topological intersection routines) directly govern operational accuracy. However, flawless algorithmic processing cannot compensate for inaccurate, coarse, or outdated source data. Selecting (A) alone is incomplete.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (B): Source data — Incomplete (Only One Component)</div>
+        <p>
+          Source data quality (surveying precision, GPS accuracy, scale, attribute veracity) provides the baseline foundation of any GIS database. However, pristine source data can be severely degraded by improper geoprocessing choices (e.g., using an incorrect datum transformation, coarse rasterization, or careless tolerance snapping). Selecting (B) alone is incomplete.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="option-title">Option (C): Both (A) and (B) — Fully Verified & Codified Textbook Fact</div>
+        <p>
+          In Geographic Information Systems literature (Bangar, p. 221; Burrough & McDonnell, Ch. 9; Chang, Ch. 14):
+        </p>
+        <ol>
+          <li><strong>Source Data:</strong> Determines the maximum theoretical limit of information content, resolution, and positional truth entering the system.</li>
+          <li><strong>Encoded Processes:</strong> Determines how faithfully that information is transformed, integrated, and modeled without introducing algorithmic distortion or cumulative error cascades.</li>
+        </ol>
+        <p>Therefore, GIS accuracy depends inextricably on <strong>Both (A) and (B)</strong>.</p>
+      </div>
+
+      <div class="option wrong">
+        <div class="option-title">Option (D): None of these — Contradicts Foundational GIS Science</div>
+        <p>
+          Asserting that accuracy depends on neither source data nor processing denies the basic mathematical and scientific principles of spatial analysis.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option C (Both A and B) is correct:</strong> Flawless source data can be corrupted by crude encoding, and sophisticated processing cannot rescue erroneous source data.</li>
-  <li><strong>Options A & B:</strong> Incomplete single-factor views.</li>
-</ul>
+  
+  <!-- CARD: SYNTHESIS COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Error Sources and Mitigation Strategies in GIS Workflows</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Error Source</th>
+            <th>Category</th>
+            <th>Underlying Mechanism</th>
+            <th>Mitigation / Quality Control Strategy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Map Digitization Inaccuracy</strong></td>
+            <td>Source Data</td>
+            <td>Operator hand tremors, mylar media stretching, paper folding.</td>
+            <td>Use high-resolution flatbed scanners, affine GCP rectification, automated vectorization.</td>
+          </tr>
+          <tr>
+            <td><strong>Datum Misalignment</strong></td>
+            <td>Encoded Process</td>
+            <td>Overlaying WGS 84 GPS points onto Everest 1830 topo sheets without 7-parameter Helmert transformation.</td>
+            <td>Standardize all spatial layers to a single common datum and projection before analysis.</td>
+          </tr>
+          <tr>
+            <td><strong>Raster Grid Resampling</strong></td>
+            <td>Encoded Process</td>
+            <td>Altering pixel cell size from $10\text{ m}$ to $30\text{ m}$ blurs sharp geological contacts.</td>
+            <td>Use cubic convolution or bilinear interpolation; retain finest native resolution.</td>
+          </tr>
+          <tr>
+            <td><strong>Sliver Polygons</strong></td>
+            <td>Encoded Process</td>
+            <td>Overlaying two independently digitized boundaries of the same fault or formation.</td>
+            <td>Define strict cluster snapping tolerances and execute automated sliver elimination filters.</td>
+          </tr>
+          <tr>
+            <td><strong>Classification Error</strong></td>
+            <td>Source Data</td>
+            <td>Misidentifying basalt as dolerite in remote sensing spectral classification.</td>
+            <td>Conduct field ground-truthing, calculate confusion matrix and kappa coefficient ($\kappa > 0.85$).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD: 8 PRACTICE PROBLEMS WITH FULL STEP-BY-STEP DERIVATIONS -->
+  <div class="card">
+    <div class="card-header bg-purple">8 Advanced Practice Problems & Fully Worked Solutions</div>
+    <div class="card-body">
+      <!-- PROBLEM 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Gauss Error Propagation in Slope Calculation</strong><br>
+        A Digital Elevation Model (DEM) is used to calculate topographic slope: $S = \frac{\Delta Z}{L}$, where horizontal distance is $L = 100.0\text{ m}$ with zero error ($\sigma_L = 0$). The elevation difference is $\Delta Z = 25.0\text{ m}$ with a source DEM vertical standard error $\sigma_Z = \pm 1.5\text{ m}$. Calculate the standard error in the derived slope ($\sigma_S$) and express it as a percentage.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Differentiate slope equation with respect to $\Delta Z$:
+          $$\frac{\partial S}{\partial (\Delta Z)} = \frac{1}{L} = \frac{1}{100.0\text{ m}} = 0.010\text{ m}^{-1}$$
+          2. Apply Gauss error propagation formula:
+          $$\sigma_S = \left|\frac{\partial S}{\partial (\Delta Z)}\right| \sigma_Z = 0.010 \times 1.5\text{ m} = 0.015 = 1.5\%$$
+          The calculated slope is $S = 25.0\% \pm 1.5\%$.
+        </div>
+      </div>
+
+      <!-- PROBLEM 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: Root Mean Square Error (RMSE) Positional Threshold</strong><br>
+        The United States National Map Accuracy Standards (NMAS) mandate that for a map scale of $1 : 50,000$, not more than $10\%$ of well-defined test points shall have a horizontal positional error exceeding $0.85\text{ mm}$ on the map sheet. Calculate the corresponding maximum permissible ground positional error in meters.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate ground error:
+          $$\text{Ground Error} = \text{Map Error} \times \text{Scale Denominator} = 0.85\text{ mm} \times 50,000 = 42,500\text{ mm} = 42.5\text{ meters}$$
+          At $1 : 50,000$, field test points must lie within $42.5\text{ meters}$ of their true ground coordinates.
+        </div>
+      </div>
+
+      <!-- PROBLEM 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Confusion Matrix & Overall Accuracy of Lithological Classification</strong><br>
+        A supervised satellite image classification maps $500\text{ test pixels}$ into three lithological classes. A field ground-truth confusion matrix is established:
+        - Granite: $180\text{ correctly classified}, 15\text{ misclassified as Basalt}, 5\text{ as Sandstone}$.
+        - Basalt: $140\text{ correctly classified}, 10\text{ misclassified as Granite}, 10\text{ as Sandstone}$.
+        - Sandstone: $120\text{ correctly classified}, 12\text{ misclassified as Granite}, 8\text{ as Basalt}$.
+        Calculate the <strong>Overall Accuracy</strong> of the classified geological map.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Sum of correctly classified diagonal pixels:
+          $$\sum_{\text{correct}} = 180 + 140 + 120 = 440\text{ pixels}$$
+          2. Total evaluated pixels:
+          $$N = 500\text{ pixels}$$
+          3. Overall Classification Accuracy:
+          $$\text{Overall Accuracy} = \left(\frac{440}{500}\right) \times 100\% = 88.0\%$$
+        </div>
+      </div>
+
+      <!-- PROBLEM 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Cohen's Kappa Coefficient ($\kappa$) Calculation</strong><br>
+        From the classification in Problem 3, the observed overall agreement is $P_o = 0.880$. Statistical calculation of chance agreement based on row and column marginal totals gives $P_e = 0.345$. Calculate Cohen's Kappa Coefficient ($\kappa$) and assess the classification reliability.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate Cohen's Kappa formula:
+          $$\kappa = \frac{P_o - P_e}{1 - P_e} = \frac{0.880 - 0.345}{1 - 0.345} = \frac{0.535}{0.655} \approx 0.8168$$
+          2. Assessment: According to Landis & Koch (1977), $\kappa > 0.80$ represents <strong>"Almost Perfect / Strong Agreement"</strong> above chance, confirming high attribute quality.
+        </div>
+      </div>
+
+      <!-- PROBLEM 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: Datum Transformation Error Cascade</strong><br>
+        A GPS point surveyed in WGS 84 datum is directly plotted onto an Indian toposheet referenced to the historical Everest 1830 datum without applying the 7-parameter Helmert transformation. The shift in Easting is $\Delta X = +62\text{ m}$ and in Northing is $\Delta Y = +215\text{ m}$. Calculate the resulting planimetric positional error vector in meters.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate vector magnitude:
+          $$\text{Error} = \sqrt{\Delta X^2 + \Delta Y^2} = \sqrt{(62)^2 + (215)^2} = \sqrt{3844 + 46,225} = \sqrt{50,069} \approx 223.76\text{ meters}$$
+          Omitting the datum transformation introduces an operational processing error of over $223\text{ meters}$!
+        </div>
+      </div>
+
+      <!-- PROBLEM 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Sliver Polygon Accumulation in Geological Overlay</strong><br>
+        A GIS overlay operation (Union) is performed between two independent geological surveys of a $50\text{ km}$ fault zone. Due to a digitizing positional difference of $\sigma = 4.0\text{ m}$, the overlay generates 140 spurious sliver polygons with an average width of $3.5\text{ m}$ and average length of $300\text{ m}$. Calculate the total artificial error area generated by sliver polygons in hectares.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Area of one average sliver polygon:
+          $$A_{\text{sliver}} = 3.5\text{ m} \times 300\text{ m} = 1050\text{ m}^2$$
+          2. Total area of 140 sliver polygons:
+          $$A_{\text{total}} = 140 \times 1050\text{ m}^2 = 147,000\text{ m}^2$$
+          Convert to hectares:
+          $$A_{\text{total}} = \frac{147,000\text{ m}^2}{10,000\text{ m}^2\text{/ha}} = 14.70\text{ hectares}$$
+          Topological snapping filters must be applied to eliminate these $14.7\text{ hectares}$ of fictitious slivers.
+        </div>
+      </div>
+
+      <!-- PROBLEM 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Raster Cell Size Selection via Shannon-Nyquist Theorem</strong><br>
+        According to the Shannon-Nyquist sampling theorem in spatial data capture, to reliably resolve a geological narrow feature of minimum linear dimension $W_{\text{min}} = 10.0\text{ m}$ (e.g., an ore vein or dyke), the maximum allowable raster grid cell size ($\Delta x$) must be no greater than half the feature dimension:
+        $$\Delta x \le \frac{W_{\text{min}}}{2}$$
+        Calculate the maximum permissible raster cell size and state the consequence if a $15\text{ m}$ cell size is chosen.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Maximum permissible cell size:
+          $$\Delta x \le \frac{10.0\text{ m}}{2} = 5.0\text{ meters}$$
+          2. Consequence of $15\text{ m}$ cell size: If a $15\text{ m}$ cell size is used, spatial aliasing occurs; the $10\text{ m}$ vein will be averaged with surrounding wall rock pixels, losing its continuous geometric continuity and causing false breaks in the mapped ore body.
+        </div>
+      </div>
+
+      <!-- PROBLEM 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Cumulative Cost-Distance Processing Error</strong><br>
+        In a least-cost-path pipeline for an ore haulage road, a cost raster of cell size $20\text{ m} \times 20\text{ m}$ assigns an average impedance cost per cell with an individual uncertainty of $\pm 5\%$. If the optimal route traverses $1600\text{ cells}$, and cell errors are independent and random, calculate the percentage relative error in the accumulated total route cost ($E_{\text{route}} = \sigma / \sqrt{N}$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Apply the standard error of the sum for $N$ independent identical random variables:
+          $$\sigma_{\text{sum}} = \sqrt{N} \times \sigma_{\text{cell}} = \sqrt{1600} \times 5\% = 40 \times 5\% = 200\%$$
+          2. Relative percentage error of the total accumulated sum:
+          $$\text{Relative Error } (\%) = \frac{\sigma_{\text{sum}}}{N \times \mu_{\text{cell}}} = \frac{\sigma_{\text{cell}}}{\sqrt{N}} = \frac{5\%}{\sqrt{1600}} = \frac{5\%}{40} = 0.125\%$$
+          Due to statistical averaging over long traverses, independent random errors cancel out, resulting in a negligible $0.125\%$ relative error in total path cost.
+        </div>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
