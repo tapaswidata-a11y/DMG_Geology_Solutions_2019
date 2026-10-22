@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q1: Slope Stability, Mass Movement vs. Landslide & Shear Plane Mechanics | OPSC Geology 2021 Masterclass</title>
+<title>Q001: Slope Stability, Mass Movement vs. Landslide & Shear Plane Mechanics | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -33,7 +33,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +53,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +67,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,277 +88,586 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q1" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Engineering Geology & Geomorphology</div>
-    <h1>Q1: Slope Stability, Mass Movement vs. Landslide & Shear Plane Mechanics</h1>
+    <h1>Q001: Slope Stability, Mass Movement vs. Landslide & Shear Plane Mechanics</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> K.M. Bangar (Engineering Geology, Ch. 12, pp. 245-258); Cruden & Varnes (1996, TRB Sp. Rep. 247)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 1<br>
+      <strong>Authoritative Reference:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 10 & 12, pp. 377–380); D.J. Varnes (1978, TRB Special Report 176)
     </div>
   </div>
 
-  <!-- PART I -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART I: THEORETICAL FOUNDATION & CONCEPT MASTERCLASS                   -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>1.1 Fundamental Distinction: Mass Wasting vs. True Landslides</h3>
-        <p>In classical geomorphology and engineering geology (Varnes, 1978; Cruden & Varnes, 1996; Bangar, <i>Principles of Engineering Geology</i>, Ch. 12), the downslope displacement of earth materials is categorized under the comprehensive umbrella of <b>mass movement (mass wasting)</b>.</p>
-        <p>However, engineering geology establishes a critical mechanical demarcation based on the existence of a <b>discrete shear surface (slip plane)</b>:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Classification Criteria</th>
-                <th>Mass Movement (Sensu Lato)</th>
-                <th>Landslide (Sensu Stricto)</th>
-                <th>Creep</th>
-                <th>Avalanche</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Shear Plane</b></td>
-                <td>May be absent, diffuse, internal, or discrete</td>
-                <td><b>Discrete, well-defined shear failure plane</b></td>
-                <td>No discrete shear plane; continuous internal viscous strain</td>
-                <td>Turbulent fluid-like flow, cushion of compressed air</td>
-              </tr>
-              <tr>
-                <td><b>Displacement Mechanics</b></td>
-                <td>Falls, topples, slides, spreads, flows</td>
-                <td><b>Rigid or semi-rigid shear slide (rotational or translational)</b></td>
-                <td>Slow, imperceptible seasonal ratchet strain</td>
-                <td>Extremely rapid, airborne turbulent granular flow</td>
-              </tr>
-              <tr>
-                <td><b>Mohr-Coulomb Failure</b></td>
-                <td>Variable</td>
-                <td>$\tau_f = c' + \sigma_n' \tan \phi'$ localized on basal surface</td>
-                <td>Low-stress distributed shear strain $(\dot{\gamma})$</td>
-                <td>Fluidized granular dispersion</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>1.2 Kinematic Classifications of Landslides (Varnes, 1978)</h3>
-        <p>A true landslide occurs when the shear stress $(\tau)$ along a potential failure surface exceeds the shear strength $(\tau_f)$ of the rock or soil mass. The two primary categories defined by the geometry of the shear plane are:</p>
-        <ul>
-          <li><b>Rotational Slides (Slumps):</b> The shear plane is concave upward (spoon-shaped). The movement involves backward tilting of the slip block towards the scarp.</li>
-          <li><b>Translational Slides:</b> The shear plane is approximately planar or undulating, often controlled by structural discontinuities (bedding planes, foliation, joints, or fault surfaces).</li>
-        </ul>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q01/bangar_p378_landslides_verbatim_definition.png" alt="Verbatim Textbook Cut from K.M. Bangar (Principles of Engineering Geology, p. 378)">
-      <figcaption>
-        <strong>Textbook Figure & Excerpt (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 10, Section 10.9.2, p. 378):</strong> Direct photographic cut from K.M. Bangar illustrating the classical definition of <strong>Landslides</strong>: <em>"Where a mass of earth or rock slides down the slope along a definite zone or surface, the movement is called a landslide... a slope fails primarily by shear and the slip surface is approximately cylindrical or spoon shaped. The movement of the mass starts by cracking along a shearing surface and then the separated mass slides down rapidly."</em> Includes <strong>Fig. 10.20 (Slump / Shear Slide)</strong> and <strong>Fig. 10.21 (Rock Slide)</strong>.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Engineering Geology Principles</div>
+      <div class="part-sub">Downslope mass displacement, shear plane localization, Mohr-Coulomb failure criteria, and kinematic slope stability</div>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q01/bangar_p377_earthflows_vs_landslides_definition.png" alt="Textbook Cut on Earthflows vs Landslides from K.M. Bangar (p. 377)">
-      <figcaption>
-        <strong>Textbook Excerpt (K.M. Bangar, Section 10.9.1, p. 377):</strong> Critical textbook distinction between Earthflows/Creep and True Landslides: <em>"In earthflows the movements are distributed through the mass and the well-defined slip surface which is characteristic of landslides, does not occur."</em>
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q01/landslide_shear_plane_mechanics.png" alt="Mechanics of Landslides and Shear Failure Surfaces">
-      <figcaption>
-        <strong>Figure 1.1: Kinematic Demarcation & Mohr-Coulomb Shear Failure Mechanics.</strong> Schematic cross-section showing (A) Rotational slump with curved, concave-upward shear rupture surface (spoon-shaped) and backward tilting of slip block, and (B) Translational planar slide governed by discrete structural discontinuities (bedding/joint planes) satisfying the Mohr-Coulomb shear failure criterion ($	au_f = c' + \sigma_n'	an\phi'$).
-      </figcaption>
-    </div>
-    
   </div>
 
-  <!-- PART II -->
-  <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
-  </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q1. The generic term describing those downward movements of slope-forming material as a result of shear failure occurring along a well-defined shear plane is :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Mass movement</div>
-        <div class="opt-item correct"><strong>(B)</strong> Landslide</div>
-        <div class="opt-item "><strong>(C)</strong> Creep</div>
-        <div class="opt-item "><strong>(D)</strong> Avalanche</div>
+  <!-- CARD 1 -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Critical Demarcation: Mass Movement vs. True Landslides</div>
+    <div class="card-body">
+      <p>
+        In physical geology and geotechnical engineering, the downslope displacement of rock, regolith, and soil under gravitational body forces is collectively designated as <strong>mass movement</strong> (or <em>mass wasting</em>). However, engineering geology and slope mechanics establish a fundamental physical demarcation based on whether movement occurs by <strong>diffuse internal deformation</strong> or is localized along a <strong>discrete, well-defined shear failure plane</strong> (Varnes, 1978; Cruden & Varnes, 1996; Bangar, Chapter 10).
+      </p>
+
+      <div class="quote-box bangar">
+        "Where a mass of earth or rock slides down the slope along a definite zone or surface, the movement is called a <strong>landslide</strong>... A slope fails primarily by shear and the slip surface is approximately cylindrical or spoon shaped. The movement of the mass starts by cracking along a shearing surface and then the separated mass slides down rapidly."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard University Edition), Chapter 10, Section 10.9.2, p. 378</span>
+      </div>
+
+      <p>
+        In contrast, when earth materials deform without a discrete basal shear surface, the movement falls into other kinematic categories such as <em>earthflows</em> or <em>soil creep</em>:
+      </p>
+
+      <div class="quote-box bangar">
+        "In earthflows the movements are distributed through the mass and the well-defined slip surface which is characteristic of landslides, <strong>does not occur</strong>."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em>, Section 10.9.1, p. 377</span>
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) Landslide</b> — Downward movement of slope-forming material resulting from shear failure along a <i>well-defined shear plane</i> is strictly defined as a <b>Landslide</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Mass movement — INCORRECT (Distractor / Over-generalization):</b> Mass movement is the broad generic term that includes falls, topples, slides, flows, and creep. It is not restricted to movements with a well-defined shear plane (e.g. mudflows and creep lack a distinct shear plane).</li>
-          <li><b>(B) Landslide — CORRECT:</b> In international engineering geology terminology (Varnes 1978; IAEG Commission on Landslides), a landslide is explicitly defined as shear failure localized along a recognizable, well-defined shear plane or zone of rupture.</li>
-          <li><b>(C) Creep — INCORRECT:</b> Soil creep or rock creep is an extremely slow, imperceptible, continuous deformation occurring throughout the entire thickness of the soil without a discrete shear failure surface.</li>
-          <li><b>(D) Avalanche — INCORRECT:</b> An avalanche is a rapid, turbulent downrush of snow, ice, or shattered rock debris supported by dynamic flow or air cushioning rather than sliding on a stationary shear plane.</li>
-        </ul>
-        
   </div>
 
-  <!-- PART III -->
+  <!-- CARD 2 -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Quantitative Mohr-Coulomb Failure Criteria & Factor of Safety ($FS$)</div>
+    <div class="card-body">
+      <p>
+        A landslide is mechanically triggered when the gravitational driving shear stress along a potential failure surface exceeds the shear strength of the geomaterial. The available shear strength ($	au_f$) is governed by the <strong>Terzaghi Effective Stress Mohr-Coulomb criterion</strong>:
+      </p>
+
+      <div class="formula-card">
+        <div class="formula-title">Mohr-Coulomb Shear Strength Equation</div>
+        $$	au_f = c' + \sigma_n' 	an \phi' = c' + (\sigma_n - u) 	an \phi'$$
+      </div>
+
+      <p>Where:</p>
+      <ul style="padding-left: 20px; margin-bottom: 12px;">
+        <li>$c'$ = Effective cohesive intercept of the rock or soil mass ($	ext{kPa}$ or $	ext{MPa}$).</li>
+        <li>$\sigma_n$ = Total normal stress acting perpendicular to the failure plane ($\sigma_n = \gamma \cdot z \cdot \cos^2 	heta$).</li>
+        <li>$u$ = Pore water pressure ($	ext{kPa}$), which reduces effective confining stress ($\sigma_n' = \sigma_n - u$).</li>
+        <li>$\phi'$ = Effective angle of internal friction ($	ext{degrees}$).</li>
+      </ul>
+
+      <p>
+        The stability of any slope is quantitatively evaluated via the <strong>Factor of Safety ($FS$)</strong>:
+      </p>
+      $$FS = rac{	ext{Resisting Shear Strength } (	au_f)}{	ext{Driving Shear Stress } (	au_d)} = rac{c' + (\sigma_n - u) 	an \phi'}{	au_d}$$
+      <p>
+        When $FS > 1.0$, the slope is stable; when $FS = 1.0$, limit equilibrium exists; and when $FS < 1.0$, catastrophic shear failure initiates along the rupture surface.
+      </p>
+    </div>
+  </div>
+
+  <!-- CARD 3: AUTHENTIC TEXTBOOK FIGURES -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Authentic Textbook Evidence & Kinematic Failure Forms</div>
+    <div class="card-body">
+      <p>
+        Below are the direct high-resolution scans from K.M. Bangar establishing the exact verbatim wording and cross-sectional geometries:
+      </p>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q01/bangar_p378_landslides_verbatim_definition.png" alt="Verbatim Textbook Cut from K.M. Bangar (p. 378)">
+        <div class="tb-caption">
+          <strong>Textbook Scan (K.M. Bangar, p. 378):</strong> Definitive textbook section defining <strong>Landslides</strong>: <em>"Where a mass of earth or rock slides down the slope along a definite zone or surface, the movement is called a landslide."</em> Contains <strong>Fig. 10.20 (Slump)</strong> with concave-upward cylindrical shear surface and <strong>Fig. 10.21 (Rock Slide)</strong> with structural planar slip.
+        </div>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q01/bangar_p377_earthflows_vs_landslides_definition.png" alt="Earthflows vs Landslides from K.M. Bangar (p. 377)">
+        <div class="tb-caption">
+          <strong>Textbook Scan (K.M. Bangar, p. 377):</strong> Textbook confirmation that in earthflows, <em>"the well-defined slip surface which is characteristic of landslides, does not occur"</em>, proving option (A) mass movement is an umbrella category rather than the specific shear plane phenomenon.
+        </div>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q01/landslide_shear_plane_mechanics.png" alt="Mechanics of Landslides and Shear Failure Surfaces">
+        <div class="tb-caption">
+          <strong>Figure 1.1: Kinematic Demarcation of Landslide Shear Surfaces:</strong> (A) Rotational Slump with curved, concave-upward cylindrical slip surface and headscarp back-tilting. (B) Translational Planar Slide along structural daylighting planes (bedding, cleavage, joints).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART II: OFFICIAL EXAM QUESTION & OPTION-BY-OPTION DISSECTION          -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with mechanical principles</div>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 1)</div>
+    <div class="q-stmt">
+      Q1. The generic term describing those downward movements of slope-forming material as a result of shear failure occurring along a well-defined shear plane is :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Mass movement</div>
+      <div class="raw-opt correct">(B) Landslide &nbsp;✔</div>
+      <div class="raw-opt">(C) Creep</div>
+      <div class="raw-opt">(D) Avalanche</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) Landslide</div>
+      <div class="sub">
+        In international engineering geology (Varnes 1978, IAEG, Cruden & Varnes 1996) and standard university syllabi (K.M. Bangar, p. 378), downward movement of slope-forming material resulting from shear failure localized along a <strong>well-defined shear plane</strong> is strictly and generically termed a <strong>Landslide</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Mass movement</span>
+      <span class="tag wrong">Incorrect (Broad Umbrella Term)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Mass movement (or mass wasting) is an all-inclusive super-category covering all gravity-driven downslope movements—including rockfalls, topples, debris flows, mudflows, solifluction, and soil creep. Many of these movements (specifically flows, creep, and falls) <em>do not possess a well-defined shear plane</em>. In mudflows and earthflows, shear strain is continuously distributed throughout the fluid-saturated mass; in falls, the material moves through free-fall in the air. Thus, mass movement lacks the diagnostic criterion of failure along a discrete shear plane.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) Landslide</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> The presence of a <em>discrete, recognizable shear surface (rupture surface)</em> is the singular defining criterion that demarcates a <strong>landslide</strong> from all other forms of mass wasting. Whether the failure surface is circular/cylindrical (rotational slump in homogeneous clays) or planar (translational slide along bedding/fault surfaces), displacement is accommodated by shear displacement across a distinct boundary separating the moving block from the stationary parent rock.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Creep</span>
+      <span class="tag wrong">Incorrect (Diffuse Viscous Strain)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Creep is defined as the exceptionally slow, steady, imperceptible continuous downslope movement of soil, regolith, or weathered mantle (typically millimeters to centimeters per year). Mechanically, creep operates via cyclic freeze-thaw, thermal expansion-contraction, and distributed viscous shear strain ($\dot{\gamma} = rac{	au}{\eta}$). It <em>never possesses a distinct shear rupture plane</em>; fence lines, tree trunks, and telephone poles tilt gradually because the entire upper column suffers distributed deformation.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Avalanche</span>
+      <span class="tag wrong">Incorrect (Airborne Turbulent Flow)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> An avalanche (whether snow, rock, or debris avalanche) is a catastrophic, high-velocity turbulent flow where particles are pulverized and supported by trapped air cushions or dynamic granular dispersion. The kinematic mechanics represent turbulent fluid flow rather than rigid or semi-rigid sliding along a stationary shear plane.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
+  <!-- PART III: SYNTHESIS REFERENCE TABLES & HIGH-YIELD PRACTICE             -->
+  <!-- ══════════════════════════════════════════════════════════════════════ -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>High-Yield Concept Check & Numerical Applications</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 1: Factor of Safety on a Planar Slip Surface</div>
-          <p>A translational landslide occurs along a planar bedding plane inclined at $\theta = 30^\circ$. The cohesive strength $c' = 15\text{ kPa}$, effective normal stress $\sigma_n' = 80\text{ kPa}$, and internal friction angle $\phi' = 25^\circ$. If the driving shear stress along the slip plane is $\tau_d = 45\text{ kPa}$, calculate the Factor of Safety ($FS$) and determine slope stability.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>The resisting shear strength along the shear plane is given by the Mohr-Coulomb criterion:</p>
-            $$\tau_f = c' + \sigma_n' \tan \phi' = 15 + 80 \tan(25^\circ) = 15 + 80(0.4663) = 15 + 37.3 = 52.3\text{ kPa}$$
-            <p>The Factor of Safety ($FS$) is the ratio of resisting shear strength to driving shear stress:</p>
-            $$FS = \frac{\tau_f}{\tau_d} = \frac{52.3}{45.0} \approx 1.16$$
-            <p>Since $FS > 1.0$, the slope is conditionally stable, but vulnerable to failure if pore water pressure reduces $\sigma_n'$.</p>
+
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Classification Matrix: Slope Failure Types</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Movement Type</th>
+            <th>Shear Rupture Plane</th>
+            <th>Kinematic Mechanism</th>
+            <th>Velocity Range</th>
+            <th>Diagnostic Field Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>True Landslide (Sensu Stricto)</strong></td>
+            <td><strong style="color:#059669;">Discrete, well-defined shear plane</strong></td>
+            <td>Shear failure ($	au > 	au_f$); rotational slump or translational block glide</td>
+            <td>Meters/hour to meters/second</td>
+            <td>Arcuate crown scarp, transverse tension cracks, hummocky toe</td>
+          </tr>
+          <tr>
+            <td><strong>Mass Movement (Sensu Lato)</strong></td>
+            <td>Variable (Often diffuse or absent)</td>
+            <td>Umbrella term encompassing falls, topples, slides, spreads, flows</td>
+            <td>$10^{-6}	ext{ m/s}$ to $>50	ext{ m/s}$</td>
+            <td>Broad geomorphic degradation across entire slopes</td>
+          </tr>
+          <tr>
+            <td><strong>Soil / Rock Creep</strong></td>
+            <td><strong style="color:#dc2626;">Absent</strong> (Internal distributed strain)</td>
+            <td>Continuous low-stress viscous deformation; cyclic wetting/drying ratcheting</td>
+            <td>$< 1	ext{ to } 10	ext{ mm/year}$</td>
+            <td>J-shaped tree trunks, tilted utility poles, displaced retaining walls</td>
+          </tr>
+          <tr>
+            <td><strong>Earthflow / Mudflow</strong></td>
+            <td><strong style="color:#dc2626;">Absent</strong> (Internal fluid mixing)</td>
+            <td>Viscous fluid flow of saturated fine-grained sediment; loss of shear strength</td>
+            <td>$0.01	ext{ m/s}$ to $10	ext{ m/s}$</td>
+            <td>Hourglass planform, lateral shear levees, lobate depositional snout</td>
+          </tr>
+          <tr>
+            <td><strong>Debris Avalanche</strong></td>
+            <td>Basal air cushion / Granular flow</td>
+            <td>Fluidized granular dispersion, trapped air cushion lubrication</td>
+            <td>$> 30	ext{ to } 100	ext{ m/s}$</td>
+            <td>Catastrophic runout distance ($H/L < 0.2$), shattered block hummocks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 DETAILED QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A planar rockslide is threatened along a joint dipping at $lpha = 30^\circ$ into a valley. The rock block has a total weight $W = 500	ext{ kN}$ and basal contact area $A = 20	ext{ m}^2$. The joint properties are $c' = 10	ext{ kPa}$ and $\phi' = 28^\circ$. If water pressure is negligible, calculate the Factor of Safety ($FS$) against sliding.
+          <div class="pq-ans">✔ Worked Answer: $FS = 1.01$ (Limit Equilibrium / Imminent Failure)</div>
+          <div class="pq-exp">
+            <strong>Detailed Proof:</strong><br>
+            Normal force $N = W \cos lpha = 500 \cos 30^\circ = 433.01	ext{ kN}$.<br>
+            Normal stress $\sigma_n = N / A = 433.01 / 20 = 21.65	ext{ kPa}$.<br>
+            Driving shear force $T = W \sin lpha = 500 \sin 30^\circ = 250	ext{ kN}$.<br>
+            Driving shear stress $	au_d = T / A = 250 / 20 = 12.50	ext{ kPa}$.<br>
+            Resisting shear strength $	au_f = c' + \sigma_n 	an \phi' = 10 + 21.65 	an 28^\circ = 10 + 21.65(0.5317) = 10 + 11.51 = 21.51	ext{ kPa}$.<br>
+            Resisting force $R = 	au_f \cdot A = 21.51 	imes 20 = 430.2	ext{ kN}$.<br>
+            $$FS = rac{R}{T} = rac{c' A + W \cos lpha 	an \phi'}{W \sin lpha} = rac{10(20) + 433.01(0.5317)}{250} = rac{200 + 230.23}{250} = rac{430.23}{250} pprox 1.72$$
+            <em>Note:</em> If cohesive bond is destroyed ($c'=0$), $FS = rac{	an \phi'}{	an lpha} = rac{	an 28^\circ}{	an 30^\circ} = rac{0.5317}{0.5774} = 0.92$ (Catastrophic collapse occurs).
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is the primary kinematic difference between a rotational landslide (slump) and a translational landslide?
+          <div class="pq-ans">✔ Correct Answer: Geometry of the failure plane (Curved concave-upward vs. planar structural discontinuity).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In a rotational slump, the slip surface is spoon-shaped (concave upward), producing a backward rotation of the displaced block toward the scarp. In a translational slide, the slip surface is planar or undulating, often guided by structural weaknesses (bedding, joints, foliation), and the block moves parallel to the plane without rotational tilting.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> How does an increase in pore water pressure ($u$) trigger slope failure according to Terzaghi's effective stress principle?
+          <div class="pq-ans">✔ Correct Answer: By reducing effective normal stress ($\sigma_n' = \sigma_n - u$), which directly decreases frictional resistance ($	au_f$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Water pressure exerts an outward buoyant pore pressure that pushes geomaterial grains apart. Since frictional resistance is proportional to grain-to-grain contact force ($\sigma_n' 	an \phi'$), increasing $u$ reduces $\sigma_n'$ without changing the gravitational driving stress $	au_d$, thereby driving $FS < 1.0$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In a dry, cohesionless granular material (e.g., dry clean sand), what governs the maximum stable slope angle?
+          <div class="pq-ans">✔ Correct Answer: The angle of internal friction of the material ($lpha_{max} = \phi'$), universally termed the angle of repose.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> For $c'=0$ and $u=0$, $FS = rac{	an \phi'}{	an lpha}$. The slope remains stable ($FS \ge 1.0$) as long as the slope inclination $lpha \le \phi'$. The angle $\phi'$ defines the natural angle of repose.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> In the Varnes (1978) classification of slope movements, what two primary parameters form the orthogonal classification axes?
+          <div class="pq-ans">✔ Correct Answer: Type of movement (fall, topple, slide, spread, flow) and Type of material (bedrock vs. engineering soil/debris/earth).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The Varnes matrix establishes 5 kinematic movement mechanisms along the horizontal axis and 2 primary geomaterial types (Rock and Soil, subdivided into coarse Debris and fine Earth) along the vertical axis.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What engineering mitigation technique addresses the root cause of rainfall-induced translational landslides along planar joints?
+          <div class="pq-ans">✔ Correct Answer: Horizontal sub-surface drainage holes and toe drainage to dissipate pore water pressure ($u$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Drainage lowers the phreatic surface, dissipating $u$ and restoring effective normal stress ($\sigma_n'$). Dewatering is universally recognized in geotechnical engineering as the most cost-effective stabilization method.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Curved, pistol-butted tree trunks (J-shaped trunks) and tilted fence posts on a grassy hillside are classic field diagnostics of which process?
+          <div class="pq-ans">✔ Correct Answer: Soil creep (continuous creep).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because soil creep is fastest at the ground surface and decreases with depth, the root base moves slower than the upper trunk. Trees continually attempt to grow phototropically vertically, creating curved trunks.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why is day-lighting of bedding planes in a road-cut slope considered the most dangerous structural condition in civil excavations?
+          <div class="pq-ans">✔ Correct Answer: It removes kinematic lateral support at the toe, allowing the block to slide unhindered along the bedding plane into the cut.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> When bedding planes dip in the same direction as the hill slope at an angle less than the cut slope ($lpha_{bed} < lpha_{cut}$), the plane "daylights" into the open cut. Frictional resistance alone must hold the entire weight; if $lpha_{bed} > \phi'$, instantaneous planar block sliding occurs.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
 </div>
 </body>
 </html>
