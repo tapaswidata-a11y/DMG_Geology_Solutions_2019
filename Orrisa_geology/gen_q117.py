@@ -1,0 +1,286 @@
+#!/usr/bin/env python3
+"""
+Q117 Generator: Augen Gneiss & Eye-Shaped Porphyroclastic Structures
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q117():
+    title = r"Q117: Metamorphic Petrology: Augen Gneiss & Porphyroclast Microstructures | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Metamorphic Petrology & Microstructures"
+    h1_title = "Q117: Augen Gneiss: Eye-Shaped Lenticular Porphyroclasts, Ductile Shear & Mylonitic Fabrics"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 117<br>
+<strong>Authoritative References:</strong> John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Ch. 22: Metamorphic Textures / Shear Zones, pp. 450–455; Fig. 22.2); C.W. Passchier and R.A.J. Trouw, <em>Microtectonics</em> (2nd Ed., Springer); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 87–90, 184); G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 136–138)."""
+
+    part1 = r"""
+  <!-- CARD 1: DEFINITION AND ETYMOLOGY OF AUGEN GNEISS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Etymology & Microstructural Architecture of Augen Gneiss</div>
+    <div class="card-body">
+      <p>
+        The term <strong>augen</strong> originates from the German word <em>Augen</em> (plural of <em>Auge</em>, meaning "eyes"), introduced into classical petrology by German and Alpine geologists to describe the striking visual appearance of coarse metamorphic rocks.
+      </p>
+      <p>
+        In metamorphic petrology and structural geology (Winter, 2014, pp. 450–455; Passchier & Trouw, 2005; Bangar, p. 87), an <strong>augen gneiss</strong> is formally defined as a medium- to coarse-grained, strongly foliated metamorphic rock characterized by <strong>augen structure</strong>—a fabric consisting of large, lenticular, elliptical, or eye-shaped mineral grains or aggregates (most commonly <strong>K-feldspar, plagioclase, quartz, or garnet</strong>) enclosed within and wrapped around by flowing, finely foliated, anastomosing ribbons of recrystallized matrix minerals (biotite, muscovite, chlorite, and quartz).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q117/winter_p452_augen_gneiss_eye_structures.png" alt="Augen Structure and Porphyroclast Geometry from John D. Winter">
+        <div class="figure-caption">
+          <strong>Figure 117.1 — Petrographic Fabric of Augen Gneiss:</strong> Authentic textbook diagram from John D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, p. 452). Depicts large, eye-shaped K-feldspar porphyroclasts (augen) wrapped by ductilely sheared, dark biotite-rich foliation foliae, showing characteristic $\sigma$-type asymmetric recrystallization wings.
+        </div>
+      </div>
+
+      <h4>Microstructural Origin of the "Eye" Shape</h4>
+      <p>
+        Augen structures develop during intense <strong>ductile non-coaxial shear strain and dynamic recrystallization</strong> in crustal shear zones and orogenic cores:
+      </p>
+      <ol>
+        <li><strong>Competency Contrast:</strong> Large phenocrysts of feldspar (or porphyroblasts of garnet) in a parent granite or porphyritic rock are mechanically <strong>rigid and competent</strong> relative to the surrounding finer-grained, quartz-mica matrix.</li>
+        <li><strong>Dynamic Grain-Size Reduction:</strong> Under ductile shearing ($T > 400\text{--}500^\circ\text{C}$), quartz in the matrix deforms via plastic dislocation creep, flowing easily around the rigid feldspar grains.</li>
+        <li><strong>Marginal Abrasion & Wing Formation:</strong> The outer rims of the rigid feldspar grains undergo dynamic subgrain rotation and recrystallization, shedding fine-grained debris that is drawn out into trailing, tapered "tails" or "wings" parallel to the mylonitic foliation ($XY$-plane), producing the classic lenticular eye geometry.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CARD 2: KINEMATICS & PROTOLITH CONTEXT -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Kinematic Shear Sense Indicators ($\sigma$ vs. $\delta$) & Protolith Lineages</div>
+    <div class="card-body">
+      <h4>Asymmetric Porphyroclasts as Shear-Sense Indicators</h4>
+      <p>
+        In modern microtectonics (Passchier & Trouw, 2005), augen porphyroclasts provide definitive kinematic indicators for determining the direction of tectonic transport (shear sense):
+      </p>
+      <ul>
+        <li><strong>$\sigma$-Type (Sigma) Porphyroclasts:</strong> The recrystallized recrystallization tails or wings are stepped and lie on opposite sides of the central porphyroclast, with the tail extending parallel to the foliation plane without crossing the central reference plane. They indicate that recrystallization rates exceeded the rotation rate of the porphyroclast, giving unambiguous dextral or sinistral shear sense.</li>
+        <li><strong>$\delta$-Type (Delta) Porphyroclasts:</strong> The recrystallization tails are coiled, rolled, or wrapped around the porphyroclast body, indicating that the crystal rotated faster than wings could be drawn away, diagnostic of high-vorticity non-coaxial flow.</li>
+      </ul>
+
+      <h4>Refutation of Distractor Gneissic Terms</h4>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Gneiss Variety</th>
+            <th>Defining Criteria / Scientific Meaning</th>
+            <th>Distinction from Augen Gneiss</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Augen Gneiss</strong></td>
+            <td><strong>Structural / textural:</strong> Defined specifically by eye-shaped lenticular porphyroclasts wrapped by foliated foliae.</td>
+            <td><strong>The exact defining term for eye-shaped structures.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Orthogneiss</strong></td>
+            <td><strong>Genetic:</strong> Gneiss derived from an <em>igneous protolith</em> (granite, granodiorite, diorite).</td>
+            <td>An orthogneiss may be planar-banded, augen-bearing, or striped; it is a genetic classification, not a textural eye-definition.</td>
+          </tr>
+          <tr>
+            <td><strong>Paragneiss</strong></td>
+            <td><strong>Genetic:</strong> Gneiss derived from a <em>sedimentary protolith</em> (shale, greywacke, arkose).</td>
+            <td>Classified by sedimentary origin; rarely contains large feldspar augen unless derived from arkosic conglomerates.</td>
+          </tr>
+          <tr>
+            <td><strong>Biotite Gneiss</strong></td>
+            <td><strong>Mineralogical:</strong> Gneiss containing biotite as its dominant ferromagnesian mineral.</td>
+            <td>Refers solely to mineral composition, regardless of whether texture is planar-banded or lenticular.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 117:</strong> A metamorphic structure consisting of minerals like feldspar, quartz, or garnet that have been squeezed into elliptical or lens-shaped forms resembling eyes, called :
+      </div>
+      <div class="options-grid">
+        <div class="option-item"><strong>(A)</strong> Orthogneiss</div>
+        <div class="option-item"><strong>(B)</strong> Paragneiss</div>
+        <div class="option-item correct-option"><strong>(C)</strong> Augen gneiss</div>
+        <div class="option-item"><strong>(D)</strong> Biotite gneiss</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(C) Augen gneiss</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-a">Option (A) Refuted — Orthogneiss</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Orthogneiss</strong> is a genetic term designating any gneiss formed by the metamorphism of an <strong>igneous rock</strong> (such as granite, granodiorite, or syenite). While many augen gneisses are indeed orthogneisses in origin, "orthogneiss" refers to the rock's parentage, not its internal geometrical eye-like structure. An orthogneiss can exhibit straight, planar gneissic banding without containing any elliptical augen.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Paragneiss</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Paragneiss</strong> is a genetic term designating a gneiss derived from a <strong>sedimentary protolith</strong> (such as shale, siltstone, or greywacke). It does not designate the presence of lens- or eye-shaped structures.
+        </p>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-badge opt-c">Option (C) Confirmed — Augen Gneiss</div>
+        <p>
+          <strong>Correct:</strong> By universal scientific and textbook definition (Winter, 2014, p. 452; Bangar, p. 87; Mahapatra, p. 136; Passchier & Trouw, 2005), the metamorphic structure consisting of rigid porphyroclasts of feldspar, quartz, or garnet squeezed into <strong>elliptical, lens-shaped forms resembling eyes</strong> (German: <em>Augen</em>) wrapped by foliated matrix is called <strong>augen structure</strong>, and the rock exhibiting it is definitively designated as an <strong>Augen gneiss</strong>.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Biotite Gneiss</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Biotite gneiss</strong> is a purely mineralogical term for a gneiss characterized by alternating light quartz-feldspar bands and dark biotite-rich bands. It describes mineralogy, not the diagnostic eye-shaped lenticular morphology.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural Comparison: Gneissic Textures and Terminology</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Gneissic Category</th>
+            <th>Classification Criterion</th>
+            <th>Distinctive Microstructural Fabric</th>
+            <th>Diagnostic Geological Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Augen Gneiss</strong></td>
+            <td><strong>Textural / Structural</strong></td>
+            <td><strong>Elliptical, lenticular, eye-shaped porphyroclasts (augen) wrapped by ductile foliation</strong></td>
+            <td>Intense ductile non-coaxial shear strain; core-and-mantle structure; kinematic shear zones.</td>
+          </tr>
+          <tr>
+            <td><strong>Banded Gneiss</strong></td>
+            <td>Textural / Structural</td>
+            <td>Continuous, planar, alternating light felsic and dark mafic layers</td>
+            <td>Metamorphic differentiation; high-temperature flattened laminar flow.</td>
+          </tr>
+          <tr>
+            <td><strong>Orthogneiss</strong></td>
+            <td>Genetic (Protolith)</td>
+            <td>Quartzo-feldspathic composition; granitic chemical signature ($ZTR, \text{high } K/Na$)</td>
+            <td>Deformed plutonic igneous batholiths in ancient basement complexes.</td>
+          </tr>
+          <tr>
+            <td><strong>Paragneiss</strong></td>
+            <td>Genetic (Protolith)</td>
+            <td>High $\text{Al}_2\text{SiO}_5$, cordierite, graphite, or calc-silicate bands</td>
+            <td>Deeply buried and metamorphosed sedimentary flysch or pelitic basins.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>Under a polarizing petrographic microscope, a feldspar augen displays an un-deformed, coarse single-crystal core surrounded by a peripheral rim of microscopic, recrystallized new grains of the same composition. What is this microstructure called, and what deformation mechanism does it indicate?</p>
+        <p><strong>Solution:</strong>
+          This microstructure is called <strong>core-and-mantle structure</strong>. It is diagnostic of <strong>dynamic recrystallization via subgrain rotation (SGR)</strong> during ductile deformation. The competent crystal core resists internal strain, while high differential shear stress concentrated along the grain margins drives intense dislocation accumulation, forming subgrains that progressively rotate into an outer "mantle" of strain-free, dynamically recrystallized microscopic neoblasts that are drawn out into the augen tails.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Explain how a $\sigma$-type augen porphyroclast is distinguished from a $\delta$-type augen porphyroclast in a mylonitic shear zone.</p>
+        <p><strong>Solution:</strong>
+          - <strong>$\sigma$-Type (Sigma) Porphyroclast:</strong> The recrystallized tails on opposite sides of the central porphyroclast are stepped; each tail extends directly away into the foliation plane without crossing the reference median line of the porphyroclast body.
+          - <strong>$\delta$-Type (Delta) Porphyroclast:</strong> The dynamic rotation rate of the porphyroclast ($\dot{\theta}$) exceeded the rate at which tails could be drawn away into the matrix; consequently, the tails are wrapped, coiled, or curled around the porphyroclast perimeter, crossing the reference median plane. Both provide unambiguous indicators of shear sense.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>Why are feldspar crystals in granites far more prone to developing augen structures than quartz crystals under mid-crustal metamorphic temperatures ($400\text{--}550^\circ\text{C}$)?</p>
+        <p><strong>Solution:</strong>
+          This difference is governed by <strong>relative rheological activation temperatures</strong>:
+          - <strong>Quartz:</strong> Reaches its brittle-ductile transition at low temperatures ($T \approx 300\text{--}350^\circ\text{C}$). At $450\text{--}550^\circ\text{C}$, quartz deforms easily via crystal-plastic dislocation creep, stretching and recrystallizing completely into thin, continuous, ductile ribbons.
+          - <strong>Feldspar:</strong> Has stronger chemical bonds and a more complex framework lattice; its brittle-ductile transition requires temperatures <strong>$> 450\text{--}500^\circ\text{C}$</strong>. At $450\text{--}550^\circ\text{C}$, feldspar behaves as a rigid, competent obstacle that resists plastic stretching, preserving its large lenticular core while quartz flows ductilely around it, generating the eye-shaped augen.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>What is a "porphyroclast" and how does it differ fundamentally from a "porphyroblast"?</p>
+        <p><strong>Solution:</strong>
+          - <strong>Porphyroclast (Augen):</strong> A pre-existing, coarse relict crystal inherited from the parent rock that has <strong>survived mechanical deformation and grain-size reduction</strong> (a mechanical relict fragment).
+          - <strong>Porphyroblast:</strong> A newly formed metamorphic mineral crystal (such as garnet, staurolite, or andalusite) that <strong>nucleated and grew larger than the surrounding matrix in-situ</strong> via chemical metamorphic reactions and solid-state diffusion.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>What geological protolith typically metamorphoses to form a classic granitic augen gneiss?</p>
+        <p><strong>Solution:</strong>
+          The classic protolith is a <strong>megacrystic (porphyritic) granite or granodiorite</strong> containing large, euhedral phenocrysts of potassium feldspar (orthoclase or microcline, $1\text{ to } 5\text{ cm}$ in length) set in a medium-grained quartz-biotite-plagioclase groundmass. When caught in a ductile shear zone during orogenesis, the groundmass is pulverized and recrystallized into an anastomosing foliation, while the large K-feldspar phenocrysts are rounded and stretched into augen.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>In structural geology, explain the concept of "foliation boudinage" in an augen gneiss.</p>
+        <p><strong>Solution:</strong>
+          When an augen gneiss is subjected to extreme extension parallel to its foliation, competent layers of interlocking feldspar augen undergo <strong>foliation boudinage</strong>: the layer necks and ruptures along cross-cutting extensional micro-fractures into sausage-shaped boudins, into which the incompetent, ductile biotite-quartz matrix flows, creating a complex pinched-and-swelled eye pattern.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>How does the presence of augen structures affect the directional seismic velocity ($V_p$) of the continental crust?</p>
+        <p><strong>Solution:</strong>
+          Augen gneisses exhibit pronounced <strong>seismic anisotropy ($10\text{ to } 15\%$)</strong>. Compressional waves ($V_p$) travel fastest parallel to the long axes of the elongated augen and the continuous, aligned quartz-mica foliation planes ($V_{p\parallel} \approx 6.2\text{--}6.6\text{ km/s}$), and slowest perpendicular to the foliation plane ($V_{p\perp} \approx 5.4\text{--}5.8\text{ km/s}$), providing a primary source of shear-wave splitting and seismic anisotropy observed in deep crustal seismic reflection surveys.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>In quarrying and engineering geology, why are augen gneisses prized for ornamental building facades, and what structural anisotropy must be accounted for during cutting?</p>
+        <p><strong>Solution:</strong>
+          Augen gneisses are prized for their dramatic visual aesthetics: pink or white lens-shaped feldspar eyes set in swirling, undulating black biotite streams create stunning architectural patterns. However, masons must cut parallel to the foliation plane ($XY$-plane) to expose the broad, elliptical faces of the eyes; cutting perpendicular to foliation reveals thin streaks, and cross-foliation tensile strength is significantly lower, requiring careful anchoring to prevent delamination.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    html = wrap_html(
+        q_num=117,
+        title=title,
+        badge=badge,
+        h1_title=h1_title,
+        meta_text=meta_text,
+        part1_content=part1,
+        part2_content=part2,
+        part3_content=part3
+    )
+
+    out_file = os.path.join(SOLUTIONS_DIR, "Q117_Augen_Gneiss_Eye_Structures_Complete_Guide.html")
+    with open(out_file, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q117: {out_file} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q117()

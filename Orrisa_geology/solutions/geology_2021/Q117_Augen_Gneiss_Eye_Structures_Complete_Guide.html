@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q117: Metamorphic Structures - Augen Gneiss and Eye-Shaped Porphyroclasts | OPSC Geology 2021 Masterclass</title>
+<title>Q117: Metamorphic Petrology: Augen Gneiss & Porphyroclast Microstructures | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,221 +89,551 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q117" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Metamorphic Petrology & Structural Geology</div>
-    <h1>Q117: Metamorphic Structures - Augen Gneiss and Eye-Shaped Porphyroclasts</h1>
+    <div class="badge">GEO - 2/21 • Metamorphic Petrology & Microstructures</div>
+    <h1>Q117: Augen Gneiss: Eye-Shaped Lenticular Porphyroclasts, Ductile Shear & Mylonitic Fabrics</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> J.D. Winter (Principles of Igneous and Metamorphic Petrology, Ch. 23, p. 452)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 117<br>
+<strong>Authoritative References:</strong> John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Ch. 22: Metamorphic Textures / Shear Zones, pp. 450–455; Fig. 22.2); C.W. Passchier and R.A.J. Trouw, <em>Microtectonics</em> (2nd Ed., Springer); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 87–90, 184); G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 136–138).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Microstructural Definition</h3>
-<div class="question-box">
-  <p><strong>Question 117:</strong> A metamorphic structure consisting of minerals like feldspar, quartz, or garnet that have been squeezed into elliptical or lens-shaped forms resembling eyes, called :</p>
-  <ul>
-    <li>(A) Orthogneiss</li>
-    <li>(B) Paragneiss</li>
-    <li>(C) Augen gneiss</li>
-    <li>(D) Biotite gneiss</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(C) Augen gneiss</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q117/winter_p452_augen_gneiss_eye_structures.png" alt="Augen Gneiss - Lens-Shaped Eye Porphyroclasts">
-      <figcaption>
-        <strong>Figure 117.1: Ductile Shear Fabrics - Augen Structure.</strong> Authentic petrographic diagram from J.D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, Ch. 23, p. 452). Depicts elliptical, eye-shaped feldspar porphyroclasts (augen) wrapped by ductile shear foliation.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: DEFINITION AND ETYMOLOGY OF AUGEN GNEISS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Etymology & Microstructural Architecture of Augen Gneiss</div>
+    <div class="card-body">
+      <p>
+        The term <strong>augen</strong> originates from the German word <em>Augen</em> (plural of <em>Auge</em>, meaning "eyes"), introduced into classical petrology by German and Alpine geologists to describe the striking visual appearance of coarse metamorphic rocks.
+      </p>
+      <p>
+        In metamorphic petrology and structural geology (Winter, 2014, pp. 450–455; Passchier & Trouw, 2005; Bangar, p. 87), an <strong>augen gneiss</strong> is formally defined as a medium- to coarse-grained, strongly foliated metamorphic rock characterized by <strong>augen structure</strong>—a fabric consisting of large, lenticular, elliptical, or eye-shaped mineral grains or aggregates (most commonly <strong>K-feldspar, plagioclase, quartz, or garnet</strong>) enclosed within and wrapped around by flowing, finely foliated, anastomosing ribbons of recrystallized matrix minerals (biotite, muscovite, chlorite, and quartz).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q117/winter_p452_augen_gneiss_eye_structures.png" alt="Augen Structure and Porphyroclast Geometry from John D. Winter">
+        <div class="figure-caption">
+          <strong>Figure 117.1 — Petrographic Fabric of Augen Gneiss:</strong> Authentic textbook diagram from John D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, p. 452). Depicts large, eye-shaped K-feldspar porphyroclasts (augen) wrapped by ductilely sheared, dark biotite-rich foliation foliae, showing characteristic $\sigma$-type asymmetric recrystallization wings.
+        </div>
+      </div>
+
+      <h4>Microstructural Origin of the "Eye" Shape</h4>
+      <p>
+        Augen structures develop during intense <strong>ductile non-coaxial shear strain and dynamic recrystallization</strong> in crustal shear zones and orogenic cores:
+      </p>
+      <ol>
+        <li><strong>Competency Contrast:</strong> Large phenocrysts of feldspar (or porphyroblasts of garnet) in a parent granite or porphyritic rock are mechanically <strong>rigid and competent</strong> relative to the surrounding finer-grained, quartz-mica matrix.</li>
+        <li><strong>Dynamic Grain-Size Reduction:</strong> Under ductile shearing ($T > 400\text{--}500^\circ\text{C}$), quartz in the matrix deforms via plastic dislocation creep, flowing easily around the rigid feldspar grains.</li>
+        <li><strong>Marginal Abrasion & Wing Formation:</strong> The outer rims of the rigid feldspar grains undergo dynamic subgrain rotation and recrystallization, shedding fine-grained debris that is drawn out into trailing, tapered "tails" or "wings" parallel to the mylonitic foliation ($XY$-plane), producing the classic lenticular eye geometry.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CARD 2: KINEMATICS & PROTOLITH CONTEXT -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Kinematic Shear Sense Indicators ($\sigma$ vs. $\delta$) & Protolith Lineages</div>
+    <div class="card-body">
+      <h4>Asymmetric Porphyroclasts as Shear-Sense Indicators</h4>
+      <p>
+        In modern microtectonics (Passchier & Trouw, 2005), augen porphyroclasts provide definitive kinematic indicators for determining the direction of tectonic transport (shear sense):
+      </p>
+      <ul>
+        <li><strong>$\sigma$-Type (Sigma) Porphyroclasts:</strong> The recrystallized recrystallization tails or wings are stepped and lie on opposite sides of the central porphyroclast, with the tail extending parallel to the foliation plane without crossing the central reference plane. They indicate that recrystallization rates exceeded the rotation rate of the porphyroclast, giving unambiguous dextral or sinistral shear sense.</li>
+        <li><strong>$\delta$-Type (Delta) Porphyroclasts:</strong> The recrystallization tails are coiled, rolled, or wrapped around the porphyroclast body, indicating that the crystal rotated faster than wings could be drawn away, diagnostic of high-vorticity non-coaxial flow.</li>
+      </ul>
+
+      <h4>Refutation of Distractor Gneissic Terms</h4>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Gneiss Variety</th>
+            <th>Defining Criteria / Scientific Meaning</th>
+            <th>Distinction from Augen Gneiss</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Augen Gneiss</strong></td>
+            <td><strong>Structural / textural:</strong> Defined specifically by eye-shaped lenticular porphyroclasts wrapped by foliated foliae.</td>
+            <td><strong>The exact defining term for eye-shaped structures.</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Orthogneiss</strong></td>
+            <td><strong>Genetic:</strong> Gneiss derived from an <em>igneous protolith</em> (granite, granodiorite, diorite).</td>
+            <td>An orthogneiss may be planar-banded, augen-bearing, or striped; it is a genetic classification, not a textural eye-definition.</td>
+          </tr>
+          <tr>
+            <td><strong>Paragneiss</strong></td>
+            <td><strong>Genetic:</strong> Gneiss derived from a <em>sedimentary protolith</em> (shale, greywacke, arkose).</td>
+            <td>Classified by sedimentary origin; rarely contains large feldspar augen unless derived from arkosic conglomerates.</td>
+          </tr>
+          <tr>
+            <td><strong>Biotite Gneiss</strong></td>
+            <td><strong>Mineralogical:</strong> Gneiss containing biotite as its dominant ferromagnesian mineral.</td>
+            <td>Refers solely to mineral composition, regardless of whether texture is planar-banded or lenticular.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q117. A metamorphic structure consisting of minerals like feldspar, quartz, or garnet that have been squeezed into elliptical or lens-shaped forms resembling eyes, called :</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 117:</strong> A metamorphic structure consisting of minerals like feldspar, quartz, or garnet that have been squeezed into elliptical or lens-shaped forms resembling eyes, called :
+      </div>
       <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Orthogneiss</div>
-        <div class="opt-item "><strong>(B)</strong> Paragneiss</div>
-        <div class="opt-item correct"><strong>(C)</strong> Augen gneiss</div>
-        <div class="opt-item "><strong>(D)</strong> Biotite gneiss</div>
+        <div class="option-item"><strong>(A)</strong> Orthogneiss</div>
+        <div class="option-item"><strong>(B)</strong> Paragneiss</div>
+        <div class="option-item correct-option"><strong>(C)</strong> Augen gneiss</div>
+        <div class="option-item"><strong>(D)</strong> Biotite gneiss</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(C) Augen gneiss</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Augen Structure (Eye-Shaped Porphyroclasts)</h3>
-<p>
-<strong>Augen gneiss</strong> (from the German word <em>Augen</em>, meaning "eyes") is a coarsely foliated metamorphic rock characterized by prominent, lens-shaped or elliptical megacrysts (termed <strong>augen</strong> or porphyroclasts), typically of potash feldspar, plagioclase, quartz, or garnet:
-</p>
-<ul>
-  <li><strong>Kinematic Formation Mechanism:</strong> During intense ductile shear and regional thermodynamic metamorphism, large pre-existing crystals (phenocrysts in an igneous protolith or porphyroblasts in a metamorphic rock) resist ductile deformation better than the surrounding finer-grained groundmass.</li>
-  <li><strong>Asymmetric Strain Shadows:</strong> The micaceous and quartzose matrix flows plastically around these rigid feldspar knots, wrapping around their rounded margins and tapering into recrystallized tails (strain shadows or wings). This imparts the classic lenticular "eye" appearance.</li>
-  <li><strong>Orthogneiss vs Paragneiss:</strong> Refer to genetic protoliths (orthogneiss = igneous parent; paragneiss = sedimentary parent), regardless of whether they display auge fabric. Augen gneiss is the specific descriptive term for this structural geometry.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-a">Option (A) Refuted — Orthogneiss</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Orthogneiss</strong> is a genetic term designating any gneiss formed by the metamorphism of an <strong>igneous rock</strong> (such as granite, granodiorite, or syenite). While many augen gneisses are indeed orthogneisses in origin, "orthogneiss" refers to the rock's parentage, not its internal geometrical eye-like structure. An orthogneiss can exhibit straight, planar gneissic banding without containing any elliptical augen.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Paragneiss</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Paragneiss</strong> is a genetic term designating a gneiss derived from a <strong>sedimentary protolith</strong> (such as shale, siltstone, or greywacke). It does not designate the presence of lens- or eye-shaped structures.
+        </p>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-badge opt-c">Option (C) Confirmed — Augen Gneiss</div>
+        <p>
+          <strong>Correct:</strong> By universal scientific and textbook definition (Winter, 2014, p. 452; Bangar, p. 87; Mahapatra, p. 136; Passchier & Trouw, 2005), the metamorphic structure consisting of rigid porphyroclasts of feldspar, quartz, or garnet squeezed into <strong>elliptical, lens-shaped forms resembling eyes</strong> (German: <em>Augen</em>) wrapped by foliated matrix is called <strong>augen structure</strong>, and the rock exhibiting it is definitively designated as an <strong>Augen gneiss</strong>.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Biotite Gneiss</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Biotite gneiss</strong> is a purely mineralogical term for a gneiss characterized by alternating light quartz-feldspar bands and dark biotite-rich bands. It describes mineralogy, not the diagnostic eye-shaped lenticular morphology.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option C (Augen gneiss) is correct:</strong> German <em>Augen</em> specifically denotes eye-shaped lens structures in gneiss.</li>
-  <li><strong>Option A (Orthogneiss):</strong> Gneiss derived from an igneous protolith (granite).</li>
-  <li><strong>Option B (Paragneiss):</strong> Gneiss derived from a sedimentary protolith.</li>
-  <li><strong>Option D (Biotite gneiss):</strong> Mineralogical variety of gneiss lacking the diagnostic lenticular eye-shaped porphyroclasts.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural Comparison: Gneissic Textures and Terminology</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Gneissic Category</th>
+            <th>Classification Criterion</th>
+            <th>Distinctive Microstructural Fabric</th>
+            <th>Diagnostic Geological Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Augen Gneiss</strong></td>
+            <td><strong>Textural / Structural</strong></td>
+            <td><strong>Elliptical, lenticular, eye-shaped porphyroclasts (augen) wrapped by ductile foliation</strong></td>
+            <td>Intense ductile non-coaxial shear strain; core-and-mantle structure; kinematic shear zones.</td>
+          </tr>
+          <tr>
+            <td><strong>Banded Gneiss</strong></td>
+            <td>Textural / Structural</td>
+            <td>Continuous, planar, alternating light felsic and dark mafic layers</td>
+            <td>Metamorphic differentiation; high-temperature flattened laminar flow.</td>
+          </tr>
+          <tr>
+            <td><strong>Orthogneiss</strong></td>
+            <td>Genetic (Protolith)</td>
+            <td>Quartzo-feldspathic composition; granitic chemical signature ($ZTR, \text{high } K/Na$)</td>
+            <td>Deformed plutonic igneous batholiths in ancient basement complexes.</td>
+          </tr>
+          <tr>
+            <td><strong>Paragneiss</strong></td>
+            <td>Genetic (Protolith)</td>
+            <td>High $\text{Al}_2\text{SiO}_5$, cordierite, graphite, or calc-silicate bands</td>
+            <td>Deeply buried and metamorphosed sedimentary flysch or pelitic basins.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>Under a polarizing petrographic microscope, a feldspar augen displays an un-deformed, coarse single-crystal core surrounded by a peripheral rim of microscopic, recrystallized new grains of the same composition. What is this microstructure called, and what deformation mechanism does it indicate?</p>
+        <p><strong>Solution:</strong>
+          This microstructure is called <strong>core-and-mantle structure</strong>. It is diagnostic of <strong>dynamic recrystallization via subgrain rotation (SGR)</strong> during ductile deformation. The competent crystal core resists internal strain, while high differential shear stress concentrated along the grain margins drives intense dislocation accumulation, forming subgrains that progressively rotate into an outer "mantle" of strain-free, dynamically recrystallized microscopic neoblasts that are drawn out into the augen tails.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Explain how a $\sigma$-type augen porphyroclast is distinguished from a $\delta$-type augen porphyroclast in a mylonitic shear zone.</p>
+        <p><strong>Solution:</strong>
+          - <strong>$\sigma$-Type (Sigma) Porphyroclast:</strong> The recrystallized tails on opposite sides of the central porphyroclast are stepped; each tail extends directly away into the foliation plane without crossing the reference median line of the porphyroclast body.
+          - <strong>$\delta$-Type (Delta) Porphyroclast:</strong> The dynamic rotation rate of the porphyroclast ($\dot{\theta}$) exceeded the rate at which tails could be drawn away into the matrix; consequently, the tails are wrapped, coiled, or curled around the porphyroclast perimeter, crossing the reference median plane. Both provide unambiguous indicators of shear sense.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>Why are feldspar crystals in granites far more prone to developing augen structures than quartz crystals under mid-crustal metamorphic temperatures ($400\text{--}550^\circ\text{C}$)?</p>
+        <p><strong>Solution:</strong>
+          This difference is governed by <strong>relative rheological activation temperatures</strong>:
+          - <strong>Quartz:</strong> Reaches its brittle-ductile transition at low temperatures ($T \approx 300\text{--}350^\circ\text{C}$). At $450\text{--}550^\circ\text{C}$, quartz deforms easily via crystal-plastic dislocation creep, stretching and recrystallizing completely into thin, continuous, ductile ribbons.
+          - <strong>Feldspar:</strong> Has stronger chemical bonds and a more complex framework lattice; its brittle-ductile transition requires temperatures <strong>$> 450\text{--}500^\circ\text{C}$</strong>. At $450\text{--}550^\circ\text{C}$, feldspar behaves as a rigid, competent obstacle that resists plastic stretching, preserving its large lenticular core while quartz flows ductilely around it, generating the eye-shaped augen.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>What is a "porphyroclast" and how does it differ fundamentally from a "porphyroblast"?</p>
+        <p><strong>Solution:</strong>
+          - <strong>Porphyroclast (Augen):</strong> A pre-existing, coarse relict crystal inherited from the parent rock that has <strong>survived mechanical deformation and grain-size reduction</strong> (a mechanical relict fragment).
+          - <strong>Porphyroblast:</strong> A newly formed metamorphic mineral crystal (such as garnet, staurolite, or andalusite) that <strong>nucleated and grew larger than the surrounding matrix in-situ</strong> via chemical metamorphic reactions and solid-state diffusion.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>What geological protolith typically metamorphoses to form a classic granitic augen gneiss?</p>
+        <p><strong>Solution:</strong>
+          The classic protolith is a <strong>megacrystic (porphyritic) granite or granodiorite</strong> containing large, euhedral phenocrysts of potassium feldspar (orthoclase or microcline, $1\text{ to } 5\text{ cm}$ in length) set in a medium-grained quartz-biotite-plagioclase groundmass. When caught in a ductile shear zone during orogenesis, the groundmass is pulverized and recrystallized into an anastomosing foliation, while the large K-feldspar phenocrysts are rounded and stretched into augen.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>In structural geology, explain the concept of "foliation boudinage" in an augen gneiss.</p>
+        <p><strong>Solution:</strong>
+          When an augen gneiss is subjected to extreme extension parallel to its foliation, competent layers of interlocking feldspar augen undergo <strong>foliation boudinage</strong>: the layer necks and ruptures along cross-cutting extensional micro-fractures into sausage-shaped boudins, into which the incompetent, ductile biotite-quartz matrix flows, creating a complex pinched-and-swelled eye pattern.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>How does the presence of augen structures affect the directional seismic velocity ($V_p$) of the continental crust?</p>
+        <p><strong>Solution:</strong>
+          Augen gneisses exhibit pronounced <strong>seismic anisotropy ($10\text{ to } 15\%$)</strong>. Compressional waves ($V_p$) travel fastest parallel to the long axes of the elongated augen and the continuous, aligned quartz-mica foliation planes ($V_{p\parallel} \approx 6.2\text{--}6.6\text{ km/s}$), and slowest perpendicular to the foliation plane ($V_{p\perp} \approx 5.4\text{--}5.8\text{ km/s}$), providing a primary source of shear-wave splitting and seismic anisotropy observed in deep crustal seismic reflection surveys.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>In quarrying and engineering geology, why are augen gneisses prized for ornamental building facades, and what structural anisotropy must be accounted for during cutting?</p>
+        <p><strong>Solution:</strong>
+          Augen gneisses are prized for their dramatic visual aesthetics: pink or white lens-shaped feldspar eyes set in swirling, undulating black biotite streams create stunning architectural patterns. However, masons must cut parallel to the foliation plane ($XY$-plane) to expose the broad, elliptical faces of the eyes; cutting perpendicular to foliation reveals thin streaks, and cross-foliation tensile strength is significantly lower, requiring careful anchoring to prevent delamination.
+        </p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
