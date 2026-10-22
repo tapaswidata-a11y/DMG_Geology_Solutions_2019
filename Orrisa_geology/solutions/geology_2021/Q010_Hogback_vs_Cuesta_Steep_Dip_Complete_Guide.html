@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q10: Hogback vs. Cuesta vs. Mesa Morphometrics in Dipping Strata | OPSC Geology 2021 Masterclass</title>
+<title>Q010: Structural Landforms: Hogback vs. Cuesta & Dip Slope Symmetries | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,252 +89,557 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q10" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Differential Erosion Landforms</div>
-    <h1>Q10: Hogback vs. Cuesta vs. Mesa Morphometrics in Dipping Strata</h1>
+    <div class="badge">GEO - 2/21 • Structural Geomorphology & Ridge Forms</div>
+    <h1>Q010: Structural Landforms: Hogback vs. Cuesta & Dip Slope Symmetries</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> K.M. Bangar (Engineering Geology, Ch. 8, pp. 162-165); Fossen (Structural Geology); Mahapatra (Ch. 4)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 10<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Structural Geology, pp. 195–198, Fig. 7.51); Thornbury, W.D. (1969, <em>Principles of Geomorphology</em>, Ch. 6, pp. 132–136); Bloom, A.L. (1998, <em>Geomorphology: A Systematic Analysis</em>); Ritter, Kochel & Miller (2011, <em>Process Geomorphology</em>).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>10.1 Structural Control on Ridge Topography</h3>
-        <p>In structural geomorphology (K.M. Bangar, <i>Principles of Engineering Geology</i>, Ch. 8; Fossen, <i>Structural Geology</i>; G.B. Mahapatra, Ch. 4), differential erosion of sedimentary strata with varying dip angles produces three diagnostic landform types:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Landform</th>
-                <th>Strata Dip Angle ($\theta$)</th>
-                <th>Slope Morphology & Symmetry</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Hogback</b></td>
-                <td><b>Steeply dipping: $\theta > 30^\circ - 45^\circ$ (up to vertical)</b></td>
-                <td><b>Symmetrical or near-symmetrical</b>: Narrow, sharp crest with <b>steep slopes of nearly equal inclination on both flanks</b> (dip slope $\approx$ scarp slope).</td>
-              </tr>
-              <tr>
-                <td><b>Cuesta</b></td>
-                <td>Gently dipping: $\theta < 20^\circ$ (typically $5^\circ - 15^\circ$)</td>
-                <td><b>Asymmetrical</b>: Gentle dip slope (concordant with strata) and an abrupt, steep escarpment/scarp slope on the opposite flank.</td>
-              </tr>
-              <tr>
-                <td><b>Mesa</b></td>
-                <td>Horizontal / Flat-lying: $\theta \approx 0^\circ$</td>
-                <td>Flat tableland capped by a horizontal resistant stratum with steep perimeter cliffs.</td>
-              </tr>
-              <tr>
-                <td><b>Butte</b></td>
-                <td>Horizontal / Flat-lying: $\theta \approx 0^\circ$</td>
-                <td>Isolated steep-sided pinnacled hill, narrower than a mesa (width is less than height).</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>10.2 Geometric Proof of Slope Symmetry</h3>
-        <p>When strata dip gently (Cuesta, $\theta \approx 10^\circ$), the dip slope is bounded by the dip angle ($10^\circ$), while the opposite scarp slope erodes along joint-controlled near-vertical cliff faces ($> 60^\circ$).</p>
-        <p>When strata dip steeply (Hogback, $\theta \approx 45^\circ - 60^\circ$), the dip slope angle becomes equal to or steeper than the natural angle of repose of the talus, causing both the dip flank and the scarp flank to exhibit steep, nearly equal slope inclinations.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q10/bangar_fig7_51_cuesta_hogback.png" alt="Hogback, Cuesta, Mesa, and Butte (K.M. Bangar, Fig. 7.51)">
-      <figcaption>
-        <strong>Figure 10.1: Hogback, Cuesta, Mesa, and Butte (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 8, Section 8.16, p. 125, Fig. 7.51).</strong> Authentic textbook plate demonstrating structural landforms developed in dipping sedimentary strata: a <strong>Cuesta</strong> is an asymmetric ridge developed in gently dipping beds (&lt; 20°), featuring a gentle dip slope and a steep escarpment face; a <strong>Hogback</strong> is a sharp, symmetric ridge developed where rock strata dip steeply (&gt; 30° to 45°), so that the dip slope and escarpment slope are nearly equal in inclination.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: THE HOMOCLINAL RIDGE CONTINUUM -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Homoclinal Ridge Continuum: Dip Angle ($\theta$) Control</div>
+    <div class="card-body">
+      <p>In structural geomorphology, when alternating resistant rock layers (such as quartzitic sandstone, well-cemented conglomerate, or basalt sills) and non-resistant layers (shale, slate, or marl) are tilted by tectonic deformation, differential weathering and stream erosion produce distinct linear structural ridges known as <strong>Homoclinal Ridges</strong>. The morphology, cross-sectional symmetry, and flank inclinations of these ridges are strictly governed by the <strong>angle of true dip ($\theta$)</strong> of the resistant rock strata:</p>
+
+      <ul>
+        <li><strong>Cuesta ($\theta < 15^\circ - 20^\circ$):</strong> Highly asymmetrical ridge with a long, gentle dip slope matching bed dip and an abrupt, steep scarp slope.</li>
+        <li><strong>Hogback ($\theta > 30^\circ - 45^\circ$):</strong> Narrow, symmetrical knife-edge ridge where both flanks (dip slope and scarp slope) exhibit <strong>steep slopes of nearly equal inclination</strong>.</li>
+        <li><strong>Mesa & Butte ($\theta \approx 0^\circ$):</strong> Flat-topped horizontal plateaus bounded on all sides by steep escarpments.</li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "Cuesta and Hogback: Where gently dipping strata of alternating hard and soft rocks are subjected to erosion, an asymmetrical ridge called a cuesta is formed. It has a gentle slope on one side (dip slope) and a steep slope on the other (scarp slope). If the dip of the beds is very steep (greater than 30° to 45°), the two slopes become nearly equal in inclination. Such a sharp, symmetrical ridge is called a Hogback."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 7: Structural Geology, pp. 196–197, Fig. 7.51)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q10/bangar_fig7_51_cuesta_hogback.png" alt="Cuesta and Hogback Cross Section from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 10.1 (K.M. Bangar, Fig. 7.51):</strong> Classical cross-sectional profiles of (A) Cuesta with gentle dip slope and steep scarp, and (B) Hogback with steeply dipping beds producing near-equal slope angles on both flanks.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MORPHODYNAMICS OF THE HOGBACK RIDGE -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Morphodynamics: Why Flank Slopes Become Equal in a Hogback</div>
+    <div class="card-body">
+      <p>Why do the slopes on both flanks of a <strong>Hogback</strong> approach near-equal inclination when bed dip exceeds $30^\circ - 45^\circ$? The answer lies in the interaction between structural dip and the geotechnical <strong>angle of repose of scree/talus ($\phi \approx 32^\circ - 38^\circ$)</strong>:</p>
+
+      <ul>
+        <li><strong>Dip Slope Angle:</strong> On the dip side of the ridge, erosion strips the overlying soft rock down to the resistant structural bedding plane. When bed dip $\theta > 35^\circ - 45^\circ$, the dip slope itself is inherently steep ($35^\circ - 60^\circ$).</li>
+        <li><strong>Scarp (Anti-Dip) Slope Angle:</strong> On the opposite scarp side, mechanical undercutting of the underlying soft shale causes rockfalls and toppling of the resistant cap, forming a gravity-controlled scree slope that naturally stabilizes at its angle of repose ($\sim 35^\circ - 40^\circ$).</li>
+        <li><strong>Symmetrical Equilibrium:</strong> Because both the structural dip slope ($35^\circ - 50^\circ$) and the erosional scarp slope ($35^\circ - 45^\circ$) have comparable steepness, the ridge assumes an exceptionally sharp, symmetrical triangular cross-section with a narrow crest resembling the arched spine of a razorback hog (hence the name <em>hogback</em>).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q10/hogback_vs_cuesta_morphology.png" alt="Hogback vs Cuesta Morphology Comparison">
+        <div class="tb-caption">
+          <strong>Figure 10.2: Morphometric Comparison: Mesa vs. Cuesta vs. Hogback.</strong> Demonstrates the geometric transition from horizontal beds ($0^\circ$) to gentle dip cuestas ($< 15^\circ$) and steep, symmetrical hogbacks ($> 45^\circ$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: MESAS, BUTTES AND FLATIRONS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Associated Structural Landforms: Mesas, Buttes & Flatirons</div>
+    <div class="card-body">
+      <p>Candidates must understand the full structural geomorphology family:</p>
+
+      <ul>
+        <li><strong>Cuesta (Spanish for "slope" or "hill"):</strong> Forms when strata dip gently ($< 15^\circ - 20^\circ$). The dip slope is a long, gentle ramp, while the scarp slope is a sheer, abrupt cliff. The two flanks are dramatically asymmetrical.</li>
+        <li><strong>Mesa (Spanish for "table"):</strong> A broad, flat-topped tableland capped by a horizontal resistant caprock ($\theta \approx 0^\circ$). By morphological definition, a mesa's top surface width is <em>greater than its vertical height</em>.</li>
+        <li><strong>Butte (French for "knoll"):</strong> An isolated, steep-sided pillar or pinnacle resulting from the advanced dissection and retreat of a mesa. A butte's vertical height is <em>greater than its surface width</em>.</li>
+        <li><strong>Flatirons:</strong> Triangular-shaped erosion remnants of steeply dipping resistant beds adhering to the flanks of a hogback, resembling giant upright clothes irons.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q10. A long, narrow ridge or a series of hills with a narrow crest and steep slopes of nearly equal inclination on both flanks created by the differential erosion of outcropping sedimentary strata is termed as :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Cuesta</div>
-        <div class="opt-item correct"><strong>(B)</strong> Hogback</div>
-        <div class="opt-item "><strong>(C)</strong> Mesa</div>
-        <div class="opt-item "><strong>(D)</strong> Butte</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 10)</div>
+    <div class="q-stmt">
+      Q10. A long, narrow ridge or a series of hills with a narrow crest and steep slopes of nearly equal inclination on both flanks created by the differential erosion of outcropping sedimentary strata is termed as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Cuesta</div>
+      <div class="raw-opt correct">(B) Hogback &nbsp;✔</div>
+      <div class="raw-opt">(C) Mesa</div>
+      <div class="raw-opt">(D) Butte</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) Hogback</div>
+      <div class="sub">
+        A homoclinal ridge formed by steeply dipping sedimentary beds ($> 30^\circ - 45^\circ$) resulting in a sharp, narrow crest with <strong>steep slopes of nearly equal inclination on both flanks</strong> is formally termed a <strong>Hogback</strong> (Bangar, p. 196; Thornbury, p. 133). Cuestas are strongly asymmetrical.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) Hogback</b> — A narrow, steep ridge with slopes of nearly equal inclination on both flanks created by differential erosion of steeply dipping strata is a <b>Hogback</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) Cuesta — INCORRECT:</b> A cuesta is distinctly asymmetrical, possessing a gentle dip slope on one side and a steep escarpment on the other.</li>
-          <li><b>(B) Hogback — CORRECT:</b> Precisely matches the morphological definition: steep inclination of nearly equal angles on both flanks due to steep structural dip.</li>
-          <li><b>(C) Mesa — INCORRECT:</b> A mesa is a broad, flat-topped tableland formed on horizontal beds.</li>
-          <li><b>(D) Butte — INCORRECT:</b> A butte is a smaller, pillar-like remnant of a mesa formed on horizontal beds.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Cuesta</span>
+      <span class="tag wrong">Incorrect (Dramatically Asymmetrical Flanks)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A cuesta develops on gently dipping strata ($< 15^\circ - 20^\circ$). It possesses an extremely <em>asymmetrical</em> cross-section consisting of a long, gentle dip slope on one side and a steep, abrupt escarpment on the other. Its flank slopes are never of equal inclination.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) Hogback</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By universal geomorphological definition, a <strong>hogback</strong> is a narrow, sharp-crested ridge formed by differential erosion of steeply dipping beds ($> 30^\circ - 45^\circ$). Because the structural dip is steep, the dip slope inclination approaches the scarp slope angle, producing nearly equal, symmetrical slopes on both flanks.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Mesa</span>
+      <span class="tag wrong">Incorrect (Broad, Flat-Topped Tableland in Horizontal Strata)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A mesa is a wide, flat-topped horizontal plateau capped by undeformed resistant strata ($\text{dip} \approx 0^\circ$). It is not a narrow ridge or a series of hills with a sharp crest.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Butte</span>
+      <span class="tag wrong">Incorrect (Isolated Erosional Pillar in Flat Strata)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A butte is an isolated, small, steep-sided pillar or column formed by extreme dissection of horizontal strata. It lacks the continuous, elongate linear narrow crest of a homoclinal ridge.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Worked Geomorphology Comparison</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 10: Structural Transition Cuesta to Hogback</div>
-          <p>Explain how the landscape changes as one traverses from the gentle foreland flank towards the core of an asymmetrical mountain fold where bed dips increase from $8^\circ$ to $55^\circ$.</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <p>At $8^\circ$ dip, the landscape displays broad, sweeping <b>Cuestas</b> with extensive gentle dip slopes. As the beds steepen towards $55^\circ$ near the fold hinge, the cuestas compress into sharp, knife-edge, symmetrical <b>Hogbacks</b> with near-equal steep slopes on both flanks.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Structural Landform Continuum: Bed Dip vs. Morphology</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Structural Landform</th>
+            <th>Stratal Dip Angle ($\theta$)</th>
+            <th>Cross-Sectional Symmetry</th>
+            <th>Flank Slope Relationships</th>
+            <th>Crest & Topographic Morphology</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mesa</strong></td>
+            <td>Horizontal: $\theta \approx 0^\circ$</td>
+            <td>Symmetrical flat plateau</td>
+            <td>Steep cliffs on all sides descending to pediments</td>
+            <td>Broad, expansive horizontal flat tableland ($Width > Height$)</td>
+          </tr>
+          <tr>
+            <td><strong>Butte</strong></td>
+            <td>Horizontal: $\theta \approx 0^\circ$</td>
+            <td>Symmetrical pillar</td>
+            <td>Sheer vertical cliffs on all sides</td>
+            <td>Isolated, small flat cap ($Height > Width$)</td>
+          </tr>
+          <tr>
+            <td><strong>Cuesta</strong></td>
+            <td>Gentle Dip: <strong>$\theta < 15^\circ - 20^\circ$</strong></td>
+            <td><strong>Highly Asymmetrical</strong></td>
+            <td>Gentle dip slope ($\theta$) vs. steep abrupt scarp ($> 40^\circ$)</td>
+            <td>Broad, rolling dip plain terminating at a cliff scarp</td>
+          </tr>
+          <tr>
+            <td><strong>Hogback</strong></td>
+            <td>Steep Dip: <strong>$\theta > 30^\circ - 45^\circ$</strong></td>
+            <td><strong>Nearly Symmetrical</strong></td>
+            <td><strong>Steep slopes of nearly equal inclination on both flanks</strong></td>
+            <td>Sharp, linear, knife-edge narrow crest (spine)</td>
+          </tr>
+          <tr>
+            <td><strong>Flatiron</strong></td>
+            <td>Steep Dip: $\theta > 45^\circ - 60^\circ$</td>
+            <td>Triangular facet</td>
+            <td>Steep dip facet stripped along bedding plane</td>
+            <td>Triangular flatiron remnant on hogback flanks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> At what quantitative threshold of structural stratal dip ($\theta$) does a homoclinal ridge transition morphologically from a cuesta into a hogback?
+          <div class="pq-ans">✔ Correct Answer: Approximately $\theta \ge 30^\circ \text{ to } 45^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Below $20^\circ$, asymmetry between the gentle dip slope and steep scarp is pronounced (cuesta). As dip exceeds $30^\circ - 45^\circ$, the dip slope steepness matches the natural talus angle of the scarp, producing a symmetrical hogback.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a <em>Flatiron</em>, and along which structural landform does it typically develop?
+          <div class="pq-ans">✔ Correct Answer: A triangular, steeply inclined erosional facet formed by chevron dissection of a hogback dip slope.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> V-shaped tributary gullies dissecting the steep dip slope of a hogback leave behind prominent triangular plates of resistant rock that resemble antique clothing flatirons (e.g., the famous Flatirons of Boulder, Colorado).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is <em>homoclinal shifting</em> (or uniclinal shifting) of a river system?
+          <div class="pq-ans">✔ Correct Answer: The continuous lateral migration of a subsequent strike stream down the gentle dip slope of a cuesta as it downcuts into soft shale.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the underlying resistant bed acts as a structural slip surface, subsequent streams cut downward and laterally down-dip, undermining the scarp face of the adjacent cuesta.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In geomorphology, what is the geometric distinction between a <em>Mesa</em> and a <em>Butte</em>?
+          <div class="pq-ans">✔ Correct Answer: For a mesa, top surface diameter/width exceeds vertical cliff height; for a butte, vertical height exceeds surface diameter.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Buttes are the erosional remnants of mesas that have been reduced by scarp retreat until their horizontal summit area is smaller than their relief.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How does an <em>inverted relief</em> synclinal ridge form in folded sedimentary rocks?
+          <div class="pq-ans">✔ Correct Answer: Tension fractures along anticlinal crests accelerate erosion into anticlinal valleys, while compressed, joint-free synclinal troughs resist erosion, standing as elevated ridges.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Tectonic anticlines are initially ridges, but crestal dilation joints promote rapid weathering. Over geologic time, the topography inverts, leaving synclines as high mountain ridges (synclinal mountains).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What geomorphic model, proposed by Lester C. King, explains the persistence of steep escarpments during the erosion of tabular mesas and cuestas?
+          <div class="pq-ans">✔ Correct Answer: Parallel scarp retreat (Pediplanation model).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> King demonstrated that in semi-arid and arid landscapes, scarps retreat parallel to themselves without losing steepness, leaving behind gently sloping pediments at their base.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> From an engineering geology perspective, why do road cuts excavated into the dip slope of a cuesta present high landslide hazards compared to cuts into a hogback?
+          <div class="pq-ans">✔ Correct Answer: Bedding planes dip gently into the road cut ("daylighting"), enabling catastrophic translational planar sliding along weak shale interbeds.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> When cut slope inclination exceeds stratal dip ($\beta_{\text{cut}} > \theta$), unsupported bedding planes daylight into the excavation, triggering planar block slides if water lubricates the shale.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> The Dakota Hogback along the eastern front of the Rocky Mountains in Colorado is composed of which resistant rock formation?
+          <div class="pq-ans">✔ Correct Answer: The Cretaceous Dakota Sandstone.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The Dakota Sandstone dips steeply at $45^\circ - 60^\circ$ eastward away from the Precambrian Front Range granites, creating the archetypal textbook hogback of North America.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q3: Aeolian Activity Dynamic Controls (Transport Capacity, Supply & Availability) | OPSC Geology 2021 Masterclass</title>
+<title>Q003: Aeolian Dynamic System Controls: Transport Capacity, Supply & Availability | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,256 +89,558 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q3" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentology & Aeolian Geomorphology</div>
-    <h1>Q3: Aeolian Activity Dynamic Controls (Transport Capacity, Supply & Availability)</h1>
+    <div class="badge">GEO - 2/21 • Geomorphology & Aeolian Dynamics</div>
+    <h1>Q003: Aeolian Dynamic System Controls: Transport Capacity, Supply & Availability</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Sedimentology & Stratigraphy, Ch. 9, pp. 280-285); Kocurek & Lancaster (1999)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 3<br>
+<strong>Authoritative References:</strong> Kocurek & Lancaster (1999, <em>Sedimentology</em>, 46, pp. 505–515); Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th Ed., Ch. 8, pp. 280–288); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 2, pp. 28–33); Bagnold, R.A. (1941, <em>The Physics of Blown Sand and Desert Dunes</em>).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>3.1 The Kocurek-Lancaster Aeolian System Triad</h3>
-        <p>In modern process sedimentology (Kocurek & Lancaster, 1999; Sam Boggs Jr., <i>Principles of Sedimentology and Stratigraphy</i>, Ch. 9), aeolian dynamics and dune development are governed by the interaction of three core variables:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Core Variable</th>
-                <th>Physical Definition & Governing Factors</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>(i) Transport Capacity ($T_c$)</b></td>
-                <td>The potential rate of sand transport by wind, governed by shear velocity ($u_*$) and fluid threshold: $q \propto u_*^3$.</td>
-              </tr>
-              <tr>
-                <td><b>(ii) Sediment Supply ($G_s$)</b></td>
-                <td>The total inventory and volume of erodible sediment present in the upwind source basin (e.g. desiccated lake beds, outwash plains).</td>
-              </tr>
-              <tr>
-                <td><b>(iv) Sediment Availability ($A_s$)</b></td>
-                <td>The fraction of supply susceptible to wind entrainment, limited by surface moisture, clay crusts, salt efflorescence, water table depth, and vegetation cover.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: THE AEOLIAN DYNAMIC TRIAD -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Aeolian Dynamic System Triad (Kocurek & Lancaster, 1999)</div>
+    <div class="card-body">
+      <p>Modern process sedimentology and aeolian geomorphology abandon simplistic climatic assumptions that sand seas (ergs) require "hot desert" climates. Instead, comprehensive physical models (Kocurek & Lancaster 1999; Pye & Tsoar 2009; Boggs 2011) demonstrate that all aeolian accumulation, dune construction, and sand transport are strictly governed by a <strong>Dynamic Triad of Interacting Parameters</strong>:</p>
+      
+      <ul>
+        <li><strong>(i) Transport Capacity ($C$):</strong> The potential maximum kinetic mass of sediment that wind can move per unit time through a specified cross-section. Transport capacity is a direct physical function of aerodynamic shear velocity ($u_*$) and wind power, governed by Bagnold's (1941) cubic sand-flux equation.</li>
+        <li><strong>(ii) Sediment Supply ($G$):</strong> The total volume, bulk inventory, and grain-size distribution of sand-sized material ($0.063 - 2.0\text{ mm}$) provided to the basin by primary external source engines—such as braided glacial outwash plains, dry ephemeral wadis, paleolacustrine strandlines, or deeply weathered crystalline granites.</li>
+        <li><strong>(iv) Sediment Availability ($A$):</strong> The fraction or proportion of existing sediment supply that is physically, aerodynamically, and mechanically <em>free to be entrained</em> by the wind. Availability is restricted by extrinsic moisture content, evaporite salt crusts, biogenic soil crusts, vegetation cover, groundwater table capillary fringe, and coarse gravel lag armoring.</li>
+      </ul>
 
-        <h3>3.2 Why "Hot Desertic Conditions" is Not a Universal Physical Requirement</h3>
-        <p>While vast erg systems exist in the Sahara and Arabian deserts, aeolian processes are <b>not strictly limited to hot deserts</b>:</p>
-        <ul>
-          <li><b>Periglacial & Cold Deserts:</b> Extensive active aeolian sand dunes and loess sheets form in the McMurdo Dry Valleys of Antarctica, Arctic Alaska, and the cold deserts of Tibet and Ladakh.</li>
-          <li><b>Pleistocene Loess:</b> The massive loess plateau deposits of China and Europe were produced during cold, arid glacial maxima, not under hot climatic regimes.</li>
-          <li><b>Coastal Dune Fields:</b> Form along temperate and sub-polar coasts regardless of temperature.</li>
-        </ul>
-        <p>Therefore, the triad of physical control is universally <b>(i) Transport capacity, (ii) Sediment supply, and (iv) Sediment availability</b>.</p>
-        <div class="tb-figure">
-      <img src="../../figures_Q03/boggs_fig2_4_transport_modes.png" alt="Modes of Fluid and Eolian Particle Transport (Sam Boggs Jr., Principles of Sedimentology and Stratigraphy, Fig. 2.4)">
-      <figcaption>
-        <strong>Figure 3.1: Modes of Fluid & Eolian Particle Transport (Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em>, 4th Ed., Ch. 2, Fig. 2.4, p. 33 / PDF p. 49).</strong> Schematic illustration of grain paths during bedload (traction/surface creep), intermittent suspension, continuous suspension, and saltation transport. Sand-sized grains move primarily by saltation (jumping at ~45° take-off and 10° impact angle) and surface creep, while fine silt and dust are held in continuous suspension by turbulent eddies.
-      </figcaption>
-    </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q03/bangar_fig2_3_2_4_wind_transport.png" alt="Eolian Transport and Dune Migration (K.M. Bangar, Principles of Engineering Geology, Figs. 2.3 & 2.4)">
-      <figcaption>
-        <strong>Figure 3.2: Eolian Transport and Dune Migration (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 2, p. 23, Figs. 2.3 & 2.4).</strong> Diagram showing the mechanism of windblown sand movement along the windward slope and slip face deposition on the leeward slope, demonstrating the dynamic equilibrium of wind velocity, grain size, and surface roughness.
-      </figcaption>
+      <div class="tb-figure">
+        <img src="../../figures_Q03/aeolian_control_triad.png" alt="Aeolian Dynamic Triad Control Model">
+        <div class="tb-caption">
+          <strong>Figure 3.1: The Aeolian Dynamic Control Triad (Kocurek & Lancaster, 1999).</strong> Conceptual phase diagram showing the three fundamental controls: Transport Capacity, Sediment Supply, and Sediment Availability, which determine whether an aeolian system is in a state of accumulation, equilibrium bypass, or deflation.
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- CARD 2: BAGNOLD'S AERODYNAMIC MECHANICS & TRANSPORT MODES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Bagnold's Aerodynamic Physics: Fluid vs. Impact Thresholds</div>
+    <div class="card-body">
+      <p>Brigadier Ralph Alger Bagnold (1941) laid the empirical and theoretical foundations for particle transport by wind in <em>The Physics of Blown Sand and Desert Dunes</em>. The boundary shear stress ($\tau_0 = \rho_a u_*^2$) exerted by wind on the ground drives three distinct transport modes:</p>
+
+      <ul>
+        <li><strong>Saltation (70–80% of total load):</strong> Sand grains ($0.1 - 0.5\text{ mm}$) leap into the air in asymmetric trajectories, rising steeply at $50^\circ$ and descending at shallow angles ($10^\circ - 15^\circ$), imparting kinetic energy upon impact.</li>
+        <li><strong>Surface Creep / Reptation (20–25% of total load):</strong> Coarser sand grains and granules ($0.5 - 2.0\text{ mm}$) pushed, rolled, and nudged forward by the ballistic impacts of returning saltating grains.</li>
+        <li><strong>Suspension (< 5% of total load):</strong> Fine silts and dust ($< 0.063\text{ mm}$) lifted high into the planetary boundary layer by turbulent eddies, traveling hundreds to thousands of kilometers as dust storms (loess deposits).</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Bagnold's Fluid Threshold Friction Velocity ($u_{*t}$)</div>
+        $$u_{*t} = A \sqrt{\frac{\rho_s - \rho_a}{\rho_a} g d}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $A \approx 0.1$ for fluid threshold, $\rho_s$ is quartz density ($2650\text{ kg/m}^3$), $\rho_a$ is air density ($1.22\text{ kg/m}^3$), $g$ is gravity, and $d$ is grain diameter. For $0.25\text{ mm}$ sand, minimum entrainment threshold occurs around $u_* \approx 0.2\text{ m/s}$.</p>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q03/boggs_fig2_4_transport_modes.png" alt="Aeolian Transport Modes from Sam Boggs Jr.">
+        <div class="tb-caption">
+          <strong>Figure 3.2 (Sam Boggs Jr., 5th Ed., Fig. 2.4):</strong> Mechanics of sediment transport by fluid flow. Illustrates the tripartite division of bedload into traction (rolling/creep), saltation, and suspended load.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: TEXTBOOK EXCERPTS & REFUTATION OF HOT DESERTS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Textbooks on Wind Action & Scientific Refutation of "Hot Deserts"</div>
+    <div class="card-body">
+      <p>Why is condition <strong>(iii) Hot desertic conditions</strong> categorically excluded from the primary physical controls? Because <em>temperature is not an aerodynamic parameter</em>. Aeolian processes are exceptionally active in hyper-arid <strong>cold polar and sub-polar deserts</strong>:</p>
+
+      <ul>
+        <li><strong>Periglacial & Polar Ergs:</strong> Massive active dune fields occur in the McMurdo Dry Valleys of Antarctica ($-30^\circ\text{C}$ to $-50^\circ\text{C}$), the Kobuk Valley of sub-arctic Alaska, and the periglacial outwash sandurs of Iceland and Greenland.</li>
+        <li><strong>Extraterrestrial Aeolian Systems:</strong> Gigantic active dune systems cover extensive regions of Mars (where mean surface temperatures are $-60^\circ\text{C}$) and Saturn's moon Titan ($-179^\circ\text{C}$ with methane/ethane winds).</li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "Wind is an active agent of erosion, transportation and deposition only in arid and semi-arid regions where rainfall is scanty, vegetation is scarce or absent, and loose dry materials are easily picked up... Temperature extremes assist mechanical disintegration, but the movement of material is purely a mechanical operation of wind velocity and sediment supply."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 2: Geological Work of Wind, pp. 28–29)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q03/bangar_fig2_3_2_4_wind_transport.png" alt="Wind Transportation Modes from Bangar">
+        <div class="tb-caption">
+          <strong>Figure 3.3 (K.M. Bangar, Fig. 2.3 & 2.4):</strong> Geological work of wind. Shows particle movement via saltation and suspension, demonstrating that aerodynamic shear stress and particle size dictate movement regardless of ambient temperature.
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q3. Aeolian activity is primarily controlled by: (i) Transport capacity, (ii) Sediment supply, (iii) Hot desertic conditions, (iv) Sediment availability. Choose the correct set of answer from the following options :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> (i), (ii), (iii)</div>
-        <div class="opt-item correct"><strong>(B)</strong> (i), (ii), (iv)</div>
-        <div class="opt-item "><strong>(C)</strong> (i), (iii), (iv)</div>
-        <div class="opt-item "><strong>(D)</strong> (i), (ii), (iii), (iv)</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 3)</div>
+    <div class="q-stmt">
+      Q3. Aeolian activity is primarily controlled by: (i) Transport capacity, (ii) Sediment supply, (iii) Hot desertic conditions, (iv) Sediment availability. Choose the correct set of answer from the following options :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) (i), (ii), (iii)</div>
+      <div class="raw-opt correct">(B) (i), (ii), (iv) &nbsp;✔</div>
+      <div class="raw-opt">(C) (i), (iii), (iv)</div>
+      <div class="raw-opt">(D) (i), (ii), (iii), (iv)</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) (i), (ii), (iv)</div>
+      <div class="sub">
+        In modern aeolian process sedimentology (Kocurek & Lancaster 1999; Boggs 2011), the primary controls on aeolian system dynamics form a fundamental triad: <strong>(i) Transport capacity</strong>, <strong>(ii) Sediment supply</strong>, and <strong>(iv) Sediment availability</strong>. "Hot desertic conditions" is a classic distractor because aeolian transport operates identically in frigid polar, sub-arctic, and extraterrestrial environments.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) (i), (ii), (iv)</b> — Aeolian activity is fundamentally controlled by <b>Transport capacity</b>, <b>Sediment supply</b>, and <b>Sediment availability</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) (i), (ii), (iii) — INCORRECT:</b> Excludes sediment availability (iv), which is mandatory to account for moisture and crusting limiting factors, while erroneously including hot desert conditions (iii).</li>
-          <li><b>(B) (i), (ii), (iv) — CORRECT:</b> Precisely identifies the canonical triad established by Kocurek & Lancaster (1999) and textbook aeolian physics.</li>
-          <li><b>(C) (i), (iii), (iv) — INCORRECT:</b> Omits sediment supply (ii); without a reservoir of sand, high wind capacity produces deflation lags or bedrock ventifacts rather than dune fields.</li>
-          <li><b>(D) (i), (ii), (iii), (iv) — INCORRECT:</b> Erroneously includes (iii); temperature is a secondary modifying factor, not a primary controlling prerequisite.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) (i), (ii), (iii)</span>
+      <span class="tag wrong">Incorrect (Omits Availability & Includes Climatological Distractor)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option omits <em>Sediment availability</em>—a disastrous oversight because an abundant sediment supply cannot be transported if it is locked beneath a high water table, salt crust, or lag armor. Furthermore, it erroneously includes "hot desertic conditions", which is scientifically invalid.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) (i), (ii), (iv)</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Statements (i), (ii), and (iv) comprise the universally acknowledged <strong>Aeolian Dynamic Triad</strong> established by Kocurek & Lancaster (1999). <em>Transport capacity</em> dictates the kinetic wind energy; <em>sediment supply</em> dictates the total reservoir of sand produced by weathering/fluvial systems; and <em>sediment availability</em> dictates how much of that reservoir can actually be lifted into the air stream without being anchored by moisture or surface crusts.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) (i), (iii), (iv)</span>
+      <span class="tag wrong">Incorrect (Omits Fundamental Sediment Supply)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option fails to include <em>Sediment supply</em>. Without a primary source supplying sand-sized siliciclastic grains into a sedimentary basin, strong winds can only generate bare bedrock deflation surfaces (hamadas) or gravel lag pavements, completely preventing dune formation.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) (i), (ii), (iii), (iv)</span>
+      <span class="tag wrong">Incorrect (Popular Superficially All-Inclusive Trap)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This is the universal "all-of-the-above" trap designed to lure candidates who conflate casual layperson associations (linking sand dunes strictly to hot Sahara-like deserts) with rigorous physics. Because high-latitude cold dunes (e.g., Great Kobuk, Alaska; Lake Athabasca, Canada; Victoria Valley, Antarctica) and Martian ergs experience intense aeolian activity under freezing conditions, thermal heat is definitively not a primary control.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Grain Entrainment Threshold Formula & Practice</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 3: Bagnold's Fluid Threshold for Sand Transport</div>
-          <p>According to Bagnold's equation, what is the relationship between the threshold shear velocity ($u_{*t}$) required to initiate sand grain movement and grain diameter ($D$)?</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            <p>Bagnold's fluid threshold velocity equation is:</p>
-            $$u_{*t} = A \sqrt{\frac{\rho_s - \rho_a}{\rho_a} g D}$$
-            <p>Where $A \approx 0.1$ for grains $> 0.1\text{ mm}$, $\rho_s$ is quartz density ($2650\text{ kg/m}^3$), $\rho_a$ is air density ($1.22\text{ kg/m}^3$), $g$ is gravity, and $D$ is grain diameter. For typical medium dune sand ($D = 0.25\text{ mm}$), $u_{*t} \approx 0.22\text{ m/s}$.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Diagnostic Matrix: States of the Aeolian System (Kocurek & Lancaster Model)</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Aeolian Regime State</th>
+            <th>Governing Control Relationship</th>
+            <th>Morphodynamic Process</th>
+            <th>Resulting Sedimentary & Landscape Product</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supply-Limited (Starved)</strong></td>
+            <td>$\text{Transport Capacity } (C) \gg \text{Sediment Supply } (G)$</td>
+            <td>Maximum deflation, wind scour, grain export</td>
+            <td>Deflation hollows, yardangs, reg/serir desert pavement, ventifacts</td>
+          </tr>
+          <tr>
+            <td><strong>Availability-Limited</strong></td>
+            <td>$G \text{ high, but Availability } (A) \ll C$</td>
+            <td>Moisture / crust stabilization, capillary locking</td>
+            <td>Interdune sabkhas, salt encrustations, anchored shadow dunes</td>
+          </tr>
+          <tr>
+            <td><strong>Capacity-Limited (Accumulating)</strong></td>
+            <td>$\text{Transport Capacity } (C) < \text{Sediment Supply } (G \cdot A)$</td>
+            <td>Deceleration, aerodynamic stalling, net aggradation</td>
+            <td>Massive compound ergs, transverse/barchan dune fields, draa complexes</td>
+          </tr>
+          <tr>
+            <td><strong>Dynamic Equilibrium (Bypass)</strong></td>
+            <td>$C \approx G \cdot A$</td>
+            <td>Sediment throughput without net erosion or deposition</td>
+            <td>Migrating sand sheets, mobile barchan corridors over planar substrate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical Flux):</strong> According to Bagnold's sand flux formulation, mass transport rate per unit width of channel ($q$) varies with the cube of shear velocity ($q = C \cdot \frac{\rho_a}{g} u_*^3$). If a desert gale increases the aerodynamic friction velocity ($u_*$) from $0.30\text{ m/s}$ to $0.60\text{ m/s}$ (a 2-fold increase), by what factor does the sand transport rate increase?
+          <div class="pq-ans">✔ Worked Answer: Increases by a factor of $8$ ($2^3 = 8$, an $800\%$ increase).</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            $$\frac{q_2}{q_1} = \left(\frac{u_{*2}}{u_{*1}}\right)^3 = \left(\frac{0.60}{0.30}\right)^3 = 2^3 = 8$$
+            This cubic dependency demonstrates why high-magnitude, low-frequency storm events perform the vast majority of geological work in aeolian environments.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is the difference between Bagnold's <em>fluid threshold</em> and <em>impact threshold</em>?
+          <div class="pq-ans">✔ Correct Answer: Fluid threshold is the wind velocity required to initiate grain motion purely by fluid drag; impact threshold is the lower velocity required to sustain movement once saltating grains begin impacting the bed.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the kinetic energy transferred by returning saltating grains dislodges stationary bed particles mechanically, the impact threshold friction velocity ($u_{*ti}$) is approximately $80\%$ of the initial fluid threshold velocity ($u_{*t}$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> Why does the threshold friction velocity curve for entrainment of dry sediment display a minimum around grain sizes of $0.08 - 0.10\text{ mm}$ (fine sand), increasing for both coarser gravel AND ultra-fine clays/silts?
+          <div class="pq-ans">✔ Correct Answer: Coarse grains require more wind power due to gravitational mass; ultra-fine clay/silt particles are held by strong inter-particle electrostatic (van der Waals) cohesion and hide within the laminar sublayer.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Particles smaller than $0.05\text{ mm}$ do not protrude into the turbulent boundary layer and are bound tightly by cohesive surface forces, making pure clay beds extremely resistant to wind erosion unless impacted by saltating sand grains.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In an aeolian system, how does a rising regional groundwater table influence sand accumulation?
+          <div class="pq-ans">✔ Correct Answer: It acts as an absolute baseline of deflation (Stokes surface) by drastically reducing sediment availability through capillary moisture.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Wet sand cannot be entrained because surface tension of capillary water creates meniscus bonding forces hundreds of times greater than aerodynamic lift. The water table thus acts as an accumulation baseline, preserving underlying aeolian strata in the rock record.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> Desert pavement (known as <em>reg</em> in the western Sahara or <em>serir</em> in the eastern Sahara) is primarily formed by which physical process?
+          <div class="pq-ans">✔ Correct Answer: Deflation (removal of fine sand and dust) leaving behind a concentrated armor of interlocking coarse gravel and pebbles, augmented by dust infiltration beneath the stones.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Winnowing of sand-sized grains exposes coarse clasts. Modern research shows that once formed, the pebble mosaic traps windblown dust, which washes beneath the stones, progressively lifting the pavement upward on a layer of fine vesicular silt.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What dune morphology develops under a strictly <em>unidirectional</em> wind regime in an area with a <em>limited sediment supply</em> moving across a hard, non-erodible substrate?
+          <div class="pq-ans">✔ Correct Answer: Barchan dunes (crescentic dunes with horns pointing downwind).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Barchans are classic indicators of supply-limited conditions under a persistent one-directional wind. If sediment supply increases dramatically, individual barchans coalesce laterally into transverse dune ridges.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Star dunes (radially symmetrical pyramidal sand mounds with multiple slip faces) require which specific meteorological wind regime?
+          <div class="pq-ans">✔ Correct Answer: A complex, multi-directional or multidirectional seasonal wind regime with high wind variability.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because winds blow from three or more distinct directions throughout the year, sand is not transported across large regional distances; instead, it accumulates vertically in place, creating the highest dunes on Earth (up to $300 - 500\text{ m}$ tall in the Namib and Badain Jaran deserts).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is the aerodynamic roughness length ($z_0$) over a flat desert sand sheet, and how does it relate to the logarithmic wind profile equation $u_z = \frac{u_*}{\kappa} \ln\left(\frac{z}{z_0}\right)$?
+          <div class="pq-ans">✔ Correct Answer: $z_0 \approx d / 30$ (approximately $1/30$th of the mean grain diameter $d$), representing the theoretical height above the bed where velocity extrapolates to zero.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In von Kármán's logarithmic law of the wall, $\kappa \approx 0.40$ is the von Kármán constant. When saltation begins, moving grains extract momentum from the air, causing the effective aerodynamic roughness length ($z_0'$) to increase significantly to several grain diameters.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

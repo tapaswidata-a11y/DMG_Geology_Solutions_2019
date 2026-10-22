@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q4: Quantitative Morphotectonic Indices for Drainage Basin Analysis | OPSC Geology 2021 Masterclass</title>
+<title>Q004: Tectonic Activity Indices in Morphotectonic Basin Analysis | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,251 +89,567 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q4" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Morphotectonics & Quantitative Geomorphology</div>
-    <h1>Q4: Quantitative Morphotectonic Indices for Drainage Basin Analysis</h1>
+    <div class="badge">GEO - 2/21 • Tectonic Geomorphology & Morphotectonics</div>
+    <h1>Q004: Tectonic Activity Indices in Morphotectonic Basin Analysis</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Keller & Pinter (Active Tectonics: Earthquakes, Uplift, and Landscape, 2nd Ed., Ch. 5, pp. 121-148); Burbank & Anderson (2011)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 4<br>
+<strong>Authoritative References:</strong> Edward A. Keller & Nicholas Pinter, <em>Active Tectonics: Earthquakes, Uplift, and Landscape</em> (2nd Ed., Ch. 5, pp. 120–150); Bull & McFadden (1977); Hack, J.T. (1973, USGS Jour. Research, 1, pp. 421–429); Burbank & Anderson (2011, <em>Tectonic Geomorphology</em>).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>4.1 The Keller-Pinter Framework for Morphotectonic Analysis</h3>
-        <p>In tectonic geomorphology and active fault studies (Keller & Pinter, 2002, <i>Active Tectonics: Earthquakes, Uplift, and Landscape</i>, Ch. 5; Burbank & Anderson, 2011), four quantitative indices are systematically computed to assess relative tectonic activity ($I_{at}$):</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Index Name & Symbol</th>
-                <th>Mathematical Formula</th>
-                <th>Tectonic Significance & Diagnostic Signatures</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>1. Drainage Basin Asymmetry ($AF$)</b></td>
-                <td>$AF = 100 \left(\frac{A_r}{A_t}\right)$</td>
-                <td>Detects tectonic tilt perpendicular to trunk stream. $AF = 50$ indicates symmetric equilibrium; significant deviation from 50 reveals active structural tilting.</td>
-              </tr>
-              <tr>
-                <td><b>2. Stream Length-Gradient ($SL$)</b></td>
-                <td>$SL = \left(\frac{\Delta H}{\Delta L}\right) L$</td>
-                <td>Sensitive to changes in river gradient caused by active fault scarps, tectonic knickpoints, or contrasting rock resistance. High $SL$ values highlight active uplift.</td>
-              </tr>
-              <tr>
-                <td><b>3. Mountain-Front Sinuosity ($S_{mf}$)</b></td>
-                <td>$S_{mf} = \frac{L_{mf}}{L_s}$</td>
-                <td>Reflects balance between active uplift and stream embayment along front faults. $S_{mf} < 1.4$ indicates high tectonic activity (straight front); $S_{mf} > 2.0$ indicates quiescence.</td>
-              </tr>
-              <tr>
-                <td><b>4. Valley Floor Width to Height Ratio ($V_f$)</b></td>
-                <td>$V_f = \frac{2 V_{fw}}{(E_{ld} - E_{sc}) + (E_{rd} - E_{sc})}$</td>
-                <td>Distinguishes actively uplifting deep V-shaped canyons ($V_f \ll 1.0$) from flat, tectonically inactive wide-bottomed valleys ($V_f \gg 1.0$).</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q04/morphotectonic_indices_suite.png" alt="Morphotectonic Indices Suite">
-      <figcaption>
-        <strong>Figure 4.1: Morphotectonic Indices of Active Tectonics.</strong> (A) Valley Floor Width-to-Height Ratio ($V_f = rac{2 V_{fw}}{(E_{ld}-E_{sc}) + (E_{rd}-E_{sc})}$) distinguishing active V-shaped gorges from broad U-shaped fault basins; (B) Mountain-Front Sinuosity ($S_{mf} = L_{mf}/L_s$) defining active fault scarps ($S_{mf} pprox 1.0$–$1.5$); (C) Stream Length-Gradient Index ($SL = rac{\Delta H}{\Delta L} L$).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: THE MORPHOTECTONIC FRAMEWORK -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Quantitative Morphotectonic Framework (Keller & Pinter, 2002)</div>
+    <div class="card-body">
+      <p>In regions subject to active crustal deformation, earthquakes, and fault propagation, landscape evolution is driven by the dynamic competition between <strong>tectonic rock uplift</strong> and <strong>fluvial/hillslope incision</strong>. Because tectonic processes operate over timescales of $10^3 - 10^6\text{ years}$—far exceeding instrumental seismic records—geomorphologists rely on <strong>Tectonic Activity Indices</strong> derived from digital elevation models (DEMs) and drainage basin metrics to identify, quantify, and map differential uplift and seismic hazard.</p>
+
+      <div class="quote-box">
+        "Tectonic geomorphology evaluates the interplay between tectonic and surface processes that shape the landscape in regions of active crustal deformation. Quantitative morphotectonic indices provide a rapid and powerful reconnaissance tool for evaluating relative tectonic activity across drainage basins."
+        <span class="quote-ref">— Edward A. Keller and Nicholas Pinter, <em>Active Tectonics: Earthquakes, Uplift, and Landscape</em> (Prentice Hall, 2002, p. 121)</span>
+      </div>
+
+      <p>The internationally standardized morphotectonic suite formalized by Keller & Pinter (2002) includes four primary morphometric indices: <strong>Drainage Basin Asymmetry ($AF$)</strong>, <strong>Stream Length-Gradient Index ($SL$)</strong>, <strong>Mountain-Front Sinuosity ($S_{mf}$)</strong>, and the <strong>Valley Floor Width-to-Valley Height Ratio ($V_f$)</strong>.</p>
+    </div>
+  </div>
+
+  <!-- CARD 2: MATHEMATICAL FORMULATIONS OF THE 4 INDICES -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Mathematical Derivations & Geodynamic Sensitivity of the Four Indices</div>
+    <div class="card-body">
+      <p>Each index diagnoses a specific structural and erosional manifestation of active deformation:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">1. Asymmetry Factor ($AF$) — Hare & Gardner (1985)</div>
+        $$AF = 100 \times \left(\frac{A_r}{A_t}\right)$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $A_r$ is the basin area on the downstream right of the trunk stream, and $A_t$ is total basin area. Under tectonic stability, $AF \approx 50\%$. Significant deviations ($AF > 50\%$ or $AF < 50\%$) indicate lateral tectonic tilting orthogonal to stream flow.</p>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">2. Stream Length-Gradient Index ($SL$) — Hack (1973)</div>
+        $$SL = \left(\frac{\Delta H}{\Delta L}\right) \cdot L$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $\Delta H / \Delta L$ is the reach channel gradient, and $L$ is total channel length from the drainage divide to the midpoint of the reach. Exceptionally high $SL$ anomalies highlight active fault crossings, localized surface uplift, or tectonic knickpoints.</p>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">3. Mountain-Front Sinuosity ($S_{mf}$) — Bull & McFadden (1977)</div>
+        $$S_{mf} = \frac{L_{mf}}{L_s}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $L_{mf}$ is actual length of the mountain front along the foot of the range, and $L_s$ is straight-line length. Active range-bounding normal/thrust faults produce straight fronts with $S_{mf} \approx 1.0 - 1.5$ (Class 1); inactive embayed fronts have $S_{mf} > 2.5$ (Class 3).</p>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">4. Valley Floor Width-to-Valley Height Ratio ($V_f$) — Bull (1977)</div>
+        $$V_f = \frac{2 V_{fw}}{(E_{ld} - E_{sc}) + (E_{rd} - E_{sc})}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $V_{fw}$ is valley floor width, $E_{ld}$ and $E_{rd}$ are divide elevations on left/right, and $E_{sc}$ is valley floor elevation. Low $V_f (< 1.0)$ indicates deep, narrow V-shaped gorges undergoing rapid tectonic incision; high $V_f (\gg 1.0)$ indicates broad, flat valleys dominated by lateral planation.</p>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q04/morphotectonic_indices_suite.png" alt="Morphotectonic Indices Suite Diagram">
+        <div class="tb-caption">
+          <strong>Figure 4.1: The Four Classic Morphotectonic Indices (Keller & Pinter, 2002).</strong> Schematic representation of (A) Drainage basin asymmetry ($AF$), (B) Stream length-gradient index ($SL$), (C) Mountain-front sinuosity ($S_{mf}$), and (D) Valley width-to-height ratio ($V_f$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: INDEX OF RELATIVE TECTONIC ACTIVITY -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Index of Relative Tectonic Activity (IRAT) & Synthesis</div>
+    <div class="card-body">
+      <p>Because individual indices may be influenced by local lithological contrasts or structural anisotropies, modern active tectonics investigations combine these metrics into an integrated <strong>Index of Relative Tectonic Activity (IRAT)</strong>:</p>
+      $$IRAT = \frac{S_{mf} + V_f + AF + SL + Hypsometric\ Integral}{N}$$
+      <p>This multi-parameter index classifies mountainous terrains and drainage basins into three distinct tectonic activity regimes:</p>
+      <ul>
+        <li><strong>Class 1 (High Tectonic Activity):</strong> Ongoing rapid uplift ($> 1\text{ mm/yr}$), high seismicity, straight mountain fronts ($S_{mf} < 1.4$), deeply incised V-shaped canyons ($V_f < 0.5$), and pronounced $SL$ knickpoint anomalies.</li>
+        <li><strong>Class 2 (Moderate Tectonic Activity):</strong> Intermediate uplift rates ($0.1 - 0.5\text{ mm/yr}$), partially embayed fronts ($1.4 \le S_{mf} \le 2.5$), and moderately incised valleys ($0.5 \le V_f \le 1.5$).</li>
+        <li><strong>Class 3 (Low / Inactive Tectonic Regime):</strong> Tectonic quiescence, extensive lateral erosion, sinuous mountain fronts ($S_{mf} > 2.5$), wide U-shaped alluvial plains ($V_f > 1.5$), and symmetrical basins ($AF \approx 50\%$).</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q4. Which of the following indices belong to 'Tectonic Activity Indices' used for morphotectonic analysis of a drainage basin? (i) Drainage basin asymmetry, (ii) Stream Length-Gradient Index (SL Index), (iii) Mountain-front sinuosity, (iv) Ratio of valley floor width to valley height. Choose the correct set of answer from the following options :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> (i), (ii) and (iv)</div>
-        <div class="opt-item "><strong>(B)</strong> (ii) and (iv)</div>
-        <div class="opt-item correct"><strong>(C)</strong> (i), (ii), (iii) and (iv)</div>
-        <div class="opt-item "><strong>(D)</strong> (ii), (iii) and (iv)</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 4)</div>
+    <div class="q-stmt">
+      Q4. Which of the following indices belong to 'Tectonic Activity Indices' used for morphotectonic analysis of a drainage basin? (i) Drainage basin asymmetry, (ii) Stream Length-Gradient Index (SL Index), (iii) Mountain-front sinuosity, (iv) Ratio of valley floor width to valley height. Choose the correct set of answer from the following options :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) (i), (ii) and (iv)</div>
+      <div class="raw-opt">(B) (ii) and (iv)</div>
+      <div class="raw-opt correct">(C) (i), (ii), (iii) and (iv) &nbsp;✔</div>
+      <div class="raw-opt">(D) (ii), (iii) and (iv)</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (C) (i), (ii), (iii) and (iv)</div>
+      <div class="sub">
+        All four parameters—<strong>(i) Drainage basin asymmetry ($AF$)</strong>, <strong>(ii) Stream Length-Gradient Index ($SL$)</strong>, <strong>(iii) Mountain-front sinuosity ($S_{mf}$)</strong>, and <strong>(iv) Ratio of valley floor width to valley height ($V_f$)</strong>—constitute the canonical suite of morphotectonic indices established by Bull & McFadden (1977) and Keller & Pinter (2002).
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
-          <p><b>Correct Answer: (C) (i), (ii), (iii) and (iv)</b> — All four listed indices ($AF$, $SL$, $S_{mf}$, $V_f$) are standard, recognized <b>Tectonic Activity Indices</b> used in morphotectonic drainage basin analysis.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) (i), (ii) and (iv) — INCORRECT:</b> Omission of Mountain-front sinuosity ($S_{mf}$), which is one of the most critical indices used to distinguish active Range-bounding fault fronts.</li>
-          <li><b>(B) (ii) and (iv) — INCORRECT:</b> Omits basin asymmetry and mountain front sinuosity.</li>
-          <li><b>(C) (i), (ii), (iii) and (iv) — CORRECT:</b> Captures the complete, canonical four-index morphotectonic suite formalized by Keller & Pinter (2002).</li>
-          <li><b>(D) (ii), (iii) and (iv) — INCORRECT:</b> Omits basin asymmetry ($AF$).</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) (i), (ii) and (iv)</span>
+      <span class="tag wrong">Incorrect (Omits Mountain-Front Sinuosity)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option omits parameter (iii) <em>Mountain-front sinuosity ($S_{mf}$)</em>. $S_{mf}$ is one of the oldest and most fundamental tectonic indices in geomorphology (Bull & McFadden, 1977), directly quantifying the activity of range-bounding piedmont fault scarps.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) (ii) and (iv)</span>
+      <span class="tag wrong">Incorrect (Severely Incomplete Subset)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> While $SL$ and $V_f$ are valid indices, this option completely ignores drainage basin asymmetry ($AF$) and mountain-front sinuosity ($S_{mf}$), excluding half of the standard analytical suite.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(C) (i), (ii), (iii) and (iv)</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Every single listed metric belongs to the primary suite of quantitative indices used in modern tectonic geomorphology. In Chapter 5 of <em>Active Tectonics</em>, Keller & Pinter explicitly group these exact four parameters together as the indispensable toolkit for morphotectonic basin analysis.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) (ii), (iii) and (iv)</span>
+      <span class="tag wrong">Incorrect (Omits Drainage Basin Asymmetry)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option omits parameter (i) <em>Drainage basin asymmetry ($AF$)</em>. $AF$ is essential for detecting broad tectonic ground tilting and differential block rotation perpendicular to the master drainage channel.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Worked Morphotectonic Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 4: Calculation of Mountain Front Sinuosity ($S_{mf}$)</div>
-          <p>Along an active mountain front fault in the Eastern Ghats, the measured length along the topographic break-in-slope of the mountain front is $L_{mf} = 14.8\text{ km}$, while the straight-line distance along the fault front is $L_s = 12.0\text{ km}$. Calculate $S_{mf}$ and interpret the tectonic activity class.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            $$S_{mf} = \frac{L_{mf}}{L_s} = \frac{14.8}{12.0} = 1.23$$
-            <p>According to Keller & Pinter classification: Class 1 (Highly Active): $S_{mf} < 1.4$. Since $S_{mf} = 1.23 < 1.4$, the mountain front is classified as <b>Tectonically Active (Class 1)</b> with rapid uplift rates outcompeting stream erosion and embayment.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Quantitative Classification Thresholds: Tectonic Activity Classes (Keller & Pinter Suite)</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Morphotectonic Index</th>
+            <th>Symbol & Formula</th>
+            <th>Class 1 (High Activity)</th>
+            <th>Class 2 (Moderate Activity)</th>
+            <th>Class 3 (Low / Inactive)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mountain-Front Sinuosity</strong></td>
+            <td>$S_{mf} = L_{mf} / L_s$</td>
+            <td><strong>$1.0 \le S_{mf} < 1.4$</strong> (Straight)</td>
+            <td>$1.4 \le S_{mf} \le 2.5$</td>
+            <td>$S_{mf} > 2.5$ (Deeply embayed)</td>
+          </tr>
+          <tr>
+            <td><strong>Valley Floor Width / Height</strong></td>
+            <td>$V_f = \frac{2 V_{fw}}{(E_{ld}-E_{sc}) + (E_{rd}-E_{sc})}$</td>
+            <td><strong>$V_f < 0.5$</strong> (Deep V-gorge)</td>
+            <td>$0.5 \le V_f \le 1.5$</td>
+            <td>$V_f > 1.5$ (Broad flat valley)</td>
+          </tr>
+          <tr>
+            <td><strong>Basin Asymmetry Factor</strong></td>
+            <td>$AF = 100(A_r / A_t)$</td>
+            <td><strong>$|AF - 50| \ge 15$</strong> (Strong tilt)</td>
+            <td>$7 \le |AF - 50| < 15$</td>
+            <td>$|AF - 50| < 7$ (Symmetrical)</td>
+          </tr>
+          <tr>
+            <td><strong>Stream Length-Gradient</strong></td>
+            <td>$SL = (\Delta H / \Delta L) \cdot L$</td>
+            <td><strong>$SL > 500$</strong> (Severe knickpoints)</td>
+            <td>$200 \le SL \le 500$</td>
+            <td>$SL < 200$ (Graded equilibrium profile)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical $AF$ Calculation):</strong> A drainage basin has a total catchment area $A_t = 600\text{ km}^2$. The catchment area lying to the right of the master trunk stream (looking downstream) is measured as $A_r = 432\text{ km}^2$. Calculate the Asymmetry Factor ($AF$) and infer the tectonic deformation of the basin.
+          <div class="pq-ans">✔ Worked Answer: $AF = 72\%$; Indicates strong lateral tectonic tilting down toward the right bank.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$AF = 100 \times \left(\frac{A_r}{A_t}\right) = 100 \times \left(\frac{432}{600}\right) = 72\%$$
+            The deviation $|AF - 50| = |72 - 50| = 22\% > 15\%$, placing the basin into <strong>Class 1 (High Tectonic Activity)</strong>. The stream has migrated toward the left due to ground tilting downward to the right.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2 (Numerical $SL$ Calculation):</strong> Along a mountain stream reach, the channel drops in elevation by $\Delta H = 50\text{ m}$ over a reach length $\Delta L = 400\text{ m}$. The total length from the drainage headwaters divide to the reach midpoint is $L = 6000\text{ m}$. Calculate the Hack Stream Length-Gradient Index ($SL$).
+          <div class="pq-ans">✔ Worked Answer: $SL = 750\text{ m}$.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            Reach gradient $S = \frac{\Delta H}{\Delta L} = \frac{50\text{ m}}{400\text{ m}} = 0.125$.<br>
+            $$SL = \left(\frac{\Delta H}{\Delta L}\right) \cdot L = 0.125 \times 6000\text{ m} = 750\text{ m}$$
+            Because $SL = 750\text{ m} > 500\text{ m}$, this reach represents an anomalously steep tectonic knickpoint, likely indicating an active fault crossing or localized surface uplift.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3 (Numerical $S_{mf}$ Classification):</strong> A mountain range front has a straight-line end-to-end distance $L_s = 15.0\text{ km}$. The surveyed actual mountain-piedmont junction length is $L_{mf} = 18.3\text{ km}$. Calculate $S_{mf}$ and assign the tectonic activity class under the Bull & McFadden (1977) scheme.
+          <div class="pq-ans">✔ Worked Answer: $S_{mf} = 1.22$; Assigned to Class 1 (Tectonically Active Mountain Front).</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$S_{mf} = \frac{L_{mf}}{L_s} = \frac{18.3\text{ km}}{15.0\text{ km}} = 1.22$$
+            Because $S_{mf} < 1.40$, tectonic uplift along the range-bounding fault outpaces stream incision and pediment embayment, maintaining a nearly straight fault-line scarp.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4 (Numerical $V_f$ Valley Inversion):</strong> Cross-sectional profiling across a valley yields: valley floor width $V_{fw} = 30\text{ m}$, left divide elevation $E_{ld} = 850\text{ m}$, right divide elevation $E_{rd} = 810\text{ m}$, and valley floor elevation $E_{sc} = 550\text{ m}$. Calculate the $V_f$ ratio and interpret the geomorphic state.
+          <div class="pq-ans">✔ Worked Answer: $V_f = 0.107$; Indicates intense, rapid vertical channel incision driven by active tectonic uplift.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            Left relief $= 850 - 550 = 300\text{ m}$; Right relief $= 810 - 550 = 260\text{ m}$.<br>
+            $$V_f = \frac{2 V_{fw}}{(E_{ld} - E_{sc}) + (E_{rd} - E_{sc})} = \frac{2(30)}{300 + 260} = \frac{60}{560} \approx 0.107$$
+            Since $V_f \ll 0.5$, the cross-section is an acute V-shaped canyon characteristic of rapid tectonic incisive response to crustal uplift.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How is Hack's Law expressed mathematically, and what does it relate in drainage basin morphometry?
+          <div class="pq-ans">✔ Correct Answer: $L = C \cdot A^h$ (where $L$ is mainstream length, $A$ is basin area, $C \approx 1.4$, and $h \approx 0.55 - 0.60$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Hack's Law proves that drainage basins become increasingly elongated rather than geometrically circular as they grow in size, because the exponent $h > 0.5$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What does a high Hypsometric Integral ($HI > 0.60$) indicate regarding Strahler's cycle of landscape erosion?
+          <div class="pq-ans">✔ Correct Answer: Indicates a "youthful" landscape experiencing active tectonic uplift where most rock mass has not yet been eroded.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The hypsometric integral represents the volume of unconsumed bedrock remaining beneath the hypsometric curve. $HI > 0.60$ is diagnostic of young, actively uplifting mountain ranges; mature landscapes have $0.35 \le HI \le 0.60$; and old peneplains have $HI < 0.35$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> How can a tectonic knickpoint be distinguished from a lithologic knickpoint along a longitudinal stream profile?
+          <div class="pq-ans">✔ Correct Answer: Tectonic knickpoints migrate upstream across varying rock types at similar elevations across adjacent parallel valleys; lithologic knickpoints are stationary and coincide strictly with resistant bedrock contacts.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> A transient knickpoint generated by a pulse of fault uplift propagates upstream into the landscape independently of underlying rock hardness, appearing as a coherent elevation step across neighboring catchments.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why do paired fluvial terraces signify active tectonic uplift or base-level fall, whereas unpaired terraces typically indicate lateral channel meandering?
+          <div class="pq-ans">✔ Correct Answer: Paired terraces occur at identical elevations on opposite sides of a valley, proving rapid, symmetrical downcutting too fast for lateral erosion; unpaired terraces form when a meandering river cuts down slowly while simultaneously shifting laterally.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Tectonic pulses accelerate stream incision rates, stranding former floodplains synchronously on both banks at matching elevations (paired terraces).
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

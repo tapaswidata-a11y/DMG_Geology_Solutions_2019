@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q6: Optically Stimulated Luminescence (OSL) Dating Methodology | OPSC Geology 2021 Masterclass</title>
+<title>Q006: Optically Stimulated Luminescence (OSL) Geochronology & Zeroing Physics | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,254 +89,563 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q6" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Geochronology & Quaternary Geology</div>
-    <h1>Q6: Optically Stimulated Luminescence (OSL) Dating Methodology</h1>
+    <div class="badge">GEO - 2/21 • Quaternary Geology & Geochronology</div>
+    <h1>Q006: Optically Stimulated Luminescence (OSL) Geochronology & Zeroing Physics</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> William M. White (Geochemistry, Ch. 8, pp. 330-345); M.J. Aitken (Optical Dating); Huntley et al. (1985)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 6<br>
+<strong>Authoritative References:</strong> M.J. Aitken, <em>An Introduction to Optical Dating</em> (Oxford University Press, 1998); Murray & Wintle (2000, <em>Radiation Measurements</em>, 32, pp. 57–73); Rhodes, E.J. (2011, <em>Quaternary Science Reviews</em>, 30, pp. 770–822); Duller, G.A.T. (2008, <em>Luminescence Dating Guidelines</em>).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>6.1 Principles of Luminescence Dating (OSL & TL)</h3>
-        <p>In geochronology and Quaternary geology (Aitken, 1998; William M. White, <i>Geochemistry</i>, Ch. 8), <b>Optically Stimulated Luminescence (OSL)</b> measures the time that has elapsed since mineral grains (quartz or potassium feldspar) were last exposed to sunlight or heat:</p>
-        $$\text{Age (years)} = \frac{\text{Equivalent Dose } (D_e) \text{ [Grays]}}{\text{Environmental Dose Rate } (D_r) \text{ [Grays/year]}}$$
-        
-        <h3>6.2 The "Bleaching" (Zeroing) Mechanism</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Material Type</th>
-                <th>Bleaching / Zeroing Event</th>
-                <th>Suitability for OSL Dating</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>(i) Naturally occurring sediments</b></td>
-                <td><b>Exposure to daylight</b> during aeolian, fluvial, or coastal transport drains all trapped electrons</td>
-                <td><b>EXCELLENT</b> (Dune sand, beach ridges, loess, floodplain silt)</td>
-              </tr>
-              <tr>
-                <td><b>(ii) Man-made materials (Pottery, Bricks)</b></td>
-                <td><b>Thermal heating</b> in kiln firing (> 500 °C) drains trapped electrons to zero</td>
-                <td><b>EXCELLENT</b> (Universal method for archaeological ceramic dating)</td>
-              </tr>
-              <tr>
-                <td><b>(iii) Intrusive igneous rocks</b></td>
-                <td>Cooled slowly at depth without daylight exposure; traps saturated from geologic time</td>
-                <td><b>UNSUITABLE</b> (Cannot record surface burial age; use U-Pb, Rb-Sr, K-Ar)</td>
-              </tr>
-              <tr>
-                <td><b>(iv) Metasedimentary rocks</b></td>
-                <td>Metamorphic recrystallization at depth; no daylight zeroing event</td>
-                <td><b>UNSUITABLE</b> (Use metamorphic mineral isochrons)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q06/osl_dating_mechanism.png" alt="Optically Stimulated Luminescence Dating Mechanism">
-      <figcaption>
-        <strong>Figure 6.1: Physical Mechanics of Optically Stimulated Luminescence (OSL) Geochronology.</strong> Sunlight exposure bleaches trapped charges to zero prior to burial. Post-burial ambient ionizing radiation ($lpha, eta, \gamma$, cosmic) steadily traps electrons in quartz/feldspar crystal lattices, providing an absolute burial age: $	ext{Age} = 	ext{Equivalent Dose } (D_e) / 	ext{Dose Rate } (D_r)$.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: THE PHYSICS OF TRAPPED CHARGE LUMINESCENCE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Solid-State Physics of Trapped-Charge Geochronology</div>
+    <div class="card-body">
+      <p><strong>Optically Stimulated Luminescence (OSL)</strong> dating is a revolutionary trapped-charge geochronological technique that determines the elapsed time since ubiquitous mineral grains (principally <strong>quartz</strong>, $\text{SiO}_2$, and <strong>potassium feldspar</strong>, $\text{KAlSi}_3\text{O}_8$) were last exposed to sunlight or heat. The physical mechanism operates through solid-state defect crystal lattices:</p>
+
+      <ul>
+        <li><strong>Ionizing Ambient Radiation:</strong> Natural sediments contain trace concentrations of radioactive isotopes ($^{238}\text{U}$, $^{235}\text{U}$, $^{232}\text{Th}$, their decay daughters, and $^{40}\text{K}$), accompanied by penetrating cosmic rays. This flux emits $\alpha, \beta$, and $\gamma$ radiation, steadily ionizing surrounding mineral grains.</li>
+        <li><strong>Metastable Trapping:</strong> Ionization excites electrons from the valence band to the conduction band. Most electrons recombine instantly, but a fraction become trapped in crystal lattice defects (such as oxygen vacancies / E' centers and titanium/aluminum substitution sites). These trapped electrons occupy metastable energy states with lifetimes exceeding millions of years at ambient Earth temperatures.</li>
+        <li><strong>Stimulation & Luminescence Emission:</strong> When stimulated in the laboratory with specific wavelengths of light (blue light at $470\text{ nm}$ for quartz, or infrared at $870\text{ nm}$ for feldspar), the trapped electrons are evicted from their traps, drop into luminescence centers, and emit photons of higher energy (UV light around $375\text{ nm}$). The emitted photon flux is directly proportional to the radiation dose absorbed.</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">The Fundamental Luminescence Age Equation (Aitken, 1998)</div>
+        $$\text{OSL Age (years)} = \frac{D_e}{\dot{D}} = \frac{\text{Equivalent Paleodose (Grays, Gy)}}{\text{Environmental Dose Rate (Gy/year or Gy/ka)}}$$
+        <p style="margin-top:6px; font-size:12.5px; color:#cbd5e1;">Where $D_e$ is the total ionizing radiation dose accumulated by the mineral since burial, and $\dot{D}$ is the annual dose rate emitted by radioactive decay in the host sediment and cosmic radiation.</p>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q06/osl_dating_mechanism.png" alt="OSL Dating Physical Mechanism">
+        <div class="tb-caption">
+          <strong>Figure 6.1: Physical Mechanism of OSL Dating.</strong> The cyclic luminescence clock: (1) Daylight bleaching during subaerial transport zeroes the trapped electrons; (2) Burial under darkness accumulates trapped charge at dose rate $\dot{D}$; (3) Laboratory optical stimulation releases stored luminescence measuring paleodose $D_e$.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE ZEROING / BLEACHING EVENT -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The Zeroing Event: Optical Bleaching vs. Thermal Firing</div>
+    <div class="card-body">
+      <p>For a trapped-charge clock to measure the true geological or archaeological age, the stored charge in the crystal traps must be completely evacuated (zeroed) at the starting event of interest ($t = 0$):</p>
+
+      <ul>
+        <li><strong>(i) Naturally Occurring Sediments (Optical Bleaching):</strong> During subaerial transport by wind (aeolian dunes, loess, sand sheets), rivers (alluvial plains, bars), or waves (coastal beaches, barrier islands), mineral grains are exposed to sunlight. Natural daylight is so potent that <strong>just a few seconds to minutes of direct sunlight exposure completely bleaches the light-sensitive quartz traps to zero</strong>. Upon subsequent burial by overlying strata, darkness ensues, and the luminescence clock begins ticking.</li>
+        <li><strong>(ii) Man-Made Materials (Thermal Zeroing):</strong> When ancient humans fired archaeological ceramic vessels, pottery, bricks, or burnt clay hearths in kilns at temperatures exceeding $450 - 500^\circ\text{C}$, the thermal energy completely evacuated all trapped electrons, resetting the luminescence clock to zero at the exact moment of manufacture.</li>
+      </ul>
+
+      <div class="quote-box">
+        "Optically stimulated luminescence (OSL) dating determines the time since quartz or feldspar grains were last exposed to daylight or heat. It is widely applied to naturally occurring sediments such as aeolian sands, loess, fluvial deposits, and coastal dunes, as well as heated archaeological materials like pottery and burnt flints."
+        <span class="quote-ref">— E.J. Rhodes, <em>Optically Stimulated Luminescence Dating of Sediments over the Past 200,000 Years</em> (Quaternary Science Reviews, 2011, p. 771)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: WHY IGNEOUS & METAMORPHIC ROCKS CANNOT BE OSL DATED -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Crystal Saturation: Why Intrusive Igneous & Metamorphic Rocks Fail</div>
+    <div class="card-body">
+      <p>Why are <strong>(iii) Intrusive igneous rocks</strong> (granites, gabbros) and <strong>(iv) Metasedimentary rocks</strong> (quartzites, schists) fundamentally unsuitable for determining geological crystallization or metamorphic ages via OSL?</p>
+
+      <ul>
+        <li><strong>Trapping Saturation Limit ($D_0$):</strong> Mineral defect traps have a finite capacity. Under continuous natural background radiation ($\sim 2 - 4\text{ mGy/yr}$), the electron traps in quartz become completely filled and reach asymptotic saturation at doses around $100 - 300\text{ Gy}$ (corresponding to an absolute dating ceiling of $\sim 150,000 - 300,000\text{ years}$).</li>
+        <li><strong>Millions of Years of Radiation:</strong> Intrusive igneous rocks crystallized deep in the crust millions of years ago (e.g., Archean or Proterozoic granites). Their traps reached 100% saturation tens of millions of years ago, rendering them completely incapable of measuring geological formation age.</li>
+        <li><strong>Absence of Sunlight Zeroing:</strong> Intrusive plutons crystallize kilometers underground without ever seeing daylight. Because there was no optical bleaching event during crystallization, the OSL clock was never zeroed.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q6. Optically Stimulated Luminescence (OSL) dating methods are useful for determining the age of: (i) Naturally occurring sediments, (ii) Man-made materials like pottery, (iii) Intrusive igneous rocks, (iv) Metasedimentary rocks. Choose the correct set of answer from the following options :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> (i), (ii) and (iii)</div>
-        <div class="opt-item correct"><strong>(B)</strong> (i) and (ii)</div>
-        <div class="opt-item "><strong>(C)</strong> (iii) and (iv)</div>
-        <div class="opt-item "><strong>(D)</strong> (i) and (iii)</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 6)</div>
+    <div class="q-stmt">
+      Q6. Optically Stimulated Luminescence (OSL) dating methods are useful for determining the age of: (i) Naturally occurring sediments, (ii) Man-made materials like pottery, (iii) Intrusive igneous rocks, (iv) Metasedimentary rocks. Choose the correct set of answer from the following options :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) (i), (ii) and (iii)</div>
+      <div class="raw-opt correct">(B) (i) and (ii) &nbsp;✔</div>
+      <div class="raw-opt">(C) (iii) and (iv)</div>
+      <div class="raw-opt">(D) (i) and (iii)</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) (i) and (ii)</div>
+      <div class="sub">
+        OSL is specifically designed to date materials whose electron traps were zeroed by daylight exposure or kiln firing prior to burial—namely <strong>(i) naturally occurring sediments</strong> (aeolian, fluvial, coastal sands) and <strong>(ii) man-made materials like pottery</strong> (fired ceramics, burnt clay). Intrusive igneous and metamorphic rocks are saturated and cannot be OSL-dated for geological age.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) (i) and (ii)</b> — OSL dating is specifically applicable to <b>(i) Naturally occurring sediments</b> (zeroed by sunlight) and <b>(ii) Man-made materials like pottery</b> (zeroed by firing heat).</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) (i), (ii) and (iii) — INCORRECT:</b> Fails because intrusive igneous rocks cannot be dated by OSL (they lack a daylight bleaching event).</li>
-          <li><b>(B) (i) and (ii) — CORRECT:</b> Accurately pairs the two classic luminescence applications: daylight-bleached sedimentary grains and kiln-fired pottery.</li>
-          <li><b>(C) (iii) and (iv) — INCORRECT:</b> Both crystalline rock categories are completely incompatible with OSL dating.</li>
-          <li><b>(D) (i) and (iii) — INCORRECT:</b> Erroneously includes intrusive igneous rocks.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) (i), (ii) and (iii)</span>
+      <span class="tag wrong">Incorrect (Wrongly Includes Intrusive Rocks)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option includes <em>(iii) Intrusive igneous rocks</em>. Deep-seated plutonic rocks like granite or diorite never experience daylight exposure during emplacement and crystallize over millions of years, causing their electron traps to be completely saturated with radiation.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) (i) and (ii)</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Statements (i) and (ii) are the precise, classic domains of luminescence dating. Exposure to sunlight during sedimentary transport bleaches quartz/feldspar in naturally occurring sediments (i), while the intense heat of kiln firing ($> 500^\circ\text{C}$) thermal-bleaches archaeological ceramics (ii), providing the requisite zero baseline ($t = 0$).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) (iii) and (iv)</span>
+      <span class="tag wrong">Incorrect (Exclusively Contains Invalid Saturated Bedrock)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> Both intrusive igneous rocks and metasedimentary rocks possess geological ages measured in millions or billions of years (Phanerozoic, Proterozoic, Archean), far exceeding the Quaternary saturation limit ($\sim 300\text{ ka}$) of luminescence dating.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) (i) and (iii)</span>
+      <span class="tag wrong">Incorrect (Omits Archaeological Pottery & Includes Intrusive Rocks)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option wrongly omits man-made pottery (which was historically the very first material dated by thermoluminescence by Martin Aitken in the 1960s) and erroneously includes intrusive igneous rocks.
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Worked OSL Age Calculation Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 6: Calculating the Burial Age of a Coastal Paleodune</div>
-          <p>A quartz sample collected from a paleodune in coastal Odisha yielded a laboratory paleodose (equivalent dose) of $D_e = 48.0\text{ Gy}$. Gamma spectrometry of the surrounding sediment indicates a total environmental dose rate of $D_r = 1.6\text{ mGy/year}$. Calculate the burial age of the dune sand.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            $$\text{Age} = \frac{D_e}{D_r} = \frac{48.0\text{ Gy}}{0.0016\text{ Gy/year}} = 30,000\text{ years} = 30\text{ ka}$$
-            <p>The sand grains were deposited and buried from daylight approximately <b>30,000 years ago</b> (Late Pleistocene).</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparison: Trapped-Charge & Quaternary Geochronology Methods</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Geochronological Method</th>
+            <th>Primary Target Minerals</th>
+            <th>Clock Resetting (Zeroing) Mechanism</th>
+            <th>Effective Dating Range</th>
+            <th>Primary Geological & Archaeological Applications</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>OSL (Optically Stimulated Luminescence)</strong></td>
+            <td>Quartz ($\text{SiO}_2$), K-Feldspar</td>
+            <td><strong>Daylight exposure</strong> (bleaching) or <strong>Thermal firing</strong> ($> 450^\circ\text{C}$)</td>
+            <td><strong>$\sim 10\text{ years to } 300,000\text{ years}$</strong></td>
+            <td>Aeolian sand dunes, loess, fluvial terraces, coastal beach ridges, pottery, bricks</td>
+          </tr>
+          <tr>
+            <td><strong>TL (Thermoluminescence)</strong></td>
+            <td>Quartz, Feldspar, Calcite, Zircon</td>
+            <td><strong>Heat / Thermal firing</strong> ($> 450 - 500^\circ\text{C}$)</td>
+            <td>$\sim 100\text{ to } 500,000\text{ years}$</td>
+            <td>Ancient pottery, burnt flint tools, kiln slag, volcanic ash/tephra</td>
+          </tr>
+          <tr>
+            <td><strong>ESR (Electron Spin Resonance)</strong></td>
+            <td>Tooth enamel (hydroxyapatite), corals, speleothems</td>
+            <td>Biomineralization (formation) or daylight bleaching in fault gouge</td>
+            <td>$\sim 5,000\text{ to } 2,000,000\text{ years}$</td>
+            <td>Fossil tooth enamel, marine shells, carbonate speleothems, active fault gouge</td>
+          </tr>
+          <tr>
+            <td><strong>Radiocarbon ($^{14}\text{C}$)</strong></td>
+            <td>Organic carbon (wood, charcoal, bone, shell)</td>
+            <td>Death of organism (cessation of $^{14}\text{C}$ atmospheric exchange)</td>
+            <td>$\sim 300\text{ to } 50,000\text{ years}$</td>
+            <td>Holocene and Late Pleistocene organic remains, peat bogs, archaeological charcoal</td>
+          </tr>
+          <tr>
+            <td><strong>Cosmogenic Radionuclides ($^{10}\text{Be}, ^{26}\text{Al}$)</strong></td>
+            <td>Quartz in surface boulders</td>
+            <td>Exposure to secondary cosmic rays at Earth's surface</td>
+            <td>$\sim 1,000\text{ to } 4,000,000\text{ years}$</td>
+            <td>Glacial moraine boulders, fault scarp exposure, bedrock erosion rates</td>
+          </tr>
+          <tr>
+            <td><strong>Fission Track Dating</strong></td>
+            <td>Apatite, Zircon, Sphene</td>
+            <td>Cooling below closure temperature ($T_c \approx 110^\circ\text{C}$ for apatite)</td>
+            <td>$\sim 100,000\text{ to } 10^9\text{ years}$</td>
+            <td>Tectonic exhumation, orogenic cooling rates, sedimentary basin thermal history</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical Age Calculation):</strong> In an OSL laboratory, a purified quartz aliquot from an alluvial terrace in the Mahanadi Basin yields an equivalent paleodose $D_e = 64.8\text{ Gy}$ using the SAR protocol. High-resolution gamma spectrometry and in-situ dosimetry measure an annual environmental dose rate $\dot{D} = 2.40\text{ Gy/ka}$ ($2.40\text{ mGy/yr}$). Calculate the depositional age of the terrace sand.
+          <div class="pq-ans">✔ Worked Answer: $27,000\text{ years}$ ($27.0\text{ ka}$; Late Pleistocene / Marine Isotope Stage 2).</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$\text{OSL Age} = \frac{D_e}{\dot{D}} = \frac{64.8\text{ Gy}}{2.40\text{ Gy/ka}} = 27.0\text{ ka} = 27,000\text{ years}$$
+            This dates the burial of the sand during the Last Glacial Maximum (LGM) aggradation phase.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is the meaning and danger of <em>partial bleaching</em> in sediment luminescence dating, and which sedimentary environment is most susceptible?
+          <div class="pq-ans">✔ Correct Answer: Incomplete zeroing of electron traps prior to burial; highly prevalent in turbid, deep fluvial and subaqueous debris-flow environments.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Water absorbs the UV/blue spectrum rapidly, and turbid suspended sediment shields grains from sunlight. Unbleached residual trapped charge remains, causing the calculated OSL age to be significantly older than the true burial event (age overestimation).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What revolutionary analytical protocol, developed by A.S. Murray and A.G. Wintle in 2000, transformed OSL dating into a high-precision technique?
+          <div class="pq-ans">✔ Correct Answer: The Single-Aliquot Regenerative-dose (SAR) protocol.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The SAR protocol measures the natural luminescence and multiple laboratory regeneration doses on a single aliquot, using a small test dose after each cycle to monitor and mathematically correct for luminescence sensitivity changes.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> Why is Infrared Stimulated Luminescence (IRSL) specifically applied to potassium feldspar rather than quartz?
+          <div class="pq-ans">✔ Correct Answer: Quartz traps cannot be evicted by low-energy infrared photons ($870\text{ nm}$), whereas K-feldspar contains an infrared resonance excitation trap with an internal dose rate from radioactive $^{40}\text{K}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> K-feldspar is sensitive to IR stimulation, allowing dating in red-light safe conditions without exciting quartz. However, feldspars suffer from <em>anomalous fading</em> (quantum mechanical tunneling of electrons), which must be corrected.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How do cosmic rays contribute to the total annual environmental dose rate ($\dot{D}$)?
+          <div class="pq-ans">✔ Correct Answer: Through penetrating muons and neutrons; the cosmic dose rate decreases exponentially with burial depth below the ground surface.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> At the surface, cosmic radiation contributes $\sim 0.30\text{ mGy/yr}$. With increasing overburden depth, absorption by overlying sediment attenuates the flux, approaching a low asymptotic value beyond $10\text{ meters}$ depth.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is the physical basis of <em>luminescence thermometry</em> or <em>rock surface exposure dating</em>?
+          <div class="pq-ans">✔ Correct Answer: Measuring the depth-penetration profile of daylight bleaching into the outer millimeters of an exposed rock boulder surface.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Sunlight penetrates several millimeters into transparent quartz grains on rock surfaces, creating a bleaching front that advances inward over time, allowing direct dating of rock-art, glacial erratic exposure, or masonry construction.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Why must OSL sediment samples be collected strictly inside opaque, light-tight tubes (e.g., black PVC or steel tubes hammered into trench walls)?
+          <div class="pq-ans">✔ Correct Answer: Because any exposure to ambient daylight during excavation instantly bleaches the quartz grains, permanently destroying the trapped paleodose record.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Sampling tubes are sealed light-tight in the field and opened only inside darkrooms illuminated by dim amber/red safelights.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why does moisture content (interstitial pore water) affect the calculated luminescence age of a buried sand deposit?
+          <div class="pq-ans">✔ Correct Answer: Water absorbs ionizing radiation more effectively than solid mineral grains, reducing the effective annual dose rate ($\dot{D}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Higher moisture levels absorb gamma and beta rays before they reach the quartz grains. If water content is underestimated, $\dot{D}$ will be overestimated, resulting in an erroneously young calculated age ($Age = D_e / \dot{D}$).
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q2: Fluvial Channel Sinuosity Index & Meandering Thresholds | OPSC Geology 2021 Masterclass</title>
+<title>Q002: Fluvial Channel Sinuosity Index & Leopold-Wolman Meandering Thresholds | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,258 +89,596 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q2" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Fluvial Geomorphology & Sedimentology</div>
-    <h1>Q2: Fluvial Channel Sinuosity Index & Meandering Thresholds</h1>
+    <div class="badge">GEO - 2/21 • Geomorphology & Fluvial Dynamics</div>
+    <h1>Q002: Fluvial Channel Sinuosity Index & Leopold-Wolman Meandering Thresholds</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology & Stratigraphy, 4th/5th Ed., Ch. 8, pp. 248-252); Leopold & Wolman (1957)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 2<br>
+<strong>Authoritative References:</strong> Leopold & Wolman (1957, USGS Prof. Paper 282-B, pp. 39–85); Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th Ed., Ch. 8, pp. 248–255); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 2, pp. 45–52).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>2.1 Mathematical Definition of Sinuosity Index</h3>
-        <p>In fluvial geomorphology and sedimentology (Leopold & Wolman, 1957; Sam Boggs Jr., <i>Principles of Sedimentology and Stratigraphy</i>, 5th Ed., Ch. 8), <b>channel sinuosity ($S$ or $P$)</b> is defined as the ratio of channel length measured along the thalweg to the down-valley axial distance:</p>
-        $$\text{Sinuosity Index } (S) = \frac{L_{\text{channel}}}{L_{\text{valley}}}$$
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Sinuosity Range</th>
-                <th>Channel Planform Category</th>
-                <th>Sediment Transport & Hydraulic Regime</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$S < 1.05$</td>
-                <td><b>Straight Channel</b></td>
-                <td>Rare in natural systems; steep gradient, coarse bedload</td>
-              </tr>
-              <tr>
-                <td>$1.05 \le S < 1.50$</td>
-                <td><b>Sinuous Channel</b></td>
-                <td>Moderate gradient, alternating side bars / riffles</td>
-              </tr>
-              <tr>
-                <td><b>$S \ge 1.50$</b></td>
-                <td><b>Meandering Channel</b></td>
-                <td><b>Threshold value for true meandering rivers</b>; high suspended load, low slope, active point-bar accretion & neck cutoffs</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <!-- CARD 1: MATHEMATICAL DERIVATION & DEFINITIONS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Mathematical Definition of Channel Sinuosity & Planform Continuum</div>
+    <div class="card-body">
+      <p>In fluvial geomorphology and sedimentology, the planform geometry of an alluvial river is quantitatively characterized by its <strong>Sinuosity Index ($S$)</strong>. Sinuosity is dimensionless and expresses the degree of channel wandering relative to the general down-valley slope.</p>
+      
+      <div class="formula-card">
+        <div class="formula-title">Fundamental Sinuosity Formula (Leopold, Wolman & Miller, 1964)</div>
+        $$S = \frac{L_{\text{channel}}}{L_{\text{valley}}} = \frac{\text{Actual Thalweg Length between two points}}{\text{Straight-line down-valley distance between those points}}$$
+      </div>
 
-        <h3>2.2 The Leopold-Wolman Gradient-Discharge Continuum</h3>
-        <p>Meandering rivers plot below the braided-meandering threshold line on a slope ($S$) vs. discharge ($Q$) diagram:</p>
-        $$S_{\text{crit}} = 0.06 Q^{-0.44}$$
-        <p>Where channel slope exceeds this critical threshold, braided planforms with multiple active thalwegs and mid-channel longitudinal bars develop.</p>
-        
-    <div class="tb-figure">
-      <img src="../../figures_Q02/boggs_fig8_9_meandering_morphology.png" alt="Meandering Channel Morphology from Sam Boggs Jr.">
-      <figcaption>
-        <strong>Figure 2.1 (Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em>, 5th Ed., Fig. 8.9):</strong> Morphological architecture of a high-sinuosity meandering fluvial channel. Illustrates helicoidal secondary flow, cut-bank erosion along outer meander bends, lateral point-bar accretion with scroll-bar ridges, and neck cutoff abandoned channels generating oxbow lakes.
-      </figcaption>
+      <p>Because the shortest geometric distance between two points is a straight line, the minimum theoretical value of $S$ is <strong>1.0</strong> (an absolute straight channel). In nature, true straight channels with $S = 1.0$ virtually never exist over long reaches due to secondary helical circulation cells, turbulent flow instabilities, and alternating bar formation.</p>
+
+      <div class="quote-box">
+        "Channel sinuosity is the ratio of channel length to downvalley distance. Most natural streams are sinuous, and a value of 1.5 is traditionally taken as the dividing line between sinuous and meandering reaches."
+        <span class="quote-ref">— Luna B. Leopold and M. Gordon Wolman, <em>River Channel Patterns: Braided, Meandering and Straight</em> (USGS Professional Paper 282-B, 1957, p. 60)</span>
+      </div>
+
+      <p>In 1968, J.E. Mueller refined this concept by recognizing that total stream sinuosity ($CI$, Channel Index) is partitioned into two distinct components: <em>Hydraulic Sinuosity ($HSI$)</em>, caused by fluid-dynamic bar growth and cross-current deflection, and <em>Topographic Sinuosity ($TSI$)</em>, caused by regional structural barriers, bedrock lithologies, or valley walls.</p>
     </div>
-    <div class="tb-figure">
-      <img src="../../figures_Q02/sinuosity_threshold_spectrum.png" alt="Channel Sinuosity Threshold Spectrum">
-      <figcaption>
-        <strong>Figure 2.2: Channel Sinuosity Spectrum and Morphodynamic Classification.</strong> Quantifying stream planforms from straight ($S < 1.05$) to sinuous ($1.05 \le S < 1.50$) and meandering ($S \ge 1.50$), illustrating the universally accepted 1.5 threshold defined by Leopold & Wolman (1957).
-      </figcaption>
-    </div>
-    
   </div>
+
+  <!-- CARD 2: LEOPOLD-WOLMAN CRITICAL THRESHOLDS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Leopold-Wolman (1957) Thresholds & Slope-Discharge Continuum</div>
+    <div class="card-body">
+      <p>The standard quantitative geomorphic classification established by Leopold & Wolman (1957) and adopted universally by modern textbooks (Boggs, 2011; Ritter et al., 2011; Nichols, 2009) categorizes single-thread alluvial channels into three definitive planform domains:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Sinuosity Range ($S$)</th>
+            <th>Morphological Planform</th>
+            <th>Hydraulic & Sedimentological Characteristics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$S < 1.05$</td>
+            <td><strong>Straight Channel</strong></td>
+            <td>Extremely rare in alluvial plains; typically bedrock-confined, structurally controlled along faults/joints, or canalized.</td>
+          </tr>
+          <tr>
+            <td>$1.05 \le S < 1.50$</td>
+            <td><strong>Sinuous Channel</strong></td>
+            <td>Transitional regime; alternating submerged side-bars (riffles) present, thalweg sinuous but channel banks remain relatively straight.</td>
+          </tr>
+          <tr>
+            <td>$S \ge 1.50$</td>
+            <td><strong>Meandering Channel</strong></td>
+            <td><strong>Universally accepted threshold for true meandering rivers</strong>; continuous, self-propagating loop sequences, helicoidal secondary flow, lateral point-bar accretion, and neck/chute cutoffs.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Furthermore, Leopold and Wolman (1957) established that the boundary separating meandering streams from multi-thread braided streams is governed by the <strong>critical channel slope ($S_{\text{crit}}$)</strong> relative to bankfull discharge ($Q_{bf}$):</p>
+      
+      <div class="formula-card">
+        <div class="formula-title">Braided-Meandering Threshold Equation</div>
+        $$S_{\text{crit}} = 0.06 \cdot Q^{-0.44} \quad \text{(in metric units: } S_{\text{crit}} = 0.012 \cdot Q^{-0.44}\text{)}$$
+      </div>
+      <p>Rivers plotting <em>below</em> this critical threshold line maintain a single meandering channel with $S \ge 1.5$; rivers plotting <em>above</em> the line develop steep gradients, bedload overload, and multi-thread braided planforms.</p>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q02/sinuosity_threshold_spectrum.png" alt="Channel Sinuosity Threshold Spectrum">
+        <div class="tb-caption">
+          <strong>Figure 2.1: The Channel Sinuosity Spectrum.</strong> Diagrammatic illustration of stream planforms from straight ($S < 1.05$) to sinuous ($1.05 \le S < 1.50$) and meandering ($S \ge 1.50$), showing the definitive 1.5 quantitative threshold established by Leopold & Wolman (1957).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: HELICAL FLOW & MEANDER MORPHODYNAMICS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Helical Cross-Flow, Point Bar Accretion & Epsilon Cross-Bedding</div>
+    <div class="card-body">
+      <p>Why do alluvial streams develop sinuosity $\ge 1.5$? The initiation and maintenance of meander bends is driven by <strong>three-dimensional helical secondary circulation</strong>:</p>
+      <ul>
+        <li><strong>Outer Cut-Bank Shear Stress:</strong> Centrifugal acceleration forces high-velocity surface water toward the outer concave bank, producing water-surface super-elevation. A downward hydrostatic pressure gradient drives water down the outer cut-bank face, maximizing basal boundary shear stress ($\tau_0 = \gamma R S$) and causing rapid hydraulic undercutting and bank collapse.</li>
+        <li><strong>Inner Convex Point-Bar Accretion:</strong> The outward-directed surface flow is balanced by an inward-directed, slow bottom return current. This basal current carries sand and gravel up the inner convex bank, depositing a curved <strong>point bar</strong>.</li>
+        <li><strong>Lateral Accretion Deposits (Epsilon Cross-Bedding):</strong> As the bend migrates outward and down-valley, point bars aggrade laterally, producing low-angle ($< 15^\circ$) dipping surfaces known in sedimentary petrology as <em>lateral accretion surfaces</em> or <em>epsilon cross-stratification</em> (Allen, 1965).</li>
+        <li><strong>Cutoff Mechanics & Oxbow Lakes:</strong> When meander amplitude increases to the point where the narrow neck separating two loops is breached during bankfull floods, a <em>neck cutoff</em> occurs, instantly shortening the river reach and abandoning the loop as an crescent-shaped <strong>oxbow lake</strong> (mortlake).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q02/boggs_fig8_9_meandering_morphology.png" alt="Meandering Channel Morphology from Sam Boggs Jr.">
+        <div class="tb-caption">
+          <strong>Figure 2.2 (Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em>, 5th Ed., Fig. 8.9):</strong> Dynamic architecture of a high-sinuosity ($S \ge 1.5$) meandering river. Illustrates helicoidal cross-flow, point-bar lateral accretion, cut-bank erosion, chute cutoffs, and abandoned oxbow lake clay plugs.
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q2. Sinuosity Index of a meandering river is greater than the threshold value of :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> 1.4</div>
-        <div class="opt-item correct"><strong>(B)</strong> 1.5</div>
-        <div class="opt-item "><strong>(C)</strong> 1.6</div>
-        <div class="opt-item "><strong>(D)</strong> 1.2</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 2)</div>
+    <div class="q-stmt">
+      Q2. Sinuosity Index of a meandering river is greater than the threshold value of :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) 1.4</div>
+      <div class="raw-opt correct">(B) 1.5 &nbsp;✔</div>
+      <div class="raw-opt">(C) 1.6</div>
+      <div class="raw-opt">(D) 1.2</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) 1.5</div>
+      <div class="sub">
+        In international fluvial geomorphology (Leopold & Wolman 1957; Schumm 1963; Sam Boggs Jr., 5th Ed., p. 248), a stream reach is formally classified as a <strong>meandering river</strong> when its Sinuosity Index satisfies the quantitative criterion <strong>$S \ge 1.5$</strong>.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (B)</span>
-          <p><b>Correct Answer: (B) 1.5</b> — By standard academic definition (Leopold & Wolman 1957; Sam Boggs Jr.), a river channel is classified as officially <b>meandering</b> when its Sinuosity Index exceeds the threshold value of <b>1.5</b>.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) 1.4 — INCORRECT:</b> A channel with sinuosity of 1.4 is classified as "sinuous" or "moderately sinuous", but has not crossed the internationally accepted geomorphic threshold of 1.5.</li>
-          <li><b>(B) 1.5 — CORRECT:</b> The universal empirical boundary separating sinuous rivers from true meandering rivers is $S = 1.5$.</li>
-          <li><b>(C) 1.6 — INCORRECT:</b> While meandering rivers frequently exceed 1.6 (often reaching 2.0 to 2.5), 1.6 is not the defining threshold.</li>
-          <li><b>(D) 1.2 — INCORRECT:</b> Channels with sinuosity between 1.05 and 1.2 are simply low-sinuosity transitional streams.</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) 1.4</span>
+      <span class="tag wrong">Incorrect (Transitional Sinuous Domain)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A river reach with a sinuosity of 1.4 possesses significant curvature and alternating riffle-pool bars, but in quantitative geomorphology it remains classified as <em>sinuous</em> or <em>transitional</em> ($1.05 \le S < 1.50$). It has not crossed the empirical morphological threshold of 1.5 required to develop fully self-sustaining meander loops, neck cutoffs, and oxbow lakes.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) 1.5</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> The value of <strong>1.5</strong> was quantitatively established by Luna B. Leopold and M. Gordon Wolman in their seminal 1957 United States Geological Survey (USGS) paper. They observed that when the ratio of actual channel distance to downvalley distance exceeds 1.5, single-thread alluvial rivers display mature meander loop dynamics, steady helical secondary flow, and characteristic lateral migration. All major university sedimentology and geomorphology textbooks recognize 1.5 as the universal benchmark.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) 1.6</span>
+      <span class="tag wrong">Incorrect (Exceeds Lower Threshold)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> While mature, highly tortuous meandering rivers frequently achieve sinuosities of 1.6, 2.0, or even 3.0 (e.g., lower Mississippi, meandering reaches of the Brahmaputra and Ganga), 1.6 is an arbitrary intermediate point, not the recognized lower boundary threshold.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) 1.2</span>
+      <span class="tag wrong">Incorrect (Low-Sinuosity Channel)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A sinuosity of 1.2 indicates a low-sinuosity channel with minor wandering. Under S.A. Schumm's (1963) classification, channels with $S < 1.3$ are classified as low-sinuosity bedload streams dominated by coarse sand and gravel, with high width-to-depth ratios ($W/D > 40$).
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Fluvial Systematics & Practice Problem</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 2: Sinuosity Calculation & Planform Identification</div>
-          <p>A river reach flowing across an alluvial plain covers an actual channel length of $42.6\text{ km}$ between two bridge points whose straight valley distance is $24.2\text{ km}$. Calculate the Sinuosity Index and classify the stream channel.</p>
-          <div class="a-box">
-            <p><b>Solution:</b></p>
-            $$S = \frac{L_{\text{channel}}}{L_{\text{valley}}} = \frac{42.6}{24.2} = 1.76$$
-            <p>Since $S = 1.76 > 1.5$, the river reach is definitively classified as a <b>Meandering river</b> with well-developed point bars and meander bends.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Classification Matrix: Alluvial Channel Planforms</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Channel Planform</th>
+            <th>Sinuosity ($S$)</th>
+            <th>Sediment Load Type</th>
+            <th>Width-Depth Ratio ($W/D$)</th>
+            <th>Primary Depositional Architectural Element</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Straight</strong></td>
+            <td>$< 1.05$</td>
+            <td>Mixed to Bedload</td>
+            <td>Moderate ($15 - 30$)</td>
+            <td>Alternating submerged side bars, longitudinal bars</td>
+          </tr>
+          <tr>
+            <td><strong>Sinuous</strong></td>
+            <td>$1.05 - 1.49$</td>
+            <td>Mixed Load</td>
+            <td>Moderate ($20 - 35$)</td>
+            <td>Incipient point bars, transverse riffle-pool sequences</td>
+          </tr>
+          <tr>
+            <td><strong>Meandering</strong></td>
+            <td><strong>$\ge 1.50$</strong></td>
+            <td>Suspended / Fine Mixed Load</td>
+            <td>Low to Moderate ($< 20$)</td>
+            <td>Lateral accretion point bars, oxbow lake clay plugs, natural levees</td>
+          </tr>
+          <tr>
+            <td><strong>Braided</strong></td>
+            <td>Low ($< 1.3$)</td>
+            <td>Dominantly Bedload (Gravel/Sand)</td>
+            <td>Very High ($> 40$)</td>
+            <td>Mid-channel longitudinal bars, transverse bars, multiple active thalwegs</td>
+          </tr>
+          <tr>
+            <td><strong>Anastomosing</strong></td>
+            <td>Variable (often $> 1.5$)</td>
+            <td>Suspended Fine Silt & Clay</td>
+            <td>Very Low ($< 10$)</td>
+            <td>Stable avulsion channels separated by vegetated floodplain wetlands</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A river reach flowing across an alluvial foreland plain has an actual thalweg channel length of $57.6\text{ km}$ measured along its course between two gauging stations. The straight-line down-valley distance between these two stations is $36.0\text{ km}$. Calculate the Sinuosity Index ($S$) and classify the channel planform according to Leopold & Wolman (1957).
+          <div class="pq-ans">✔ Worked Answer: $S = 1.60$; Classified as a Meandering Channel.</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$S = \frac{L_{\text{channel}}}{L_{\text{valley}}} = \frac{57.6\text{ km}}{36.0\text{ km}} = 1.60$$
+            Since $S = 1.60 \ge 1.50$, the reach exceeds the threshold value of 1.5 and is definitively classified as a <strong>Meandering channel</strong>.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> In a meandering river bend, what is the direction of the secondary helical flow near the channel bed?
+          <div class="pq-ans">✔ Correct Answer: Directed inward toward the convex inner bank (point bar).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Water surface super-elevation at the outer concave bank creates a cross-channel pressure gradient. At the bed, where friction retards centrifugal velocity, this pressure gradient forces fluid and bottom bedload to migrate inward toward the convex bank, constructing the point bar.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> According to Hickin and Nanson (1984), at what ratio of meander radius of curvature to channel width ($r_c / w$) does the rate of outer-bank meander migration reach its maximum?
+          <div class="pq-ans">✔ Correct Answer: At $r_c / w \approx 2.0 \text{ to } 3.0$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> When $r_c / w < 2.0$, severe flow separation occurs along the inner bank, causing energy dissipation that slows outer-bank erosion. When $r_c / w > 3.0$, centrifugal acceleration is weak. Maximum shear stress and migration rate universally peak at $r_c / w \approx 2.5 - 3.0$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What is the diagnostic sedimentary structure that identifies ancient meandering river point bars in the rock record?
+          <div class="pq-ans">✔ Correct Answer: Epsilon cross-stratification (low-angle lateral accretion surfaces dipping $< 15^\circ$) showing a fining-upward grain size profile.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> First described by J.R.L. Allen (1965), epsilon cross-bedding forms as the point bar accreted laterally into the migrating channel. The resulting vertical sequence fines upward from basal lag gravels through cross-bedded sand to ripple cross-laminated silts capped by floodplain muds.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How does S.A. Schumm's sediment parameter $M$ (percentage of silt and clay in channel perimeter) relate to sinuosity and channel shape?
+          <div class="pq-ans">✔ Correct Answer: Higher $M$ values produce high sinuosity ($S \ge 1.5$), cohesive banks, and narrow, deep channels (low width-to-depth ratio).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Cohesive bank sediments rich in clay/silt resist erosion, forcing the stream to dissipate its energy by increasing path length (meandering) rather than widening. Schumm established that $S = 0.94 M^{0.25}$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is the critical hydraulic difference between a neck cutoff and a chute cutoff in a meandering river?
+          <div class="pq-ans">✔ Correct Answer: Neck cutoff breaches the narrow septum of an exaggerated loop creating an oxbow lake; chute cutoff carves a new channel across the swale of the point bar during overbank flooding.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Neck cutoffs are rapid, avulsive cutoffs occurring at the narrowest point of a meander neck when sinuosity is extremely high, immediately isolating the loop. Chute cutoffs occur during flood stages when water takes a shorter path through swales on the inner point bar without requiring neck closure.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7 (Numerical):</strong> Calculate the critical channel slope ($S_{\text{crit}}$) required to maintain a meandering channel if the bankfull discharge is $Q = 1000\text{ m}^3/\text{s}$, using the Leopold-Wolman metric relationship $S_{\text{crit}} = 0.012 \cdot Q^{-0.44}$.
+          <div class="pq-ans">✔ Worked Answer: $S_{\text{crit}} \approx 0.000574$ (or $0.574\text{ m/km}$).</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            $$Q^{0.44} = (1000)^{0.44} = (10^3)^{0.44} = 10^{1.32} \approx 20.89$$<br>
+            $$S_{\text{crit}} = \frac{0.012}{20.89} \approx 0.000574$$
+            If the actual valley slope is less than $0.000574$, the river will meander ($S \ge 1.5$). If the slope is steeper, braided channels develop.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Mueller's Hydraulic Sinuosity Index ($HSI$) is calculated as $HSI = \frac{\% \text{Hydraulic Sinuosity}}{\text{Total Sinuosity} - 1}$. If a river has a channel index $CI = 1.80$ and hydraulic sinuosity contributes $0.60$ to the excess sinuosity, what is the $HSI$?
+          <div class="pq-ans">✔ Worked Answer: $HSI = 75\%$ (0.75).</div>
+          <div class="pq-exp">
+            <strong>Calculation:</strong><br>
+            Total excess sinuosity $= CI - 1 = 1.80 - 1.0 = 0.80$.<br>
+            $$HSI = \frac{0.60}{0.80} \times 100\% = 75\%$$
+            This indicates that $75\%$ of the river's tortuosity is controlled by hydraulic fluid dynamics (meandering bar development) and only $25\%$ by topographic/structural valley guidance.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

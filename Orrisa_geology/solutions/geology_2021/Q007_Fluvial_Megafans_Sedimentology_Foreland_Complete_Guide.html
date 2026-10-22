@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q7: Fluvial Megafans vs. Alluvial Fans in Foreland Basins | OPSC Geology 2021 Masterclass</title>
+<title>Q007: Fluvial Megafans vs. Alluvial Fans: Scale, Slopes & Foreland Systems | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,256 +89,578 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q7" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentology & Basin Analysis</div>
-    <h1>Q7: Fluvial Megafans vs. Alluvial Fans in Foreland Basins</h1>
+    <div class="badge">GEO - 2/21 • Fluvial Sedimentology & Basin Analysis</div>
+    <h1>Q007: Fluvial Megafans vs. Alluvial Fans: Scale, Slopes & Foreland Systems</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology & Stratigraphy, Ch. 8, pp. 242-246); Leier et al. (2005, GSA Bulletin)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 7<br>
+<strong>Authoritative References:</strong> Gohain & Parkash (1990, <em>Sedimentary Geology</em>, 68, pp. 115–132); DeCelles & Cavazza (1999, <em>Sedimentary Geology</em>, 123, pp. 181–206); Leier et al. (2005, <em>Sedimentary Geology</em>, 178, pp. 59–76); Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th Ed., Ch. 8, pp. 243–248); Hartley et al. (2010, <em>J. Sedimentary Research</em>, 80).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-        <h3>7.1 Diagnostic Differences: Fluvial Megafans vs. Alluvial Fans</h3>
-        <p>In modern basin analysis (Leier et al., 2005; Sam Boggs Jr., <i>Principles of Sedimentology and Stratigraphy</i>, Ch. 8), <b>fluvial megafans</b> (such as the modern Kosi, Gandak, and Pilcomayo fans) represent distinct macro-depositional systems:</p>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Diagnostic Parameter</th>
-                <th>Alluvial Fans (Sensu Stricto)</th>
-                <th>Fluvial Megafans</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Areal Footprint</b></td>
-                <td>Small: typically $< 100\text{ km}^2$ (rarely up to $500\text{ km}^2$)</td>
-                <td><b>Massive: $> 10^3\text{ to } 10^5\text{ km}^2$ (radial length $> 100\text{ km}$)</b></td>
-              </tr>
-              <tr>
-                <td><b>Topographic Slope</b></td>
-                <td>Steep: typically $1.5^\circ - 10^\circ$ ($> 0.02$)</td>
-                <td><b>Extremely low gradient: $< 0.1^\circ$ ($< 0.001$, often $0.1 - 0.5\text{ m/km}$)</b></td>
-              </tr>
-              <tr>
-                <td><b>Feeding River Source</b></td>
-                <td>Small mountain catchments, ephemeral torrents</td>
-                <td><b>Large, perennial mountain rivers (continental drainages)</b></td>
-              </tr>
-              <tr>
-                <td><b>Dominant Sedimentary Process</b></td>
-                <td>Debris flows, sheetfloods, gravelly sieve deposits</td>
-                <td><b>Unconfined multichannel braided/meandering channel avulsion</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>7.2 Critical Analysis of Question Statements</h3>
-        <ul>
-          <li><b>Statement (i) — TRUE:</b> Megafans constitute volumetrically significant depositional elements of retroarc and peripheral foreland basins adjacent to orogenic belts (e.g., Himalayan foreland, Andean Chaco).</li>
-          <li><b>Statement (ii) — TRUE:</b> They are directly generated when a large, sediment-laden mountain river emerges from a confined bedrock gorge onto a low-relief alluvial plain.</li>
-          <li><b>Statement (iii) — FALSE:</b> They are <b>not</b> identical to alluvial fans; modern sedimentology explicitly separates megafans as a distinct class due to hydraulic, sedimentological, and architectural differences.</li>
-          <li><b>Statement (iv) — TRUE:</b> They are definitively distinguished from alluvial fans by their vastly greater size and much lower slope.</li>
-        </ul>
-        <div class="tb-figure">
-      <img src="../../figures_Q07/boggs_fig8_2_alluvial_fan_facies.png" alt="Alluvial Fan Depositional Architecture and Megafan Facies (Sam Boggs Jr., Fig. 8.2)">
-      <figcaption>
-        <strong>Figure 7.1: Alluvial Fan Depositional Architecture & Megafan Facies (Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em>, Chapter 8, p. 248, Fig. 8.2 / PDF p. 262).</strong> Depositional model of alluvial fans adjacent to active mountain-front fault scarps, detailing proximal-fan debris flows, mid-fan sheetfloods, and distal-fan distributary channels. In foreland basins, gigantic fluvial megafans (such as the Kosi Megafan in India, spanning >10,000 km²) develop where major trunk rivers emerge from high mountain catchments, governed by active orogenic subsidence, high seasonal discharge, and unconfined lateral channel avulsion.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
   </div>
+  
+  <!-- CARD 1: MEGAFANS AS DISTRIBUTIVE FLUVIAL SYSTEMS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Fluvial Megafans in Orogenic Foreland Basins</div>
+    <div class="card-body">
+      <p>In modern process sedimentology and sedimentary basin analysis (DeCelles & Cavazza 1999; Leier et al. 2005; Weissmann et al. 2010), a <strong>Fluvial Megafan</strong> is defined as a gigantic, low-gradient fan-shaped sedimentary body deposited by a large, long-lived orogenic river issuing from a mountainous canyon mouth onto an unconfined, aggradational foreland or intracontinental basin plain.</p>
+
+      <ul>
+        <li><strong>(i) Volumetrically Significant Basin Fill:</strong> Megafans constitute the primary, volumetrically dominant sediment routing and aggradational elements of retroarc and peripheral foreland basins adjacent to rising collisional mountain chains (e.g., the Himalayan foreland basin, the Andean Chaco/Pantanal plain).</li>
+        <li><strong>(ii) Mountain-to-Plain Transition:</strong> Megafan construction is mechanically triggered when a large river carrying enormous sediment discharge ($> 10^8\text{ tons/yr}$) exits the narrow, high-relief confines of an orogenic thrust belt and abruptly enters a low-relief, low-gradient alluvial plain where lateral accommodation space is unrestricted.</li>
+        <li><strong>(iv) Greater Size & Lower Slope:</strong> Megafans are distinguished by their extraordinary geographic scale (radial lengths $100 - 300\text{ km}$, surface areas $> 10^4 - 10^5\text{ km}^2$) and regionally imperceptible slope gradients ($< 0.1^\circ$, or $< 1\text{ m/km}$).</li>
+      </ul>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q07/foreland_megafan_vs_alluvial_fan.png" alt="Foreland Megafan vs Alluvial Fan Scale">
+        <div class="tb-caption">
+          <strong>Figure 7.1: Quantitative Scale Disparity: Megafans vs. Alluvial Fans.</strong> Cross-sectional and planform comparison illustrating that megafans operate over hundreds of kilometers with fractional degree slopes, whereas alluvial fans are steep, localized piedmont features.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: SCIENTIFIC REFUTATION: MEGAFANS ARE NOT ALLUVIAL FANS -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Morphodynamic Discrimination: Why Megafans Are NOT Alluvial Fans</div>
+    <div class="card-body">
+      <p>A widespread misconception among non-specialists is statement <strong>(iii) "Fluvial megafans are also known as alluvial fans."</strong> In sedimentary geology, this statement is <strong>fundamentally false</strong>. While both exhibit a semi-conical radiating planform, they represent fundamentally distinct physical regimes:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Diagnostic Parameter</th>
+            <th>Classical Alluvial Fan</th>
+            <th>Fluvial Megafan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Radial Length ($R$)</strong></td>
+            <td>$< 10 - 20\text{ km}$ (localized)</td>
+            <td><strong>$80 - 300\text{ km}$</strong> (regional landscape scale)</td>
+          </tr>
+          <tr>
+            <td><strong>Surface Area ($A$)</strong></td>
+            <td>$< 100\text{ km}^2$ (rarely up to $200\text{ km}^2$)</td>
+            <td><strong>$> 10,000 - 100,000\text{ km}^2$</strong> ($10^4 - 10^5\text{ km}^2$)</td>
+          </tr>
+          <tr>
+            <td><strong>Surface Gradient / Slope</strong></td>
+            <td>Steep: <strong>$> 1.5^\circ \text{ to } 10^\circ$</strong> ($> 25 - 100\text{ m/km}$)</td>
+            <td>Extremely Gentle: <strong>$< 0.1^\circ$</strong> ($0.1 - 1.0\text{ m/km}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Dominant Transport Process</strong></td>
+            <td>Episodic subaerial debris flows, sheetfloods, sieve gravels</td>
+            <td><strong>Perennial, channelized fluvial flow</strong> with active meander/braided belts</td>
+          </tr>
+          <tr>
+            <td><strong>Sedimentary Texture</strong></td>
+            <td>Coarse gravels, diamictites, poorly sorted boulders</td>
+            <td>Sand and silt-dominated; gravel restricted strictly to apex</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-box">
+        "Megafans are distinguished from alluvial fans by their vastly greater size (areas exceeding $10^4\text{ km}^2$) and lower slopes (typically less than $0.1^\circ$). Unlike alluvial fans, which are dominated by gravity-driven debris flows and sheetfloods, megafans are built by perennial fluvial channel avulsion."
+        <span class="quote-ref">— M.P. Leier, P.G. DeCelles and J.D. Pelham, <em>Large-scale Sandstone Architecture of Megafans</em> (Sedimentary Geology, 2005, p. 61)</span>
+      </div>
+
+      <div class="tb-figure">
+        <img src="../../figures_Q07/boggs_fig8_2_alluvial_fan_facies.png" alt="Alluvial Fan Facies Model from Boggs">
+        <div class="tb-caption">
+          <strong>Figure 7.2 (Sam Boggs Jr., 5th Ed., Fig. 8.2):</strong> Classical alluvial fan depositional model showing steep gradient, proximal debris-flow boulder sheets, and localized piedmont geometry, contrasting sharply with vast foreland megafan plains.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: CLASSIC INDIAN FORELAND EXAMPLES & NODAL AVULSION -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. World Archetypes: Kosi & Gandak Megafans of the Himalayan Foreland</div>
+    <div class="card-body">
+      <p>The premier global archetypes for fluvial megafans occur in northern India and Nepal along the Indo-Gangetic peripheral foreland basin:</p>
+      <ul>
+        <li><strong>The Kosi Megafan (Bihar/Nepal):</strong> Built by the Kosi River emerging from the Main Boundary Thrust (MBT) at Chatra gorge. Covering over $15,000\text{ km}^2$, the Kosi has migrated more than $113\text{ km}$ laterally from east to west over the past 250 years through a series of dramatic <strong>nodal avulsions</strong> at the fan apex. The famous August 2008 Kosi avulsion breached its eastern embankment, shifting the channel $> 100\text{ km}$ eastward and flooding millions of people.</li>
+        <li><strong>The Gandak Megafan:</strong> Located west of the Kosi, covering $\approx 12,000\text{ km}^2$, characterized by radiating paleochannels (channels called <em>dhars</em>) that disperse fine sand, silt, and overbank mud across eastern Uttar Pradesh and Bihar.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q7. Fluvial megafans: (i) constitute volumetrically significant depositional elements of sedimentary basins adjacent to mountain belts, (ii) are related to the emergence of a large mountain river onto a low-relief alluvial plain, (iii) are also known as alluvial fans, (iv) are distinguished by their greater size and lower slope. Choose the correct set of answer from the following options :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> (i), (ii), (iii)</div>
-        <div class="opt-item "><strong>(B)</strong> (ii), (iii), (iv)</div>
-        <div class="opt-item correct"><strong>(C)</strong> (i), (ii), (iv)</div>
-        <div class="opt-item "><strong>(D)</strong> (i), (iii), (iv)</div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC 2021 Geology Paper-II (Question 7)</div>
+    <div class="q-stmt">
+      Q7. Fluvial megafans: (i) constitute volumetrically significant depositional elements of sedimentary basins adjacent to mountain belts, (ii) are related to the emergence of a large mountain river onto a low-relief alluvial plain, (iii) are also known as alluvial fans, (iv) are distinguished by their greater size and lower slope. Choose the correct set of answer from the following options :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) (i), (ii), (iii)</div>
+      <div class="raw-opt">(B) (ii), (iii), (iv)</div>
+      <div class="raw-opt correct">(C) (i), (ii), (iv) &nbsp;✔</div>
+      <div class="raw-opt">(D) (i), (iii), (iv)</div>
+    </div>
+  </div>
+
+  <!-- ANSWER BANNER -->
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (C) (i), (ii), (iv)</div>
+      <div class="sub">
+        Statements <strong>(i)</strong>, <strong>(ii)</strong>, and <strong>(iv)</strong> accurately describe the volume, geographic origin, and morphometric scale of fluvial megafans. Statement <strong>(iii) is scientifically incorrect</strong> because megafans are strictly distinct from alluvial fans in terms of scale ($> 10^4\text{ km}^2$ vs $< 100\text{ km}^2$), gradient ($< 0.1^\circ$ vs $> 1.5^\circ$), and transport physics.
       </div>
     </div>
-    
-        <div class="verified-box">
-          <span class="v-badge">VERIFIED ANSWER: OPTION (C)</span>
-          <p><b>Correct Answer: (C) (i), (ii), (iv)</b> — Statements (i), (ii), and (iv) are correct. Statement (iii) is incorrect because sedimentology explicitly differentiates fluvial megafans from alluvial fans.</p>
-        </div>
-
-        <h3>Option-by-Option Critical Dissection</h3>
-        <ul>
-          <li><b>(A) (i), (ii), (iii) — INCORRECT:</b> Erroneously includes (iii), equating megafans with classic alluvial fans.</li>
-          <li><b>(B) (ii), (iii), (iv) — INCORRECT:</b> Erroneously includes (iii) and omits (i).</li>
-          <li><b>(C) (i), (ii), (iv) — CORRECT:</b> Precisely identifies the true statements while rejecting the false synonymy of (iii).</li>
-          <li><b>(D) (i), (iii), (iv) — INCORRECT:</b> Includes (iii) and omits (ii).</li>
-        </ul>
-        
   </div>
+
+  <!-- OPTION DISSECTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) (i), (ii), (iii)</span>
+      <span class="tag wrong">Incorrect (Erroneously Equates Megafans to Alluvial Fans)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option includes statement (iii). Fluvial megafans are not synonymous with alluvial fans; conflating them ignores two orders of magnitude difference in area and fundamentally different fluid-dynamic transport processes.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) (ii), (iii), (iv)</span>
+      <span class="tag wrong">Incorrect (Omits Volumetric Basin Significance & Includes False Synonym)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option omits statement (i)—failing to recognize that megafans comprise the principal volumetric fill of foreland basins—while retaining the erroneous statement (iii).
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(C) (i), (ii), (iv)</span>
+      <span class="tag correct">Correct Verified Answer</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Statements (i), (ii), and (iv) embody the exact scientific consensus defined by DeCelles & Cavazza (1999) and Leier et al. (2005). Megafans are major foreland depositional elements (i), form where large rivers exit mountain belts onto flat plains (ii), and are universally distinguished from alluvial fans by their vastly greater size ($> 10^4\text{ km}^2$) and remarkably lower slopes ($< 0.1^\circ$) (iv).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) (i), (iii), (iv)</span>
+      <span class="tag wrong">Incorrect (Omits Mountain-Plain Genesis & Includes False Synonym)</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is incorrect:</strong> This option omits statement (ii) (the foundational requirement of emergence of a mountain river onto an unconfined plain) and includes the incorrect statement (iii).
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-        <h3>Sedimentological Synthesis Table</h3>
-        <div class="qa-card">
-          <div class="q-title">Practice Problem 7: Foreland Basin Megafan Architecture</div>
-          <p>Name the world's most famous modern active fluvial megafan and describe its characteristic channel migration process.</p>
-          <div class="a-box">
-            <p><b>Answer:</b></p>
-            <p>The <b>Kosi Megafan</b> of northern Bihar (Indo-Gangetic foreland basin). Over the past 250 years, the Kosi River has swept westward across its megafan by more than $110\text{ km}$ through catastrophic episodic nodal avulsions driven by massive aggradation and sediment overloading.</p>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparative Matrix: Alluvial Fans vs. Fluvial Megafans vs. Deltas</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Depositional System</th>
+            <th>Surface Area Scale</th>
+            <th>Typical Slope Gradient</th>
+            <th>Dominant Fluid/Transport Mechanics</th>
+            <th>Primary Subsurface Architecture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Classical Alluvial Fan</strong></td>
+            <td>$< 100\text{ km}^2$</td>
+            <td>Steep: <strong>$1.5^\circ - 10^\circ$</strong></td>
+            <td>Episodic debris flows, sheetfloods, sieve deposition</td>
+            <td>Matrix-supported paraconglomerates, sheet diamictites (fanglomerate)</td>
+          </tr>
+          <tr>
+            <td><strong>Fluvial Megafan</strong></td>
+            <td><strong>$> 10^4 - 10^5\text{ km}^2$</strong></td>
+            <td>Very Low: <strong>$< 0.1^\circ$</strong> ($< 1\text{ m/km}$)</td>
+            <td>Perennial channelized discharge, catastrophic nodal avulsions</td>
+            <td>Radiating ribbon channel sandbodies enclosed in thick overbank muds</td>
+          </tr>
+          <tr>
+            <td><strong>Alluvial Plain (Axial Valley)</strong></td>
+            <td>$10^4 - 10^6\text{ km}^2$</td>
+            <td>Low: $0.01^\circ - 0.05^\circ$</td>
+            <td>Axial meandering or braided master trunk drainage</td>
+            <td>Broad sheet sandstones, multi-story channel belts parallel to basin axis</td>
+          </tr>
+          <tr>
+            <td><strong>Fluvial Delta</strong></td>
+            <td>$10^2 - 10^5\text{ km}^2$</td>
+            <td>Nearly Flat: $< 0.05^\circ$</td>
+            <td>Fluvial discharge entering standing body of water (marine/lake)</td>
+            <td>Classic Gilbert-type tripartite topset, foreset, and bottomset beds</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- HIGH-YIELD PRACTICE QUESTIONS (8 QUESTIONS) -->
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Questions)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> What is a <em>nodal avulsion</em>, and why does it control the morphological fan geometry of the Kosi megafan?
+          <div class="pq-ans">✔ Correct Answer: An avulsion that repeatedly originates at the fixed apex (node) where the river exits bedrock confinement, swinging like a pendulum.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the mountain canyon mouth acts as a fixed spatial pivot (node), sediment aggradation within the active channel increases bed elevation above the surrounding plain, eventually forcing the river to breach its banks at the node and establish a new radial path.
           </div>
-        </div>
-        
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> In the Distributive Fluvial System (DFS) model proposed by Weissmann et al. (2010), what is the diagnostic downstream trend in channel size and discharge?
+          <div class="pq-ans">✔ Correct Answer: Channel width, depth, and discharge decrease downstream due to distributary bifurcations, infiltration, and evaporation.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Unlike tributary networks where discharge and channel size increase downstream, DFS megafans distribute water away from a single apex, resulting in downstream channel narrowing and sediment fining.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is the typical paleocurrent pattern measured from cross-bedding in an ancient lithified megafan succession?
+          <div class="pq-ans">✔ Correct Answer: A radial, divergent fan-like paleocurrent distribution radiating outward through an arc of $60^\circ - 120^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Channel belts diverge outward from the apex point source, producing a wide radial spread in directional sedimentary structures.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> Why are debris-flow deposits virtually absent on the medial and distal portions of fluvial megafans?
+          <div class="pq-ans">✔ Correct Answer: Because regional slope gradients ($< 0.1^\circ$) are far too gentle to maintain the yield strength required to propagate cohesive debris flows.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Debris flows require slopes typically $> 2^\circ - 5^\circ$ to sustain movement. The extremely flat foreland gradient halts coarse sediment transport, confining transport entirely to Newtonian water flow.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> Name the two largest active fluvial megafans in the South American Chaco-Pantanal foreland basin of the Andes.
+          <div class="pq-ans">✔ Correct Answer: The Pilcomayo Megafan and the Taquari Megafan.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The Pilcomayo and Taquari megafans drain the Andean cordillera into the retroarc foreland, each covering over $50,000\text{ km}^2$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> How does tectonic flexural loading of an orogenic thrust belt promote megafan preservation in the geological record?
+          <div class="pq-ans">✔ Correct Answer: Supracrustal tectonic loading depresses the lithosphere, generating massive accommodation space in the adjacent foredeep trough.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Rapid flexural subsidence creates deep sedimentary accommodation, allowing megafan sand and mud successions up to kilometers thick (e.g., Siwalik Group) to be buried and preserved.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> In the Miocene Siwalik Group of the sub-Himalayas, which stratigraphic formation represents the ancient megafan deposits of the paleo-Indus and paleo-Ganga drainage systems?
+          <div class="pq-ans">✔ Correct Answer: The Middle Siwaliks (characterized by thick, multistory channel sandstones).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The Middle Siwalik subgroup consists of massive, sub-arkosic "salt-and-pepper" sandstones deposited by giant Himalayan megafans during peak late Miocene orogenic unroofing.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why do megafans serve as world-class regional groundwater aquifers in northern India?
+          <div class="pq-ans">✔ Correct Answer: Because porous, well-sorted coarse-to-medium sand channel ribbons radiate continuously from apex recharge zones down into the agricultural plains.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The apex receives direct, high-elevation precipitation and mountain runoff, charging radiating permeable sandy paleochannels that transmit freshwater hundreds of kilometers into semi-arid plains.
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
