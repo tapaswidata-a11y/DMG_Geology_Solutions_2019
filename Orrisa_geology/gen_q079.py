@@ -1,0 +1,363 @@
+#!/usr/bin/env python3
+"""
+Q079 Generator: Myrmekitic Texture Intergrowth Petrography & Genesis
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q079():
+    title = r"Q079: Igneous & Metamorphic Textures: Myrmekite Intergrowth Petrography & Genesis | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Petrology & Textural Analysis"
+    h1_title = "Q079: Myrmekitic Texture: Vermicular Quartz-Plagioclase Intergrowth"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 79<br>
+<strong>Authoritative References:</strong> John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Ch. 3: Textures of Igneous Rocks, pp. 44–46); Anthony Hall, <em>Igneous Petrology</em>; G.B. Mahapatra, <em>A Text-Book of Geology</em> (p. 119); F.J. Turner & J. Verhoogen, <em>Igneous and Metamorphic Petrology</em>; L.G. Collins, <em>Hydrothermal Differentiation and Myrmekite</em>."""
+
+    part1 = r"""
+  <!-- CARD 1: PETROGRAPHIC ANATOMY OF MYRMEKITE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Petrographic Definition & Microstructural Anatomy of Myrmekite</div>
+    <div class="card-body">
+      <p>
+        The term <strong>myrmekite</strong> (derived from the ancient Greek <em>myrmex</em>, meaning "ant") was introduced by F. Becke (1899) to describe the uncanny resemblance of this intergrowth to subterranean ant tunnels or worm-like burrows under high-power petrographic microscopy.
+      </p>
+      <p>
+        <strong>Myrmekitic texture</strong> consists of an intimate intergrowth of <strong>vermicular (worm-like, cylindrical, or tubular) quartz rods</strong> hosted inside a convex, cauliflower-shaped or wart-like lobe of <strong>plagioclase feldspar</strong> (typically oligoclase, $\text{An}_{10\text{--}30}$) that projects directly into an adjacent grain of <strong>potassium feldspar</strong> (microcline or orthoclase).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q79/winter_p45_myrmekite_intergrowth_texture.png" alt="Myrmekitic Intergrowth Texture from Winter">
+        <div class="figure-caption">
+          <strong>Figure 79.1 — Petrographic Architecture of Myrmekitic Texture:</strong> Authentic textbook diagram from J.D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, Ch. 3). Illustrating the lobate plagioclase bulb with vermicular quartz rods advancing into adjacent microcline K-feldspar.
+        </div>
+      </div>
+
+      <h4>Three Diagnostic Optical Criteria of True Myrmekite</h4>
+      <ul>
+        <li><strong>Host Mineralogy:</strong> The host matrix is strictly <strong>sodic plagioclase</strong> (oligoclase or albite), <em>never</em> K-feldspar. (In contrast, graphic texture hosts quartz in a K-feldspar matrix!).</li>
+        <li><strong>Morphology & Tapering of Quartz:</strong> The quartz rods are tubular and branching, showing a diagnostic <strong>tapering geometry</strong>: they are thickest near the central interior of the plagioclase lobe and become progressively thinner and more delicate toward the outer lobate margin entering the K-feldspar.</li>
+        <li><strong>Optical Extinction:</strong> Under cross-polarized light, all vermicular quartz tubes within a single plagioclase lobe extinguish <strong>simultaneously</strong>, proving they represent a single, interconnected, branching crystallographic skeleton of quartz.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: GENETIC HYPOTHESES: METASOMATISM VS. EXSOLUTION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Petrogenesis of Myrmekite: Metasomatic Replacement vs. Exsolution</div>
+    <div class="card-body">
+      <p>
+        The origin of myrmekite has been one of the most vigorously debated topics in petrology, with three primary scientific mechanisms recognized:
+      </p>
+
+      <h4>1. The Becke-Phillips Metasomatic Replacement Model (Dominant Mechanism)</h4>
+      <p>
+        During late-magmatic cooling, deuteric auto-metasomatism, or fluid-assisted retrograde metamorphism, intergranular fluids rich in $Ca^{2+}$ and $Na^+$ attack primary potassium feldspar (microcline), replacing it with calcic/sodic plagioclase. Because anorthite requires fewer silica atoms per formula unit than K-feldspar, an abundance of free silica is released:
+      </p>
+      <div class="formula-box">
+        <strong>Stoichiometric Replacement Reaction:</strong><br>
+        $$2\text{KAlSi}_3\text{O}_8\ (\text{K-feldspar}) + \text{Ca}^{2+} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite in Plagioclase}) + \mathbf{4\text{SiO}_2\ (\text{Vermicular Quartz})} + 2\text{K}^+$$
+      </div>
+      <p>
+        For every mole of anorthite created to replace two moles of microcline, exactly <strong>four moles of free $\text{SiO}_2$</strong> are expelled locally, precipitating in situ as vermicular quartz rods within the expanding plagioclase front!
+      </p>
+
+      <h4>2. Schwantke's Molecule Subsolidus Exsolution Hypothesis</h4>
+      <p>
+        A. Schwantke (1909) proposed that high-temperature ternary feldspars incorporate a defect component termed <em>Schwantke's molecule</em>: $\text{CaAl}_2\text{Si}_6\text{O}_{16}$ (or $\text{Ca}_{0.5}\Box_{0.5}\text{AlSi}_3\text{O}_8$). Upon subsolidus cooling, this unstable solid solution breaks down:
+      </p>
+      $$\text{CaAl}_2\text{Si}_6\text{O}_{16} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite}) + 4\text{SiO}_2\ (\text{Quartz})$$
+
+      <h4>3. Deformation-Induced Myrmekite in Ductile Shear Zones</h4>
+      <p>
+        Simpson & Wintsch (1989) demonstrated that in mylonitic granites and ductile shear zones, asymmetric myrmekite develops preferentially on K-feldspar grain boundaries facing the principal compressive stress axis ($\sigma_1$), where strain energy accelerates potassium leaching and plagioclase nucleation.
+      </p>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE DIFFERENTIATION FROM OTHER INTERGROWTHS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Petrographic Discrimination from Other Common Intergrowth Textures</div>
+    <div class="card-body">
+      <p>
+        It is vital in optical mineralogy not to confuse myrmekitic texture with other intergrowth phenomena:
+      </p>
+      <ul>
+        <li><strong>Graphic Texture:</strong> A primary magmatic eutectic cotectic intergrowth where angular, wedge-shaped quartz crystals resembling ancient cuneiform or runic writing are embedded in a <strong>potassium feldspar (microcline) host</strong> (e.g., in granitic pegmatites).</li>
+        <li><strong>Granophyric Texture:</strong> A microscopic, spherulitic, plumose, or delicate skeletal intergrowth of quartz and alkali feldspar formed by rapid eutectic crystallization in shallow, subvolcanic granitic porphyries.</li>
+        <li><strong>Perthitic Texture:</strong> Subsolidus exsolution lamellae, blebs, or strings of sodic plagioclase (albite) enclosed within a <strong>potassium feldspar host</strong>.</li>
+        <li><strong>Antiperthitic Texture:</strong> Exsolution blebs or oriented inclusions of potassium feldspar enclosed within a <strong>plagioclase host</strong>.</li>
+        <li><strong>Corona / Reaction Rim:</strong> A concentric sheath of one or more secondary minerals completely surrounding a core mineral grain (e.g., orthopyroxene rim around olivine), formed by solid-state reaction with surrounding matrix phases.</li>
+        <li><strong>Trachytic Texture:</strong> Subparallel fluidal flow-alignment of tiny tabular laths of sanidine/alkali feldspar microlites in volcanic rocks.</li>
+      </ul>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 79</div>
+        <div class="q-text">This texture results from the inter-growth of quartz and plagioclase (usually oligoclase). The inter-growth of quartz is in the form of worm-like rods within the plagioclase. It is found in some granite and metamorphic rocks. It is termed as :</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Graphic texture</div>
+          <div class="opt-node correct">(B) Myrmekitic texture</div>
+          <div class="opt-node">(C) Corona texture</div>
+          <div class="opt-node">(D) Trachytic texture</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (B)</div>
+        <div><strong>Myrmekitic texture:</strong> An intergrowth of vermicular (worm-like) quartz rods within a plagioclase host (typically oligoclase), forming lobate warts invading adjacent potassium feldspar in granites and metamorphic gneisses.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="opt-title">(A) Graphic texture — INCORRECT</div>
+        <p>
+          <em>Graphic texture</em> is a primary cotectic magmatic intergrowth of quartz and <strong>potassium feldspar (microcline)</strong>, where quartz occurs as angular, cuneiform, runic wedges resembling ancient Hebrew or Babylonian characters. It does not consist of worm-like rods in a plagioclase host.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="opt-title">(B) Myrmekitic texture — CORRECT</div>
+        <p>
+          <em>Myrmekitic texture</em> is the exact, unambiguous scientific term defined by an intergrowth of vermicular (worm-like) rods of quartz hosted within plagioclase (specifically oligoclase). It is universally found in granites, charnockites, and high-grade metamorphic gneisses at contacts with K-feldspar grains (Winter, 2014, p. 45; Bangar, p. 77; Mahapatra, p. 119).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) Corona texture — INCORRECT</div>
+        <p>
+          <em>Corona texture</em> (reaction rim / kelyphitic rim) consists of concentric shells or mantles of one mineral (e.g., pyroxene, amphibole, spinel) surrounding an earlier-crystallized core mineral (such as olivine or garnet). It is a metamorphic or magmatic reaction rim, entirely lacking vermicular quartz-plagioclase intergrowths.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) Trachytic texture — INCORRECT</div>
+        <p>
+          <em>Trachytic texture</em> is a volcanic flow-alignment texture occurring in intermediate to felsic lavas (especially trachytes), characterized by closely packed, subparallel, sub-aligned microscopic tabular laths of sanidine microlites.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis of Common Petrographic Intergrowth Textures</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Intergrowth Texture</th>
+            <th>Enclosed / Intergrown Phase</th>
+            <th>Host Mineral Phase</th>
+            <th>Geometry & Appearance</th>
+            <th>Genesis & Mechanism</th>
+            <th>Typical Host Rocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Myrmekitic Texture</strong></td>
+            <td><strong>Quartz ($\text{SiO}_2$)</strong></td>
+            <td><strong>Plagioclase (Oligoclase $\text{An}_{10\text{--}30}$)</strong></td>
+            <td><strong>Vermicular (worm-like) rods, branching & tapering</strong></td>
+            <td>Deuteric metasomatic replacement or subsolidus exsolution</td>
+            <td>Granite, Granodiorite, Charnockite, Gneiss</td>
+          </tr>
+          <tr>
+            <td><strong>Graphic Texture</strong></td>
+            <td>Quartz</td>
+            <td><strong>Potassium Feldspar (Microcline)</strong></td>
+            <td>Angular, cuneiform, runic wedge-shaped rods</td>
+            <td>Primary magmatic eutectic cotectic crystallization</td>
+            <td>Granitic Pegmatite</td>
+          </tr>
+          <tr>
+            <td><strong>Granophyric Texture</strong></td>
+            <td>Quartz</td>
+            <td>Alkali Feldspar (Orthoclase / Albite)</td>
+            <td>Microscopic plumose, radiating, feathery intergrowth</td>
+            <td>Rapid eutectic crystallization under shallow quenching</td>
+            <td>Granophyre, Microgranite, Subvolcanic intrusions</td>
+          </tr>
+          <tr>
+            <td><strong>Perthitic Texture</strong></td>
+            <td>Plagioclase (Albite)</td>
+            <td><strong>Potassium Feldspar (Microcline/Orthoclase)</strong></td>
+            <td>Parallel lamellae, blebs, strings, or braids</td>
+            <td>Subsolidus unmixing across the alkali feldspar solvus</td>
+            <td>Granite, Syenite</td>
+          </tr>
+          <tr>
+            <td><strong>Antiperthitic Texture</strong></td>
+            <td>Potassium Feldspar</td>
+            <td><strong>Plagioclase Feldspar</strong></td>
+            <td>Irregular blebs, rectangular rods, or patches</td>
+            <td>Subsolidus exsolution of minor K-component from plagioclase</td>
+            <td>Charnockite, Anorthosite, Granulite</td>
+          </tr>
+          <tr>
+            <td><strong>Symplectitic Texture</strong></td>
+            <td>Various (Spinel, Opx, Biotite, Quartz)</td>
+            <td>Plagioclase, Cordierite, Amphibole</td>
+            <td>Extremely fine-grained worm-like vermicular intergrowth</td>
+            <td>Decompression breakdown of garnet or kyanite</td>
+            <td>Retrogressed Granulite, Eclogite</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Stoichiometric Volume Balance of Becke's Myrmekite Reaction</div>
+        <p>
+          Consider the metasomatic replacement of microcline by pure anorthite according to Becke's reaction:
+          $$2\text{KAlSi}_3\text{O}_8\ (\text{Microcline}) + \text{Ca}^{2+} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite}) + 4\text{SiO}_2\ (\text{Quartz}) + 2\text{K}^+$$
+          Given the molar volumes: $V_m(\text{Microcline}) = 108.9\text{ cm}^3/\text{mol}$, $V_m(\text{Anorthite}) = 100.8\text{ cm}^3/\text{mol}$, and $V_m(\text{Quartz}) = 22.7\text{ cm}^3/\text{mol}$. Calculate the theoretical volume percentage of vermicular quartz in the resulting myrmekite.
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Volumetric Derivation:</strong><br>
+          1. Calculate volume of products generated per mole of anorthite:
+          $$V(\text{Anorthite}) = 1 \times 100.8\text{ cm}^3 = 100.8\text{ cm}^3$$<br>
+          $$V(\text{Quartz}) = 4 \times 22.7\text{ cm}^3 = 90.8\text{ cm}^3$$<br>
+          $$\text{Total Volume of Myrmekite} = V(\text{Anorthite}) + V(\text{Quartz}) = 100.8 + 90.8 = 191.6\text{ cm}^3$$<br>
+          2. Calculate volume percentage of quartz:
+          $$\text{Vol}\%\ \text{Quartz} = \frac{V(\text{Quartz})}{\text{Total Volume}} \times 100\% = \frac{90.8}{191.6} \times 100\% \approx \mathbf{47.39\%}$$<br>
+          <strong>Petrological Note:</strong> Because natural myrmekite plagioclase is oligoclase ($\sim \text{An}_{20}\text{Ab}_{80}$) rather than pure anorthite, the albitic component ($NaAlSi_3O_8$) releases zero free quartz during replacement ($KAlSi_3O_8 + Na^+ \to NaAlSi_3O_8 + K^+$). Consequently, the actual modal percentage of quartz in natural oligoclase myrmekite is lower, typically <strong>$10\text{ to } 22\text{ vol}\%$</strong>.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Quartz Content vs. Plagioclase Anorthite Content ($An\%$) Correlation</div>
+        <p>
+          F. Becke (1908) observed empirically that the volume fraction of vermicular quartz ($X_Q$) in myrmekite increases linearly with the anorthite content ($An$) of the host plagioclase. Explain why this relationship constitutes definitive proof of the metasomatic replacement hypothesis over simple cotectic crystallization.
+        </p>
+        <div class="p-ans">
+          <strong>Theoretical Proof:</strong><br>
+          - <strong>The Chemical Stoichiometry:</strong> In metasomatic replacement, albite ($\text{NaAlSi}_3\text{O}_8$) has the exact same $Si:Al$ ratio ($3:1$) as potassium feldspar ($\text{KAlSi}_3\text{O}_8$). Therefore, replacing K-feldspar by albite releases zero quartz ($\Delta \text{Si} = 0$). Only the anorthite component ($\text{CaAl}_2\text{Si}_2\text{O}_8$, $Si:Al = 1:1$) releases excess silica ($2\text{ moles } \text{SiO}_2$ per mole of $Al$).<br>
+          - <strong>Linear Proportionality:</strong> The volume of quartz precipitated must therefore be strictly proportional to the mole fraction of anorthite:
+          $$X_Q \propto \frac{\text{An}}{100}$$<br>
+          - If myrmekite were formed by eutectic magmatic crystallization, the quartz-plagioclase cotectic ratio would be dictated by the liquidus phase diagram and would not vary linearly with solid-solution anorthite content across different post-solidus metamorphic zones.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: Kinetic Meaning of Tapering Quartz Rods</div>
+        <p>
+          In thin section, the vermicular quartz rods of myrmekite systematically taper, becoming thinnest at the lobate convex margin facing the potassium feldspar and thickest toward the interior base of the plagioclase. Deduce the direction of growth and explain the physical cause of this geometry.
+        </p>
+        <div class="p-ans">
+          <strong>Growth Vector & Diffusion Kinetics:</strong><br>
+          1. <strong>Growth Vector:</strong> The plagioclase lobe advances <strong>into the potassium feldspar</strong>; hence, the outer convex margin represents the active, younger reaction front, while the base is the older, established core.<br>
+          2. <strong>Physical Cause of Tapering:</strong> At the advancing reaction front, plagioclase nucleates rapidly, creating tiny, nascent quartz nuclei. As the reaction front moves forward, silica continues to diffuse down chemical potential gradients toward existing quartz conduits. The older portions of the tubes at the base continue to thicken by sustained syntaxial precipitation of silica over time, whereas newly formed tubes at the tip have had minimal time to grow, producing the diagnostic tapered morphology.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Deformation-Induced Myrmekite as a Kinematic Shear Sense Indicator</div>
+        <p>
+          In a mylonitized granite from a ductile shear zone, K-feldspar porphyroclasts display myrmekite lobes developed almost exclusively on the edges facing the shortening quadrant ($\sigma_1$), while quartz ribbons occupy the pressure shadows ($\sigma_3$). Explain the stress-induced mechanism driving this asymmetric growth.
+        </p>
+        <div class="p-ans">
+          <strong>Mechanochemical Mechanism (Simpson & Wintsch, 1989):</strong><br>
+          1. <strong>Stress Concentration:</strong> In ductile shear zones, compressive differential stress is focused on the high-angle boundaries of rigid K-feldspar porphyroclasts facing the shortening direction ($\sigma_1$).<br>
+          2. <strong>Strain-Enhanced Dissolution:</strong> High elastic strain energy at these compressive edges elevates the chemical potential of $KAlSi_3O_8$, accelerating the breakdown and dissolution of K-feldspar into intergranular fluids.<br>
+          3. <strong>Myrmekite Nucleation:</strong> Influx of $Ca^{2+}$-bearing fluids replaces the dissolving K-feldspar with lower-volume plagioclase and quartz (myrmekite), relieving compressive stress. The asymmetric distribution of myrmekite lobes on porphyroclast margins provides a reliable microstructural indicator of finite shear strain and shear sense.
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Schwantke's Molecule and Exsolution Thermodynamics</div>
+        <p>
+          Write the formula of Schwantke's molecule and calculate the moles of free silica generated when 0.05 moles of Schwantke component exsolve from a high-temperature orthoclase solid solution.
+        </p>
+        <div class="p-ans">
+          <strong>Calculation:</strong><br>
+          Schwantke's molecule is written as $\text{CaAl}_2\text{Si}_6\text{O}_{16}$ (or vacancy notation $\text{Ca}_{0.5}\Box_{0.5}\text{AlSi}_3\text{O}_8$).<br>
+          The exsolution breakdown reaction is:
+          $$\text{CaAl}_2\text{Si}_6\text{O}_{16} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite}) + 4\text{SiO}_2\ (\text{Quartz})$$<br>
+          For $0.05\text{ moles}$ of Schwantke's molecule:
+          $$\text{Moles of Quartz} = 0.05 \times 4 = \mathbf{0.20\text{ moles of SiO}_2}$$<br>
+          $$\text{Moles of Anorthite} = 0.05 \times 1 = \mathbf{0.05\text{ moles of Anorthite}}$$
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Graphic vs. Myrmekitic Textures: Summary Comparison</div>
+        <p>
+          Contrast Graphic and Myrmekitic textures across four criteria: (a) host mineral; (b) quartz geometry; (c) primary vs. secondary origin; and (d) geological environment.
+        </p>
+        <div class="p-ans">
+          <strong>Fourfold Contrast:</strong><br>
+          - <strong>(a) Host Mineral:</strong> Graphic texture hosts quartz in <strong>K-feldspar (microcline)</strong>; Myrmekite hosts quartz in <strong>plagioclase (oligoclase)</strong>.<br>
+          - <strong>(b) Quartz Geometry:</strong> Graphic quartz forms angular, cuneiform, runic prisms resembling alphabet characters; Myrmekite quartz forms rounded, tubular, vermicular (worm-like) rods.<br>
+          - <strong>(c) Genesis:</strong> Graphic texture is a <strong>primary magmatic</strong> simultaneous eutectic cotectic intergrowth; Myrmekite is a <strong>late-stage secondary metasomatic replacement</strong> or subsolidus exgrowth.<br>
+          - <strong>(d) Geological Environment:</strong> Graphic texture is characteristic of <strong>granitic pegmatites</strong>; Myrmekite is found in <strong>plutonic granites, charnockites, and metamorphic gneisses</strong>.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Symplectite vs. Myrmekite in Metamorphic Rocks</div>
+        <p>
+          In high-pressure granulites and retrogressed eclogites, fine vermicular intergrowths termed "symplectites" are common. Explain how a symplectite differs conceptually and mineralogically from myrmekite.
+        </p>
+        <div class="p-ans">
+          <strong>Petrological Distinction:</strong><br>
+          - <strong>Myrmekite (Specific Texture):</strong> A strictly defined intergrowth restricted to <strong>quartz + plagioclase</strong> replacing K-feldspar.<br>
+          - <strong>Symplectite (Broad Textural Family):</strong> A generic metamorphic texture describing the fine-grained, vermicular, worm-like intergrowth of <em>any two or more minerals</em> formed during rapid, diffusion-controlled subsolidus reaction or decompression breakdown. Examples include:
+            1. <em>Omphacite breakdown in eclogites:</em> $\text{Omphacite} \to \text{Diopside} + \text{Albite symplectite}$.<br>
+            2. <em>Garnet decompression in granulites:</em> $\text{Garnet} + \text{Quartz} \to \text{Orthopyroxene} + \text{Cordierite symplectite}$.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Optical Petrography: Identifying Myrmekite under Cross-Polarized Light</div>
+        <p>
+          Describe the optical diagnostic features you would use under cross-polarized light (XPL) to positively verify myrmekitic texture in a granite thin section during a professional geological examination.
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Optical Verification:</strong><br>
+          1. <strong>Locate K-Feldspar Margins:</strong> Search for microcline grains displaying diagnostic cross-hatched (tartan/gridiron) twinning or orthoclase displaying Carlsbad twinning.<br>
+          2. <strong>Identify Convex Plagioclase Lobes:</strong> Look for hemispherical, wart-like lobes of plagioclase projecting into the microcline margin. Verify polysynthetic albite twinning in the plagioclase.<br>
+          3. <strong>Observe Quartz Rods:</strong> Within the plagioclase lobe, observe clear, colorless, high-relief vermicular rods with lower refractive index than plagioclase.<br>
+          4. <strong>Extinction Test:</strong> Rotate the microscope stage: the entire network of quartz vermicules within a single lobe extinguishes simultaneously, while the host plagioclase extinguishes at a different angle, and the surrounding microcline displays its own distinct extinction position.
+        </div>
+      </div>
+
+    </div>
+  </div>
+"""
+
+    html = wrap_html(title, badge, h1_title, meta_text, 79, part1, part2, part3)
+    out_path = os.path.join(SOLUTIONS_DIR, "Q079_Myrmekitic_Texture_Intergrowth_Complete_Guide.html")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q079: {out_path} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q079()

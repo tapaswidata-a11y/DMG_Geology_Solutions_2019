@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q79: Intergrowth Textures - Myrmekite (Vermicular Quartz in Plagioclase) | OPSC Geology 2021 Masterclass</title>
+<title>Q079: Igneous & Metamorphic Textures: Myrmekite Intergrowth Petrography & Genesis | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,246 +89,638 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q79" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Igneous Petrology</div>
-    <h1>Q79: Intergrowth Textures - Myrmekite (Vermicular Quartz in Plagioclase)</h1>
+    <div class="badge">GEO - 2/21 • Petrology & Textural Analysis</div>
+    <h1>Q079: Myrmekitic Texture: Vermicular Quartz-Plagioclase Intergrowth</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> J.D. Winter (Principles of Igneous and Metamorphic Petrology, Ch. 3, p. 45)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 79<br>
+<strong>Authoritative References:</strong> John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Ch. 3: Textures of Igneous Rocks, pp. 44–46); Anthony Hall, <em>Igneous Petrology</em>; G.B. Mahapatra, <em>A Text-Book of Geology</em> (p. 119); F.J. Turner & J. Verhoogen, <em>Igneous and Metamorphic Petrology</em>; L.G. Collins, <em>Hydrothermal Differentiation and Myrmekite</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Core Question Analysis & Verbatim Textbook Grounding</h3>
-<p>The question provides the exact, classical petrographic definition of <strong>myrmekite</strong>.</p>
-
-<blockquote>
-  <strong>Textbook Citation (John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em>, 2nd Ed., Chapter 3, p. 45):</strong><br>
-  <em>"<strong>Myrmekite:</strong> An intergrowth of dendritic or vermicular (worm-like) quartz enclosed in sodic plagioclase (typically oligoclase). Myrmekite almost invariably occurs at the margins of plagioclase grains where they are in contact with, and appear to replace, potassic alkali feldspar. It represents late-stage magmatic-deuteric or metasomatic replacement according to the Becke reaction: $\mathrm{KAlSi_3O_8 + Na^+ 
-ightarrow NaAlSi_3O_8 + K^+ + SiO_2}$ (releasing free quartz vermicules)."</em>
-</blockquote>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q79/winter_p45_myrmekite_intergrowth_texture.png" alt="Myrmekitic Texture - Vermicular Quartz in Plagioclase">
-      <figcaption>
-        <strong>Figure 79.1: Microstructures of Igneous and Metamorphic Rocks - Myrmekite.</strong> Authentic plate from J.D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, Ch. 3, p. 45). Depicts vermicular (worm-like) quartz rods intergrown within sodic plagioclase at boundaries with potash feldspar.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: PETROGRAPHIC ANATOMY OF MYRMEKITE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Petrographic Definition & Microstructural Anatomy of Myrmekite</div>
+    <div class="card-body">
+      <p>
+        The term <strong>myrmekite</strong> (derived from the ancient Greek <em>myrmex</em>, meaning "ant") was introduced by F. Becke (1899) to describe the uncanny resemblance of this intergrowth to subterranean ant tunnels or worm-like burrows under high-power petrographic microscopy.
+      </p>
+      <p>
+        <strong>Myrmekitic texture</strong> consists of an intimate intergrowth of <strong>vermicular (worm-like, cylindrical, or tubular) quartz rods</strong> hosted inside a convex, cauliflower-shaped or wart-like lobe of <strong>plagioclase feldspar</strong> (typically oligoclase, $\text{An}_{10\text{--}30}$) that projects directly into an adjacent grain of <strong>potassium feldspar</strong> (microcline or orthoclase).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q79/winter_p45_myrmekite_intergrowth_texture.png" alt="Myrmekitic Intergrowth Texture from Winter">
+        <div class="figure-caption">
+          <strong>Figure 79.1 — Petrographic Architecture of Myrmekitic Texture:</strong> Authentic textbook diagram from J.D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, Ch. 3). Illustrating the lobate plagioclase bulb with vermicular quartz rods advancing into adjacent microcline K-feldspar.
+        </div>
+      </div>
+
+      <h4>Three Diagnostic Optical Criteria of True Myrmekite</h4>
+      <ul>
+        <li><strong>Host Mineralogy:</strong> The host matrix is strictly <strong>sodic plagioclase</strong> (oligoclase or albite), <em>never</em> K-feldspar. (In contrast, graphic texture hosts quartz in a K-feldspar matrix!).</li>
+        <li><strong>Morphology & Tapering of Quartz:</strong> The quartz rods are tubular and branching, showing a diagnostic <strong>tapering geometry</strong>: they are thickest near the central interior of the plagioclase lobe and become progressively thinner and more delicate toward the outer lobate margin entering the K-feldspar.</li>
+        <li><strong>Optical Extinction:</strong> Under cross-polarized light, all vermicular quartz tubes within a single plagioclase lobe extinguish <strong>simultaneously</strong>, proving they represent a single, interconnected, branching crystallographic skeleton of quartz.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: GENETIC HYPOTHESES: METASOMATISM VS. EXSOLUTION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Petrogenesis of Myrmekite: Metasomatic Replacement vs. Exsolution</div>
+    <div class="card-body">
+      <p>
+        The origin of myrmekite has been one of the most vigorously debated topics in petrology, with three primary scientific mechanisms recognized:
+      </p>
+
+      <h4>1. The Becke-Phillips Metasomatic Replacement Model (Dominant Mechanism)</h4>
+      <p>
+        During late-magmatic cooling, deuteric auto-metasomatism, or fluid-assisted retrograde metamorphism, intergranular fluids rich in $Ca^{2+}$ and $Na^+$ attack primary potassium feldspar (microcline), replacing it with calcic/sodic plagioclase. Because anorthite requires fewer silica atoms per formula unit than K-feldspar, an abundance of free silica is released:
+      </p>
+      <div class="formula-box">
+        <strong>Stoichiometric Replacement Reaction:</strong><br>
+        $$2\text{KAlSi}_3\text{O}_8\ (\text{K-feldspar}) + \text{Ca}^{2+} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite in Plagioclase}) + \mathbf{4\text{SiO}_2\ (\text{Vermicular Quartz})} + 2\text{K}^+$$
+      </div>
+      <p>
+        For every mole of anorthite created to replace two moles of microcline, exactly <strong>four moles of free $\text{SiO}_2$</strong> are expelled locally, precipitating in situ as vermicular quartz rods within the expanding plagioclase front!
+      </p>
+
+      <h4>2. Schwantke's Molecule Subsolidus Exsolution Hypothesis</h4>
+      <p>
+        A. Schwantke (1909) proposed that high-temperature ternary feldspars incorporate a defect component termed <em>Schwantke's molecule</em>: $\text{CaAl}_2\text{Si}_6\text{O}_{16}$ (or $\text{Ca}_{0.5}\Box_{0.5}\text{AlSi}_3\text{O}_8$). Upon subsolidus cooling, this unstable solid solution breaks down:
+      </p>
+      $$\text{CaAl}_2\text{Si}_6\text{O}_{16} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite}) + 4\text{SiO}_2\ (\text{Quartz})$$
+
+      <h4>3. Deformation-Induced Myrmekite in Ductile Shear Zones</h4>
+      <p>
+        Simpson & Wintsch (1989) demonstrated that in mylonitic granites and ductile shear zones, asymmetric myrmekite develops preferentially on K-feldspar grain boundaries facing the principal compressive stress axis ($\sigma_1$), where strain energy accelerates potassium leaching and plagioclase nucleation.
+      </p>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE DIFFERENTIATION FROM OTHER INTERGROWTHS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Petrographic Discrimination from Other Common Intergrowth Textures</div>
+    <div class="card-body">
+      <p>
+        It is vital in optical mineralogy not to confuse myrmekitic texture with other intergrowth phenomena:
+      </p>
+      <ul>
+        <li><strong>Graphic Texture:</strong> A primary magmatic eutectic cotectic intergrowth where angular, wedge-shaped quartz crystals resembling ancient cuneiform or runic writing are embedded in a <strong>potassium feldspar (microcline) host</strong> (e.g., in granitic pegmatites).</li>
+        <li><strong>Granophyric Texture:</strong> A microscopic, spherulitic, plumose, or delicate skeletal intergrowth of quartz and alkali feldspar formed by rapid eutectic crystallization in shallow, subvolcanic granitic porphyries.</li>
+        <li><strong>Perthitic Texture:</strong> Subsolidus exsolution lamellae, blebs, or strings of sodic plagioclase (albite) enclosed within a <strong>potassium feldspar host</strong>.</li>
+        <li><strong>Antiperthitic Texture:</strong> Exsolution blebs or oriented inclusions of potassium feldspar enclosed within a <strong>plagioclase host</strong>.</li>
+        <li><strong>Corona / Reaction Rim:</strong> A concentric sheath of one or more secondary minerals completely surrounding a core mineral grain (e.g., orthopyroxene rim around olivine), formed by solid-state reaction with surrounding matrix phases.</li>
+        <li><strong>Trachytic Texture:</strong> Subparallel fluidal flow-alignment of tiny tabular laths of sanidine/alkali feldspar microlites in volcanic rocks.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q79. This texture results from the inter-growth of quartz and plagioclase (usually oligoclase). The inter-growth of quartz is in the form of worm-like rods within the plagioclase. It is found in some granite and metamorphic rocks. It is termed as :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Graphic texture</div>
-        <div class="opt-item correct"><strong>(B)</strong> Myrmekitic texture</div>
-        <div class="opt-item "><strong>(C)</strong> Corona texture</div>
-        <div class="opt-item "><strong>(D)</strong> Trachytic texture</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 79</div>
+        <div class="q-text">This texture results from the inter-growth of quartz and plagioclase (usually oligoclase). The inter-growth of quartz is in the form of worm-like rods within the plagioclase. It is found in some granite and metamorphic rocks. It is termed as :</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Graphic texture</div>
+          <div class="opt-node correct">(B) Myrmekitic texture</div>
+          <div class="opt-node">(C) Corona texture</div>
+          <div class="opt-node">(D) Trachytic texture</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (B)</div>
+        <div><strong>Myrmekitic texture:</strong> An intergrowth of vermicular (worm-like) quartz rods within a plagioclase host (typically oligoclase), forming lobate warts invading adjacent potassium feldspar in granites and metamorphic gneisses.</div>
       </div>
     </div>
-    
-<h3>2. Diagnostic Comparison of Silicate Intergrowth Textures</h3>
-<table class="tb-table">
-  <thead>
-    <tr>
-      <th>Texture Name</th>
-      <th>Host Mineral</th>
-      <th>Guest / Exsolved Phase</th>
-      <th>Morphology & Diagnostic Appearance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Myrmekitic Texture</strong></td>
-      <td><strong>Plagioclase</strong> (Oligoclase)</td>
-      <td><strong>Quartz</strong></td>
-      <td><strong>Vermicular (worm-like)</strong>, rounded blebs protruding into adjacent K-feldspar.</td>
-    </tr>
-    <tr>
-      <td><strong>Graphic Texture</strong></td>
-      <td><strong>Alkali Feldspar</strong> (Microcline / Orthoclase)</td>
-      <td><strong>Quartz</strong></td>
-      <td>Cuneiform, wedge-shaped runes resembling <strong>ancient runic / cuneiform script</strong>; simultaneous eutectic crystallization.</td>
-    </tr>
-    <tr>
-      <td><strong>Perthitic Texture</strong></td>
-      <td><strong>K-feldspar</strong> (Microcline)</td>
-      <td><strong>Albite</strong></td>
-      <td>Sub-parallel lamellae, stringers, or veins formed by solid-state subsolvus exsolution.</td>
-    </tr>
-    <tr>
-      <td><strong>Corona Texture</strong></td>
-      <td>Central reactant core (e.g. Olivine)</td>
-      <td>Concentric reaction rims (e.g. Opx, Amphibole, Garnet)</td>
-      <td>Concentric reaction envelopes separating mutually incompatible phases in solid-state diffusion.</td>
-    </tr>
-  </tbody>
-</table>
-
   </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="opt-title">(A) Graphic texture — INCORRECT</div>
+        <p>
+          <em>Graphic texture</em> is a primary cotectic magmatic intergrowth of quartz and <strong>potassium feldspar (microcline)</strong>, where quartz occurs as angular, cuneiform, runic wedges resembling ancient Hebrew or Babylonian characters. It does not consist of worm-like rods in a plagioclase host.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="opt-title">(B) Myrmekitic texture — CORRECT</div>
+        <p>
+          <em>Myrmekitic texture</em> is the exact, unambiguous scientific term defined by an intergrowth of vermicular (worm-like) rods of quartz hosted within plagioclase (specifically oligoclase). It is universally found in granites, charnockites, and high-grade metamorphic gneisses at contacts with K-feldspar grains (Winter, 2014, p. 45; Bangar, p. 77; Mahapatra, p. 119).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) Corona texture — INCORRECT</div>
+        <p>
+          <em>Corona texture</em> (reaction rim / kelyphitic rim) consists of concentric shells or mantles of one mineral (e.g., pyroxene, amphibole, spinel) surrounding an earlier-crystallized core mineral (such as olivine or garnet). It is a metamorphic or magmatic reaction rim, entirely lacking vermicular quartz-plagioclase intergrowths.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) Trachytic texture — INCORRECT</div>
+        <p>
+          <em>Trachytic texture</em> is a volcanic flow-alignment texture occurring in intermediate to felsic lavas (especially trachytes), characterized by closely packed, subparallel, sub-aligned microscopic tabular laths of sanidine microlites.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option A (Graphic texture):</strong> In graphic texture, quartz forms angular, cuneiform characters inside <em>potash feldspar</em> (not plagioclase), representing cotectic granite-pegmatite crystallization.</li>
-  <li><strong>Option B (Myrmekitic texture) is correct:</strong> Specifically defined by <em>worm-like (vermicular) quartz</em> within <em>plagioclase</em>.</li>
-  <li><strong>Option C (Corona texture):</strong> Reaction rims surrounding a mineral core, completely unrelated to quartz-plagioclase intergrowth.</li>
-  <li><strong>Option D (Trachytic texture):</strong> Sub-parallel flow alignment of tabular sanidine micro-laths in volcanic rocks.</li>
-</ul>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis of Common Petrographic Intergrowth Textures</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Intergrowth Texture</th>
+            <th>Enclosed / Intergrown Phase</th>
+            <th>Host Mineral Phase</th>
+            <th>Geometry & Appearance</th>
+            <th>Genesis & Mechanism</th>
+            <th>Typical Host Rocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Myrmekitic Texture</strong></td>
+            <td><strong>Quartz ($\text{SiO}_2$)</strong></td>
+            <td><strong>Plagioclase (Oligoclase $\text{An}_{10\text{--}30}$)</strong></td>
+            <td><strong>Vermicular (worm-like) rods, branching & tapering</strong></td>
+            <td>Deuteric metasomatic replacement or subsolidus exsolution</td>
+            <td>Granite, Granodiorite, Charnockite, Gneiss</td>
+          </tr>
+          <tr>
+            <td><strong>Graphic Texture</strong></td>
+            <td>Quartz</td>
+            <td><strong>Potassium Feldspar (Microcline)</strong></td>
+            <td>Angular, cuneiform, runic wedge-shaped rods</td>
+            <td>Primary magmatic eutectic cotectic crystallization</td>
+            <td>Granitic Pegmatite</td>
+          </tr>
+          <tr>
+            <td><strong>Granophyric Texture</strong></td>
+            <td>Quartz</td>
+            <td>Alkali Feldspar (Orthoclase / Albite)</td>
+            <td>Microscopic plumose, radiating, feathery intergrowth</td>
+            <td>Rapid eutectic crystallization under shallow quenching</td>
+            <td>Granophyre, Microgranite, Subvolcanic intrusions</td>
+          </tr>
+          <tr>
+            <td><strong>Perthitic Texture</strong></td>
+            <td>Plagioclase (Albite)</td>
+            <td><strong>Potassium Feldspar (Microcline/Orthoclase)</strong></td>
+            <td>Parallel lamellae, blebs, strings, or braids</td>
+            <td>Subsolidus unmixing across the alkali feldspar solvus</td>
+            <td>Granite, Syenite</td>
+          </tr>
+          <tr>
+            <td><strong>Antiperthitic Texture</strong></td>
+            <td>Potassium Feldspar</td>
+            <td><strong>Plagioclase Feldspar</strong></td>
+            <td>Irregular blebs, rectangular rods, or patches</td>
+            <td>Subsolidus exsolution of minor K-component from plagioclase</td>
+            <td>Charnockite, Anorthosite, Granulite</td>
+          </tr>
+          <tr>
+            <td><strong>Symplectitic Texture</strong></td>
+            <td>Various (Spinel, Opx, Biotite, Quartz)</td>
+            <td>Plagioclase, Cordierite, Amphibole</td>
+            <td>Extremely fine-grained worm-like vermicular intergrowth</td>
+            <td>Decompression breakdown of garnet or kyanite</td>
+            <td>Retrogressed Granulite, Eclogite</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Stoichiometric Volume Balance of Becke's Myrmekite Reaction</div>
+        <p>
+          Consider the metasomatic replacement of microcline by pure anorthite according to Becke's reaction:
+          $$2\text{KAlSi}_3\text{O}_8\ (\text{Microcline}) + \text{Ca}^{2+} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite}) + 4\text{SiO}_2\ (\text{Quartz}) + 2\text{K}^+$$
+          Given the molar volumes: $V_m(\text{Microcline}) = 108.9\text{ cm}^3/\text{mol}$, $V_m(\text{Anorthite}) = 100.8\text{ cm}^3/\text{mol}$, and $V_m(\text{Quartz}) = 22.7\text{ cm}^3/\text{mol}$. Calculate the theoretical volume percentage of vermicular quartz in the resulting myrmekite.
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Volumetric Derivation:</strong><br>
+          1. Calculate volume of products generated per mole of anorthite:
+          $$V(\text{Anorthite}) = 1 \times 100.8\text{ cm}^3 = 100.8\text{ cm}^3$$<br>
+          $$V(\text{Quartz}) = 4 \times 22.7\text{ cm}^3 = 90.8\text{ cm}^3$$<br>
+          $$\text{Total Volume of Myrmekite} = V(\text{Anorthite}) + V(\text{Quartz}) = 100.8 + 90.8 = 191.6\text{ cm}^3$$<br>
+          2. Calculate volume percentage of quartz:
+          $$\text{Vol}\%\ \text{Quartz} = \frac{V(\text{Quartz})}{\text{Total Volume}} \times 100\% = \frac{90.8}{191.6} \times 100\% \approx \mathbf{47.39\%}$$<br>
+          <strong>Petrological Note:</strong> Because natural myrmekite plagioclase is oligoclase ($\sim \text{An}_{20}\text{Ab}_{80}$) rather than pure anorthite, the albitic component ($NaAlSi_3O_8$) releases zero free quartz during replacement ($KAlSi_3O_8 + Na^+ \to NaAlSi_3O_8 + K^+$). Consequently, the actual modal percentage of quartz in natural oligoclase myrmekite is lower, typically <strong>$10\text{ to } 22\text{ vol}\%$</strong>.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Quartz Content vs. Plagioclase Anorthite Content ($An\%$) Correlation</div>
+        <p>
+          F. Becke (1908) observed empirically that the volume fraction of vermicular quartz ($X_Q$) in myrmekite increases linearly with the anorthite content ($An$) of the host plagioclase. Explain why this relationship constitutes definitive proof of the metasomatic replacement hypothesis over simple cotectic crystallization.
+        </p>
+        <div class="p-ans">
+          <strong>Theoretical Proof:</strong><br>
+          - <strong>The Chemical Stoichiometry:</strong> In metasomatic replacement, albite ($\text{NaAlSi}_3\text{O}_8$) has the exact same $Si:Al$ ratio ($3:1$) as potassium feldspar ($\text{KAlSi}_3\text{O}_8$). Therefore, replacing K-feldspar by albite releases zero quartz ($\Delta \text{Si} = 0$). Only the anorthite component ($\text{CaAl}_2\text{Si}_2\text{O}_8$, $Si:Al = 1:1$) releases excess silica ($2\text{ moles } \text{SiO}_2$ per mole of $Al$).<br>
+          - <strong>Linear Proportionality:</strong> The volume of quartz precipitated must therefore be strictly proportional to the mole fraction of anorthite:
+          $$X_Q \propto \frac{\text{An}}{100}$$<br>
+          - If myrmekite were formed by eutectic magmatic crystallization, the quartz-plagioclase cotectic ratio would be dictated by the liquidus phase diagram and would not vary linearly with solid-solution anorthite content across different post-solidus metamorphic zones.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: Kinetic Meaning of Tapering Quartz Rods</div>
+        <p>
+          In thin section, the vermicular quartz rods of myrmekite systematically taper, becoming thinnest at the lobate convex margin facing the potassium feldspar and thickest toward the interior base of the plagioclase. Deduce the direction of growth and explain the physical cause of this geometry.
+        </p>
+        <div class="p-ans">
+          <strong>Growth Vector & Diffusion Kinetics:</strong><br>
+          1. <strong>Growth Vector:</strong> The plagioclase lobe advances <strong>into the potassium feldspar</strong>; hence, the outer convex margin represents the active, younger reaction front, while the base is the older, established core.<br>
+          2. <strong>Physical Cause of Tapering:</strong> At the advancing reaction front, plagioclase nucleates rapidly, creating tiny, nascent quartz nuclei. As the reaction front moves forward, silica continues to diffuse down chemical potential gradients toward existing quartz conduits. The older portions of the tubes at the base continue to thicken by sustained syntaxial precipitation of silica over time, whereas newly formed tubes at the tip have had minimal time to grow, producing the diagnostic tapered morphology.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Deformation-Induced Myrmekite as a Kinematic Shear Sense Indicator</div>
+        <p>
+          In a mylonitized granite from a ductile shear zone, K-feldspar porphyroclasts display myrmekite lobes developed almost exclusively on the edges facing the shortening quadrant ($\sigma_1$), while quartz ribbons occupy the pressure shadows ($\sigma_3$). Explain the stress-induced mechanism driving this asymmetric growth.
+        </p>
+        <div class="p-ans">
+          <strong>Mechanochemical Mechanism (Simpson & Wintsch, 1989):</strong><br>
+          1. <strong>Stress Concentration:</strong> In ductile shear zones, compressive differential stress is focused on the high-angle boundaries of rigid K-feldspar porphyroclasts facing the shortening direction ($\sigma_1$).<br>
+          2. <strong>Strain-Enhanced Dissolution:</strong> High elastic strain energy at these compressive edges elevates the chemical potential of $KAlSi_3O_8$, accelerating the breakdown and dissolution of K-feldspar into intergranular fluids.<br>
+          3. <strong>Myrmekite Nucleation:</strong> Influx of $Ca^{2+}$-bearing fluids replaces the dissolving K-feldspar with lower-volume plagioclase and quartz (myrmekite), relieving compressive stress. The asymmetric distribution of myrmekite lobes on porphyroclast margins provides a reliable microstructural indicator of finite shear strain and shear sense.
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Schwantke's Molecule and Exsolution Thermodynamics</div>
+        <p>
+          Write the formula of Schwantke's molecule and calculate the moles of free silica generated when 0.05 moles of Schwantke component exsolve from a high-temperature orthoclase solid solution.
+        </p>
+        <div class="p-ans">
+          <strong>Calculation:</strong><br>
+          Schwantke's molecule is written as $\text{CaAl}_2\text{Si}_6\text{O}_{16}$ (or vacancy notation $\text{Ca}_{0.5}\Box_{0.5}\text{AlSi}_3\text{O}_8$).<br>
+          The exsolution breakdown reaction is:
+          $$\text{CaAl}_2\text{Si}_6\text{O}_{16} \longrightarrow \text{CaAl}_2\text{Si}_2\text{O}_8\ (\text{Anorthite}) + 4\text{SiO}_2\ (\text{Quartz})$$<br>
+          For $0.05\text{ moles}$ of Schwantke's molecule:
+          $$\text{Moles of Quartz} = 0.05 \times 4 = \mathbf{0.20\text{ moles of SiO}_2}$$<br>
+          $$\text{Moles of Anorthite} = 0.05 \times 1 = \mathbf{0.05\text{ moles of Anorthite}}$$
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Graphic vs. Myrmekitic Textures: Summary Comparison</div>
+        <p>
+          Contrast Graphic and Myrmekitic textures across four criteria: (a) host mineral; (b) quartz geometry; (c) primary vs. secondary origin; and (d) geological environment.
+        </p>
+        <div class="p-ans">
+          <strong>Fourfold Contrast:</strong><br>
+          - <strong>(a) Host Mineral:</strong> Graphic texture hosts quartz in <strong>K-feldspar (microcline)</strong>; Myrmekite hosts quartz in <strong>plagioclase (oligoclase)</strong>.<br>
+          - <strong>(b) Quartz Geometry:</strong> Graphic quartz forms angular, cuneiform, runic prisms resembling alphabet characters; Myrmekite quartz forms rounded, tubular, vermicular (worm-like) rods.<br>
+          - <strong>(c) Genesis:</strong> Graphic texture is a <strong>primary magmatic</strong> simultaneous eutectic cotectic intergrowth; Myrmekite is a <strong>late-stage secondary metasomatic replacement</strong> or subsolidus exgrowth.<br>
+          - <strong>(d) Geological Environment:</strong> Graphic texture is characteristic of <strong>granitic pegmatites</strong>; Myrmekite is found in <strong>plutonic granites, charnockites, and metamorphic gneisses</strong>.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Symplectite vs. Myrmekite in Metamorphic Rocks</div>
+        <p>
+          In high-pressure granulites and retrogressed eclogites, fine vermicular intergrowths termed "symplectites" are common. Explain how a symplectite differs conceptually and mineralogically from myrmekite.
+        </p>
+        <div class="p-ans">
+          <strong>Petrological Distinction:</strong><br>
+          - <strong>Myrmekite (Specific Texture):</strong> A strictly defined intergrowth restricted to <strong>quartz + plagioclase</strong> replacing K-feldspar.<br>
+          - <strong>Symplectite (Broad Textural Family):</strong> A generic metamorphic texture describing the fine-grained, vermicular, worm-like intergrowth of <em>any two or more minerals</em> formed during rapid, diffusion-controlled subsolidus reaction or decompression breakdown. Examples include:
+            1. <em>Omphacite breakdown in eclogites:</em> $\text{Omphacite} \to \text{Diopside} + \text{Albite symplectite}$.<br>
+            2. <em>Garnet decompression in granulites:</em> $\text{Garnet} + \text{Quartz} \to \text{Orthopyroxene} + \text{Cordierite symplectite}$.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Optical Petrography: Identifying Myrmekite under Cross-Polarized Light</div>
+        <p>
+          Describe the optical diagnostic features you would use under cross-polarized light (XPL) to positively verify myrmekitic texture in a granite thin section during a professional geological examination.
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Optical Verification:</strong><br>
+          1. <strong>Locate K-Feldspar Margins:</strong> Search for microcline grains displaying diagnostic cross-hatched (tartan/gridiron) twinning or orthoclase displaying Carlsbad twinning.<br>
+          2. <strong>Identify Convex Plagioclase Lobes:</strong> Look for hemispherical, wart-like lobes of plagioclase projecting into the microcline margin. Verify polysynthetic albite twinning in the plagioclase.<br>
+          3. <strong>Observe Quartz Rods:</strong> Within the plagioclase lobe, observe clear, colorless, high-relief vermicular rods with lower refractive index than plagioclase.<br>
+          4. <strong>Extinction Test:</strong> Rotate the microscope stage: the entire network of quartz vermicules within a single lobe extinguishes simultaneously, while the host plagioclase extinguishes at a different angle, and the surrounding microcline displays its own distinct extinction position.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
