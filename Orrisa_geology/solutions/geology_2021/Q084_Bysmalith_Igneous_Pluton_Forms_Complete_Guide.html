@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q84: Forms of Igneous Intrusions - Bysmalith (Fault-Bounded Cylindrical Pluton) | OPSC Geology 2021 Masterclass</title>
+<title>Q084: Igneous Petrology: Forms of Intrusions — Bysmalith Mechanics & Morphology | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,222 +89,627 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q84" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Igneous Petrology</div>
-    <h1>Q84: Forms of Igneous Intrusions - Bysmalith (Fault-Bounded Cylindrical Pluton)</h1>
+    <div class="badge">GEO - 2/21 • Igneous Petrology & Pluton Emplacement</div>
+    <h1>Q084: Bysmalith: Fault-Bounded Cylindrical Igneous Intrusion</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> K.M. Bangar (Principles of Engineering Geology, Ch. 5, p. 168–170)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 84<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, Ch. 5: Petrology / Igneous Intrusions, pp. 55, 168–170); Joseph P. Iddings (1898, <em>Journal of Geology</em>, "Bysmaliths"); G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 115–118); John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (Ch. 4: Pluton Emplacement, pp. 53–70).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Structural Definition</h3>
-<div class="question-box">
-  <p><strong>Question 84:</strong> An igneous pluton which is more or less vertical and cylindrical that cross-cuts adjacent sediments and is bounded by steep faults is termed as :</p>
-  <ul>
-    <li>(A) Laccolith</li>
-    <li>(B) Bysmalith</li>
-    <li>(C) Lopolith</li>
-    <li>(D) Conolith</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(B) Bysmalith</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q84/bangar_p168_bysmalith_laccolith_forms.png" alt="Forms of Igneous Bodies - Laccolith and Bysmalith (K.M. Bangar, p. 168)">
-      <figcaption>
-        <strong>Figure 84.1: Concordant and Discordant Forms of Igneous Bodies (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 5, Section 5.8, p. 168–170 / Sheet 91).</strong> Authentic plate from K.M. Bangar illustrating concordant intrusions: <strong>Laccolith</strong> (pluton with convex-upward arched roof and flat horizontal floor) and <strong>Bysmalith</strong> (plug-shaped laccolithic intrusion bounded by steep fault displacements).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: DEFINITION AND STRUCTURAL ANATOMY OF A BYSMALITH -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition & Structural Anatomy of a Bysmalith</div>
+    <div class="card-body">
+      <p>
+        The term <strong>bysmalith</strong> was coined in 1898 by the distinguished American petrologist <strong>Joseph Paxon Iddings</strong> (derived from the ancient Greek <em>bysma</em> = plug or stopper, and <em>lithos</em> = stone) while studying the complex intrusive volcanic-plutonic architecture of Mt. Holmes in Yellowstone National Park.
+      </p>
+      <p>
+        A <strong>bysmalith</strong> is defined as a more or less <strong>vertical, cylindrical or plug-shaped igneous pluton that cross-cuts adjacent sedimentary strata and is bounded on its lateral margins by steep, circular faults or shear fractures</strong>. The magma intrudes forcibly, punching the overlying cylindrical block of country rock vertically upward like a mechanical piston.
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q84/bangar_p168_bysmalith_laccolith_forms.png" alt="Forms of Igneous Intrusions: Bysmalith and Laccolith from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 84.1 — Morphological Architecture of Plutons:</strong> Authentic textbook diagram from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 168). Demonstrating the structural geometry of concordant laccoliths versus fault-bounded discordant bysmaliths, sills, and dikes.
+        </div>
+      </div>
+
+      <h4>Diagnostic Anatomical Criteria of a Bysmalith</h4>
+      <ul>
+        <li><strong>Cross-Sectional Geometry:</strong> Sub-circular to elliptical in plan view, extending vertically as a steep, cylindrical or downward-tapering plug.</li>
+        <li><strong>Discordant, Fault-Bounded Margins:</strong> Unlike concordant laccoliths whose margins pinch out smoothly along bedding planes, the perimeter of a bysmalith is defined by <strong>steep ring faults or reverse faults</strong> along which the roof has been forcibly sheared and elevated.</li>
+        <li><strong>Piston-Like Roof Displacement:</strong> The roof strata are displaced vertically upwards en masse, with minimal horizontal spreading of the magma body.</li>
+      </ul>
+
+      <div class="figure-box">
+        <img src="../../figures_Q84/bangar_p55_bysmalith_laccolith_forms.png" alt="Mechanics of Bysmalith Punching from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 84.2 — Mechanical Evolution from Laccolith to Bysmalith:</strong> Authentic textbook scan from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 55). Showing how high magmatic overpressure causes flexural failure of the roof strata, creating marginal shear faults.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MECHANICAL EVOLUTION: LACCOLITH TO BYSMALITH TRANSITION -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Geomechanical Evolution: The Laccolith-to-Bysmalith Transition</div>
+    <div class="card-body">
+      <p>
+        In physical volcanology and structural geology (Corry, 1988), a bysmalith represents the <strong>structural failure end-member of a laccolith</strong>:
+      </p>
+      <ol>
+        <li><strong>Initial Sill Injection:</strong> Magma ascends along vertical conduits (dikes) and spreads horizontally along a bedding plane where lithostatic overburden equals magma pressure.</li>
+        <li><strong>Laccolithic Doming:</strong> As magma continues to pump into the sill, the pressure exceeds lithostatic overburden ($P_{\text{magma}} > \sigma_v$). The overlying sedimentary layers bend upward elastically and plastically like an blister or dome, producing a <strong>concordant laccolith</strong> with a flat floor and arched roof.</li>
+        <li><strong>Shear Failure of the Roof:</strong> If magma injection is exceptionally rapid or the magma is highly viscous (e.g., dacitic, rhyolitic, or phonolitic), the magmatic overpressure ($\Delta P = P_{\text{magma}} - \sigma_v$) exceeds the shear strength ($\tau_{\text{rock}}$) of the overburden rock:
+          $$\Delta P > \frac{2 \tau_{\text{rock}} \cdot h}{r}$$
+          where $h$ is overburden thickness and $r$ is pluton radius.</li>
+        <li><strong>Bysmalith Formation (Piston Punching):</strong> The roof strata rupture along circumferential vertical faults, and the central cylinder of rock is punched straight upward, transforming the dome into a <strong>steep-sided, fault-bounded bysmalith</strong>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CARD 3: COMPARATIVE CLASSIFICATION OF INTRUSIVE FORMS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Comparative Petrology: Concordant vs. Discordant Igneous Plutons</div>
+    <div class="card-body">
+      <p>
+        Igneous intrusions are systematically categorized based on their geometric concordance with host rock stratification:
+      </p>
+      <ul>
+        <li><strong>Concordant Intrusions (Parallel to Bedding):</strong>
+          <ul>
+            <li><strong>Sill:</strong> Tabular, sheet-like intrusion parallel to bedding planes.</li>
+            <li><strong>Laccolith:</strong> Plano-convex, mushroom-shaped intrusion with a flat floor and arched roof.</li>
+            <li><strong>Lopolith:</strong> Colossal, saucer-shaped or basin-shaped intrusion depressed in the center (e.g., Bushveld, Sudbury, Duluth).</li>
+            <li><strong>Phacolith:</strong> Crescent-shaped intrusion located along the hinge zones (crests of anticlines or troughs of synclines) of folded strata.</li>
+          </ul>
+        </li>
+        <li><strong>Discordant Intrusions (Cross-cutting Bedding):</strong>
+          <ul>
+            <li><strong>Dike:</strong> Steeply dipping to vertical tabular intrusion cutting across bedding planes.</li>
+            <li><strong>Bysmalith:</strong> Vertical, cylindrical, fault-bounded plug punching through country rocks.</li>
+            <li><strong>Batholith:</strong> Colossal discordant plutonic body with an outcrop area exceeding $100\text{ km}^2$, expanding indefinitely downward without an observable floor.</li>
+            <li><strong>Stock:</strong> A discordant pluton similar to a batholith but with an exposed surface area $< 100\text{ km}^2$.</li>
+            <li><strong>Chonolith (Conolith):</strong> An irregular, chaotic intrusive body of undetermined or complex shape that does not conform to any standard geometric category (Daly, 1905).</li>
+            <li><strong>Volcanic Neck (Plug):</strong> Cylindrical conduit of an eroded volcano filled with consolidated lava or agglomeratic pyroclastic breccia.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q84. An igneous pluton which is more or less vertical and cylindrical that cross-cuts adjacent sediments and is bounded by steep faults is termed as :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Laccolith</div>
-        <div class="opt-item correct"><strong>(B)</strong> Bysmalith</div>
-        <div class="opt-item "><strong>(C)</strong> Lopolith</div>
-        <div class="opt-item "><strong>(D)</strong> Conolith</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 84</div>
+        <div class="q-text">An igneous pluton which is more or less vertical and cylindrical that cross-cuts adjacent sediments and is bounded by steep faults is termed as :</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Laccolith</div>
+          <div class="opt-node correct">(B) Bysmalith</div>
+          <div class="opt-node">(C) Lopolith</div>
+          <div class="opt-node">(D) Conolith</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (B)</div>
+        <div><strong>Bysmalith:</strong> A vertical, cylindrical igneous intrusion that cross-cuts surrounding sedimentary strata and is bounded on its lateral margins by steep ring faults along which the roof has been punched upward.</div>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Concordant vs Discordant Intrusive Forms</h3>
-<p>
-Igneous intrusions are classified based on their geometry and relationship to host bedding:
-</p>
-<ul>
-  <li><strong>Bysmalith:</strong> A term introduced by J.P. Iddings (1898) to denote a specialized form of laccolith where the upward-moving magma has punched vertically like a cylindrical piston, cross-cutting the country rocks and bounded on its sides by steep circular faults or shear fractures.</li>
-  <li><strong>Laccolith:</strong> A concordant, dome-shaped or mushroom-shaped intrusion with a flat floor and convex-up roof that arches overlying sedimentary strata without cylindrical peripheral fault cut-offs.</li>
-  <li><strong>Lopolith:</strong> A massive saucer-shaped or basin-shaped concordant intrusion with a sunken central floor (e.g., Bushveld Complex, Duluth Complex).</li>
-  <li><strong>Conolith:</strong> An irregular, cone-shaped discordant intrusive body lacking systematic geometric symmetry.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="opt-title">(A) Laccolith — INCORRECT</div>
+        <p>
+          A <em>laccolith</em> is a <strong>concordant</strong>, dome-shaped intrusion characterized by a flat floor and an arched, convex-upward roof. It deforms overlying strata by gentle flexural arching without cutting across them or being bounded by steep marginal faults.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="opt-title">(B) Bysmalith — CORRECT</div>
+        <p>
+          A <em>bysmalith</em> (Iddings, 1898) is the precise, unambiguous term for an igneous pluton that is <strong>more or less vertical and cylindrical, cross-cuts adjacent sediments, and is bounded by steep faults</strong>. It is mechanically a faulted laccolith where the central core has punched upward like a piston (Bangar, p. 55, 168; Mahapatra, p. 116).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) Lopolith — INCORRECT</div>
+        <p>
+          A <em>lopolith</em> (Grout, 1918) is a colossal, <strong>concordant, saucer-shaped or basin-shaped intrusion</strong> that is depressed in the center due to gravitational sagging under the immense weight of dense mafic/ultramafic magma (e.g., Bushveld Complex, South Africa). It is not vertical or cylindrical, nor is it bounded by steep faults.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) Conolith — INCORRECT</div>
+        <p>
+          A <em>conolith</em> (or more accurately <em>chonolith</em>, coined by R.A. Daly in 1905) is an igneous body of <strong>irregular, chaotic, or undefinable shape</strong> that cannot be classified as a dike, sill, laccolith, or bysmalith. It does not possess a specific vertical cylindrical geometry bounded by steep faults.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option B (Bysmalith) is correct:</strong> Steep-fault bounded, vertical, cylindrical punched plug matching Iddings' classic definition.</li>
-  <li><strong>Option A (Laccolith):</strong> Lacks steep bounding faults; concordant mushroom dome.</li>
-  <li><strong>Option C (Lopolith):</strong> Basin-shaped / saucer-shaped concordant intrusion.</li>
-  <li><strong>Option D (Conolith):</strong> Cone-like discordant intrusion without cylindrical fault-bounded architecture.</li>
-</ul>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Classification of Igneous Intrusive Bodies</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Pluton Type</th>
+            <th>Structural Concordance</th>
+            <th>Morphology & Geometry</th>
+            <th>Boundary Relationship</th>
+            <th>Classic Global / Indian Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Bysmalith</strong></td>
+            <td><strong>Discordant</strong></td>
+            <td><strong>Vertical, cylindrical plug or piston</strong></td>
+            <td><strong>Steep, circular peripheral faults</strong></td>
+            <td><strong>Mt. Holmes (Yellowstone, USA); Black Hills (South Dakota)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Laccolith</strong></td>
+            <td>Concordant</td>
+            <td>Plano-convex, mushroom-shaped; flat floor, arched roof</td>
+            <td>Ductile bending of roof strata without faulting</td>
+            <td>Henry Mountains (Utah); Girnar Hills (Gujarat)</td>
+          </tr>
+          <tr>
+            <td><strong>Lopolith</strong></td>
+            <td>Concordant</td>
+            <td>Basin-shaped, saucer-like, sunken central depression</td>
+            <td>Conformable to sagging layered floor and roof</td>
+            <td>Bushveld Complex (South Africa); Duluth Gabbro (USA)</td>
+          </tr>
+          <tr>
+            <td><strong>Phacolith</strong></td>
+            <td>Concordant</td>
+            <td>Crescent-shaped, lens-like along fold hinges</td>
+            <td>Fills anticlinal crests and synclinal troughs</td>
+            <td>Corndon Hill (Shropshire, UK); Dalhousie (Himalaya)</td>
+          </tr>
+          <tr>
+            <td><strong>Batholith</strong></td>
+            <td>Discordant</td>
+            <td>Colossal, irregular ($> 100\text{ km}^2$), expanding downward</td>
+            <td>Steep discordant cross-cutting walls, no visible floor</td>
+            <td>Ladakh Batholith (Himalaya); Bundelkhand Granite (Central India)</td>
+          </tr>
+          <tr>
+            <td><strong>Chonolith (Conolith)</strong></td>
+            <td>Discordant</td>
+            <td>Irregular, chaotic, asymmetric injection body</td>
+            <td>Highly irregular cross-cutting contacts</td>
+            <td>Various subvolcanic complex injections</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Critical Magmatic Overpressure for Shear Punching (Bysmalith Formation)</div>
+        <p>
+          A cylindrical magma body of radius $R = 1,500\text{ meters}$ is ponded at depth $H = 2,000\text{ meters}$ beneath horizontal sandstone beds ($\rho = 2,500\text{ kg/m}^3$). The shear strength of the overburden sandstone along vertical circular fault planes is $\tau_s = 25\text{ MPa}$. Calculate the minimum magmatic pressure ($P_{\text{magma}}$) required to shear the overburden and punch the block upward as a bysmalith ($g = 9.81\text{ m/s}^2$).
+        </p>
+        <div class="p-ans">
+          <strong>Force Balance Derivation:</strong><br>
+          For the central cylinder of rock to be punched upward, the upward vertical force exerted by magma pressure on the basal area must overcome both the downward gravitational weight of the overburden and the frictional shear resistance along the cylindrical fault perimeter:<br>
+          $$F_{\text{up}} \ge F_{\text{weight}} + F_{\text{shear}}$$<br>
+          $$P_{\text{magma}} \cdot (\pi R^2) \ge (\rho \cdot g \cdot H) \cdot (\pi R^2) + \tau_s \cdot (2\pi R \cdot H)$$<br>
+          Dividing both sides by $\pi R^2$:
+          $$P_{\text{magma}} \ge \rho g H + \frac{2 \tau_s H}{R}$$<br>
+          1. <strong>Lithostatic Overburden ($\sigma_v$):</strong>
+          $$\sigma_v = 2500 \times 9.81 \times 2000 = 4.905 \times 10^7\text{ Pa} = 49.05\text{ MPa}$$<br>
+          2. <strong>Shear Resistance Term:</strong>
+          $$\Delta P_{\text{shear}} = \frac{2 \times (25\text{ MPa}) \times 2000\text{ m}}{1500\text{ m}} = \frac{100,000}{1500} \approx \mathbf{33.33\text{ MPa}}$$<br>
+          3. <strong>Total Required Magma Pressure:</strong>
+          $$P_{\text{magma}} \ge 49.05\text{ MPa} + 33.33\text{ MPa} = \mathbf{82.38\text{ MPa}}$$<br>
+          <strong>Interpretation:</strong> The magma must maintain an overpressure of at least <strong>$33.3\text{ MPa}$ above lithostatic pressure</strong> ($P_{\text{magma}} > 82.4\text{ MPa}$) to rupture the roof along vertical faults and emplace as a bysmalith.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Geomechanical Role of Viscosity in Bysmalith Emplacement</div>
+        <p>
+          Explain why bysmaliths and laccoliths are almost universally composed of high-silica, viscous magmas (rhyolite, dacite, phonolite, trachyte) rather than low-viscosity basaltic magmas.
+        </p>
+        <div class="p-ans">
+          <strong>Fluid Dynamics of Pluton Growth:</strong><br>
+          1. <strong>Low-Viscosity Basaltic Magma ($\eta \approx 10\text{--}100\text{ Pa}\cdot\text{s}$):</strong> Flows easily along narrow bedding planes, spreading laterally over vast horizontal distances to form extensive, thin <strong>sills</strong> without building significant vertical thickness or localized overpressure.<br>
+          2. <strong>High-Viscosity Felsic Magma ($\eta \approx 10^6\text{--}10^9\text{ Pa}\cdot\text{s}$):</strong> Flow resistance along narrow bedding conduits is immense ($Q \propto 1/\eta$). The magma cannot spread far laterally; instead, it ponds locally, building up massive vertical hydrodynamic pressure at the feeder vent. This forces the roof to dome upward into a laccolith and, upon shear failure, punch straight upward as a bysmalith.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: Iddings' Yellowstone Mt. Holmes Archetype</div>
+        <p>
+          Describe the structural architecture of the type bysmalith described by J.P. Iddings (1898) at Mt. Holmes in Yellowstone National Park.
+        </p>
+        <div class="p-ans">
+          <strong>Historical Type Description:</strong><br>
+          - At Mt. Holmes in the Gallatin Range, Iddings mapped a steep, plug-shaped intrusive mass of porphyritic rhyolite/granite porphyry.<br>
+          - The intrusion punched through Cambrian and Carboniferous sedimentary formations.<br>
+          - Instead of bending the strata into a gentle dome as seen in the nearby laccoliths of the Henry Mountains, the Mt. Holmes body is bounded by vertical, circular faults where the adjacent sedimentary beds are sharply truncated, dragged, and shattered by vertical shear.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Bysmalith vs. Cauldron Subsidence (Piston Up vs. Piston Down)</div>
+        <p>
+          Compare the kinematics of a bysmalith with that of a cauldron subsidence (caldera collapse). Contrast their fault bounding geometries and displacement vectors.
+        </p>
+        <div class="p-ans">
+          <strong>Kinematic Contrast:</strong><br>
+          - <strong>Bysmalith (Piston Upward):</strong> Driven by <strong>positive magmatic overpressure</strong> ($\Delta P > 0$). The magma acts as a hydraulic jack, forcing a central cylindrical rock cylinder <strong>vertically upward</strong> along outward-dipping or vertical reverse ring faults.<br>
+          - <strong>Cauldron Subsidence (Piston Downward):</strong> Driven by <strong>negative magmatic pressure</strong> (underpressure, $\Delta P < 0$) following catastrophic volcanic eruption. The cylindrical block of roof rock sinks <strong>downward</strong> into the depleted magma chamber along inward-dipping normal ring faults (e.g., Glen Coe, Scotland; Ossipee, New Hampshire).
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Lopolith Centripetal Subsidence Mechanics</div>
+        <p>
+          Explain why lopoliths (e.g., Bushveld, Sudbury) possess a saucer-shaped form with layers dipping inward toward the center, whereas laccoliths have convex-upward roofs.
+        </p>
+        <div class="p-ans">
+          <strong>Mechanical Loading Explanation:</strong><br>
+          1. <strong>High Density of Ultramafic Magma:</strong> Lopoliths are formed by immense volumes of dense mafic-to-ultramafic magma ($\rho_{\text{melt}} \approx 2,750\text{--}2,850\text{ kg/m}^3$) intruding into less dense continental crust ($\rho_{\text{crust}} \approx 2,650\text{ kg/m}^3$).<br>
+          2. <strong>Isostatic & Thermal Sag:</strong> The colossal weight of the ponded magma exceeds the isostatic buoyancy of the floor rocks. As crystallization proceeds, the floor sags downward into the crust while the roof collapses centripetally, producing an inward-dipping, saucer-shaped lopolith.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Phacolith Emplacement in Folded Orogenic Belts</div>
+        <p>
+          Why do phacoliths emplace preferentially along the crests of anticlines and troughs of synclines, rather than along the fold limbs?
+        </p>
+        <div class="p-ans">
+          <strong>Structural Mechanics (Saddle Reef Mechanism):</strong><br>
+          - During flexural-slip folding of stratified sedimentary rocks, bed-parallel slippage produces <strong>extensional dilation and low-pressure zones</strong> at the hinge regions (anticlinal crests and synclinal troughs).<br>
+          - In contrast, the fold limbs experience intense compressive shear stress.<br>
+          - Magma follows minimum pressure gradients ($\nabla P$), migrating selectively into the dilated hinge crests and troughs to crystallize as concordant, crescent-shaped bodies termed <strong>phacoliths</strong> (Harker, 1909).
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Chonolith (Conolith) Definition and Diagnostic Ambiguity</div>
+        <p>
+          In a geological survey report, an intrusive body is described as a "chonolith". Explain what this term signifies and why it is used as a term of last resort.
+        </p>
+        <div class="p-ans">
+          <strong>Petrological Definition:</strong><br>
+          - <strong>Chonolith:</strong> Coined by R.A. Daly (1905), derived from Greek <em>choane</em> = melting pot or funnel. It designates an igneous intrusion of <strong>irregular, chaotic, or undefinable shape</strong> whose contacts are discordant and which cannot be fitted into the neat geometric categories of dikes, sills, laccoliths, bysmaliths, or lopoliths.<br>
+          - <strong>Term of Last Resort:</strong> It indicates that the intrusion was injected along complex, multi-directional joint sets, faults, or unconformities, or that structural exposure is insufficient to reconstruct its geometric architecture.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Contact Metamorphic Aureole around a Bysmalith</div>
+        <p>
+          How does the contact metamorphic aureole around a bysmalith differ from that around a concordant sill or laccolith?
+        </p>
+        <div class="p-ans">
+          <strong>Structural and Thermal Aureole Criteria:</strong><br>
+          - <strong>Laccolith / Sill:</strong> Contact metamorphism is purely thermal, developing hornfels with granoblastic, non-foliated textures parallel to the concordant bedding contacts.<br>
+          - <strong>Bysmalith:</strong> Shows an intense superposition of <strong>dynamic deformation and high shear strain</strong> along its peripheral ring faults. Country rocks adjacent to the cylindrical plug are intensely dragged upward, brecciated, and transformed into mylonitic or cataclastic fault gouge overprinted by pyrometamorphism (buchites/hornfels).
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

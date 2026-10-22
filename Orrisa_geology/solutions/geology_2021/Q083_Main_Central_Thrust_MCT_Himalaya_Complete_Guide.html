@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q83: Himalayan Tectonic Architecture - Main Central Thrust (MCT) | OPSC Geology 2021 Masterclass</title>
+<title>Q083: Structural Geology & Himalayan Tectonics: Main Central Thrust (MCT) Architecture | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,251 +89,623 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q83" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Structural Geology & Tectonics</div>
-    <h1>Q83: Himalayan Tectonic Architecture - Main Central Thrust (MCT)</h1>
+    <div class="badge">GEO - 2/21 • Structural Geology & Himalayan Tectonics</div>
+    <h1>Q083: Main Central Thrust (MCT): Tectonic Boundary of the Higher Himalaya</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Van der Pluijm & Marshak (Earth Structure, Ch. 21, Fig. 21.21)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 83<br>
+<strong>Authoritative References:</strong> Ben A. van der Pluijm & Stephen Marshak, <em>Earth Structure: An Introduction to Structural Geology and Tectonics</em> (2nd Ed., W.W. Norton, Ch. 21, Fig. 21.21); K.S. Valdiya, <em>Geology of the Kumaun Lesser Himalaya</em> (Wadia Institute of Himalayan Geology); Arnold Heim & Augusto Gansser (1939, <em>Central Himalaya: Geological Observations of the Swiss Expedition</em>); O.N. Bhargava, <em>The Himalayan Geology</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Tectonic Framework</h3>
-<div class="question-box">
-  <p><strong>Question 83:</strong> The ductile shear zone along with the High-grade Great Himalayan Crystalline complex was placed above the Low-grade to unmeta-morphosed Lesser Himalayan Sequence is termed as the :</p>
-  <ul>
-    <li>(A) Main Central Thrust (MCT)</li>
-    <li>(B) Main Frontal Thrust (MFT)</li>
-    <li>(C) Main Boundary Thrust (MBT)</li>
-    <li>(D) Himalayan Frontal Thrust (HFT)</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(A) Main Central Thrust (MCT)</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q83/vdp_fig21_21_himalayan_mct.png" alt="Himalayan Main Central Thrust MCT">
-      <figcaption>
-        <strong>Figure 83.1: Himalayan Tectonic Architecture and the Main Central Thrust.</strong> Authentic tectonic cross-section from Van der Pluijm & Marshak (<em>Earth Structure</em>, Ch. 21, Fig. 21.21). Illustrates the ductile MCT placing the Higher Himalayan Crystalline complex over the Lesser Himalayan Sequence.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: HIMALAYAN MORPHOTECTONIC BELTS AND ARCHITECTURE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. The Himalayan Morphotectonic Framework & Longitudinal Fault Architecture</div>
+    <div class="card-body">
+      <p>
+        The <strong>Himalayan Orogen</strong>, produced by the continent-continent collision between the Indian and Eurasian plates (~55 Ma to present), represents the premier active convergent mountain belt on Earth. The orogenic wedge is structured into five distinct, laterally continuous morphotectonic lithotectonic zones separated by crustal-scale, north-dipping boundary fault systems (Heim & Gansser, 1939; Valdiya, 1980; Van der Pluijm & Marshak, 2004):
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q83/vdp_fig21_21_himalayan_mct.png" alt="Himalayan Tectonic Architecture and Main Central Thrust from Van der Pluijm and Marshak">
+        <div class="figure-caption">
+          <strong>Figure 83.1 — Tectonic Architecture of the Himalayan Orogen:</strong> Authentic diagram from Van der Pluijm & Marshak (<em>Earth Structure</em>, Ch. 21, Fig. 21.21). Illustrating the northward-dipping crustal thrust architecture: the Main Central Thrust (MCT) carrying the High-grade Great Himalayan Crystallines (HHC) over the Lesser Himalayan Sequence (LHS), underlain southward by the MBT and MFT.
+        </div>
+      </div>
+
+      <h4>North-to-South Structural Transect of the Himalaya</h4>
+      <ol>
+        <li><strong>Indus-Yarlung Tsangpo Suture Zone (ITSN / ISZ):</strong> The collision boundary demarcated by ophiolites and trench mélanges representing the closed Neotethys Ocean.</li>
+        <li><strong>Tethyan Sedimentary Series (TSS / THS):</strong> A thick sequence ($>10\text{ km}$) of fossiliferous Cambrian-to-Eocene shallow-marine shelf sediments deposited on the northern passive margin of India.</li>
+        <li><strong>South Tibetan Detachment System (STDS):</strong> A major low-angle, top-to-the-north <em>extensional normal fault / ductile shear zone</em> that places unmetamorphosed Tethyan sediments over the underlying crystalline core.</li>
+        <li><strong>Higher Himalayan Crystallines (HHC / Great Himalayan Sequence, GHS):</strong> The metamorphic backbone of the mountain chain! Composed of high-grade Proterozoic paragneisses, orthogneisses, kyanite-sillimanite schists, migmatites, and Miocene leucogranites formed at amphibolite-to-granulite facies ($T = 650\text{--}800^\circ\text{C}, P = 8\text{--}12\text{ kbar}$).</li>
+        <li><strong>Main Central Thrust (MCT):</strong> <em>The definitive ductile shear zone!</em> A massive, crustal-scale intracontinental thrust fault that accommodated tens to hundreds of kilometers of southward displacement, placing the high-grade HHC over the low-grade Lesser Himalaya.</li>
+        <li><strong>Lesser Himalayan Sequence (LHS):</strong> Low-grade to unmetamorphosed Paleoproterozoic to Mesoproterozoic quartzites, slates, phyllites, and stromatolitic carbonates (e.g., Damtha, Deoban, Jaunsar, Krol, and Tal groups).</li>
+        <li><strong>Main Boundary Thrust (MBT):</strong> A brittle-to-ductile thrust fault that places the Proterozoic Lesser Himalayan sequence over the Cenozoic Siwalik Molasse.</li>
+        <li><strong>Sub-Himalayan Zone (Siwalik Group):</strong> Middle Miocene to Early Pleistocene syn-orogenic foreland molasse sandstones, mudstones, and conglomerates.</li>
+        <li><strong>Main Frontal Thrust (MFT / Himalayan Frontal Thrust, HFT):</strong> The active, southernmost blind/emergent thrust fault placing Siwalik strata over the Quaternary alluvium of the Indo-Gangetic Plains.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CARD 2: MCT SHEAR ZONE & INVERTED METAMORPHISM -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. The MCT Ductile Shear Zone & The "Inverted Metamorphism" Paradox</div>
+    <div class="card-body">
+      <p>
+        The <strong>Main Central Thrust (MCT)</strong> is not a simple razor-thin fault surface; rather, it is a complex, ductile shear zone several kilometers thick characterized by intense penetrative plastic deformation:
+      </p>
+      <ul>
+        <li><strong>Microstructural Mylonitization:</strong> Rocks within the shear zone display spectacular mylonites, ribbon quartz, dynamically recrystallized feldspar porphyroclasts, S-C fabrics, mica fish, and asymmetric pressure shadows indicating pervasive <strong>top-to-the-south/southwest thrust kinematics</strong>.</li>
+        <li><strong>The Inverted Metamorphic Gradient:</strong> In ordinary metamorphic terrains, metamorphic grade increases downward with depth. In the Lesser Himalaya directly underlying the MCT, however, <strong>metamorphic grade increases systematically upwards toward the thrust sheet</strong>:
+          $$\text{Chlorite Zone (Low)} \longrightarrow \text{Biotite} \longrightarrow \text{Garnet} \longrightarrow \text{Staurolite} \longrightarrow \text{Kyanite} \longrightarrow \mathbf{\text{Sillimanite (Directly beneath MCT!)}}$$
+        </li>
+      </ul>
+
+      <h4>Thermal-Mechanical Origin of Inverted Metamorphism</h4>
+      <p>
+        Petrologists and geodynamicists explain this phenomenon through three synergistic processes:
+      </p>
+      <ol>
+        <li><strong>Thermal Inversion by Thrusting (Le Fort, 1975):</strong> Emplacement of the colossal, scorching-hot HHC metamorphic slab ($T > 750^\circ\text{C}$) over the relatively cold footwall Lesser Himalaya conducted heat downward, baking the uppermost footwall into higher-grade zones.</li>
+        <li><strong>Shear Heating:</strong> High plastic strain rates and friction within the ductile shear zone generated immense shear strain heating along the fault core.</li>
+        <li><strong>Channel Flow Extrusion (Grujic et al., 2002; Beaumont et al., 2001):</strong> During the Early to Middle Miocene (~23–16 Ma), a ductile, partially molten mid-crustal channel of HHC was extruded southward between two coeval bounding shear zones: the basal thrust (MCT) and the roof normal fault (STDS).</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CARD 3: VALDIYA'S DUAL MCT NOMENCLATURE & MODERN SEISMOTECTONICS -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Regional Nomenclature (MCT-I vs. MCT-II) & The Basal MHT Décollement</div>
+    <div class="card-body">
+      <h4>Valdiya's Two-Tier Division in the Kumaun-Garhwal Himalaya</h4>
+      <p>
+        In the Indian Himalaya, Professor K.S. Valdiya (1980) delineated two distinct thrust planes:
+      </p>
+      <ul>
+        <li><strong>MCT-I (Munsiari Thrust):</strong> The lower tectonic boundary, separating the low-grade metasediments of the Lesser Himalaya from the chlorite-biotite-garnet mylonitic gneisses of the Munsiari Formation.</li>
+        <li><strong>MCT-II (Vaikrita Thrust):</strong> The true primary MCT (in the strict Swiss sense of Heim & Gansser), which brings the coarse-grained, high-grade kyanite-sillimanite psammitic gneisses and migmatites of the <strong>Vaikrita Group (HHC)</strong> over the Munsiari Formation.</li>
+      </ul>
+
+      <h4>The Main Himalayan Thrust (MHT) Basal Décollement</h4>
+      <p>
+        Geophysical deep seismic reflection profiles (e.g., Project INDEPTH) and earthquake hypocenters prove that at depth, the surface faults—MFT, MBT, and MCT—merge downward into a single, master low-angle basal detachment fault: the <strong>Main Himalayan Thrust (MHT)</strong>. The MHT absorbs the majority of the $\sim 18\text{--}20\text{ mm/year}$ of active convergence between the Indian shield and the Tibetan Plateau, serving as the rupture plane for catastrophic great earthquakes (e.g., 1905 Kangra, 1934 Bihar-Nepal, 2015 Gorkha).
+      </p>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q83. The ductile shear zone along with the High-grade Great Himalayan Crystalline complex was placed above the Low-grade to unmeta-morphosed Lesser Himalayan Sequence is termed as the :</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Main Central Thrust (MCT)</div>
-        <div class="opt-item "><strong>(B)</strong> Main Frontal Thrust (MFT)</div>
-        <div class="opt-item "><strong>(C)</strong> Main Boundary Thrust (MBT)</div>
-        <div class="opt-item "><strong>(D)</strong> Himalayan Frontal Thrust (HFT)</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 83</div>
+        <div class="q-text">The ductile shear zone along with the High-grade Great Himalayan Crystalline complex was placed above the Low-grade to unmeta-morphosed Lesser Himalayan Sequence is termed as the :</div>
+        <div class="q-options">
+          <div class="opt-node correct">(A) Main Central Thrust (MCT)</div>
+          <div class="opt-node">(B) Main Frontal Thrust (MFT)</div>
+          <div class="opt-node">(C) Main Boundary Thrust (MBT)</div>
+          <div class="opt-node">(D) Himalayan Frontal Thrust (HFT)</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (A)</div>
+        <div><strong>Main Central Thrust (MCT):</strong> The premier crustal-scale ductile shear zone of the Himalaya that thrusts the high-grade Greater Himalayan Crystalline (HHC) complex southward over the low-grade to unmetamorphosed Lesser Himalayan Sequence (LHS).</div>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Himalayan Tectonic Architecture</h3>
-<p>
-The Himalayan orogen was built by the collision of India with Eurasia and is segmented from north to south by major longitudinal fault and thrust systems:
-</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Tectonic Boundary</th>
-      <th>Hanging Wall (North)</th>
-      <th>Footwall (South)</th>
-      <th>Kinematic & Metamorphic Character</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>STDS (South Tibetan Detachment System)</strong></td>
-      <td>Tethyan Sedimentary Series</td>
-      <td>Higher Himalayan Crystallines</td>
-      <td>North-dipping low-angle normal fault (extensional collapse)</td>
-    </tr>
-    <tr>
-      <td><strong>MCT (Main Central Thrust)</strong></td>
-      <td><strong>Higher (Great) Himalayan Crystallines (HHC)</strong></td>
-      <td><strong>Lesser Himalayan Sequence (LHS)</strong></td>
-      <td>Major ductile shear zone; places amphibolite-granulite facies inverted metamorphic rocks over greenschist-grade LHS.</td>
-    </tr>
-    <tr>
-      <td><strong>MBT (Main Boundary Thrust)</strong></td>
-      <td>Lesser Himalayan Sequence</td>
-      <td>Sub-Himalayan Siwalik Group</td>
-      <td>Brittle thrust faulting of pre-Tertiary LHS over Neogene molasse.</td>
-    </tr>
-    <tr>
-      <td><strong>MFT / HFT (Main / Himalayan Frontal Thrust)</strong></td>
-      <td>Sub-Himalayan Siwaliks</td>
-      <td>Indo-Gangetic Alluvial Plain</td>
-      <td>Active southernmost blind/emergent thrust fault separating Siwaliks from the foreland basin.</td>
-    </tr>
-  </tbody>
-</table>
-
   </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option correct">
+        <div class="opt-title">(A) Main Central Thrust (MCT) — CORRECT</div>
+        <p>
+          The <strong>Main Central Thrust (MCT)</strong> is the universally established, textbook tectonic boundary that places the high-grade, kyanite-sillimanite-bearing Great Himalayan Crystalline (HHC) complex over the low-grade Proterozoic Lesser Himalayan Sequence (LHS). It represents an intracontinental ductile shear zone several kilometers thick, characterized by pervasive mylonitization and the famous inverted metamorphic gradient (Heim & Gansser, 1939; Valdiya, 1980; Van der Pluijm & Marshak, p. 488).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(B) Main Frontal Thrust (MFT) — INCORRECT</div>
+        <p>
+          The <em>Main Frontal Thrust (MFT)</em> is the southernmost, active tectonic boundary of the Himalaya. It places the deformed Cenozoic Siwalik molasse over the modern, flat Quaternary alluvium of the Indo-Gangetic Plains. It is a brittle, shallow thrust fault that has no contact with the High-grade Great Himalayan Crystallines.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) Main Boundary Thrust (MBT) — INCORRECT</div>
+        <p>
+          The <em>Main Boundary Thrust (MBT)</em> separates the <strong>Lesser Himalayan Sequence in its hanging wall from the Sub-Himalayan Siwalik Group in its footwall</strong>. It is a predominantly brittle to semi-brittle fault formed during the Late Miocene–Pliocene, located far to the south of the Great Himalayan Crystalline complex.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) Himalayan Frontal Thrust (HFT) — INCORRECT</div>
+        <p>
+          <em>Himalayan Frontal Thrust (HFT)</em> is simply an alternative, synonymous geological name for the Main Frontal Thrust (MFT). It marks the outermost structural boundary between the Sub-Himalaya and the Indo-Gangetic Foreland Basin.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option A (MCT) is correct:</strong> The MCT is the definitive boundary placing the High-grade Great Himalayan Crystalline complex over the Lesser Himalayan Sequence.</li>
-  <li><strong>Option B & D (MFT / HFT):</strong> The frontal thrust between the Siwalik hills and the Indo-Gangetic alluvium.</li>
-  <li><strong>Option C (MBT):</strong> The boundary between the Lesser Himalaya and the Sub-Himalaya (Siwaliks).</li>
-</ul>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Master Tectonic Architecture of the Himalayan Convergent Orogen</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Tectonic Boundary</th>
+            <th>Hanging Wall Lithology</th>
+            <th>Footwall Lithology</th>
+            <th>Kinematic Nature & Deformation Style</th>
+            <th>Age of Major Activity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Indus-Yarlung Tsangpo Suture (ITSN)</strong></td>
+            <td>Trans-Himalayan (Ladakh/Gangdese Batholith)</td>
+            <td>Tethyan Himalayan Sediments (THS)</td>
+            <td>Subduction suture, ophiolite obduction, strike-slip</td>
+            <td>Late Cretaceous – Eocene (~55 Ma)</td>
+          </tr>
+          <tr>
+            <td><strong>South Tibetan Detachment (STDS)</strong></td>
+            <td>Tethyan Sedimentary Series (THS, unmetamorphosed)</td>
+            <td><strong>Higher Himalayan Crystallines (HHC)</strong></td>
+            <td><strong>Low-angle normal fault detachment (Top-to-North)</strong></td>
+            <td>Early to Middle Miocene (~22–16 Ma)</td>
+          </tr>
+          <tr>
+            <td><strong>Main Central Thrust (MCT)</strong></td>
+            <td><strong>Higher Himalayan Crystallines (HHC, High-grade)</strong></td>
+            <td><strong>Lesser Himalayan Sequence (LHS, Low-grade)</strong></td>
+            <td><strong>Ductile shear zone (Top-to-South thrust); Mylonites</strong></td>
+            <td><strong>Early to Middle Miocene (~23–16 Ma)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Main Boundary Thrust (MBT)</strong></td>
+            <td>Lesser Himalayan Sequence (Proterozoic metasediments)</td>
+            <td>Sub-Himalayan Siwalik Group (Cenozoic Molasse)</td>
+            <td>Brittle to semi-ductile reverse thrust fault</td>
+            <td>Late Miocene – Pliocene (~10–5 Ma)</td>
+          </tr>
+          <tr>
+            <td><strong>Main Frontal Thrust (MFT / HFT)</strong></td>
+            <td>Sub-Himalayan Siwalik Group (Molasse)</td>
+            <td>Indo-Gangetic Alluvium (Quaternary sediments)</td>
+            <td>Brittle emergent thrust fault, active seismogenic fault</td>
+            <td>Pleistocene to Recent (Active today!)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Critical Coulomb Wedge Taper Calculation for the Himalaya</div>
+        <p>
+          According to Davis, Suppe & Dahlen's (1983) Critical Coulomb Wedge Theory, a convergent orogenic wedge maintains dynamic stability when its critical taper angle ($\alpha + \beta$) satisfies:
+          $$\alpha + \beta = \frac{1 - \lambda_b}{1 - \lambda} \mu_b$$
+          In the Central Nepal Himalaya, the basal décollement (MHT) dips northward at $\beta = 6^\circ$, and the average topographic slope is $\alpha = 2.5^\circ$. If the pore fluid pressure ratio throughout the wedge is hydrostatic ($\lambda = 0.40$), and the basal pore fluid pressure ratio is $\lambda_b = 0.75$, calculate the effective basal friction coefficient ($\mu_b$).
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Wedge Calculation:</strong><br>
+          1. Calculate total wedge taper angle in radians:
+          $$\alpha + \beta = 2.5^\circ + 6.0^\circ = 8.5^\circ$$<br>
+          Converting to radians:
+          $$\theta = 8.5 \times \frac{\pi}{180} \approx 0.14835\text{ radians}$$<br>
+          2. Substitute pore fluid factors:
+          $$\frac{1 - \lambda_b}{1 - \lambda} = \frac{1 - 0.75}{1 - 0.40} = \frac{0.25}{0.60} \approx 0.4167$$<br>
+          3. Solve for $\mu_b$:
+          $$\alpha + \beta = 0.4167 \times \mu_b \implies \mu_b = \frac{0.14835}{0.4167} \approx \mathbf{0.356}$$<br>
+          <strong>Interpretation:</strong> The effective basal friction coefficient along the Main Himalayan Thrust is $\mu_b \approx 0.36$, indicating that high fluid pressures ($\lambda_b = 0.75$) substantially weaken the fault zone, permitting crustal overthrusting of the Higher Himalaya.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Thrust Displacement Rate and Crustal Shortening Calculation</div>
+        <p>
+          Structural reconstructions of the Main Central Thrust across the Kumaun-Garhwal Himalaya indicate a total cumulative southward heave (horizontal displacement) of $L = 140\text{ km}$. Geochronologic dating of syn-kinematic monazites indicates primary ductile thrust shearing operated from $22\text{ Ma}$ to $15\text{ Ma}$. Calculate the average ductile slip rate along the MCT in millimeters per year ($\text{mm/yr}$).
+        </p>
+        <div class="p-ans">
+          <strong>Slip Rate Derivation:</strong><br>
+          1. <strong>Time Duration ($\Delta t$):</strong>
+          $$\Delta t = 22\text{ Ma} - 15\text{ Ma} = 7.0\text{ million years} = 7.0 \times 10^6\text{ years}$$<br>
+          2. <strong>Displacement ($L$):</strong>
+          $$L = 140\text{ km} = 140 \times 10^3\text{ m} = 1.4 \times 10^8\text{ mm}$$<br>
+          3. <strong>Average Slip Rate ($v$):</strong>
+          $$v = \frac{L}{\Delta t} = \frac{1.4 \times 10^8\text{ mm}}{7.0 \times 10^6\text{ years}} = \mathbf{20.0\text{ mm/year}}$$<br>
+          <strong>Significance:</strong> During the Early-to-Middle Miocene, the MCT absorbed virtually the entire $\sim 20\text{ mm/yr}$ rate of Indo-Asian convergence prior to the forward propagation of deformation to the MBT and MFT.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: Microstructural Shear Sense in MCT Mylonites</div>
+        <p>
+          A oriented quartzofeldspathic mylonite collected from the MCT zone at Joshimath, Uttarakhand, displays S-surfaces inclined at $40^\circ$ to the North, C-surfaces dipping at $25^\circ$ to the North, and asymmetric $\sigma$-type feldspar porphyroclasts with tails extending parallel to C. Deduce the tectonic sense of shear and the transport direction of the Higher Himalayan slab.
+        </p>
+        <div class="p-ans">
+          <strong>Kinematic Deduction:</strong><br>
+          1. <strong>S-C Fabric Relationship:</strong> S-surfaces (schistosity/flattening planes) dip more steeply ($40^\circ\text{ N}$) than C-surfaces (cisaillement/shear bands, $25^\circ\text{ N}$). The acute angle between S and C ($40^\circ - 25^\circ = 15^\circ$) points in the direction of shear displacement on the hanging wall.<br>
+          2. <strong>Asymmetric Porphyroclasts:</strong> The staircase geometry of recrystallized tail mantles on $\sigma$-porphyroclasts confirms a synthetic, dextral-equivalent rotational sense when looking west.<br>
+          <strong>Conclusion:</strong> The microstructural fabric definitively proves <strong>Top-to-the-South/Southwest thrusting</strong>, representing the southward translation of the Higher Himalayan slab over India.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Channel Flow Hypothesis & Coeval Fault Operation</div>
+        <p>
+          State the fundamental premise of the "Channel Flow" model for the Higher Himalayan Crystallines (Beaumont et al., 2001) and explain how two faults with opposite senses of shear (MCT and STDS) operated simultaneously in the Miocene.
+        </p>
+        <div class="p-ans">
+          <strong>Channel Flow Synthesis:</strong><br>
+          1. <strong>Mid-Crustal Low-Viscosity Channel:</strong> High radiogenic heat production and dehydration melting in the thickened Tibetan/Himalayan crust generated widespread leucogranitic partial melts, drastically lowering the effective viscosity of the middle crust ($10^{18}\text{--}10^{19}\text{ Pa}\cdot\text{s}$) to form a ductile channel.<br>
+          2. <strong>Extrusion Between Opposing Faults:</strong> Gravitational potential energy gradients drove the ductile channel southward toward the low-pressure foreland. The extruded slab was bounded by:
+             - <strong>MCT at the Base:</strong> Top-to-the-South <em>thrust shear zone</em>.<br>
+             - <strong>STDS at the Top:</strong> Top-to-the-North <em>normal detachment fault</em>.<br>
+          3. Coeval movement on both faults (~22–16 Ma) allowed the Higher Himalayan crystalline slab to extrude like toothpaste onto the Indian plate.
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Inverted Metamorphism: 1D Thermal Diffusion Modeling</div>
+        <p>
+          Assume a hot metamorphic slab (HHC) at initial temperature $T_1 = 750^\circ\text{C}$ is instantaneously thrust over a cold footwall (LHS) at initial temperature $T_0 = 150^\circ\text{C}$ along the MCT. Using the 1D conduction equation across an infinite step contact, calculate the immediate contact temperature ($T_{\text{contact}}$) and explain why the footwall exhibits an inverted thermal gradient.
+        </p>
+        <div class="p-ans">
+          <strong>Thermal Analytical Solution:</strong><br>
+          Assuming equivalent thermal conductivity and diffusivity in both units:
+          $$T_{\text{contact}} = \frac{T_1 + T_0}{2} = \frac{750^\circ\text{C} + 150^\circ\text{C}}{2} = \frac{900}{2} = \mathbf{450^\circ\text{C}}$$<br>
+          - <strong>Temperature Profile:</strong> Directly beneath the contact, heat diffuses downward into the footwall according to the error function:
+          $$T(z, t) = T_{\text{contact}} - (T_{\text{contact}} - T_0) \text{erf}\left(\frac{z}{2\sqrt{\kappa t}}\right)$$<br>
+          - <strong>Inverted Gradient:</strong> The uppermost footwall reaches $450^\circ\text{C}$ (amphibolite/garnet grade), while deeper footwall levels ($z > 5\text{ km}$) remain at lower ambient temperatures ($< 250^\circ\text{C}$). This transient inverted thermal profile bakes the footwall rocks in an inverted sequence from sillimanite/kyanite near the fault down to chlorite at deeper stratigraphic levels.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Geochronologic Dating of Thrusting via Syn-Kinematic Monazites</div>
+        <p>
+          Why is in-situ U-Th-Pb dating of monazite grains enclosed within syn-kinematic garnet and kyanite porphyroblasts superior to Ar-Ar dating of muscovite for determining the exact timing of MCT movement?
+        </p>
+        <div class="p-ans">
+          <strong>Geochronological Principles:</strong><br>
+          - <strong>Monazite Closure Temperature:</strong> Monazite has an exceptionally high U-Th-Pb closure temperature ($T_c > 800\text{--}900^\circ\text{C}$), which is higher than peak MCT metamorphism. Chemical zoning and inclusions aligned with the mylonitic foliation directly date metamorphic crystal growth during active ductile thrusting ($23\text{--}16\text{ Ma}$).<br>
+          - <strong>Muscovite Ar-Ar Limitation:</strong> Argon in muscovite has a low closure temperature of only $T_c \approx 350\text{--}400^\circ\text{C}$. In high-grade terrains, muscovite continues to lose radiogenic $^{40}\text{Ar}$ by volume diffusion long after thrusting ceases, recording only the timing of late exhumation and cooling below $350^\circ\text{C}$ ($< 12\text{--}8\text{ Ma}$), rather than the onset of thrust motion.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Valdiya's Vaikrita vs. Munsiari Formations</div>
+        <p>
+          In the Kumaun Himalaya, contrast the lithological and metamorphic characteristics of the Munsiari Formation (MCT-I hanging wall) and the Vaikrita Group (MCT-II hanging wall).
+        </p>
+        <div class="p-ans">
+          <strong>Stratigraphic & Metamorphic Contrast:</strong><br>
+          - <strong>Munsiari Formation (Between MCT-I and MCT-II):</strong> Composed of chlorite-sericite schists, biotite phyllites, highly sheared mylonitic augen gneisses, and amphibolites. Represents sheared basement rocks metamorphosed at green-schist to lower amphibolite facies ($T \approx 450\text{--}550^\circ\text{C}$).<br>
+          - <strong>Vaikrita Group (True HHC above MCT-II):</strong> Composed of coarse-grained garnet-kyanite-sillimanite psammitic gneisses, calc-silicate marbles, migmatites, and tourmaline leucogranite intrusions. Represents high-grade upper amphibolite to granulite facies ($T \approx 650\text{--}780^\circ\text{C}$, $P \approx 8\text{--}11\text{ kbar}$).
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Seismic Hazards and the Main Himalayan Thrust (MHT) Ramp</div>
+        <p>
+          Geodetic GPS measurements reveal that the Main Himalayan Thrust is completely locked from the surface down to a depth of $\sim 15\text{--}18\text{ km}$, accumulating an elastic slip deficit of $18\text{ mm/yr}$. If a mid-crustal ramp exists beneath the High Himalayan front, explain how it controls the nucleation and rupture of great Himalayan earthquakes.
+        </p>
+        <div class="p-ans">
+          <strong>Seismotectonic Mechanism:</strong><br>
+          1. <strong>The MHT Mid-Crustal Ramp:</strong> Geophysical imaging shows the basal MHT décollement is nearly flat beneath the Ganga Basin and Sub-Himalaya, steepens into a prominent ramp dipping at $\sim 15\text{--}20^\circ$ beneath the front of the Higher Himalaya, and flattens again into a ductile horizontal shear zone beneath Tibet.<br>
+          2. <strong>Stress Concentration & Nucleation:</strong> The transition from ductile creep at depth to brittle stick-slip behavior occurs precisely at this mid-crustal ramp (coinciding with the $350^\circ\text{C}$ isotherm). Elastic strain accumulates at the ramp updip boundary, where great ruptures (such as the $M_w 7.8$ Gorkha earthquake in 2015) nucleate and propagate southward toward the MBT and MFT.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

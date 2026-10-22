@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q85: Lamprophyre Petrography - Panidiomorphic Texture | OPSC Geology 2021 Masterclass</title>
+<title>Q085: Igneous Petrology: Lamprophyre Petrography & Panidiomorphic Texture | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,220 +89,624 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q85" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Igneous Petrology</div>
-    <h1>Q85: Lamprophyre Petrography - Panidiomorphic Texture</h1>
+    <div class="badge">GEO - 2/21 • Igneous Petrology & Lamprophyre Dike Suites</div>
+    <h1>Q085: Lamprophyre Petrography: Panidiomorphic (Lamprophyric) Texture</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> K.M. Bangar (Principles of Engineering Geology, Ch. 5, p. 165, 178); Winter (Ch. 2)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 85<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, Ch. 5: Petrology / Igneous Rocks, pp. 82, 165, 178); John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Ch. 2: Classification of Igneous Rocks / Lamprophyres); N.M.S. Rock, <em>Lamprophyres</em> (Blackie & Son / Springer); G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 120–122).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Petrological Identification</h3>
-<div class="question-box">
-  <p><strong>Question 85:</strong> The characteristic texture of lamprophyres is :</p>
-  <ul>
-    <li>(A) Allotriomorphic</li>
-    <li>(B) Panidiomorphic</li>
-    <li>(C) Xenomorphic</li>
-    <li>(D) Hypidiomorphic</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(B) Panidiomorphic</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q85/bangar_p178_lamprophyre_panidiomorphic.png" alt="Lamprophyre Petrography and Panidiomorphic Texture (K.M. Bangar, p. 178)">
-      <figcaption>
-        <strong>Figure 85.1: Lamprophyre Petrography and Panidiomorphic Texture (K.M. Bangar, <em>Principles of Engineering Geology</em>, Chapter 5, Section 5.6.3 & 5.14, p. 165 & 178 / Sheets 89 & 96).</strong> Authentic textbook cut from K.M. Bangar defining panidiomorphic texture: <em>"When almost all the mineral grains in an igneous rock develop idiomorphic (euhedral) crystal boundaries, the texture is called panidiomorphic. This texture is typical of lamprophyres (minette, vogesite, kersantite)."</em>
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: DEFINITION AND PETROGRAPHIC RULES OF LAMPROPHYRES -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition & Fundamental Petrographic Rules of the Lamprophyre Clan</div>
+    <div class="card-body">
+      <p>
+        The term <strong>lamprophyre</strong> was introduced in 1874 by C.W. von Gümbel (derived from the Greek <em>lampros</em> = bright or glistening, and <em>phyro</em> = to mingle or mix), describing the glistening, sparkling reflection of abundant, freshly cleaved mica (biotite/phlogopite) phenocrysts in hand specimens.
+      </p>
+      <p>
+        Lamprophyres are a clan of melanocratic, volatile-rich hypabyssal porphyritic dike rocks characterized by <strong>two iron-clad petrographic rules</strong> (Rock, 1991):
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q85/bangar_p178_lamprophyre_panidiomorphic.png" alt="Lamprophyre Petrography and Panidiomorphic Texture from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 85.1 — Petrographic Thin Section of Panidiomorphic Texture in Lamprophyre:</strong> Authentic textbook diagram from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 178). Depicting beautifully formed, sharp euhedral phenocrysts of biotite and hornblende set in a fine-grained, euhedral groundmass of feldspars and mafic minerals.
+        </div>
+      </div>
+
+      <h4>The Two Cardinal Rules of Lamprophyre Petrography</h4>
+      <ol>
+        <li><strong>Phenocrysts are Exclusively Mafic:</strong> Phenocrysts consist solely of dark ferromagnesian minerals—<strong>biotite/phlogopite, amphibole (hornblende, kaersutite), clinopyroxene (diopside, titanaugite), and/or olivine</strong>. <em>Feldspars NEVER occur as phenocrysts!</em> Feldspars (orthoclase, sanidine, or plagioclase) and feldspathoids are strictly confined to the fine-grained groundmass.</li>
+        <li><strong>Panidiomorphic (Lamprophyric) Texture:</strong> An extraordinary, hallmark texture where an overwhelming percentage of <strong>both the phenocrysts AND the groundmass mineral grains exhibit sharp, perfect, euhedral crystal faces</strong> (idiomorphic forms).</li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q85/bangar_p82_lamprophyre_panidiomorphic.png" alt="Panidiomorphic Texture Definition from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 85.2 — Classification of Crystallinity and Crystal Form:</strong> Authentic textbook scan from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 82). Showing the distinction between panidiomorphic, hypidiomorphic, and allotriomorphic textures.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: KINETICS OF PANIDIOMORPHIC TEXTURE -->
+  <div class="card">
+    <div class="card-header bg-indigo">2. Crystallization Kinetics: Why Lamprophyres are Panidiomorphic</div>
+    <div class="card-body">
+      <p>
+        In typical igneous rocks (e.g., granite or basalt), groundmass crystals interfere with one another during rapid late crystallization, producing irregular, subhedral or anhedral grain boundaries (hypidiomorphic or intersertal textures). Why, then, do lamprophyre groundmass crystals develop <strong>perfect euhedral faces</strong>?
+      </p>
+
+      <h4>The Volatile-Fluxing Depolymerization Mechanism</h4>
+      <ul>
+        <li><strong>Ultra-High Volatile Fugacity ($H_2O, CO_2, F, P$):</strong> Lamprophyric magmas are water- and carbon-dioxide-saturated melts containing up to $3\text{--}8\text{ wt}\% H_2O$ and high dissolved carbonate, fluorine, and phosphorus.</li>
+        <li><strong>Viscosity Collapse:</strong> Dissolved water and halogens violently depolymerize the silicate melt network, severing bridging oxygens ($Si\text{--}O\text{--}Si \to 2 Si\text{--}OH$). This reduces magma viscosity by orders of magnitude ($\eta \approx 0.1\text{--}1.0\text{ Pa}\cdot\text{s}$), transforming the melt into a fluid, watery medium.</li>
+        <li><strong>High Ionic Diffusivity:</strong> In this ultra-fluid medium, ionic diffusion rates are astronomical. Crystals nucleate and grow rapidly in unhindered suspension, allowing crystal faces to achieve their low-energy, rational crystallographic planes (euhedral / idiomorphic geometry) before the remaining liquid freezes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 3: CLASSIFICATION OF THE LAMPROPHYRE CLAN -->
+  <div class="card">
+    <div class="card-header bg-emerald">3. Systematic Classification of Lamprophyres (IUGS / Rock, 1991)</div>
+    <div class="card-body">
+      <p>
+        Lamprophyres are divided into three primary branches based on their essential mafic minerals and groundmass felsic constituents:
+      </p>
+
+      <h4>1. Calc-Alkaline Lamprophyres (Shoshonitic Association)</h4>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Dominant Mafic Phenocryst</th>
+            <th>Groundmass Dominant Feldspar: K-Feldspar</th>
+            <th>Groundmass Dominant Feldspar: Plagioclase</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Biotite / Phlogopite</strong></td>
+            <td><strong>MINETTE</strong> ($\text{Biotite} + \text{Orthoclase}$)</td>
+            <td><strong>KERSANTITE</strong> ($\text{Biotite} + \text{Plagioclase}$)</td>
+          </tr>
+          <tr>
+            <td><strong>Amphibole (Hornblende)</strong></td>
+            <td><strong>VOGESITE</strong> ($\text{Hornblende} + \text{Orthoclase}$)</td>
+            <td><strong>SPESSARTITE</strong> ($\text{Hornblende} + \text{Plagioclase}$)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>2. Alkaline Lamprophyres</h4>
+      <ul>
+        <li><strong>Camptonite:</strong> Phenocrysts of brown titaniferous hornblende (kaersutite) and titanaugite set in a plagioclase-dominant groundmass.</li>
+        <li><strong>Monchiquite:</strong> Feldspar-free alkaline lamprophyre! Phenocrysts of titanaugite, kaersutite, and olivine set in an isotropic groundmass of <strong>analcime</strong> or volcanic glass.</li>
+        <li><strong>Sannaite:</strong> Phenocrysts of titanaugite and biotite in an alkali feldspar-dominant groundmass.</li>
+      </ul>
+
+      <h4>3. Ultramafic Lamprophyres</h4>
+      <p>
+        Melilite-bearing rocks such as <strong>Alnöite</strong> and <strong>Polzenite</strong>, forming transitional links to kimberlites and carbonatites.
+      </p>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q85. The characteristic texture of lamprophyres is :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Allotriomorphic</div>
-        <div class="opt-item correct"><strong>(B)</strong> Panidiomorphic</div>
-        <div class="opt-item "><strong>(C)</strong> Xenomorphic</div>
-        <div class="opt-item "><strong>(D)</strong> Hypidiomorphic</div>
+  
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Official Examination Question</div>
+    <div class="card-body">
+      <div class="question-box">
+        <div class="q-num">Question 85</div>
+        <div class="q-text">The characteristic texture of lamprophyres is :</div>
+        <div class="q-options">
+          <div class="opt-node">(A) Allotriomorphic</div>
+          <div class="opt-node correct">(B) Panidiomorphic</div>
+          <div class="opt-node">(C) Xenomorphic</div>
+          <div class="opt-node">(D) Hypidiomorphic</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        <div class="ans-badge">CORRECT ANSWER: (B)</div>
+        <div><strong>Panidiomorphic:</strong> The diagnostic texture of lamprophyres (also termed lamprophyric texture), wherein a very high percentage of both the mafic phenocrysts and the groundmass minerals exhibit complete, sharp, euhedral (idiomorphic) crystal outlines.</div>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Lamprophyric & Panidiomorphic Textures</h3>
-<p>
-<strong>Lamprophyres</strong> are melanocratic, porphyritic, volatile-rich hypabyssal dyke rocks containing abundant phenocrysts of mafic minerals (biotite, phlogopite, amphibole, or pyroxene) and devoid of felsic phenocrysts (feldspars and feldspathoids are strictly confined to the groundmass).
-</p>
-<ul>
-  <li><strong>Panidiomorphic Texture:</strong> A texture in which nearly all mineral components, both in the phenocryst and matrix generations, show well-formed, idiomorphic (euhedral) crystal boundaries. In lamprophyres, this is often called the <em>lamprophyric texture</em>.</li>
-  <li><strong>Hypidiomorphic (Granitic) Texture:</strong> Subhedral texture with some minerals showing crystal faces and others anhedral, standard for granites and diorites.</li>
-  <li><strong>Allotriomorphic / Xenomorphic Texture:</strong> A texture where virtually all mineral grains are anhedral (lacking crystal faces), typical of aplites and quartzites.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC CARD -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis of Answer Choices</div>
+    <div class="card-body">
+      <div class="option wrong">
+        <div class="opt-title">(A) Allotriomorphic — INCORRECT</div>
+        <p>
+          <em>Allotriomorphic</em> (or aplitic/sugary texture) describes a texture where almost all mineral grains are completely anhedral (lacking rational crystal faces), typically formed in granitic aplites, quartzites, and marbles.
+        </p>
+      </div>
+
+      <div class="option correct">
+        <div class="opt-title">(B) Panidiomorphic — CORRECT</div>
+        <p>
+          <em>Panidiomorphic texture</em> (from Greek <em>pan</em> = all, <em>idios</em> = own/distinct, <em>morphe</em> = form) is the universal, defining petrographic hallmark of the lamprophyre clan. Driven by high volatile fugacity ($H_2O, CO_2, F$) and low melt viscosity, virtually all constituent minerals—both the dark mafic phenocrysts and the fine groundmass laths—crystallize with perfect, sharp euhedral boundaries (Bangar, p. 82, 178; Winter, 2014, p. 43; Rock, 1991).
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(C) Xenomorphic — INCORRECT</div>
+        <p>
+          <em>Xenomorphic</em> is an exact synonym for allotriomorphic or anhedral. Minerals have irregular, mutual boundaries dictated by crowding against neighboring grains.
+        </p>
+      </div>
+
+      <div class="option wrong">
+        <div class="opt-title">(D) Hypidiomorphic — INCORRECT</div>
+        <p>
+          <em>Hypidiomorphic (or granitic) texture</em> is the common texture of standard plutonic rocks (like granite and diorite), where some minerals (like zircon, apatite, biotite) are euhedral to subhedral, but the later-crystallizing minerals (quartz and alkali feldspar) are anhedral, filling interstitial spaces.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option B (Panidiomorphic) is correct:</strong> Textbook diagnostic hallmark of all lamprophyres.</li>
-  <li><strong>Option A & C (Allotriomorphic / Xenomorphic):</strong> Completely anhedral grains; characteristic of aplites (aplitic texture), opposite of lamprophyres.</li>
-  <li><strong>Option D (Hypidiomorphic):</strong> Partially euhedral, common in plutonic rocks like granite, not the exclusive hallmark of lamprophyres.</li>
-</ul>
+  
+  <!-- SYNTHESIS TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Systematic Comparison: Grain Boundary Morphology Terms in Petrology</div>
+    <div class="card-body">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Textural Term</th>
+            <th>Synonym</th>
+            <th>Crystal Face Development</th>
+            <th>Physical Mechanism</th>
+            <th>Canonical Rock Types</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Panidiomorphic</strong></td>
+            <td><strong>Lamprophyric / Automorphic</strong></td>
+            <td><strong>$> 80\text{--}90\%$ of crystals are fully Euhedral (Idiomorphic)</strong></td>
+            <td>Low viscosity, volatile-rich ($H_2O, CO_2$) melt allowing unconstrained growth</td>
+            <td><strong>Lamprophyres (Minette, Kersantite, Spessartite, Camptonite)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Hypidiomorphic</strong></td>
+            <td>Subhedral / Granitic texture</td>
+            <td>Mixture of euhedral, subhedral, and anhedral grains</td>
+            <td>Sequential cotectic crystallization in moderate-viscosity plutonic melts</td>
+            <td>Granite, Granodiorite, Diorite, Syenite</td>
+          </tr>
+          <tr>
+            <td><strong>Allotriomorphic</strong></td>
+            <td>Xenomorphic / Anhedral / Aplitic</td>
+            <td>Nearly all crystals are irregular and Anhedral (zero crystal faces)</td>
+            <td>Simultaneous rapid crystallization of late, highly viscous eutectic melts</td>
+            <td>Aplite, Granulite, Marble, Quartzite</td>
+          </tr>
+          <tr>
+            <td><strong>Porphyritic</strong></td>
+            <td>Phyric</td>
+            <td>Bimodal grain size: Large phenocrysts in fine-grained groundmass</td>
+            <td>Two-stage cooling history (slow deep incubation followed by rapid ascent)</td>
+            <td>Porphyritic Andesite, Rhyolite, Basalt</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- WORKED PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Analytical & Quantitative Practice Problems</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-card">
+        <div class="p-header">Problem 1: Calc-Alkaline Lamprophyre Identification Matrix</div>
+        <p>
+          A hypabyssal dike rock in the Damodar Valley coalfields of India displays a panidiomorphic texture with abundant euhedral phenocrysts of glistening phlogopitic biotite. In thin section, the fine-grained groundmass consists predominantly of euhedral orthoclase feldspar and minor carbonate, with zero plagioclase. Classify this lamprophyre into its specific variety.
+        </p>
+        <div class="p-ans">
+          <strong>Step-by-Step Petrographic Deduction:</strong><br>
+          1. <strong>Mafic Phenocryst Phase:</strong> Biotite / Phlogopite.<br>
+          2. <strong>Felsic Groundmass Mineralogy:</strong> Potassium feldspar (Orthoclase) dominant; plagioclase absent.<br>
+          3. <strong>Classification Scheme (IUGS / Rock, 1991):</strong><br>
+             - $\text{Biotite} + \text{Orthoclase} \implies \mathbf{MINETTE}$<br>
+             - $\text{Biotite} + \text{Plagioclase} \implies \text{Kersantite}$<br>
+             - $\text{Hornblende} + \text{Orthoclase} \implies \text{Vogesite}$<br>
+             - $\text{Hornblende} + \text{Plagioclase} \implies \text{Spessartite}$<br>
+          <strong>Conclusion:</strong> The rock is definitively a <strong>Minette</strong>, the most widespread mica-lamprophyre in continental rift and Gondwana coalfield dike swarms.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-card">
+        <div class="p-header">Problem 2: Ocelli Structures and Liquid Immiscibility in Lamprophyres</div>
+        <p>
+          Lamprophyres frequently contain rounded, spherical or globular patches (1 to 10 mm in diameter) termed <em>ocelli</em>, consisting of light-colored analcime, calcite, and alkali feldspar surrounded by tangential biotite plates. Contrast the two primary genetic hypotheses for the origin of ocelli.
+        </p>
+        <div class="p-ans">
+          <strong>Genetic Hypotheses:</strong><br>
+          1. <strong>Liquid Immiscibility (Silicate-Carbonate/Foid Unmixing):</strong> The volatile-rich, water- and $CO_2$-saturated lamprophyric magma unmixes into two immiscible liquid droplets during late cooling: a host ultrabasic mafic liquid and conjugate globular droplets of alkaline-carbonate or felsic melt (ocelli).<br>
+          2. <strong>Amygdaloidal Vapor Segregation:</strong> Ocelli represent late-stage magmatic gas bubbles (vesicles) into which residual, hydrous, highly fractionated pegmatitic/deuteric interstitial silicate-carbonate liquids were squeezed under gas overpressure.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-card">
+        <div class="p-header">Problem 3: Chemical Paradox of Lamprophyres (High Mg# with High LREE/LILE)</div>
+        <p>
+          Explain the famous "geochemical paradox" of lamprophyres: Why do they simultaneously possess primitive mantle characteristics ($Mg\# > 70$, $Ni > 300\text{ ppm}$, $Cr > 600\text{ ppm}$) AND ultra-enriched crustal characteristics ($K_2O > 4\%$, $Ba > 2000\text{ ppm}$, $Sr > 1500\text{ ppm}$, $(\text{La/Yb})_N > 30$)?
+        </p>
+        <div class="p-ans">
+          <strong>Petrogenetic Explanation:</strong><br>
+          - <strong>Primitive Signature:</strong> The high $Mg\#$, $Ni$, and $Cr$ confirm that lamprophyre magmas are primary mantle melts derived directly from peridotite that did not undergo extensive crustal fractional crystallization.<br>
+          - <strong>Enriched Signature:</strong> The extraordinary enrichment in Large Ion Lithophile Elements (LILE: $K, Ba, Sr$) and Light Rare Earth Elements (LREE) is caused by <strong>extreme low-degree partial melting ($F < 1\text{--}3\%$) of an ancient, metasomatized mantle lithosphere</strong>. Subduction-derived hydrous fluids or carbonatitic melts previously metasomatized the mantle wedge, precipitating veins of phlogopite, apatite, and titanaugite (glimmerite). Melting of these metasomatic veins generated the enriched primary lamprophyre liquid.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-card">
+        <div class="p-header">Problem 4: Monchiquite vs. Camptonite Differentiation</div>
+        <p>
+          Under petrographic inspection, an alkaline lamprophyre displays titanaugite and kaersutite phenocrysts set in an isotropic, low-relief groundmass devoid of crystalline feldspar laths. Distinguish whether this is a camptonite or a monchiquite.
+        </p>
+        <div class="p-ans">
+          <strong>Diagnostic Petrography:</strong><br>
+          - <strong>Camptonite:</strong> The groundmass is dominated by crystalline laths of <strong>plagioclase feldspar</strong> (andesine/labradorite).<br>
+          - <strong>Monchiquite:</strong> The groundmass is <strong>completely free of feldspar</strong>, composed instead of isotropic <strong>analcime ($\text{NaAlSi}_2\text{O}_6\cdot\text{H}_2\text{O}$)</strong>, nepheline, or devitrified hydrous volcanic glass.<br>
+          <strong>Conclusion:</strong> The isotropic, feldspar-free groundmass confirms the rock is a <strong>Monchiquite</strong>.
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-card">
+        <div class="p-header">Problem 5: Tectonic Setting of Gondwana Coalfield Lamprophyre Dike Swarms</div>
+        <p>
+          In the Damodar Valley Gondwana coalfields (Jharia, Raniganj, Bokaro), mica-lamprophyre dikes and sills (minettes) intrude and "bake" Permian coal seams into natural coke (jhama). State the geological age of this lamprophyre magmatism and its geodynamic trigger.
+        </p>
+        <div class="p-ans">
+          <strong>Regional Indian Geology:</strong><br>
+          - <strong>Geological Age:</strong> Early Cretaceous ($\sim 115\text{--}120\text{ Ma}$, K-Ar and $^{40}\text{Ar}/^{39}\text{Ar}$ dating).<br>
+          - <strong>Geodynamic Trigger:</strong> The Rajmahal-Kerguelen mantle plume event and associated rifting along the Damodar graben during the breakup of Eastern Gondwana. The lamprophyres represent deep, volatile-rich alkaline melts channelized along pre-existing basement faults.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-card">
+        <div class="p-header">Problem 6: Viscosity and Diffusion Scaling in Panidiomorphic Growth</div>
+        <p>
+          Using the Stokes-Einstein equation ($D = \frac{k_B T}{6\pi \eta r}$), compare the ionic diffusivity ($D$) of silica in a dry rhyolitic melt ($\eta = 10^7\text{ Pa}\cdot\text{s}$) with that in a water-saturated lamprophyric melt ($\eta = 0.5\text{ Pa}\cdot\text{s}$) at $T = 1000^\circ\text{C}$ (1273 K).
+        </p>
+        <div class="p-ans">
+          <strong>Diffusivity Comparison:</strong><br>
+          Since $D \propto \frac{1}{\eta}$ at constant temperature and ionic radius:<br>
+          $$\frac{D_{\text{lamprophyre}}}{D_{\text{rhyolite}}} = \frac{\eta_{\text{rhyolite}}}{\eta_{\text{lamprophyre}}} = \frac{10^7\text{ Pa}\cdot\text{s}}{0.5\text{ Pa}\cdot\text{s}} = \mathbf{2.0 \times 10^7}$$<br>
+          <strong>Significance:</strong> Ions diffuse <strong>twenty million times faster</strong> in the low-viscosity, volatile-rich lamprophyric melt, completely explaining why crystal faces can grow unconstrained into perfect euhedral (panidiomorphic) forms.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-card">
+        <div class="p-header">Problem 7: Optical Mineralogy: Zoned Phlogopite in Minettes</div>
+        <p>
+          In minette thin sections, phlogopite phenocrysts frequently exhibit spectacular reverse pleochroic rims (tetraferriphlogopite rims). Describe the optical change and explain its crystal-chemical cause.
+        </p>
+        <div class="p-ans">
+          <strong>Crystal-Chemical Description:</strong><br>
+          - <strong>Normal Phlogopite Core:</strong> Standard pleochroic scheme: absorption is greatest parallel to cleavage ($\gamma \approx \beta > \alpha$; dark brown/red-brown parallel to horizontal crosshair).<br>
+          - <strong>Tetraferriphlogopite Rim:</strong> Shows <strong>abnormal / reverse pleochroism</strong>: absorption is greatest <em>perpendicular</em> to cleavage ($\alpha > \beta \approx \gamma$; dark orange-red perpendicular to cleavage, pale yellow parallel to cleavage).<br>
+          - <strong>Cause:</strong> In highly oxidized, peralkaline, silica-undersaturated residual melts, aluminium is deficient, forcing ferric iron ($\text{Fe}^{3+}$) to enter the <strong>tetrahedral $Z$-sites</strong> normally reserved for $Al^{3+}$ and $Si^{4+}$.
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-card">
+        <div class="p-header">Problem 8: Lamprophyre vs. Lamproite vs. Kimberlite</div>
+        <p>
+          Clarify the taxonomic distinction between Lamprophyres, Lamproites, and Kimberlites, especially regarding diamond-bearing potential.
+        </p>
+        <div class="p-ans">
+          <strong>Taxonomic Distinction (IUGS / Mitchell, 1995):</strong><br>
+          - <strong>Lamprophyre (Broad Clan):</strong> Typically calc-alkaline to alkaline; contains essential plagioclase or orthoclase in groundmass; rarely diamondiferous (except ultramafic varieties like aillikites).<br>
+          - <strong>Lamproite:</strong> Ultra-potassic, peralkaline volcanic/hypabyssal rock containing titanium-rich phlogopite, richterite, jeppeite, and wadeite. Can be economically diamondiferous (e.g., Argyle diamond pipe, Australia; Majhgawan pipe, Panna, India).<br>
+          - <strong>Kimberlite:</strong> Inequigranular ultramafic rock containing megacrysts of picroilmenite, pyrope garnet, and olivine in a carbonate-serpentine groundmass. Primary terrestrial host of diamonds worldwide.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
