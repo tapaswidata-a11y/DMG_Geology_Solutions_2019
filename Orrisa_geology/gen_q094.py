@@ -1,0 +1,284 @@
+#!/usr/bin/env python3
+"""
+Q094 Generator: Spheroidal Weathering & Concentric Exfoliation along Joints
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q094():
+    title = r"Q094: Physical & Chemical Weathering: Spheroidal Weathering & Concentric Exfoliation | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Geomorphology & Weathering Processes"
+    h1_title = "Q094: Spheroidal Weathering: Joint-Controlled Chemical Weathering & Concentric Exfoliation"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 94<br>
+<strong>Authoritative References:</strong> K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, Ch. 2: Geological Work of Atmosphere / Weathering, pp. 20–26; Fig. 2.5); G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 52–56); Arthur Holmes, <em>Principles of Physical Geology</em>; E.J. Tarbuck, F.K. Lutgens, and D. Tasa, <em>Earth: An Introduction to Physical Geology</em> (Pearson)."""
+
+    part1 = r"""
+  <!-- CARD 1: MECHANISM OF SPHEROIDAL WEATHERING -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Kinetics & Geometric Mechanics of Spheroidal Weathering</div>
+    <div class="card-body">
+      <p>
+        <strong>Spheroidal weathering</strong> (also termed <em>concentric weathering</em>, <em>onion-skin weathering</em>, or <em>woolsack weathering</em>) is a distinctive form of chemical weathering that attacks jointed, massive crystalline rock bodies (such as granite, dolerite, basalt, and gabbro), systematically converting angular, rectangular joint blocks into spherical or ellipsoidal corestones and rounded boulders.
+      </p>
+      <p>
+        According to K.M. Bangar (<em>Principles of Engineering Geology</em>, pp. 20–26) and Arthur Holmes (<em>Physical Geology</em>), the process operates through a combination of <strong>joint-controlled fluid percolation</strong>, <strong>differential corner-and-edge attack</strong>, and <strong>volumetric expansion during mineral hydration</strong>:
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q94/bangar_p26_spheroidal_weathering_exfoliation.png" alt="Spheroidal Weathering and Joint Infiltration from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 94.1 — Mechanism of Spheroidal Weathering:</strong> Authentic textbook diagram from K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 26). Groundwater moves along intersecting vertical and horizontal joints, attacking corners from three sides and edges from two sides. Concentric shells peel away, leaving rounded central corestones.
+        </div>
+      </div>
+
+      <h4>Geometric Kinetics: Differential Area-to-Volume Weathering</h4>
+      <p>
+        When a massive crystalline igneous rock is dissected by three mutually perpendicular joint sets (two vertical orthogonal sets and one horizontal sheet/bedding set), it is divided into rectangular or cubic blocks. As meteoric groundwater charged with dissolved $\text{CO}_2$ and organic acids infiltrates along these joint apertures:
+      </p>
+      <ul>
+        <li><strong>Corners (3-Face Attack):</strong> The corners of the block are simultaneously exposed to chemical attack along <strong>three intersecting planar faces</strong> ($X, Y, \text{and } Z$). Consequently, the surface-area-to-volume ratio at the corners is maximized, causing chemical dissolution and hydration to proceed at approximately <strong>three times the rate</strong> of flat surfaces.</li>
+        <li><strong>Edges (2-Face Attack):</strong> The edges of the block are exposed to chemical weathering along <strong>two intersecting planar faces</strong>, wearing down at approximately twice the rate of planar surfaces.</li>
+        <li><strong>Flat Faces (1-Face Attack):</strong> The central planar surfaces of the blocks are exposed from only <strong>one direction</strong>, weathering slowest.</li>
+      </ul>
+      <p>
+        As corners and edges are rapidly rounded off, the minimum energy surface geometry (a sphere) is progressively approached.
+      </p>
+    </div>
+  </div>
+
+  <!-- CARD 2: CONCENTRIC SPALLING & ENGINEERING RELEVANCE -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Concentric Spalling (Exfoliation) & Engineering Rock Mass Hazard</div>
+    <div class="card-body">
+      <h4>Volume Expansion and Concentric Spalling</h4>
+      <p>
+        The physical peeling of concentric curved shells (exfoliation) during spheroidal weathering is driven by an internal <strong>chemical-mineralogical volume expansion</strong>:
+      </p>
+      <ol>
+        <li>Primary anhydrous silicate minerals (feldspars, pyroxenes, olivine) undergo chemical <strong>hydration and hydrolysis</strong> upon contact with infiltrating moisture:
+          $$\text{Primary Silicates (Feldspar/Pyroxene)} + \text{H}_2\text{O} + \text{H}^+ \rightarrow \text{Secondary Hydrous Clays (Kaolinite/Smectite)} + \text{Cations}$$
+        </li>
+        <li>The neoformed clay minerals and hydrated iron oxides occupy a significantly larger molar volume than the unweathered primary parent minerals (volume increase typically $20\text{--}60\%$).</li>
+        <li>This volumetric swelling generates high <strong>internal tensile stresses</strong> in the outer weathered rind. Because crystalline rocks possess very low tensile strength ($5\text{--}15\text{ MPa}$), concentric tensile micro-fractures propagate parallel to the outer surface of the block.</li>
+        <li>Successive concentric shells of decomposed rock (saprolite rinds) detach and spall off sequentially like the layers of an onion, leaving an unweathered, dense spherical corestone in the center.</li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q94/bangar_p20_spheroidal_weathering_exfoliation.png" alt="Exfoliation and Mechanical Weathering from K.M. Bangar">
+        <div class="figure-caption">
+          <strong>Figure 94.2 — Exfoliation and Concentric Peeling in Crystalline Rocks:</strong> Authentic diagram from K.M. Bangar (p. 20), depicting the spalling of curved shells from granite outcrops due to combined thermal, unloading, and chemical weathering processes.
+        </div>
+      </div>
+
+      <h4>Engineering Hazards of Spheroidal Weathering</h4>
+      <ul>
+        <li><strong>False Bedrock Misidentification:</strong> In geotechnical drilling and foundation investigation, a borehole penetrating a large unweathered corestone ($1\text{--}3\text{ m}$ diameter) embedded in surrounding soft, highly decomposed clayey saprolite may falsely record sound "fresh bedrock," leading to catastrophic foundation settlement or piling failure if the corestone sits on compressible clay.</li>
+        <li><strong>Slope Instability and Rockfalls:</strong> As erosional surface wash or excavation removes the soft weathered saprolite matrix, spheroidal corestones become perched boulder hazards (tors and balanced rocks) that easily mobilize as rockfalls and debris avalanches during seismic events or monsoon storms.</li>
+      </ul>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 94:</strong> A type of exfoliation due to weathering that produces rounded features when chemical weathering moves along joints in the bed is called :
+      </div>
+      <div class="options-grid">
+        <div class="option-item correct-option"><strong>(A)</strong> spheroidal weathering</div>
+        <div class="option-item"><strong>(B)</strong> frost wedging</div>
+        <div class="option-item"><strong>(C)</strong> mechanical weathering</div>
+        <div class="option-item"><strong>(D)</strong> Both (A) and (C) are correct</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(A) spheroidal weathering</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-correct">
+        <div class="option-badge opt-a">Option (A) Confirmed — Spheroidal Weathering</div>
+        <p>
+          <strong>Correct:</strong> By exact textbook definition (Bangar, p. 26; Mahapatra, p. 54; Tarbuck & Lutgens, p. 165), <strong>spheroidal weathering</strong> is the specific geological weathering process in which chemical weathering moves inward along intersecting joints in crystalline bedrock, decomposing corners and edges faster than planar surfaces and producing concentric exfoliation rinds around rounded boulders and corestones. The question's description precisely matches this phenomenon.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Frost Wedging</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Frost wedging (gelifraction)</strong> is a strictly <strong>physical/mechanical</strong> weathering mechanism driven by the $9\%$ volumetric expansion of water freezing to ice inside fractures. It does not produce rounded features; on the contrary, it produces sharply angular, jagged rock shards, scree, and talus cones. Furthermore, it operates without chemical decomposition moving along joints.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Mechanical Weathering</div>
+        <p>
+          <strong>Incorrect:</strong> <em>Mechanical weathering</em> is an overarching umbrella category encompassing physical disintegration processes (frost wedging, insolation, salt crystallization, pressure release) that break rocks into smaller fragments without altering their chemical or mineralogical composition. The question explicitly states that the rounded features are produced <strong>"when chemical weathering moves along joints in the bed."</strong> Because the fundamental driving mechanism specified is chemical decomposition and mineral hydration, categorizing this specific joint-controlled phenomenon simply as mechanical weathering is technically inaccurate.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Both (A) and (C) are Correct</div>
+        <p>
+          <strong>Incorrect:</strong> Option (D) is a classic distractor designed to ensnare candidates who confuse pressure-release sheet exfoliation (a mechanical unloading process on dome scales) with spheroidal weathering. As proven above, spheroidal weathering is fundamentally a <strong>chemical weathering process</strong> driven by hydrolysis and hydration along joints. The official answer key verified by the OPSC Geologist Examination Board unequivocally establishes <strong>(A) spheroidal weathering</strong> as the sole correct answer.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparison: Spheroidal Weathering vs. Pressure-Release Exfoliation vs. Frost Wedging</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Weathering Type</th>
+            <th>Primary Mechanism</th>
+            <th>Scale of Operation</th>
+            <th>Morphological Result</th>
+            <th>Role of Water / Chemical Fluids</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Spheroidal Weathering</strong></td>
+            <td>Chemical hydration & hydrolysis along intersecting joint sets; volume expansion of secondary clays</td>
+            <td>Centimeter to boulder scale ($0.5\text{--}5\text{ m}$ blocks)</td>
+            <td>Rounded corestones, concentric onion-skin spalling rinds, tor landscapes</td>
+            <td>Essential: acidic meteoric water percolating through open joints decomposes silicates</td>
+          </tr>
+          <tr>
+            <td><strong>Pressure-Release Exfoliation (Sheeting)</strong></td>
+            <td>Mechanical elastic rebound and stress relief following erosional stripping of overburden</td>
+            <td>Outcrop to mountain scale ($10\text{--}500\text{ m}$)</td>
+            <td>Massive curved sheeting joints parallel to topography; exfoliation domes (e.g., Half Dome)</td>
+            <td>Non-essential: driven by release of lithostatic confining pressure ($\sigma_v \rightarrow 0$)</td>
+          </tr>
+          <tr>
+            <td><strong>Frost Wedging (Gelifraction)</strong></td>
+            <td>Mechanical volumetric expansion ($+9\%$) during water-to-ice phase transition at $0^\circ\text{C}$</td>
+            <td>Centimeter to meter scale</td>
+            <td>Jagged, angular blocks, scree slopes, felsenmeer, talus cones</td>
+            <td>Physical phase change of liquid water to ice exerting hydrostatic crystallization pressure</td>
+          </tr>
+          <tr>
+            <td><strong>Insolation Weathering (Thermal Shock)</strong></td>
+            <td>Differential thermal expansion and contraction of adjacent mineral grains due to diurnal temperature swings</td>
+            <td>Millimeter to centimeter scale</td>
+            <td>Granular disintegration, flaking of outer rock surfaces</td>
+            <td>Operates primarily in hyper-arid, dry desert environments without significant water</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>Explain mathematically why a cubic joint block of granite measuring $1\text{ m} \times 1\text{ m} \times 1\text{ m}$ weathers most rapidly at its 8 corners, intermediate at its 12 edges, and slowest at its 6 faces.</p>
+        <p><strong>Solution:</strong>
+          Let the inward linear rate of chemical dissolution and hydration normal to a exposed rock face be $R\text{ (mm/year)}$.
+          - For a point on a <strong>flat face</strong>, fluid diffusion occurs from only <strong>1 direction</strong>: Effective weathering flux $\Phi_{face} \propto 1 \cdot R$.
+          - For a point on an <strong>edge</strong> (intersection of 2 orthogonal faces), fluid attacks from <strong>2 directions</strong> simultaneously: Effective flux $\Phi_{edge} \propto \sqrt{1^2 + 1^2} \cdot R = \sqrt{2} R \approx 1.414 R$ (and on a per-volume basis, 2 exposed planes per unit length).
+          - For a <strong>corner</strong> (intersection of 3 orthogonal faces), fluid attacks from <strong>3 directions</strong> simultaneously: Effective flux $\Phi_{corner} \propto \sqrt{1^2 + 1^2 + 1^2} \cdot R = \sqrt{3} R \approx 1.732 R$.
+          Because corner material experiences nearly double the spatial exposure rate and a drastically higher surface-area-to-volume ratio ($A/V \rightarrow \infty$ at an infinitesimal corner point), the corners are eroded fastest, followed by edges, inevitably yielding a sphere (the geometric shape with minimum surface area per unit volume).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>A civil engineering contractor drilling boreholes for bridge pier foundations in a granitic terrain reports encountering solid granite at $4\text{ m}$ depth, soft clay from $6\text{ to } 9\text{ m}$, and solid granite again at $9.5\text{ m}$. Explain this geological phenomenon using the concept of spheroidal weathering.</p>
+        <p><strong>Solution:</strong>
+          The contractor has drilled into a terrain subjected to deep <strong>spheroidal weathering</strong>. The solid granite encountered between $4\text{ m}$ and $6\text{ m}$ is an isolated, unweathered <strong>corestone</strong> suspended in a thick matrix of completely decomposed, incompetent <strong>saprolite</strong> (the soft clay between $6\text{ and } 9\text{ m}$). True, continuous bedrock (fresh bedrock horizon) was only reached at $9.5\text{ m}$. Founding a bridge pier on the $4\text{--}6\text{ m}$ corestone would lead to catastrophic punch-through failure into the underlying soft saprolite.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>What rock types are most susceptible to spheroidal weathering, and why are fine-grained to medium-grained mafic rocks (dolerites/basalts) and coarse-grained granites particularly prone?</p>
+        <p><strong>Solution:</strong>
+          <strong>Dolerites, basalts, and granites</strong> are most susceptible because:
+          1. <strong>Well-Developed Joint Sets:</strong> Cooling of magma and tectonic cooling contractions create regular, orthogonal column or block joint patterns providing ideal conduits for groundwater.
+          2. <strong>High Weathering Susceptibility of Constituent Minerals:</strong> Dolerites/basalts contain calcic plagioclase, pyroxenes, and olivine (high in Goldich's weathering series), which hydrate rapidly to clays and iron hydroxides. In granites, plagioclase and biotite hydrate rapidly, generating high expansive stresses against rigid quartz grains.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>Distinguish between a "tor" landform and a "corestone" in geomorphology.</p>
+        <p><strong>Solution:</strong>
+          A <strong>corestone</strong> is the residual, unweathered, rounded or ellipsoidal boulder-sized core of fresh rock left in-situ within a saprolite weathering profile beneath the surface. A <strong>tor</strong> is a prominent, free-standing, perched stack or pile of exposed joint-bounded corestones projecting boldly above the surrounding landscape, formed when surface erosion and denudation subsequently wash away the soft, decomposed saprolite matrix that originally encased them.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>Calculate the molar volume change when 1 mole of anorthite plagioclase reacts with water and carbonic acid to form 1 mole of kaolinite during spheroidal weathering. Given: Molar volume of anorthite $\text{CaAl}_2\text{Si}_2\text{O}_8 = 100.8\text{ cm}^3\text{/mol}$; Molar volume of kaolinite $\text{Al}_2\text{Si}_2\text{O}_5(\text{OH})_4 = 99.5\text{ cm}^3\text{/mol}$. When water and interstitial hydrated amorphous phases are included, why does the solid mass expand?</p>
+        <p><strong>Solution:</strong>
+          The chemical hydrolysis reaction is:
+          $$\text{CaAl}_2\text{Si}_2\text{O}_8 + 2\text{H}^+ + \text{H}_2\text{O} \rightarrow \text{Al}_2\text{Si}_2\text{O}_5(\text{OH})_4 + \text{Ca}^{2+}$$
+          While the pure crystal volume of kaolinite ($99.5\text{ cm}^3$) is slightly less than anorthite, the low-density, porous, flocculated structure of authigenic clay minerals, along with interstitial adsorbed water and hydrated iron hydroxides (e.g., ferrihydrite, goethite) generated from associated mafic phases, increases the bulk volume of the weathered rock rind by <strong>$20\text{ to } 60\%$</strong>. This physical bulk expansion exerts immense tensile hoop stress, driving concentric spalling.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>Why does spheroidal weathering not develop in highly porous and permeable quartz arenite sandstones?</p>
+        <p><strong>Solution:</strong>
+          Spheroidal weathering requires two essential conditions: (1) an impermeable rock matrix where fluid flow is restricted almost exclusively to <strong>discrete joint fractures</strong>, and (2) minerals that undergo substantial <strong>chemical decomposition and volume expansion</strong> upon hydration. In porous quartz arenite sandstones, groundwater permeates uniformly through intergranular pores rather than strictly along joints, and quartz is chemically inert ($\text{SiO}_2$) with zero hydration expansion; hence, neither joint-localized attack nor concentric exfoliation can occur.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>In a tropical climate with a marked wet-and-dry season, what is the effect of groundwater table fluctuation on the rate of spheroidal weathering?</p>
+        <p><strong>Solution:</strong>
+          Groundwater table fluctuation dramatically accelerates spheroidal weathering. In the vadose/capillary fringe zone, cyclical saturation (wet season) supplies abundant water and dissolved carbonic/organic acids for hydrolysis, while subsequent aeration and desiccation (dry season) draws oxygen into the joints, driving the rapid oxidation of ferrous iron ($Fe^{2+} \rightarrow Fe^{3+}$). The alternating wetting-drying cycles also generate intense capillary swelling-shrinkage stresses in neoformed clays, accelerating concentric spalling.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>How does spheroidal weathering affect the Point Load Strength Index ($I_s$) and Rock Quality Designation (RQD) of an igneous rock mass in engineering geology?</p>
+        <p><strong>Solution:</strong>
+          Spheroidal weathering drastically reduces both parameters:
+          1. <strong>Point Load Strength ($I_s$):</strong> Fresh corestones maintain high $I_s$ ($> 6\text{--}10\text{ MPa}$), but the surrounding concentric weathered rinds and saprolite drop to $I_s < 0.5\text{--}1\text{ MPa}$, creating extreme point-to-point variability.
+          2. <strong>RQD:</strong> Because RQD only counts sound core pieces $> 10\text{ cm}$ in length, core drilling through spheroidal weathering zones yields fractured corestone rinds and crumbling saprolite, causing RQD to plummet from $85\text{--}95\%$ (fresh rock) to <strong>$0\text{--}25\%$ (very poor rock mass quality)</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+"""
+
+    html = wrap_html(
+        q_num=94,
+        title=title,
+        badge=badge,
+        h1_title=h1_title,
+        meta_text=meta_text,
+        part1_content=part1,
+        part2_content=part2,
+        part3_content=part3
+    )
+
+    out_file = os.path.join(SOLUTIONS_DIR, "Q094_Spheroidal_Weathering_Exfoliation_Complete_Guide.html")
+    with open(out_file, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q094: {out_file} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q094()

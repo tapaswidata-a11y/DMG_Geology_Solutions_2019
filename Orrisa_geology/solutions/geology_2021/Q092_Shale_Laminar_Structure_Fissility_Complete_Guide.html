@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q92: Mudrock Petrology - Laminar Structure and Fissility in Shales | OPSC Geology 2021 Masterclass</title>
+<title>Q092: Sedimentary Petrology: Shale Laminar Structure & Fissility | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,220 +89,558 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q92" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentary Petrology</div>
-    <h1>Q92: Mudrock Petrology - Laminar Structure and Fissility in Shales</h1>
+    <div class="badge">GEO - 2/21 • Sedimentary Petrology & Mudrocks</div>
+    <h1>Q092: Shale Characterization: Laminar Structure, Fissility & Clay Fabric</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, Ch. 6, p. 155)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 92<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th/6th Ed., Ch. 6: Mudrocks, pp. 150–165; Fig. 6.4); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 73–75, 173); P.E. Potter, J.B. Maynard, and P.J. Depetris, <em>Mud and Mudstones: Introduction and Overview</em> (Springer); Maurice E. Tucker, <em>Sedimentary Petrology: An Introduction to the Origin of Sedimentary Rocks</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Mudrock Structure</h3>
-<div class="question-box">
-  <p><strong>Question 92:</strong> Shales are generally characterized with distinct :</p>
-  <ul>
-    <li>(A) cleavage</li>
-    <li>(B) laminar structure</li>
-    <li>(C) joints</li>
-    <li>(D) parting</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(B) laminar structure</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q92/boggs_p155_shale_laminar_structure_fissility.png" alt="Shale Petrography - Laminar Structure and Fissility">
-      <figcaption>
-        <strong>Figure 92.1: Bedding Architecture and Fissility in Shales.</strong> Authentic diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, Ch. 6, p. 155). Illustrates parallel orientation of phyllosilicates creating distinct laminar structure and fissility.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: DEFINITION AND PETROLOGY OF SHALES -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Mudrock Petrography: Definition of Shale, Laminar Structure & Fissility</div>
+    <div class="card-body">
+      <p>
+        Mudrocks (siliciclastic sedimentary rocks composed predominantly of particles smaller than $0.0625\text{ mm}$ or $62.5\mu\text{m}$, representing silt and clay) constitute over <strong>$50\text{ to } 65\%$ of the entire sedimentary rock record</strong> on Earth.
+      </p>
+      <p>
+        Within this clan, <strong>shale</strong> is rigorously defined in sedimentary petrology (Boggs, 2014, p. 152; Potter et al., 2005) as a fine-grained, siliciclastic sedimentary rock characterized essentially by two distinct attributes:
+      </p>
+      <ol>
+        <li><strong>Fine Laminar Structure (Primary Micro-bedding):</strong> Individual sedimentary layers or laminae are thin, typically measuring <strong>less than $10\text{ mm}$ ($1\text{ cm}$) thick</strong> (often sub-millimeter scale, $0.05\text{--}1.0\text{ mm}$). These reflect subtle rhythmic fluctuations in hydrodynamic deposition, sediment influx, or seasonal organic blooms.</li>
+        <li><strong>Fissility:</strong> The physical tendency of the rock to split smoothly and cleanly along closely spaced, parallel bedding planes into thin, planar sheets or flakes under mechanical stress or gentle weathering.</li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q92/boggs_p155_shale_laminar_structure_fissility.png" alt="Shale Laminar Structure and Fissility Fabric from Sam Boggs Jr.">
+        <div class="figure-caption">
+          <strong>Figure 92.1 — Petrographic Architecture and Fissility of Shale:</strong> Authentic textbook diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, p. 155). Illustrates the parallel orientation of phyllosilicate clay platelets under overburden burial compaction and primary depositional micro-lamination, creating the characteristic fissile fabric.
+        </div>
+      </div>
+
+      <h4>Mudstone vs. Shale: The Fissility Distinction</h4>
+      <p>
+        In modern sedimentary petrographic nomenclature (e.g., Folk, 1980; Lundegard and Samuels, 1980; Boggs, 2014), fine-grained siliciclastic rocks are divided according to grain size and presence of fissility:
+      </p>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Grain-Size Category</th>
+            <th>Non-Fissile / Massive Equivalent</th>
+            <th>Fissile / Laminated Equivalent (Shale)</th>
+            <th>Grain-Size Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Silt-dominated ($> 66\%$ Silt)</strong></td>
+            <td>Siltstone (massive, blocky)</td>
+            <td><strong>Silt-shale</strong> (laminated, fissile)</td>
+            <td>$0.0625\text{ to } 0.0039\text{ mm}$ ($4\phi\text{ to } 8\phi$)</td>
+          </tr>
+          <tr>
+            <td><strong>Mud-mixture (Clay + Silt)</strong></td>
+            <td>Mudstone (subconchoidal, blocky)</td>
+            <td><strong>Mud-shale</strong> (fissile, paper shale)</td>
+            <td>Subequal mixtures of silt and clay</td>
+          </tr>
+          <tr>
+            <td><strong>Clay-dominated ($> 66\%$ Clay)</strong></td>
+            <td>Claystone (massive, plastic when wet)</td>
+            <td><strong>Clay-shale</strong> (highly fissile, flaky)</td>
+            <td>$< 0.0039\text{ mm}$ ($> 8\phi$)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD 2: ORIGIN OF LAMINATION AND PETROPHYSICAL ANISOTROPY -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Genesis of Lamination: Compaction Fabric, Anoxia & Engineering Implications</div>
+    <div class="card-body">
+      <h4>Microstructural Origin of Fissility</h4>
+      <p>
+        The formation of fissile, laminar shale requires a precise combination of depositional and diagenetic factors:
+      </p>
+      <ul>
+        <li><strong>Parallel Phyllosilicate Reorientation:</strong> During initial deposition in flocculated clay suspensions, clay platelets form random, edge-to-face "card-house" flocculation structures with porosities up to $70\text{--}80\%$. As sediment is buried under progressive overburden load ($P_{overburden} > 10\text{--}50\text{ MPa}$), gravitational compaction collapses the card-house structure, forcing platy sheet silicates (illite, smectite, kaolinite, chlorite) to rotate into a dense, parallel face-to-face orientation perpendicular to maximum principal stress ($\sigma_1$ vertical).</li>
+        <li><strong>Micro-lamination Preservation via Anoxia:</strong> In oxygenated aquatic settings, benthic burrowing organisms (worms, bivalves, crustaceans) continuously churn and homogenize muddy sediments (bioturbation), obliterating primary layering and producing massive, unlaminated mudstones. Preservation of delicate millimetric laminae requires <em>anoxic or euxinic bottom waters</em> where infauna cannot survive.</li>
+        <li><strong>Compositional Segregation:</strong> Alternations between organic-rich or clay-rich laminae and silt-rich laminae (e.g., seasonal storm pulses, riverine spring freshets, or phytoplankton blooms) generate planes of mechanical weakness.</li>
+      </ul>
+
+      <h4>Engineering Hazards and Anisotropy</h4>
+      <ul>
+        <li><strong>Extreme Mechanical Anisotropy:</strong> Unconfined compressive strength ($\sigma_c$) measured parallel to lamination ($\sigma_{c\parallel}$) is often $40\text{--}70\%$ lower than that measured perpendicular to lamination ($\sigma_{c\perp}$), creating high risk of planar sliding along daylighting beds in road cuttings and open-pit mines.</li>
+        <li><strong>Slaking and Swelling:</strong> When de-stressed and exposed to atmospheric moisture or cyclical wetting/drying, smectite-bearing shales undergo osmotic swelling and spontaneous slaking disintegration.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q92. Shales are generally characterized with distinct :</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 92:</strong> Shales are generally characterized with distinct :
+      </div>
       <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> cleavage</div>
-        <div class="opt-item correct"><strong>(B)</strong> laminar structure</div>
-        <div class="opt-item "><strong>(C)</strong> joints</div>
-        <div class="opt-item "><strong>(D)</strong> parting</div>
+        <div class="option-item"><strong>(A)</strong> cleavage</div>
+        <div class="option-item correct-option"><strong>(B)</strong> laminar structure</div>
+        <div class="option-item"><strong>(C)</strong> joints</div>
+        <div class="option-item"><strong>(D)</strong> parting</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(B) laminar structure</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Shale Petrology and Lamination</h3>
-<p>
-<strong>Shale</strong> is a fine-grained siliciclastic sedimentary rock composed of silt- and clay-sized particles ($<0.0625	ext{ mm}$).
-</p>
-<ul>
-  <li><strong>Laminar Structure & Fissility:</strong> The defining physical characteristic of shale is its finely laminated depositional bedding (laminae $<10	ext{ mm}$ thick) and its tendency to split easily along these parallel bedding planes (fissility). This laminar structure arises from the parallel sedimentation and subsequent compaction of platy phyllosilicate clay minerals (illite, kaolinite, smectite).</li>
-  <li><strong>Cleavage:</strong> A tectonic deformational feature produced by metamorphic recrystallization under directed stress (e.g., slaty cleavage in slate), not an inherent primary sedimentary structure of unmetamorphosed shales.</li>
-  <li><strong>Parting & Joints:</strong> Secondary structural planes that occur in all rock types, not the diagnostic feature of shale.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-a">Option (A) Refuted — Cleavage</div>
+        <p>
+          <strong>Incorrect:</strong> In geological terminology, <strong>cleavage</strong> has two distinct meanings, neither of which is the primary diagnostic characteristic of unmetamorphosed shale:
+          (1) In mineralogy, cleavage refers to the crystallographic splitting along planes of atomic weakness in single crystals (e.g., basal cleavage in mica, rhombohedral cleavage in calcite).
+          (2) In structural geology, <em>slaty cleavage</em> or <em>schistosity</em> is a <strong>secondary, tectonic, metamorphic fabric</strong> produced by ductile strain, recrystallization, and pressure solution during regional orogenesis, forming perpendicular to maximum tectonic shortening ($\sigma_1$), typically cutting across primary bedding planes at an angle. Unmetamorphosed shale exhibits sedimentary lamination and fissility, not tectonic cleavage.
+        </p>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-badge opt-b">Option (B) Confirmed — Laminar Structure</div>
+        <p>
+          <strong>Correct:</strong> By definition in sedimentary petrology (Boggs, 2014; Bangar, p. 73), <strong>shales</strong> are universally distinguished from massive mudrocks by their <strong>distinct laminar structure</strong> (fine sub-millimeter to millimetric layering, $< 10\text{ mm}$ thick) and associated <strong>fissility</strong>. This laminar fabric results from depositional grain-size/organic sorting and the preferred face-to-face parallel orientation of microscopic clay mineral flakes under overburden burial compaction.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Joints</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Joints</strong> are brittle fracture surfaces in rock masses along which there has been no perceptible displacement parallel to the plane. Joints occur ubiquitously in all types of rocks (igneous granites and basalts, metamorphic gneisses, and sedimentary limestones and sandstones) due to regional tectonic stress fields, fluid overpressure, or cooling/unloading contraction. Joints are secondary structural discontinuities, not the intrinsic petrographic defining feature of shale.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Parting</div>
+        <p>
+          <strong>Incorrect:</strong> While the term "parting" refers broadly to a separation or thin non-coal interbed in coal seams, or false cleavage in certain minerals (e.g., corundum twinning planes), it does not constitute the comprehensive primary petrological and structural characterization of shale. The definitive textbook property that defines and characterises shale in sedimentary geology is its <strong>laminar structure</strong> and primary bedding fissility.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option B (laminar structure) is correct:</strong> Shales are textbook-defined by their distinct laminar structure and fissility.</li>
-  <li><strong>Option A (cleavage):</strong> Metamorphic rock property (slate/phyllite).</li>
-  <li><strong>Option C & D (joints / parting):</strong> Universal rock mechanical fracture properties, not diagnostic of shale petrogenesis.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comparative Analysis: Sedimentary Bedding Fabrics vs. Tectonic & Brittle Structures</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Geological Feature</th>
+            <th>Genetic Origin</th>
+            <th>Scale & Geometry</th>
+            <th>Primary Controls</th>
+            <th>Typical Host Rocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Laminar Structure (Shale)</strong></td>
+            <td>Sedimentary deposition & burial compaction</td>
+            <td>Planar, parallel sheets; thickness $< 10\text{ mm}$ (often $< 1\text{ mm}$)</td>
+            <td>Cyclic sedimentation, quiet water, anoxia, preferred face-to-face clay alignment</td>
+            <td>Shale (mud-shale, clay-shale, silt-shale, oil shale)</td>
+          </tr>
+          <tr>
+            <td><strong>Slaty Cleavage</strong></td>
+            <td>Tectonic metamorphism (low-grade regional)</td>
+            <td>Closely spaced pervasive foliation ($< 0.1\text{ mm}$)</td>
+            <td>Tectonic shortening ($\sigma_1$), dynamic recrystallization, pressure solution</td>
+            <td>Slate, phyllite (metamorphosed pelites)</td>
+          </tr>
+          <tr>
+            <td><strong>Joints</strong></td>
+            <td>Brittle mechanical fracturing</td>
+            <td>Discontinuous fractures; centimeters to tens of meters; open or mineral-filled</td>
+            <td>Tensile or shear tectonic stresses, hydraulic fracturing, thermal contraction, erosional unloading</td>
+            <td>All rock types (sandstone, basalt, granite, limestone)</td>
+          </tr>
+          <tr>
+            <td><strong>Bedding Parting</strong></td>
+            <td>Sedimentary bedding boundary separation</td>
+            <td>Discrete macroscopic separation plane between thicker beds ($> 1\text{ cm}$)</td>
+            <td>Abrupt lithological or environmental hiatus during sedimentation</td>
+            <td>Sandstones, limestones, thick-bedded siltstones</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>Distinguish between a mudstone and a shale based on textural and physical criteria defined by Sam Boggs Jr. and K.M. Bangar.</p>
+        <p><strong>Solution:</strong> Both mudstone and shale are fine-grained siliciclastic rocks composed predominantly of silt and clay particles ($< 0.0625\text{ mm}$). The defining distinction is that <strong>shale</strong> possesses a distinct <strong>laminar structure</strong> ($< 10\text{ mm}$ thick) and <strong>fissility</strong> (readily splitting along parallel planes), whereas <strong>mudstone</strong> is massive, blocky, and breaks with a subconchoidal or irregular fracture without splitting into thin sheets.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Why do highly fossiliferous marine shelf mudrocks frequently lack laminar structure, whereas black basinal mudrocks display pristine sub-millimeter lamination?</p>
+        <p><strong>Solution:</strong> Well-oxygenated marine shelf environments support rich communities of benthic macroinfauna (annelids, echinoderms, burrowing bivalves) that thoroughly churn the upper $5\text{--}20\text{ cm}$ of sediment through <strong>bioturbation</strong>, completely destroying depositional laminae. In contrast, restricted basinal environments with anoxic bottom water preclude benthic animal life, allowing undisturbed deposition of organic-clay laminae and preserving pristine laminar shale fabric.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>A core sample of shale is subjected to point load testing. The Point Load Strength Index measured perpendicular to lamination ($I_{s(50)\perp}$) is $3.8\text{ MPa}$, while parallel to lamination ($I_{s(50)\parallel}$) it is $1.1\text{ MPa}$. Calculate the Strength Anisotropy Index ($I_a$) and classify its degree of anisotropy according to ISRM standards.</p>
+        <p><strong>Solution:</strong>
+          The Strength Anisotropy Index is given by:
+          $$I_a = \frac{I_{s(50)\perp}}{I_{s(50)\parallel}} = \frac{3.8\text{ MPa}}{1.1\text{ MPa}} \approx 3.45$$
+          According to the International Society for Rock Mechanics (ISRM), an anisotropy index between $2.0$ and $4.0$ is classified as <strong>High Anisotropy</strong> (values $> 4.0$ are Extreme Anisotropy). This severe anisotropy must be accounted for in slope and tunnel design.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>Explain the microscopic structural change that occurs when a flocculated clay suspension is transformed into a compacted shale during progressive burial from $0\text{ m}$ to $2000\text{ m}$ depth.</p>
+        <p><strong>Solution:</strong>
+          At the sediment-water interface ($0\text{ m}$), clay particles interact via edge-to-face electrostatic charges forming an open, porous "card-house" flocculated structure with $70\text{--}80\%$ water content (porosity). Under burial compaction ($2000\text{ m}$, overburden pressure $\approx 45\text{--}50\text{ MPa}$), water is expelled, collapsing the card-house framework. Mechanical shear and vertical strain force the platy phyllosilicate crystals (illite, smectite) to rotate and align parallel to each other in dense face-to-face horizontal orientations, generating primary fissility and reducing porosity to $< 10\%$.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>How does a field geologist distinguish between sedimentary fissility in a carbonaceous shale and tectonic slaty cleavage in a low-grade slate?</p>
+        <p><strong>Solution:</strong>
+          In a field outcrop:
+          1. <strong>Orientation Relative to Bedding:</strong> Sedimentary fissility in shale is strictly parallel to depositional bedding planes ($S_0$) and lithological contacts. Slaty cleavage ($S_1$) is a tectonic planar fabric oriented parallel to the axial plane of folds and cuts across bedding planes at varying angles.
+          2. <strong>Mineral Recrystallization:</strong> Slate has undergone dynamic recrystallization producing microscopic white mica (sericite) with a silky macroscopic sheen, whereas shale has non-recrystallized detrital/authigenic clays with a dull, earthy luster.
+          3. <strong>Water Immersion:</strong> Shale chips will generally soften or slake in water, whereas slate is metamorphically indurated and will not slake.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>What is an "oil shale" and how is it related to sedimentary lamination and kerogen preservation?</p>
+        <p><strong>Solution:</strong>
+          An oil shale is a fine-grained, laminated sedimentary rock containing substantial quantities of solid, insoluble organic matter called <strong>kerogen</strong> (typically Type I or Type II, $10\text{--}40\text{ wt}\%$) that yields liquid hydrocarbons upon destructive pyrolysis ($450\text{--}500^\circ\text{C}$). The fine laminar structure of oil shales represents seasonal alternations of lipid-rich algal blooms and fine clay deposition in quiet, stratified, anoxic lacustrine or marine waters (e.g., the Eocene Green River Formation).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>Explain the slaking mechanism of shale in engineering geology and state the standard laboratory test used to quantify it.</p>
+        <p><strong>Solution:</strong>
+          Slaking is the spontaneous disintegration and crumbling of shale upon exposure to cyclical wetting and drying. The mechanism involves: (a) air entrapment and compression in micro-capillaries upon water immersion, (b) osmotic swelling of expandable smectite/illite interlayers, and (c) dissolution of soluble salt cements. Slaking susceptibility is standardized by the <strong>Slake Durability Test (ASTM D4644 / ISRM)</strong>, which measures the <strong>Slake Durability Index ($I_{d2}$)</strong> as the percentage dry weight retained after two cycles of rotating the sample in a water bath inside a wire mesh drum.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>In seismic exploration for shale gas, why is vertical transverse isotropy (VTI) a fundamental characteristic of shale formations?</p>
+        <p><strong>Solution:</strong>
+          Due to its pronounced <strong>laminar structure</strong> and the uniform horizontal alignment of anisotropic platy clay minerals, shale behaves as a transversely isotropic medium with a vertical axis of rotational symmetry (VTI). Compressional seismic waves ($P$-waves) travel faster along the horizontal bedding planes ($V_{P\parallel} \approx 3800\text{--}4500\text{ m/s}$) than vertically across the laminae ($V_{P\perp} \approx 2800\text{--}3400\text{ m/s}$), governed by Thomsen's anisotropy parameters ($\epsilon$, $\gamma$, and $\delta$).
+        </p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

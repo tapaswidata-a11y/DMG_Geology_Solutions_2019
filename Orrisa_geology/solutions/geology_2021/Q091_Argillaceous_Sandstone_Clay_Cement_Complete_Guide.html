@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q91: Sandstone Classification - Argillaceous Sandstone and Clay Matrix | OPSC Geology 2021 Masterclass</title>
+<title>Q091: Sedimentary Petrology: Sandstone Cements & Argillaceous Sandstone | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,222 +89,555 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q91" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentary Petrology</div>
-    <h1>Q91: Sandstone Classification - Argillaceous Sandstone and Clay Matrix</h1>
+    <div class="badge">GEO - 2/21 • Sedimentary Petrology & Diagenesis</div>
+    <h1>Q091: Sandstone Cementing Materials & Argillaceous Sandstone</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, Ch. 5, p. 145)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 91<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th/6th Ed., Ch. 5: Sandstones, pp. 135–148; Fig. 5.10); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 70–73, 172); F.J. Pettijohn, P.E. Potter, and R. Siever, <em>Sand and Sandstone</em> (Springer-Verlag); Maurice E. Tucker, <em>Sedimentary Petrology: An Introduction to the Origin of Sedimentary Rocks</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Sedimentary Classification</h3>
-<div class="question-box">
-  <p><strong>Question 91:</strong> Cementing material differs in different sandstones, the sandstone where cementing material is clay is named :</p>
-  <ul>
-    <li>(A) Ferruginous sandstone</li>
-    <li>(B) Argillaceous sandstone</li>
-    <li>(C) Calcareous sandstone</li>
-    <li>(D) Siliceous sandstone</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(B) Argillaceous sandstone</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q91/boggs_p145_sandstone_cements_argillaceous.png" alt="Sandstone Cements - Argillaceous Sandstone">
-      <figcaption>
-        <strong>Figure 91.1: Classification of Sandstones by Cement and Matrix.</strong> Authentic textbook table from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, Ch. 5, p. 145). Defines argillaceous sandstone as sandstone bonded by clay matrix and interstitial clay cement.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: FUNDAMENTAL PETROGRAPHY OF SANDSTONE CEMENTS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Petrographic Architecture of Sandstones: Framework, Matrix, and Cement</div>
+    <div class="card-body">
+      <p>
+        A sandstone is a clastic sedimentary rock composed of sand-sized grains ranging from <strong>$0.0625\text{ mm}$ ($1/16\text{ mm}$ or $4\phi$) to $2.0\text{ mm}$ ($-1\phi$)</strong> according to the Wentworth size scale. Microscopically and petrologically, a sandstone consists of three distinct textural components:
+      </p>
+      <ol>
+        <li><strong>Framework Grains ($> 0.0625\text{ mm}$):</strong> Detrital mineral grains and rock fragments (primarily monocrystalline quartz, polycrystalline quartz, feldspars [K-feldspar and plagioclase], and lithic rock fragments).</li>
+        <li><strong>Matrix ($< 0.03\text{ mm}$ or $< 0.0625\text{ mm}$):</strong> Fine-grained detrital interstitial material consisting of silt, clay minerals, and organic debris deposited contemporaneously with the framework grains.</li>
+        <li><strong>Cement (Authigenic precipitate):</strong> Mineral material deposited chemically from pore waters within the intergranular void spaces <em>after</em> sediment deposition, during diagenesis. Cement binds the loose framework grains into a rigid, lithified rock.</li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q91/boggs_p145_sandstone_cements_argillaceous.png" alt="Sandstone Petrography and Cements from Sam Boggs Jr.">
+        <div class="figure-caption">
+          <strong>Figure 91.1 — Petrographic Classification of Sandstones and Cements:</strong> Authentic textbook diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, p. 145). Diagram illustrating sandstone framework grains (Q-F-L ternary) and diagenetic cements (silica, carbonate, clay minerals, and iron oxides) occupying intergranular pore spaces.
+        </div>
+      </div>
+
+      <h4>Classification of Sandstones Based on Cementing Material</h4>
+      <p>
+        Depending on the chemical composition of the pore fluids and the diagenetic environment, different minerals precipitate as cements. Sandstones are conventionally named and classified based on the nature of their primary cementing agent:
+      </p>
+      <ul>
+        <li><strong>Argillaceous Sandstone:</strong> Sandstone in which the interstitial binding material is composed predominantly of <strong>clay minerals</strong> (kaolinite, illite, smectite, montmorillonite, or chlorite). The clay may occur as authigenic pore linings/pore fillings or as compacted detrital matrix ("pseudomatrix"). Because clay minerals have weak cohesive bonding, argillaceous sandstones are typically soft, friable, prone to rapid slaking upon water immersion, and possess poor compressive strength.</li>
+        <li><strong>Siliceous Sandstone:</strong> Sandstone bound by <strong>silica ($SiO_2$)</strong>, precipitated as syntaxial quartz overgrowths in optical continuity with detrital quartz grains, or as cryptocrystalline chalcedony and microcrystalline opal. Complete silica cementation produces a tightly interlocked, non-porous rock termed <em>orthoquartzite</em> or <em>sedimentary quartzite</em>, which fractures across grains rather than around them and possesses exceptional hardness (Mohs 7) and chemical durability.</li>
+        <li><strong>Calcareous Sandstone:</strong> Sandstone bound by <strong>calcium carbonate ($CaCO_3$, typically calcite or dolomite)</strong>. Calcite cement may occur as sparitic grain coatings, microcrystalline micrite, or large optically continuous crystals enveloping multiple quartz grains (termed <em>poikilotopic</em> or "lustre-mottled" cement). It readily effervesces with dilute ($10\%$) hydrochloric acid ($HCl$).</li>
+        <li><strong>Ferruginous Sandstone:</strong> Sandstone bound by <strong>iron oxides or iron hydroxides</strong> (hematite $\text{Fe}_2\text{O}_3$, goethite $\alpha\text{-FeO(OH)}$, or amorphous limonite). These cements impart characteristic red, reddish-brown, yellow, or rusty brown hues to the rock.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: DIAGENETIC PROCESSES & CLAY CEMENTATION MECHANISMS -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Diagenetic Clay Mineral Genesis & Reservoir Quality Implications</div>
+    <div class="card-body">
+      <h4>Authigenic Clay Minerals vs. Detrital Matrix</h4>
+      <p>
+        In sedimentary petrology, distinguishing between detrital matrix and authigenic clay cement is critical for paleogeographic and petroleum reservoir analysis:
+      </p>
+      <ul>
+        <li><strong>Authigenic Clay Cements:</strong> Crystallized directly from circulating pore waters during eodiagenesis and mesodiagenesis. Under the scanning electron microscope (SEM):
+          <ul>
+            <li><strong>Kaolinite:</strong> Forms delicate vermicular "booklets" or accordion-like stacks in open pore spaces, typically precipitating in acidic, fresh meteoric flushing conditions ($2\text{KAlSi}_3\text{O}_8 + 2\text{H}^+ + 9\text{H}_2\text{O} \rightarrow \text{Al}_2\text{Si}_2\text{O}_5(\text{OH})_4 + 4\text{H}_4\text{SiO}_4 + 2\text{K}^+$).</li>
+            <li><strong>Illite:</strong> Forms fibrous, hairy, or ribbon-like projections bridging pore throats, causing catastrophic reductions in permeability while leaving total porosity largely unaffected.</li>
+            <li><strong>Smectite / Chlorite:</strong> Precipitates as grain-coating or grain-lining honeycomb platelets that inhibit subsequent quartz overgrowth nucleation, sometimes preserving anomalously high deep-reservoir porosity.</li>
+          </ul>
+        </li>
+        <li><strong>Detrital Clay Matrix (Wackes):</strong> Introduced during sedimentation via flocculation or muddy suspension deposition. According to Pettijohn's (1975) classification, rocks with $> 15\%$ clay matrix are designated as <strong>wackes</strong> (e.g., quartz wacke, arkosic wacke, lithic wacke / greywacke), whereas those with $< 15\%$ matrix are <strong>arenites</strong>.</li>
+      </ul>
+
+      <h4>Engineering Geology and Hydrogeological Behavior</h4>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Sandstone Type</th>
+            <th>Primary Cement</th>
+            <th>Unconfined Compressive Strength ($\sigma_c$)</th>
+            <th>Porosity & Permeability</th>
+            <th>Engineering Suitability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Argillaceous Sandstone</strong></td>
+            <td>Clay minerals (illite, kaolinite, smectite)</td>
+            <td>Low to Moderate ($15\text{--}50\text{ MPa}$); slakes in water</td>
+            <td>Moderate porosity ($10\text{--}25\%$), very low permeability</td>
+            <td>Poor foundation rock; unstable in slopes, swelling risks, slakes rapidly</td>
+          </tr>
+          <tr>
+            <td><strong>Siliceous Sandstone</strong></td>
+            <td>Quartz overgrowths, chalcedony, opal</td>
+            <td>Very High ($120\text{--}250\text{ MPa}$); brittle, abrasiveness high</td>
+            <td>Low porosity ($2\text{--}8\%$), low permeability</td>
+            <td>Excellent concrete aggregate, railway ballast, durable dam foundation</td>
+          </tr>
+          <tr>
+            <td><strong>Calcareous Sandstone</strong></td>
+            <td>Calcite, dolomite, ankerite</td>
+            <td>Moderate to High ($60\text{--}140\text{ MPa}$); acid-soluble</td>
+            <td>Variable ($5\text{--}20\%$), secondary vuggy porosity possible</td>
+            <td>Good building stone, but susceptible to chemical weathering and acid rain dissolution</td>
+          </tr>
+          <tr>
+            <td><strong>Ferruginous Sandstone</strong></td>
+            <td>Hematite, goethite, limonite</td>
+            <td>Moderate ($40\text{--}100\text{ MPa}$)</td>
+            <td>Moderate ($8\text{--}18\%$)</td>
+            <td>Widely used as historical building stone and decorative dimension stone</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q91. Cementing material differs in different sandstones, the sandstone where cementing material is clay is named :</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 91:</strong> Cementing material differs in different sandstones, the sandstone where cementing material is clay is named :
+      </div>
       <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Ferruginous sandstone</div>
-        <div class="opt-item correct"><strong>(B)</strong> Argillaceous sandstone</div>
-        <div class="opt-item "><strong>(C)</strong> Calcareous sandstone</div>
-        <div class="opt-item "><strong>(D)</strong> Siliceous sandstone</div>
+        <div class="option-item"><strong>(A)</strong> Ferruginous sandstone</div>
+        <div class="option-item correct-option"><strong>(B)</strong> Argillaceous sandstone</div>
+        <div class="option-item"><strong>(C)</strong> Calcareous sandstone</div>
+        <div class="option-item"><strong>(D)</strong> Siliceous sandstone</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(B) Argillaceous sandstone</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Sandstone Cements and Classification</h3>
-<p>
-Sandstones consist of framework grains (sand size: $0.0625	ext{--}2.0	ext{ mm}$) bound together by mineral cement or matrix:
-</p>
-<ul>
-  <li><strong>Argillaceous Sandstone:</strong> The interstitial matrix/cement is composed predominantly of clay minerals (kaolinite, illite, chlorite, or smectite). The rock is softer, often earthy, and fractures irregularly.</li>
-  <li><strong>Siliceous Sandstone:</strong> Sand grains are cemented by silica (secondary quartz overgrowths, chalcedony, or opal). This produces extremely tough, durable sandstones that often grade into orthoquartzite.</li>
-  <li><strong>Calcareous Sandstone:</strong> Grains are cemented by carbonate minerals, primarily calcite or dolomite, which effervesces readily in dilute hydrochloric acid ($HCl$).</li>
-  <li><strong>Ferruginous Sandstone:</strong> Cement consists of iron oxides or hydroxides (hematite, goethite, limonite), giving the rock a characteristic red, brown, or yellow coloration.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-a">Option (A) Refuted — Ferruginous Sandstone</div>
+        <p>
+          <strong>Incorrect:</strong> A <em>ferruginous sandstone</em> is defined specifically by an interstitial cement consisting of <strong>iron oxides or hydroxides</strong>—primarily hematite ($\text{Fe}_2\text{O}_3$), goethite ($\alpha\text{-FeO(OH)}$), or hydrated limonite. This cement imparts vivid red, brown, or ochre-yellow colors to the rock (such as in continental red beds or the Old Red Sandstone of the UK). It does not have clay as its defining cementing agent.
+        </p>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-badge opt-b">Option (B) Confirmed — Argillaceous Sandstone</div>
+        <p>
+          <strong>Correct:</strong> The term <em>argillaceous</em> is derived from the Latin <em>argilla</em> (meaning white clay). In sedimentary petrology and engineering geology, an <strong>argillaceous sandstone</strong> is explicitly defined as a sandstone in which the binding or interstitial cementing material consists predominantly of <strong>clay minerals</strong> (kaolinite, illite, smectite, or chlorite). Such rocks are characterized by relatively low mechanical competence, susceptibility to slaking, and poor permeability due to clay-choked pore networks.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Calcareous Sandstone</div>
+        <p>
+          <strong>Incorrect:</strong> A <em>calcareous sandstone</em> is bound by <strong>calcium carbonate</strong>, predominantly calcite ($\text{CaCO}_3$) or less commonly dolomite ($\text{CaMg(CO}_3)_2$). Its diagnostic petrographic signature is effervescence when treated with cold dilute ($10\%$) hydrochloric acid ($HCl$). When calcite forms large, optically continuous poikilotopic crystals cementing hundreds of quartz grains, it exhibits "lustre-mottling." It does not contain clay as its primary cementing agent.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Siliceous Sandstone</div>
+        <p>
+          <strong>Incorrect:</strong> A <em>siliceous sandstone</em> is characterized by <strong>silica ($SiO_2$)</strong> cementation. The silica precipitates from groundwater as secondary syntaxial quartz overgrowths, microcrystalline quartz, chalcedony, or amorphous opal. In advanced stages of cementation, this produces an extremely hard, dense rock (orthoquartzite) where individual sand grains fuse into an impermeable mosaic. It is distinct from clay-cemented argillaceous sandstone.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option B (Argillaceous sandstone) is correct:</strong> Derived from Latin <em>argilla</em> (clay); sandstone cemented by clay.</li>
-  <li><strong>Option A (Ferruginous sandstone):</strong> Cemented by iron oxide minerals.</li>
-  <li><strong>Option C (Calcareous sandstone):</strong> Cemented by calcium carbonate ($CaCO_3$).</li>
-  <li><strong>Option D (Siliceous sandstone):</strong> Cemented by silica ($SiO_2$).</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparison of Sandstone Cementing Types</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Sandstone Category</th>
+            <th>Dominant Cementing Material</th>
+            <th>Chemical Formula / Mineralogy</th>
+            <th>Diagnostic Field / Lab Test</th>
+            <th>Distinctive Physical Properties</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Argillaceous Sandstone</strong></td>
+            <td>Clay minerals / matrix</td>
+            <td>Hydrous aluminosilicates (kaolinite, illite, smectite)</td>
+            <td>Earthy smell when breathed on; slakes in standing water; soft under pick</td>
+            <td>Friable, soft, dull appearance, prone to rapid weathering and slope failure</td>
+          </tr>
+          <tr>
+            <td><strong>Siliceous Sandstone</strong></td>
+            <td>Silica</td>
+            <td>$\text{SiO}_2$ (quartz overgrowths, chalcedony, chert)</td>
+            <td>Scratches glass easily (Mohs 7); no effervescence with acid; conchoidal break</td>
+            <td>Extremely tough, resistant to abrasion, fractures across framework grains</td>
+          </tr>
+          <tr>
+            <td><strong>Calcareous Sandstone</strong></td>
+            <td>Carbonate</td>
+            <td>$\text{CaCO}_3$ (calcite) or $\text{CaMg(CO}_3)_2$ (dolomite)</td>
+            <td>Vigorous effervescence with cold $10\%\text{ HCl}$ ($2\text{HCl} + \text{CaCO}_3 \rightarrow \text{CaCl}_2 + \text{H}_2\text{O} + \text{CO}_2\uparrow$)</td>
+            <td>Moderately durable; susceptible to acid-rain dissolution; lustre-mottling</td>
+          </tr>
+          <tr>
+            <td><strong>Ferruginous Sandstone</strong></td>
+            <td>Iron oxide / hydroxide</td>
+            <td>$\text{Fe}_2\text{O}_3$ (hematite), $\text{FeO(OH)}$ (goethite, limonite)</td>
+            <td>Red, brown, or yellow streak; reddish-brown coloration; heavy specific gravity</td>
+            <td>Variable strength depending on cement density; excellent building stone</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>A civil engineer tests a sandstone sample intended for a railway cutting slope. When submerged in a beaker of water for 24 hours, the rock disintegrates completely into loose sand grains and muddy suspension. Microscopic inspection shows the binding agent consists of hydrous aluminum silicates. Identify the sandstone type and explain the failure mechanism.</p>
+        <p><strong>Solution:</strong> The rock is an <strong>argillaceous sandstone</strong>. The failure mechanism is <strong>slaking</strong>, caused by the swelling and hydration of smectite/illite clay cements. Water molecules infiltrate the expandable interlaminar layers of the clay minerals, weakening van der Waals forces and capillary meniscus suction, causing total loss of effective cohesion ($c' \rightarrow 0$) and rapid disintegration.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Under a polarizing petrographic microscope, a sandstone exhibits detrital quartz grains completely surrounded by syntaxial quartz overgrowths in optical continuity. The rock fractures through the quartz grains rather than along grain boundaries. What is the precise name of this rock and its cement type?</p>
+        <p><strong>Solution:</strong> The rock is a <strong>siliceous sandstone (orthoquartzite or sedimentary quartzite)</strong>. The cement is <strong>silica ($\text{SiO}_2$)</strong>, precipitated as syntaxial quartz overgrowths in crystallographic continuity with the host grains. Because the bond strength between quartz overgrowths and quartz grains equals the intrinsic tensile strength of quartz, fracture occurs intragranularly across grains.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>Calculate the matrix percentage of a rock with $68\%$ detrital quartz, $12\%$ K-feldspar, $5\%$ rock fragments, and $15\%$ fine silt-clay matrix. According to Pettijohn's sandstone classification, does this rock qualify as an arenite or a wacke?</p>
+        <p><strong>Solution:</strong> In Pettijohn's sandstone classification, the boundary between an <strong>arenite</strong> and a <strong>wacke</strong> is defined precisely at $15\%$ matrix ($< 0.03\text{ mm}$ or $< 0.0625\text{ mm}$). Rocks with $\le 15\%$ matrix are classified as <em>arenites</em>, while rocks with $> 15\%$ (up to $75\%$) are classified as <em>wackes</em>. At exactly $15\%$, it lies on the boundary, but rocks containing $> 15\%$ are formally designated as <strong>arkosic wacke</strong> (since feldspar exceeds rock fragments, $F > L$).</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>A petrographer applies a $10\%$ solution of cold hydrochloric acid to an unknown grey sandstone and observes instantaneous, vigorous effervescence. Thin-section staining with Alizarin Red S yields a pink/red stain across the intergranular cement. Identify the cement and the exact sandstone class.</p>
+        <p><strong>Solution:</strong> The cement is <strong>calcite ($\text{CaCO}_3$)</strong>, and the rock is a <strong>calcareous sandstone</strong>. The reaction is: $\text{CaCO}_3 + 2\text{HCl} \rightarrow \text{CaCl}_2 + \text{H}_2\text{O} + \text{CO}_2\uparrow$. Alizarin Red S selectively stains non-ferroan calcite pink to red, confirming calcite rather than dolomite (which stains only when boiled in acid or does not stain without iron).</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>Scanning electron microscopy (SEM) of an oil-bearing sandstone reservoir reveals dense mats of pore-bridging fibrous illite hairs. While total porosity measured by helium pycnometry remains high at $22\%$, air permeability drops drastically from $350\text{ mD}$ to $< 0.5\text{ mD}$. Explain this petrophysical paradox.</p>
+        <p><strong>Solution:</strong> Fibrous illite occupies very little physical solid volume, thereby preserving the bulk storage volume of the pore bodies (high porosity $\phi = 22\%$). However, its delicate, interlocking fibrous network spans directly across the narrow <strong>pore throats</strong>, multiplying surface area, maximizing tortuosity, and creating intense frictional drag on fluid flow, causing a catastrophic collapse in permeability ($k < 0.5\text{ mD}$).</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>Explain how iron oxide cements originate in continental red-bed sandstones during early diagenesis (eodiagenesis) according to Walker's (1967) intrastratal alteration model.</p>
+        <p><strong>Solution:</strong> According to T.R. Walker's classic model, the red pigment (hematite, $\text{Fe}_2\text{O}_3$) in continental red beds is predominantly diagenetic (authigenic) rather than detrital. In oxidizing, alkaline desert groundwaters, detrital iron-bearing ferromagnesian silicates (biotite, hornblende, augite) undergo in-situ intrastratal chemical dissolution. Dissolved ferrous iron ($Fe^{2+}$) is oxidized to ferric iron ($Fe^{3+}$) and precipitates initially as amorphous ferric hydroxide ($\text{Fe(OH)}_3$ or ferrihydrite), which subsequently ages and dehydrates over geological time into microcrystalline hematite pigment coating sand grains.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>What is "lustre-mottling" in sedimentary petrography, and in which specific cemented sandstone is it observed?</p>
+        <p><strong>Solution:</strong> "Lustre-mottling" is a optical reflection phenomenon observed in <strong>calcareous sandstones</strong> featuring <strong>poikilotopic calcite cement</strong>. Individual optically continuous calcite crystals grow to macroscopic size ($0.5\text{ to } 2\text{ cm}$), completely engulfing hundreds of small detrital quartz grains. When the rock is turned in sunlight, the cleavage faces of the single calcite crystal reflect light simultaneously, creating glittering patches or mottled flashes of lustre.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>Contrast the unconfined compressive strength ($\sigma_c$) and durability of a siliceous sandstone vs. an argillaceous sandstone in tunnel portal construction.</p>
+        <p><strong>Solution:</strong> A <strong>siliceous sandstone</strong> typically possesses an unconfined compressive strength ($\sigma_c$) between $120\text{ and } 250\text{ MPa}$, negligible slaking durability index loss ($I_{d2} > 98\%$), and exceptional shear strength, making it an outstanding, self-supporting rock mass for tunnel portals. In contrast, an <strong>argillaceous sandstone</strong> exhibits low $\sigma_c$ ($15\text{ to } 50\text{ MPa}$), high slake durability degradation ($I_{d2} < 60\%$), and develops high swelling pressures and ravelling when exposed to atmospheric humidity and water seepage, requiring immediate shotcreting, rock bolting, and steel ribs.</p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

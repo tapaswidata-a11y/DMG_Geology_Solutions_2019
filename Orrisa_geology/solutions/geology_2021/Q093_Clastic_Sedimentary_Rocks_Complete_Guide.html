@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q93: Sedimentary Rock Genesis - Clastic Rocks from Mechanical Breakdown | OPSC Geology 2021 Masterclass</title>
+<title>Q093: Sedimentary Petrology: Clastic Sedimentary Rocks & Mechanical Breakdown | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,221 +89,542 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q93" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Sedimentary Petrology</div>
-    <h1>Q93: Sedimentary Rock Genesis - Clastic Rocks from Mechanical Breakdown</h1>
+    <div class="badge">GEO - 2/21 • Sedimentary Petrology & Classification</div>
+    <h1>Q093: Clastic Sedimentary Rocks: Genesis by Mechanical Breakdown of Primary Rocks</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, Ch. 5, p. 130)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 93<br>
+<strong>Authoritative References:</strong> Sam Boggs Jr., <em>Principles of Sedimentology and Stratigraphy</em> (5th/6th Ed., Ch. 5: Siliciclastic Sedimentary Rocks, pp. 125–135; Fig. 5.1); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 67–70, 169); G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 142–148); Maurice E. Tucker, <em>Sedimentary Petrology: An Introduction to the Origin of Sedimentary Rocks</em>.
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Sedimentary Classification</h3>
-<div class="question-box">
-  <p><strong>Question 93:</strong> Sedimentary rocks formed due to the sediments formed from mechanical breakdown of primary rocks is called :</p>
-  <ul>
-    <li>(A) siliclastic rocks</li>
-    <li>(B) clastic rocks</li>
-    <li>(C) semi-clastic rocks</li>
-    <li>(D) chemical sediments</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(B) clastic rocks</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q93/boggs_p130_siliciclastic_classification.png" alt="Clastic Sedimentary Rocks Classification">
-      <figcaption>
-        <strong>Figure 93.1: Fundamental Classification of Sedimentary Rocks.</strong> Authentic diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, Ch. 5, p. 130). Demonstrates that rocks derived from mechanical disintegration of primary rocks are termed <strong>clastic rocks</strong>.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: GENETIC CLASSIFICATION OF SEDIMENTARY ROCKS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Fundamental Classification of Sedimentary Rocks: Clastic vs. Non-Clastic</div>
+    <div class="card-body">
+      <p>
+        In classical geology and sedimentary petrology (Bangar, p. 67; Mahapatra, p. 142; Boggs, 2014, p. 126), sedimentary rocks are categorized fundamentally into two grand genetic subdivisions based on their mode of origin and source material:
+      </p>
+      <ol>
+        <li><strong>Clastic (Detrital / Mechanically Formed) Rocks:</strong> Sedimentary rocks formed by the accumulation, compaction, and cementation of particulate solid mineral and rock fragments (<em>clasts</em> or <em>detritus</em>) produced by the <strong>mechanical breakdown and physical disintegration</strong> of pre-existing primary (igneous, metamorphic, or older sedimentary) rocks. The word <em>clastic</em> derives from the Greek <em>klastos</em> ($\kappa\lambda\alpha\sigma\tau\acute{o}\varsigma$), meaning "broken in pieces".</li>
+        <li><strong>Non-Clastic (Chemical and Biochemical/Organic) Rocks:</strong> Sedimentary rocks formed either by direct chemical precipitation of dissolved mineral salts from aqueous solution (e.g., evaporites like rock salt and gypsum, travertine) or by organic accumulation of biochemical skeletal debris and plant matter (e.g., fossiliferous limestones, chalk, diatomite, coal).</li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q93/boggs_p130_siliciclastic_classification.png" alt="Classification of Clastic Sedimentary Rocks from Sam Boggs Jr.">
+        <div class="figure-caption">
+          <strong>Figure 93.1 — Classification Scheme of Clastic Sedimentary Rocks:</strong> Authentic textbook diagram from Sam Boggs Jr. (<em>Principles of Sedimentology and Stratigraphy</em>, p. 130). Illustrates the Udden-Wentworth grain-size scale and major clastic divisions: Rudaceous (conglomerate/breccia), Arenaceous (sandstone), and Argillaceous (mudrock/shale).
+        </div>
+      </div>
+
+      <h4>Grain-Size Subdivisions of Clastic Sedimentary Rocks</h4>
+      <p>
+        Clastic sedimentary rocks are systematically classified on the basis of the physical grain size of their constituent detrital fragments according to the Wentworth size scale:
+      </p>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Descriptive Group</th>
+            <th>Classical Greek / Latin Term</th>
+            <th>Clast Size Range</th>
+            <th>Loose Sediment</th>
+            <th>Consolidated Clastic Rock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Coarse-grained</strong></td>
+            <td><strong>Rudaceous / Psephitic</strong></td>
+            <td>$> 2.0\text{ mm}$ (up to $> 256\text{ mm}$)</td>
+            <td>Gravel, pebbles, cobbles, boulders</td>
+            <td><strong>Conglomerate</strong> (rounded clasts)<br><strong>Breccia</strong> (angular clasts)</td>
+          </tr>
+          <tr>
+            <td><strong>Medium-grained</strong></td>
+            <td><strong>Arenaceous / Psammitic</strong></td>
+            <td>$0.0625\text{ mm to } 2.0\text{ mm}$ ($1/16\text{--}2\text{ mm}$)</td>
+            <td>Sand (coarse, medium, fine)</td>
+            <td><strong>Sandstone</strong> (quartz arenite, arkose, greywacke)</td>
+          </tr>
+          <tr>
+            <td><strong>Fine-grained</strong></td>
+            <td><strong>Argillaceous / Pelitic</strong></td>
+            <td>$< 0.0625\text{ mm}$ ($< 1/16\text{ mm}$)</td>
+            <td>Silt ($1/16\text{--}1/256\text{ mm}$)<br>Clay ($< 1/256\text{ mm}$)</td>
+            <td><strong>Siltstone, Mudstone, Shale, Claystone</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CARD 2: MECHANICAL BREAKDOWN MECHANISMS -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Mechanical Weathering Processes & Detrital Disintegration</div>
+    <div class="card-body">
+      <h4>Physical Weathering Mechanisms Generating Clasts</h4>
+      <p>
+        The mechanical breakdown of primary igneous and metamorphic bedrocks into detrital clasts occurs through several distinct physical weathering mechanisms operating without significant initial chemical transformation:
+      </p>
+      <ul>
+        <li><strong>Frost Wedging (Gelifraction):</strong> Liquid water infiltrates joints and microcracks. Upon freezing at $0^\circ\text{C}$, water expands by approximately $9\%$ in volume, exerting immense crystallization pressures up to $200\text{ MPa}$, shattering massive parent rocks into angular rubble and scree.</li>
+        <li><strong>Unloading / Pressure Release (Exfoliation):</strong> Deep-seated plutonic rocks (e.g., granite) crystallized under high lithostatic pressure expand elastically when overlying rock is stripped by erosion. Release of confining stress produces sheeting joints parallel to the topographic surface, causing outer shells of rock to spall off.</li>
+        <li><strong>Thermal Expansion and Contraction (Insolation):</strong> In diurnal desert environments, rapid surface heating and cooling induce differential thermal stresses between mineral grains with differing coefficients of thermal expansion (e.g., quartz vs. feldspar), initiating micro-fractures.</li>
+        <li><strong>Salt Crystallization (Haloclasty):</strong> Saline groundwater in arid regions evaporates in porous rocks; growing halite or gypsum crystals wedge pore walls apart.</li>
+        <li><strong>Hydraulic and Abrasion Drag:</strong> Torrential rivers, glacial ice, and breaking waves physically pound, grind, and dislodge fragments from bedrock channels.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q93. Sedimentary rocks formed due to the sediments formed from mechanical breakdown of primary rocks is called :</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 93:</strong> Sedimentary rocks formed due to the sediments formed from mechanical breakdown of primary rocks is called :
+      </div>
       <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> siliclastic rocks</div>
-        <div class="opt-item correct"><strong>(B)</strong> clastic rocks</div>
-        <div class="opt-item "><strong>(C)</strong> semi-clastic rocks</div>
-        <div class="opt-item "><strong>(D)</strong> chemical sediments</div>
+        <div class="option-item"><strong>(A)</strong> siliclastic rocks</div>
+        <div class="option-item correct-option"><strong>(B)</strong> clastic rocks</div>
+        <div class="option-item"><strong>(C)</strong> semi-clastic rocks</div>
+        <div class="option-item"><strong>(D)</strong> chemical sediments</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(B) clastic rocks</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Clastic vs Non-Clastic Rocks</h3>
-<p>
-Sedimentary rocks are divided into two fundamental genetic divisions:
-</p>
-<ul>
-  <li><strong>Clastic (Detrital) Sedimentary Rocks:</strong> Formed from discrete fragments (clasts, from Greek <em>klastos</em> = broken) produced by the physical/mechanical breakdown, weathering, and erosion of pre-existing rocks (igneous, metamorphic, or older sedimentary), transported mechanically and lithified. Examples: conglomerate, breccia, sandstone, siltstone, shale.</li>
-  <li><strong>Non-Clastic Sedimentary Rocks:</strong> Formed through chemical precipitation from solution (e.g., halite, gypsum, limestone) or biological accumulation of organic skeletal remains (e.g., chalk, coal, diatomite).</li>
-  <li><strong>Siliciclastic:</strong> A sub-class of clastic rocks where the detrital clasts are rich in silicate minerals (quartz, feldspar). "Clastic rocks" is the broad, fundamental parent category defined by mechanical breakdown.</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-a">Option (A) Refuted — Siliclastic Rocks</div>
+        <p>
+          <strong>Incorrect:</strong> While <em>siliciclastic rocks</em> (spelled siliciclastic) represent the most common subdivision of clastic rocks, the term is restricted specifically to rocks where the constituent clasts are composed exclusively of <strong>silicate minerals</strong> (quartz, feldspar, clay minerals, and silicate lithic fragments). The question asks for the fundamental, overarching class of sedimentary rocks formed from the mechanical breakdown of primary rocks. That universal, primary classification category in classical petrology (Bangar, p. 67; Mahapatra, p. 142) is <strong>clastic rocks</strong>. Furthermore, "clastic rocks" encompasses all fragmental rocks (including non-silicate clastic carbonates, evaporite-clastics, and pyroclastics), making (B) the broader and canonically correct answer.
+        </p>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-badge opt-b">Option (B) Confirmed — Clastic Rocks</div>
+        <p>
+          <strong>Correct:</strong> In all authoritative geological textbooks (Bangar, <em>Principles of Engineering Geology</em>, p. 67; Mahapatra, <em>A Text-Book of Geology</em>, p. 142; Boggs, <em>Principles of Sedimentology and Stratigraphy</em>, p. 126), sedimentary rocks formed by the accumulation of fragments and mineral particles derived from the <strong>mechanical breakdown (physical weathering and disintegration)</strong> of pre-existing primary rocks are explicitly designated as <strong>clastic rocks</strong> (or detrital rocks). Examples include conglomerates, breccias, sandstones, and shales.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Semi-Clastic Rocks</div>
+        <p>
+          <strong>Incorrect:</strong> "Semi-clastic" is not a formal or standard taxonomic class in sedimentary petrology. While informal descriptions might occasionally refer to rocks with mixed origins (such as volcaniclastic-tuffaceous sediments or marls), no major geological classification system defines the product of primary rock mechanical breakdown as "semi-clastic."
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — Chemical Sediments</div>
+        <p>
+          <strong>Incorrect:</strong> <strong>Chemical sediments</strong> represent the exact <em>antithesis</em> of mechanically formed clastic rocks. Chemical sedimentary rocks (such as halite, gypsum, anhydrite, chert, and travertine) are formed by <strong>precipitation of dissolved ions directly from aqueous solution</strong> through inorganic chemical processes (evaporation, pH/Eh changes, supersaturation), without involving the physical accumulation of mechanically disintegrated rock fragments.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option B (clastic rocks) is correct:</strong> The broad, foundational genetic term for rocks produced by mechanical breakdown of pre-existing rocks.</li>
-  <li><strong>Option A (siliclastic rocks):</strong> A narrower compositional subset; does not cover carbonate clastic rocks (calcarenites, bioclasts).</li>
-  <li><strong>Option C (semi-clastic rocks):</strong> Non-standard descriptive term.</li>
-  <li><strong>Option D (chemical sediments):</strong> Formed by precipitation from aqueous solutions, not mechanical disintegration.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Comparison of Major Sedimentary Rock Classes</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Class of Sedimentary Rock</th>
+            <th>Primary Genetic Mechanism</th>
+            <th>Source Material</th>
+            <th>Primary Textural Characteristic</th>
+            <th>Key Representative Rock Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Clastic (Detrital)</strong></td>
+            <td>Mechanical breakdown, physical transport, and deposition</td>
+            <td>Pre-existing primary rocks (igneous, metamorphic, sedimentary)</td>
+            <td>Particulate (clastic) texture: framework grains, matrix, and authigenic cement</td>
+            <td>Conglomerate, Breccia, Quartz Sandstone, Arkose, Greywacke, Shale</td>
+          </tr>
+          <tr>
+            <td><strong>Chemical Sedimentary</strong></td>
+            <td>Inorganic chemical precipitation from solution</td>
+            <td>Dissolved ions ($\text{Na}^+, \text{Ca}^{2+}, \text{Cl}^-, \text{SO}_4^{2-}, \text{HCO}_3^-$) in surface/subsurface water</td>
+            <td>Crystalline, interlocking mosaic texture (microcrystalline to coarse spar)</td>
+            <td>Rock salt (halite), Gypsum, Anhydrite, Travertine, Oolitic limestone, Bedded chert</td>
+          </tr>
+          <tr>
+            <td><strong>Biochemical / Organic</strong></td>
+            <td>Biological metabolic extraction or organic carbon accumulation</td>
+            <td>Skeletal hard parts of organisms (shells, tests) or terrestrial vegetative debris</td>
+            <td>Bioclastic, fossiliferous, or amorphous organic maceral mass</td>
+            <td>Coquina, Chalk, Diatomite, Radiolarian chert, Peat, Lignite, Bituminous coal</td>
+          </tr>
+          <tr>
+            <td><strong>Residual (Chemo-residual)</strong></td>
+            <td>In-situ deep chemical leaching and residual concentration</td>
+            <td>Immobile insoluble oxides and hydroxides remaining after base leaching</td>
+            <td>Pisolitic, nodular, earthy, cellular, or slag-like porous texture</td>
+            <td>Laterite, Bauxite, Residual clays, Gossans</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>A sedimentary rock contains $65\%$ angular gravel clasts larger than $2\text{ mm}$ cemented by iron oxide. Name this rock, state its broad class, and interpret the distance of sediment transport from the primary source area.</p>
+        <p><strong>Solution:</strong> The rock is a <strong>sedimentary breccia</strong>. It belongs to the <strong>rudaceous (psephitic) division of clastic sedimentary rocks</strong>. Because the gravel clasts are sharply angular (exhibiting sharp edges and corners with no rounding), it indicates <strong>minimal to negligible physical transport</strong> from the source area (e.g., deposited at the base of a fault scarp or talus/scree slope directly adjacent to the weathering bedrock).</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Explain why mechanical breakdown alone cannot produce an orthoquartzite containing $99\%$ monocrystalline quartz from a parent granitic pluton.</p>
+        <p><strong>Solution:</strong> A parent granite typically contains $25\text{--}35\%$ quartz, $50\text{--}65\%$ feldspars (orthoclase, plagioclase), and $5\text{--}15\%$ mafic silicates (biotite, hornblende). Pure mechanical breakdown shatters all minerals equally. To achieve $99\%$ quartz purity (high mineralogical maturity), mechanical breakdown must operate in conjunction with <strong>intense chemical weathering</strong> (hydrolysis) in a warm, humid climate, which chemically decomposes unstable feldspars to clay ($2\text{KAlSi}_3\text{O}_8 + 2\text{H}^+ + 9\text{H}_2\text{O} \rightarrow \text{Al}_2\text{Si}_2\text{O}_5(\text{OH})_4 + 4\text{H}_4\text{SiO}_4 + 2\text{K}^+$) and dissolves mafics, leaving behind chemically inert quartz.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>What is the difference between a "conglomerate" and a "breccia" in clastic petrology, and what hydrodynamic parameter does this difference reflect?</p>
+        <p><strong>Solution:</strong> Both conglomerate and breccia are rudaceous clastic rocks containing $> 30\%$ gravel-sized clasts ($> 2\text{ mm}$). In a <strong>conglomerate</strong>, the clasts are <strong>rounded to sub-rounded</strong> due to sustained attrition, abrasion, and tumbling during prolonged aquatic transport (e.g., fluvial rivers or wave-swept beaches). In a <strong>breccia</strong>, the clasts are <strong>angular to sub-angular</strong>, reflecting rapid deposition without significant abrasion (e.g., scree slopes, alluvial fans, or landslide debris flows).</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>Calculate the Wentworth phi ($\phi$) value corresponding to the boundary between arenaceous (sand) and argillaceous (silt/clay) clastic sediments.</p>
+        <p><strong>Solution:</strong>
+          The Wentworth phi scale is defined mathematically as:
+          $$\phi = -\log_2(d)$$
+          where $d$ is the grain diameter in millimeters. The boundary between sand and silt is $1/16\text{ mm} = 0.0625\text{ mm}$.
+          $$\phi = -\log_2\left(\frac{1}{16}\right) = -\log_2(2^{-4}) = -(-4) = +4.0\phi$$
+          Thus, the sand-silt boundary corresponds exactly to $+4.0\phi$. Particles coarser than $+4\phi$ are sand (arenaceous); finer than $+4\phi$ are silt/clay (argillaceous).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>Classify a rock consisting of $70\%$ volcanic ash and pumice fragments ejected violently from a volcanic vent and subsequently deposited and lithified in a lacustrine basin. Is it an igneous rock, a clastic sedimentary rock, or a hybrid?</p>
+        <p><strong>Solution:</strong> The rock is a <strong>pyroclastic rock (specifically a lithified volcanic tuff)</strong>. Petrologically, it occupies a hybrid boundary: its components are generated by igneous volcanic processes (explosive magmatic fragmentation), but its transport, sorting, settling, and depositional bedding are governed entirely by sedimentary fluid processes. In sedimentological nomenclature, it is classified as a <strong>volcaniclastic rock</strong>.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>In the Goldich Weathering Series, which common rock-forming primary silicate mineral is most susceptible to mechanical and chemical breakdown, and which is the most resilient?</p>
+        <p><strong>Solution:</strong> According to S.S. Goldich (1938), the susceptibility of primary silicate minerals to weathering is the inverse of Bowen's Reaction Series. <strong>Olivine</strong> (specifically forsterite, crystallizing at the highest temperatures $\sim 1200^\circ\text{C}$ with isolated $\text{SiO}_4^{4-}$ tetrahedra) is the <strong>most susceptible</strong> and least stable at surface conditions. <strong>Quartz</strong> (crystallizing at lowest temperatures with a fully polymerized 3D framework of Si-O bonds) is the <strong>most resilient</strong> and chemically stable.</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>Explain the role of freeze-thaw cycles (frost wedging) in the mechanical breakdown of alpine primary bedrocks, including the thermodynamic volumetric expansion of water.</p>
+        <p><strong>Solution:</strong> When liquid water transitions to hexagonal ice at $0^\circ\text{C}$, the open hydrogen-bonded crystal lattice forces a <strong>$9\%$ increase in specific volume</strong> (from $1.000\text{ cm}^3\text{/g}$ to $1.0905\text{ cm}^3\text{/g}$). When confined within tight rock fractures, this expansion generates hydrostatic crystallization pressures theoretically reaching up to $207\text{ MPa}$ at $-22^\circ\text{C}$, vastly exceeding the tensile strength of crystalline rocks ($5\text{--}25\text{ MPa}$) and driving rapid physical shattering into block fields (felsenmeer).</p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>Why are graywackes (lithic/feldspathic wackes) referred to as "texturally and mineralogically immature" clastic rocks?</p>
+        <p><strong>Solution:</strong> Graywackes contain $> 15\%$ fine-grained argillaceous/chloritic matrix, poorly sorted, angular to sub-angular framework grains (indicating <strong>textural immaturity</strong>), and high proportions of chemically unstable rock fragments and labile feldspars alongside quartz (indicating <strong>mineralogical immaturity</strong>). This combination reflects rapid erosion, short transport distances, and rapid deposition in high-energy, tectonically active environments (e.g., deep-marine turbidity currents in forearc basins).</p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
