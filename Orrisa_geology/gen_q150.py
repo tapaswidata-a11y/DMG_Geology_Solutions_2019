@@ -1,0 +1,392 @@
+#!/usr/bin/env python3
+"""
+Q150 Generator: Electrical Conductivity (EC) to TDS Conversion Factor (0.64 Law)
+"""
+import os
+from build_batch1_masterclass import wrap_html, SOLUTIONS_DIR
+
+def generate_q150():
+    title = r"Q150: Hydrogeology: EC to TDS Conversion Factor | OPSC Geology 2021 Masterclass"
+    badge = "GEO - 2/21 • Hydrogeology & Water Quality"
+    h1_title = "Q150: Hydrochemical Water Quality: Electrical Conductivity ($EC$) to Total Dissolved Solids ($TDS$) Conversion ($A = 0.64$)"
+    meta_text = """<strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 150<br>
+<strong>Authoritative References:</strong> John D. Hem, <em>Study and Interpretation of the Chemical Characteristics of Natural Water</em> (USGS Water-Supply Paper 2254, 3rd Ed., pp. 66–69); David K. Todd and Larry W. Mays, <em>Groundwater Hydrology</em> (3rd Ed., Wiley, Ch. 7: Groundwater Quality, pp. 280–310); Bureau of Indian Standards (BIS 10500:2012, Drinking Water Specifications); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 3: Hydrogeology, p. 36)."""
+
+    part1 = r"""
+  <!-- CARD 1: WORKING PRINCIPLES OF EC AND TDS -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Principles of Electrical Conductivity ($EC$) and Total Dissolved Solids ($TDS$)</div>
+    <div class="card-body">
+      <p>
+        In aqueous geochemistry and hydrogeology, <strong>Electrical Conductivity ($EC$)</strong> and <strong>Total Dissolved Solids ($TDS$)</strong> are the two most fundamental parameters utilized to evaluate the overall mineralization and potability of groundwater (Hem, 1985; Todd & Mays, 2005; Bangar, p. 36; BIS 10500:2012).
+      </p>
+
+      <div class="figure-box">
+        <img src="../../figures_Q150/ec_to_tds_hydrochemical_conversion_chart.png" alt="EC to TDS Hydrochemical Conversion Chart">
+        <div class="figure-caption">
+          <strong>Figure 150.1 — Correlation between Electrical Conductivity ($EC$) and Total Dissolved Solids ($TDS$):</strong> Linear correlation showing how the empirical multiplier factor $A = \text{TDS} / \text{EC}$ scales across varying hydrochemical facies, with the universal drinking water standard establishing the canonical factor $A = 0.64$.
+        </div>
+      </div>
+
+      <h4>1. Electrical Conductivity ($EC$ or Specific Conductance)</h4>
+      <div class="definition-box">
+        <strong>Electrical Conductivity ($EC$):</strong><br>
+        $EC$ measures the physical ability of an aqueous solution to conduct an electric current. Pure distilled water is an electrical insulator; conduction occurs solely through the migration of dissociated, charged mineral ions ($\text{Ca}^{2+}, \text{Mg}^{2+}, \text{Na}^+, \text{K}^+, \text{HCO}_3^-, \text{SO}_4^{2-}, \text{Cl}^-, \text{NO}_3^-$).
+        <br>Because ionic mobility is strongly temperature-dependent, $EC$ is standardized to an international reference temperature of <strong>$25^\circ\text{C}$ ($298.15\text{ K}$)</strong>.
+        <br>Units: $\mu\text{S/cm}$ ($\mu\text{mho/cm}$) or $\text{dS/m}$ ($1\text{ dS/m} = 1000\text{ }\mu\text{S/cm}$).
+      </div>
+
+      <h4>2. Total Dissolved Solids ($TDS$)</h4>
+      <div class="definition-box">
+        <strong>Total Dissolved Solids ($TDS$):</strong><br>
+        $TDS$ represents the total gravimetric mass of all inorganic mineral salts and organic matter dissolved in a unit volume of water that passes through a $0.45\text{ }\mu\text{m}$ filter and remains after oven drying to constant weight at $180^\circ\text{C}$ (Standard Methods 2540 C).
+        <br>Units: $\text{mg/L}$ (milligrams per liter) or $\text{ppm}$ (parts per million).
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: THE CONVERSION LAW & FACTOR 0.64 -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. The Empirical Conversion Law: Derivation of the $0.64$ Multiplier</div>
+    <div class="card-body">
+      <div class="figure-box">
+        <img src="../../figures_Q150/bangar_p36_electrical_conductivity_tds_conversion.png" alt="Bangar Textbook Hydrogeology EC TDS Conversion Scan">
+        <div class="figure-caption">
+          <strong>Figure 150.2 — Facsimile from K.M. Bangar (Principles of Engineering Geology, Ch. 3, p. 36):</strong> Authoritative summary of chemical quality of groundwater, electrical conductivity testing protocols, and standard empirical formulas converting specific conductance to total dissolved solids.
+        </div>
+      </div>
+
+      <h4>The Empirical Conversion Equation</h4>
+      <p>
+        The relationship between Total Dissolved Solids and Electrical Conductivity is expressed by the classical linear empirical formulation (Hem, 1985, USGS WSP 2254, p. 67):
+      </p>
+      <div class="math-block" style="font-size: 1.25rem; font-weight: bold; background: #eff6ff; border-left: 5px solid #2563eb; padding: 12px;">
+        $$\text{TDS (mg/L)} = A \times EC\text{ (}\mu\text{S/cm at } 25^\circ\text{C)}$$
+      </div>
+      <p>
+        Where $A$ is an empirical hydrochemical conversion factor determined by the dominant dissolved ionic species:
+      </p>
+      <ul>
+        <li><strong>$A \approx 0.55\text{ to }0.60$:</strong> Pure calcium-bicarbonate ($\text{Ca-HCO}_3$) fresh recharge waters.</li>
+        <li><strong>$A = 0.64$:</strong> <strong>The canonical benchmark conversion factor</strong> universally accepted in groundwater hydrology, water supply engineering, and public health standards (USGS Water-Supply Paper 2254; WHO Guidelines for Drinking-Water Quality; Bureau of Indian Standards BIS 10500:2012) for mixed-ion potable natural groundwater.</li>
+        <li><strong>$A \approx 0.70\text{ to }0.80$:</strong> Sulfate-rich ($\text{SO}_4^{2-}$), chloride-rich ($\text{Cl}^-$), or highly mineralized brackish groundwaters.</li>
+      </ul>
+
+      <div class="figure-box">
+        <img src="../../figures_Q150/tds_ec_temperature_relationship.png" alt="TDS EC Temperature Relationship">
+        <div class="figure-caption">
+          <strong>Figure 150.3 — Temperature Dependence of Electrical Conductivity:</strong> Showing the $\approx 2.0\% / ^\circ\text{C}$ rise in conductance caused by declining fluid viscosity and increased ionic mobility, reinforcing why all standard conversions must be normalized to $25^\circ\text{C}$.
+        </div>
+      </div>
+
+      <h4>Mathematical Calculation for Question 150</h4>
+      <p>
+        Applying the universally recognized drinking water standard conversion factor ($A = 0.64$) to the given Electrical Conductivity of $2500\text{ }\mu\text{S/cm}$ at $25^\circ\text{C}$:
+      </p>
+      <div class="math-block" style="font-size: 1.35rem; font-weight: bold; background: #ecfdf5; border-left: 5px solid #059669; padding: 15px;">
+        $$\text{TDS} = 0.64 \times EC = 0.64 \times 2500\text{ }\mu\text{S/cm} = \mathbf{1600\text{ mg/L}}$$
+      </div>
+      <p>
+        This corresponds precisely and without ambiguity to <strong>Option (C): 1600 mg/l</strong>.
+      </p>
+    </div>
+  </div>
+
+  <!-- CARD 3: DRINKING WATER STANDARDS -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Drinking Water Standards: BIS 10500 & WHO Evaluation</div>
+    <div class="card-body">
+      <p>
+        In Indian statutory regulations (<strong>Bureau of Indian Standards BIS 10500:2012</strong>):
+      </p>
+      <ul>
+        <li><strong>Acceptable (Desirable) Limit:</strong> $\text{TDS} \le 500\text{ mg/L}$ ($\approx EC \le 780\text{ }\mu\text{S/cm}$).</li>
+        <li><strong>Permissible Limit (in absence of alternate source):</strong> $\text{TDS} \le 2000\text{ mg/L}$ ($\approx EC \le 3125\text{ }\mu\text{S/cm}$).</li>
+      </ul>
+      <p>
+        At an Electrical Conductivity of $2500\text{ }\mu\text{S/cm}$, the corresponding $\text{TDS} = 1600\text{ mg/L}$ falls safely beneath the statutory permissible ceiling of $2000\text{ mg/L}$. While mineralized and slightly brackish in taste, it remains technically potable in arid and semi-arid tracts where fresher groundwater sources are unavailable.
+      </p>
+    </div>
+  </div>
+"""
+
+    part2 = r"""
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-amber">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-box">
+        <strong>Question 150:</strong> Water with electrical conductivity value of 2500 micro siemens/cm (at 25°C) is considered suitable for drinking purpose. When expressed this drinking water standard in terms of TDS, the corresponding TDS value (in mg/l) would become :
+        <div class="options-grid">
+          <div class="option-item"><strong>(A)</strong> 1500 mg/l</div>
+          <div class="option-item"><strong>(B)</strong> 1550 mg/l</div>
+          <div class="option-item"><strong>(C)</strong> 1600 mg/l</div>
+          <div class="option-item"><strong>(D)</strong> 1650 mg/l</div>
+        </div>
+      </div>
+      <div class="answer-banner">
+        <strong>Correct Answer: (C) 1600 mg/l</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC OPTION-BY-OPTION REFUTATIONS -->
+  <div class="card">
+    <div class="card-header bg-red">Forensic Analysis & Option Refutations</div>
+    <div class="card-body">
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (A): 1500 mg/l
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (A) calculates $\text{TDS} = 1500\text{ mg/L}$, which would correspond to an empirical conversion factor of $A = 1500 / 2500 = 0.60$. While a multiplier of $0.55-0.60$ is occasionally observed in very low-salinity, freshly recharged calcium-bicarbonate streams ($EC < 500\text{ }\mu\text{S/cm}$), natural groundwater mineralized to $EC = 2500\text{ }\mu\text{S/cm}$ invariably contains significant concentrations of sulfate, chloride, and sodium ions whose higher equivalent conductances shift the conversion factor to $0.64$. Therefore, $1500\text{ mg/L}$ is an underestimate.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (B): 1550 mg/l
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (B) yields an arbitrary conversion factor of $A = 1550 / 2500 = 0.62$. This value does not correspond to any standard hydrochemical baseline or textbook conversion factor recognized by the USGS, WHO, or BIS.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-card-header">
+          <span class="badge bg-success">CORRECT</span> Option (C): 1600 mg/l
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (C) reflects the exact, mathematically and hydrochemically verified standard conversion:
+          </p>
+          <ul>
+            <li>In international groundwater hydrology (John D. Hem, USGS WSP 2254, p. 67; Todd & Mays; Bangar, p. 36), the standard drinking water conversion multiplier between specific conductance ($\mu\text{S/cm at }25^\circ\text{C}$) and Total Dissolved Solids ($\text{mg/L}$) is <strong>$A = 0.64$</strong>.</li>
+            <li>Multiplying $EC = 2500\text{ }\mu\text{S/cm}$ by $0.64$:
+              $$\text{TDS} = 0.64 \times 2500 = \mathbf{1600\text{ mg/L}}$$
+            </li>
+            <li>This $1600\text{ mg/L}$ value is fully compliant with the BIS 10500 permissible drinking water ceiling ($2000\text{ mg/L}$).</li>
+          </ul>
+          <p>
+            Hence, Option (C) is indisputably the correct answer.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (D): 1650 mg/l
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (D) yields $A = 1650 / 2500 = 0.66$. While multipliers of $0.65-0.70$ are sometimes encountered in sulfate-rich waters, the canonical standard drinking water multiplier applied in Indian and international competitive hydrogeology examinations is rigorously fixed at $A = 0.64$, which yields $1600\text{ mg/L}$.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+"""
+
+    part3 = r"""
+  <!-- CARD: SYNTHESIS COMPARISON TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Hydrogeochemical Synthesis: EC-to-TDS Multipliers Across Hydrochemical Facies</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Hydrochemical Water Type</th>
+              <th>Dominant Ionic Facies</th>
+              <th>Typical EC Range ($\mu\text{S/cm}$)</th>
+              <th>Conversion Multiplier ($A$)</th>
+              <th>Governing Hydrochemical Equation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fresh Recharge / Rainfed</strong></td>
+              <td>$\text{Ca}^{2+} - \text{Mg}^{2+} - \text{HCO}_3^-$</td>
+              <td>$100 - 500$</td>
+              <td>$0.55 - 0.60$</td>
+              <td>$\text{TDS} \approx 0.58 \times EC$</td>
+            </tr>
+            <tr class="table-success" style="font-weight: bold; font-size: 1.05rem;">
+              <td><strong>Potable Natural Groundwater</strong></td>
+              <td><strong>Mixed Cation-Anion Standard</strong></td>
+              <td><strong>$500 - 3000$</strong></td>
+              <td><strong>$0.64$ (Standard)</strong></td>
+              <td>$$\mathbf{\text{TDS} = 0.64 \times EC = 1600\text{ mg/L}}$$</td>
+            </tr>
+            <tr>
+              <td><strong>Mineralized / Gypsiferous</strong></td>
+              <td>$\text{Ca}^{2+} - \text{Na}^+ - \text{SO}_4^{2-}$</td>
+              <td>$2000 - 6000$</td>
+              <td>$0.70 - 0.75$</td>
+              <td>$\text{TDS} \approx 0.72 \times EC$</td>
+            </tr>
+            <tr>
+              <td><strong>Saline / Coastal Seawater</strong></td>
+              <td>$\text{Na}^+ - \text{Cl}^-$</td>
+              <td>$> 10,000$ ($50,000$ in ocean)</td>
+              <td>$0.75 - 0.85$</td>
+              <td>$\text{TDS} \approx 0.80 \times EC$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD: 8 FULLY WORKED EXAM PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Hydrochemistry Practice Problems (8 Rigorous Exercises)</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Rapid EC to TDS Conversion Across Salinity Tiers</strong><br>
+        Using the standard conversion factor $A = 0.64$, calculate the corresponding TDS (in $\text{mg/L}$) for four water samples with electrical conductivities of: (a) $450\text{ }\mu\text{S/cm}$, (b) $1250\text{ }\mu\text{S/cm}$, (c) $2500\text{ }\mu\text{S/cm}$, and (d) $3125\text{ }\mu\text{S/cm}$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Sample (a): $\text{TDS} = 0.64 \times 450 = \mathbf{288\text{ mg/L}}$ (Excellent, pristine drinking water).<br>
+          2. Sample (b): $\text{TDS} = 0.64 \times 1250 = \mathbf{800\text{ mg/L}}$ (Good drinking water).<br>
+          3. Sample (c): $\text{TDS} = 0.64 \times 2500 = \mathbf{1600\text{ mg/L}}$ (Permissible drinking water).<br>
+          4. Sample (d): $\text{TDS} = 0.64 \times 3125 = \mathbf{2000\text{ mg/L}}$ (Exact BIS permissible ceiling limit).
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: Temperature Correction of Field Conductivity Data</strong><br>
+        A hydrogeologist measures an uncorrected electrical conductivity of $EC_{16} = 2100\text{ }\mu\text{S/cm}$ in a winter well test where water temperature is $T = 16^\circ\text{C}$. The temperature compensation coefficient is $\theta = 0.020\text{ per }^\circ\text{C}$ ($2.0\%/^\circ\text{C}$). (a) Normalize the conductivity to standard $25^\circ\text{C}$ ($EC_{25}$). (b) Calculate the true TDS using $A = 0.64$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Temperature normalization equation:
+          $$EC_{25} = \frac{EC_T}{1 + \theta (T - 25)} = \frac{2100}{1 + 0.020(16 - 25)} = \frac{2100}{1 + 0.020(-9)} = \frac{2100}{1 - 0.18} = \frac{2100}{0.82} \approx 2560.98\text{ }\mu\text{S/cm}$$
+          2. True TDS:
+          $$\text{TDS} = 0.64 \times 2560.98 \approx 1639.0\text{ mg/L}$$
+          Failing to correct for the cold $16^\circ\text{C}$ water temperature would have underestimated TDS by nearly $300\text{ mg/L}$ ($1344\text{ mg/L}$ vs $1639\text{ mg/L}$).
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Gravimetric TDS vs Sum of Dissolved Constituents</strong><br>
+        A complete chemical analysis of a groundwater sample yields the following major ion concentrations in $\text{mg/L}$: $\text{Ca}^{2+} = 120$, $\text{Mg}^{2+} = 48$, $\text{Na}^+ = 230$, $\text{K}^+ = 15$, $\text{HCO}_3^- = 488$, $\text{SO}_4^{2-} = 240$, $\text{Cl}^- = 310$, and $\text{NO}_3^- = 22$. Explain why the gravimetric dried TDS ($180^\circ\text{C}$) is NOT equal to the simple arithmetic sum of ions, and calculate the true gravimetric TDS.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. During gravimetric oven drying at $180^\circ\text{C}$, bicarbonate ions decompose thermally into carbonate precipitate, water vapor, and carbon dioxide gas:
+          $$2 \text{HCO}_3^- \xrightarrow{\Delta} \text{CO}_3^{2-} + \text{H}_2\text{O}\uparrow + \text{CO}_2\uparrow$$
+          2. The molecular weight ratio of $\text{CO}_3^{2-} / (2 \text{HCO}_3^-) = 60.01 / (2 \times 61.02) = 0.4917$. Therefore, only $49.17\%$ of the bicarbonate mass remains in the dried residue.<br>
+          3. Standard USGS / APHA formula for Calculated TDS:
+          $$\text{TDS} = \text{Ca} + \text{Mg} + \text{Na} + \text{K} + (0.4917 \times \text{HCO}_3) + \text{SO}_4 + \text{Cl} + \text{NO}_3$$
+          $$\text{TDS} = 120 + 48 + 230 + 15 + (0.4917 \times 488) + 240 + 310 + 22$$
+          $$\text{TDS} = 985 + 239.95 \approx \mathbf{1224.95\text{ mg/L}}$$
+          (Simple uncorrected sum would have falsely yielded $1473\text{ mg/L}$).
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Sodium Adsorption Ratio (SAR) and USSL Salinity Hazard</strong><br>
+        For water with $EC = 2500\text{ }\mu\text{S/cm}$, chemical analysis in milliequivalents per liter ($\text{meq/L}$) reveals: $\text{Na}^+ = 14.5\text{ meq/L}$, $\text{Ca}^{2+} = 5.2\text{ meq/L}$, and $\text{Mg}^{2+} = 3.6\text{ meq/L}$. (a) Calculate the Sodium Adsorption Ratio (SAR). (b) Classify the water on the US Salinity Laboratory (USSL) diagram.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. SAR formula:
+          $$\text{SAR} = \frac{\text{Na}^+}{\sqrt{\frac{\text{Ca}^{2+} + \text{Mg}^{2+}}{2}}} = \frac{14.5}{\sqrt{\frac{5.2 + 3.6}{2}}} = \frac{14.5}{\sqrt{\frac{8.8}{2}}} = \frac{14.5}{\sqrt{4.4}} = \frac{14.5}{2.0976} \approx 6.91$$
+          2. USSL Classification:
+          - Salinity Hazard: At $EC = 2500\text{ }\mu\text{S/cm}$ ($2.25 - 5.0\text{ dS/m}$), the water falls into <strong>Class C4 (Very High Salinity Hazard)</strong>.
+          - Sodium Hazard: At $\text{SAR} = 6.91$ ($< 10$), the water falls into <strong>Class S1 (Low Sodium Hazard)</strong>.
+          - Overall USSL Class: <strong>C4-S1</strong> (Cannot be used on soils with restricted drainage; requires special salinity management and salt-tolerant crops).
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: Osmotic Potential of Saline Irrigation Water</strong><br>
+        High electrical conductivity reduces agricultural crop yields by increasing the osmotic pressure ($P_{\text{osm}}$) of soil moisture, inhibiting plant root water uptake. The empirical formula relating osmotic pressure to electrical conductivity is $P_{\text{osm}} \approx 0.36 \times EC\text{ (in dS/m)}$ in bars. For water with $EC = 2500\text{ }\mu\text{S/cm}$ ($2.5\text{ dS/m}$): (a) Calculate $P_{\text{osm}}$ in bars, and (b) Convert to kilopascals ($\text{kPa}$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Osmotic pressure in bars:
+          $$P_{\text{osm}} = 0.36 \times 2.5\text{ dS/m} = 0.90\text{ bars}$$
+          2. Convert to $\text{kPa}$ ($1\text{ bar} = 100\text{ kPa}$):
+          $$P_{\text{osm}} = 0.90 \times 100\text{ kPa} = \mathbf{90\text{ kPa}}$$
+          Plants must exert an additional $90\text{ kPa}$ of suction tension purely to overcome the osmotic potential of the dissolved ions.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Calculation of Ionic Strength ($I$)</strong><br>
+        In geochemical speciation modeling (PHREEQC), the ionic strength of an aqueous solution ($I = 0.5 \sum m_i z_i^2$) can be estimated empirically from Electrical Conductivity via the Marion-Babcock relationship: $I \approx 0.016 \times EC\text{ (in dS/m)}$. For $EC = 2500\text{ }\mu\text{S/cm} = 2.5\text{ dS/m}$, calculate: (a) Ionic strength ($I$), and (b) Determine the Davies activity coefficient ($\gamma_{\text{Ca}}$) for divalent calcium ($\text{Ca}^{2+}$, $z = 2$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Ionic strength:
+          $$I = 0.016 \times 2.5 = 0.040\text{ mol/L}$$
+          2. Davies equation for single-ion activity coefficient at $25^\circ\text{C}$:
+          $$-\log_{10}(\gamma_i) = 0.51 \cdot z_i^2 \left(\frac{\sqrt{I}}{1 + \sqrt{I}} - 0.3 I\right)$$
+          $$\sqrt{I} = \sqrt{0.040} = 0.20 \implies \frac{0.20}{1 + 0.20} - 0.3(0.040) = \frac{0.20}{1.20} - 0.012 = 0.1667 - 0.012 = 0.1547$$
+          $$-\log_{10}(\gamma_{\text{Ca}}) = 0.51 \times (2)^2 \times 0.1547 = 0.51 \times 4 \times 0.1547 = 0.3156$$
+          $$\gamma_{\text{Ca}} = 10^{-0.3156} \approx 0.4835$$
+          In water with $EC = 2500\text{ }\mu\text{S/cm}$, electrostatic shielding reduces the thermodynamic activity of calcium to less than half ($48.4\%$) of its measured molar concentration.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Seawater Mixing Fraction in Coastal Aquifer</strong><br>
+        In a coastal observation well, salinization is detected. Pure native freshwater has an electrical conductivity of $EC_f = 400\text{ }\mu\text{S/cm}$, while intruding seawater has $EC_s = 50,000\text{ }\mu\text{S/cm}$. If the mixed water records $EC_m = 2500\text{ }\mu\text{S/cm}$, calculate the percentage volume of seawater ($f_s$) present in the aquifer.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Linear binary mixing mass balance:
+          $$EC_m = (1 - f_s) EC_f + f_s EC_s$$
+          $$2500 = (1 - f_s)(400) + 50,000 f_s = 400 - 400 f_s + 50,000 f_s = 400 + 49,600 f_s$$
+          2. Solve for seawater fraction $f_s$:
+          $$49,600 f_s = 2500 - 400 = 2100 \implies f_s = \frac{2100}{49,600} \approx 0.04234$$
+          3. Convert to percentage:
+          $$\mathbf{f_s = 4.23\%}$$
+          <em>Critical Hydrogeologic Insight:</em> A contamination of just <strong>$4.23\%$ seawater</strong> is sufficient to elevate pristine groundwater conductivity to $2500\text{ }\mu\text{S/cm}$ ($\text{TDS} = 1600\text{ mg/L}$), ruining the well for drinking purposes!
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Bureau of Indian Standards (BIS 10500:2012) Potability Audit</strong><br>
+        A municipal borewell water supply records a TDS of $1600\text{ mg/L}$. Audit this water supply against the statutory limits of BIS 10500:2012 for: (a) Compliance status, (b) Taste threshold implications, and (c) Required engineering remediation if local alternative freshwater exists.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. <strong>Compliance Status:</strong> Under BIS 10500:2012, the Acceptable Limit is $500\text{ mg/L}$ and the Permissible Limit in the absence of alternate source is $2000\text{ mg/L}$. Because $1600\text{ mg/L} < 2000\text{ mg/L}$, the water is legally <strong>permissible for human consumption</strong>.<br>
+          2. <strong>Taste Threshold:</strong> WHO palatability guidelines classify water with $\text{TDS} > 1200\text{ mg/L}$ as "unpalatable / poor tasting" (mineral/chalky/salty taste).<br>
+          3. <strong>Engineering Recommendation:</strong> If an alternate freshwater aquifer exists, it must be developed. If not, community reverse osmosis (RO) or electrodialysis reversal (EDR) membrane desalination units should be installed to blend the treated permeate down to an optimum TDS of $250-400\text{ mg/L}$.
+        </div>
+      </div>
+
+    </div>
+  </div>
+"""
+
+    html = wrap_html(
+        q_num=150,
+        title=title,
+        badge=badge,
+        h1_title=h1_title,
+        meta_text=meta_text,
+        part1_content=part1,
+        part2_content=part2,
+        part3_content=part3
+    )
+
+    out_file = os.path.join(SOLUTIONS_DIR, "Q150_Electrical_Conductivity_to_TDS_Conversion_Complete_Guide.html")
+    with open(out_file, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Generated Q150: {out_file} ({len(html)} bytes)")
+
+if __name__ == "__main__":
+    generate_q150()

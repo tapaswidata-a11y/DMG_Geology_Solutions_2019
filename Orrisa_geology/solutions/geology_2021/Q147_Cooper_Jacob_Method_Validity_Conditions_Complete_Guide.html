@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q147: The Cooper-Jacob Method - Boundary Conditions & Validity Limits | OPSC Geology 2021 Masterclass</title>
+<title>Q147: Hydrogeology: Cooper-Jacob Method Validity Limits | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,236 +89,709 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q147" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Hydrogeology & Well Hydraulics</div>
-    <h1>Q147: The Cooper-Jacob Method - Boundary Conditions & Validity Limits</h1>
+    <h1>Q147: Cooper-Jacob Straight-Line Method: Mathematical Limits of Validity ($u \le 0.05$)</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> H.H. Cooper & C.E. Jacob (1946, Generalized Graphical Method for Evaluating Formation Constants)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 147<br>
+<strong>Authoritative References:</strong> Hilton H. Cooper and C.E. Jacob, <em>A Generalized Graphical Method for Evaluating Formation Constants and Summarizing Well-Field History</em> (Trans. AGU, 1946, Vol. 27, pp. 526–534); David K. Todd and Larry W. Mays, <em>Groundwater Hydrology</em> (3rd Ed., Wiley, Ch. 4: Well Hydraulics, pp. 140–152); C.W. Fetter, <em>Applied Hydrogeology</em> (4th Ed., Prentice Hall, Ch. 5, pp. 170–182); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 3: Hydrogeology, p. 34).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Analytical Validity</h3>
-<div class="question-box">
-  <p><strong>Question 147:</strong> Conditions under which Jacob-Cooper method cannot be used for analysis of pump test data :<br>
-  (i) When the pump test is of short duration<br>
-  (ii) When the pump test is of long duration<br>
-  (iii) When the observation well is situated far away from the main well<br>
-  (iv) When the observation well is situated nearer to the main well<br>
-  Choose the correct set of answer from the following :</p>
-  <ul>
-    <li>(A) (i) and (iii)</li>
-    <li>(B) (ii) and (iii)</li>
-    <li>(C) (ii) and (iv)</li>
-    <li>(D) (i) and (iv)</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(A) (i) and (iii)</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q147/cooper_jacob_validity_condition_theis_comparison.png" alt="Cooper-Jacob Straight-Line Well Hydraulics: Validity Threshold u <= 0.01">
-      <figcaption>
-        <strong>Figure 147.1: Cooper-Jacob Straight-Line Well Hydraulics: Validity Threshold u ≤ 0.01.</strong> Semilog drawdown plot comparing the exact Theis exponential integral W(u) with the Cooper-Jacob logarithmic straight line, proving validity requires u = r^2 S / (4Tt) ≤ 0.01 (invalid when u > 0.01, at early pumping time or large distance).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: THEIS EQUATION AND TAYLOR TRUNCATION -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Theis Well Function & The Cooper-Jacob Semilog Simplification</div>
+    <div class="card-body">
+      <p>
+        In 1935, <strong>Charles V. Theis</strong> derived the exact non-equilibrium equation for transient radial groundwater flow to a pumping well in a confined, homogeneous, isotropic aquifer:
+      </p>
+      <div class="math-block">
+        $$s = \frac{Q}{4 \pi T} W(u)$$
+        $$\text{where } u = \frac{r^2 S}{4 T t}$$
+      </div>
+      <p>
+        Here, $s$ is drawdown, $Q$ is constant pumping discharge, $T$ is aquifer transmissivity, $S$ is storativity, $r$ is radial distance to the observation well, $t$ is elapsed pumping time, and $W(u)$ is the exponential integral (the <strong>Theis Well Function</strong>), expandable as an infinite convergent Taylor-Maclaurin series:
+      </p>
+      <div class="math-block">
+        $$W(u) = -0.57721566 - \ln(u) + u - \frac{u^2}{2 \cdot 2!} + \frac{u^3}{3 \cdot 3!} - \frac{u^4}{4 \cdot 4!} + \dots$$
+      </div>
+
+      <div class="figure-box">
+        <img src="../../figures_Q147/cooper_jacob_validity_condition_theis_comparison.png" alt="Cooper Jacob Validity Condition Theis Comparison">
+        <div class="figure-caption">
+          <strong>Figure 147.1 — Theis Type Curve vs Cooper-Jacob Straight-Line Approximation:</strong> Comparison of exact Theis $W(u)$ against Cooper-Jacob semilog straight line. For small $u \le 0.05$ (large $t$ or small $r$), the two models merge seamlessly (error $< 2\%$). For large $u > 0.05$ (short test duration or distant piezometer), the Cooper-Jacob line diverges severely into non-linear deviation.
+        </div>
+      </div>
+
+      <h4>The Cooper-Jacob Straight-Line Formula (1946)</h4>
+      <p>
+        In 1946, <strong>Hilton H. Cooper and C.E. Jacob</strong> noted that when the dimensionless argument $u$ is sufficiently small ($u \le 0.05$ or $u \le 0.01$), all higher-order polynomial terms in the expansion ($u - u^2/4 + \dots$) become negligibly small and can be dropped without significant loss of accuracy:
+      </p>
+      <div class="math-block">
+        $$W(u) \approx -\ln(u) - 0.5772 = \ln\left(\frac{1}{u}\right) - \ln(1.781) = \ln\left(\frac{1}{1.781 u}\right) = \ln\left(\frac{0.5615}{u}\right) = \ln\left(\frac{2.25}{4 u}\right)$$
+        $$W(u) \approx \ln\left(\frac{2.25 T t}{r^2 S}\right) = 2.303 \log_{10}\left(\frac{2.25 T t}{r^2 S}\right)$$
+      </div>
+      <p>
+        Substituting this into the drawdown equation gives the <strong>Cooper-Jacob Semilog Equation</strong>:
+      </p>
+      <div class="math-block" style="font-size: 1.25rem; font-weight: bold; background: #eff6ff; border-left: 5px solid #2563eb; padding: 12px;">
+        $$s = \frac{2.303 Q}{4 \pi T} \log_{10}\left(\frac{2.25 T t}{r^2 S}\right)$$
+      </div>
+      <p>
+        Plotting drawdown $s$ on an arithmetic scale against elapsed time $t$ on a logarithmic scale yields a straight line with slope $\Delta s$ (drawdown per log cycle of time):
+      </p>
+      <div class="math-block">
+        $$T = \frac{2.303 Q}{4 \pi \Delta s} \quad \text{and} \quad S = \frac{2.25 T t_0}{r^2}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: MATHEMATICAL BREAKDOWN & CRITICAL INVALIDITY CONDITIONS -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. The Critical Invalidity Criterion ($u > 0.05$): When Cooper-Jacob CANNOT Be Used</div>
+    <div class="card-body">
+      <div class="figure-box">
+        <img src="../../figures_Q147/bangar_p34_cooper_jacob_method_conditions.png" alt="Bangar Textbook Hydrogeology Cooper Jacob Conditions Scan">
+        <div class="figure-caption">
+          <strong>Figure 147.2 — Facsimile from K.M. Bangar (Principles of Engineering Geology, Ch. 3, p. 34):</strong> Derivation of the Cooper-Jacob modification, explicit definition of the dimensionless variable $u$, and the mathematical threshold condition $u < 0.05$ restricting valid semilog graphical analysis.
+        </div>
+      </div>
+
+      <h4>The Fundamental Limit of Validity</h4>
+      <p>
+        The Cooper-Jacob straight-line approximation is mathematically valid <strong>if and only if</strong>:
+      </p>
+      <div class="math-block" style="font-size: 1.2rem; font-weight: bold; background: #ecfdf5; border-left: 5px solid #059669; padding: 12px;">
+        $$u = \frac{r^2 S}{4 T t} \le 0.05 \quad (\text{or } u \le 0.01 \text{ for } < 1\% \text{ error})$$
+      </div>
+      <p>
+        Conversely, the Cooper-Jacob method <strong>CANNOT BE USED</strong> whenever:
+      </p>
+      <div class="math-block" style="font-size: 1.2rem; font-weight: bold; background: #fef2f2; border-left: 5px solid #dc2626; padding: 12px;">
+        $$u = \frac{r^2 S}{4 T t} > 0.05$$
+      </div>
+
+      <h4>Deconstruction of the Inequality</h4>
+      <p>
+        Examining the algebraic structure of the fraction $u = \frac{r^2 S}{4 T t}$ reveals exactly what physical test conditions cause $u$ to exceed $0.05$:
+      </p>
+      <ol>
+        <li><strong>Condition (i) — When the pump test is of SHORT duration ($t$ is small):</strong><br>
+          Because elapsed pumping time $t$ resides in the <em>denominator</em>, when $t$ is small (during early test stages or short-duration pumping), the quotient $\frac{r^2 S}{4 T t}$ becomes large ($u \gg 0.05$). The higher-order terms in the series cannot be neglected, the semilog plot is non-linear and curved, and applying Cooper-Jacob results in catastrophic errors. <strong>(Method cannot be used!)</strong>
+        </li>
+        <li><strong>Condition (iii) — When the observation well is situated FAR AWAY from the main well ($r$ is large):</strong><br>
+          Because radial distance $r$ resides in the <em>numerator as a squared term ($r^2$)</em>, any increase in $r$ dramatically magnifies $u$. For a distant piezometer, the cone of depression has not sufficiently developed, making $u \gg 0.05$ throughout most or all of the test. <strong>(Method cannot be used!)</strong>
+        </li>
+      </ol>
+
+      <h4>Why Conditions (ii) and (iv) FAVOR the Cooper-Jacob Method</h4>
+      <ul>
+        <li><strong>Condition (ii) — When the pump test is of LONG duration ($t$ is large):</strong> As $t \to \infty$, the denominator grows enormous, driving $u \to 0$ ($u \ll 0.01$). This makes Cooper-Jacob <em>maximally accurate and fully valid</em>!</li>
+        <li><strong>Condition (iv) — When the observation well is situated NEAR to the main well ($r$ is small):</strong> A small radial distance $r$ minimizes the $r^2$ numerator, ensuring that $u \le 0.01$ is achieved almost immediately after pumping begins. This makes Cooper-Jacob <em>ideally suited</em>.</li>
+      </ul>
+      <div class="definition-box">
+        <strong>Definitive Exam Conclusion:</strong><br>
+        The Cooper-Jacob method <strong>CANNOT</strong> be used under <strong>(i) short duration</strong> and <strong>(iii) distant observation well</strong>, because both conditions force $u = \frac{r^2 S}{4 T t} > 0.05$.
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: NUMERICAL TRUNCATION ERROR TABLE -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Quantitative Error Progression as a Function of $u$</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Dimensionless Variable $u$</th>
+              <th>Exact Theis $W(u)$</th>
+              <th>Cooper-Jacob Approximation $\ln(2.25 / u)$</th>
+              <th>Truncation Error (%)</th>
+              <th>Applicability Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$0.001$</td>
+              <td>$6.3315$</td>
+              <td>$6.3324$</td>
+              <td>$+0.01\%$</td>
+              <td><span class="badge bg-success">Perfect</span></td>
+            </tr>
+            <tr>
+              <td>$0.010$</td>
+              <td>$4.0379$</td>
+              <td>$4.0395$</td>
+              <td>$+0.04\%$</td>
+              <td><span class="badge bg-success">Excellent ($< 1\%$ error)</span></td>
+            </tr>
+            <tr>
+              <td>$0.050$</td>
+              <td>$2.4679$</td>
+              <td>$2.5157$</td>
+              <td>$+1.94\%$</td>
+              <td><span class="badge bg-primary">Standard Cutoff Limit ($< 2\%$ error)</span></td>
+            </tr>
+            <tr>
+              <td>$0.100$</td>
+              <td>$1.8229$</td>
+              <td>$1.9363$</td>
+              <td>$+6.22\%$</td>
+              <td><span class="badge bg-warning">Marginal (Error $> 5\%$)</span></td>
+            </tr>
+            <tr>
+              <td>$0.200$</td>
+              <td>$1.2227$</td>
+              <td>$1.3787$</td>
+              <td>$+12.76\%$</td>
+              <td><span class="badge bg-danger">INVALID (Error $> 12\%$)</span></td>
+            </tr>
+            <tr>
+              <td>$0.500$</td>
+              <td>$0.5598$</td>
+              <td>$0.7675$</td>
+              <td>$+37.10\%$</td>
+              <td><span class="badge bg-danger">FATALLY INVALID (Error $> 37\%$)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q147. Conditions under which Jacob-Cooper method cannot be used for analysis of pump test data : (i) When the pump test is of short duration, (ii) When the pump test is of long duration, (iii) When the observation well is situated far away from the main well, (iv) When the observation well is situated nearer to the main well. Choose the correct set of answer from the following :</div>
-      <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> (i) and (iii)</div>
-        <div class="opt-item "><strong>(B)</strong> (ii) and (iii)</div>
-        <div class="opt-item "><strong>(C)</strong> (ii) and (iv)</div>
-        <div class="opt-item "><strong>(D)</strong> (i) and (iv)</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-amber">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-box">
+        <strong>Question 147:</strong> Conditions under which Jacob-Cooper method cannot be used for analysis of pump test data :
+        <br>(i) When the pump test is of short duration,
+        <br>(ii) When the pump test is of long duration,
+        <br>(iii) When the observation well is situated far away from the main well,
+        <br>(iv) When the observation well is situated nearer to the main well.
+        <br>Choose the correct set of answer from the following :
+        <div class="options-grid">
+          <div class="option-item"><strong>(A)</strong> (i) and (iii)</div>
+          <div class="option-item"><strong>(B)</strong> (ii) and (iii)</div>
+          <div class="option-item"><strong>(C)</strong> (ii) and (iv)</div>
+          <div class="option-item"><strong>(D)</strong> (i) and (iv)</div>
+        </div>
+      </div>
+      <div class="answer-banner">
+        <strong>Correct Answer: (A) (i) and (iii)</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: The Cooper-Jacob Straight-Line Approximation</h3>
-<p>
-The Theis (1935) non-equilibrium equation models transient radial drawdown in a confined aquifer:
-</p>
-$$s = \frac{Q}{4\pi T} W(u) = \frac{Q}{4\pi T} \left( -0.5772 - \ln u + u - \frac{u^2}{2 \cdot 2!} + \cdots \right)$$
-where the Boltzmann variable $u$ is defined as:
-$$u = \frac{r^2 S}{4 T t}$$
-<ul>
-  <li><strong>The Cooper-Jacob (1946) Simplification:</strong>
-    <ul>
-      <li>Cooper and Jacob recognized that when $u$ is sufficiently small (<strong>$u \le 0.01$ to $0.05$</strong>), the higher-order terms in the infinite series become negligible.</li>
-      <li>Under this condition, the exponential integral simplifies to a straight line on semi-logarithmic paper:
-        $$s \approx \frac{2.3 Q}{4\pi T} \log_{10}\left(\frac{2.25 T t}{r^2 S}\right)$$
-      </li>
-    </ul>
-  </li>
-  <li><strong>When Cooper-Jacob CANNOT Be Used ($u > 0.05$):</strong> The method fails and yields gross errors whenever $u$ is large:
-    $$u = \frac{r^2 S}{4 T t} \quad \Longrightarrow \quad u \text{ is large when } \begin{cases} t \text{ is small (short duration of pumping, Condition i)} \\ r \text{ is large (observation well far away, Condition iii)} \end{cases}$$
-  </li>
-  <li>Therefore, the Cooper-Jacob straight-line approximation <strong>cannot be used</strong> when the test is of short duration (i) or when the observation well is located far from the pumped well (iii).</li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC OPTION-BY-OPTION REFUTATIONS -->
+  <div class="card">
+    <div class="card-header bg-red">Forensic Analysis & Option Refutations</div>
+    <div class="card-body">
+
+      <div class="option-card option-correct">
+        <div class="option-card-header">
+          <span class="badge bg-success">CORRECT</span> Option (A): (i) and (iii)
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (A) combines the exact two physical conditions that violate the mathematical validity criterion of the Cooper-Jacob semilog method ($u = \frac{r^2 S}{4 T t} \le 0.05$):
+          </p>
+          <ul>
+            <li><strong>Condition (i) — Short Duration ($t$ small):</strong> When the pump test has run for only a brief period, $t$ is small, causing the denominator $4 T t$ to be small, driving $u > 0.05$. The drawdown curve on semilog paper is strongly concave and has not yet straightened.</li>
+            <li><strong>Condition (iii) — Distant Observation Well ($r$ large):</strong> Because distance enters as $r^2$, locating the piezometer far away magnifies the numerator enormously, forcing $u > 0.05$. For distant wells, hours or days of pumping are needed before the straight-line approximation becomes valid.</li>
+          </ul>
+          <p>
+            Because both (i) and (iii) invalidate the straight-line assumption, Option (A) is the indisputably correct answer.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (B): (ii) and (iii)
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (B) includes Condition (ii) ("When the pump test is of long duration"). Long duration means $t$ is large, which drives $u = \frac{r^2 S}{4 T t} \to 0$ ($u \ll 0.01$). This is precisely the operational condition under which the Cooper-Jacob method is <strong>most reliable, accurate, and recommended</strong>! Because Condition (ii) is a condition of validity rather than invalidity, Option (B) is incorrect.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (C): (ii) and (iv)
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (C) pairs Condition (ii) (long duration) with Condition (iv) (observation well situated near to the main well). This represents the <strong>gold standard, ideal operational domain</strong> for applying the Cooper-Jacob method: small $r$ minimizes the numerator while large $t$ maximizes the denominator, producing $u < 0.001$ where truncation error is less than $0.01\%$. Claiming the method cannot be used under these conditions is completely contrary to hydrogeologic science.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT</span> Option (D): (i) and (iv)
+        </div>
+        <div class="option-card-body">
+          <p>
+            While Condition (i) is an invalidating condition, Condition (iv) ("When the observation well is situated nearer to the main well") dramatically assists validity because a small $r$ keeps $r^2$ small, helping $u$ drop below $0.05$ very rapidly. Therefore, Condition (iv) is not a condition under which the method cannot be used, refuting Option (D).
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option A ((i) and (iii)) is correct:</strong> Small $t$ and large $r$ make $u > 0.05$, violating the mathematical truncation assumption.</li>
-  <li><strong>Condition (ii) & (iv):</strong> Long duration ($t$ large) and close observation well ($r$ small) produce small $u$, which is the ideal condition where Cooper-Jacob works perfectly.</li>
-</ul>
+  
+  <!-- CARD: SYNTHESIS COMPARISON TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Hydrogeologic Synthesis: Pumping Test Analytical Methods Comparison</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Analytical Method</th>
+              <th>Mathematical Formulation</th>
+              <th>Plot Coordinates</th>
+              <th>Validity Limits / Constraints</th>
+              <th>Best Field Domain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Theis Type Curve (1935)</strong></td>
+              <td>$$s = \frac{Q}{4 \pi T} W(u)$$</td>
+              <td>$\log s$ vs $\log(t / r^2)$</td>
+              <td><strong>Universal:</strong> Valid for all values of $u$ ($0 < u < \infty$); requires curve superposition.</td>
+              <td>Short-duration tests, early pumping data, and distant observation wells ($u > 0.05$).</td>
+            </tr>
+            <tr>
+              <td><strong>Cooper-Jacob Semilog (1946)</strong></td>
+              <td>$$s = \frac{2.303 Q}{4 \pi T} \log_{10}\left(\frac{2.25 T t}{r^2 S}\right)$$</td>
+              <td>$s$ vs $\log t$ or $s$ vs $\log r$</td>
+              <td><strong>Restricted:</strong> Valid ONLY when $u \le 0.05$ (fails when $t$ is small or $r$ is large).</td>
+              <td>Late-time pumping data ($t > t_{\min}$), near observation wells, and single-well production tests.</td>
+            </tr>
+            <tr>
+              <td><strong>Chow Method (1952)</strong></td>
+              <td>$$F(u) = \frac{s}{\Delta s}, \quad W(u) = 4 \pi \frac{s \cdot T}{Q}$$</td>
+              <td>$s$ vs $\log t$ nomograph</td>
+              <td>Valid for all $u$, but avoids curve matching by calculating slope $F(u)$ at any chosen point.</td>
+              <td>Quick parameter estimation without requiring full Theis curve overlay sheets.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
+  <!-- CARD: 8 FULLY WORKED EXAM PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Well Hydraulics Practice Problems (8 Rigorous Exercises)</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Minimum Time ($t_{\min}$) Calculation for Cooper-Jacob Validity</strong><br>
+        A pumping test is conducted in a confined aquifer with Transmissivity $T = 360\text{ m}^2/\text{day}$ and Storativity $S = 2.0 \times 10^{-4}$. An observation well is located at distance $r = 60\text{ m}$ from the pumping well. Calculate the minimum elapsed pumping time ($t_{\min}$) in minutes after which the Cooper-Jacob method can be legitimately applied under the standard criterion $u \le 0.05$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Validity threshold formula:
+          $$u = \frac{r^2 S}{4 T t} \le 0.05 \implies t \ge \frac{r^2 S}{4 T \times 0.05} = \frac{r^2 S}{0.20 T} = \frac{5 r^2 S}{T}$$
+          2. Substitute given values:
+          $$t_{\min} = \frac{5 \times (60\text{ m})^2 \times (2.0 \times 10^{-4})}{360\text{ m}^2/\text{day}} = \frac{5 \times 3600 \times (2.0 \times 10^{-4})}{360} = \frac{3.6}{360} = 0.010\text{ days}$$
+          3. Convert to minutes:
+          $$t_{\min} = 0.010\text{ days} \times 1440\text{ min/day} = 14.4\text{ minutes}$$
+          <em>Conclusion:</em> For the first $14.4\text{ minutes}$ of pumping, $u > 0.05$ and Cooper-Jacob CANNOT be used. Only time-drawdown data collected after $t \ge 14.4\text{ min}$ may be fitted to the straight line.
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: Maximum Distance ($r_{\max}$) for Short Pumping Duration</strong><br>
+        Due to mechanical failure, a pump test must be terminated after only $t = 30\text{ minutes} = 0.02083\text{ days}$. The aquifer has $T = 500\text{ m}^2/\text{day}$ and $S = 1.5 \times 10^{-4}$. Calculate the maximum radial distance ($r_{\max}$) of an observation well that can be analyzed using the Cooper-Jacob method ($u \le 0.05$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Rearrange $u \le 0.05$ for radial distance $r$:
+          $$r^2 \le \frac{0.05 \times 4 T t}{S} = \frac{0.20 T t}{S}$$
+          $$r_{\max} = \sqrt{\frac{0.20 \times 500\text{ m}^2/\text{day} \times 0.02083\text{ days}}{1.5 \times 10^{-4}}} = \sqrt{\frac{2.083}{1.5 \times 10^{-4}}} = \sqrt{13,886.7} \approx 117.8\text{ meters}$$
+          Any observation well located beyond $118\text{ meters}$ has $u > 0.05$ and cannot be interpreted via the Cooper-Jacob method for this short test.
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Numerical Error Analysis at $u = 0.20$</strong><br>
+        A hydrogeologist uses the Cooper-Jacob equation to estimate drawdown at a point where $u = 0.20$. Exact Theis well function is $W(0.20) = 1.2227$. (a) Calculate the Cooper-Jacob approximation $W_{\text{CJ}} = \ln(2.25 / 0.20)$. (b) Determine the percentage overestimation error.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Cooper-Jacob approximation:
+          $$W_{\text{CJ}} = \ln\left(\frac{2.25}{0.20}\right) = \ln(11.25) \approx 2.4204 - 0.5772 = 1.3787$$
+          2. Error calculation:
+          $$\text{Absolute Error} = 1.3787 - 1.2227 = +0.1560$$
+          $$\text{Percentage Error} = \left(\frac{0.1560}{1.2227}\right) \times 100\% \approx +12.76\%$$
+          Using Cooper-Jacob when $u = 0.20$ overestimates drawdown by nearly $13\%$, leading to severe errors in calculated aquifer transmissivity.
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Complete Cooper-Jacob Time-Drawdown Parameter Evaluation</strong><br>
+        A well is pumped at $Q = 1800\text{ m}^3/\text{day}$. An observation well at $r = 40\text{ m}$ produces a semilog time-drawdown plot whose valid straight-line portion ($u \le 0.05$) yields a drawdown per log cycle of $\Delta s = 1.12\text{ m}$ and intersects the zero-drawdown axis at $t_0 = 1.8\text{ minutes} = 1.25 \times 10^{-3}\text{ days}$. Calculate: (a) Transmissivity ($T$), and (b) Storativity ($S$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Transmissivity:
+          $$T = \frac{2.303 Q}{4 \pi \Delta s} = \frac{2.303 \times 1800}{4 \times 3.14159 \times 1.12} = \frac{4145.4}{14.074} \approx 294.54\text{ m}^2/\text{day}$$
+          2. Storativity:
+          $$S = \frac{2.25 T t_0}{r^2} = \frac{2.25 \times 294.54 \times (1.25 \times 10^{-3})}{40^2} = \frac{0.8284}{1600} \approx 5.18 \times 10^{-4}$$
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: Verification of Data Points Excluded by $u \le 0.05$ Rule</strong><br>
+        For the test in Problem 4 ($T = 294.54\text{ m}^2/\text{day}$, $S = 5.18 \times 10^{-4}$, $r = 40\text{ m}$), verify whether drawdown recorded at $t = 5\text{ minutes}$ ($0.00347\text{ days}$) can be included in the Cooper-Jacob straight line.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Compute $u$ at $t = 5\text{ minutes}$:
+          $$u = \frac{r^2 S}{4 T t} = \frac{(40)^2 \times (5.18 \times 10^{-4})}{4 \times 294.54 \times 0.00347} = \frac{1600 \times (5.18 \times 10^{-4})}{4.088} = \frac{0.8288}{4.088} \approx 0.2027$$
+          2. Evaluate criterion:
+          $$u = 0.2027 > 0.05$$
+          <em>Conclusion:</em> Because $u > 0.05$, the 5-minute data point <strong>MUST BE EXCLUDED</strong> from the straight line fit. The minimum valid time is $t_{\min} = \frac{5 r^2 S}{T} = \frac{5 \times 0.8288}{294.54} = 0.01407\text{ days} = 20.3\text{ minutes}$.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Delayed Drainage Plateau in Unconfined Aquifers</strong><br>
+        Explain why the Cooper-Jacob straight line method fails in unconfined aquifers during intermediate pumping times ($10\text{ min} < t < 4\text{ hours}$), even though $t$ appears sufficiently large.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. The Cooper-Jacob method assumes strictly horizontal, 2-dimensional radial flow with constant storativity $S$.<br>
+          2. In an unconfined aquifer during intermediate pumping times, <strong>delayed gravity drainage</strong> occurs as pore water drains vertically down from the descending capillary fringe.<br>
+          3. This creates strong vertical flow components ($v_z \ne 0$) and a temporary flattening (plateau) in the drawdown curve where drawdown ceases to follow a logarithmic line.<br>
+          4. Only after late time ($t > 4\text{ hours}$), when vertical gradients vanish and full specific yield ($S_y$) is mobilized, does a second, parallel Cooper-Jacob straight line emerge.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Impermeable Fault Boundary Slope Doubling</strong><br>
+        During a Cooper-Jacob pumping test, the initial straight line slope is $\Delta s_1 = 0.80\text{ m}$. At $t = 120\text{ minutes}$, the cone of depression intersects a planar impermeable normal fault. (a) What will be the new slope $\Delta s_2$ of the semilog straight line at late time? (b) Explain the mathematical cause using image well theory.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. By Image Well Theory, an impermeable barrier boundary is mathematically equivalent to placing an imaginary discharge well pumping at identical rate $+Q$ located symmetrically across the fault barrier.<br>
+          2. At late time, both real and image wells contribute equal drawdown to the observation well:
+          $$s_{\text{total}} = s_{\text{real}} + s_{\text{image}} = \frac{2.303 Q}{4 \pi T} \log(t) + \frac{2.303 Q}{4 \pi T} \log(t) = \frac{2.303 (2Q)}{4 \pi T} \log(t)$$
+          3. The slope exactly doubles:
+          $$\Delta s_2 = 2 \times \Delta s_1 = 2 \times 0.80\text{ m} = 1.60\text{ meters per log cycle}$$
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Recharge Boundary Stabilization</strong><br>
+        If the cone of depression intersects a fully penetrating perennial river instead of an impermeable fault, describe the behavior of the Cooper-Jacob semilog drawdown curve at late time.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. An open surface water body acts as a <strong>constant-head recharge boundary</strong> ($s = 0$ along the riverline).<br>
+          2. By image well theory, this is modeled by an imaginary recharge well injecting water at rate $-Q$.<br>
+          3. At late time, the recharge cancels all further expansion of the cone of depression. Drawdown stabilizes to a steady-state value ($ds/dt = 0$), and the slope of the semilog curve becomes <strong>zero (horizontal straight line)</strong>.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>

@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q146: Well Hydraulics - Pumping Period vs Recovery Period Terminology | OPSC Geology 2021 Masterclass</title>
+<title>Q146: Hydrogeology: Pumping Test Parameters & Residual Drawdown | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,250 +89,651 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q146" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
     <div class="badge">GEO - 2/21 • Hydrogeology & Well Hydraulics</div>
-    <h1>Q146: Well Hydraulics - Pumping Period vs Recovery Period Terminology</h1>
+    <h1>Q146: Aquifer Hydraulics: Pumping Period vs Post-Pumping Residual Drawdown Recovery</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> C.V. Theis (1935, Recovery of Drawdown in Pumping Tests); Todd & Mays (Ch. 4)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 146<br>
+<strong>Authoritative References:</strong> Charles V. Theis, <em>The Relation Between the Lowering of the Piezometric Surface and the Rate and Duration of Discharge of a Well Using Ground-Water Storage</em> (Trans. AGU, 1935); David K. Todd and Larry W. Mays, <em>Groundwater Hydrology</em> (3rd Ed., Wiley, Ch. 4: Well Hydraulics, pp. 135–158); C.W. Fetter, <em>Applied Hydrogeology</em> (4th Ed., Prentice Hall, Ch. 5, pp. 175–188); K.M. Bangar, <em>Principles of Engineering Geology</em> (Ch. 3: Hydrogeology, p. 33).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Aquifer Test Phases</h3>
-<div class="question-box">
-  <p><strong>Question 146:</strong> Find out the term which is not related to the pumping period of a well :</p>
-  <ul>
-    <li>(A) Drawdown</li>
-    <li>(B) Time-drawdown data</li>
-    <li>(C) Residual drawdown</li>
-    <li>(D) Distance-drawdown data</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(C) Residual drawdown</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q146/pumping_test_recovery_residual_drawdown_timeline.png" alt="Aquifer Testing Operational Timeline: Pumping vs Recovery Period">
-      <figcaption>
-        <strong>Figure 146.1: Aquifer Testing Operational Timeline — Pumping Period vs Recovery Period.</strong> Timeline demonstrating that drawdown (s), pumping rate (Q), and cone of depression characterize the active pumping phase (t ≤ tp), whereas residual drawdown (s') is measured strictly during the post-pumping recovery period (t > tp).
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-    
   </div>
+  
+  <!-- CARD 1: WORKING PRINCIPLES OF WELL HYDRAULIC TESTING -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Architecture of an Aquifer Pumping Test: Pumping Phase vs Recovery Phase</div>
+    <div class="card-body">
+      <p>
+        In groundwater hydrology, an <strong>Aquifer Performance Test (Pumping Test)</strong> is the standard field methodology used to quantify the primary hydrodynamic parameters of an aquifer: <strong>Transmissivity ($T$)</strong> and <strong>Storativity ($S$)</strong> (Theis, 1935; Todd & Mays, 2005; Fetter, 2001; Bangar, p. 33).
+      </p>
+      <p>
+        A complete pumping test consists of two distinct, mutually exclusive operational periods:
+      </p>
+      <ol>
+        <li><strong>The Pumping Period:</strong> Water is continuously discharged from a production well at a measured rate $Q$ for a predetermined duration $t_p$. Hydraulic head declines throughout the surrounding formation, establishing a dynamic cone of depression.</li>
+        <li><strong>The Recovery Period:</strong> The pump is abruptly shut down at time $t = t_p$. Groundwater flows inward from the outer edges of the cone of depression, causing piezometric levels in the well and surrounding piezometers to rise back toward the pre-pumping static equilibrium level.</li>
+      </ol>
+
+      <div class="figure-box">
+        <img src="../../figures_Q146/pumping_test_recovery_residual_drawdown_timeline.png" alt="Pumping Test Recovery Residual Drawdown Timeline">
+        <div class="figure-caption">
+          <strong>Figure 146.1 — Complete Pumping and Recovery Timeline:</strong> Evolution of water levels during continuous pumping (duration $t_p$) exhibiting active drawdown $s(t)$, followed by post-pumping recovery (elapsed recovery time $t'$) exhibiting <em>residual drawdown</em> $s'(t')$.
+        </div>
+      </div>
+
+      <h4>Parameters Gathered During the Active Pumping Period</h4>
+      <p>
+        While the pump is actively operating ($0 \le t \le t_p$), hydrogeologists gather three fundamental datasets:
+      </p>
+      <ul>
+        <li><strong>Drawdown ($s$):</strong> The instantaneous vertical decline in hydraulic head relative to the initial static water table ($s = h_0 - h$).</li>
+        <li><strong>Time-Drawdown Data:</strong> A continuous time series recording the progressive deepening of drawdown $s$ against elapsed pumping time $t$ in individual observation wells.</li>
+        <li><strong>Distance-Drawdown Data:</strong> Simultaneous measurements of drawdown $s$ recorded at the same elapsed time across multiple observation wells located at varying radial distances $r_1, r_2, \dots, r_n$ from the pumping center.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: THEIS RECOVERY & RESIDUAL DRAWDOWN -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. Theis Recovery Method & Definition of Residual Drawdown ($s'$)</div>
+    <div class="card-body">
+      <div class="figure-box">
+        <img src="../../figures_Q146/bangar_p33_pumping_test_residual_drawdown.png" alt="Bangar Textbook Hydrogeology Residual Drawdown Scan">
+        <div class="figure-caption">
+          <strong>Figure 146.2 — Facsimile from K.M. Bangar (Principles of Engineering Geology, Ch. 3, p. 33):</strong> Detailed treatment of well pumping hydraulics, the principle of superposition during recovery, and semilog analysis of residual drawdown $s'$ versus dimensionless time ratio $t/t'$.
+        </div>
+      </div>
+
+      <h4>Definition of Residual Drawdown ($s'$)</h4>
+      <div class="definition-box">
+        <strong>Residual Drawdown ($s'$):</strong><br>
+        During the recovery period after pumping has ceased, <strong>Residual Drawdown</strong> is defined as the difference between the original pre-pumping static water level ($h_0$) and the recovering water level ($h$) at elapsed recovery time $t'$:
+        $$s' = h_0 - h(t') \quad [\text{meters}]$$
+        Residual drawdown exists and is measured <strong>exclusively during the recovery period</strong>. It cannot exist during the active pumping period.
+      </div>
+
+      <h4>Theis Superposition Theorem for Recovery</h4>
+      <p>
+        In 1935, <strong>C.V. Theis</strong> demonstrated that recovery can be modeled mathematically by applying the <strong>Principle of Superposition</strong>:
+      </p>
+      <ul>
+        <li>Assume the pumping well continues to discharge at rate $Q$ indefinitely from $t = 0$.</li>
+        <li>At time $t = t_p$ (when the pump is actually shut off), an imaginary recharge well is introduced at the same location, injecting water into the aquifer at an identical rate $+Q$.</li>
+      </ul>
+      <p>
+        The net residual drawdown $s'$ at any elapsed recovery time $t'$ (where total elapsed time from the start of pumping is $t = t_p + t'$) is the algebraic sum of the continuing drawdown minus the recharge buildup:
+      </p>
+      <div class="math-block">
+        $$s' = \frac{Q}{4 \pi T} \left[ W(u) - W(u') \right]$$
+        $$\text{where } u = \frac{r^2 S}{4 T t} \quad \text{and} \quad u' = \frac{r^2 S'}{4 T t'}$$
+      </div>
+      <p>
+        For sufficiently long pumping and recovery times ($u, u' \le 0.05$), truncating the well function series yields the famous <strong>Theis Recovery Formula</strong>:
+      </p>
+      <div class="math-block" style="font-size: 1.25rem; font-weight: bold; background: #ecfdf5; border-left: 5px solid #059669; padding: 15px;">
+        $$s' = \frac{2.303 Q}{4 \pi T} \log_{10}\left(\frac{t}{t'}\right)$$
+      </div>
+      <p>
+        A plot of residual drawdown $s'$ on arithmetic scale versus the dimensionless time ratio $t/t'$ on logarithmic scale forms a straight line whose slope $\Delta s'$ yields Transmissivity ($T$):
+      </p>
+      <div class="math-block">
+        $$T = \frac{2.303 Q}{4 \pi \Delta s'}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3: OPERATIONAL SUPERIORITY OF RECOVERY TESTING -->
+  <div class="card">
+    <div class="card-header bg-indigo">3. Why Hydrogeologists Prefer Recovery Analysis</div>
+    <div class="card-body">
+      <p>
+        In hydrogeological practice, recovery test data are often considered <strong>far more reliable and precise</strong> than active pumping test data for determining formation transmissivity:
+      </p>
+      <ol>
+        <li><strong>Absence of Discharge Fluctuations:</strong> During pumping, maintaining an exactly constant discharge $Q$ is difficult due to engine speed variations, generator cycling, and falling dynamic water levels. In recovery, $Q = 0$ is absolute and unvarying.</li>
+        <li><strong>Elimination of Turbulent Well Losses:</strong> In an active pumping well, turbulent frictional head loss across the well screen and gravel pack ($s_w = B Q + C Q^2$) distorts water level readings. During recovery, no water is withdrawn, eliminating turbulent wellbore head loss entirely ($C Q^2 = 0$).</li>
+        <li><strong>No Water Cascading or Entrained Air:</strong> Pumping water levels are often disrupted by cascading water from perforated casing sections above the pump inlet. Recovery levels rise smoothly under laminar conditions.</li>
+      </ol>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q146. Find out the term which is not related to the pumping period of a well :</div>
-      <div class="options-grid">
-        <div class="opt-item "><strong>(A)</strong> Drawdown</div>
-        <div class="opt-item "><strong>(B)</strong> Time-drawdown data</div>
-        <div class="opt-item correct"><strong>(C)</strong> Residual drawdown</div>
-        <div class="opt-item "><strong>(D)</strong> Distance-drawdown data</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card">
+    <div class="card-header bg-amber">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-box">
+        <strong>Question 146:</strong> Find out the term which is not related to the pumping period of a well :
+        <div class="options-grid">
+          <div class="option-item"><strong>(A)</strong> Drawdown</div>
+          <div class="option-item"><strong>(B)</strong> Time-drawdown data</div>
+          <div class="option-item"><strong>(C)</strong> Residual drawdown</div>
+          <div class="option-item"><strong>(D)</strong> Distance-drawdown data</div>
+        </div>
+      </div>
+      <div class="answer-banner">
+        <strong>Correct Answer: (C) Residual drawdown</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: Pumping Tests vs Recovery Tests</h3>
-<p>
-An aquifer test is divided into two distinct, sequential operational phases:
-</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Operational Phase</th>
-      <th>Well Activity State</th>
-      <th>Key Measurements & Hydraulic Curves</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>1. Pumping Period</strong> ($0 \le t \le t_p$)</td>
-      <td>
-        The pump runs continuously at a constant discharge rate $Q$.
-      </td>
-      <td>
-        &bull; <strong>Drawdown ($s$):</strong> The decline in piezometric head below initial static water level ($s = h_0 - h$).<br>
-        &bull; <strong>Time-drawdown data:</strong> Measurements of increasing drawdown versus elapsed pumping time ($s$ vs $t$).<br>
-        &bull; <strong>Distance-drawdown data:</strong> Measurements of drawdown recorded simultaneously across multiple observation wells at various radial distances ($s$ vs $r$).
-      </td>
-    </tr>
-    <tr>
-      <td><strong>2. Recovery Period</strong> ($t' > 0$, after $t_p$)</td>
-      <td>
-        The pump is <strong>shut off</strong> ($Q = 0$); water levels rebound toward original static levels.
-      </td>
-      <td>
-        &bull; <strong>Residual Drawdown ($s'$):</strong> The difference between the original pre-pumping static water level and the recovering water level at time $t'$ after pumping stopped.<br>
-        Analyzed using Theis's Recovery Method:
-        $$s' = \frac{2.3 Q}{4\pi T} \log_{10}\left(\frac{t}{t'}\right)$$
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p>
-Because residual drawdown is measured strictly and exclusively during the <strong>recovery period</strong> after the pump has been switched off, it is NOT related to the pumping period of a well.
-</p>
-
   </div>
+
+  <!-- FORENSIC OPTION-BY-OPTION REFUTATIONS -->
+  <div class="card">
+    <div class="card-header bg-red">Forensic Analysis & Option Refutations</div>
+    <div class="card-body">
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT SELECTION</span> Option (A): Drawdown
+        </div>
+        <div class="option-card-body">
+          <p>
+            Drawdown ($s = h_0 - h$) is the primary dependent physical variable measured throughout the <strong>active pumping period</strong> of a well. It quantifies the instantaneous head drop induced by groundwater extraction. Because drawdown is intimately and directly related to the pumping period, selecting Option (A) is incorrect.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT SELECTION</span> Option (B): Time-drawdown data
+        </div>
+        <div class="option-card-body">
+          <p>
+            Time-drawdown data consists of the progressive decline in piezometric head recorded against elapsed pumping time ($t$) from the start of pumping. It forms the empirical basis for the Theis curve-matching and Cooper-Jacob straight-line methods evaluated during the <strong>pumping period</strong>. Thus, Option (B) is a core pumping-phase parameter.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-correct">
+        <div class="option-card-header">
+          <span class="badge bg-success">CORRECT ANSWER</span> Option (C): Residual drawdown
+        </div>
+        <div class="option-card-body">
+          <p>
+            Option (C) is the single parameter that is <strong>NOT related to the pumping period</strong>:
+          </p>
+          <ul>
+            <li>By standard hydrogeological definition (Theis, 1935; Todd & Mays; Fetter), <strong>Residual Drawdown ($s'$)</strong> is measured exclusively during the <strong>recovery period</strong> following complete pump shutdown ($t > t_p$).</li>
+            <li>It represents the difference between the original pre-pumping static water level and the rising water level during recovery.</li>
+            <li>While the pump is running, only active drawdown ($s$) exists. Residual drawdown cannot be observed until the pumping phase has fully terminated.</li>
+          </ul>
+          <p>
+            Therefore, Option (C) is the unambiguous correct choice.
+          </p>
+        </div>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-card-header">
+          <span class="badge bg-danger">INCORRECT SELECTION</span> Option (D): Distance-drawdown data
+        </div>
+        <div class="option-card-body">
+          <p>
+            Distance-drawdown data represents simultaneous measurements of drawdown across multiple observation wells located at various radial distances ($r$) from the pumping well at a specific time $t$ during the <strong>active pumping period</strong>. It is used to plot the cone of depression and calculate transmissivity and storativity via the Cooper-Jacob distance method ($s$ vs $\log r$). Hence, it belongs strictly to the pumping phase.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option C (Residual drawdown) is correct:</strong> Exclusively defines the post-pumping recovery phase.</li>
-  <li><strong>Options A, B, and D:</strong> Core parameters gathered and plotted during active pumping.</li>
-</ul>
+  
+  <!-- CARD: SYNTHESIS COMPARISON TABLE -->
+  <div class="card">
+    <div class="card-header bg-slate">Hydrogeologic Synthesis: Pumping Phase vs Recovery Phase Parameters</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Hydraulic Parameter</th>
+              <th>Test Period</th>
+              <th>Mathematical Notation</th>
+              <th>Governing Analytical Relationship</th>
+              <th>Physical Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Active Drawdown</strong></td>
+              <td>Pumping Phase ($t \le t_p$)</td>
+              <td>$$s = h_0 - h(t)$$</td>
+              <td>$$s = \frac{Q}{4 \pi T} W\left(\frac{r^2 S}{4 T t}\right)$$</td>
+              <td>Total decline of piezometric head below static baseline during pumping.</td>
+            </tr>
+            <tr>
+              <td><strong>Time-Drawdown Data</strong></td>
+              <td>Pumping Phase ($t \le t_p$)</td>
+              <td>$$s \text{ vs } t$$</td>
+              <td>$$s = \frac{2.303 Q}{4 \pi T} \log_{10}\left(\frac{2.25 T t}{r^2 S}\right)$$</td>
+              <td>Chronological progression of head drop in a single observation well.</td>
+            </tr>
+            <tr>
+              <td><strong>Distance-Drawdown Data</strong></td>
+              <td>Pumping Phase ($t \le t_p$)</td>
+              <td>$$s \text{ vs } r$$</td>
+              <td>$$s = \frac{2.303 Q}{2 \pi T} \log_{10}\left(\frac{r_0}{r}\right)$$</td>
+              <td>Radial profile of the cone of depression across multiple piezometers at fixed $t$.</td>
+            </tr>
+            <tr>
+              <td><strong>Residual Drawdown</strong></td>
+              <td><strong>Recovery Phase ONLY ($t > t_p$)</strong></td>
+              <td>$$s' = h_0 - h(t')$$</td>
+              <td>$$s' = \frac{2.303 Q}{4 \pi T} \log_{10}\left(\frac{t}{t'}\right)$$</td>
+              <td>Residual unrecovered head drop remaining after pump shutdown at recovery time $t'$.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
+  <!-- CARD: 8 FULLY WORKED EXAM PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Well Hydraulics Practice Problems (8 Rigorous Exercises)</div>
+    <div class="card-body">
+
+      <!-- Problem 1 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 1: Transmissivity Determination from Theis Recovery Plot</strong><br>
+        A well is pumped at a constant discharge of $Q = 1440\text{ m}^3/\text{day}$ for $t_p = 24\text{ hours}$ and then shut down. Measurements of residual drawdown $s'$ are plotted against $\log_{10}(t/t')$, where $t = t_p + t'$. The straight line fitted through the data reveals a drawdown change per log cycle of $\Delta s' = 0.92\text{ m}$. Calculate the Transmissivity ($T$) of the aquifer in: (a) $\text{m}^2/\text{day}$, and (b) $\text{m}^2/\text{s}$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Theis recovery transmissivity formula:
+          $$T = \frac{2.303 Q}{4 \pi \Delta s'} = \frac{2.303 \times 1440}{4 \times 3.14159 \times 0.92} = \frac{3316.32}{11.561} \approx 286.85\text{ m}^2/\text{day}$$
+          2. Convert to $\text{m}^2/\text{s}$:
+          $$T = \frac{286.85\text{ m}^2/\text{day}}{86,400\text{ s/day}} \approx 3.32 \times 10^{-3}\text{ m}^2/\text{s}$$
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 2: Calculation of Expected Residual Drawdown</strong><br>
+        A confined aquifer has $T = 400\text{ m}^2/\text{day}$. A well is pumped at $Q = 1200\text{ m}^3/\text{day}$ for $t_p = 10\text{ hours}$ ($600\text{ min}$). Calculate the theoretical residual drawdown $s'$ in an observation well after: (a) $t' = 30\text{ minutes}$ of recovery, and (b) $t' = 300\text{ minutes}$ of recovery.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Parameter coefficient:
+          $$\frac{2.303 Q}{4 \pi T} = \frac{2.303 \times 1200}{4 \times 3.14159 \times 400} = \frac{2763.6}{5026.55} \approx 0.5498\text{ meters per log cycle}$$
+          2. At $t' = 30\text{ min}$, total time $t = 600 + 30 = 630\text{ min}$:
+          $$\frac{t}{t'} = \frac{630}{30} = 21 \implies \log_{10}(21) \approx 1.3222$$
+          $$s'(30) = 0.5498 \times 1.3222 \approx 0.727\text{ meters}$$
+          3. At $t' = 300\text{ min}$, total time $t = 600 + 300 = 900\text{ min}$:
+          $$\frac{t}{t'} = \frac{900}{300} = 3.0 \implies \log_{10}(3.0) \approx 0.4771$$
+          $$s'(300) = 0.5498 \times 0.4771 \approx 0.262\text{ meters}$$
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 3: Hydrogeologic Boundary Diagnostics from Recovery Intercept</strong><br>
+        In an ideal infinite, homogeneous, isotropic confined aquifer, the theoretical straight line of $s'$ vs $\log(t/t')$ extrapolates to zero residual drawdown ($s' = 0$) at precisely $t/t' = 1.0$. Explain what hydrogeologic conditions are indicated if field data extrapolate to: (a) $t/t' > 1.0$ at $s' = 0$, and (b) $t/t' < 1.0$ at $s' = 0$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. <strong>Case (a) $t/t' > 1.0$ at $s' = 0$:</strong> The recovering water level reaches static equilibrium before $t/t' = 1.0$. This signifies that the aquifer received <strong>recharge from an external source</strong> during the test (e.g., intersection with a recharge boundary such as a perennial river or lake, or downward leakage from an overlying formation).<br>
+          2. <strong>Case (b) $t/t' < 1.0$ at $s' = 0$:</strong> The straight line extrapolates to a value of $t/t' < 1.0$, meaning that even after infinite recovery time ($t' \to \infty, t/t' \to 1.0$), some residual drawdown remains unrecovered. This indicates either an <strong>impermeable barrier boundary</strong> (fault, bedrock pinchout), aquifer depletive overdraft, or that storativity during recovery ($S'$) differs from storativity during pumping ($S$).
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 4: Distance-Drawdown Determination of Storativity</strong><br>
+        During the active pumping period of a test ($Q = 2000\text{ m}^3/\text{day}$, $t = 480\text{ minutes} = 0.333\text{ days}$), simultaneous drawdowns measured in two piezometers are $s_1 = 1.85\text{ m}$ at $r_1 = 20\text{ m}$, and $s_2 = 0.95\text{ m}$ at $r_2 = 80\text{ m}$. Calculate: (a) Aquifer Transmissivity ($T$), and (b) Aquifer Storativity ($S$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Distance-drawdown formula:
+          $$s_1 - s_2 = \frac{2.303 Q}{2 \pi T} \log_{10}\left(\frac{r_2}{r_1}\right)$$
+          $$1.85 - 0.95 = 0.90\text{ m} = \frac{2.303 \times 2000}{2 \times 3.14159 \times T} \log_{10}\left(\frac{80}{20}\right) = \frac{4606}{6.2832 T} \log_{10}(4)$$
+          $$0.90 = \frac{733.06}{T} \times 0.60206 = \frac{441.35}{T} \implies T = \frac{441.35}{0.90} \approx 490.4\text{ m}^2/\text{day}$$
+          2. Zero-drawdown radius ($r_0$):
+          $$s_1 = \frac{2.303 Q}{2 \pi T} \log_{10}\left(\frac{r_0}{r_1}\right) \implies 1.85 = \frac{4606}{3081.2} \log_{10}\left(\frac{r_0}{20}\right) = 1.4948 \log_{10}\left(\frac{r_0}{20}\right)$$
+          $$\log_{10}\left(\frac{r_0}{20}\right) = \frac{1.85}{1.4948} = 1.2376 \implies \frac{r_0}{20} = 10^{1.2376} \approx 17.28 \implies r_0 \approx 345.6\text{ m}$$
+          3. Storativity:
+          $$S = \frac{2.25 T t}{r_0^2} = \frac{2.25 \times 490.4 \times 0.333}{(345.6)^2} = \frac{367.43}{119,439} \approx 3.08 \times 10^{-3}$$
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 5: Wellbore Storage Distortion at Very Early Recovery Time</strong><br>
+        In a pumping well of casing radius $r_c = 0.15\text{ m}$, water level recovery is initially dominated by wellbore storage (casing refilling) rather than aquifer inflow. The critical time after which wellbore storage effects become negligible is given by Papadopulos and Cooper (1967) as $t'_c \ge \frac{25 r_c^2}{T}$. For $T = 150\text{ m}^2/\text{day}$, calculate $t'_c$ in seconds.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Calculate $t'_c$ in days:
+          $$t'_c = \frac{25 \times (0.15)^2}{150} = \frac{25 \times 0.0225}{150} = \frac{0.5625}{150} = 0.00375\text{ days}$$
+          2. Convert to minutes and seconds:
+          $$t'_c = 0.00375\text{ days} \times 1440\text{ min/day} = 5.4\text{ minutes} = 324\text{ seconds}$$
+          Recovery data collected prior to $5.4\text{ minutes}$ reflect water filling the open casing rather than true Darcy flow through the aquifer formation.
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 6: Well Efficiency and Turbulent Skin Effect</strong><br>
+        During pumping at $Q = 1500\text{ m}^3/\text{day}$, the total drawdown measured inside the pumped well is $s_w = 6.80\text{ m}$. Transmissivity computed from recovery analysis is $T = 320\text{ m}^2/\text{day}$, which predicts a theoretical laminar aquifer drawdown of $s_{\text{formation}} = 4.25\text{ m}$. (a) Calculate the well loss component ($s_{\text{well loss}}$). (b) Determine the Well Efficiency ($E_w$).
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. Well loss due to screen entrance turbulence and gravel pack head loss:
+          $$s_{\text{well loss}} = s_w - s_{\text{formation}} = 6.80\text{ m} - 4.25\text{ m} = 2.55\text{ meters}$$
+          2. Well Efficiency:
+          $$E_w = \left(\frac{s_{\text{formation}}}{s_w}\right) \times 100\% = \left(\frac{4.25}{6.80}\right) \times 100\% \approx 62.5\%$$
+          Recovery testing uniquely isolated the true aquifer transmissivity without distortion from the $2.55\text{ m}$ well loss.
+        </div>
+      </div>
+
+      <!-- Problem 7 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 7: Residual Drawdown under Step-Drawdown Pumping History</strong><br>
+        A well is pumped in two consecutive steps before shutdown: Step 1 at $Q_1 = 800\text{ m}^3/\text{day}$ for duration $t_1 = 4\text{ hours}$ ($240\text{ min}$), followed immediately by Step 2 at $Q_2 = 1400\text{ m}^3/\text{day}$ for duration $t_2 = 4\text{ hours}$ ($240\text{ min}$, total pumping $t_p = 480\text{ min}$). Formulate the generalized superposition recovery equation for residual drawdown $s'$ at recovery time $t'$.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. By generalized multi-rate superposition:
+          $$s'(t') = \frac{2.303}{4 \pi T} \left[ Q_1 \log_{10}\left(\frac{t_1 + t_2 + t'}{t_2 + t'}\right) + Q_2 \log_{10}\left(\frac{t_2 + t'}{t'}\right) \right]$$
+          2. For $t' = 60\text{ min}$:
+          $$s'(60) = \frac{2.303}{4 \pi T} \left[ 800 \log_{10}\left(\frac{240 + 240 + 60}{240 + 60}\right) + 1400 \log_{10}\left(\frac{240 + 60}{60}\right) \right]$$
+          $$s'(60) = \frac{2.303}{4 \pi T} \left[ 800 \log_{10}\left(\frac{540}{300}\right) + 1400 \log_{10}(5) \right] = \frac{2.303}{4 \pi T} [ 800(0.2553) + 1400(0.6990) ]$$
+          $$s'(60) = \frac{2.303}{4 \pi T} [ 204.24 + 978.60 ] = \frac{2.303 \times 1182.84}{4 \pi T}$$
+        </div>
+      </div>
+
+      <!-- Problem 8 -->
+      <div class="p-3 mb-3 border rounded bg-light">
+        <strong>Problem 8: Comparison Between Pumping and Recovery Data Robustness</strong><br>
+        A field pump test experiences an unmonitored generator throttle surge at $t = 180\text{ minutes}$ that increases discharge from $1000\text{ m}^3/\text{day}$ to $1150\text{ m}^3/\text{day}$. Explain why this generator failure invalidates Cooper-Jacob pumping curve analysis but leaves subsequent post-shutdown Theis recovery analysis unaffected if the final rate is recorded.
+        <div class="mt-2 text-success">
+          <strong>Solution:</strong><br>
+          1. <strong>Pumping Period Invalidation:</strong> Cooper-Jacob and Theis type-curve methods strictly assume a constant discharge $Q$. The $15\%$ jump in $Q$ creates a secondary pressure wave, causing drawdowns to deviate unpredictably from the standard logarithmic curve and producing erroneous values for $T$ and $S$.<br>
+          2. <strong>Recovery Period Robustness:</strong> Once the pump is completely stopped, the discharge is exactly $Q = 0.000\text{ m}^3/\text{day}$ with zero fluctuations. The subsequent recovery curve converges to the late-time average discharge, allowing reliable evaluation of formation transmissivity.
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
