@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q107: Protolith Identification - Shale as the Parental Rock of Slate | OPSC Geology 2021 Masterclass</title>
+<title>Q107: Metamorphic Petrology: Slate Protolith & Pelitic Metamorphic Evolution | OPSC Geology 2021 Masterclass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <script>
   window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
@@ -33,7 +34,7 @@
   }
   
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
     color: #fff;
     border-radius: 12px;
     padding: 28px 32px;
@@ -53,11 +54,9 @@
     margin-bottom: 12px;
   }
   .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; }
-  .header .meta { font-size: 13.5px; color: #94a3b8; margin-top: 10px; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
   
-  .back-nav {
-    margin-bottom: 16px;
-  }
+  .back-nav { margin-bottom: 16px; }
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -69,14 +68,19 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* Part Banners - Identical to Assam DGMS 2019 */
   .part-banner {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: #fff;
     border-radius: 10px;
     padding: 16px 24px;
     margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
   }
+  .first-part { margin-top: 10px; }
   .part-banner.green {
     background: linear-gradient(135deg, #065f46 0%, #059669 100%);
     box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
@@ -85,226 +89,586 @@
     background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
   }
-  .part-banner h2 { font-size: 18px; font-weight: 700; }
-  
-  .content-card {
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  /* Cards */
+  .card {
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
     border: 1px solid #e2e8f0;
-    padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
   }
-  .content-card h3 { font-size: 17px; font-weight: 700; color: #1e293b; margin: 18px 0 10px 0; }
-  .content-card p { margin-bottom: 12px; font-size: 14.5px; color: #334155; }
-  .content-card ul { margin: 10px 0 16px 24px; font-size: 14.5px; color: #334155; }
-  .content-card li { margin-bottom: 8px; }
-
-  .q-box {
-    background: #f8fafc;
-    border-left: 4px solid #0284c7;
-    border-radius: 0 8px 8px 0;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-  }
-  .q-stmt { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 14px; line-height: 1.5; }
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .opt-item {
-    background: #fff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
+  .card-header {
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 500;
-  }
-  .opt-item.correct {
-    background: #f0fdf4;
-    border-color: #16a34a;
-    color: #15803d;
     font-weight: 700;
-  }
-  
-  .verified-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    border-left: 5px solid #10b981;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 18px 0;
-  }
-  .v-badge {
-    display: inline-block;
-    background: #10b981;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: #fff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
   }
-  
-  .table-wrap { overflow-x: auto; margin: 16px 0; }
-  .spec-table {
-    width: 100%;
-    border-collapse: collapse;
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 10px 0 16px 20px; }
+  .card-body li { margin-bottom: 8px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  /* Textbook Quote Boxes */
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
     font-size: 13.5px;
-    text-align: left;
+    line-height: 1.6;
   }
-  .spec-table th {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px 14px;
-    font-weight: 600;
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
   }
-  .spec-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: top;
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
   }
-  .spec-table tr:nth-child(even) td { background: #f8fafc; }
+  .quote-box.bangar .quote-ref { color: #047857; }
 
-  .qa-card {
-    background: #faf5ff;
-    border: 1px solid #e9d5ff;
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
-  }
-  .q-title { font-size: 15px; font-weight: 700; color: #6b21a8; margin-bottom: 8px; }
-  .a-box {
-    background: #fff;
-    border-left: 3px solid #7c3aed;
-    padding: 12px 16px;
-    border-radius: 0 6px 6px 0;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ── Figure Styles ── */
+  /* Textbook Image Wrappers */
   .tb-figure {
     background: #ffffff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    page-break-inside: avoid;
-    break-inside: avoid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .tb-figure img {
     max-width: 100%;
+    max-height: 520px;
     height: auto;
     border-radius: 6px;
     display: block;
     margin: 0 auto 12px auto;
   }
-  .tb-figure figcaption {
-    font-size: 13px;
-    color: #475569;
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
     line-height: 1.5;
-    text-align: justify;
-    padding: 8px 12px;
     background: #f8fafc;
+    padding: 10px 14px;
     border-radius: 6px;
-    border-top: 1px solid #e2e8f0;
+    border-left: 3px solid #0284c7;
   }
-  .tb-figure figcaption strong { color: #0f172a; font-weight: 700; }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  /* Formula Card */
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  /* Question Box */
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  /* Answer Banner */
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  /* Option Dissection Cards */
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  /* Practice Questions List */
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
 <div class="page">
   <div class="back-nav no-print">
-    <a href="../../index.html" class="back-link">← Back to Odisha Master Portal</a>
+    <a href="../../index.html#q107" class="back-link">← Back to Master Portal</a>
   </div>
   
   <div class="header">
-    <div class="badge">GEO - 2/21 • Metamorphic Petrology</div>
-    <h1>Q107: Protolith Identification - Shale as the Parental Rock of Slate</h1>
+    <div class="badge">GEO - 2/21 • Metamorphic Petrology & Protoliths</div>
+    <h1>Q107: Metamorphic Protoliths: Slate Genesis from Parental Shale & The Pelitic Metamorphic Suite</h1>
     <div class="meta">
-      <strong>Exam:</strong> Geology Paper-II (2021) &nbsp;|&nbsp; 
-      <strong>Authoritative Reference:</strong> J.D. Winter (Principles of Igneous and Metamorphic Petrology, Ch. 21, p. 420)
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2021), Question 107<br>
+<strong>Authoritative References:</strong> John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Ch. 21: Metamorphism of Pelitic Sediments, pp. 420–435; Fig. 21.1); K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, pp. 82–86, 183); G.B. Mahapatra, <em>A Text-Book of Geology</em> (pp. 132–136); Kurt Bucher and Rodney Grapes, <em>Petrogenesis of Metamorphic Rocks</em> (8th Ed., Springer).
     </div>
   </div>
 
   <!-- PART I -->
   <div class="part-banner first-part">
-    <h2>Part I: Theoretical Foundation & Concept Masterclass</h2>
-  </div>
-  <div class="content-card">
-    
-<h3>1. Question & Protolith Lineage</h3>
-<div class="question-box">
-  <p><strong>Question 107:</strong> Which will be the parental rock for Slate ?</p>
-  <ul>
-    <li>(A) Shale</li>
-    <li>(B) Sandstone</li>
-    <li>(C) Limestone</li>
-    <li>(D) All of these</li>
-  </ul>
-  <p><strong>Correct Answer:</strong> <strong>(A) Shale</strong></p>
-</div>
-
-    <div class="tb-figure">
-      <img src="../../figures_Q107/winter_p420_slate_parental_shale_protolith.png" alt="Pelitic Sequence - Shale Protolith to Slate">
-      <figcaption>
-        <strong>Figure 107.1: Progressive Metamorphism of Pelitic Protoliths.</strong> Authentic diagram from J.D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, Ch. 21, p. 420). Confirms that low-grade regional metamorphism transforms fine-grained sedimentary <strong>shale</strong> into slate with penetrative slaty cleavage.
-      </figcaption>
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geodynamic mechanics</div>
     </div>
-
   </div>
+  
+  <!-- CARD 1: DEFINITION AND PARENTAL PROTOLITH OF SLATE -->
+  <div class="card">
+    <div class="card-header bg-blue">1. Definition, Petrogenesis & Protolith Relationship of Slate</div>
+    <div class="card-body">
+      <p>
+        In metamorphic geology (Winter, 2014, pp. 420–435; Bangar, p. 82; Mahapatra, p. 132), the term <strong>protolith</strong> designates the original, precursor unmetamorphosed parent rock from which a metamorphic rock was derived through thermal, dynamic, or regional metamorphic processes.
+      </p>
+      <p>
+        <strong>Slate</strong> is universally recognized as the lowest-grade foliated metamorphic rock in the <strong>pelitic (aluminous) metamorphic suite</strong>, formed explicitly by the low-temperature, directed-stress regional metamorphism of a <strong>shale</strong> (or argillaceous mudstone) parental rock:
+      </p>
+      $$\mathbf{\text{Shale (Protolith)}} \xrightarrow[\Delta T \sim 200\text{--}300^\circ\text{C}]{\text{Directed Tectonic Stress } (\sigma_1)} \mathbf{\text{Slate}}$$
+
+      <div class="figure-box">
+        <img src="../../figures_Q107/winter_p420_slate_parental_shale_protolith.png" alt="Progressive Metamorphism of Pelitic Rocks from John D. Winter">
+        <div class="figure-caption">
+          <strong>Figure 107.1 — Progressive Metamorphic Evolution of Pelitic Rocks:</strong> Authentic textbook diagram from John D. Winter (<em>Principles of Igneous and Metamorphic Petrology</em>, p. 420). Traces the continuous prograde transformation from parent Shale $\rightarrow$ Slate $\rightarrow$ Phyllite $\rightarrow$ Schist $\rightarrow$ Gneiss $\rightarrow$ Migmatite under escalating temperature and pressure.
+        </div>
+      </div>
+
+      <h4>Mineralogical and Textural Transformation: Shale to Slate</h4>
+      <p>
+        The conversion of a sedimentary shale into a metamorphic slate involves profound micro-structural and mineralogical re-equilibration:
+      </p>
+      <ul>
+        <li><strong>Parental Shale Composition:</strong> Sub-microscopic, randomly to sub-parallel oriented detrital clay minerals (kaolinite, smectite, illite), fine quartz silt, and organic matter deposited in quiet aquatic environments.</li>
+        <li><strong>Recrystallization into Slate:</strong> Under very low-grade conditions ($T \approx 200\text{--}300^\circ\text{C}$, $P \approx 2\text{--}4\text{ kbar}$):
+          <ul>
+            <li>Smectite and kaolinite become chemically unstable and react with available potassium to synthesize sub-microscopic flakes of <strong>sericite (fine-grained white mica / muscovite)</strong> and <strong>chlorite</strong>.</li>
+            <li>Organic matter is pyrolyzed into microscopic graphite specks, imparting the characteristic dark grey, bluish-black, or charcoal color to slate.</li>
+            <li>Under tectonic compression ($\sigma_1$), the growing sheet silicates re-crystallize in strict parallel alignment perpendicular to maximum compressive stress, developing pervasive <strong>slaty cleavage</strong>.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARD 2: PROGRADE PELITIC PROGRESSION & PROTOLITH MATRIX -->
+  <div class="card">
+    <div class="card-header bg-emerald">2. The Classical Pelitic Prograde Sequence & Comparative Protolith Lineages</div>
+    <div class="card-body">
+      <h4>The Classical Barrovian Pelitic Prograde Lineage</h4>
+      <p>
+        When an original aluminous shale is subjected to progressively increasing regional metamorphism, it ascends through a continuous textural and mineralogical sequence:
+      </p>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Metamorphic Stage</th>
+            <th>Metamorphic Grade</th>
+            <th>Diagnostic Fabric / Cleavage</th>
+            <th>Grain Size & Lustre</th>
+            <th>Characteristic Mineral Assemblage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Shale (Parent Rock)</strong></td>
+            <td>Sedimentary (Unmetamorphosed)</td>
+            <td>Bedding fissility, lamination</td>
+            <td>Sub-microscopic; dull earthy</td>
+            <td>Detrital illite, smectite, kaolinite, quartz, organic carbon</td>
+          </tr>
+          <tr>
+            <td><strong>Slate</strong></td>
+            <td>Very Low Grade ($200\text{--}300^\circ\text{C}$)</td>
+            <td><strong>Slaty cleavage</strong> (planar, smooth)</td>
+            <td>Sub-microscopic ($< 10\mu\text{m}$); dull sheen</td>
+            <td>Sericite, chlorite, microcrystalline quartz, graphite, albite</td>
+          </tr>
+          <tr>
+            <td><strong>Phyllite</strong></td>
+            <td>Low Grade ($300\text{--}450^\circ\text{C}$)</td>
+            <td>Phyllitic cleavage (crenulated, wavy)</td>
+            <td>Microscopic ($10\text{--}50\mu\text{m}$); <strong>silky lustrous sheen</strong></td>
+            <td>Muscovite, chlorite, quartz, albite</td>
+          </tr>
+          <tr>
+            <td><strong>Schist</strong></td>
+            <td>Medium Grade ($450\text{--}650^\circ\text{C}$)</td>
+            <td><strong>Schistosity</strong> (pervasive foliation)</td>
+            <td>Megascopic ($> 0.1\text{ mm}$); glittering flakes</td>
+            <td>Biotite, muscovite, almandine garnet, staurolite, kyanite</td>
+          </tr>
+          <tr>
+            <td><strong>Gneiss</strong></td>
+            <td>High Grade ($650\text{--}800^\circ\text{C}$)</td>
+            <td><strong>Gneissose banding</strong> (segregated layers)</td>
+            <td>Coarse-grained ($1\text{--}5\text{ mm}$); banded</td>
+            <td>Quartz, K-feldspar, plagioclase, sillimanite, garnet</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Protolith-Product Relationships of Other Rock Types</h4>
+      <ul>
+        <li><strong>Sandstone (Quartzose):</strong> Metamorphoses into <strong>Quartzite</strong> (non-foliated granoblastic mosaic of interlocking quartz grains).</li>
+        <li><strong>Limestone / Dolostone:</strong> Metamorphoses into <strong>Marble</strong> (crystalline calcite/dolomite mosaic).</li>
+        <li><strong>Basalt / Dolerite (Mafic):</strong> Metamorphoses into <strong>Greenschist $\rightarrow$ Amphibolite $\rightarrow$ Eclogite</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- PART II -->
   <div class="part-banner green">
-    <h2>Part II: Official Question & Critical Option Dissection</h2>
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
   </div>
-  <div class="content-card">
-    <div class="q-box">
-      <div class="q-stmt">Q107. Which will be the parental rock for Slate ?</div>
+  
+  <!-- OFFICIAL QUESTION CARD -->
+  <div class="card bg-amber">
+    <div class="card-header">Official Examination Question — OPSC Assistant Geologist 2021</div>
+    <div class="card-body">
+      <div class="question-text">
+        <strong>Question 107:</strong> Which will be the parental rock for Slate ?
+      </div>
       <div class="options-grid">
-        <div class="opt-item correct"><strong>(A)</strong> Shale</div>
-        <div class="opt-item "><strong>(B)</strong> Sandstone</div>
-        <div class="opt-item "><strong>(C)</strong> Limestone</div>
-        <div class="opt-item "><strong>(D)</strong> All of these</div>
+        <div class="option-item correct-option"><strong>(A)</strong> Shale</div>
+        <div class="option-item"><strong>(B)</strong> Sandstone</div>
+        <div class="option-item"><strong>(C)</strong> Limestone</div>
+        <div class="option-item"><strong>(D)</strong> All of these</div>
+      </div>
+      <div class="verified-banner">
+        Verified Correct Answer: <strong>(A) Shale</strong>
       </div>
     </div>
-    
-<h3>2. Detailed Geological Masterclass: The Pelitic Metamorphic Progression</h3>
-<p>
-Metamorphic rocks are grouped by protolith (parent rock) composition. Pelitic rocks (mudrocks rich in aluminum and clay minerals) undergo a classic progressive sequence of regional metamorphism:
-</p>
-$$\text{Shale / Mudstone (Sedimentary Protolith)} \xrightarrow{\approx 200^\circ-300^\circ\text{C}} \textbf{Slate} \xrightarrow{300^\circ-400^\circ\text{C}} \text{Phyllite} \xrightarrow{400^\circ-550^\circ\text{C}} \text{Schist} \xrightarrow{>600^\circ\text{C}} \text{Gneiss}$$
-<ul>
-  <li><strong>Shale $\rightarrow$ Slate:</strong> Under incipient directed pressure and low temperature, clay minerals (illite, smectite) in shale recrystallize into microcrystalline white mica (muscovite/sericite) and chlorite oriented perpendicular to the maximum compressive stress direction, imparting excellent planar <em>slaty cleavage</em>.</li>
-  <li><strong>Other Protoliths:</strong>
-    <ul>
-      <li><em>Sandstone</em> $\rightarrow$ Quartzite (non-foliated granoblastic texture).</li>
-      <li><em>Limestone</em> $\rightarrow$ Marble (recrystallized calcite/dolomite).</li>
-      <li><em>Basalt</em> $\rightarrow$ Greenschist $\rightarrow$ Amphibolite $\rightarrow$ Eclogite.</li>
-    </ul>
-  </li>
-</ul>
-
   </div>
+
+  <!-- FORENSIC REFUTATION OF OPTIONS -->
+  <div class="card">
+    <div class="card-header bg-slate">Forensic Analysis & Refutation of Options</div>
+    <div class="card-body">
+      <div class="option-card option-correct">
+        <div class="option-badge opt-a">Option (A) Confirmed — Shale Protolith</div>
+        <p>
+          <strong>Correct:</strong> By universal scientific consensus in geology and petrology (Winter, 2014, p. 420; Bangar, p. 82; Mahapatra, p. 132), <strong>shale</strong> is the definitive sedimentary parental rock (protolith) for <strong>slate</strong>. When a clay-rich shale is subjected to regional compressive stress and low-grade temperatures ($200\text{--}300^\circ\text{C}$), its clay minerals dynamically recrystallize into microscopic parallel plates of sericite and chlorite, forming slate with pervasive slaty cleavage.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-b">Option (B) Refuted — Sandstone Protolith</div>
+        <p>
+          <strong>Incorrect:</strong> The metamorphism of quartz sandstone produces <strong>quartzite</strong>, a dense, non-foliated granoblastic metamorphic rock composed of recrystallized, interlocking quartz crystals. Sandstone contains $> 80\text{--}95\%$ quartz and lacks the abundant aluminum and potassium necessary to crystallize the aligned phyllosilicates (micas) that generate slaty cleavage in slate.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-c">Option (C) Refuted — Limestone Protolith</div>
+        <p>
+          <strong>Incorrect:</strong> The metamorphism of carbonate limestone or dolostone produces <strong>marble</strong>, characterized by interlocking granoblastic rhombohedral crystals of calcite ($\text{CaCO}_3$) or dolomite. Limestone cannot form slate because it is chemically dominated by calcium and carbonate ions, completely lacking the hydrous aluminum silicates required for slate genesis.
+        </p>
+      </div>
+
+      <div class="option-card option-wrong">
+        <div class="option-badge opt-d">Option (D) Refuted — All of These</div>
+        <p>
+          <strong>Incorrect:</strong> Because sandstone produces quartzite and limestone produces marble, neither of these rocks can serve as the parental rock for slate. The protolith is exclusively <strong>(A) Shale</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- PART III -->
   <div class="part-banner purple">
-    <h2>Part III: Synthesis Reference Tables & High-Yield Practice</h2>
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
   </div>
-  <div class="content-card">
-    
-<h3>3. Critical Option Elimination & Exam Traps</h3>
-<ul>
-  <li><strong>Option A (Shale) is correct:</strong> Slate is the low-grade metamorphic equivalent of fine-grained pelitic shale/mudstone.</li>
-  <li><strong>Option B (Sandstone):</strong> Forms quartzite.</li>
-  <li><strong>Option C (Limestone):</strong> Forms marble.</li>
-</ul>
+  
+  <!-- CARD 1: COMPARISON MATRIX -->
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Protolith vs. Metamorphic Product Correlation Matrix</div>
+    <div class="card-body">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Original Parental Rock (Protolith)</th>
+            <th>Chemical Category</th>
+            <th>Low-Grade Product</th>
+            <th>Medium-Grade Product</th>
+            <th>High-Grade Product</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Shale / Mudstone</strong></td>
+            <td><strong>Pelitic (Aluminous)</strong></td>
+            <td><strong>Slate $\rightarrow$ Phyllite</strong></td>
+            <td>Garnet-Mica Schist</td>
+            <td>Sillimanite-K-feldspar Gneiss / Migmatite</td>
+          </tr>
+          <tr>
+            <td><strong>Quartz Sandstone</strong></td>
+            <td>Psammitic (Siliceous)</td>
+            <td>Proto-quartzite</td>
+            <td>Orthoquartzite</td>
+            <td>Granoblastic Quartzite</td>
+          </tr>
+          <tr>
+            <td><strong>Limestone / Dolomite</strong></td>
+            <td>Calcareous (Carbonate)</td>
+            <td>Fine-grained Marble</td>
+            <td>Crystalline Marble</td>
+            <td>Coarse-grained Calcite-Wollastonite Marble</td>
+          </tr>
+          <tr>
+            <td><strong>Basalt / Dolerite</strong></td>
+            <td>Basic / Mafic</td>
+            <td>Greenschist (chlorite-actinolite)</td>
+            <td>Amphibolite (hornblende-plagioclase)</td>
+            <td>Pyroxene Granulite / Eclogite</td>
+          </tr>
+          <tr>
+            <td><strong>Granite / Rhyolite</strong></td>
+            <td>Felsic / Quartzo-feldspathic</td>
+            <td>Meta-granite / Mylonite</td>
+            <td>Granitic Gneiss</td>
+            <td>Orthogneiss / Charnockite</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <!-- CARD 2: PRACTICE PROBLEMS -->
+  <div class="card">
+    <div class="card-header bg-purple">Exam-Standard Practice Problems & Analytical Derivations</div>
+    <div class="card-body">
+      <div class="problem-box">
+        <h4>Practice Problem 1</h4>
+        <p>Explain the structural and mechanical difference between "bedding fissility" in a parent shale and "slaty cleavage" in the resulting slate.</p>
+        <p><strong>Solution:</strong>
+          - <strong>Bedding Fissility (Shale):</strong> A primary sedimentary fabric oriented strictly parallel to the original depositional stratification surfaces ($S_0$), formed by gravity compaction and settling of clay flakes in quiet water.
+          - <strong>Slaty Cleavage (Slate):</strong> A secondary, tectonic, metamorphic planar fabric ($S_1$) formed by dynamic recrystallization of sericite and chlorite. Slaty cleavage forms <strong>perpendicular to the maximum regional tectonic compressive stress ($\sigma_1$)</strong>, oriented parallel to the axial plane of folds, typically intersecting and cutting across original bedding planes at steep angles.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 2</h4>
+        <p>Under what specific $P\text{-}T$ conditions does the metamorphism of shale transition into slate, and what is the characteristic metamorphic facies?</p>
+        <p><strong>Solution:</strong>
+          The transition from shale to slate occurs in the <strong>anchizone / sub-greenschist to lowest greenschist facies</strong> at temperatures of <strong>$200^\circ\text{C}$ to $300^\circ\text{C}$</strong> and confining pressures of approximately <strong>$2\text{ to } 4\text{ kbar}$</strong> (equivalent to burial depths of $\sim 6\text{ to } 12\text{ km}$) accompanied by intense directed tectonic differential stress ($\sigma_1 > \sigma_3$).
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 3</h4>
+        <p>Why is roofing slate impermeable to water and highly resistant to frost weathering compared to its parent shale?</p>
+        <p><strong>Solution:</strong>
+          Parent shale contains open capillary pores ($5\text{--}15\%$ porosity) and expandable clay minerals that absorb water and slake rapidly. In slate, metamorphic recrystallization and ductile compaction squeeze out virtually all pore space (porosity $< 0.5\%$), and expandable smectites are transformed into dense, non-expandable muscovite/chlorite lattices with tightly interlocked grain boundaries, rendering high-quality slate completely impermeable and frost-resistant.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 4</h4>
+        <p>What causes the distinctive silvery, lustrous sheen that distinguishes a phyllite from a dull matte slate?</p>
+        <p><strong>Solution:</strong>
+          In <strong>slate</strong>, the recrystallized sericite and chlorite flakes are sub-microscopic ($< 10\mu\text{m}$ in diameter), too small to reflect visible light coherently, giving slate a dull, matte appearance. In <strong>phyllite</strong> (formed at slightly higher temperatures, $300\text{--}450^\circ\text{C}$), progressive crystal growth enlarges the mica flakes to microscopic dimensions ($10\text{--}50\mu\text{m}$). These aligned, parallel mica crystals act as tiny microscopic mirrors, reflecting incident light simultaneously to produce the diagnostic <strong>silky, lustrous sheen (phyllitic sheen)</strong>.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 5</h4>
+        <p>Identify the chemical cause for red, green, and black coloration in slates.</p>
+        <p><strong>Solution:</strong>
+          - <strong>Black / Dark Grey Slate:</strong> Caused by finely disseminated, microscopic amorphous <strong>carbonaceous organic matter / graphite</strong> inherited from anoxic parent black shales.
+          - <strong>Green Slate:</strong> Caused by the dominance of ferrous iron-bearing <strong>chlorite</strong> ($\text{Fe}^{2+}$-rich chlorite) formed under reducing or low-oxygen conditions.
+          - <strong>Red / Purple Slate:</strong> Caused by finely dispersed, microcrystalline ferric iron oxide (<strong>hematite, $\text{Fe}_2\text{O}_3$</strong>) inherited from oxidized red-bed shale protoliths.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 6</h4>
+        <p>What is a "spotted slate" and under what geological metamorphic regime does it form?</p>
+        <p><strong>Solution:</strong>
+          A <strong>spotted slate</strong> forms by <strong>contact (thermal) metamorphism</strong> where an igneous pluton intrudes a shale or slate formation under static, non-directed stress conditions. Heat from the magma initiates localized nucleation and growth of new, poikiloblastic minerals—typically cordierite, andalusite (chiastolite), or biotite—which appear as conspicuous dark ovoid "spots" ($1\text{--}5\text{ mm}$) scattered across the slaty matrix.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 7</h4>
+        <p>In structural geology, explain the concept of "cleavage-bedding intersection lineation" in a slate outcrop.</p>
+        <p><strong>Solution:</strong>
+          When a sedimentary shale is folded during orogenesis, original bedding planes ($S_0$) are cut by tectonic slaty cleavage planes ($S_1$). The intersection of these two non-parallel planes creates a linear structural fabric called the <strong>cleavage-bedding intersection lineation ($L_{0-1}$)</strong>. Geometrically, this lineation is strictly parallel to the <strong>fold axis ($B$-axis)</strong> of the regional folds, allowing field geologists to determine the plunge and trend of regional fold axes from small slate hand specimens.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <h4>Practice Problem 8</h4>
+        <p>Why does slate exhibit exceptional splitting properties (cleavability) that make it an outstanding architectural material?</p>
+        <p><strong>Solution:</strong>
+          Slate's cleavability is governed by the <strong>near-perfect crystallographic parallelism</strong> of millions of microscopic platy phyllosilicate flakes (sericite and chlorite). Because these sheet silicates share identical basal pinacoid $\{001\}$ cleavage oriented in a single plane, mechanical tensile strength across the cleavage plane is very low, allowing the rock to be split cleanly and effortlessly into razor-thin, structurally sound planar sheets of uniform thickness without breaking.
+        </p>
+      </div>
+    </div>
   </div>
+
+
 </div>
 </body>
 </html>
