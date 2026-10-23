@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q002: Braided Stream Morphology, Leopold-Wolman Criterion & Bar Dynamics | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q2" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Fluvial Geomorphology & Sedimentology</div>
+    <h1>Q002: Hydrodynamics of Braided Rivers, Interwoven Channels & Bar Architecture</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 2<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 25); Sam Boggs Jr. (<em>Sedimentology & Stratigraphy</em>, Ch. 8, pp. 244–248); Leopold & Wolman (1957, USGS Prof. Paper 282-B)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Hydrodynamic Mechanics of Braided River Systems</div>
+    <div class="card-body">
+      <p>A <strong>braided stream</strong> (or braided river) is a multi-thread fluvial channel system consisting of a network of interwoven, bifurcating, and repeatedly converging channels separated by mobile, dynamic alluvial islands and mid-channel sediment bars (longitudinal, transverse, and compound bars). Braiding represents a primary equilibrium response of a river transporting high volumes of coarse bedload under steep slopes and highly erodible, non-cohesive bank conditions.</p>
+
+      <div class="quote-box bangar">
+        "When a river is heavily laden with coarse sediment (gravel, pebbles, coarse sand) and its velocity decreases, it deposits sediment within its own bed as shoals and sandbars. As a consequence, the stream splits into numerous interwoven, bifurcating branches that reunite downstream. Such a stream characterized by an intricate network of interlaced channels is called a <strong>braided stream</strong>."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (River Deposition & Channel Forms, p. 25)</span>
+      </div>
+
+      <p>In classical quantitative fluvial geomorphology (Leopold and Wolman, 1957; Schumm, 1977), channel pattern is governed by the interaction between <strong>channel slope ($S$)</strong>, <strong>bankfull discharge ($Q$)</strong>, and the <strong>nature of sediment load</strong>:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Leopold-Wolman Channel Pattern Threshold (Leopold & Wolman, 1957)</div>
+        $$S_c = 0.0125 \cdot Q^{-0.44}$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">Where $S_c$ is the critical threshold valley slope and $Q$ is bankfull discharge in $\text{m}^3/\text{s}$. For any given discharge $Q$:<br>
+        • If $S > S_c$: Channel develops a <strong>braided</strong> multi-thread pattern.<br>
+        • If $S < S_c$: Channel develops a <strong>meandering</strong> single-thread pattern.</p>
+      </div>
+
+      <p>Four fundamental physical conditions promote river braiding:</p>
+      <ol>
+        <li><strong>High Bedload-to-Suspended-Load Ratio ($Q_b/Q_s > 0.11$):</strong> Streams transporting coarse sands and gravels as bedload cannot maintain uniform transport during falling stages, precipitating mid-channel bar formation.</li>
+        <li><strong>Steep Channel Gradient ($S$):</strong> High energy slopes generate intense bed shear stresses ($\tau_0 = \gamma R S$) that continuously mobilize coarse bedload.</li>
+        <li><strong>Erodible, Non-Cohesive Banks:</strong> Banks composed of silt-poor sands and gravels have low shear strength and lack binding clay or vegetative cover, allowing rapid lateral channel widening (high width-to-depth ratios, $W/D > 40$).</li>
+        <li><strong>Flashy, Highly Fluctuating Discharge ($Q_{max} / Q_{min} \gg 10$):</strong> Rapid hydrograph recession drops stream competence abruptly, stranding bedload bars within the channel.</li>
+      </ol>
+
+      <!-- TEXTBOOK IMAGE 1 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q002/bangar_p25_braided_stream_channels.png" alt="K.M. Bangar Braided Stream Channels">
+        <div class="tb-caption">
+          <strong>Figure 2.1: Interwoven Braided Channel Network (K.M. Bangar, p. 25).</strong> Plan view illustrating how river overloading causes mid-channel deposition of longitudinal and transverse gravel bars, forcing the flow to split into multiple interwoven branches.
+        </div>
+      </div>
+
+      <!-- TEXTBOOK IMAGE 2 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q002/boggs_fig8_6_braided_stream_bars.png" alt="Sam Boggs Jr Braided River Bar Types">
+        <div class="tb-caption">
+          <strong>Figure 2.2: Bar Dynamics in Braided Rivers (Sam Boggs Jr., Fig. 8.6).</strong> Morphological evolution of longitudinal bars (coarse gravel nucleus growing downstream) and transverse bars (lobate sand bedforms migrating downstream with steep slip faces).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Diagnostic Bar Types in Braided Fluvial Systems</div>
+    <div class="card-body">
+      <p>Mid-channel bars in braided rivers undergo continuous accretion, dissection, and migration. Three distinct bar geometries dominate:</p>
+      <ul>
+        <li><strong>Longitudinal Bars:</strong> Elongate, diamond- or lens-shaped gravel bars oriented parallel to the primary channel axis. Formed by vertical aggradation of the coarsest bedload particles in mid-channel where flow depth decreases. Characterized by upstream clast imbrication and crude horizontal bedding ($Gm$ facies).</li>
+        <li><strong>Transverse Bars:</strong> Tabular sand or gravel bars oriented perpendicularly or obliquely to channel flow. They migrate downstream by avalanching down a steep slip-face, producing planar cross-stratification ($Gp$ or $Sp$ facies).</li>
+        <li><strong>Compound / Island Bars:</strong> Large, complex semi-permanent macroforms formed by the amalgamation of multiple longitudinal and transverse bars, stabilized periodically by pioneer vegetation.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 2)</div>
+    <div class="q-stmt">
+      2. A stream consisting of interwoven channels is known as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Fluvioglacial stream</div>
+      <div class="raw-opt correct">(B) Braided stream &nbsp;✔</div>
+      <div class="raw-opt">(C) Meandering stream</div>
+      <div class="raw-opt">(D) Matured valley stream</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) Braided stream</div>
+      <div class="sub">
+        In standard university sedimentology and geomorphology (K.M. Bangar, p. 25; Sam Boggs Jr., p. 244; Leopold & Wolman, 1957), a multi-thread stream consisting of an intricate network of <strong>interwoven, interlaced channels</strong> is universally defined as a <strong>Braided stream</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Fluvioglacial stream</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> "Fluvioglacial stream" denotes the <em>origin of meltwater</em> discharged from a melting glacier. While many proglacial outwash streams (sandurs) do exhibit braided geometry due to extreme sediment loading, "fluvioglacial" is a genetic climatic classification, not a channel morphological pattern. Fluvioglacial streams can also flow through straight bedrock gorges, incised canyons, or subglacial tunnels (eskers).
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) Braided stream</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By standard international definition, a river channel pattern characterized by multiple interwoven, bifurcating, and rejoining anabranches separated by ephemeral mid-channel gravel and sand bars is precisely termed a <strong>braided stream</strong> (or braided river).
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Meandering stream</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A meandering stream consists of a single, continuous, highly sinuous channel ($S \ge 1.5$) that curves back and forth across a floodplain without interwoven branches. Channel division in meandering rivers is confined to occasional neck cutoffs forming isolated oxbow lakes.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Matured valley stream</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A "matured valley stream" refers to the Davisian geomorphic cycle stage where a river flows over a broad, graded floodplain with low gradient and established meander belts, natural levees, and oxbows, rather than an active multi-thread interwoven braided network.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Fluvial Morphology Comparison: Braided vs. Meandering vs. Anastomosing</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Diagnostic Parameter</th>
+            <th>Braided Stream</th>
+            <th>Meandering Stream</th>
+            <th>Anastomosing Stream</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Channel Planform</strong></td>
+            <td>Multi-thread, interwoven, bifurcating</td>
+            <td>Single-thread, high sinuosity ($S \ge 1.5$)</td>
+            <td>Multi-thread, discrete interconnected channels</td>
+          </tr>
+          <tr>
+            <td><strong>Channel Bars & Islands</strong></td>
+            <td>Transient, unvegetated, mobile gravel/sand bars</td>
+            <td>Point bars on inner convex meander bends</td>
+            <td>Stable, vegetated, cohesive floodplain islands</td>
+          </tr>
+          <tr>
+            <td><strong>Width-to-Depth Ratio ($W/D$)</strong></td>
+            <td>Very high ($W/D > 40 - 100$)</td>
+            <td>Moderate to low ($W/D < 10 - 20$)</td>
+            <td>Low ($W/D < 10$)</td>
+          </tr>
+          <tr>
+            <td><strong>Sediment Load Type</strong></td>
+            <td>Coarse bedload (gravel, sand, pebbles)</td>
+            <td>Mixed load to suspended load (silt, fine sand)</td>
+            <td>Suspended load (silt, clay, organic muds)</td>
+          </tr>
+          <tr>
+            <td><strong>Bank Stability & Cohesion</strong></td>
+            <td>Non-cohesive, highly erodible sand/gravel</td>
+            <td>Moderately cohesive silt-clay with vegetation</td>
+            <td>Very high cohesion; thick organic/clay banks</td>
+          </tr>
+          <tr>
+            <td><strong>Typical Slope Gradient</strong></td>
+            <td>Steep ($S > 0.001 - 0.01$)</td>
+            <td>Low ($S < 0.0005$)</td>
+            <td>Very low ($S < 0.0001$)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A river has a bankfull discharge $Q = 800\text{ m}^3/\text{s}$. Using the Leopold-Wolman empirical threshold $S_c = 0.0125 Q^{-0.44}$, determine the threshold slope separating meandering from braided channels. If the actual river channel slope is $S = 0.0015$, determine its planform pattern.
+          <div class="pq-ans">✔ Worked Answer: Threshold slope $S_c \approx 0.00066$ ($0.066\%$); Actual river is Braided ($S > S_c$).</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            $$S_c = 0.0125 \times (800)^{-0.44}$$
+            $$\ln(800) = 6.6846 \implies -0.44 \times 6.6846 = -2.9412$$
+            $$800^{-0.44} = e^{-2.9412} \approx 0.0528$$
+            $$S_c = 0.0125 \times 0.0528 \approx 0.000660 \text{ (or } 0.066\%\text{)}$$
+            Since the actual river slope $S = 0.0015$ exceeds $S_c = 0.00066$, the stream possesses excess stream power, promoting mid-channel bar formation and a <strong>Braided</strong> channel network.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is the critical distinction between a "braided river" and an "anastomosing river"?
+          <div class="pq-ans">✔ Correct Answer: Stability and composition of the islands (transient, non-cohesive bars in braided vs. stable, cohesive, vegetated floodplain blocks in anastomosing).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Both are multi-channel systems. However, braided rivers consist of wide, shallow channels separated by shifting gravel/sand bars with non-cohesive banks. Anastomosing rivers consist of deep, narrow, stable channels separated by permanent, vegetated floodplain islands with cohesive silt-clay banks.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What sedimentary lithofacies (Miall, 1978) characterizes the longitudinal gravel bars of a braided river?
+          <div class="pq-ans">✔ Correct Answer: Lithofacies $Gm$ (Massive or crudely bedded gravel with upstream imbrication).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In Miall's architectural element classification, $Gm$ represents horizontally bedded or massive clast-supported gravel sheets deposited by high-energy longitudinal bar accretion during peak flood discharges.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> Name two prime examples of mega-braided river systems in the Indian subcontinent.
+          <div class="pq-ans">✔ Correct Answer: The Brahmaputra (Jamuna) River in Assam/Bangladesh and the Kosi River in Bihar.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The Brahmaputra carries vast coarse sediment loads from the rapidly uplifting Himalayas under heavy monsoon rains, resulting in a classic braided river system exceeding $10 - 15\text{ km}$ in braidplain width.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> How does vegetation encroachment affect a braided channel pattern during prolonged drought?
+          <div class="pq-ans">✔ Correct Answer: Plant roots bind bar sediments and increase bank cohesion, consolidating bars and transitioning the river toward a single-thread or wandering pattern.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Root networks dramatically enhance the critical shear stress required for bank erosion, preventing multi-channel bifurcation and confining flow into fewer, deeper channels.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> Why are thick overbank mud and shale units virtually absent in braided river sedimentary rock sequences?
+          <div class="pq-ans">✔ Correct Answer: Continual lateral avulsion and channel shifting sweeps across the entire braidplain, reworking and eroding fine overbank deposits.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The absence of stable, cohesive levees allows channels to sweep back and forth across the entire valley floor, resulting in amalgamated, multistory sandstone/conglomerate bodies with very low preservation of mudrocks ($<5-10\%$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> In sequence stratigraphy, in which systems tract are braided fluvial sandstones most commonly deposited?
+          <div class="pq-ans">✔ Correct Answer: Lowstand Systems Tract (LST) or early Transgressive Systems Tract (TST).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> During relative sea-level falls and early lowstand periods, fluvial valley incision steepens gradients and flushes coarse bedload into incised valleys, forming extensive multi-story braided valley fills.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is a "chute cutoff", and does it occur in braided or meandering rivers?
+          <div class="pq-ans">✔ Correct Answer: It occurs during high flood stages across point bars in high-energy meandering/wandering rivers, often acting as a transitional mechanism toward braiding.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> When a flood bypasses a meander loop by cutting a new channel directly across the swale of a point bar, it creates a chute cutoff. If chute cutoffs become persistent, the channel network degenerates into a braided stream.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

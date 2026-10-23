@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q014: Mass Wasting, Gravitational Mechanics & Slope Stability Derivations | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q14" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Engineering Geology & Geomorphology</div>
+    <h1>Q014: Mechanics of Mass Wasting: Gravitational Driving Forces & Limit Equilibrium</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 14<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, pp. 377–380); Karl Terzaghi (<em>Theoretical Soil Mechanics</em>, 1943); D.J. Varnes (1978, TRB Special Report 176)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Mechanics of Slope Stability & Gravitational Driving Forces</div>
+    <div class="card-body">
+      <p><strong>Mass wasting</strong> (or <strong>mass movement</strong>) is the comprehensive geological term defining the downslope movement of rock, regolith, soil, or debris under the <strong>direct driving influence of the force of gravity</strong>, without requiring the dynamic kinetic transport of a fluid medium (such as running water, glacial ice, or wind) to carry the particles in suspension or traction.</p>
+
+      <div class="quote-box bangar">
+        "Mass movement or mass wasting is the term applied to the movement of rock fragments and soil down a slope under the direct influence of <strong>gravity</strong>. It includes movements of all kinds—from the slow, imperceptible downhill creep of soil to catastrophic rockfalls and landslides. Gravity is the fundamental driving force behind all mass wasting."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Chapter 10: Mass Movements, p. 377)</span>
+      </div>
+
+      <p>The mechanics of slope stability under gravity are formalized via the <strong>Limit Equilibrium Principle</strong> and the <strong>Mohr-Coulomb Failure Criterion</strong>:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Gravitational Stress Resolution on an Inclined Slope (Terzaghi, 1943)</div>
+        $$W = m \cdot g = \gamma \cdot V \quad (\text{Total Weight of Sliding Mass})$$
+        $$\text{Driving Shear Force } T = W \cdot \sin \alpha$$
+        $$\text{Normal Force } N = W \cdot \cos \alpha$$
+        $$\text{Factor of Safety } FS = \frac{\text{Resisting Shear Strength } R}{\text{Driving Shear Force } T} = \frac{c' \cdot A + (W \cos \alpha - u \cdot A) \tan \phi'}{W \sin \alpha}$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">Where $\alpha$ is slope inclination, $c'$ is effective cohesion, $\phi'$ is effective internal friction angle, $u$ is pore water pressure, and $A$ is failure plane area. Slope failure occurs when gravity causes $FS < 1.0$.</p>
+      </div>
+
+      <!-- TEXTBOOK IMAGE 1 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q014/bangar_p378_mass_wasting_gravity.png" alt="K.M. Bangar Verbatim Definition of Mass Wasting and Landslides">
+        <div class="tb-caption">
+          <strong>Figure 14.1: Landslide and Mass Movement Dynamics (K.M. Bangar, p. 378).</strong> Photographic scan illustrating classical landslide shear failure, rotational slumping along curved shear planes, and rock block glides driven by gravitational shear stress.
+        </div>
+      </div>
+
+      <!-- TEXTBOOK IMAGE 2 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q014/mass_wasting_gravity_shear_plane.png" alt="Gravitational Resolution of Forces on a Slope">
+        <div class="tb-caption">
+          <strong>Figure 14.2: Gravitational Force Vector Decomposition.</strong> Resolution of the vertical gravitational body weight vector ($W = mg$) into a downslope driving shear component ($T = W \sin \alpha$) and a perpendicular normal component ($N = W \cos \alpha$).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Spectrum of Mass Wasting Processes (Varnes, 1978; Cruden & Varnes, 1996)</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Type of Movement</th>
+            <th>Kinematic Mechanism</th>
+            <th>Primary Material</th>
+            <th>Velocity Range</th>
+            <th>Gravitational Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fall (Rockfall)</strong></td>
+            <td>Free-fall, bouncing, rolling through air</td>
+            <td>Bedrock blocks, boulders</td>
+            <td>Catastrophic ($>30\text{ m/s}$)</td>
+            <td>Direct unhindered gravitational free-fall ($g = 9.81\text{ m/s}^2$)</td>
+          </tr>
+          <tr>
+            <td><strong>Topple</strong></td>
+            <td>Forward rotation about a basal pivot</td>
+            <td>Columnar basalt, vertical joint blocks</td>
+            <td>Fast to slow</td>
+            <td>Overturning gravitational moment</td>
+          </tr>
+          <tr>
+            <td><strong>Slide (Rotational Slump)</strong></td>
+            <td>Shear displacement along concave slip surface</td>
+            <td>Homogeneous cohesive clay/shale</td>
+            <td>Meters/day to meters/hour</td>
+            <td>Driving shear torque along curved shear plane</td>
+          </tr>
+          <tr>
+            <td><strong>Slide (Translational Glide)</strong></td>
+            <td>Planar sliding along bedding/fault plane</td>
+            <td>Layered sedimentary / foliated rocks</td>
+            <td>Meters/second (Rapid)</td>
+            <td>Driving force $T = W \sin \alpha$ exceeding shear strength</td>
+          </tr>
+          <tr>
+            <td><strong>Flow (Debris / Mudflow)</strong></td>
+            <td>Viscous fluid shearing throughout mass</td>
+            <td>Water-saturated soil and debris</td>
+            <td>$0.5\text{ m/s}$ to $15\text{ m/s}$</td>
+            <td>Gravitational slurry flow down drainage channels</td>
+          </tr>
+          <tr>
+            <td><strong>Creep (Soil Creep)</strong></td>
+            <td>Extremely slow, continuous internal shear strain</td>
+            <td>Topsoil, regolith, weathered mantle</td>
+            <td>$<1 - 10\text{ mm/year}$</td>
+            <td>Cyclic expansion-contraction ratcheting downhill under gravity</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 14)</div>
+    <div class="q-stmt">
+      14. Mass wasting is primarily affected by :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) Force of gravity &nbsp;✔</div>
+      <div class="raw-opt">(B) Intensity of oxidation</div>
+      <div class="raw-opt">(C) Intensity of carbonization</div>
+      <div class="raw-opt">(D) Strength of streams</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) Force of gravity</div>
+      <div class="sub">
+        In engineering geology and geomorphology (K.M. Bangar, p. 377; Arthur Holmes, p. 347; Varnes, 1978; Bloom, p. 165), <strong>mass wasting</strong> is explicitly and fundamentally defined as the downslope movement of slope-forming materials under the <strong>direct driving influence of the force of gravity</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) Force of gravity</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> The force of gravity is the primary, indispensable physical engine driving all mass wasting. Gravitational acceleration ($g$) acts upon the mass of rock and soil, resolving into a downslope driving shear component ($W \sin \alpha$). Whenever this driving stress exceeds the resisting shear strength of the slope, mass wasting occurs.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Intensity of oxidation</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Oxidation is a chemical weathering reaction (e.g., $4\text{Fe}^{2+} + 3\text{O}_2 \to 2\text{Fe}_2\text{O}_3$) that alters iron-bearing silicates into rust-colored oxides. While chemical weathering can gradually weaken rock strength over millenia, it does not provide the dynamic physical driving force for mass displacement.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Intensity of carbonization</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Carbonization (or coalification / carbonation) refers either to the geochemical concentration of carbon in organic matter forming coal, or the chemical reaction of dissolved carbon dioxide with minerals. It is not the driving physical agent of downslope mass movement.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Strength of streams</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The strength of streams governs <em>fluvial erosion and transport</em>, where sediment particles are entrained within moving water. Mass wasting is fundamentally demarcated from fluvial erosion precisely because mass wasting moves under direct gravitational body force without being entrained as sediment load in a river.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Triggering Mechanisms vs. Primary Driving Force in Mass Wasting</div>
+    <div class="card-body">
+      <p>It is vital to distinguish between the <strong>singular driving force (Gravity)</strong> and the transient <strong>triggering mechanisms</strong> that precipitate failure:</p>
+      <ul>
+        <li><strong>Rainfall & Pore Water Pressure ($u$):</strong> Water acts by reducing effective normal stress ($\sigma' = \sigma - u$) and lubricating shear planes; it does not replace gravity as the driving force.</li>
+        <li><strong>Seismic Ground Acceleration (Earthquakes):</strong> Dynamic seismic shear waves ($k_h W$) temporarily augment gravitational driving shear stress.</li>
+        <li><strong>Toe Undercutting (River or Road Excavation):</strong> Removes kinematic support at the base of the slope, leaving the upper block unsupported against gravitational collapse.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A planar rock block weighing $W = 600\text{ kN}$ rests on a joint plane inclined at $\alpha = 35^\circ$. The basal contact area is $A = 25\text{ m}^2$. The joint plane has an effective cohesion $c' = 12\text{ kPa}$ and an internal friction angle $\phi' = 30^\circ$. If water pressure is zero, calculate the Factor of Safety ($FS$) against sliding.
+          <div class="pq-ans">✔ Worked Answer: $FS = 1.69$ (Stable Slope).</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            Driving force $T = W \sin \alpha = 600 \sin 35^\circ = 600(0.5736) = 344.15\text{ kN}$.<br>
+            Normal force $N = W \cos \alpha = 600 \cos 35^\circ = 600(0.8192) = 491.49\text{ kN}$.<br>
+            Resisting shear force $R = c' A + N \tan \phi'$:<br>
+            $$R = (12\text{ kPa} \times 25\text{ m}^2) + 491.49 \tan 30^\circ = 300 + 491.49(0.5774) = 300 + 283.77 = 583.77\text{ kN}$$<br>
+            $$FS = \frac{R}{T} = \frac{583.77}{344.15} \approx 1.696$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What happens to the Factor of Safety ($FS$) of the slope in Q1 if heavy monsoon rains generate a pore water pressure $u = 15\text{ kPa}$ along the joint plane?
+          <div class="pq-ans">✔ Worked Answer: $FS = 1.07$ (Marginal Stability / Imminent Failure).</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            Total pore water force $U = u \times A = 15\text{ kPa} \times 25\text{ m}^2 = 375\text{ kN}$.<br>
+            Effective normal force $N' = N - U = 491.49 - 375 = 116.49\text{ kN}$.<br>
+            New resisting force $R' = 300 + 116.49(0.5774) = 300 + 67.26 = 367.26\text{ kN}$.<br>
+            $$FS = \frac{367.26}{344.15} \approx 1.067$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> For a completely dry, cohesionless sand slope ($c'=0, u=0$), what is the maximum stable slope angle?
+          <div class="pq-ans">✔ Correct Answer: The angle of internal friction of the sand ($lpha_{	ext{max}} = \phi'$), termed the angle of repose.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> When $c'=0$, $FS = rac{W \cos lpha 	an \phi'}{W \sin lpha} = rac{	an \phi'}{	an lpha}$. For $FS \ge 1.0$, $	an lpha \le 	an \phi' \implies lpha \le \phi'$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In what type of mass movement does the displaced block rotate backward toward the head scarp?
+          <div class="pq-ans">✔ Correct Answer: Rotational slide (Slump).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In a rotational slump, the failure surface is curved concave-upward (spoon-shaped). As the mass slides, the center of gravity rotates, tilting trees and bedding backward into the hill.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is "solifluction", and in what climatic zone is it the dominant mass wasting agent?
+          <div class="pq-ans">✔ Correct Answer: The slow downslope flow of water-saturated soil over an impermeable permafrost layer, dominant in periglacial/subarctic regions.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> During summer, the active layer thaws into a saturated slurry that cannot drain downward through the frozen permafrost, flowing slowly downslope under gravity.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What field evidence diagnoses active "soil creep" on a hillside?
+          <div class="pq-ans">✔ Correct Answer: J-shaped (pistol-butted) tree trunks, tilted utility poles, displaced fences, and terracettes.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because surface soil creeps faster than subsoil, tree roots move slower than trunks, forcing trees to curve vertically toward sunlight as they grow.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> In the 1963 catastrophic Vajont Dam disaster in Italy, what form of mass wasting occurred?
+          <div class="pq-ans">✔ Correct Answer: A catastrophic translational rock block slide along clay interbeds, mobilizing 270 million cubic meters of rock into the reservoir.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Reservoir filling raised pore water pressure along bedding planes that dipped directly toward the valley, triggering instantaneous planar failure under gravity.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is the most cost-effective engineering stabilization measure for preventing rain-induced mass wasting?
+          <div class="pq-ans">✔ Correct Answer: Subsurface drainage (horizontal drain holes and French drains) to reduce pore water pressure ($u$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Dewatering restores effective normal stress ($\sigma' = \sigma - u$) and maximizes frictional shear resistance without expensive retaining walls.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

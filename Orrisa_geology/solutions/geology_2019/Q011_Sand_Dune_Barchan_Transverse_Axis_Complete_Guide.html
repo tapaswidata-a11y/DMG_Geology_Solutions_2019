@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q011: Sand Dune Morphology, Barchans & Transverse vs. Longitudinal Kinematics | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q11" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Aeolian Geomorphology & Sedimentology</div>
+    <h1>Q011: Morphodynamic Classification of Sand Dunes: Barchans & Transverse Kinematics</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 11<br><strong>Authoritative References:</strong> Ralph A. Bagnold (<em>The Physics of Blown Sand</em>, 1941); K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 23); Edwin D. McKee (<em>Global Sand Seas</em>, USGS Prof. Paper 1052)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Morphodynamic Classification of Aeolian Dunes & Wind Regimes</div>
+    <div class="card-body">
+      <p>In aeolian geomorphology, sand dunes are classified based on the geometric relationship between the <strong>crest-ridge orientation (long axis)</strong> of the dune and the <strong>prevailing effective wind direction</strong> (Bagnold, 1941; McKee, 1979). When the long axis or crest of a sand dune is oriented <strong>perpendicular (transverse, $90^\circ$)</strong> to the prevailing sand-transporting wind, it belongs to the transverse dune family, of which the crescentic <strong>barchan</strong> is the classic, quintessential example.</p>
+
+      <div class="quote-box bangar">
+        "Dunes whose long axes are oriented across (transverse to) the direction of the prevailing wind are called transverse dunes. The most common and classic variety of transverse dune is the <strong>barchan</strong>, which is crescent-shaped in plan with its convex side facing upwind and its two horns or tips pointing downwind in the direction of the wind."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Geological Work of Wind: Sand Dunes, p. 23)</span>
+      </div>
+
+      <p>The two fundamental geometric classes of sand dunes are:</p>
+      <ul>
+        <li><strong>Transverse Dunes (Including Barchans):</strong> Formed where wind blows predominantly from a single unidirectional quadrant ($RDP/DP > 0.8$). The crest line and slip face are oriented at right angles (transverse) to the wind vector. When sand supply is abundant and continuous, transverse ridges form; when sand supply is limited on a hard desert floor, isolated crescent-shaped <strong>barchans</strong> develop with their long transverse axes and downwind-pointing horns.</li>
+        <li><strong>Longitudinal Dunes (Seifs / Sand Ridges):</strong> Formed where wind blows from two converging directions or in bidirectional wind regimes. The long axis of the dune extends <strong>parallel</strong> to the resultant wind direction, forming straight or sinuous razor-backed sand ridges that can extend unbroken for tens of kilometers.</li>
+      </ul>
+
+      <!-- TEXTBOOK IMAGE 1 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q011/bangar_fig2_3_2_4_wind_transport.png" alt="K.M. Bangar Wind Transport and Sand Dunes">
+        <div class="tb-caption">
+          <strong>Figure 11.1: Mechanics of Barchan Dune Migration (K.M. Bangar, p. 23).</strong> Plan and cross-sectional views of a barchan dune illustrating the gentle windward stoss slope ($10^\circ - 15^\circ$), the steep lee slip-face ($32^\circ - 34^\circ$ angle of repose), and the two horns pointing downwind along the transverse crest axis.
+        </div>
+      </div>
+
+      <!-- TEXTBOOK IMAGE 2 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q011/boggs_fig8_17_barchan_transverse_dunes.png" alt="Sam Boggs Jr Classification of Aeolian Dunes">
+        <div class="tb-caption">
+          <strong>Figure 11.2: Global Aeolian Dune Classification (Sam Boggs Jr., Fig. 8.17).</strong> Relationship between wind variability, sand supply, and dune morphology, contrasting transverse/barchan dunes (unidirectional wind) with longitudinal seif dunes and multi-directional star dunes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Comparative Matrix: Dune Types vs. Wind Direction Orientation</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Dune Type</th>
+            <th>Crest / Long Axis Orientation</th>
+            <th>Planform Morphology</th>
+            <th>Sand Supply & Wind Regime</th>
+            <th>Slip Face Orientation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Barchan</strong></td>
+            <td><strong>Transverse ($90^\circ$ to wind)</strong></td>
+            <td>Crescent-shaped; convex stoss, horns pointing downwind</td>
+            <td>Limited sand supply; hard bedrock/gravel floor; unidirectional wind</td>
+            <td>Downwind concave slip face ($32^\circ - 34^\circ$)</td>
+          </tr>
+          <tr>
+            <td><strong>Transverse Ridge</strong></td>
+            <td><strong>Transverse ($90^\circ$ to wind)</strong></td>
+            <td>Continuous linear or wavy asymmetric sand ridges</td>
+            <td>Abundant, unlimited sand supply; unidirectional wind</td>
+            <td>Single continuous downwind slip face</td>
+          </tr>
+          <tr>
+            <td><strong>Longitudinal Dune (Seif)</strong></td>
+            <td><strong>Parallel (Long axis parallel to wind)</strong></td>
+            <td>Linear, sharp-crested sand ridges (sand ridges)</td>
+            <td>Moderate sand supply; bidirectional converging winds</td>
+            <td>Two alternating slip faces on opposing flanks</td>
+          </tr>
+          <tr>
+            <td><strong>Parabolic Dune</strong></td>
+            <td>Transverse (Curvilinear)</td>
+            <td>U- or V-shaped; convex downwind, horns pointing upwind</td>
+            <td>Partially vegetated; coastal or semi-arid deflation blowouts</td>
+            <td>Downwind convex slip face; vegetated arms</td>
+          </tr>
+          <tr>
+            <td><strong>Star Dune</strong></td>
+            <td>Multi-directional (Radiating arms)</td>
+            <td>Pyramidal peak with 3 or more radiating sinuous arms</td>
+            <td>Abundant sand; multidirectional complex wind regimes</td>
+            <td>Multiple steep slip faces facing diverse directions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 11)</div>
+    <div class="q-stmt">
+      11. A sand dune with its long axis transverse to wind direction is called :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Longitudinal dune</div>
+      <div class="raw-opt">(B) Sand ridge</div>
+      <div class="raw-opt">(C) Parallel dune</div>
+      <div class="raw-opt correct">(D) Barchan &nbsp;✔</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) Barchan</div>
+      <div class="sub">
+        In physical geology and aeolian geomorphology (K.M. Bangar, p. 23; Sam Boggs Jr., p. 270; McKee, 1979), a <strong>barchan</strong> is defined as a crescentic sand dune whose long ridge crest is oriented <strong>transverse (perpendicular) to the prevailing wind direction</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Longitudinal dune</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A longitudinal dune (seif) is defined by its long crest axis extending <em>parallel</em> to the resultant prevailing wind direction, not transverse to it. They develop under bidirectional wind systems and can extend linearly for scores of kilometers.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Sand ridge</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A sand ridge is a synonym for longitudinal or seif dunes (e.g., the vast sand ridges of the Simpson and Great Sandy Deserts in Australia), where continuous parallel ridges run parallel to the wind corridors.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Parallel dune</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> "Parallel dune" is another descriptive term for longitudinal dunes whose elongate axes run parallel to the prevailing wind streamlines, the exact antithesis of a transverse dune.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) Barchan</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Among the choices provided, the <strong>barchan</strong> is the only dune whose primary long crest axis is oriented <strong>transverse (perpendicular)</strong> to the wind direction. Wind blows against its convex back, saltating sand up to the crest, where it avalanches down the transverse lee slip face, while the lateral wings are dragged forward into downwind horns.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Kinematics of Barchan Migration: Bagnold's Equation</div>
+    <div class="card-body">
+      <p>The forward migration velocity ($C$) of a barchan dune is inversely proportional to its height ($H$):</p>
+      $$C = \frac{q}{\gamma_b \cdot H}$$
+      <p>where $q$ is the sand transport rate ($\text{kg}/\text{m}\cdot\text{s}$) and $\gamma_b$ is the bulk unit weight of sand. Because the lateral flanks and horns of a barchan are much lower in height than the central dune crest ($H_{\text{horns}} \ll H_{\text{center}}$), the horns migrate forward substantially faster than the thick central body. This differential migration velocity is what generates and maintains the classic crescent shape with horns pointing downwind.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A small desert barchan dune has a crest height $H = 4.0\text{ m}$. In a given wind storm season, the measured volumetric sand flux across the crest is $Q_s = 24.0\text{ m}^3/\text{m}\cdot\text{year}$. Calculate the annual migration distance of the dune.
+          <div class="pq-ans">✔ Worked Answer: Migration velocity $C = 6.0\text{ meters/year}$.</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            Using Bagnold's kinematic dune migration formula:<br>
+            $$C = \frac{Q_s}{H} = \frac{24.0\text{ m}^3/\text{m}\cdot\text{year}}{4.0\text{ m}} = 6.0\text{ m/year}$$<br>
+            If the dune were $12.0\text{ m}$ high, its migration rate would slow to $C = 24.0 / 12.0 = 2.0\text{ m/year}$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> Why do the horns of a Barchan dune point in the direction of the wind, whereas the horns of a Parabolic dune point against the wind?
+          <div class="pq-ans">✔ Correct Answer: In barchans, the lower horns migrate faster downwind than the high central crest; in parabolic dunes, vegetation anchors the horns while the blowout center migrates downwind.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Vegetation along coastal margins physically stabilizes the arms of parabolic dunes, allowing the unanchored central sand mass to be blown out downwind.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What internal sedimentary structure uniquely diagnoses ancient aeolian sandstones in the stratigraphic rock record?
+          <div class="pq-ans">✔ Correct Answer: Giant, high-angle ($>25^\circ - 34^\circ$) tabular and wedge-planar cross-bedding sets with grainfall and grainflow laminae.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Sand avalanching down dune slip faces forms cross-bed sets that can reach tens of meters in thickness (e.g., Navajo Sandstone), showing inverse grading within grainflow avalanches.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In what type of desert surface do isolated Barchans typically form?
+          <div class="pq-ans">✔ Correct Answer: Over hard, rocky or gravelly desert floors (reg/serir) with limited sand availability and a constant unidirectional wind regime.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> When sand is scarce, sand grains cannot cover the entire surface, forming discrete migrating crescent dunes over the hard bedrock/pavement floor.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is a "draa"?
+          <div class="pq-ans">✔ Correct Answer: A mega-dune bedform with wavelengths exceeding $500\text{ m}$ to several kilometers and heights up to hundreds of meters, upon which smaller dunes are superposed.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Wilson (1972) classified aeolian bedforms into a hierarchical spectrum: ripples (wavelength cm), dunes (wavelength meters to tens of meters), and draas (wavelength kilometers).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What wind condition produces "Star Dunes" with pyramidal summits?
+          <div class="pq-ans">✔ Correct Answer: Complex, multidirectional wind regimes where winds blow from three or more distinct directions during different seasons.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Star dunes do not migrate laterally; instead, they grow vertically as sand is blown into the central summit from opposing directions, reaching heights over $300 - 400\text{ m}$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is the difference between "grainfall" and "grainflow" (sand avalanche) deposition on a dune slip face?
+          <div class="pq-ans">✔ Correct Answer: Grainfall is the settling of saltating grains from suspension in the flow separation zone; grainflow is gravitational shearing and avalanching when oversteepened past the angle of repose.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Grainflow deposits display diagnostic inverse grading (coarse grains rise to the top of the shearing avalanche tongue due to kinetic sieving).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is a "barchanoid ridge"?
+          <div class="pq-ans">✔ Correct Answer: A continuous wavy, sinuous transverse sand ridge formed by the lateral coalescence of multiple individual barchan dunes under increasing sand supply.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> As sand supply increases, isolated barchans merge side-by-side, forming a sinuous transverse ridge with alternating crests and troughs.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

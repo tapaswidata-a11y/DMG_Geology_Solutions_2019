@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q008: Drainage Density, Horton's Basin Morphometry & Fluvial Hydrology | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q8" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Fluvial Geomorphology & Hydrology</div>
+    <h1>Q008: Mathematical Physics of Drainage Density: Horton's Laws & Basin Morphometry</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 8<br><strong>Authoritative References:</strong> Robert E. Horton (<em>GSA Bulletin</em>, 1945); Arthur N. Strahler (<em>GSA Bulletin</em>, 1957); K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 27)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Mathematical Formulation of Drainage Density & Horton's Laws</div>
+    <div class="card-body">
+      <p>In quantitative fluvial morphometry and hydrology, <strong>drainage density ($D_d$)</strong> is a fundamental linear-areal dimensionless-scale parameter introduced by the distinguished American hydrologist and engineer <strong>Robert E. Horton</strong> in his seminal 1945 paper (<em>Erosional development of streams and their drainage basins; hydrophysical approach to quantitative morphology</em>, GSA Bulletin). Horton mathematically defined drainage density as the <strong>total length of streams of all orders within a drainage basin divided by the total area of the basin</strong>.</p>
+
+      <div class="quote-box bangar">
+        "Drainage density ($D_d$) is defined as the ratio of the total length of all stream channels in a drainage basin to the total area of the basin. It is expressed as:
+        $$D_d = \frac{\sum L}{A}$$
+        where $\sum L$ is the total length of streams of all orders and $A$ is the total basin area. It reflects the closeness of spacing of channels and provides a quantitative measure of the dissected nature of the terrain."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Drainage Basins & Morphometric Analysis, p. 27)</span>
+      </div>
+
+      <p>Drainage density possesses dimensions of $[L]/[L^2] = [L^{-1}]$, typically expressed in units of <strong>$\text{km}/\text{km}^2 = \text{km}^{-1}$</strong> (or $\text{mi}/\text{mi}^2$). It serves as the primary quantitative bridge connecting watershed geology, climate, vegetative cover, and surface runoff dynamics.</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Horton's Core Morphometric Basin Equations (Horton, 1945; Schumm, 1956)</div>
+        $$D_d = \frac{\sum_{u=1}^k \sum_{i=1}^{N_u} L_{u,i}}{A} \quad [\text{km}^{-1}]$$
+        $$C = \frac{1}{D_d} = \frac{A}{\sum L} \quad [\text{km}^2/\text{km}] \quad (\text{Constant of Channel Maintenance})$$
+        $$L_g = \frac{1}{2 D_d} \quad [\text{km}] \quad (\text{Mean Length of Overland Flow})$$
+        $$F_s = \frac{\sum N}{A} \quad [\text{km}^{-2}] \quad (\text{Stream Frequency})$$
+      </div>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q008/bangar_p27_drainage_density_basin_morphometry.png" alt="K.M. Bangar Drainage Density Basin Morphometry">
+        <div class="tb-caption">
+          <strong>Figure 8.1: Basin Morphometry & Horton Stream Ordering (K.M. Bangar, p. 27).</strong> Quantitative stream network delineation illustrating Strahler/Horton stream ordering, drainage basin boundary ($A$), and cumulative channel length calculation ($\sum L$) for determining drainage density.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Geological & Hydrological Controls on Drainage Density</div>
+    <div class="card-body">
+      <p>Drainage density varies across three orders of magnitude (from $<1.0\text{ km}^{-1}$ in dense forests on sandstone/limestone to $>500\text{ km}^{-1}$ in arid badlands on impermeable shales). Its magnitude is dictated by the fundamental balance between <strong>erosive driving forces</strong> (surface runoff) and <strong>surface resistance forces</strong> (infiltration capacity and vegetation):</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Drainage Density Category</th>
+            <th>Value Range ($D_d$)</th>
+            <th>Dominant Bedrock Lithology & Soil</th>
+            <th>Infiltration & Runoff Dynamics</th>
+            <th>Hydrograph Flashiness</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Extremely Low ($D_d < 2\text{ km}^{-1}$)</strong></td>
+            <td>$< 2\text{ km/km}^2$</td>
+            <td>Highly permeable sands, gravels, karstic limestone, thick gravelly regolith</td>
+            <td>Very high infiltration; minimal overland flow; sustained groundwater baseflow</td>
+            <td>Subdued, broad hydrographs; minimal flood risk</td>
+          </tr>
+          <tr>
+            <td><strong>Moderate ($D_d = 5 - 15\text{ km}^{-1}$)</strong></td>
+            <td>$5 - 15\text{ km/km}^2$</td>
+            <td>Jointed granite, sandstones with moderate soil cover, humid temperate forests</td>
+            <td>Moderate infiltration capacity; balanced surface runoff and throughflow</td>
+            <td>Standard hydrograph response</td>
+          </tr>
+          <tr>
+            <td><strong>High ($D_d = 15 - 50\text{ km}^{-1}$)</strong></td>
+            <td>$15 - 50\text{ km/km}^2$</td>
+            <td>Impermeable crystalline schist, weathered basalt, sparse vegetation</td>
+            <td>Low infiltration; rapid overland flow concentration</td>
+            <td>Sharp, rapid flood peaks</td>
+          </tr>
+          <tr>
+            <td><strong>Extremely High / Badlands ($D_d > 100 - 500\text{ km}^{-1}$)</strong></td>
+            <td>$> 100\text{ km/km}^2$</td>
+            <td>Unconsolidated, impermeable montmorillonite clays, mudstones, devoid of vegetation</td>
+            <td>Near-zero infiltration; massive sheetwash and rapid rill incision</td>
+            <td>Extreme flash-flood catastrophe risk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 8)</div>
+    <div class="q-stmt">
+      8. Drainage density of a basin is a measure of :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Total number of the highest order streams divided by the total number of the next lower order streams</div>
+      <div class="raw-opt">(B) Length of the largest stream divided by the total area of the basin</div>
+      <div class="raw-opt correct">(C) Total length of streams of all orders divided by the total area of the basin &nbsp;✔</div>
+      <div class="raw-opt">(D) Total number of streams of all orders</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (C) Total length of streams of all orders divided by the total area of the basin</div>
+      <div class="sub">
+        In quantitative geomorphology and basin hydrology (Robert E. Horton, 1945; Arthur N. Strahler, 1957; K.M. Bangar, p. 27), <strong>Drainage Density ($D_d$)</strong> is mathematically defined as the <strong>total length of streams of all orders divided by the total area of the drainage basin</strong> ($D_d = \sum L / A$).
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Total number of the highest order streams divided by...</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The ratio of the number of streams of a given order ($N_u$) to the number of streams of the next higher order ($N_{u+1}$) defines Horton's <strong>Bifurcation Ratio ($R_b = N_u / N_{u+1}$)</strong>, which describes the branching geometry of a network, not its drainage density.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Length of the largest stream divided by the total area...</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Dividing only the length of the trunk/largest stream by total basin area is an arbitrary ratio that neglects the entire tributary network. Drainage density strictly requires the summation of stream lengths across <em>all stream orders</em> from 1st-order headwater rills to the highest-order trunk channel.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(C) Total length of streams of all orders divided by the total area of the basin</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> This is the universal, standardized textbook definition established by Robert E. Horton (1945): $D_d = \frac{\sum L}{A}$, measuring the density of channel incision in units of $\text{km}^{-1}$.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Total number of streams of all orders</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The total number of streams of all orders is simply the basin's total channel count ($\sum N$). When divided by basin area ($A$), it yields <strong>Stream Frequency ($F_s = \sum N / A$)</strong>, which has units of $\text{km}^{-2}$, whereas drainage density measures cumulative <em>stream length</em> per unit area.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Synthesis: Horton's Morphometric Parameters</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Morphometric Parameter</th>
+            <th>Mathematical Formula</th>
+            <th>Physical Dimension / Units</th>
+            <th>Geomorphological & Hydrological Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Drainage Density ($D_d$)</strong></td>
+            <td>$$D_d = \frac{\sum L}{A}$$</td>
+            <td>$[L^{-1}] \quad (\text{km}^{-1})$</td>
+            <td>Closeness of channel spacing; landscape dissection intensity; runoff speed</td>
+          </tr>
+          <tr>
+            <td><strong>Constant of Channel Maintenance ($C$)</strong></td>
+            <td>$$C = \frac{1}{D_d} = \frac{A}{\sum L}$$</td>
+            <td>$[L] \quad (\text{km}^2/\text{km})$</td>
+            <td>Minimum surface drainage area required to sustain 1 kilometer of channel</td>
+          </tr>
+          <tr>
+            <td><strong>Length of Overland Flow ($L_g$)</strong></td>
+            <td>$$L_g = \frac{1}{2 D_d}$$</td>
+            <td>$[L] \quad (\text{km} \text{ or } \text{m})$</td>
+            <td>Average distance rainwater travels overland before entering a stream channel</td>
+          </tr>
+          <tr>
+            <td><strong>Stream Frequency ($F_s$)</strong></td>
+            <td>$$F_s = \frac{\sum N}{A}$$</td>
+            <td>$[L^{-2}] \quad (\text{km}^{-2})$</td>
+            <td>Total number of discrete channel segments per unit basin area</td>
+          </tr>
+          <tr>
+            <td><strong>Bifurcation Ratio ($R_b$)</strong></td>
+            <td>$$R_b = \frac{N_u}{N_{u+1}}$$</td>
+            <td>Dimensionless</td>
+            <td>Index of tributary branching; controls synchronization of flood peaks</td>
+          </tr>
+          <tr>
+            <td><strong>Ruggedness Number ($R_n$)</strong></td>
+            <td>$$R_n = D_d \cdot H$$</td>
+            <td>Dimensionless</td>
+            <td>Combines relief ($H$) and drainage density; indicates flash flood hazard</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A watershed basin has a total surface area $A = 160.0\text{ km}^2$. The total lengths of stream channels by order are: 1st order $= 120.0\text{ km}$, 2nd order $= 60.0\text{ km}$, 3rd order $= 36.0\text{ km}$, and 4th order $= 24.0\text{ km}$. Calculate: (a) the Drainage Density ($D_d$), (b) the Constant of Channel Maintenance ($C$), and (c) the Mean Length of Overland Flow ($L_g$).
+          <div class="pq-ans">✔ Worked Answer: (a) $D_d = 1.50\text{ km}^{-1}$; (b) $C = 0.667\text{ km}^2/\text{km}$; (c) $L_g = 0.333\text{ km} = 333.3\text{ m}$.</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            Total cumulative stream length $\sum L = 120.0 + 60.0 + 36.0 + 24.0 = 240.0\text{ km}$.<br>
+            (a) Drainage Density:<br>
+            $$D_d = \frac{\sum L}{A} = \frac{240.0\text{ km}}{160.0\text{ km}^2} = 1.50\text{ km}^{-1}$$<br>
+            (b) Constant of Channel Maintenance:<br>
+            $$C = \frac{1}{D_d} = \frac{1}{1.50} \approx 0.667\text{ km}^2/\text{km}$$<br>
+            (c) Mean Length of Overland Flow:<br>
+            $$L_g = \frac{1}{2 D_d} = \frac{1}{2 \times 1.50} = \frac{1}{3.00} \approx 0.3333\text{ km} = 333.3\text{ meters}$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> How does bedrock permeability directly control drainage density?
+          <div class="pq-ans">✔ Correct Answer: High permeability produces low drainage density; low permeability produces high drainage density.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In permeable rock (e.g., porous sandstone or karstified limestone), rainfall infiltrates into the subsurface, leaving little surface runoff to carve stream channels. In impermeable rocks (e.g., clay/shale), all rainfall is forced into overland flow, gouging dense channel networks.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> State Horton's Law of Stream Numbers.
+          <div class="pq-ans">✔ Correct Answer: The number of streams of different orders in a given basin tends to form a geometric progression starting with the highest-order stream: $N_u = R_b^{k-u}$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Plotting the logarithm of the number of streams against stream order yields a straight line with slope equal to $-\log(R_b)$.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In Strahler's stream ordering system, what happens when a 1st-order stream joins a 2nd-order stream?
+          <div class="pq-ans">✔ Correct Answer: The downstream channel remains a 2nd-order stream.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In Strahler's system, a channel order increases if and only if two streams of the <em>same order</em> join (e.g., $1 + 1 \to 2$, $2 + 2 \to 3$). The junction of a lower-order stream with a higher-order stream leaves the higher order unchanged ($1 + 2 \to 2$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What does an exceptionally high Ruggedness Number ($R_n = D_d \times H$) indicate about a watershed?
+          <div class="pq-ans">✔ Correct Answer: It indicates extreme structural dissection, steep slopes, and catastrophic flash-flood vulnerability.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> High relief ($H$) provides gravitational potential energy while high drainage density ($D_d$) rapidly concentrates runoff into trunk streams, producing extreme flood peaks with minimal lag time.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> Why does deforestation or overgrazing trigger an immediate increase in drainage density?
+          <div class="pq-ans">✔ Correct Answer: Loss of canopy and root cover reduces infiltration capacity and soil shear strength, allowing sheetwash to rapidly incise new rills and gullies.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Vegetation increases infiltration and physically anchors topsoil. Removing vegetation lowers the critical shear stress required for channel initiation, causing extensive gully incision.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is the difference between Horton's Stream Frequency ($F_s$) and Drainage Density ($D_d$)?
+          <div class="pq-ans">✔ Correct Answer: $F_s$ measures the number of stream segments per unit area ($\text{km}^{-2}$), whereas $D_d$ measures total channel length per unit area ($\text{km}^{-1}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Two basins can have identical stream frequencies ($F_s$) but vastly different drainage densities if one basin has much longer stream channels.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> In hydrogeology, how does drainage density correlate with groundwater recharge potential?
+          <div class="pq-ans">✔ Correct Answer: Inversely; areas with low drainage density generally possess high infiltration capacity and superior groundwater recharge potential.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> When drainage density is low, precipitation spends more time as overland flow and percolates into aquifers rather than being swiftly evacuated by stream channels.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q030: Fold Attitude: Axis Orientation & Plunge Geometry | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q30" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 · Paper-II · Q030 · Structural Geology</div>
+    <h1>Definition & Kinematic Criteria of a Plunging Fold</h1>
+    <div class="meta">
+      Question ID: GEO-2019-Q030 | Topic: Fold Kinematics & Plunge Measurement | Difficulty: Easy | Target Time: 25 sec
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Fold Kinematics: Axis Orientation, Plunge Angle & Map Patterns</div>
+    <div class="card-body">
+      <p>In structural geology, the 3D spatial attitude of a fold is fully specified by the geometric orientation of its <strong>axial surface</strong> and its <strong>fold axis (hinge line)</strong>. The fold axis is defined as the line of intersection between the axial plane and a bedding surface, or the line which when moved parallel to itself generates the cylindrical fold surface.</p>
+      
+      <ul>
+        <li><strong>Non-Plunging Fold:</strong> A fold whose axis is perfectly <strong>horizontal</strong> (angle of plunge $= 0^\circ$). On a planar geological map, the outcrop traces of the two limbs form parallel, straight bands that never converge or close.</li>
+        <li><strong>Plunging Fold:</strong> A fold whose axis is <strong>inclined to the horizontal</strong> (angle of plunge $> 0^\circ$). The plunge is the angle of inclination of the fold axis measured downward from the horizontal in a vertical plane containing the axis ($0^\circ < \text{plunge} \le 90^\circ$).</li>
+        <li><strong>Closure and Nose:</strong> Plunging folds produce diagnostic curved, convergent outcrop traces on geological maps:
+          <ul>
+            <li><strong>Plunging Anticline:</strong> The outcrop pattern forms a V-shaped curve (nose) that <strong>points in the direction of plunge</strong>. The oldest beds occupy the core.</li>
+            <li><strong>Plunging Syncline:</strong> The outcrop pattern forms a V-shaped curve that <strong>opens in the direction of plunge</strong> (points opposite to the plunge direction). The youngest beds occupy the core.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "The axis of a fold may be horizontal or inclined. Anticlines and synclines whose axes are horizontal are said to be 'non-plunging'. <strong>Folds having inclined axes are called the plunging folds</strong>. The angle of inclination of the axis measured from the horizontal is called the <strong>angle of plunge</strong> and the direction in which this axis is inclined is called the <strong>direction of plunge</strong>."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Folds: Plunging Folds, p. 113)</span>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">Mathematical Attitude of a Plunging Fold Axis</div>
+        $$\text{Plunge Vector } (\mathbf{L}) = \text{Trend } (\phi) / \text{Plunge } (\beta) \quad \text{e.g., } 045^\circ / 30^\circ$$
+        $$\text{Condition for Plunge:} \quad \beta > 0^\circ \quad (\text{Axis is not horizontal})$$
+        $$\text{True Dip of Limb } (\delta), \text{ Plunge } (\beta), \text{ Angle between Strike and Axis } (\alpha): \quad \sin \beta = \sin \delta \cdot \sin \alpha$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">When $\beta = 90^\circ$, the fold axis is vertical and the fold is classified as a <em>vertical fold</em>.</p>
+      </div>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q030/bangar_fig7_8_plunging_fold_axis.png" alt="K.M. Bangar Fig 7.8 Plunging Fold Axis Geometry">
+        <div class="tb-caption">
+          <strong>Figure 30.1: Geometry of a Plunging Fold (K.M. Bangar, p. 113).</strong> Block diagram illustrating fold axis inclined at an angle of plunge ($eta$) to the horizontal plane, direction of plunge, axial plane, and converging limb traces.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Fleuty's Classification of Fold Attitude by Plunge & Axial Plane Dip</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Plunge of Hinge Line ($\beta$)</th>
+            <th>Designation</th>
+            <th>Dip of Axial Plane</th>
+            <th>Axial Plane Designation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>$0^\circ$</strong></td>
+            <td><strong>Horizontal (Non-plunging)</strong></td>
+            <td>$90^\circ$</td>
+            <td>Upright</td>
+          </tr>
+          <tr>
+            <td><strong>$1^\circ - 10^\circ$</strong></td>
+            <td>Sub-horizontal</td>
+            <td>$80^\circ - 89^\circ$</td>
+            <td>Sub-upright</td>
+          </tr>
+          <tr>
+            <td><strong>$10^\circ - 30^\circ$</strong></td>
+            <td>Gently plunging</td>
+            <td>$60^\circ - 79^\circ$</td>
+            <td>Steeply inclined</td>
+          </tr>
+          <tr>
+            <td><strong>$30^\circ - 60^\circ$</strong></td>
+            <td>Moderately plunging</td>
+            <td>$30^\circ - 59^\circ$</td>
+            <td>Moderately inclined</td>
+          </tr>
+          <tr>
+            <td><strong>$60^\circ - 80^\circ$</strong></td>
+            <td>Steeply plunging</td>
+            <td>$10^\circ - 29^\circ$</td>
+            <td>Gently inclined</td>
+          </tr>
+          <tr>
+            <td><strong>$80^\circ - 89^\circ$</strong></td>
+            <td>Sub-vertical</td>
+            <td>$1^\circ - 9^\circ$</td>
+            <td>Sub-horizontal</td>
+          </tr>
+          <tr>
+            <td><strong>$90^\circ$</strong></td>
+            <td>Vertical</td>
+            <td>$0^\circ$</td>
+            <td>Recumbent</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Examination Question · OPSC 2019 Paper-II (GGM - 2/2019) · Q030</div>
+    <div class="q-stmt">The fold is said to have plunge if :</div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) The axis is horizontal</div>
+      <div class="raw-opt correct">(B) The axis is not horizontal</div>
+      <div class="raw-opt">(C) It is asymmetrical</div>
+      <div class="raw-opt">(D) It is tightly folded</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✓</div>
+    <div>
+      <div class="text">CORRECT OPTION: (B) The axis is not horizontal</div>
+      <div class="sub">Verified against Bangar (p. 113), Billings (Structural Geology, p. 53), and Fossen (Structural Geology, p. 238). A fold possesses a plunge if and only if its fold axis (hinge line) is inclined to the horizontal plane.</div>
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) The axis is horizontal</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> If the fold axis is horizontal, the angle of inclination with the horizontal is zero ($\text{plunge} = 0^\circ$). By definition, this represents a <strong>non-plunging fold</strong>. Its outcrop pattern consists of parallel strike bands that do not converge.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) The axis is not horizontal</span>
+      <span class="tag" style="background:#d1fae5; color:#065f46;">CORRECT VERIFIED</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> Plunge is defined as the vertical angle between a linear geologic feature (the fold axis) and the horizontal plane. If the axis is <strong>not horizontal</strong> (i.e., $\text{plunge} > 0^\circ$), the fold is by definition a <strong>plunging fold</strong>. On geological maps, this tilt forces the outcrops to wrap around the hinge line, generating diagnostic converging nose closures.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) It is asymmetrical</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> Asymmetry describes the inequality of limb dips or the inclination of the axial plane relative to the bisector of the interlimb angle. A fold can be asymmetrical while having a completely horizontal axis (an asymmetrical non-plunging fold), or symmetrical while plunging steeply.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) It is tightly folded</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> Tightly folded refers strictly to the interlimb angle ($0^\circ < \theta \le 30^\circ$ under Fleuty's scheme). Tightness describes the degree of buckling and strain, completely independent of whether the fold axis is horizontal, inclined, or vertical.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Synthesis Comparison: Map Patterns of Non-Plunging vs. Plunging Folds</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Structural Feature</th>
+            <th>Non-Plunging Anticline</th>
+            <th>Plunging Anticline</th>
+            <th>Plunging Syncline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Axis Attitude</strong></td>
+            <td>Horizontal ($\beta = 0^\circ$)</td>
+            <td>Inclined ($\beta > 0^\circ$)</td>
+            <td>Inclined ($\beta > 0^\circ$)</td>
+          </tr>
+          <tr>
+            <td><strong>Outcrop Pattern on Map</strong></td>
+            <td>Parallel linear bands</td>
+            <td><strong>V-shaped or U-shaped nose</strong></td>
+            <td><strong>V-shaped or U-shaped nose</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Nose Closure Direction</strong></td>
+            <td>No closure (runs indefinitely)</td>
+            <td><strong>V points in direction of plunge</strong></td>
+            <td><strong>V points opposite to plunge direction</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Core Stratigraphy</strong></td>
+            <td>Oldest rocks along central axis</td>
+            <td>Oldest rocks exposed inside nose</td>
+            <td>Youngest rocks exposed inside trough</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">8 Fully Worked Exam-Standard Practice Problems: Fold Plunge & Attitude Analysis</div>
+    <div class="card-body">
+      <div class="practice-q">
+        <div class="pq-header">Problem 1: Apparent Dip & Plunge Relationship</div>
+        <div class="pq-ans">Plunge $\beta = 25.66^\circ$</div>
+        <div class="pq-exp">A fold axis lies in an axial plane dipping $40^\circ$. The angle between the fold axis and the strike of the axial plane (rake/pitch) is $\alpha = 45^\circ$. Calculate the true plunge of the fold axis $\beta$.<br>
+        $$\sin \beta = \sin \delta \cdot \sin \alpha = \sin(40^\circ) \cdot \sin(45^\circ) = 0.6428 \cdot 0.7071 = 0.4545$$
+        $$\beta = \arcsin(0.4545) = 27.03^\circ$$</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 2: Reading Outcrop Noses on a Geological Map</div>
+        <div class="pq-ans">Plunging anticline plunging towards the North</div>
+        <div class="pq-exp">On a map, an outcrop pattern of folded sandstone forms a V-shaped nose pointing due North. Stratigraphic logs confirm that the oldest shale unit is located within the interior of the V. Because the nose of an anticline points in the direction of plunge, the fold is an anticline plunging North ($000^\circ$).</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 3: Reclined Fold Attitude</div>
+        <div class="pq-ans">Plunge of axis equals the dip of the axial plane</div>
+        <div class="pq-exp">A <strong>reclined fold</strong> is defined as a plunging fold where the pitch (rake) of the fold axis on the axial plane is $90^\circ$. Consequently, the trend of the plunge is parallel to the dip direction of the axial plane, and the plunge angle equals the axial plane dip ($\beta = \delta$).</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 4: Stereographic Projection of Fold Axis</div>
+        <div class="pq-ans">Intersection point of two limb great circles</div>
+        <div class="pq-exp">On a Schmidt or Wulff stereonet, when the great circles representing the two planar limbs of a cylindrical fold are plotted, their mutual point of intersection directly defines the plunge and trend of the fold axis ($\beta$-axis).</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 5: Culmination and Depression in Plunging Folds</div>
+        <div class="pq-ans">Reversal of plunge direction along fold axis</div>
+        <div class="pq-exp">When a fold axis does not maintain a constant plunge but undulates along its strike, the crestal high point where plunge diverges in opposite directions is called a <strong>culmination</strong> (dome-like), while the low point where plunges converge is called a <strong>depression</strong> (saddle/basin).</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 6: Pi ($\pi$) Diagram for Hinge Determination</div>
+        <div class="pq-ans">Normal to the great circle containing poles to bedding</div>
+        <div class="pq-exp">In a $\pi$-diagram, poles to folded bedding surfaces form a great circle girdle (the $\pi$-girdle). The pole to this girdle (the $\pi$-axis) corresponds precisely to the cylindrical fold axis.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 7: Zig-zag Outcrop Patterns in Repeated Plunging Folds</div>
+        <div class="pq-ans">Alternating plunging anticlines and synclines</div>
+        <div class="pq-exp">A sequence of plunging anticlines and synclines dissected by a horizontal erosional plain produces a classic repeating zig-zag or S-shaped sinuous outcrop pattern, prominent in the Appalachian Valley and Ridge Province.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 8: Vertical Fold Classification</div>
+        <div class="pq-ans">Plunge $\beta = 90^\circ$; axial plane dip $\delta = 90^\circ$</div>
+        <div class="pq-exp">Under Fleuty's classification, a fold whose axis plunges at $90^\circ$ (vertical) within a vertical axial plane is termed a <strong>vertical fold</strong>. In map view, the hinge is a single point and both limbs appear as parallel vertical walls.</div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q023: Structural Lineations, Bedding-Cleavage Intersections & Fabric Analysis | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q23" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Structural Geology & Tectonic Fabrics</div>
+    <h1>Q023: Structural Mechanics of Lineations: Bedding-Cleavage Intersections & Tectonic Kinematics</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 23<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 235); John G. Ramsay & Martin I. Huber (<em>Techniques of Modern Structural Geology</em>, Vol. 2, 1983); Marland P. Billings (<em>Structural Geology</em>, pp. 340–345)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Kinematics of Intersection Lineations in Tectonic Shear Zones</div>
+    <div class="card-body">
+      <p>In structural geology and metamorphic petrology (Ramsay & Huber, 1983; Hobbs, Means & Williams, 1976; Billings, 1972; Fossen, 2016), when two penetrative planar fabric surfaces intersect in three-dimensional space, their line of intersection geometrically generates a prominent linear fabric termed an <strong>intersection lineation</strong>. Specifically, the intersection of primary sedimentary bedding ($S_0$) with a secondary tectonic cleavage or foliation plane ($S_1$) produces an <strong>$S_0 \times S_1$ intersection lineation (denoted $L_0^1$ or $L_{1/0}$)</strong>.</p>
+
+      <div class="quote-box bangar">
+        "Any linear feature developed in a rock as a result of tectonic deformation is called a <strong>lineation</strong>. When a rock possessing primary bedding planes is subjected to folding and develops a secondary tectonic cleavage, the line of intersection of the bedding planes ($S_0$) with the cleavage planes ($S_1$) produces a conspicuous lineation on both surfaces, known as an <strong>intersection lineation</strong>. In cylindrical folds, this lineation is parallel to the fold axis."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Chapter 7: Secondary Structures & Lineations, p. 235)</span>
+      </div>
+
+      <p>The mathematical and geometric properties of intersection lineations are of foundational importance in structural mapping:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Vector Cross-Product Formulation of Intersection Lineation</div>
+        $$\vec{L}_{1/0} = \vec{n}_{S0} \times \vec{n}_{S1}$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">Where $ec{n}_{S0}$ is the normal vector to the bedding plane ($S_0$) and $ec{n}_{S1}$ is the normal vector to the cleavage plane ($S_1$). In cylindrical folds, the intersection lineation vector $ec{L}_{1/0}$ is <strong>co-axial with the fold hinge line ($ec{B}$)</strong>!</p>
+      </div>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q023/bangar_p125_cleavage_foliation_lineation.png" alt="K.M. Bangar Cleavage Foliation and Intersection Lineation">
+        <div class="tb-caption">
+          <strong>Figure 23.1: Intersection Lineation Anatomy (K.M. Bangar, p. 125).</strong> Hand specimen and outcrop block diagram showing sedimentary bedding ($S_0$) intersected by axial-planar slaty cleavage ($S_1$), creating prominent $L_0 	imes S_1$ pencil cleavage and parallel intersection lineation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Structural Taxonomy: Lineation vs. Boudin vs. Mullion vs. Joint</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Structural Element</th>
+            <th>Dimensionality</th>
+            <th>Primary Origin</th>
+            <th>Diagnostic Field Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lineation</strong></td>
+            <td><strong>1D (Linear fabric)</strong></td>
+            <td><strong>Intersection of planar fabrics ($S_0 \times S_1$)</strong> or mineral alignment</td>
+            <td>Parallel stripes, mineral streaks, crinkles, pencil cleavage</td>
+          </tr>
+          <tr>
+            <td><strong>Boudin / Boudinage</strong></td>
+            <td>2D/3D pinch-and-swell</td>
+            <td>Tensile stretching of a competent layer within incompetent matrix</td>
+            <td>Sausage-shaped segmented blocks with quartz-filled necks</td>
+          </tr>
+          <tr>
+            <td><strong>Mullion Structure</strong></td>
+            <td>1D/2D cylindrical flutes</td>
+            <td>Buckling instability at interface between high-contrast rocks</td>
+            <td>Cuspate-lobate fluted rock columns parallel to fold axes</td>
+          </tr>
+          <tr>
+            <td><strong>Joint</strong></td>
+            <td>2D (Planar fracture)</td>
+            <td>Brittle tensile or shear fracturing without displacement</td>
+            <td>Clean, planar fractures cutting across rock masses</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 23)</div>
+    <div class="q-stmt">
+      23. The intersection of bedding and cleavage produces :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) Lineation &nbsp;✔</div>
+      <div class="raw-opt">(B) Boudin</div>
+      <div class="raw-opt">(C) Mullion structure</div>
+      <div class="raw-opt">(D) Joint</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) Lineation</div>
+      <div class="sub">
+        In structural geology (K.M. Bangar, p. 235; Ramsay & Huber, 1983; Marland P. Billings, p. 340; Haakon Fossen, p. 272), the linear trace produced by the geometric intersection of <strong>bedding ($S_0$) and cleavage ($S_1$)</strong> is universally termed an <strong>Intersection lineation</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) Lineation</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> When a secondary planar cleavage intersects a primary sedimentary bedding plane, their intersection creates a linear fabric visible on both surfaces as fine stripes, color bandings, or fine crinkles, termed an <strong>intersection lineation</strong>.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Boudin</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A boudin (sausage structure) is formed by the longitudinal tensile stretching and necking of a competent layer (such as quartzite or amphibolite) embedded in an incompetent ductile matrix (such as marble or shale), not by the simple geometric intersection of cleavage and bedding.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Mullion structure</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Mullion structures are large-scale cylindrical, fluted rock columns formed at the competency boundary between contrasting rock layers under ductile shortening, where cusps point toward the more competent rock. They are not produced by the intersection of bedding and cleavage.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Joint</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A joint is a brittle planar fracture across which negligible shear displacement has occurred. It is a planar surface, not a linear intersection fabric.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Field Application: Structural Mapping using $S_0 \times S_1$ Lineations</div>
+    <div class="card-body">
+      <p>The intersection lineation is one of the most powerful diagnostic tools in structural field mapping:</p>
+      <ul>
+        <li><strong>Parallelism to Regional Fold Axes ($B$-Lineation):</strong> In cylindrical folds, the intersection lineation ($L_{1/0}$) is strictly parallel to the major fold axis. Thus, by measuring the plunge and trend of intersection lineations in a single small hand specimen, a geologist immediately determines the orientation of a regional mountain-scale fold!</li>
+        <li><strong>Pencil Cleavage:</strong> In mudstones and siltstones where bedding ($S_0$) and tectonic cleavage ($S_1$) intersect with equal fracture frequency, the rock breaks into elongated, slender polygonal rods termed "pencil structure" or pencil cleavage.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> What is the difference between an "intersection lineation" and a "mineral stretching lineation"?
+          <div class="pq-ans">✔ Correct Answer: An intersection lineation is a purely geometric intersection of two planes (parallel to fold axes, $B$-axis); a mineral stretching lineation reflects finite plastic extension of minerals parallel to tectonic transport ($X$-axis).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Intersection lineations generally form perpendicular to shortening ($B \perp \sigma_1$), whereas stretching lineations elongate parallel to the transport direction ($a$-lineation).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What causes "pencil cleavage" in slightly deformed shales?
+          <div class="pq-ans">✔ Correct Answer: The mutual intersection of bedding fissility ($S_0$) and incipient tectonic cleavage ($S_1$) breaking the rock into long pencil-like prismatic rods.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Characteristic of early-stage tectonic deformation in foreland fold-and-thrust belts (e.g., Appalachian Valley and Ridge).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What is a "crenulation lineation"?
+          <div class="pq-ans">✔ Correct Answer: Microscopic fold hinges formed when a second-generation cleavage ($S_2$) micro-folds an earlier foliation ($S_1$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Produces fine, corrugated crinkle lineations across schistosity planes in poly-deformed metamorphic schists.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In stereographic projection, how is an intersection lineation determined from the strikes and dips of bedding and cleavage?
+          <div class="pq-ans">✔ Correct Answer: By finding the point of intersection between the two great circles representing $S_0$ and $S_1$; the plunge and trend of this point gives the lineation.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The intersection of two planar great circles on a Wulff or Schmidt net is a point representing a line in space.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is a "rodded structure" (rodding)?
+          <div class="pq-ans">✔ Correct Answer: Cylindrical rods of quartz formed by the folding, shearing, and isolation of quartz veins parallel to the fold hinge.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Competent quartz veins are severed and rolled into linear rods within weaker mica schist matrices.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is the difference between an $S$-tectonite and an $L$-tectonite?
+          <div class="pq-ans">✔ Correct Answer: An $S$-tectonite is dominated by planar foliation (flattening strain, $k < 1$); an $L$-tectonite is dominated by linear fabric (constrictional strain, $k > 1$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In Flinn's strain diagram, cigar-shaped constrictional strain ellipsoids produce pure $L$-tectonites devoid of planar foliation.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> Can intersection lineation occur in undeformed horizontal sedimentary rocks?
+          <div class="pq-ans">✔ Correct Answer: No; development of cleavage requires tectonic compressive strain exceeding the ductile yield strength of the rock.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Undeformed rocks only possess bedding ($S_0$). Cleavage ($S_1$) requires regional tectonic shortening.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why does cleavage refraction occur when cleavage passes from a shale layer into a sandstone layer?
+          <div class="pq-ans">✔ Correct Answer: Competency contrast causes the strain ellipse orientation to rotate, causing cleavage to steepen in competent sandstone and flatten in incompetent shale.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The refraction of cleavage creates differing intersection lineation characteristics across alternating beds.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

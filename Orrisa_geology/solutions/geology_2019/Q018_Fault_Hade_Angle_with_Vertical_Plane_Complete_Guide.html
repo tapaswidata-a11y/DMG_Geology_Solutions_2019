@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q018: Fault Geometry, Hade, Dip, Throw & Heave Derivations | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q18" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Structural Geology & Fault Mechanics</div>
+    <h1>Q018: Geometry of Fault Planes: Dip, Hade, Throw & Coordinate Transformations</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 18<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 208); Marland P. Billings (<em>Structural Geology</em>, pp. 138–142); Haakon Fossen (<em>Structural Geology</em>, Ch. 9)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Geometric Elements of Fault Planes: Dip vs. Hade</div>
+    <div class="card-body">
+      <p>In structural geology and mining geometry, a fault plane is a planar fracture along which measurable displacement has occurred. To fully specify the spatial attitude of an inclined fault plane, structural geologists and mining engineers utilize two complementary angular measurements measured relative to orthogonal reference planes:</p>
+      <ul>
+        <li><strong>Dip ($\delta$):</strong> The maximum angle of inclination that the fault plane makes with a <strong>horizontal plane</strong>, measured perpendicular to the strike in a vertical plane ($0^\circ \le \delta \le 90^\circ$).</li>
+        <li><strong>Hade ($	heta_h$):</strong> The angle that the fault plane makes with a <strong>vertical plane</strong>, measured perpendicular to the strike ($0^\circ \le \theta_h \le 90^\circ$).</li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "The angle which an inclined fault plane makes with the vertical plane is known as the <strong>hade</strong> of the fault. It is the complement of the dip angle of the fault plane, such that:
+        $$\text{Hade} + \text{Dip} = 90^\circ \implies \text{Hade} = 90^\circ - \text{Dip}$$
+        For example, if a fault plane has a dip of $60^\circ$, its hade is $30^\circ$. The hade is always measured in a direction perpendicular to the strike of the fault."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Structural Geology: Fault Terminology, p. 208)</span>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">Fundamental Angular Relationship for Fault Plane Geometry</div>
+        $$\text{Hade } (\theta_h) = 90^\circ - \text{Dip } (\delta)$$
+        $$\text{Heave } (H) = \text{Dip Slip } (S_d) \cdot \cos \delta = S_d \cdot \sin \theta_h$$
+        $$\text{Throw } (T) = \text{Dip Slip } (S_d) \cdot \sin \delta = S_d \cdot \cos \theta_h$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">Where $\text{Heave}$ is the horizontal displacement component perpendicular to strike, and $\text{Throw}$ is the vertical displacement component.</p>
+      </div>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q018/bangar_p110_fault_elements_hade_dip.png" alt="K.M. Bangar Fault Terminology Hade Dip Throw Heave">
+        <div class="tb-caption">
+          <strong>Figure 18.1: Geometric Elements of a Fault (K.M. Bangar, p. 110).</strong> Three-dimensional block diagram illustrating fault strike, dip angle ($\delta$ from horizontal), hade angle ($	heta_h$ from vertical), hanging wall, footwall, throw, and heave.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Displacement Vectors & Components on Fault Planes</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Fault Element</th>
+            <th>Reference Datum</th>
+            <th>Angular / Spatial Definition</th>
+            <th>Significance in Mining Geology</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dip</strong></td>
+            <td>Horizontal plane</td>
+            <td>Angle of maximum inclination from horizontal ($0^\circ - 90^\circ$)</td>
+            <td>Governs fault classification (high-angle vs. low-angle thrust/normal)</td>
+          </tr>
+          <tr>
+            <td><strong>Hade</strong></td>
+            <td><strong>Vertical plane</strong></td>
+            <td><strong>Angle that fault plane makes with vertical ($90^\circ - \text{Dip}$)</strong></td>
+            <td>Traditional mining parameter used in vertical shaft sinking calculations</td>
+          </tr>
+          <tr>
+            <td><strong>Throw</strong></td>
+            <td>Vertical axis</td>
+            <td>Vertical displacement component between severed bed ends</td>
+            <td>Determines vertical offset of faulted coal seams or ore bodies</td>
+          </tr>
+          <tr>
+            <td><strong>Heave</strong></td>
+            <td>Horizontal axis</td>
+            <td>Horizontal displacement component perpendicular to fault strike</td>
+            <td>Represents horizontal loss (gap) or overlap of strata</td>
+          </tr>
+          <tr>
+            <td><strong>Net Slip</strong></td>
+            <td>Fault plane</td>
+            <td>Total true displacement vector connecting matching piercing points</td>
+            <td>Total actual movement across the fault surface</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 18)</div>
+    <div class="q-stmt">
+      18. The angle which the fault plane makes with vertical plane is known as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Net slip</div>
+      <div class="raw-opt">(B) Heave</div>
+      <div class="raw-opt">(C) Strike slip</div>
+      <div class="raw-opt correct">(D) Hade &nbsp;✔</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) Hade</div>
+      <div class="sub">
+        In structural geology and mining geometry (K.M. Bangar, p. 208; Marland P. Billings, p. 138; Fossen, 2016; Davis & Reynolds, 1996), the angle which the fault plane makes with a <strong>vertical plane</strong> is universally defined as the <strong>Hade</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Net slip</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Net slip is a <em>distance</em> (linear displacement vector measured in meters), representing the total true displacement between two formerly contiguous piercing points on opposing sides of the fault plane. It is not an angle made with a vertical plane.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Heave</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Heave is the <em>horizontal component</em> of dip slip (measured in meters), representing the horizontal gap or separation between the displaced ends of a faulted bed measured perpendicular to strike. It is a linear distance, not an angle.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Strike slip</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Strike slip is the component of net slip measured <em>parallel to the fault strike</em> within the fault plane. It is a linear displacement component, not an angle.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) Hade</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By standard international definition, <strong>hade</strong> is the exact angle that an inclined fault plane (or vein/bed) makes with the vertical plane. It is the geometric complement of the dip angle ($\text{Hade} = 90^\circ - \text{Dip}$).
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Coordinate Transformations: Dip, Hade, Throw & Heave</div>
+    <div class="card-body">
+      <p>Given an inclined fault with dip angle $\delta$ and true dip-slip displacement $S_d$:</p>
+      $$\text{Hade } \theta_h = 90^\circ - \delta$$
+      $$\text{Throw } T = S_d \cdot \sin \delta = S_d \cdot \cos \theta_h$$
+      $$\text{Heave } H = S_d \cdot \cos \delta = S_d \cdot \sin \theta_h$$
+      $$\tan \delta = \frac{\text{Throw}}{\text{Heave}} \implies \tan \theta_h = \frac{\text{Heave}}{\text{Throw}}$$
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A normal fault in a coal mine dips at an angle $\delta = 55^\circ$. (a) Calculate the hade of the fault plane. (b) If the measured throw of a faulted coal seam is $T = 32.0\text{ m}$, calculate the heave ($H$) and the dip-slip ($S_d$) along the fault plane.
+          <div class="pq-ans">✔ Worked Answer: (a) $\text{Hade} = 35^\circ$; (b) $\text{Heave} = 22.4\text{ m}$; $\text{Dip-slip} = 39.1\text{ m}$.</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            (a) $\text{Hade } \theta_h = 90^\circ - \delta = 90^\circ - 55^\circ = 35^\circ$.<br>
+            (b) $\text{Heave } H = \frac{T}{\tan \delta} = \frac{32.0}{\tan 55^\circ} = \frac{32.0}{1.4281} \approx 22.41\text{ m}$.<br>
+            $$\text{Dip-slip } S_d = \frac{T}{\sin \delta} = \frac{32.0}{\sin 55^\circ} = \frac{32.0}{0.8192} \approx 39.06\text{ m}$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> If a fault plane is perfectly vertical ($\delta = 90^\circ$), what is its hade?
+          <div class="pq-ans">✔ Correct Answer: $	ext{Hade} = 0^\circ$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the fault plane is coincident with the vertical plane, the angle between them is zero ($	ext{Hade} = 90^\circ - 90^\circ = 0^\circ$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> If a detachment fault has a hade $	heta_h = 75^\circ$, classify the fault as high-angle or low-angle based on its dip.
+          <div class="pq-ans">✔ Correct Answer: Low-angle fault ($	ext{Dip } \delta = 15^\circ < 45^\circ$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> $	ext{Dip} = 90^\circ - 	ext{Hade} = 90^\circ - 75^\circ = 15^\circ$. Since $\delta < 45^\circ$, it is a low-angle detachment or thrust fault.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In historical Cornish mining terminology, why did miners prefer measuring "hade" rather than "dip"?
+          <div class="pq-ans">✔ Correct Answer: Because miners suspended a plumb-bob (vertical plumb-line) inside shafts; measuring the angle from the plumb-line directly gave the hade.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> A plumb-line gives a precise vertical reference; measuring deviation of the mineral vein from the string gave the hade without needing an artificial horizontal bubble level.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is the "apparent dip" of a fault plane, and how does it compare to the "true dip"?
+          <div class="pq-ans">✔ Correct Answer: Apparent dip is the inclination measured in any vertical plane not perpendicular to strike; it is always strictly less than the true dip ($	an lpha = 	an \delta \cdot \cos eta$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> True dip is measured perpendicular to strike and represents the maximum inclination; in any oblique cross-section, apparent dip ($lpha$) is smaller.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is a "fault scrap" vs. a "fault-line scarp"?
+          <div class="pq-ans">✔ Correct Answer: A fault scarp is generated directly by active tectonic displacement; a fault-line scarp is carved by differential erosion along an ancient, dormant fault line.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Fault-line scarps often face in the opposite direction of the original tectonic displacement if the downthrown side contains more resistant rock (obsequent fault-line scarp).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> In structural contour mapping of a planar fault, how does the spacing between strike contours relate to dip and hade?
+          <div class="pq-ans">✔ Correct Answer: Horizontal contour spacing $S = \Delta h / 	an \delta = \Delta h \cdot 	an 	heta_h$.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> For a given contour interval $\Delta h$, steeper faults (smaller hade) have closely spaced contours; gently dipping faults (larger hade) have widely spaced contours.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is the "Rake" (or Pitch) of a line on an inclined fault plane?
+          <div class="pq-ans">✔ Correct Answer: The angle that a linear feature (e.g., striations/slickenlines) makes with the horizontal strike line within the fault plane ($0^\circ \le \phi \le 90^\circ$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Measured on the inclined plane itself using a protractor; $	ext{Rake} = 90^\circ$ represents pure dip-slip; $	ext{Rake} = 0^\circ$ represents pure strike-slip.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

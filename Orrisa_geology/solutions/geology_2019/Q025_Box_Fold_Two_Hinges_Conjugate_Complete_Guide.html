@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q025: Box Fold Geometry & Conjugate Hinges | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q25" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 · Paper-II · Q025 · Structural Geology</div>
+    <h1>In Which Fold There Could Be Two Hinges?</h1>
+    <div class="meta">
+      Question ID: GEO-2019-Q025 | Topic: Fold Anatomy & Conjugate Folding | Difficulty: Moderate | Target Time: 45 sec
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Anatomy of Conjugate Folds: Box Folds & Multiple Hinges</div>
+    <div class="card-body">
+      <p>In structural geology, simple cylindrical folds typically possess a single hinge zone where the curvature of the folded surface is maximized, separating two opposing limbs. However, under specific kinematic and mechanical conditions—particularly when two conjugate sets of shear zones or kink bands intersect—structures with <strong>more than one hinge line</strong> develop. The most prominent example is the <strong>Box Fold</strong> (also termed a <em>conjugate fold</em> or <em>polyclinal fold</em>).</p>
+      
+      <ul>
+        <li><strong>Definition:</strong> A box fold is a fold characterized by a broad, relatively flat crest (or trough) bounded on either side by two distinct hinge zones. Beyond each hinge, the outer limbs dip steeply in opposite directions.</li>
+        <li><strong>Conjugate Axial Surfaces:</strong> Unlike conventional folds with a single axial plane, a box fold possesses <strong>two separate axial surfaces</strong> that converge downward (in an anticlinal box fold) or upward (in a synclinal box fold).</li>
+        <li><strong>Polyclinal Geometry:</strong> Because there are multiple axial surfaces and hinges within the same profile, the fold is classified as <em>polyclinal</em>. In cross section, the fold profile resembles a three-sided rectangular or trapezoidal box.</li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "<strong>Box Fold:</strong> A fold in which the crest is broad and flat, and the limbs dip steeply on both sides. A box fold possesses <strong>two distinct hinges</strong> and two axial surfaces dipping towards each other. They are common in Jura-type fold belts where competent limestone beds overlie incompetent evaporite decollements."
+        <span class="quote-ref">— Marland P. Billings, <em>Structural Geology</em> (Folds: Morphology & Classification, p. 61) & Van der Pluijm & Marshak, p. 259</span>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">Kinematic Condition for Conjugate / Box Folding</div>
+        $$\theta_{\text{conjugate}} \approx 60^\circ \quad \text{between conjugate shear bands/kink planes}$$
+        $$\sigma_1 \text{ bisects the obtuse or acute angle between the two conjugate axial surfaces}$$
+        $$\text{Number of Hinges } (N_h) = 2 \quad \text{in a standard box fold profile}$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">The flat crestal domain maintains bedding orientation parallel to regional unshortened strata, while deformation is concentrated along the two flanking hinge zones.</p>
+      </div>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q025/vdp_p259_box_fold_conjugate_hinges.png" alt="Van der Pluijm & Marshak Box Folds with Two Axial Surfaces">
+        <div class="tb-caption">
+          <strong>Figure 25.1: Conjugate and Box Fold Morphology (Van der Pluijm & Marshak, p. 259).</strong> Cross-sectional profile of a box fold illustrating two distinct hinge lines, two intersecting conjugate axial surfaces, and a flat crestal plateau between steeply dipping limbs.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Structural Comparison: Single-Hinged vs. Multi-Hinged Fold Architectures</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Fold Type</th>
+            <th>Number of Hinges</th>
+            <th>Axial Surfaces</th>
+            <th>Interlimb Angle / Limb Attitude</th>
+            <th>Mechanical Origin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Box Fold</strong></td>
+            <td><strong>Two (2)</strong></td>
+            <td>Two conjugate axial surfaces</td>
+            <td>Broad flat crest; steep opposing outer limbs</td>
+            <td>Conjugate kink bands or intersecting shear zones</td>
+          </tr>
+          <tr>
+            <td><strong>Tight Fold</strong></td>
+            <td>One (1)</td>
+            <td>Single axial surface</td>
+            <td>$0^\circ < \theta \le 30^\circ$; limbs converge sharply</td>
+            <td>High-strain buckle shortening</td>
+          </tr>
+          <tr>
+            <td><strong>Isoclinal Fold</strong></td>
+            <td>One (1)</td>
+            <td>Single axial surface</td>
+            <td>$\theta \approx 0^\circ$; limbs dip parallel in same direction</td>
+            <td>Extreme progressive shortening / ductile shear</td>
+          </tr>
+          <tr>
+            <td><strong>Overturned Fold</strong></td>
+            <td>One (1)</td>
+            <td>Single inclined axial surface</td>
+            <td>Both limbs dip in same direction at unequal angles</td>
+            <td>Asymmetrical lateral compression / tectonic vergence</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Examination Question · OPSC 2019 Paper-II (GGM - 2/2019) · Q025</div>
+    <div class="q-stmt">In which fold there could be two hinges ?</div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Tight fold</div>
+      <div class="raw-opt">(B) Isoclinal fold</div>
+      <div class="raw-opt">(C) Overturned fold</div>
+      <div class="raw-opt correct">(D) Box fold</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✓</div>
+    <div>
+      <div class="text">CORRECT OPTION: (D) Box fold</div>
+      <div class="sub">Verified against Billings (p. 61), Van der Pluijm & Marshak (p. 259), and Ramsay & Huber (Modern Structural Geology Vol. 2). A box fold uniquely develops two distinct hinge zones and two conjugate axial surfaces bounding a flat crest or trough.</div>
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Tight fold</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> Fleuty's (1964) geometric classification defines a tight fold strictly on the basis of its <em>interlimb angle</em> ($0^\circ < \theta \le 30^\circ$). A tight fold possesses only a single continuous hinge zone where maximum curvature occurs. It has one axial surface and two convergent limbs.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Isoclinal fold</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> An isoclinal fold is characterized by parallel limbs (interlimb angle $\theta \approx 0^\circ$) that dip in the same direction at equal angles. Like all simple buckle folds, an isoclinal fold has only <strong>one hinge zone</strong> (often razor-sharp or hairpin-like) and a single axial surface bisecting the parallel limbs.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Overturned fold</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> An overturned fold has an inclined axial plane such that both limbs dip in the same general direction, with one limb rotated past the vertical (inverted stratigraphic polarity). Despite the asymmetric tilt, it possesses only <strong>one hinge line</strong> connecting the normal limb to the overturned limb.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) Box fold</span>
+      <span class="tag" style="background:#d1fae5; color:#065f46;">CORRECT VERIFIED</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> A box fold (conjugate fold) is the classic structural example of a fold profile featuring <strong>two distinct hinges</strong>. The crestal region between the two hinges remains flat and tabular, while the outer limbs dip steeply away from the hinge lines. It is formed by the intersection or cooperative propagation of two conjugate kink bands or shear zones.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Synthesis Comparison: Diagnostic Architectural Properties of Fold Classes</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Diagnostic Parameter</th>
+            <th>Box Fold</th>
+            <th>Chevron Fold</th>
+            <th>Fan Fold</th>
+            <th>Cylindrical Symmetrical Fold</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Number of Hinges</strong></td>
+            <td><strong>Two (2) distinct hinges</strong></td>
+            <td>One sharp, angular hinge</td>
+            <td>One rounded, bulbous hinge</td>
+            <td>One central hinge line</td>
+          </tr>
+          <tr>
+            <td><strong>Crest / Trough Profile</strong></td>
+            <td>Broad, horizontal flat roof</td>
+            <td>V-shaped angular apex</td>
+            <td>Expanded, mushroom-like head</td>
+            <td>Smooth parabolic / sine wave</td>
+          </tr>
+          <tr>
+            <td><strong>Axial Surface Count</strong></td>
+            <td>Two intersecting conjugate surfaces</td>
+            <td>Single planar axial surface</td>
+            <td>Curved / diverging axial planes</td>
+            <td>Single vertical axial plane</td>
+          </tr>
+          <tr>
+            <td><strong>Tectonic Environment</strong></td>
+            <td>Foreland fold-thrust belts (Jura type)</td>
+            <td>Multilayer buckling with high competency</td>
+            <td>Extreme deep-seated ductile squeezing</td>
+            <td>Uniform horizontal regional compression</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">8 Fully Worked Exam-Standard Practice Problems: Fold Geometry & Kinematics</div>
+    <div class="card-body">
+      <div class="practice-q">
+        <div class="pq-header">Problem 1: Interlimb Angle Classification</div>
+        <div class="pq-ans">Fleuty Classification: Tight Fold</div>
+        <div class="pq-exp">A fold profile reveals an interlimb angle of $\theta = 24^\circ$. According to Fleuty's (1964) fold classification scheme, folds with $0^\circ < \theta \le 30^\circ$ are categorized as <strong>tight folds</strong> ($180^\circ - 120^\circ$ gentle, $120^\circ - 70^\circ$ open, $70^\circ - 30^\circ$ close, $30^\circ - 0^\circ$ tight, $0^\circ$ isoclinal).</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 2: Axial Surface Geometry of a Conjugate Box Fold</div>
+        <div class="pq-ans">Conjugate Axial Angle = $60^\circ$; $\sigma_1$ horizontal</div>
+        <div class="pq-exp">In a symmetrical box anticline, the eastern axial surface dips $60^\circ\text{W}$ and the western axial surface dips $60^\circ\text{E}$. The acute angle between the two surfaces is $60^\circ$. The maximum compressive stress $\sigma_1$ bisects this angle horizontally, driving simultaneous inward movement along both conjugate hinges.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 3: Polyclinal vs. Monoclinal Folds</div>
+        <div class="pq-ans">Polyclinal refers to multiple axial surfaces in cross section</div>
+        <div class="pq-exp">Folds that show several axial surfaces within the same profile (such as box folds and accordion folds) are termed <em>polyclinal</em>, whereas folds with a single step-like flexure in otherwise horizontal strata are termed <em>monoclines</em>.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 4: Hinge Curvature Analysis</div>
+        <div class="pq-ans">Curvature is concentrated at the two hinges; zero on the flat crest</div>
+        <div class="pq-exp">In a box fold, the rate of change of bedding dip with respect to arc length ($d\phi / ds$) is zero across the flat top ($d\phi/ds = 0$) and reaches two localized maxima at the two sharp hinge lines.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 5: Stratigraphic Verification in Fold Crests</div>
+        <div class="pq-ans">Flat crest displays normal stratigraphic polarity</div>
+        <div class="pq-exp">In an anticlinal box fold, despite the steep or overturned outer limbs, the broad flat plateau between the two hinges retains right-side-up beds, with the oldest rocks at the base of the plateau.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 6: Mechanical Prerequisite for Box Folding</div>
+        <div class="pq-ans">Strong anisotropic layering over ductile decollement</div>
+        <div class="pq-exp">Box folds form preferentially in stratified sedimentary sequences where thick, competent layers (e.g., massive limestone) overlie a ductile, highly lubricating basal detachment horizon (e.g., rock salt or shale).</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 7: Inversion of Limb Dip in Overturned Folds</div>
+        <div class="pq-ans">Overturned fold has 1 hinge, but 1 inverted limb</div>
+        <div class="pq-exp">An overturned fold has both limbs dipping in the same direction, but it still maintains exactly <strong>one hinge</strong>. Only a box fold possesses two independent hinges separating two limbs from a central platform.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 8: Identification on Aerial / Satellite Imagery</div>
+        <div class="pq-ans">Truncated flat mesa bounded by two parallel strike ridges</div>
+        <div class="pq-exp">On geological maps, a plunging box fold appears as a broad tabular plateau flanked by two parallel or outward-diverging linear strike ridges where beds plunge steeply along the two hinge zones.</div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

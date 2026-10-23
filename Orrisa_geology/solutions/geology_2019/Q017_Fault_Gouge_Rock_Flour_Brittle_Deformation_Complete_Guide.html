@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q017: Fault Gouge, Rock Flour & Brittle Cataclasis Mechanics | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q17" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Structural Geology & Fault Mechanics</div>
+    <h1>Q017: Mechanics of Fault Rocks: Rock Flour, Fault Gouge & Brittle Cataclasis</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 17<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 215); Marland P. Billings (<em>Structural Geology</em>, pp. 150–154); Richard H. Sibson (<em>Journal of the Geological Society</em>, 1977)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Fault Rocks & The Brittle-Ductile Transition in Crustal Shear Zones</div>
+    <div class="card-body">
+      <p>In structural geology and fault mechanics, <strong>fault gouge</strong> (and finely pulverized <strong>rock flour</strong>) is an unhardened, non-cohesive or cohesive, fine-grained powder-like rock material produced by mechanical abrasion, frictional grinding, and cataclastic crushing of wall rocks along a fault zone during active fault displacement. Fault gouge and rock flour are definitively produced under <strong>brittle deformation</strong> regimes in the upper crust.</p>
+
+      <div class="quote-box bangar">
+        "During faulting under shallow crustal conditions, the rocks along the fault plane are crushed and pulverized due to intense friction. When the rock is reduced to a fine, clay-like flour or powder, it is called <strong>fault gouge</strong> or <strong>rock flour</strong>. When the crushed fragments are angular and larger, the rock is called fault breccia. These cataclastic rocks are the classic products of <strong>brittle deformation</strong> in the upper crust."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Faults: Fault Rocks & Breccias, p. 215)</span>
+      </div>
+
+      <p>The structural character of fault rocks changes systematically with crustal depth, governed by the <strong>Brittle-Ductile (Frictional-Viscous) Transition</strong> (Sibson, 1977; Scholz, 2002):</p>
+      <ul>
+        <li><strong>Upper Crust ($<10 - 15\text{ km}$, $T < 300^\circ\text{C}$): Brittle Regime (Frictional Flow / Cataclasis):</strong> Deformation is dominated by microcracking, frictional sliding, grain rotation, and mechanical pulverization. Cohesion is lost during failure. This produces non-foliated cataclastic fault rocks:
+          <ul>
+            <li><strong>Fault Breccia:</strong> Visible angular clasts ($>2\text{ mm}$) constituting $>30\%$ of the rock, set in a crushed matrix.</li>
+            <li><strong>Fault Gouge / Rock Flour:</strong> Ultrafine pulverized powder (clay-sized particles $<0.1\text{ mm}$) constituting $>70\%$ of the rock, often resembling soft, unlithified gouge clay.</li>
+            <li><strong>Pseudotachylyte:</strong> Glassy, friction-melted rock formed during seismic slip.</li>
+          </ul>
+        </li>
+        <li><strong>Middle to Lower Crust ($>10 - 15\text{ km}$, $T > 300^\circ\text{C}$): Ductile Regime (Plastic Flow):</strong> Crystal-plasticity, dislocation creep, and dynamic recrystallization dominate without loss of macroscopic continuity. Rocks deform without brittle fracturing, forming strongly foliated and lineated <strong>mylonites</strong> and ultramylonites.</li>
+      </ul>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q017/bangar_p115_fault_breccia_gouge_brittle.png" alt="K.M. Bangar Fault Rocks Gouge Breccia Brittle">
+        <div class="tb-caption">
+          <strong>Figure 17.1: Fault Rocks and Brittle Cataclasis (K.M. Bangar, p. 115).</strong> Thin-section and outcrop sketches illustrating the progressive mechanical pulverization of rock into angular fault breccia and ultrafine fault gouge (rock flour) along brittle slip surfaces.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Sibson's Fault Rock Classification Matrix (Sibson, 1977)</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Deformation Regime</th>
+            <th>Primary Mechanism</th>
+            <th>Foliation Status</th>
+            <th>Cohesion during Slip</th>
+            <th>Diagnostic Fault Rock Types</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Brittle (Elasto-Frictional)</strong><br>Depth: $0 - 5\text{ km}$</td>
+            <td>Cataclasis, frictional grinding, crushing</td>
+            <td><strong>Random-fabric (Non-foliated)</strong></td>
+            <td>Incohesive (Loose powder / gravel)</td>
+            <td><strong>Fault Gouge (Rock Flour)</strong>, Fault Breccia</td>
+          </tr>
+          <tr>
+            <td><strong>Brittle (Semi-Brittle)</strong><br>Depth: $5 - 10\text{ km}$</td>
+            <td>Pressure solution, microfracturing</td>
+            <td>Random-fabric to weakly foliated</td>
+            <td>Cohesive (Cemented cataclasite)</td>
+            <td>Cataclasite, Ultracataclasite, Pseudotachylyte</td>
+          </tr>
+          <tr>
+            <td><strong>Ductile (Quasi-Plastic)</strong><br>Depth: $10 - 20\text{ km}$</td>
+            <td>Dislocation creep, dynamic recrystallization</td>
+            <td><strong>Strongly Foliated (Mylonitic)</strong></td>
+            <td>Cohesive (Plastically deformed rock)</td>
+            <td>Protomylonite, Mylonite, Ultramylonite</td>
+          </tr>
+          <tr>
+            <td><strong>High-Grade Ductile</strong><br>Depth: $> 20\text{ km}$</td>
+            <td>Diffusional creep, high-T recrystallization</td>
+            <td>Gneissic banding</td>
+            <td>Cohesive metamorphic crystalline rock</td>
+            <td>Blastomylonite, Gneissic shear zone rock</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 17)</div>
+    <div class="q-stmt">
+      17. Rock flour or gouge is closely linked to :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Ductile deformation</div>
+      <div class="raw-opt correct">(B) Brittle deformation &nbsp;✔</div>
+      <div class="raw-opt">(C) Flow of incompetent beds</div>
+      <div class="raw-opt">(D) Collapse structures</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (B) Brittle deformation</div>
+      <div class="sub">
+        In structural geology, fault mechanics, and rock physics (K.M. Bangar, p. 215; Marland P. Billings, p. 150; Richard H. Sibson, 1977; Davis & Reynolds, 1996), <strong>fault gouge</strong> and <strong>rock flour</strong> are fundamentally the mechanical products of <strong>Brittle deformation</strong> in the upper crust.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Ductile deformation</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Ductile deformation operates at deeper crustal levels ($T > 300^\circ\text{C}$) via crystal-plastic mechanisms (dislocation creep, grain-boundary sliding, dynamic recrystallization) without loss of material continuity. Ductile shear zones produce <strong>mylonites</strong> with ribbon quartz and porphyroclasts, never uncohesive crushed gouge or rock flour.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(B) Brittle deformation</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Rock flour and fault gouge are diagnostic cataclastic products of <strong>brittle deformation</strong>. Under shallow, high-frictional stress conditions, rock undergoes mechanical microfracturing, grain comminution, and grinding along fault planes, pulverizing solid rock into a fine, unlithified powder.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Flow of incompetent beds</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The flow of incompetent beds (such as ductile squeezing of shale or salt between competent sandstone layers during folding) is a classic manifestation of ductile plastic flow, producing thickened fold hinges (similar folds) rather than brittle fault gouge.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Collapse structures</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Collapse structures refer to sinkholes, caldera drop blocks, or cave roof collapses. While localized impact breccia occurs, the term "fault gouge / rock flour" is specifically linked to tectonic brittle fault shear planes.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Hydrogeological & Seismic Role of Fault Gouge</div>
+    <div class="card-body">
+      <p>Fault gouge plays a pivotal role in earthquake physics and petroleum reservoir compartmentalization:</p>
+      <ul>
+        <li><strong>Fault Zone Hydrogeology (Barrier vs. Conduit):</strong> Freshly crushed, clay-rich fault gouge experiences extreme grain-size reduction, causing its permeability to plummet by $4 - 6$ orders of magnitude ($K < 10^{-18} - 10^{-20}\text{ m}^2$). Consequently, a gouge-lined fault core acts as an impermeable <strong>sealing barrier</strong> to fluid flow across the fault, trapping hydrocarbons or compartmentalizing groundwater aquifers, while the surrounding fractured damage zone acts as a high-permeability conduit parallel to the fault.</li>
+        <li><strong>Frictional Stability (Rate-and-State Friction):</strong> The velocity-dependence of friction in fault gouge governs earthquake nucleation. Velocity-weakening gouge ($a - b < 0$) promotes unstable stick-slip seismic ruptures (earthquakes), whereas velocity-strengthening gouge ($a - b > 0$, e.g., montmorillonite/talc clays) promotes stable, aseismic fault creep.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> What is "Pseudotachylyte", and under what specific deformation conditions does it form?
+          <div class="pq-ans">✔ Correct Answer: A dark, glassy to microcrystalline rock formed by extreme frictional melting of rock along a fault plane during rapid seismic earthquake slip ($v pprox 1	ext{ m/s}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Under seismic slip rates, frictional heat generation along brittle fault planes exceeds heat conduction, melting wall rocks at $T > 1000^\circ	ext{C}$; rapid quenching produces glassy pseudotachylyte (the "fossil earthquake").
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> Distinguish between "Cataclasite" and "Mylonite" in thin-section petrography.
+          <div class="pq-ans">✔ Correct Answer: Cataclasites have non-foliated random fabrics formed by brittle microcracking and grain crushing; Mylonites have strong planar foliation formed by crystal-plastic flow and dynamic recrystallization.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Cataclasites show shattered, angular grains with microfractures; mylonites show ductile ribbon quartz, core-and-mantle structures, and subgrain rotation.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> At what approximate temperature and crustal depth does quartz transition from brittle cataclasis to ductile crystal-plastic deformation?
+          <div class="pq-ans">✔ Correct Answer: Approximately $300^\circ	ext{C}$ at a depth of $10	ext{ to } 15	ext{ kilometers}$ (in typical continental crust).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Below $300^\circ	ext{C}$, quartz fractures brittly; above $300^\circ	ext{C}$, dislocation glide and climb become active, allowing quartz to deform plastically. (Feldspar requires $T > 450^\circ - 500^\circ	ext{C}$).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What is the "Shale Gouge Ratio" (SGR) used in the petroleum industry?
+          <div class="pq-ans">✔ Correct Answer: The percentage of clay/shale smeared into the fault zone from sliced wall-rock stratigraphy, used to predict fault seal capacity against hydrocarbon leakage.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> An $SGR > 20 - 30\%$ typically indicates that the fault gouge will form a continuous, impermeable capillary membrane seal holding back substantial oil or gas columns.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What are "slickenlines" and "slickensides" on a fault surface?
+          <div class="pq-ans">✔ Correct Answer: Slickensides are polished fault planes; slickenlines are linear grooves and striations carved on the fault surface indicating the direction of slip.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Asperity ploughing during brittle shear polishes the slip surface, and mineral fiber steps (calcite/quartz) provide the absolute sense of movement (hanging-wall direction).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> In glacial geology, what is "glacial rock flour", and how does it relate mechanically to fault gouge?
+          <div class="pq-ans">✔ Correct Answer: Extremely fine silt- and clay-sized particles pulverized by the mechanical abrasion of bedrock beneath moving ice, identical in brittle cataclastic origin to fault rock flour.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Both form by mechanical grinding and crushing of rock fragments under high frictional normal stress, generating light-scattering rock flour that gives glacial meltwater lakes their turquoise/milky color.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> In geotechnical tunneling, why does intersecting an active fault gouge zone present a catastrophic engineering hazard?
+          <div class="pq-ans">✔ Correct Answer: Fault gouge has near-zero cohesion when wet, behaves as "running ground" or swelling clay, and can trigger massive water and mud inrushes into the tunnel.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Saturated gouge loses all shear strength under decompression, flowing like liquid mud into the tunnel excavation.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> What is "core-and-mantle structure" in shear zone petrography?
+          <div class="pq-ans">✔ Correct Answer: A relict porphyroclast core surrounded by a mantle of dynamically recrystallized fine subgrains, diagnostic of transitional ductile shear.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Formed during subgrain rotation recrystallization (SGR) at the brittle-ductile transition zone.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

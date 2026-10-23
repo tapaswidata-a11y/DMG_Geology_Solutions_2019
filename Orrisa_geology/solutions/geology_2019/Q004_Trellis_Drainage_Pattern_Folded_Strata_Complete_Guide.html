@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q004: Trellis Drainage Networks, Strike-Dip Controls & Structural Geomorphology | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q4" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Structural Geology & Geomorphology</div>
+    <h1>Q004: Structural Control of Drainage Networks: Trellis vs. Dendritic Patterns</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 4<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 27); Arthur L. Bloom (<em>Geomorphology</em>, Ch. 11, pp. 272–276); W.D. Thornbury (<em>Principles of Geomorphology</em>, Ch. 5)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Structural Control on Drainage Networks: The Trellis Pattern</div>
+    <div class="card-body">
+      <p>A <strong>trellis drainage pattern</strong> is a geometric drainage network characterized by a system of primary subparallel master streams flowing along the strike of alternating bands of resistant and non-resistant folded or tilted rock strata, joined at approximately <strong>right angles ($90^\circ$)</strong> by short tributary streams flowing down the dip and anti-dip slopes. The resulting network strongly resembles a garden trellis used to support climbing vines.</p>
+
+      <div class="quote-box bangar">
+        "In areas where the rocks have been folded into parallel anticlines and synclines, or where homoclinal beds with alternating hard and soft layers crop out, a network of parallel or subparallel streams develops along the strike and dip directions. The master streams flow in strike valleys along the soft rocks, while short tributaries flow down the dip slopes at right angles to join them. This pattern is called a <strong>trellis drainage pattern</strong>."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Drainage Patterns & Structural Geology, p. 27)</span>
+      </div>
+
+      <p>The development of a trellis drainage network is strictly governed by the differential erosion of structurally deformed bedrock:</p>
+      <ul>
+        <li><strong>Structural Alignment:</strong> Characteristic of folded mountain belts with parallel plunging anticlines and synclines (e.g., the Appalachian Valley and Ridge Province; Zagros Fold Belt) and homoclinal ridges (cuestas and hogbacks).</li>
+        <li><strong>Subsequent Master Streams:</strong> The long, primary parallel rivers develop as <em>subsequent streams</em> that excavate strike-valleys along weak, easily erodible strata (such as shales, marls, and weathered limestones).</li>
+        <li><strong>Consequent & Obsequent Tributaries:</strong> Short secondary streams flow perpendicularly down the structural dip slopes (consequent streams) or down the steep scarp faces opposite to dip (obsequent streams), joining the strike streams at nearly $90^\circ$ angles.</li>
+        <li><strong>Water Gaps & Wind Gaps:</strong> Where transverse superposed or antecedent master rivers breach resistant quartzite or sandstone ridges, narrow transverse gorges termed <em>water gaps</em> are created. If an incising strike stream captures the upper course of a transverse river via stream piracy, the abandoned transverse gap becomes a dry <em>wind gap</em>.</li>
+      </ul>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q004/bangar_p27_trellis_drainage_pattern.png" alt="K.M. Bangar Drainage Patterns Trellis Dendritic">
+        <div class="tb-caption">
+          <strong>Figure 4.1: Canonical Drainage Patterns (K.M. Bangar, p. 27).</strong> Comparative diagrams showing (A) Dendritic (isotropic flat-lying rocks), (B) Trellis (folded alternating strata with right-angle tributary junctions), (C) Radial (dome or volcanic cone), (D) Rectangular (joint-controlled orthogonal network), and (E) Annular (eroded dome).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Genetic Classification of Streams in a Trellis Network</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Stream Type</th>
+            <th>Structural Alignment</th>
+            <th>Flow Direction Relative to Bedding</th>
+            <th>Role in Trellis Network</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Consequent Stream</strong></td>
+            <td>Dip direction</td>
+            <td>Flows down the initial regional slope / structural dip</td>
+            <td>Primary tributaries draining dip-slope surfaces</td>
+          </tr>
+          <tr>
+            <td><strong>Subsequent Stream</strong></td>
+            <td>Strike direction</td>
+            <td>Carved along belts of weak, easily erodible rock</td>
+            <td>Master trunk streams occupying parallel strike valleys</td>
+          </tr>
+          <tr>
+            <td><strong>Obsequent Stream</strong></td>
+            <td>Anti-dip direction</td>
+            <td>Flows in direction opposite to the regional structural dip</td>
+            <td>Short tributaries flowing down steep cuesta/hogback scarps</td>
+          </tr>
+          <tr>
+            <td><strong>Resequent Stream</strong></td>
+            <td>Dip direction</td>
+            <td>Flows down structural dip, but at a later geomorphic stage</td>
+            <td>Secondary tributaries reoccupying dip slopes after denudation</td>
+          </tr>
+          <tr>
+            <td><strong>Insequent Stream</strong></td>
+            <td>Random / Uncontrolled</td>
+            <td>Flows without apparent structural or lithologic control</td>
+            <td>Rare in trellis systems; common in dendritic networks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 4)</div>
+    <div class="q-stmt">
+      4. A network of parallel or subparallel streams developed along strike and dip directions are known as :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Dendritic</div>
+      <div class="raw-opt">(B) Radial</div>
+      <div class="raw-opt correct">(C) Trellis &nbsp;✔</div>
+      <div class="raw-opt">(D) Domal</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (C) Trellis</div>
+      <div class="sub">
+        In structural geomorphology and photogeology (K.M. Bangar, p. 27; Arthur L. Bloom, p. 272; W.D. Thornbury, p. 122), a stream network where parallel streams follow <strong>strike and dip directions</strong> joining at right angles is universally termed a <strong>Trellis pattern</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Dendritic</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A dendritic drainage pattern resembles the branching form of an oak or maple tree, where tributaries join at acute angles ($<90^\circ$). Dendritic drainage develops on horizontally bedded, homogeneous sedimentary rocks or isotropic massive igneous rocks (granite) where there is <em>no structural control</em> and rock resistance is uniform in all directions.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Radial</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A radial drainage pattern develops when streams flow outward in all directions like spokes from a central topographic high, such as an isolated volcanic cone, volcanic crater rim, or elevated structural dome.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(C) Trellis</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> The trellis drainage pattern is explicitly defined by subparallel master streams flowing along strike valleys in weak strata, connected to parallel tributaries draining down structural dip slopes and scarp slopes, meeting at nearly $90^\circ$ right angles.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Domal</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> "Domal" is not an internationally recognized canonical drainage pattern name. Streams draining structural domes exhibit either <em>radial</em> drainage (diverging outward from the center) or <em>annular</em> drainage (ring-like concentric circular channels following weak strata around an eroded structural dome).
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Classification Matrix: Canonical Drainage Patterns</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Pattern</th>
+            <th>Geometric Morphology</th>
+            <th>Underlying Structural & Lithologic Control</th>
+            <th>Tributary Junction Angle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dendritic</strong></td>
+            <td>Irregular branching like tree limbs</td>
+            <td>Uniformly resistant, flat-lying sedimentary rocks or massive crystalline rocks (granite)</td>
+            <td>Acute ($< 90^\circ$, typically $30^\circ - 60^\circ$)</td>
+          </tr>
+          <tr>
+            <td><strong>Trellis</strong></td>
+            <td>Subparallel master streams with orthogonal tributaries</td>
+            <td>Folded alternating hard/soft strata (anticlines/synclines), parallel cuestas and hogbacks</td>
+            <td>Right angles ($\approx 90^\circ$)</td>
+          </tr>
+          <tr>
+            <td><strong>Rectangular</strong></td>
+            <td>Sharp $90^\circ$ bends with rectangular grid plan</td>
+            <td>Intersecting orthogonal joint sets, fault systems, or regional fracture systems</td>
+            <td>Right angles ($90^\circ$)</td>
+          </tr>
+          <tr>
+            <td><strong>Radial</strong></td>
+            <td>Radiating outward from a central summit</td>
+            <td>Isolated volcanic cones, volcanic plugs, structural domes, conical hills</td>
+            <td>Divergent radial paths</td>
+          </tr>
+          <tr>
+            <td><strong>Annular</strong></td>
+            <td>Concentric circular or ring-like pathways</td>
+            <td>Deeply eroded structural domes, salt diapirs, or ring dykes with alternating soft/hard concentric beds</td>
+            <td>Curvilinear right angles</td>
+          </tr>
+          <tr>
+            <td><strong>Centripetal</strong></td>
+            <td>Converging inward toward a central low</td>
+            <td>Inland drainage basins, desert playas, bolson depressions, sinkholes, calderas</td>
+            <td>Convergent paths</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1:</strong> How does a geologist distinguish in the field or on satellite imagery between a "Trellis" pattern and a "Rectangular" pattern?
+          <div class="pq-ans">✔ Correct Answer: Trellis patterns display alternating bands of differing rock types (lithologic control), whereas rectangular patterns develop across uniform lithologies cut by orthogonal joint sets.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Both patterns feature $90^\circ$ tributary junctions. However, trellis drainage is characterized by long, parallel strike ridges (hogbacks/cuestas) separated by strike valleys in folded strata. In rectangular drainage, the streams abruptly bend at right angles following joint and fault planes without lithologically controlled topographic ridges.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is a "water gap", and what is a "wind gap"?
+          <div class="pq-ans">✔ Correct Answer: A water gap is a transverse notch through a resistant ridge containing an active stream; a wind gap is an abandoned, dry notch left behind after river piracy.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Water gaps are formed when superposed or antecedent streams cut perpendicularly across resistant strike ridges. If a subsequent strike stream captures the river upstream of the gap, flow through the ridge ceases, leaving a dry structural saddle termed a wind gap.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> In what type of drainage network does "river piracy" (stream capture) occur with the highest frequency?
+          <div class="pq-ans">✔ Correct Answer: Trellis drainage networks in folded strata.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Subsequent streams eroding rapidly along soft, non-resistant shale strike-valleys have lower base levels than transverse consequent streams crossing resistant quartzite ridges, allowing subsequent streams to easily breach interfluves and capture transverse streams.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What does an "annular" drainage pattern diagnose in tectonic geomorphology?
+          <div class="pq-ans">✔ Correct Answer: A breached, deeply dissected structural dome or igneous pluton with concentric rings of alternating hard and soft sedimentary rock strata.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> As an uplifted dome is eroded, streams etch circular subsequent valleys into weak concentric strata, forming ring-like channels (annular drainage) around the central crystalline core.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What stream pattern is produced when streams flow in opposite directions away from a linear mountain divide?
+          <div class="pq-ans">✔ Correct Answer: Parallel or subparallel drainage.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> On steep, elongated structural dip-slopes or regional fault scarps, streams flow down the slope in uniformly parallel paths without substantial branching.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is a "barbed" (or hooked) drainage pattern, and what tectonic phenomenon does it reveal?
+          <div class="pq-ans">✔ Correct Answer: Tributaries joining a master stream at acute upstream angles; diagnoses stream reversal caused by tectonic tilting or glacial damming.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Under normal conditions, tributaries join flowing downstream. A barbed pattern indicates that tectonic uplift or fault tilting reversed the flow direction of the master river while its tributaries maintained their original courses.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> In morphometric analysis, how does the Bifurcation Ratio ($R_b$) of a trellis drainage basin compare to a dendritic basin?
+          <div class="pq-ans">✔ Correct Answer: Trellis basins often exhibit anomalously high bifurcation ratios ($R_b > 5 - 10$) between specific stream orders due to structural elongation.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> While dendritic networks in homogeneous rocks have stable bifurcation ratios between $3$ and $5$, strongly elongated trellis networks with parallel tributaries show high $R_b$ values.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why are trellis drainage basins particularly prone to delayed, attenuated hydrograph flood peaks compared to circular dendritic basins?
+          <div class="pq-ans">✔ Correct Answer: Because tributary runoff travels along elongated, narrow strike valleys and arrives at the master stream at staggered intervals.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In circular dendritic basins, tributaries are equidistant from the basin mouth, causing simultaneous runoff concentration and sharp flood peaks. In elongated trellis basins, the elongation stretches time-to-peak.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

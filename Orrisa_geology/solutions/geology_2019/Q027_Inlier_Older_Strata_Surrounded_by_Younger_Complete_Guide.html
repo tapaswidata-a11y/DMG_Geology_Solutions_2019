@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q027: Geological Map Structures: Inlier vs. Outlier | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q27" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 · Paper-II · Q027 · Structural Geology & Map Interpretation</div>
+    <h1>Older Strata Surrounded by Younger Strata on Geological Maps</h1>
+    <div class="meta">
+      Question ID: GEO-2019-Q027 | Topic: Erosional Structures & Geological Mapping | Difficulty: Easy-Moderate | Target Time: 35 sec
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Map Patterns of Denudation: Inlier, Outlier, Klippe & Window</div>
+    <div class="card-body">
+      <p>In geological mapping and structural geology, the intersection of eroded topography with folded, faulted, or unconformable rock strata produces distinctive outcrop configurations. Two fundamental erosional structures defined by relative stratigraphic age are the <strong>Inlier</strong> and the <strong>Outlier</strong>.</p>
+      
+      <ul>
+        <li><strong>Inlier:</strong> An outcrop of <strong>older strata completely surrounded by younger strata</strong> on a geological map. Inliers are typically produced when erosion unroofs the crest of an anticline, dome, or deeply incises an active river canyon through sub-horizontal younger cover beds.</li>
+        <li><strong>Outlier:</strong> An outcrop of <strong>younger strata completely surrounded by older strata</strong>. Outliers are typically formed when erosion isolates a mesa, butte, or the down-folded core of a syncline from the main stratigraphic sequence.</li>
+        <li><strong>Mnemonic:</strong>
+          <ul>
+            <li><strong>INlier</strong> = <strong>INside</strong> older rocks are exposed!</li>
+            <li><strong>OUTlier</strong> = <strong>OUTside</strong> younger rocks are stranded!</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="quote-box bangar">
+        "An <strong>inlier</strong> may be defined as a patch of <strong>older strata which is surrounded on all sides by younger strata</strong> (Fig. 7.49). An <strong>outlier</strong> is a patch of younger rocks surrounded by older rocks on all sides. It is formed when a part of a bed gets separated from the main mass by erosion."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Structures Due to Denudation, p. 124)</span>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">Stratigraphic Age Rules for Inlier and Outlier</div>
+        $$\text{Inlier:} \quad \text{Age}_{\text{Center}} > \text{Age}_{\text{Periphery}} \quad (\text{Older enclosed by Younger})$$
+        $$\text{Outlier:} \quad \text{Age}_{\text{Center}} < \text{Age}_{\text{Periphery}} \quad (\text{Younger enclosed by Older})$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">In thrust terranes: a tectonic window (fenster) is an inlier of the footwall, while a klippe is an outlier of the hanging wall (nappe).</p>
+      </div>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q027/bangar_fig7_49_inlier_outlier.png" alt="K.M. Bangar Fig 7.49 Inlier and Outlier in Horizontal and Folded Rocks">
+        <div class="tb-caption">
+          <strong>Figure 27.1: Outlier and Inlier Geometries (K.M. Bangar, p. 124).</strong> (a) Formed in horizontal strata by river incision (inlier in valley floor; outlier on isolated mesa). (b) Formed in folded strata (inlier along eroded anticlinal crest; outlier in synclinal summit).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Comparative Analysis: Erosional & Tectonic Inliers vs. Outliers</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Structure</th>
+            <th>Core / Center Age</th>
+            <th>Surrounding Margin Age</th>
+            <th>Typical Structural Setting</th>
+            <th>Tectonic Analog (Thrust Nappe)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Inlier</strong></td>
+            <td><strong>Older strata</strong></td>
+            <td><strong>Younger strata</strong></td>
+            <td>Eroded anticlinal crest, dome, or river canyon</td>
+            <td><strong>Window / Fenster</strong> (eroded hole exposing footwall)</td>
+          </tr>
+          <tr>
+            <td><strong>Outlier</strong></td>
+            <td><strong>Younger strata</strong></td>
+            <td><strong>Older strata</strong></td>
+            <td>Eroded synclinal core, summit mesa, or butte</td>
+            <td><strong>Klippe</strong> (isolated erosional remnant of hanging wall)</td>
+          </tr>
+          <tr>
+            <td><strong>Overlap</strong></td>
+            <td>Older basement</td>
+            <td>Progressively younger transgressive beds</td>
+            <td>Unconformity with advancing shoreline</td>
+            <td>Onlap / Offlap sequence</td>
+          </tr>
+          <tr>
+            <td><strong>Nappe</strong></td>
+            <td>Allochthonous sheet</td>
+            <td>Autochthonous basement</td>
+            <td>Low-angle regional overthrust ($>5\text{ km}$ slip)</td>
+            <td>Rooted thrust sheet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Examination Question · OPSC 2019 Paper-II (GGM - 2/2019) · Q027</div>
+    <div class="q-stmt">On a geological map, if older strata are found to be surrounded by younger strata then it could be :</div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) An inlier</div>
+      <div class="raw-opt">(B) An outlier</div>
+      <div class="raw-opt">(C) An overlap</div>
+      <div class="raw-opt">(D) Nappe structure</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✓</div>
+    <div>
+      <div class="text">CORRECT OPTION: (A) An inlier</div>
+      <div class="sub">Verified against Bangar (p. 124), Billings (Structural Geology, p. 89), and Mukherjee (p. 182). An area where older rocks are surrounded on all sides by younger strata is by definition an inlier.</div>
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) An inlier</span>
+      <span class="tag" style="background:#d1fae5; color:#065f46;">CORRECT VERIFIED</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> By classic geomorphological and structural definition, an <strong>inlier</strong> is a geographic exposure of older strata entirely encircled by younger strata. Inliers are commonly generated when fluvial or glacial erosion breaches the protective roof of an anticline or structural dome, exposing the older core strata below the surrounding younger cover.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) An outlier</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> An outlier is the exact converse: a patch of <strong>younger strata surrounded on all sides by older strata</strong>. Outliers develop when erosional processes strip away younger strata from an upland, leaving an isolated residual cap (such as a mesa or the trough of a syncline) resting atop older rocks.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) An overlap</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> An overlap (or onlap) is a stratigraphic term describing a marine transgression where younger sedimentary layers extend successively further landward over an unconformity, concealing the older underlying strata. It does not describe an enclosed circular or elliptical outcrop map pattern.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Nappe structure</span>
+      <span class="tag" style="background:#fee2e2; color:#991b1b;">INCORRECT</span>
+    </div>
+    <div class="option-body">
+      <strong>Forensic Analysis:</strong> A nappe is a vast allochthonous rock mass (recumbent fold or thrust sheet) that has been displaced laterally over distances greater than 5 km along a low-angle thrust fault. While erosional holes in a nappe (fensters) expose inliers, the nappe itself refers to the displaced sheet, not the enclosed map relationship.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Synthesis Comparison: Structural & Geomorphological Mapping Principles</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Diagnostic Parameter</th>
+            <th>Anticlinal Inlier</th>
+            <th>Synclinal Outlier</th>
+            <th>Tectonic Window (Fenster)</th>
+            <th>Klippe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Stratigraphic Position</strong></td>
+            <td>Older core rock</td>
+            <td>Younger cap rock</td>
+            <td>Autochthonous footwall (Older/Younger)</td>
+            <td>Allochthonous hanging wall</td>
+          </tr>
+          <tr>
+            <td><strong>Bounding Contact</strong></td>
+            <td>Normal bedding / unconformity</td>
+            <td>Normal bedding / unconformity</td>
+            <td>Low-angle thrust fault plane</td>
+            <td>Low-angle thrust fault plane</td>
+          </tr>
+          <tr>
+            <td><strong>Bedding Dip Sense</strong></td>
+            <td>Dips away from center</td>
+            <td>Dips inward toward center</td>
+            <td>Variable depending on footwall</td>
+            <td>Variable depending on nappe fold</td>
+          </tr>
+          <tr>
+            <td><strong>Topographic Expression</strong></td>
+            <td>Usually valley / topographic low</td>
+            <td>Usually peak / ridge / mesa high</td>
+            <td>Erosional valley floor</td>
+            <td>Isolated mountain peak / knoll</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">8 Fully Worked Exam-Standard Practice Problems: Map Interpretation & Inliers</div>
+    <div class="card-body">
+      <div class="practice-q">
+        <div class="pq-header">Problem 1: Dips in an Eroded Dome (Inlier)</div>
+        <div class="pq-ans">Bedding dips radially away from the center (Quaquaversal dip)</div>
+        <div class="pq-exp">A circular outcrop on a map has Precambrian gneiss in the center surrounded concentric rings of Cambrian, Ordovician, and Silurian strata. Bedding dips radially outward ($360^\circ$ away from center). This constitutes an <strong>anticlinal dome inlier</strong>.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 2: Dips in a Structural Basin (Outlier)</div>
+        <div class="pq-ans">Bedding dips centripetally inward toward the center</div>
+        <div class="pq-exp">If Jurassic strata occupy the center of an elliptical ring of Triassic and Permian rocks, with all beds dipping toward the center, the Jurassic rocks form a <strong>synclinal basin outlier</strong>.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 3: The Black Hills of South Dakota</div>
+        <div class="pq-ans">Massive regional structural inlier</div>
+        <div class="pq-exp">The Black Hills uplift features an eroded core of Precambrian granite and metamorphic rocks surrounded by younger Paleozoic and Mesozoic sedimentary hogbacks dipping outward, making it a classic continental-scale inlier.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 4: Fluvial Incision Across Horizontal Strata</div>
+        <div class="pq-ans">Deep valley exposes an inlier; mountain plateau forms an outlier</div>
+        <div class="pq-exp">In the Colorado Plateau, the Grand Canyon exposes older Proterozoic Vishnu Schist surrounded on top by younger Paleozoic strata (inlier in valley floor), while isolated mesas support younger Mesozoic caps surrounded by eroded Permian strata (outliers).</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 5: Distinguishing Klippe from Sedimentary Outlier</div>
+        <div class="pq-ans">A klippe is bounded by a fault contact; an outlier by bedding/unconformity</div>
+        <div class="pq-exp">In field mapping, a klippe is separated from the underlying rock by a thrust fault (often marked by mylonite, gouge, or slickensides), whereas a sedimentary outlier is bounded by normal conformable or unconformable depositional contacts.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 6: Rule of V's for Inliers along Valleys</div>
+        <div class="pq-ans">The outcrop V points downstream for beds dipping downstream steeper than valley gradient</div>
+        <div class="pq-exp">When an inlier is exposed along a river valley cutting through gently dipping strata, the boundary lines form V-shaped patterns governed by the interaction of topography with the 3D strike and dip of the contact planes.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 7: Age Determination via Index Fossils</div>
+        <div class="pq-ans">Center contains Paradoxides (Cambrian); margin contains Productus (Permian)</div>
+        <div class="pq-exp">If the core contains trilobite fossils (*Paradoxides*, Middle Cambrian) and the surrounding strata contain brachiopod fossils (*Productus*, Permian), the central rock is significantly older, definitively confirming an inlier.</div>
+      </div>
+
+      <div class="practice-q">
+        <div class="pq-header">Problem 8: Fault-Bounded Inliers</div>
+        <div class="pq-ans">A horst block forms a structural inlier</div>
+        <div class="pq-exp">When a central block is uplifted between two normal faults and eroded flat, older basement rocks are juxtaposed against younger downthrown graben sediments on both sides, creating a fault-bounded inlier.</div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

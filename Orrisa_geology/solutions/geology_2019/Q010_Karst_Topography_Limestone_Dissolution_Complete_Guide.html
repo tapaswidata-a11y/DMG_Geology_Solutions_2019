@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q010: Karst Topography, Carbonate Dissolution & Speleothem Morphogenesis | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q10" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Hydrogeology & Karst Geomorphology</div>
+    <h1>Q010: Chemical Dynamics of Karst Topography: Limestone Dissolution & Cavern Evolution</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 10<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 38); Derek Ford & Paul Williams (<em>Karst Hydrogeology and Geomorphology</em>, 2007); Arthur L. Bloom (<em>Geomorphology</em>, Ch. 7)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Chemical Dissolution Thermodynamics of Karst Landscapes</div>
+    <div class="card-body">
+      <p><strong>Karst topography</strong> is a distinctive landscape produced primarily by the chemical dissolution of soluble carbonate bedrock, overwhelmingly <strong>limestone</strong> (calcium carbonate, $\text{CaCO}_3$) and dolostone (calcium-magnesium carbonate, $\text{CaMg(CO}_3)_2$). Karst terrains are characterized by subterranean drainage networks, sinking streams, sinkholes (dolines), caves, dry valleys, and residual towers, named after the classic Kras (Karst) plateau of Slovenia and Italy.</p>
+
+      <div class="quote-box bangar">
+        "Karst topography refers to a distinctive type of landscape formed by the solvent action of groundwater on soluble carbonate rocks, particularly <strong>limestone</strong>. The landscape is characterized by an abundance of sinkholes, swallow holes, caverns, underground rivers, and the conspicuous absence of normal surface streams. Limestone bearing areas provide the ideal environment for the development of karst features."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Geological Work of Groundwater: Karst Topography, p. 38)</span>
+      </div>
+
+      <p>The chemical dissolution of limestone is governed by the reversible <strong>carbonic acid equilibrium</strong>:</p>
+
+      <div class="formula-card">
+        <div class="formula-title">Thermodynamic Carbonic Acid Dissolution of Calcite (Ford & Williams, 2007)</div>
+        $$\text{CO}_2\text{ (gas)} + \text{H}_2\text{O} \rightleftharpoons \text{H}_2\text{CO}_3\text{ (aqueous carbonic acid)}$$
+        $$\text{CaCO}_3\text{ (calcite)} + \text{H}_2\text{CO}_3 \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^-\text{ (calcium & bicarbonate in solution)}$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">As rainwater percolates through biogenic soil layers, microbial respiration enriches soil air $p\text{CO}_2$ up to $10 - 100\times$ atmospheric levels ($0.03\% \to 1 - 3\% \text{ CO}_2$). The highly aggressive acidic groundwater dissolves calcite along joint and bedding planes, widening them into cavernous subterranean conduits.</p>
+      </div>
+
+      <p>Four primary lithological and structural prerequisites govern the development of mature karst topography:</p>
+      <ol>
+        <li><strong>High-Purity Carbonate Bedrock:</strong> Thick-bedded, dense limestone containing $>80 - 90\% \text{ CaCO}_3$. Insoluble clastic impurities (clay, silica) retard dissolution.</li>
+        <li><strong>Dense Secondary Permeability (Joints & Fractures):</strong> Pure limestone has low primary intergranular porosity ($<1 - 5\%$); groundwater circulation requires well-developed orthogonal joint sets and bedding plane partings to initiate solution channels.</li>
+        <li><strong>Entrenched Master Drainage & Hydraulic Gradient:</strong> Deeply incised master river valleys flanking the limestone plateau to maintain a low subterranean water table and drive vigorous groundwater flow.</li>
+        <li><strong>Abundant Rainfall:</strong> Sufficient precipitation to replenish aggressive, unsaturated solvent water through the unsaturated vadose zone.</li>
+      </ol>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q010/bangar_p38_karst_topography_limestone.png" alt="K.M. Bangar Karst Topography Limestone Caves">
+        <div class="tb-caption">
+          <strong>Figure 10.1: Anatomy of Karst Topography in Limestone (K.M. Bangar, p. 38).</strong> Schematic cross-section showing surface sinkholes (dolines), swallow holes (ponors), blind valleys, solution caverns, stalactites, stalagmites, columns, and emerging resurgences.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Morphological Zonation: Surface vs. Subterranean Karst Landforms</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Karst Landform</th>
+            <th>Realm</th>
+            <th>Primary Genetic Mechanism</th>
+            <th>Diagnostic Field Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lapies / Karren</strong></td>
+            <td>Surface</td>
+            <td>Subaerial dissolution along bare limestone joints</td>
+            <td>Etched, fluted grooves, solution rills, and sharp limestone ribs</td>
+          </tr>
+          <tr>
+            <td><strong>Doline / Sinkhole</strong></td>
+            <td>Surface</td>
+            <td>Solution subsidence or catastrophic roof collapse</td>
+            <td>Funnel-shaped circular depressions ($2\text{ m} - 500\text{ m}$ diameter)</td>
+          </tr>
+          <tr>
+            <td><strong>Polje</strong></td>
+            <td>Surface</td>
+            <td>Massive structural tectonic depression enlarged by dissolution</td>
+            <td>Vast, flat-bottomed karst plain enclosed by steep limestone walls</td>
+          </tr>
+          <tr>
+            <td><strong>Swallow Hole (Ponor)</strong></td>
+            <td>Transition</td>
+            <td>Disappearance of surface stream underground</td>
+            <td>Chasm or funnel where an active river plunges into a subterranean conduit</td>
+          </tr>
+          <tr>
+            <td><strong>Cave / Cavern</strong></td>
+            <td>Subterranean</td>
+            <td>Phreatic & vadose groundwater dissolution along joints</td>
+            <td>Interconnected underground chambers and solution galleries</td>
+          </tr>
+          <tr>
+            <td><strong>Speleothems</strong></td>
+            <td>Subterranean</td>
+            <td>Degassing of $\text{CO}_2$ causing calcite reprecipitation</td>
+            <td>Stalactites (ceiling-down), stalagmites (floor-up), columns, flowstone</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 10)</div>
+    <div class="q-stmt">
+      10. Karst topography is most commonly developed in :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt">(A) Shale bearing areas</div>
+      <div class="raw-opt">(B) Sandstone bearing areas</div>
+      <div class="raw-opt">(C) Laterite bearing areas</div>
+      <div class="raw-opt correct">(D) Limestone bearing areas &nbsp;✔</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (D) Limestone bearing areas</div>
+      <div class="sub">
+        In physical geology, hydrogeology, and geomorphology (K.M. Bangar, p. 38; Arthur L. Bloom, p. 156; Ford & Williams, 2007; W.D. Thornbury, p. 317), <strong>karst topography</strong> is universally and fundamentally developed in <strong>Limestone bearing areas</strong> due to the high chemical solubility of calcium carbonate in carbonic acid.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(A) Shale bearing areas</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Shale is an argillaceous sedimentary rock composed of insoluble clay minerals (illite, smectite, kaolinite) and silt. Because shale is virtually impermeable and chemically insoluble in carbonic acid, it does not dissolve to form subterranean drainage or caves. Instead, shale weathers mechanically into badlands, rolling plains, or impermeable aquitards.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Sandstone bearing areas</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Sandstone consists primarily of quartz ($\text{SiO}_2$), which is exceptionally insoluble in natural surface waters at normal environmental pH ($<9$). While rare "pseudokarst" features can develop in tropical quartzite through grain-boundary leaching over millions of years, true karst topography requires carbonate solubility.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Laterite bearing areas</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Laterite is a highly weathered, residual tropical regolith enriched in insoluble iron oxides (goethite, hematite) and aluminum hydroxides (gibbsite, bauxite) formed by the leaching of silica. It forms hard, porous duricrusts (ferricrete) that weather into plateaus and mesas, lacking karst dissolution systems.
+    </div>
+  </div>
+
+  <div class="option correct">
+    <div class="option-header">
+      <span>(D) Limestone bearing areas</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Limestone (composed of calcite, $\text{CaCO}_3$) is readily soluble in natural meteoric water charged with dissolved carbon dioxide (forming weak carbonic acid, $\text{H}_2\text{CO}_3$). This chemical dissolution dissolves joint systems, excavates subterranean caverns, causes surface collapse into sinkholes, and diverts entire surface river networks underground, creating the classic <strong>karst topography</strong>.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Comprehensive Speleothem Morphology & Precipitation Physics</div>
+    <div class="card-body">
+      <p>Speleothems (cave mineral formations) develop in the vadose (unsaturated) zone of limestone caves when dripping groundwater degasses carbon dioxide into the cave air:</p>
+      $$\text{Ca}^{2+} + 2\text{HCO}_3^- \xrightarrow{\text{degassing of } \text{CO}_2} \text{CaCO}_3\downarrow \text{ (solid calcite)} + \text{CO}_2\uparrow + \text{H}_2\text{O}$$
+      <ul>
+        <li><strong>Stalactite (Ceiling-Down):</strong> Icicle-like speleothem hanging from the cave ceiling. Originates as a thin-walled, hollow tubular "soda straw" through whose central canal water drips, depositing calcite rings along its lip.</li>
+        <li><strong>Stalagmite (Floor-Up):</strong> Solid, rounded, inverted-cone speleothem growing upward from the cave floor. Formed by calcite precipitation from water droplets splashing down from the ceiling; lacks a central hollow canal.</li>
+        <li><strong>Column / Pillar:</strong> Formed when a descending stalactite and an ascending stalagmite meet and merge into a single continuous vertical column.</li>
+        <li><strong>Helictites:</strong> Curved, contorted, gravity-defying speleothems whose growth direction is governed by capillary forces and crystal lattice orientation rather than gravity.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A limestone drainage basin covers an area $A = 80.0\text{ km}^2$ with an annual runoff of $Q = 0.50\text{ m/yr}$. Chemical analysis of the emerging spring water shows a dissolved calcium ion concentration $[\text{Ca}^{2+}] = 48.0\text{ mg/L}$. Assuming all dissolved calcium originates from pure limestone ($\text{CaCO}_3$, density $\rho = 2650\text{ kg/m}^3$), calculate the total mass of limestone removed annually in metric tons and the basin-wide chemical denudation rate in millimeters per thousand years ($\text{mm/ka}$, Bubnoff units).
+          <div class="pq-ans">✔ Worked Answer: Total mass removed $= 4,800\text{ metric tons/yr}$; Denudation rate $\approx 22.6\text{ mm/ka}$.</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            Annual water discharge volume $V = A \times Q = 80.0 \times 10^6\text{ m}^2 \times 0.50\text{ m} = 40.0 \times 10^6\text{ m}^3 = 40.0 \times 10^9\text{ Liters}$.<br>
+            Molar mass of $\text{Ca}^{2+} = 40.08\text{ g/mol}$; Molar mass of $\text{CaCO}_3 = 100.09\text{ g/mol}$.<br>
+            Mass conversion factor: $\frac{100.09}{40.08} \approx 2.50$.<br>
+            $$\text{Concentration of CaCO}_3 = 48.0\text{ mg/L} \times 2.50 = 120.0\text{ mg/L} = 0.120\text{ kg/m}^3$$<br>
+            Total annual mass removed:<br>
+            $$M = 40.0 \times 10^6\text{ m}^3 \times 0.120\text{ kg/m}^3 = 4,800,000\text{ kg} = 4,800\text{ metric tons/yr}$$<br>
+            Volume of solid limestone removed:<br>
+            $$V_{\text{rock}} = \frac{4,800,000\text{ kg}}{2650\text{ kg/m}^3} \approx 1811.32\text{ m}^3$$<br>
+            Surface lowering rate:<br>
+            $$\text{Rate} = \frac{V_{\text{rock}}}{A} = \frac{1811.32\text{ m}^3}{80.0 \times 10^6\text{ m}^2} = 2.264 \times 10^{-5}\text{ m/yr} = 0.02264\text{ mm/yr} \approx 22.64\text{ mm/ka}$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is the phenomenon of "Mixing Corrosion" (Mischungskorrosion / Bögli effect) in karst hydrology?
+          <div class="pq-ans">✔ Correct Answer: When two distinct saturated groundwater masses with different carbon dioxide concentrations mix, the resulting mixture becomes chemically undersaturated and capable of aggressively dissolving more limestone.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Because the equilibrium saturation curve for calcite is non-linear (concave upward with respect to $p\text{CO}_2$), mixing two saturated waters produces a combined solution that is undersaturated, driving rapid cavern excavation deep below the water table.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> Distinguish between a "Solution Sinkhole" and a "Collapse Sinkhole".
+          <div class="pq-ans">✔ Correct Answer: A solution sinkhole forms by gradual downward dissolution along joints; a collapse sinkhole forms by catastrophic structural failure of an underlying cavern roof.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Solution sinkholes develop slowly and gently. Collapse sinkholes occur suddenly when the void beneath becomes too large to support the weight of the overlying rock ceiling, creating vertical-walled craters.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What is "Tower Karst" (Mogotes / Kegelkarst), and in what climatic zone does it achieve its most spectacular development?
+          <div class="pq-ans">✔ Correct Answer: Residual steep-sided limestone towers rising vertically from flat alluvial plains, developed in humid tropical and subtropical climates (e.g., Guilin in China, Krabi/Phang Nga in Thailand).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Abundant tropical heat and intense monsoonal rains accelerate biochemical weathering, while lateral planation by surface rivers erodes tower bases.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> Why does a stalactite possess a central hollow feeding canal (soda straw), whereas a stalagmite is solid?
+          <div class="pq-ans">✔ Correct Answer: A stalactite grows as water flows through its central tube, depositing calcite rings along its rim; a stalagmite grows from splashing water droplets hitting the floor, depositing solid layers.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Droplets hang from the ceiling, releasing $\text{CO}_2$ and depositing a microscopic ring around the droplet margin. On the floor, the kinetic impact of falling drops splashes water radially, building a solid mound.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is a "Blind Valley" in karst geomorphology?
+          <div class="pq-ans">✔ Correct Answer: A valley carved by a surface stream that ends abruptly at a cliff or sinkhole (ponor) where the stream sinks completely underground.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Typically occurs where an impermeable rock formation meets a soluble limestone block; the surface stream cannot flow past the contact, plunging into subterranean caverns.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is a "Polje", and why is it of critical importance in karst landscapes?
+          <div class="pq-ans">✔ Correct Answer: A massive, flat-bottomed, fault-bounded structural karst depression (often tens of kilometers wide), drained by ponors and subject to seasonal inundation.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Poljes are the largest individual karst features on Earth, providing fertile agricultural soils on their flat, terra-rossa covered floors in otherwise barren limestone plateaus.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> In engineering geology, what are the primary foundation hazards when building dams or reservoirs in limestone karst terrain?
+          <div class="pq-ans">✔ Correct Answer: Severe water leakage through undiscovered subterranean cavern conduits and catastrophic reservoir sinkhole collapse.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Impounding water increases hydraulic head, forcing water through hidden karst solution cavities, which can wash out clay fillings and completely drain the reservoir (e.g., the Lar Dam in Iran).
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

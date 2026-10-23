@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q005: Eustasy, Global Sea-Level Dynamics & Glacio-Tectonic Mechanisms | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q5" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Stratigraphy & Marine Geodynamics</div>
+    <h1>Q005: The Physics of Eustasy: Global Sea-Level Fluctuations & Sequence Dynamics</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 5<br><strong>Authoritative References:</strong> Eduard Suess (<em>Das Antlitz der Erde</em>, 1888); K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 33); Sam Boggs Jr. (<em>Sedimentology & Stratigraphy</em>, Ch. 12, pp. 434–442); Vail et al. (1977)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">The Physical Concept of Eustasy & Global Sea-Level Dynamics</div>
+    <div class="card-body">
+      <p>The term <strong>eustasy</strong> (or <strong>eustatic sea-level change</strong>) was introduced into geological science by the eminent Austrian geologist <strong>Eduard Suess</strong> in 1888 in his monumental treatise <em>Das Antlitz der Erde</em> (The Face of the Earth). Eustasy denotes <strong>simultaneous, worldwide changes in sea level</strong> that affect all global oceans uniformly, measured relative to a fixed datum such as the center of the Earth.</p>
+
+      <div class="quote-box bangar">
+        "Changes in sea level that take place globally and simultaneously throughout the world oceans are called <strong>eustatic changes</strong>. They are caused either by changes in the total volume of water in the ocean basins (such as during the growth and melting of continental ice sheets) or by changes in the capacity of the ocean basins themselves due to plate tectonic movements."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Marine Geology & Eustatic Movements, p. 33)</span>
+      </div>
+
+      <p>Eustatic fluctuations occur across vastly different temporal scales and are driven by four distinct geodynamic mechanisms:</p>
+      <ul>
+        <li><strong>Glacio-Eustasy (Ice Volume Fluctuations):</strong> Changes in the mass and volume of liquid ocean water caused by the freezing and melting of continental ice sheets (Antarctica, Greenland, Laurentide). Operates on orbital Milankovitch timescales ($10^4 - 10^5\text{ years}$) with rapid rates ($1 - 10\text{ mm/yr}$). During the Last Glacial Maximum (LGM, $\approx 21,000\text{ years ago}$), glacio-eustasy dropped global sea level by $\approx 120 - 130\text{ meters}$.</li>
+        <li><strong>Tectono-Eustasy (Ocean Basin Volume Changes):</strong> Changes in the volumetric capacity of ocean basins driven by seafloor spreading rates, mid-ocean ridge inflation, and continental collision. When seafloor spreading is rapid, young oceanic lithosphere is hot, buoyant, and thermally expanded, displacing seawater onto continental interiors (marine transgression, e.g., the Cretaceous highstand $+200 - 300\text{ m}$). Operates on first- and second-order timescales ($10^7 - 10^8\text{ years}$).</li>
+        <li><strong>Sedimentation Eustasy:</strong> Slow displacement of seawater by the cumulative deposition of clastic and carbonate sediments into ocean basins ($<0.01\text{ mm/yr}$).</li>
+        <li><strong>Thermo-Steric Eustasy (Thermal Expansion):</strong> Changes in seawater volume driven by temperature and salinity variations without mass addition (modern global warming expansion $\approx 1 - 2\text{ mm/yr}$).</li>
+      </ul>
+
+      <div class="formula-card">
+        <div class="formula-title">Relative Sea Level (RSL) vs. Eustatic Sea Level (ESL) Equation</div>
+        $$\Delta \text{RSL} = \Delta \text{ESL} - \Delta z_{\text{tectonic}} - \Delta z_{\text{isostatic}} + \Delta z_{\text{geoid}}$$
+        <p style="margin-top:6px; font-size:12.5px; opacity:0.9;">Where $\Delta \text{RSL}$ is local relative sea level observed at a coastline, $\Delta \text{ESL}$ is global eustatic sea level, $\Delta z_{\text{tectonic}}$ is local tectonic crustal uplift/subsidence, $\Delta z_{\text{isostatic}}$ is glacio-isostatic adjustment (GIA), and $\Delta z_{\text{geoid}}$ is gravitational geoid deformation.</p>
+      </div>
+
+      <!-- TEXTBOOK IMAGE 1 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q005/bangar_p33_marine_transgression_eustasy.png" alt="K.M. Bangar Marine Transgression and Eustatic Base Level Changes">
+        <div class="tb-caption">
+          <strong>Figure 5.1: Marine Transgression, Regression & Eustasy (K.M. Bangar, p. 33).</strong> Stratigraphic architecture of onlapping marine transgressive sequences and offlapping regressive sequences produced by eustatic sea-level fluctuations.
+        </div>
+      </div>
+
+      <!-- TEXTBOOK IMAGE 2 -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q005/boggs_fig12_8_eustatic_sea_level_curve.png" alt="Sam Boggs Jr Global Phanerozoic Eustatic Sea Level Curve">
+        <div class="tb-caption">
+          <strong>Figure 5.2: Global Eustatic Cycles Across Geological Time (Sam Boggs Jr., Fig. 12.8).</strong> The Exxon/Vail-Haq global eustatic curve displaying first-, second-, and third-order sea-level fluctuations throughout the Phanerozoic Eon.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Phanerozoic Eustatic Cycle Hierarchy (Vail et al., 1977)</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Duration ($T$)</th>
+            <th>Amplitude</th>
+            <th>Primary Geodynamic Driving Mechanism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1st Order (Megacycles)</strong></td>
+            <td>$200 - 400\text{ Ma}$</td>
+            <td>$> 100 - 300\text{ m}$</td>
+            <td>Supercontinent assembly and breakup (Wilson Cycles, mantle convection)</td>
+          </tr>
+          <tr>
+            <td><strong>2nd Order (Supercycles)</strong></td>
+            <td>$10 - 100\text{ Ma}$</td>
+            <td>$50 - 150\text{ m}$</td>
+            <td>Changes in global seafloor spreading rates and ridge system volume</td>
+          </tr>
+          <tr>
+            <td><strong>3rd Order (Mesocycles)</strong></td>
+            <td>$1 - 10\text{ Ma}$</td>
+            <td>$20 - 100\text{ m}$</td>
+            <td>Major continental ice sheet oscillations and intraplate stress reconfigurations</td>
+          </tr>
+          <tr>
+            <td><strong>4th / 5th Order (Milankovitch)</strong></td>
+            <td>$20 - 400\text{ ka}$</td>
+            <td>$10 - 150\text{ m}$</td>
+            <td>Orbital forcing (Eccentricity, Obliquity, Precession) driving glacio-eustasy</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 5)</div>
+    <div class="q-stmt">
+      5. The term &lsquo;eustatic&rsquo; implies :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) Worldwide changes in sea level &nbsp;✔</div>
+      <div class="raw-opt">(B) Erosion of land to peneplanation</div>
+      <div class="raw-opt">(C) Exhumation of rocks</div>
+      <div class="raw-opt">(D) Confluence of river streams</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) Worldwide changes in sea level</div>
+      <div class="sub">
+        In stratigraphy, sedimentology, and geodynamics (Eduard Suess, 1888; K.M. Bangar, p. 33; Sam Boggs Jr., p. 434; Vail et al., 1977), <strong>eustatic</strong> refers specifically and universally to <strong>worldwide, simultaneous changes in sea level</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) Worldwide changes in sea level</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> Coined by Eduard Suess from the Greek roots <em>eu</em> (good, true) and <em>statikos</em> (standing), eustasy denotes global, simultaneous sea-level changes affecting all ocean basins worldwide, distinct from local tectonic subsidence or uplift.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) Erosion of land to peneplanation</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The erosion of landmasses to an ultimate low-relief, nearly flat erosion surface is termed <em>peneplanation</em> (introduced by William Morris Davis). A peneplain is an ultimate subaerial geomorphic landform, completely distinct from global sea-level fluctuations.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) Exhumation of rocks</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> Exhumation is the unroofing and exposure of deeply buried metamorphic or plutonic basement rocks at the Earth's surface through tectonic extension (normal fault detachment) or massive denudational erosion, having no linguistic or mechanical connection to eustasy.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) Confluence of river streams</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> The junction point where two or more flowing streams merge into a single trunk river is known as a <em>confluence</em> (e.g., Allahabad/Prayagraj), a basic fluvial hydrologic term unrelated to global marine eustasy.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Comparison: Eustasy vs. Isostasy vs. Tectonism</div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Primary Mechanism</th>
+            <th>Spatial Extent</th>
+            <th>Temporal Timescale</th>
+            <th>Diagnostic Field / Stratigraphic Record</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Eustasy</strong></td>
+            <td>Changes in ocean water volume (ice) or ocean basin volume (ridges)</td>
+            <td>Global (Synchronous across all oceans)</td>
+            <td>$10^4\text{ yr}$ (glacial) to $10^8\text{ yr}$ (tectonic)</td>
+            <td>Synchronous global sequence boundaries and transgressive surface onlaps</td>
+          </tr>
+          <tr>
+            <td><strong>Isostasy</strong></td>
+            <td>Gravitational buoyant equilibrium of crust floating on asthenosphere</td>
+            <td>Regional to local (Ice sheet or mountain range scale)</td>
+            <td>$10^3 - 10^4\text{ yr}$ (viscous relaxation)</td>
+            <td>Raised post-glacial shorelines, tilted marine terraces in Scandinavia/Canada</td>
+          </tr>
+          <tr>
+            <td><strong>Tectonism</strong></td>
+            <td>Crustal deformation driven by plate boundary forces</td>
+            <td>Regional to local (Orogenic belts, rift basins)</td>
+            <td>$10^5 - 10^7\text{ yr}$</td>
+            <td>Angular unconformities, faulted strata, localized rapid basin subsidence</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> The Antarctic Ice Sheet contains approximately $V_{\text{ice}} = 27.0 \times 10^6\text{ km}^3$ of ice with an average density $\rho_{\text{ice}} = 917\text{ kg/m}^3$. Assuming complete melting and that the melted water spreads uniformly over the global ocean area $A_{\text{ocean}} = 3.61 \times 10^8\text{ km}^2$ (density $\rho_{\text{water}} = 1000\text{ kg/m}^3$), calculate the equivalent glacio-eustatic sea-level rise in meters.
+          <div class="pq-ans">✔ Worked Answer: Sea-level rise $\Delta h \approx 68.6\text{ meters}$.</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            Equivalent liquid water volume $V_{\text{water}} = V_{\text{ice}} \times \frac{\rho_{\text{ice}}}{\rho_{\text{water}}}$<br>
+            $$V_{\text{water}} = 27.0 \times 10^6\text{ km}^3 \times \frac{917}{1000} = 24.759 \times 10^6\text{ km}^3$$<br>
+            $$\Delta h = \frac{V_{\text{water}}}{A_{\text{ocean}}} = \frac{24.759 \times 10^6\text{ km}^3}{3.61 \times 10^8\text{ km}^2} = 0.06858\text{ km} \approx 68.6\text{ m}$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> Who first introduced the term "eustatic" into geological literature?
+          <div class="pq-ans">✔ Correct Answer: Eduard Suess in 1888 in his book <em>The Face of the Earth</em> (<em>Das Antlitz der Erde</em>).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Suess recognized that certain major marine transgressions and regressions occurred synchronously across distant continents, postulating global changes in sea level that he termed eustatic.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What was the magnitude of global eustatic sea-level depression during the Last Glacial Maximum (LGM) $\approx 21,000\text{ years ago}$?
+          <div class="pq-ans">✔ Correct Answer: Approximately $120\text{ to } 130\text{ meters}$ below modern sea level.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The vast accumulation of water into the Laurentide, Fennoscandian, and Antarctic ice sheets locked up $\approx 50\text{ million km}^3$ of water, exposing continental shelves worldwide and creating land bridges (e.g., Beringia).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> In sequence stratigraphy, what systems tract is directly formed by a rapid eustatic fall in sea level that outpaces tectonic subsidence?
+          <div class="pq-ans">✔ Correct Answer: The Falling Stage Systems Tract (FSST) or Forced Regressive Wedge.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Forced regression occurs when the shoreline shifts basinward independently of sediment supply due to absolute sea-level fall, creating subaerial exposure of the shelf and valley incision.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> Why were global sea levels during the mid-Cretaceous period ($100\text{ Ma}$) estimated to be $150 - 250\text{ meters}$ higher than today?
+          <div class="pq-ans">✔ Correct Answer: Rapid seafloor spreading following the breakup of Pangea expanded the global mid-ocean ridge system, displacing seawater onto continents (tectono-eustasy), combined with an ice-free greenhouse climate.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Fast-spreading ridges are thermally inflated and occupy far greater volume than slow-spreading ridges, dramatically reducing the volumetric capacity of ocean basins.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What is "Glacio-Isostatic Adjustment" (GIA), and how does it affect local relative sea level in post-glacial areas?
+          <div class="pq-ans">✔ Correct Answer: Post-glacial crustal rebound of the lithosphere following ice sheet unloading, causing local sea level to appear to fall rapidly even while global eustasy rises.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In Scandinavia and Hudson Bay, the land is rebounding at up to $10\text{ mm/yr}$, uplifting former marine wave-cut platforms high above current sea level as raised beaches.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is the difference between an "autogenic" shoreline shift and an "allogenic" eustatic transgression?
+          <div class="pq-ans">✔ Correct Answer: Autogenic shifts are caused by internal sedimentary dynamics (e.g., delta lobe switching); allogenic eustatic shifts are forced by external global sea-level changes.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Delta avulsion can cause local coastline retreat due to sediment starvation, but this is an autogenic process; a true eustatic transgression occurs basin-wide simultaneously.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> How do oxygen isotope ratios ($\delta^{18}\text{O}$) in benthic foraminifera shells serve as a proxy for ancient glacio-eustatic sea-level fluctuations?
+          <div class="pq-ans">✔ Correct Answer: Evaporation preferentially removes light $^{16}\text{O}$ from oceans, which gets trapped in continental ice sheets, enriching ocean water and foraminifera calcite in heavy $^{18}\text{O}$ during glacial sea-level lowstands.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Higher $\delta^{18}\text{O}$ values in marine carbonate shells directly correlate with larger continental ice volume and lower eustatic sea levels.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

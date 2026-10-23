@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q016: Calderas, Volcanic Collapse Mechanics & Super-Eruption Dynamics | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #091e3a 0%, #0f2b4c 50%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .badge {
+    display: inline-block;
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 23px; font-weight: 800; line-height: 1.35; color: #fff; }
+  .header .meta { font-size: 13.5px; color: #cbd5e1; margin-top: 10px; line-height: 1.5; }
+  
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    transition: all 0.15s ease;
+  }
+  .back-link:hover { background: #f8fafc; border-color: #94a3b8; color: #0369a1; }
+
+  .part-banner {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin: 28px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+  }
+  .first-part { margin-top: 10px; }
+  .part-banner.green {
+    background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.2);
+  }
+  .part-banner.purple {
+    background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.2);
+  }
+  .part-num {
+    font-size: 26px;
+    font-weight: 800;
+    opacity: 0.9;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    padding-right: 14px;
+    line-height: 1;
+    font-family: 'Fira Code', monospace;
+  }
+  .part-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.3px; }
+  .part-sub { font-size: 12.5px; opacity: 0.9; margin-top: 3px; }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .card-header {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-body { padding: 20px 24px; font-size: 14.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin: 8px 0 14px 24px; }
+  .card-body li { margin-bottom: 6px; }
+
+  .bg-blue    { background: #1d4ed8; }
+  .bg-indigo  { background: #4338ca; }
+  .bg-emerald { background: #047857; }
+  .bg-purple  { background: #6d28d9; }
+  .bg-amber   { background: #b45309; }
+  .bg-slate   { background: #334155; }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #1e3a8a;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar {
+    background: #f0fdf4;
+    border-left-color: #059669;
+    color: #064e3b;
+  }
+  .quote-ref {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+  .quote-box.bangar .quote-ref { color: #047857; }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .tag.correct { background: #059669; color: #fff; }
+  .tag.wrong   { background: #e11d48; color: #fff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+  th {
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  td:first-child { font-weight: 600; color: #0f172a; }
+
+  .pq-list { list-style: none; padding: 0; }
+  .pq-list li {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid #d97706;
+    border-radius: 6px;
+    padding: 13px 18px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+  }
+  .pq-list li strong { color: #92400e; font-size: 14px; }
+  .pq-ans {
+    margin-top: 6px;
+    color: #065f46;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q16" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">GGM - 2/2019 • Volcanology & Igneous Geodynamics</div>
+    <h1>Q016: Morphogenesis of Volcanic Calderas: Collapse Dynamics & Magma Chamber Drainage</h1>
+    <div class="meta">
+      <strong>Official Exam:</strong> OPSC Assistant Geologist Paper-II (2019), Question 16<br><strong>Authoritative References:</strong> K.M. Bangar (<em>Principles of Engineering Geology</em>, p. 15); Gordon A. Macdonald (<em>Volcanoes</em>, 1972); Peter W. Lipman (<em>Bulletin of Volcanology</em>, 1997)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-blue">Volcanological Architecture & Collapse Mechanics of Calderas</div>
+    <div class="card-body">
+      <p>In physical volcanology, a <strong>caldera</strong> (from the Spanish word for "cauldron") is a very large, basin-shaped or circular volcanic depression whose diameter is many times greater than that of an ordinary volcanic vent or crater. In international volcanological standards (Macdonald, 1972; Cas & Wright, 1987; Lipman, 1997), a caldera is defined as a volcanic depression typically exceeding <strong>$1 - 2\text{ kilometers}$ in diameter</strong> (frequently reaching $10 - 50\text{ km}$ across), formed primarily by the <strong>catastrophic roof collapse and subsidence</strong> of a volcanic structure into an underlying evacuated magma chamber.</p>
+
+      <div class="quote-box bangar">
+        "A crater is the normal funnel-shaped opening or depression at the summit of a volcano through which lava and gases erupt. When a volcanic explosion or summit collapse is on a gigantic scale, a very large, broad, cauldron-like volcanic depression is produced, which is called a <strong>caldera</strong>. A caldera is essentially a very large crater formed mostly by the collapse of the volcanic summit following the rapid evacuation of the underlying magma chamber (e.g., Crater Lake in Oregon, USA)."
+        <span class="quote-ref">— K.M. Bangar, <em>Principles of Engineering Geology</em> (Volcanoes & Volcanic Landforms, p. 15)</span>
+      </div>
+
+      <p>Calderas are genetically divided into two primary geodynamic classes:</p>
+      <ul>
+        <li><strong>Explosive Collapse Calderas (Krakatau / Crater Lake Type):</strong> Associated with silica-rich, highly viscous, gas-charged magmas (dacite, rhyolite). Eruption of colossal volumes ($>10 - 1000\text{ km}^3$) of pyroclastic ignimbrites and pumice evacuates the shallow magma chamber, removing hydrostatic support. The unsupported volcanic edifice collapses downward along ring fractures, forming a vast, vertical-walled caldera basin that frequently fills with water to form a caldera lake.</li>
+        <li><strong>Non-Explosive Subsidence Calderas (Hawaiian / Kilauea Type):</strong> Associated with low-viscosity basaltic shield volcanoes. Formed by the gentle, passive subsidence of the summit as basaltic magma drains laterally into subterranean rift zones or erupts from flank fissures.</li>
+      </ul>
+
+      <!-- TEXTBOOK IMAGE -->
+      <div class="tb-figure">
+        <img src="../../figures_2019_Q016/bangar_p15_caldera_crater_volcano.png" alt="K.M. Bangar Volcanic Caldera and Crater">
+        <div class="tb-caption">
+          <strong>Figure 16.1: Evolution of a Collapse Caldera (K.M. Bangar, p. 15).</strong> Sequential cross-sections showing (A) Composite cone with shallow magma chamber, (B) Massive explosive pyroclastic eruption evacuating the magma chamber, (C) Catastrophic roof collapse along ring faults forming a vast caldera, and (D) Post-caldera resurgent dome and crater lake.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-emerald">Volcanic Depressions: Crater vs. Caldera vs. Maar</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Volcanic Depression</th>
+            <th>Typical Diameter</th>
+            <th>Genetic Origin</th>
+            <th>Explosive Energy & Magma Volume</th>
+            <th>Type Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Volcanic Crater</strong></td>
+            <td>$< 1\text{ km}$ (typically tens to hundreds of meters)</td>
+            <td>Explosive excavation and construction of tephra/scoria rim around central vent</td>
+            <td>Localized eruptive activity; small magma volume</td>
+            <td>Summit crater of Mt. Vesuvius, Barren Island crater</td>
+          </tr>
+          <tr>
+            <td><strong>Caldera</strong></td>
+            <td><strong>$> 1 - 2\text{ km}$ (up to $50 - 100\text{ km}$)</strong></td>
+            <td><strong>Catastrophic roof collapse</strong> into an evacuated magma chamber along ring faults</td>
+            <td>Super-eruptions ($VEI \ge 6 - 8$); colossal magma volumes ($>100 - 1000\text{ km}^3$)</td>
+            <td>Crater Lake (Oregon), Toba Caldera (Sumatra), Yellowstone</td>
+          </tr>
+          <tr>
+            <td><strong>Maar</strong></td>
+            <td>$200\text{ m} - 2\text{ km}$</td>
+            <td>Hydrovolcanic phreatomagmatic explosions where magma encounters groundwater</td>
+            <td>Violent steam explosions; low tephra ring (tuff ring)</td>
+            <td>Eifel maars (Germany), Lonar Crater (impact crater often compared)</td>
+          </tr>
+          <tr>
+            <td><strong>Pit Crater</strong></td>
+            <td>Tens to hundreds of meters</td>
+            <td>Localized collapse caused by magma withdrawal without explosive eruption</td>
+            <td>Basaltic shield subsidence along rift zones</td>
+            <td>Halemaʻumaʻu (Kilauea, Hawaii)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+  <div class="question-box">
+    <div class="q-num">Official Question Statement — OPSC Assistant Geologist 2019 Paper-II (Question 16)</div>
+    <div class="q-stmt">
+      16. A Caldera is :
+    </div>
+    <div class="raw-options">
+      <div class="raw-opt correct">(A) A very large crater &nbsp;✔</div>
+      <div class="raw-opt">(B) A long mountain chain</div>
+      <div class="raw-opt">(C) A gorge formed due to faulting</div>
+      <div class="raw-opt">(D) A U-shaped valley</div>
+    </div>
+  </div>
+
+  <div class="answer-banner">
+    <div class="tick">✔</div>
+    <div>
+      <div class="text">Correct Answer: (A) A very large crater</div>
+      <div class="sub">
+        In physical geology and volcanology (K.M. Bangar, p. 15; Arthur Holmes, p. 204; Macdonald, 1972; Cas & Wright, 1987), a <strong>caldera</strong> is defined as an exceptionally <strong>very large crater (or volcanic basin)</strong> formed by the collapse of a volcano's summit.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION CARDS -->
+  <div class="option correct">
+    <div class="option-header">
+      <span>(A) A very large crater</span>
+      <span class="tag correct">Correct Verified Option</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this option is correct:</strong> By standard international definition, a caldera is a large, basin-shaped volcanic depression many times the diameter of the original volcanic vent. While normal craters are constructed by explosive ejection, calderas represent massive volcanic collapse structures on a scale of kilometers to tens of kilometers.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(B) A long mountain chain</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A long mountain chain represents an orogenic fold belt formed by continental collision (e.g., the Himalayas, Alps, Andes), an immense positive tectonic relief structure completely distinct from a circular volcanic caldera basin.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(C) A gorge formed due to faulting</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A gorge formed due to faulting is a structural graben, rift valley, or fault-line chasm. Calderas are circular volcanic collapse depressions formed by magma evacuation, not linear fault gorges.
+    </div>
+  </div>
+
+  <div class="option wrong">
+    <div class="option-header">
+      <span>(D) A U-shaped valley</span>
+      <span class="tag wrong">Incorrect Distractor</span>
+    </div>
+    <div class="option-body">
+      <strong>Why this distractor is incorrect:</strong> A U-shaped valley (glacial trough) is an erosional landform excavated by valley glaciers, featuring steep rock walls and flat floors, bearing no relation to volcanic caldera collapse.
+    </div>
+  </div>
+
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header bg-slate">Super-Eruptions & The Volcano Explosivity Index (VEI)</div>
+    <div class="card-body">
+      <p>Caldera-forming eruptions are the most catastrophic natural explosive events on Earth, classified at the highest levels of the Volcanic Explosivity Index (Newhall & Self, 1982):</p>
+      <ul>
+        <li><strong>VEI 7 (Colossal, $>100\text{ km}^3$ tephra):</strong> E.g., Santorini (1600 BC), Tambora (1815, "Year Without a Summer"), Crater Lake / Mt. Mazama ($5700\text{ BC}$).</li>
+        <li><strong>VEI 8 (Mega-Colossal / Super-volcano, $>1000\text{ km}^3$ tephra):</strong> E.g., Toba Caldera ($74,000\text{ BP}$, Sumatra: $2800\text{ km}^3$ of magma evacuated, creating a $100 \times 30\text{ km}$ caldera and causing global volcanic winter), Yellowstone ($640,000\text{ BP}$).</li>
+        <li><strong>Resurgent Cauldrons (Smith & Bailey, 1968):</strong> Following collapse, magma pressure re-accumulates beneath the caldera floor, uplifting a central <em>resurgent dome</em> (e.g., Samosir Island in Lake Toba).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-purple">High-Yield Practice Questions & Worked Derivations (8 Problems)</div>
+    <div class="card-body">
+      <ul class="pq-list">
+        <li>
+          <strong>Practice Q1 (Numerical):</strong> A circular rhyolitic caldera has a diameter $D = 12.0\text{ km}$. Structural field mapping reveals that the caldera floor subsided by an average vertical displacement $\Delta z = 800\text{ m}$ during the eruption. Calculate the total volume of collapsed rock in cubic kilometers ($\text{km}^3$), which provides an estimate of the volume of magma evacuated from the chamber.
+          <div class="pq-ans">✔ Worked Answer: Evacuated volume $V \approx 90.5\text{ km}^3$.</div>
+          <div class="pq-exp">
+            <strong>Derivation:</strong><br>
+            Radius of caldera $R = D/2 = 6.0\text{ km}$.<br>
+            Surface area $A = \pi R^2 = \pi (6.0)^2 = 36\pi \approx 113.10\text{ km}^2$.<br>
+            Vertical collapse displacement $\Delta z = 800\text{ m} = 0.80\text{ km}$.<br>
+            $$V = A \times \Delta z = 113.10\text{ km}^2 \times 0.80\text{ km} \approx 90.48\text{ km}^3$$
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q2:</strong> What is the diagnostic structural fault type that accommodates the piston-like vertical collapse of a caldera roof?
+          <div class="pq-ans">✔ Correct Answer: Ring faults (ring fracture systems) dipping steeply outward or near-vertically.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Ring faults encircle the magma chamber roof, permitting the central piston of country rock to drop downward as a cohesive block into the magma chamber.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q3:</strong> What igneous rock body represents the crystallized root of a ring-fault system beneath an eroded ancient caldera?
+          <div class="pq-ans">✔ Correct Answer: A ring dyke (vertical to outward-dipping) or cone sheet (inward-dipping).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Magma forced up into the bounding ring fractures during caldera collapse crystallizes as cylindrical or arcuate ring dykes (classic in the British Tertiary Igneous Province, e.g., Ardnamurchan).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q4:</strong> What is the difference between a "Crater Lake-type" caldera and a "Hawaiian-type" caldera?
+          <div class="pq-ans">✔ Correct Answer: Crater Lake-type forms by violent, explosive pyroclastic super-eruptions of felsic magma; Hawaiian-type forms by non-explosive, passive drainage of fluid basalt.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Crater Lake (Mt. Mazama) erupted $50\text{ km}^3$ of pumice violently. Kilauea calderas subside gently when basalt drains into flank rift fissures.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q5:</strong> What is a "resurgent dome" within a caldera?
+          <div class="pq-ans">✔ Correct Answer: A structural uplift of the caldera floor caused by the post-collapse recharge and repressurization of the underlying magma chamber.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> In Smith & Bailey's caldera cycle (Stage 5), new magma enters the depleted chamber, arching the caldera floor upward into a prominent structural dome (e.g., Wizard Island in Crater Lake or Samosir in Lake Toba).
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q6:</strong> What volcanic deposits are found blanketing the surrounding landscape for tens of kilometers around an explosive caldera?
+          <div class="pq-ans">✔ Correct Answer: Thick sheets of welded pyroclastic flow deposits (ignimbrites) and pumice-fall tephra.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Pyroclastic density currents (PDCs) boiling over from ring fissures discharge dense, hot ash and pumice flows that weld into solid rhyolitic tuff.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q7:</strong> What is the world's largest Quaternary caldera, and where is it located?
+          <div class="pq-ans">✔ Correct Answer: Lake Toba Caldera in northern Sumatra, Indonesia ($100\text{ km} \times 30\text{ km}$).</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> Formed $\approx 74,000\text{ years ago}$ by the eruption of $2800\text{ km}^3$ of rhyolitic magma, creating a volcanic depression that now holds the largest volcanic lake on Earth.
+          </div>
+        </li>
+
+        <li>
+          <strong>Practice Q8:</strong> Why are ancient eroded calderas of prime importance in economic geology?
+          <div class="pq-ans">✔ Correct Answer: Ring fracture systems focus post-magmatic hydrothermal fluid circulation, forming rich epithermal gold, silver, and polymetallic vein deposits.</div>
+          <div class="pq-exp">
+            <strong>Explanation:</strong> The fractured caldera margin provides permeable conduits for boiling hydrothermal solutions, precipitating precious metals (e.g., the San Juan volcanic field, Colorado).
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>
