@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q117: Building Stones - Engineering Properties & Crushing Strength of Granite | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q117" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 117 • Engineering Geology & Building Stones</div>
+    <h1>Granite as a Dimension & Engineering Stone: Crushing Strength, Porosity, and Durability</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Engineering Properties of Building Stones • <strong>Key Concept:</strong> Interlocking Holocrystalline Texture &amp; Crushing Strength of Granite • <strong>Textbooks:</strong> K.M. Bangar (p. 296); IS: 3316 (1974); Parbin Singh
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: Petrological &amp; Engineering Properties of Granite</div>
+      <p><strong>Granite</strong> is an acid, plutonic (intrusive) igneous rock composed essentially of quartz ($20\%\text{--}40\%$), alkali feldspar (orthoclase/microcline), and sodic plagioclase, with minor biotite or hornblende. Because it crystallizes slowly at depth under high confining pressure, its mineral grains develop a tight, <strong>holocrystalline, equigranular interlocking (hypidiomorphic granular) texture</strong>. This microstructure gives granite <strong>very high crushing (compressive) strength</strong>, extremely low porosity, superior durability, and the ability to take a mirror-like polish:</p>
+      
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Engineering Property</th>
+              <th>Standard Value for Fresh Granite</th>
+              <th>Governing Mineralogical / Textural Cause</th>
+              <th>Evaluation of Exam Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fef2f2; font-weight:700;">
+              <td><strong>CRUSHING (COMPRESSIVE) STRENGTH</strong></td>
+              <td><strong>$1000\text{ to }2500\text{ kg/cm}^2$ ($100\text{--}250\text{ MPa}$)</strong></td>
+              <td><strong>Interlocking 3D framework of hard quartz (Mohs 7) and feldspar (Mohs 6) crystals</strong></td>
+              <td><strong>OPTION (A) IS TRUE: Very high crushing strength</strong></td>
+            </tr>
+            <tr>
+              <td>Polishing Quality</td>
+              <td>Takes an exquisite, durable mirror-like polish</td>
+              <td>Uniform high hardness ($H = 6\text{--}7$) and zero intergranular pore cavities</td>
+              <td>Option (B) ("takes poor polish") is FALSE</td>
+            </tr>
+            <tr>
+              <td>Porosity ($n$) &amp; Water Absorption</td>
+              <td>Extremely low porosity ($0.1\%\text{ to }0.8\%$); absorption $< 0.5\%$ by weight</td>
+              <td>Holocrystalline plutonic solidification leaves almost no void space</td>
+              <td>Option (C) ("highly porous rock") is FALSE</td>
+            </tr>
+            <tr>
+              <td>Weathering Resistance &amp; Durability</td>
+              <td>Exceptionally durable; resists frost, salt, and atmospheric decay for centuries</td>
+              <td>High quartz content (chemically inert) and minimal moisture ingress</td>
+              <td>Option (D) ("weathers out faster") is FALSE</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="quote-box">
+        "<strong>Granite</strong> is one of the strongest, hardest, and most durable of all building stones. Owing to its holocrystalline, interlocking granular texture and the predominance of hard minerals like quartz and feldspar, <strong>it possesses a very high crushing strength ranging from $1000\text{ to }2500\text{ kg/cm}^2$</strong> ($100\text{--}250\text{ MPa}$). Its porosity is less than $1\%$, it weathers extremely slowly, and it takes an excellent, lasting polish, making it ideal for bridge piers, dam foundations, heavy masonry, and decorative monumental work."
+        <div class="quote-author">&mdash; K.M. Bangar, <em>Principles of Engineering Geology</em> (Standard Publishers, Chapter 14: Building Stones, p. 296)</div>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-title">IS: 3316 (1974) Specifications for Structural Granite</div>
+        $$\text{Crushing Strength: } \sigma_c = \frac{F_{\max}}{A} \ge 1000\text{ kg/cm}^2 \text{ (100 MPa)} \quad \text{(Typical: } 130\text{--}220\text{ MPa)}$$
+        $$\text{Specific Gravity: } G = 2.63\text{ to }2.75 \quad \big|\quad \text{Water Absorption (24 hr)} < 0.50\%$$
+        <p style="font-size:0.88rem; color:#475569; margin-top:8px;">Fine-grained granites display even higher crushing strength ($180\text{--}250\text{ MPa}$) than coarse-grained pegmatitic varieties ($100\text{--}150\text{ MPa}$) in accordance with the Hall-Petch grain-size strengthening relationship ($\sigma_c \propto d^{-1/2}$).</p>
+      </div>
+
+      <div class="card-title" style="margin-top:22px;">2. Engineering Applications &amp; One Notable Limitation of Granite</div>
+      <ul style="margin-left:20px; line-height:1.8;">
+        <li><strong>Heavy Load-Bearing Structures:</strong> Bridge piers, abutments, lighthouses, sea walls, dockyards, and dam foundations where immense crushing loads and hydraulic abrasion act continuously.</li>
+        <li><strong>Dimension &amp; Monumental Facing Stone:</strong> Because feldspar and quartz take a brilliant, high-gloss polish and resist acid rain far better than marble or limestone, polished granite slabs are the premier architectural cladding material.</li>
+        <li><strong>Fire Resistance Limitation:</strong> The one engineering weakness of granite is <em>poor fire resistance</em>. Under intense fire ($> 573^\circ\text{C}$, the $\alpha \to \beta$ quartz inversion point), quartz undergoes a sudden $0.85\%$ volumetric expansion and differential thermal expansion relative to feldspar, causing granite blocks to crack, spall, and decrepitate when doused with water.</li>
+      </ul>
+
+      <div class="fig-box">
+        <img src="../../figures_2019_Q117/granite_crushing_strength_and_durability.png" alt="Engineering Properties of Granite: High Crushing Strength, Low Porosity, High Polish, Durability">
+        <div class="fig-cap">Figure 117.1: Petrological and geotechnical summary of granite, showing its interlocking quartz-feldspar-biotite crystal fabric, superior crushing strength ($100\text{--}250\text{ MPa}$), ultra-low porosity ($< 1\%$), and high resistance to weathering.</div>
+      </div>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">Official OPSC 2019 Question &amp; Forensic Option Analysis</div>
+      <div class="question-box">
+        <strong>Q117.</strong> Which of the following is true about granite ?<br>
+        (A) It has very high crushing strength<br>
+        (B) It takes poor polish<br>
+        (C) It is a highly porous rock<br>
+        (D) It weathers out faster
+      </div>
+
+      <div class="ans-banner">
+        <span>&#10004;</span> Verified Correct Answer: <strong>Option (A) &mdash; It has very high crushing strength</strong>
+      </div>
+
+      <div class="option-grid">
+        <div class="option correct">
+          <div class="opt-header">
+            <span class="opt-letter">A</span>
+            <span class="opt-title">It has very high crushing strength</span>
+            <span class="opt-badge">CORRECT ANSWER</span>
+          </div>
+          <div class="opt-body">
+            <strong>Forensic Verification:</strong> <strong>Granite possesses a very high crushing (unconfined compressive) strength</strong> of $1000\text{ to }2500\text{ kg/cm}^2$ ($100\text{--}250\text{ MPa}$). Its interlocking holocrystalline fabric of hard quartz ($H=7$) and feldspar ($H=6$) crystals resists intergranular slip and compressive rupture better than almost any sedimentary rock.
+          </div>
+        </div>
+
+        <div class="option wrong">
+          <div class="opt-header">
+            <span class="opt-letter">B</span>
+            <span class="opt-title">It takes poor polish</span>
+            <span class="opt-badge">INCORRECT</span>
+          </div>
+          <div class="opt-body">
+            <strong>Why this is wrong:</strong> Granite takes an <strong>excellent, mirror-like, long-lasting polish</strong> because of its dense, non-porous interlocking crystals of hard quartz and feldspar. That is why polished granite is used worldwide for countertops, monuments, and building facades.
+          </div>
+        </div>
+
+        <div class="option wrong">
+          <div class="opt-header">
+            <span class="opt-letter">C</span>
+            <span class="opt-title">It is a highly porous rock</span>
+            <span class="opt-badge">INCORRECT</span>
+          </div>
+          <div class="opt-body">
+            <strong>Why this is wrong:</strong> Fresh granite is an <strong>extremely compact, non-porous rock</strong> with total porosity typically under $0.5\%\text{ to }1\%$ and water absorption below $0.5\%$.
+          </div>
+        </div>
+
+        <div class="option wrong">
+          <div class="opt-header">
+            <span class="opt-letter">D</span>
+            <span class="opt-title">It weathers out faster</span>
+            <span class="opt-badge">INCORRECT</span>
+          </div>
+          <div class="opt-body">
+            <strong>Why this is wrong:</strong> Granite is rich in quartz (the most stable mineral on Goldich's weathering stability series) and K-feldspar, and has negligible porosity to admit water. Therefore, it <strong>weathers very slowly</strong> and exhibits outstanding durability.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">Synthesis: Engineering Comparison of Common Indian Building Stones</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Building Stone</th>
+              <th>Crushing Strength ($\text{kg/cm}^2$)</th>
+              <th>Porosity ($\%$)</th>
+              <th>Specific Gravity ($G$)</th>
+              <th>Best Civil Engineering Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Granite</strong></td><td><strong>$1000 - 2500$</strong></td><td><strong>$0.1 - 0.8\%$</strong></td><td><strong>$2.63 - 2.75$</strong></td><td><strong>Bridge piers, dams, sea walls, polished slabs, ballast</strong></td></tr>
+            <tr><td>Basalt &amp; Trap</td><td>$1500 - 3000$</td><td>$0.1 - 1.0\%$</td><td>$2.80 - 3.00$</td><td>Road metal (aggregate), railway ballast, paving setts</td></tr>
+            <tr><td>Sandstone</td><td>$350 - 1200$</td><td>$5.0 - 20.0\%$</td><td>$2.20 - 2.60$</td><td>General ashlar masonry, forts, carving, fire-resistant walls</td></tr>
+            <tr><td>Limestone</td><td>$400 - 1000$</td><td>$2.0 - 15.0\%$</td><td>$2.50 - 2.70$</td><td>Flooring, cement manufacture, general building blocks</td></tr>
+            <tr><td>Marble</td><td>$600 - 1200$</td><td>$0.5 - 2.0\%$</td><td>$2.65 - 2.85$</td><td>Ornamental interior carving, flooring, monumental work</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:24px;">High-Yield Practice Problems (8 Exam-Standard Questions)</div>
+      
+      <div class="pq-item">
+        <div class="pq-q">1. According to Indian Standards (IS: 1121), what is the minimum crushing strength required for a stone to be classified as a good structural building stone?</div>
+        <div class="pq-ans">Answer: At least $1000\text{ kg/cm}^2$ ($\approx 100\text{ MPa}$) for heavy-duty masonry; granite easily exceeds this ($1000\text{--}2500\text{ kg/cm}^2$).</div>
+        <div class="pq-exp">Granite, basalt, quartzite, and charnockite all surpass the $1000\text{ kg/cm}^2$ benchmark.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. Why do fine-grained granites possess higher crushing strength than coarse-grained (porphyritic or pegmatitic) granites?</div>
+        <div class="pq-ans">Answer: Smaller grain size restricts the initial length of Griffith microcracks along grain boundaries and cleavage planes ($\sigma_c \propto d^{-1/2}$).</div>
+        <div class="pq-exp">Fine, equigranular interlocking crystals distribute stress more uniformly and arrest microcrack propagation.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. Why does granite have poor fire resistance despite its high crushing strength?</div>
+        <div class="pq-ans">Answer: Quartz undergoes sudden volumetric expansion at $573^\circ\text{C}$ ($\alpha\text{-quartz} \to \beta\text{-quartz}$), and unequal thermal expansion of quartz and feldspar shatters the rock.</div>
+        <div class="pq-exp">Compact sandstone (with siliceous cement) has much better fire resistance than granite.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. What should be the maximum permissible water absorption (by weight after 24 hours immersion) for a first-class building stone like granite?</div>
+        <div class="pq-ans">Answer: Less than $0.5\%\text{ to }1\%$ for granite (and strictly never exceeding $5\%$ for any acceptable building stone).</div>
+        <div class="pq-exp">Low water absorption guarantees immunity against freeze-thaw frost wedging and salt crystallization damage.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. Why does polished granite retain its exterior gloss in urban atmospheres much longer than polished marble?</div>
+        <div class="pq-ans">Answer: Granite is composed of silicate minerals (quartz and feldspar, $H=6\text{--}7$) immune to weak acids, whereas marble is calcite ($\text{CaCO}_3, H=3$) which is etched by acidic rain ($\text{H}_2\text{SO}_4, \text{H}_2\text{CO}_3$).</div>
+        <div class="pq-exp">Silicate minerals resist both wind-blown quartz dust abrasion and urban acid rain dissolution.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. What causes dark brown or rusty stains on some inferior granite building blocks over time?</div>
+        <div class="pq-ans">Answer: Oxidation and hydration of accessory iron-bearing minerals such as pyrite ($\text{FeS}_2$) or abundant biotite/magnetite into limonite.</div>
+        <div class="pq-exp">Dimension granites must be free of pyrite nodules to prevent unsightly rust staining and sulphuric acid release.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. What is the typical specific gravity of granite and what does a lower value ($< 2.55$) indicate?</div>
+        <div class="pq-ans">Answer: Fresh granite has $G = 2.63\text{--}2.75$; a lower value indicates incipient kaolinization (weathering of feldspars) and micro-fracturing.</div>
+        <div class="pq-exp">Weathering alters dense feldspar ($G \approx 2.6$) into porous kaolinite clay ($G \approx 2.2\text{--}2.4$), reducing bulk density and strength.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. How are Rift and Grain utilized when quarrying massive granite?</div>
+        <div class="pq-ans">Answer: Rift (easiest splitting plane) and Grain (second easiest plane, perpendicular to rift) are microscopic fluid-inclusion microcrack alignments used by quarrymen to split rectangular granite blocks cleanly.</div>
+        <div class="pq-exp">Even though granite lacks sedimentary bedding, orthogonal rift, grain, and hardway planes allow clean dressing of blocks.</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>
