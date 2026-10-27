@@ -119,6 +119,20 @@ for q in questions:
       </div>
       <div class="module-body">
         {body_content}
+        <div class="bottom-module-nav">
+          <button class="nav-btn btn-prev-q" onclick="prevQuestion()" title="Previous Question (Left Arrow)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            ← Previous Question
+          </button>
+          <button class="nav-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to Top">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            ↑ Back to Top
+          </button>
+          <button class="nav-btn nav-btn-primary btn-next-q" onclick="nextQuestion()" title="Next Question (Right Arrow)">
+            Next Question →
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
     </article>
     '''
@@ -828,6 +842,25 @@ window.MathJax = {{
     .mobile-menu-btn {{ display: block; }}
     .raw-options, .options-grid {{ grid-template-columns: 1fr; }}
   }}
+  .bottom-module-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px dashed #e2e8f0;
+  }
+  @media (max-width: 600px) {
+    .bottom-module-nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bottom-module-nav button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 </style>
 </head>
 <body>
@@ -877,11 +910,11 @@ window.MathJax = {{
         </div>
       </div>
       <div class="navbar-actions">
-        <button class="nav-btn" onclick="prevQuestion()" title="Previous Question (Left Arrow)">
+        <button class="nav-btn btn-prev-q" id="prevBtn" onclick="prevQuestion()" title="Previous Question (Left Arrow)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
           Prev
         </button>
-        <button class="nav-btn" onclick="nextQuestion()" title="Next Question (Right Arrow)">
+        <button class="nav-btn btn-next-q" id="nextBtn" onclick="nextQuestion()" title="Next Question (Right Arrow)">
           Next
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
