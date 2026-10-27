@@ -12,15 +12,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script>
 window.MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  startup: {
+    typeset: false,
+    ready: () => {
+      MathJax.startup.defaultReady();
+      document.dispatchEvent(new CustomEvent('mathjax-ready'));
+      const active = document.querySelector('.question-module.visible');
+      if (active && window.typesetModule) {
+        window.typesetModule(active);
+      }
+    }
   },
-  svg: { fontCache: 'global' }
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  },
+  options: {
+    enableMenu: false,
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
 };
 </script>
 <script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
 
 <style>
@@ -337,8 +351,17 @@ window.MathJax = {
     margin-bottom: 32px;
     box-shadow: var(--shadow-sm);
     overflow: hidden;
+    content-visibility: hidden;
   }
-  .question-module.visible { display: block; }
+  .question-module.visible {
+    display: block;
+    content-visibility: visible;
+  }
+  body.view-all .question-module {
+    display: block !important;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
 
   .module-topbar {
     background: #f8fafc;
@@ -1991,14 +2014,14 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Alluvial Fan and Bajada Geomorphology" src="figures_2019_Q001/bangar_p25_alluvial_fans_bajada.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Alluvial Fan and Bajada Geomorphology" src="figures_2019_Q001/bangar_p25_alluvial_fans_bajada.png"/>
 <div class="tb-caption">
 <strong>Figure 1.1: Classic Piedmont Fan-Bajada Evolution (K.M. Bangar, p. 25).</strong> Schematic cross-section and planform illustrating how isolated mountain streams discharge debris at a mountain front, forming individual cone-shaped alluvial fans that progressively coalesce along strike into a continuous, compound piedmont bajada.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Alluvial Fan Depositional Model" src="figures_2019_Q001/boggs_fig8_2_alluvial_fan_bajada.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Alluvial Fan Depositional Model" src="figures_2019_Q001/boggs_fig8_2_alluvial_fan_bajada.png"/>
 <div class="tb-caption">
 <strong>Figure 1.2: Alluvial Fan Depositional Systems &amp; Sub-environments (Sam Boggs Jr., Fig. 8.2).</strong> Detailed architectural zonation depicting the Proximal Fan (fanhead trench, debris flows, boulder gravels), Mid-Fan (braided distributary channels, sheetflood sand lobes), and Distal Fan (fine sand and silt grading into terminal playa muds and evaporites).
         </div>
@@ -2293,14 +2316,14 @@ window.MathJax = {
 </ol>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Braided Stream Channels" src="figures_2019_Q002/bangar_p25_braided_stream_channels.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Braided Stream Channels" src="figures_2019_Q002/bangar_p25_braided_stream_channels.png"/>
 <div class="tb-caption">
 <strong>Figure 2.1: Interwoven Braided Channel Network (K.M. Bangar, p. 25).</strong> Plan view illustrating how river overloading causes mid-channel deposition of longitudinal and transverse gravel bars, forcing the flow to split into multiple interwoven branches.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Braided River Bar Types" src="figures_2019_Q002/boggs_fig8_6_braided_stream_bars.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Braided River Bar Types" src="figures_2019_Q002/boggs_fig8_6_braided_stream_bars.png"/>
 <div class="tb-caption">
 <strong>Figure 2.2: Bar Dynamics in Braided Rivers (Sam Boggs Jr., Fig. 8.6).</strong> Morphological evolution of longitudinal bars (coarse gravel nucleus growing downstream) and transverse bars (lobate sand bedforms migrating downstream with steep slip faces).
         </div>
@@ -2571,7 +2594,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar River Valleys Canyons Gorges" src="figures_2019_Q003/bangar_p24_river_valleys_canyons_gorges.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar River Valleys Canyons Gorges" src="figures_2019_Q003/bangar_p24_river_valleys_canyons_gorges.png"/>
 <div class="tb-caption">
 <strong>Figure 3.1: Morphological Evolution of River Valleys (K.M. Bangar, p. 24).</strong> Cross-sections illustrating (A) Youthful narrow V-shaped valley, (B) Gorge and vertical-walled Canyon formed where downcutting outpaces slope retreat, and (C) Mature broad-bottomed valley with floodplain.
         </div>
@@ -2859,7 +2882,7 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Drainage Patterns Trellis Dendritic" src="figures_2019_Q004/bangar_p27_trellis_drainage_pattern.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Drainage Patterns Trellis Dendritic" src="figures_2019_Q004/bangar_p27_trellis_drainage_pattern.png"/>
 <div class="tb-caption">
 <strong>Figure 4.1: Canonical Drainage Patterns (K.M. Bangar, p. 27).</strong> Comparative diagrams showing (A) Dendritic (isotropic flat-lying rocks), (B) Trellis (folded alternating strata with right-angle tributary junctions), (C) Radial (dome or volcanic cone), (D) Rectangular (joint-controlled orthogonal network), and (E) Annular (eroded dome).
         </div>
@@ -3161,14 +3184,14 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Marine Transgression and Eustatic Base Level Changes" src="figures_2019_Q005/bangar_p33_marine_transgression_eustasy.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Marine Transgression and Eustatic Base Level Changes" src="figures_2019_Q005/bangar_p33_marine_transgression_eustasy.png"/>
 <div class="tb-caption">
 <strong>Figure 5.1: Marine Transgression, Regression &amp; Eustasy (K.M. Bangar, p. 33).</strong> Stratigraphic architecture of onlapping marine transgressive sequences and offlapping regressive sequences produced by eustatic sea-level fluctuations.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Global Phanerozoic Eustatic Sea Level Curve" src="figures_2019_Q005/boggs_fig12_8_eustatic_sea_level_curve.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Global Phanerozoic Eustatic Sea Level Curve" src="figures_2019_Q005/boggs_fig12_8_eustatic_sea_level_curve.png"/>
 <div class="tb-caption">
 <strong>Figure 5.2: Global Eustatic Cycles Across Geological Time (Sam Boggs Jr., Fig. 12.8).</strong> The Exxon/Vail-Haq global eustatic curve displaying first-, second-, and third-order sea-level fluctuations throughout the Phanerozoic Eon.
         </div>
@@ -3448,7 +3471,7 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Glacial Erosion U-Shaped Valleys and Fiords" src="figures_2019_Q006/bangar_p31_glacial_fiords_u_valleys.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Glacial Erosion U-Shaped Valleys and Fiords" src="figures_2019_Q006/bangar_p31_glacial_fiords_u_valleys.png"/>
 <div class="tb-caption">
 <strong>Figure 6.1: Evolution of Glacial Troughs and Fiords (K.M. Bangar, p. 31).</strong> Progressive stages depicting (A) Pre-glacial fluvial V-shaped valley, (B) Maximum glaciation with deep ice scour and overdeepening below sea level, and (C) Post-glacial drowned fiord with hanging valleys, steep rock cliffs, and a shallow seaward bedrock sill.
         </div>
@@ -3710,14 +3733,14 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Wind Transport Saltation Sand Dunes" src="figures_2019_Q007/bangar_p23_wind_transport_sand_dunes.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Wind Transport Saltation Sand Dunes" src="figures_2019_Q007/bangar_p23_wind_transport_sand_dunes.png"/>
 <div class="tb-caption">
 <strong>Figure 7.1: Aeolian Transport Dynamics &amp; Sand Dunes (K.M. Bangar, p. 23).</strong> Mechanics of wind transportation showing surface creep, saltation of medium sand, and suspension of dust, along with the morphology of transverse and barchan sand dunes.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Eolian Dune Types and Sorting" src="figures_2019_Q007/boggs_fig8_17_eolian_dune_types.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Eolian Dune Types and Sorting" src="figures_2019_Q007/boggs_fig8_17_eolian_dune_types.png"/>
 <div class="tb-caption">
 <strong>Figure 7.2: Classification of Aeolian Dunes &amp; Granulometric Sorting (Sam Boggs Jr., Fig. 8.17).</strong> Relationship between wind regime, sand supply, and dune morphology (Barchan, Transverse, Longitudinal/Seif, Parabolic, and Star dunes).
         </div>
@@ -4004,7 +4027,7 @@ window.MathJax = {
       </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Drainage Density Basin Morphometry" src="figures_2019_Q008/bangar_p27_drainage_density_basin_morphometry.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Drainage Density Basin Morphometry" src="figures_2019_Q008/bangar_p27_drainage_density_basin_morphometry.png"/>
 <div class="tb-caption">
 <strong>Figure 8.1: Basin Morphometry &amp; Horton Stream Ordering (K.M. Bangar, p. 27).</strong> Quantitative stream network delineation illustrating Strahler/Horton stream ordering, drainage basin boundary ($A$), and cumulative channel length calculation ($\sum L$) for determining drainage density.
         </div>
@@ -4310,14 +4333,14 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Types of Glacial Moraines" src="figures_2019_Q009/bangar_p32_glacial_moraines_till.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Types of Glacial Moraines" src="figures_2019_Q009/bangar_p32_glacial_moraines_till.png"/>
 <div class="tb-caption">
 <strong>Figure 9.1: Morphogenetic Classification of Glacial Moraines (K.M. Bangar, p. 32).</strong> Perspective view of an alpine valley glacier showing lateral moraines along valley sides, a medial moraine at glacial junction, and terminal/end moraines dumped at the melting snout.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Glacial Depositional Systems and Moraines" src="figures_2019_Q009/boggs_fig8_32_glacial_moraine_deposits.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Glacial Depositional Systems and Moraines" src="figures_2019_Q009/boggs_fig8_32_glacial_moraine_deposits.png"/>
 <div class="tb-caption">
 <strong>Figure 9.2: Glacial Depositional Environments &amp; Sedimentary Architecture (Sam Boggs Jr., Fig. 8.32).</strong> Cross-sectional model illustrating lodgement till, ablation till, moraine ridges, outwash plains (sandurs), and kettle lakes.
         </div>
@@ -4615,7 +4638,7 @@ window.MathJax = {
 </ol>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Karst Topography Limestone Caves" src="figures_2019_Q010/bangar_p38_karst_topography_limestone.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Karst Topography Limestone Caves" src="figures_2019_Q010/bangar_p38_karst_topography_limestone.png"/>
 <div class="tb-caption">
 <strong>Figure 10.1: Anatomy of Karst Topography in Limestone (K.M. Bangar, p. 38).</strong> Schematic cross-section showing surface sinkholes (dolines), swallow holes (ponors), blind valleys, solution caverns, stalactites, stalagmites, columns, and emerging resurgences.
         </div>
@@ -4886,14 +4909,14 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Wind Transport and Sand Dunes" src="figures_2019_Q011/bangar_fig2_3_2_4_wind_transport.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Wind Transport and Sand Dunes" src="figures_2019_Q011/bangar_fig2_3_2_4_wind_transport.png"/>
 <div class="tb-caption">
 <strong>Figure 11.1: Mechanics of Barchan Dune Migration (K.M. Bangar, p. 23).</strong> Plan and cross-sectional views of a barchan dune illustrating the gentle windward stoss slope ($10^\circ - 15^\circ$), the steep lee slip-face ($32^\circ - 34^\circ$ angle of repose), and the two horns pointing downwind along the transverse crest axis.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Classification of Aeolian Dunes" src="figures_2019_Q011/boggs_fig8_17_barchan_transverse_dunes.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Classification of Aeolian Dunes" src="figures_2019_Q011/boggs_fig8_17_barchan_transverse_dunes.png"/>
 <div class="tb-caption">
 <strong>Figure 11.2: Global Aeolian Dune Classification (Sam Boggs Jr., Fig. 8.17).</strong> Relationship between wind variability, sand supply, and dune morphology, contrasting transverse/barchan dunes (unidirectional wind) with longitudinal seif dunes and multi-directional star dunes.
         </div>
@@ -5154,14 +5177,14 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Eskers and Fluvioglacial Deposits" src="figures_2019_Q012/bangar_p32_esker_glaciofluvial.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Eskers and Fluvioglacial Deposits" src="figures_2019_Q012/bangar_p32_esker_glaciofluvial.png"/>
 <div class="tb-caption">
 <strong>Figure 12.1: Esker Formation and Glaciofluvial Deposition (K.M. Bangar, p. 32).</strong> Block diagram illustrating a subglacial meltwater river flowing through an ice tunnel beneath stagnant ice, depositing stratified gravels that become a sinuous esker ridge upon ice retreat.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Glaciofluvial Subglacial Depositional Systems" src="figures_2019_Q012/boggs_fig8_32_esker_subglacial_tunnel.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Glaciofluvial Subglacial Depositional Systems" src="figures_2019_Q012/boggs_fig8_32_esker_subglacial_tunnel.png"/>
 <div class="tb-caption">
 <strong>Figure 12.2: Glaciofluvial Landform Assemblage (Sam Boggs Jr., Fig. 8.32).</strong> Comparative spatial distribution of subglacial eskers, ice-marginal kames, proglacial outwash plains (sandurs), and kettle lakes.
         </div>
@@ -5415,7 +5438,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Stalactites Stalagmites Solution Activity" src="figures_2019_Q013/bangar_p38_stalactite_stalagmite_solution.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Stalactites Stalagmites Solution Activity" src="figures_2019_Q013/bangar_p38_stalactite_stalagmite_solution.png"/>
 <div class="tb-caption">
 <strong>Figure 13.1: Solution Activity &amp; Speleothem Architecture (K.M. Bangar, p. 38).</strong> Cross-section of a karst cavern depicting joint enlargement by solution activity, dripping vadose water, hollow cylindrical stalactites hanging from the ceiling, solid massive stalagmites growing from the floor, and coalesced columns.
         </div>
@@ -5671,14 +5694,14 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Verbatim Definition of Mass Wasting and Landslides" src="figures_2019_Q014/bangar_p378_mass_wasting_gravity.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Verbatim Definition of Mass Wasting and Landslides" src="figures_2019_Q014/bangar_p378_mass_wasting_gravity.png"/>
 <div class="tb-caption">
 <strong>Figure 14.1: Landslide and Mass Movement Dynamics (K.M. Bangar, p. 378).</strong> Photographic scan illustrating classical landslide shear failure, rotational slumping along curved shear planes, and rock block glides driven by gravitational shear stress.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Gravitational Resolution of Forces on a Slope" src="figures_2019_Q014/mass_wasting_gravity_shear_plane.png"/>
+<img loading="lazy" decoding="async" alt="Gravitational Resolution of Forces on a Slope" src="figures_2019_Q014/mass_wasting_gravity_shear_plane.png"/>
 <div class="tb-caption">
 <strong>Figure 14.2: Gravitational Force Vector Decomposition.</strong> Resolution of the vertical gravitational body weight vector ($W = mg$) into a downslope driving shear component ($T = W \sin \alpha$) and a perpendicular normal component ($N = W \cos \alpha$).
         </div>
@@ -5961,7 +5984,7 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Dendritic and Trellis Drainage Patterns" src="figures_2019_Q015/bangar_p27_dendritic_trellis_drainage.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Dendritic and Trellis Drainage Patterns" src="figures_2019_Q015/bangar_p27_dendritic_trellis_drainage.png"/>
 <div class="tb-caption">
 <strong>Figure 15.1: Contrast in Drainage Network Symmetry (K.M. Bangar, p. 27).</strong> (A) Dendritic drainage pattern characterized by tree-like branching on structurally isotropic flat-lying rocks, contrasted with (B) Trellis drainage developed along strike and dip on folded strata.
         </div>
@@ -6219,7 +6242,7 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Volcanic Caldera and Crater" src="figures_2019_Q016/bangar_p15_caldera_crater_volcano.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Volcanic Caldera and Crater" src="figures_2019_Q016/bangar_p15_caldera_crater_volcano.png"/>
 <div class="tb-caption">
 <strong>Figure 16.1: Evolution of a Collapse Caldera (K.M. Bangar, p. 15).</strong> Sequential cross-sections showing (A) Composite cone with shallow magma chamber, (B) Massive explosive pyroclastic eruption evacuating the magma chamber, (C) Catastrophic roof collapse along ring faults forming a vast caldera, and (D) Post-caldera resurgent dome and crater lake.
         </div>
@@ -6481,7 +6504,7 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Fault Rocks Gouge Breccia Brittle" src="figures_2019_Q017/bangar_p115_fault_breccia_gouge_brittle.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Fault Rocks Gouge Breccia Brittle" src="figures_2019_Q017/bangar_p115_fault_breccia_gouge_brittle.png"/>
 <div class="tb-caption">
 <strong>Figure 17.1: Fault Rocks and Brittle Cataclasis (K.M. Bangar, p. 115).</strong> Thin-section and outcrop sketches illustrating the progressive mechanical pulverization of rock into angular fault breccia and ultrafine fault gouge (rock flour) along brittle slip surfaces.
         </div>
@@ -6740,7 +6763,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Fault Terminology Hade Dip Throw Heave" src="figures_2019_Q018/bangar_p110_fault_elements_hade_dip.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Fault Terminology Hade Dip Throw Heave" src="figures_2019_Q018/bangar_p110_fault_elements_hade_dip.png"/>
 <div class="tb-caption">
 <strong>Figure 18.1: Geometric Elements of a Fault (K.M. Bangar, p. 110).</strong> Three-dimensional block diagram illustrating fault strike, dip angle ($\delta$ from horizontal), hade angle ($	heta_h$ from vertical), hanging wall, footwall, throw, and heave.
         </div>
@@ -6998,14 +7021,14 @@ window.MathJax = {
       </div>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Normal and Reverse Faults" src="figures_2019_Q019/bangar_fig7_24_normal_fault_hanging_wall.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Normal and Reverse Faults" src="figures_2019_Q019/bangar_fig7_24_normal_fault_hanging_wall.png"/>
 <div class="tb-caption">
 <strong>Figure 19.1: Normal vs. Reverse Fault Geometry (K.M. Bangar, Fig. 7.24).</strong> (A) Normal fault showing hanging wall downthrown along an inclined fault plane under extensional stress, resulting in crustal lengthening and missing stratigraphy, contrasted with (B) Reverse fault.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Haakon Fossen Andersonian Fault Regimes" src="figures_2019_Q019/fossen_fig9_2_normal_fault_regime.png"/>
+<img loading="lazy" decoding="async" alt="Haakon Fossen Andersonian Fault Regimes" src="figures_2019_Q019/fossen_fig9_2_normal_fault_regime.png"/>
 <div class="tb-caption">
 <strong>Figure 19.2: Anderson's Three Tectonic Stress Regimes (Haakon Fossen, Fig. 9.2).</strong> Normal faulting regime where $\sigma_1$ is vertical and $\sigma_3$ is horizontal, generating conjugate normal faults dipping at $pprox 60^\circ$ and accommodating horizontal crustal extension.
         </div>
@@ -7266,14 +7289,14 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE 1 -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Fold Hinge Axial Plane Axis" src="figures_2019_Q020/bangar_fig7_5_fold_axis_hinge.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Fold Hinge Axial Plane Axis" src="figures_2019_Q020/bangar_fig7_5_fold_axis_hinge.png"/>
 <div class="tb-caption">
 <strong>Figure 20.1: Anatomical Elements of a Fold (K.M. Bangar, Fig. 7.5).</strong> Schematic block diagram illustrating the hinge line (maximum curvature), the parallel fold axis, the axial surface connecting hinges of successive layers, crest, trough, and limbs.
         </div>
 </div>
 <!-- TEXTBOOK IMAGE 2 -->
 <div class="tb-figure">
-<img alt="Haakon Fossen Fold Hinge Anatomy" src="figures_2019_Q020/fossen_fig12_1_fold_hinge_anatomy.png"/>
+<img loading="lazy" decoding="async" alt="Haakon Fossen Fold Hinge Anatomy" src="figures_2019_Q020/fossen_fig12_1_fold_hinge_anatomy.png"/>
 <div class="tb-caption">
 <strong>Figure 20.2: Modern Geometric Fold Terminology (Haakon Fossen, Fig. 12.1).</strong> Rigorous distinction between the hinge zone (region of high curvature), the hinge line, the axial surface, and inflection lines separating concave and convex domains.
         </div>
@@ -7532,7 +7555,7 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Recumbent Fold Horizontal Axial Plane" src="figures_2019_Q021/bangar_p98_recumbent_fold_axial_plane.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Recumbent Fold Horizontal Axial Plane" src="figures_2019_Q021/bangar_p98_recumbent_fold_axial_plane.png"/>
 <div class="tb-caption">
 <strong>Figure 21.1: Architecture of a Recumbent Fold (K.M. Bangar, p. 98).</strong> Cross-section illustrating a horizontal axial plane ($	ext{Dip } pprox 0^\circ$), horizontal hinge line, normal upper limb, and inverted lower limb leading to nappe formation.
         </div>
@@ -7786,7 +7809,7 @@ window.MathJax = {
 </ul>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Sam Boggs Jr Four Types of Unconformities" src="figures_2019_Q022/boggs_fig12_5_unconformities_blended.png"/>
+<img loading="lazy" decoding="async" alt="Sam Boggs Jr Four Types of Unconformities" src="figures_2019_Q022/boggs_fig12_5_unconformities_blended.png"/>
 <div class="tb-caption">
 <strong>Figure 22.1: Types of Unconformities in Stratigraphic Analysis (Sam Boggs Jr., Fig. 12.5).</strong> Diagrammatic cross-sections illustrating (A) Angular unconformity, (B) Disconformity, (C) Nonconformity, and (D) Paraconformity, alongside the blended paleosol-residual soil contact.
         </div>
@@ -8045,7 +8068,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Cleavage Foliation and Intersection Lineation" src="figures_2019_Q023/bangar_p125_cleavage_foliation_lineation.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Cleavage Foliation and Intersection Lineation" src="figures_2019_Q023/bangar_p125_cleavage_foliation_lineation.png"/>
 <div class="tb-caption">
 <strong>Figure 23.1: Intersection Lineation Anatomy (K.M. Bangar, p. 125).</strong> Hand specimen and outcrop block diagram showing sedimentary bedding ($S_0$) intersected by axial-planar slaty cleavage ($S_1$), creating prominent $L_0 	imes S_1$ pencil cleavage and parallel intersection lineation.
         </div>
@@ -8298,7 +8321,7 @@ window.MathJax = {
       </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Haakon Fossen High Angle vs Low Angle Fault Classification" src="figures_2019_Q024/fossen_fig9_2_high_angle_vs_low_angle_faults.png"/>
+<img loading="lazy" decoding="async" alt="Haakon Fossen High Angle vs Low Angle Fault Classification" src="figures_2019_Q024/fossen_fig9_2_high_angle_vs_low_angle_faults.png"/>
 <div class="tb-caption">
 <strong>Figure 24.1: Fault Classification by Dip Angle (Haakon Fossen, Fig. 9.2).</strong> Dip spectra showing high-angle faults ($	ext{Dip} &gt; 45^\circ$, typically Andersonian normal faults dipping at $pprox 60^\circ$) versus low-angle faults ($	ext{Dip} \le 45^\circ$, typically thrust faults dipping at $pprox 30^\circ$ and detachment faults).
         </div>
@@ -8552,7 +8575,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Van der Pluijm &amp; Marshak Box Folds with Two Axial Surfaces" src="figures_2019_Q025/vdp_p259_box_fold_conjugate_hinges.png"/>
+<img loading="lazy" decoding="async" alt="Van der Pluijm &amp; Marshak Box Folds with Two Axial Surfaces" src="figures_2019_Q025/vdp_p259_box_fold_conjugate_hinges.png"/>
 <div class="tb-caption">
 <strong>Figure 25.1: Conjugate and Box Fold Morphology (Van der Pluijm &amp; Marshak, p. 259).</strong> Cross-sectional profile of a box fold illustrating two distinct hinge lines, two intersecting conjugate axial surfaces, and a flat crestal plateau between steeply dipping limbs.
         </div>
@@ -8823,7 +8846,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Fig 7.11 Close and Disharmonic Folds" src="figures_2019_Q026/bangar_fig7_11_close_fold_thickened_crests.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Fig 7.11 Close and Disharmonic Folds" src="figures_2019_Q026/bangar_fig7_11_close_fold_thickened_crests.png"/>
 <div class="tb-caption">
 <strong>Figure 26.1: Close &amp; Disharmonic Fold Mechanics (K.M. Bangar, p. 114).</strong> Cross section showing plastic flow of incompetent strata into anticlinal crests and synclinal troughs, producing limb thinning and hinge thickening under intense lateral compressive stress.
         </div>
@@ -9101,7 +9124,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Fig 7.49 Inlier and Outlier in Horizontal and Folded Rocks" src="figures_2019_Q027/bangar_fig7_49_inlier_outlier.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Fig 7.49 Inlier and Outlier in Horizontal and Folded Rocks" src="figures_2019_Q027/bangar_fig7_49_inlier_outlier.png"/>
 <div class="tb-caption">
 <strong>Figure 27.1: Outlier and Inlier Geometries (K.M. Bangar, p. 124).</strong> (a) Formed in horizontal strata by river incision (inlier in valley floor; outlier on isolated mesa). (b) Formed in folded strata (inlier along eroded anticlinal crest; outlier in synclinal summit).
         </div>
@@ -9372,7 +9395,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Figs 7.30 &amp; 7.31 Horst and Graben Block Diagrams" src="figures_2019_Q028/bangar_fig7_30_31_graben_horst.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Figs 7.30 &amp; 7.31 Horst and Graben Block Diagrams" src="figures_2019_Q028/bangar_fig7_30_31_graben_horst.png"/>
 <div class="tb-caption">
 <strong>Figure 28.1: Horst and Graben Structural Architecture (K.M. Bangar, p. 119).</strong> Block diagrams illustrating: (Top) Graben / rift valley formed by downthrow of central block along inward-dipping conjugate normal faults; (Bottom) Horst block formed by relative uplift of central block along outward-dipping normal faults.
         </div>
@@ -9646,7 +9669,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Sheet Joints in Granite Exposures" src="figures_2019_Q029/bangar_p123_sheet_joints_granite.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Sheet Joints in Granite Exposures" src="figures_2019_Q029/bangar_p123_sheet_joints_granite.png"/>
 <div class="tb-caption">
 <strong>Figure 29.1: Sheet Jointing in Granite (K.M. Bangar, p. 123).</strong> Curviplanar sheet joints developed parallel to ground surface in massive granite due to erosional unburdening and release of lithostatic confining pressure.
         </div>
@@ -9913,7 +9936,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Fig 7.8 Plunging Fold Axis Geometry" src="figures_2019_Q030/bangar_fig7_8_plunging_fold_axis.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Fig 7.8 Plunging Fold Axis Geometry" src="figures_2019_Q030/bangar_fig7_8_plunging_fold_axis.png"/>
 <div class="tb-caption">
 <strong>Figure 30.1: Geometry of a Plunging Fold (K.M. Bangar, p. 113).</strong> Block diagram illustrating fold axis inclined at an angle of plunge ($eta$) to the horizontal plane, direction of plunge, axial plane, and converging limb traces.
         </div>
@@ -10199,7 +10222,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Van der Pluijm &amp; Marshak Fig 21.21 Breakup of Pangea into Laurasia and Gondwanaland" src="figures_2019_Q031/vdp_fig21_21_laurasia_gondwanaland_tethys.png"/>
+<img loading="lazy" decoding="async" alt="Van der Pluijm &amp; Marshak Fig 21.21 Breakup of Pangea into Laurasia and Gondwanaland" src="figures_2019_Q031/vdp_fig21_21_laurasia_gondwanaland_tethys.png"/>
 <div class="tb-caption">
 <strong>Figure 31.1: Breakup of Pangea across the Tethys Ocean (Van der Pluijm &amp; Marshak, p. 580).</strong> Paleogeographic reconstruction illustrating the initial Triassic-Jurassic splitting of Pangea into northern Laurasia and southern Gondwanaland, separated by the equatorial Tethys Sea.
         </div>
@@ -10464,7 +10487,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Van der Pluijm &amp; Marshak Divergent Boundaries and Mid-Ocean Ridges" src="figures_2019_Q032/vdp_fig14_14_plate_boundaries_divergent_mid_ocean_ridge.png"/>
+<img loading="lazy" decoding="async" alt="Van der Pluijm &amp; Marshak Divergent Boundaries and Mid-Ocean Ridges" src="figures_2019_Q032/vdp_fig14_14_plate_boundaries_divergent_mid_ocean_ridge.png"/>
 <div class="tb-caption">
 <strong>Figure 32.1: Divergent Plate Boundaries &amp; Convective Heat Venting (Van der Pluijm &amp; Marshak, p. 438).</strong> Schematic cross section of an oceanic spreading ridge showing upwelling mantle convection cell, asthenospheric decompression melting, magma chamber beneath the axial rift, and hydrothermal fluid circulation.
         </div>
@@ -10743,7 +10766,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Winter Fig 3 PREM Seismic Velocity Profile Moho" src="figures_2019_Q033/winter_fig3_moho_crust_mantle_velocity_jump.png"/>
+<img loading="lazy" decoding="async" alt="Winter Fig 3 PREM Seismic Velocity Profile Moho" src="figures_2019_Q033/winter_fig3_moho_crust_mantle_velocity_jump.png"/>
 <div class="tb-caption">
 <strong>Figure 33.1: PREM Radial Velocity Profile &amp; Major Seismic Discontinuities (Winter, Ch. 1, p. 3).</strong> Radial distribution of $V_p$ and $V_s$ through the Earth, showing the sharp step-increase in velocity at the Mohorovicic discontinuity separating the Crust from the Mantle.
         </div>
@@ -11016,7 +11039,7 @@ window.MathJax = {
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Winter Fig 3 Low Velocity Zone and Asthenosphere in Upper Mantle" src="figures_2019_Q034/winter_fig3_asthenosphere_low_velocity_zone.png"/>
+<img loading="lazy" decoding="async" alt="Winter Fig 3 Low Velocity Zone and Asthenosphere in Upper Mantle" src="figures_2019_Q034/winter_fig3_asthenosphere_low_velocity_zone.png"/>
 <div class="tb-caption">
 <strong>Figure 34.1: The Asthenosphere within the Upper Mantle (Winter, Ch. 1, p. 3).</strong> Radial seismic velocity profile highlighting the Low Velocity Zone (LVZ) located between $100$ and $250	ext{ km}$ depth in the upper mantle directly beneath the lithosphere.
         </div>
@@ -11293,7 +11316,7 @@ ho pprox +4.3	ext{ g/cm}^3$).</p>
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Winter Fig 3 PREM Earth Radial Density Profile Core" src="figures_2019_Q035/winter_fig3_earth_density_profile_core.png"/>
+<img loading="lazy" decoding="async" alt="Winter Fig 3 PREM Earth Radial Density Profile Core" src="figures_2019_Q035/winter_fig3_earth_density_profile_core.png"/>
 <div class="tb-caption">
 <strong>Figure 35.1: Radial Density Profile of the Earth (Winter, Ch. 1, p. 3).</strong> Preliminary Reference Earth Model (PREM) plot illustrating the sudden density leap across the Gutenberg discontinuity into the outer core ($9.9 - 12.2	ext{ g/cm}^3$, averaging $10.7	ext{ g/cm}^3$).
         </div>
@@ -11589,7 +11612,7 @@ ho pprox +4.3	ext{ g/cm}^3$).</p>
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Spheroidal Weathering and Exfoliation in Massive Rocks" src="figures_2019_Q036/bangar_p20_exfoliation_weathering_massive_rocks.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Spheroidal Weathering and Exfoliation in Massive Rocks" src="figures_2019_Q036/bangar_p20_exfoliation_weathering_massive_rocks.png"/>
 <div class="tb-caption">
 <strong>Figure 36.1: Exfoliation &amp; Spheroidal Spalling in Massive Rocks (K.M. Bangar, p. 20).</strong> Concentric curved shells peeling away from core-stones in massive granite due to combined diurnal thermal stresses and chemical hydration expansion.
         </div>
@@ -11850,7 +11873,7 @@ ho pprox +4.3	ext{ g/cm}^3$).</p>
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Pelean Volcano and Nuée Ardente" src="figures_2019_Q037/bangar_p49_pelean_volcano_types.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Pelean Volcano and Nuée Ardente" src="figures_2019_Q037/bangar_p49_pelean_volcano_types.png"/>
 <div class="tb-caption">
 <strong>Figure 37.1: Pelean Type Volcano &amp; Catastrophic Nuée Ardente (K.M. Bangar, p. 49).</strong> Explosive lateral blast blowing out the flank of a volcanic dome, generating a glowing incandescent cloud (nuée ardente) and extruded solid spine.
         </div>
@@ -12141,7 +12164,7 @@ ho pprox +4.3	ext{ g/cm}^3$).</p>
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Composite Cone Stratovolcano Cross Section" src="figures_2019_Q038/bangar_p48_composite_stratovolcano.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Composite Cone Stratovolcano Cross Section" src="figures_2019_Q038/bangar_p48_composite_stratovolcano.png"/>
 <div class="tb-caption">
 <strong>Figure 38.1: Internal Architecture of a Composite Cone / Stratovolcano (K.M. Bangar, p. 48).</strong> Cross-sectional anatomy showing alternating strata of pyroclastic cinders/ash and solidified lava flows fed by a central conduit and radiating feeder dykes.
         </div>
@@ -12422,7 +12445,7 @@ ho pprox +4.3	ext{ g/cm}^3$).</p>
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Fig 1.7 Airy's Theory of Isostasy Roots" src="figures_2019_Q039/bangar_fig1_7_airy_isostasy_crustal_roots.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Fig 1.7 Airy's Theory of Isostasy Roots" src="figures_2019_Q039/bangar_fig1_7_airy_isostasy_crustal_roots.png"/>
 <div class="tb-caption">
 <strong>Figure 39.1: Airy's Model of Isostasy (K.M. Bangar, p. 32).</strong> Light crustal blocks of uniform density ($
 ho_c$) floating in a denser substratum ($
@@ -12689,7 +12712,7 @@ ho_m g)^{1/4}$).</div>
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Van der Pluijm &amp; Marshak Passive Continental Margin Profile" src="figures_2019_Q040/vdp_p437_atlantic_passive_continental_margin.png"/>
+<img loading="lazy" decoding="async" alt="Van der Pluijm &amp; Marshak Passive Continental Margin Profile" src="figures_2019_Q040/vdp_p437_atlantic_passive_continental_margin.png"/>
 <div class="tb-caption">
 <strong>Figure 40.1: Architecture of the Atlantic Passive Continental Margin (Van der Pluijm &amp; Marshak, p. 437).</strong> Cross-sectional profile from continental shelf across continental slope and rise to the abyssal plain, showing thick Mesozoic-Cenozoic post-rift sedimentary wedges over stretched crust.
         </div>
@@ -12964,7 +12987,7 @@ ho_{	ext{asthen}}$). Eventually, gravitational instability may cause old Atlanti
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Ocean Floor Depth Zones Shelf Slope Abyssal" src="figures_2019_Q041/bangar_p35_ocean_depth_zones_shelf_abyssal.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Ocean Floor Depth Zones Shelf Slope Abyssal" src="figures_2019_Q041/bangar_p35_ocean_depth_zones_shelf_abyssal.png"/>
 <div class="tb-caption">
 <strong>Figure 41.1: Ocean Basin Depth Zones &amp; Hypsometric Distribution (K.M. Bangar, p. 35).</strong> Hypsographic curve of the Earth illustrating the bimodal distribution of elevations: continental platform ($+840	ext{ m}$) and oceanic abyssal realm (averaging $3,729	ext{ m}$).
         </div>
@@ -13270,7 +13293,7 @@ ho_{	ext{asthen}}$). Eventually, gravitational instability may cause old Atlanti
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Van der Pluijm &amp; Marshak Paleomagnetic Reversals and Seafloor Magnetic Stripes" src="figures_2019_Q042/vdp_p445_paleomagnetic_pole_reversals_stripes.png"/>
+<img loading="lazy" decoding="async" alt="Van der Pluijm &amp; Marshak Paleomagnetic Reversals and Seafloor Magnetic Stripes" src="figures_2019_Q042/vdp_p445_paleomagnetic_pole_reversals_stripes.png"/>
 <div class="tb-caption">
 <strong>Figure 42.1: Geomagnetic Field Reversals &amp; Seafloor Magnetic Anomalies (Van der Pluijm &amp; Marshak, p. 445).</strong> Symmetrical marine magnetic stripes across mid-ocean ridges recording historical geomagnetic pole reversals (Brunhes, Matuyama, Gauss, Gilbert).
         </div>
@@ -13535,7 +13558,7 @@ ho_{	ext{asthen}}$). Eventually, gravitational instability may cause old Atlanti
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="K.M. Bangar Ocean Floor Features Guyots and Seamounts" src="figures_2019_Q043/bangar_p36_seamounts_guyots_trenches.png"/>
+<img loading="lazy" decoding="async" alt="K.M. Bangar Ocean Floor Features Guyots and Seamounts" src="figures_2019_Q043/bangar_p36_seamounts_guyots_trenches.png"/>
 <div class="tb-caption">
 <strong>Figure 43.1: Seamounts, Guyots &amp; Ocean Basin Topography (K.M. Bangar, p. 36).</strong> Cross section illustrating conical seamounts and wave-beveled flat-topped guyots submerged beneath ocean water due to lithospheric thermal subsidence.
         </div>
@@ -13809,7 +13832,7 @@ ho_{	ext{asthen}}$). Eventually, gravitational instability may cause old Atlanti
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Global Map of Deep Sea Trenches Circum Pacific Belt" src="figures_2019_Q044/global_circum_pacific_trenches_map.png"/>
+<img loading="lazy" decoding="async" alt="Global Map of Deep Sea Trenches Circum Pacific Belt" src="figures_2019_Q044/global_circum_pacific_trenches_map.png"/>
 <div class="tb-caption">
 <strong>Figure 44.1: Deep-Sea Trenches &amp; Global Subduction Zones (Bangar, p. 50).</strong> Tectonic map highlighting the global concentration of deep-sea trenches around the perimeter of the Pacific Ocean basin (Circum-Pacific Belt).
         </div>
@@ -14109,7 +14132,7 @@ ho_{	ext{asthen}}$). Eventually, gravitational instability may cause old Atlanti
 </div>
 <!-- TEXTBOOK IMAGE -->
 <div class="tb-figure">
-<img alt="Winter Fig 1 Continental Geothermal Gradient Lower Crust" src="figures_2019_Q045/winter_continental_geotherm_crustal_temperatures.png"/>
+<img loading="lazy" decoding="async" alt="Winter Fig 1 Continental Geothermal Gradient Lower Crust" src="figures_2019_Q045/winter_continental_geotherm_crustal_temperatures.png"/>
 <div class="tb-caption">
 <strong>Figure 45.1: Continental Geothermal Gradient &amp; Crustal Temperatures (Winter, Ch. 1, p. 5).</strong> Temperature-depth profile through continental lithosphere showing temperatures reaching $400-500^\circ	ext{C}$ in the upper lower crust at depths of $20-25	ext{ km}$.
         </div>
@@ -14390,7 +14413,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Dharwar Craton Stratigraphy and Closepet Granite Youngest Event" src="figures_2019_Q046/dharwar_craton_stratigraphy_closepet_granite.png"/>
+<img loading="lazy" decoding="async" alt="Dharwar Craton Stratigraphy and Closepet Granite Youngest Event" src="figures_2019_Q046/dharwar_craton_stratigraphy_closepet_granite.png"/>
 <div class="tb-caption">
 <strong>Figure 46.1: Lithostratigraphic Superposition of the Dharwar Craton.</strong> Chronological evolution from Paleoarchean Sargur enclaves and PGC basement through the Dharwar Supergroup, culminating in the intrusion of the Closepet Granite (~2.51 Ga).
         </div>
@@ -14616,7 +14639,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Cauvery Basin Stratigraphy and Niniyur Formation Placement" src="figures_2019_Q047/cauvery_basin_niniyur_stratigraphy.png"/>
+<img loading="lazy" decoding="async" alt="Cauvery Basin Stratigraphy and Niniyur Formation Placement" src="figures_2019_Q047/cauvery_basin_niniyur_stratigraphy.png"/>
 <div class="tb-caption">
 <strong>Figure 47.1: Classic Indian Stratigraphic Correlation of Cauvery Basin.</strong> The classic four-fold Cretaceous succession (Uttatur, Trichinopoly, Ariyalur, Niniyur) highlighting the Niniyur Formation.
         </div>
@@ -14861,7 +14884,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Kutch Jurassic Stratigraphic Succession and Ammonite Biozones" src="figures_2019_Q048/kutch_jurassic_stratigraphy_biozones.png"/>
+<img loading="lazy" decoding="async" alt="Kutch Jurassic Stratigraphic Succession and Ammonite Biozones" src="figures_2019_Q048/kutch_jurassic_stratigraphy_biozones.png"/>
 <div class="tb-caption">
 <strong>Figure 48.1: The Classic Jurassic Lithostratigraphic Succession of Kutch.</strong> The iconic four formations (Patcham, Chari, Katrol, Umia) with their world-standard cephalopod biozones.
         </div>
@@ -15107,7 +15130,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Siwalik Stratigraphy and Mammalian Fossil Succession" src="figures_2019_Q049/siwalik_mammalian_fauna_stratigraphy.png"/>
+<img loading="lazy" decoding="async" alt="Siwalik Stratigraphy and Mammalian Fossil Succession" src="figures_2019_Q049/siwalik_mammalian_fauna_stratigraphy.png"/>
 <div class="tb-caption">
 <strong>Figure 49.1: Siwalik Foreland Basin Stratigraphy and Mammalian Biozones.</strong> The evolutionary succession from Miocene Lower Siwalik proboscideans to Middle Siwalik hominoids (*Sivapithecus*) and Upper Siwalik true horses (*Equus*) and elephants (*Stegodon*).
         </div>
@@ -15329,7 +15352,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Spiti Tethyan Basin Stratigraphy Highlighting Permian Kuling Group" src="figures_2019_Q050/spiti_tethyan_himalaya_kuling_group.png"/>
+<img loading="lazy" decoding="async" alt="Spiti Tethyan Basin Stratigraphy Highlighting Permian Kuling Group" src="figures_2019_Q050/spiti_tethyan_himalaya_kuling_group.png"/>
 <div class="tb-caption">
 <strong>Figure 50.1: Stratigraphic Architecture of the Spiti Paleozoic Succession.</strong> The position of the Permian Kuling Group (Gechang Sandstone and Gungri / Productus Shales) sandwiched between the Carboniferous Kanawar Group and Triassic Lilang Group.
         </div>
@@ -15562,7 +15585,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Aravalli-Delhi Belt Stratigraphy and Erinpura Granite Intrusion" src="figures_2019_Q051/delhi_supergroup_erinpura_granite.png"/>
+<img loading="lazy" decoding="async" alt="Aravalli-Delhi Belt Stratigraphy and Erinpura Granite Intrusion" src="figures_2019_Q051/delhi_supergroup_erinpura_granite.png"/>
 <div class="tb-caption">
 <strong>Figure 51.1: Tectonostratigraphic Framework of the Delhi Supergroup.</strong> Schematic cross-section showing folded Alwar and Ajabgarh metasediments intruded by the post-tectonic Erinpura Granite (~850 Ma).
         </div>
@@ -15789,7 +15812,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Comparative Lithofacies: Bhuj Sandstones vs Proterozoic Purana Basins" src="figures_2019_Q052/bhuj_sandstone_sedimentary_facies.png"/>
+<img loading="lazy" decoding="async" alt="Comparative Lithofacies: Bhuj Sandstones vs Proterozoic Purana Basins" src="figures_2019_Q052/bhuj_sandstone_sedimentary_facies.png"/>
 <div class="tb-caption">
 <strong>Figure 52.1: Comparative Lithofacies Analysis.</strong> Highlighting the predominantly sandstone composition of the Mesozoic Bhuj Formation and refuting distractors concerning the Kaladgi, Vindhyan, and Cuddapah basins.
         </div>
@@ -16011,7 +16034,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Tethyan Himalayan Devonian Muth Quartzite Marker Horizon" src="figures_2019_Q053/muth_quartzite_devonian_marker.png"/>
+<img loading="lazy" decoding="async" alt="Tethyan Himalayan Devonian Muth Quartzite Marker Horizon" src="figures_2019_Q053/muth_quartzite_devonian_marker.png"/>
 <div class="tb-caption">
 <strong>Figure 53.1: Stratigraphic Position of the Devonian Muth Quartzite.</strong> Snow-white orthoquartzite marker horizon bounded below by the Silurian Pin Formation and above by the Carboniferous Lipak Formation.
         </div>
@@ -16233,7 +16256,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Stromatolite Microstructure and Early Life Evolutionary Timeline" src="figures_2019_Q054/stromatolites_cyanobacteria_life_evolution.png"/>
+<img loading="lazy" decoding="async" alt="Stromatolite Microstructure and Early Life Evolutionary Timeline" src="figures_2019_Q054/stromatolites_cyanobacteria_life_evolution.png"/>
 <div class="tb-caption">
 <strong>Figure 54.1: Stromatolite Laminae and Biosphere Evolution.</strong> Concentric biogenic trapping laminae and the evolutionary timeline from Archean cyanobacterial mats (~3.5 Ga) to the metazoan radiation.
         </div>
@@ -16454,7 +16477,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Himalayan Thrust Architecture and Main Boundary Thrust (MBT)" src="figures_2019_Q055/himalayan_thrust_architecture_mbt.png"/>
+<img loading="lazy" decoding="async" alt="Himalayan Thrust Architecture and Main Boundary Thrust (MBT)" src="figures_2019_Q055/himalayan_thrust_architecture_mbt.png"/>
 <div class="tb-caption">
 <strong>Figure 55.1: Balanced Morphotectonic Cross-Section of the Himalaya.</strong> The fundamental thrust dislocations (HFT → MBT → MCT → ITSZ), highlighting the Main Boundary Thrust separating the Sub-Himalayan Siwaliks from the Lesser Himalayan / Tertiary belt.
         </div>
@@ -16690,7 +16713,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Deccan Traps Continental Flood Basalts Cretaceous Eruptive Pulse" src="figures_2019_Q056/deccan_traps_flood_basalts_cretaceous.png"/>
+<img loading="lazy" decoding="async" alt="Deccan Traps Continental Flood Basalts Cretaceous Eruptive Pulse" src="figures_2019_Q056/deccan_traps_flood_basalts_cretaceous.png"/>
 <div class="tb-caption">
 <strong>Figure 56.1: Deccan Large Igneous Province Stratigraphy &amp; Chronology.</strong> The primary eruptive pulse of the Deccan flood basalts situated squarely in the Late Cretaceous (~66 Ma).
         </div>
@@ -16918,7 +16941,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Mesozoic Cenozoic Chronostratigraphic Boundary at 65 Ma" src="figures_2019_Q057/mesozoic_cenozoic_k_pg_boundary_65ma.png"/>
+<img loading="lazy" decoding="async" alt="Mesozoic Cenozoic Chronostratigraphic Boundary at 65 Ma" src="figures_2019_Q057/mesozoic_cenozoic_k_pg_boundary_65ma.png"/>
 <div class="tb-caption">
 <strong>Figure 57.1: The Mesozoic-Cenozoic Chronostratigraphic Boundary.</strong> Schematic timeline marking the K-Pg boundary at ~65-66 Ma, dividing the Mesozoic from the Cenozoic Era.
         </div>
@@ -17152,7 +17175,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Kashmir Stratigraphic Succession and Salkhala Crystalline Basement" src="figures_2019_Q058/kashmir_hazara_salkhala_series.png"/>
+<img loading="lazy" decoding="async" alt="Kashmir Stratigraphic Succession and Salkhala Crystalline Basement" src="figures_2019_Q058/kashmir_hazara_salkhala_series.png"/>
 <div class="tb-caption">
 <strong>Figure 58.1: Stratigraphic Framework of the Kashmir Basin.</strong> The foundational position of the Archean-Precambrian Salkhala Series underlying the Dogra Slates and Paleozoic sequence.
         </div>
@@ -17391,7 +17414,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Proportional Distribution of Geological Time Across Earth History" src="figures_2019_Q059/geologic_time_scale_precambrian_duration.png"/>
+<img loading="lazy" decoding="async" alt="Proportional Distribution of Geological Time Across Earth History" src="figures_2019_Q059/geologic_time_scale_precambrian_duration.png"/>
 <div class="tb-caption">
 <strong>Figure 59.1: Proportional Pie Chart of Geological Time.</strong> The Precambrian supereon occupying 88.2% of Earth's 4.54-billion-year timeline, with the Paleozoic, Mesozoic, and Cenozoic sharing the remaining 11.8%.
         </div>
@@ -17628,7 +17651,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="The Big Five Phanerozoic Mass Extinctions Highlighting K-T Boundary" src="figures_2019_Q060/mass_extinction_k_t_boundary.png"/>
+<img loading="lazy" decoding="async" alt="The Big Five Phanerozoic Mass Extinctions Highlighting K-T Boundary" src="figures_2019_Q060/mass_extinction_k_t_boundary.png"/>
 <div class="tb-caption">
 <strong>Figure 60.1: The 'Big Five' Phanerozoic Mass Extinctions.</strong> Timeline of biotic crises through Earth history, highlighting the Cretaceous-Tertiary (K-Pg) boundary event at ~66 Ma.
         </div>
@@ -17862,7 +17885,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Archaeocyatha Skeleton Anatomy and Lower Palaeozoic Chronostratigraphy" src="figures_2019_Q061/archaeocyatha_lower_palaeozoic_sponge.png"/>
+<img loading="lazy" decoding="async" alt="Archaeocyatha Skeleton Anatomy and Lower Palaeozoic Chronostratigraphy" src="figures_2019_Q061/archaeocyatha_lower_palaeozoic_sponge.png"/>
 <div class="tb-caption">
 <strong>Figure 61.1: Archaeocyatha Morphology and Geological Range.</strong> Double-walled calcareous conical skeleton with porous intervallum, highlighting its strict confinement to the Lower Palaeozoic (Cambrian).
         </div>
@@ -18096,7 +18119,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Trilobite Geological Range Cambrian to Permian" src="figures_2019_Q062/trilobite_geological_range_cambrian_permian.png"/>
+<img loading="lazy" decoding="async" alt="Trilobite Geological Range Cambrian to Permian" src="figures_2019_Q062/trilobite_geological_range_cambrian_permian.png"/>
 <div class="tb-caption">
 <strong>Figure 62.1: Class Trilobita Chronostratigraphic Range.</strong> Timeline showing the appearance of trilobites in the Early Cambrian (~521 Ma) through their Paleozoic radiation and terminal extinction at the End-Permian (~252 Ma).
         </div>
@@ -18334,7 +18357,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Fish to Tetrapod Transition: Amphibia First Land Colonizers" src="figures_2019_Q063/first_tetrapods_colonize_land_amphibia.png"/>
+<img loading="lazy" decoding="async" alt="Fish to Tetrapod Transition: Amphibia First Land Colonizers" src="figures_2019_Q063/first_tetrapods_colonize_land_amphibia.png"/>
 <div class="tb-caption">
 <strong>Figure 63.1: The Water-to-Land Tetrapod Transition.</strong> Evolutionary sequence from sarcopterygian fish (*Eusthenopteron*, *Tiktaalik*) to the first subaerial land-colonizing stem amphibians (*Ichthyostega*, *Acanthostega*).
         </div>
@@ -18563,7 +18586,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Crinoid Anatomy and Geological Range Cambrian to Recent" src="figures_2019_Q064/crinoid_morphology_range_cambrian_recent.png"/>
+<img loading="lazy" decoding="async" alt="Crinoid Anatomy and Geological Range Cambrian to Recent" src="figures_2019_Q064/crinoid_morphology_range_cambrian_recent.png"/>
 <div class="tb-caption">
 <strong>Figure 64.1: Crinoid Skeletal Morphology and Geological Range.</strong> Anatomical division (holdfast, stem with columnals, calyx, arms with pinnules) and their continuous range from Cambrian to Recent.
         </div>
@@ -18785,7 +18808,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Epizoic Mode of Life in Marine Paleoecology" src="figures_2019_Q065/epizoic_organisms_marine_ecology.png"/>
+<img loading="lazy" decoding="async" alt="Epizoic Mode of Life in Marine Paleoecology" src="figures_2019_Q065/epizoic_organisms_marine_ecology.png"/>
 <div class="tb-caption">
 <strong>Figure 65.1: Marine Ecological Classification.</strong> Epizoic organisms living attached to host bodies compared with epifauna, infauna, and anatomical structures.
         </div>
@@ -19024,7 +19047,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Plankton, Nekton, and Benthos Ecological Classification" src="figures_2019_Q066/plankton_nekton_benthos_divisions.png"/>
+<img loading="lazy" decoding="async" alt="Plankton, Nekton, and Benthos Ecological Classification" src="figures_2019_Q066/plankton_nekton_benthos_divisions.png"/>
 <div class="tb-caption">
 <strong>Figure 66.1: Marine Pelagic Ecological Tripartition.</strong> Plankton (passively drifting), Nekton (actively swimming against currents), and Benthos (seafloor dwellers).
         </div>
@@ -19254,7 +19277,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Equine Evolution Lineage Hyracotherium to Equus" src="figures_2019_Q067/horse_evolution_hyracotherium_stages.png"/>
+<img loading="lazy" decoding="async" alt="Equine Evolution Lineage Hyracotherium to Equus" src="figures_2019_Q067/horse_evolution_hyracotherium_stages.png"/>
 <div class="tb-caption">
 <strong>Figure 67.1: The 55-Million-Year Equine Evolutionary Sequence.</strong> Progression from the four-toed Eocene browser *Hyracotherium* through Oligocene *Mesohippus*, Miocene *Merychippus*, and Pliocene *Pliohippus* to modern *Equus*.
         </div>
@@ -19488,7 +19511,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Buriadia Sewardii Primitive Conifer Lower Gondwana Flora" src="figures_2019_Q068/buriadia_gondwana_conifer_paleobotany.png"/>
+<img loading="lazy" decoding="async" alt="Buriadia Sewardii Primitive Conifer Lower Gondwana Flora" src="figures_2019_Q068/buriadia_gondwana_conifer_paleobotany.png"/>
 <div class="tb-caption">
 <strong>Figure 68.1: Gondwana Paleobotanical Affinities.</strong> *Buriadia* (primitive gymnosperm conifer with bifid needle leaves and seeds) contrasted with *Glossopteris*, *Gangamopteris* (seed ferns), and *Schizoneura* (horsetail).
         </div>
@@ -19722,7 +19745,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Ramapithecus Primate Fossil Jaw Anatomy Middle Siwaliks" src="figures_2019_Q069/ramapithecus_primate_fossil_siwaliks.png"/>
+<img loading="lazy" decoding="async" alt="Ramapithecus Primate Fossil Jaw Anatomy Middle Siwaliks" src="figures_2019_Q069/ramapithecus_primate_fossil_siwaliks.png"/>
 <div class="tb-caption">
 <strong>Figure 69.1: Siwalik Hominoid Primate Dentition.</strong> *Ramapithecus* (*Sivapithecus*) parabolic dental arcade and thick-enameled molars contrasted with non-primate Siwalik ungulates (*Hipparion*, *Stegolophodon*, *Equus*).
         </div>
@@ -19953,7 +19976,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Ammonoid Suture Evolution Mesozoic Complex Ammonitic Sutures" src="figures_2019_Q070/ammonoid_suture_evolution_mesozoic.png"/>
+<img loading="lazy" decoding="async" alt="Ammonoid Suture Evolution Mesozoic Complex Ammonitic Sutures" src="figures_2019_Q070/ammonoid_suture_evolution_mesozoic.png"/>
 <div class="tb-caption">
 <strong>Figure 70.1: Evolutionary Complexity of Cephalopod Sutures.</strong> Progression from simple Nautilitic through Paleozoic Goniatitic and Triassic Ceratitic to the complexly frilled Mesozoic Ammonitic suture lines.
         </div>
@@ -20188,7 +20211,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Gastropod Shell Coiling Chirality Physa Sinistral" src="figures_2019_Q071/physa_sinistral_gastropod_coiling.png"/>
+<img loading="lazy" decoding="async" alt="Gastropod Shell Coiling Chirality Physa Sinistral" src="figures_2019_Q071/physa_sinistral_gastropod_coiling.png"/>
 <div class="tb-caption">
 <strong>Figure 71.1: Gastropod Coiling Chirality.</strong> Diagnostic comparison showing the left-handed aperture of sinistral *Physa* versus standard right-handed dextral coiling.
         </div>
@@ -20430,7 +20453,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Brachiopod Class Articulata Dental System Teeth and Sockets" src="figures_2019_Q072/brachiopod_dental_system_articulata.png"/>
+<img loading="lazy" decoding="async" alt="Brachiopod Class Articulata Dental System Teeth and Sockets" src="figures_2019_Q072/brachiopod_dental_system_articulata.png"/>
 <div class="tb-caption">
 <strong>Figure 72.1: Brachiopod Articulation and Dental System.</strong> Interlocking hinge teeth on the pedicle valve and dental sockets on the brachial valve characteristic of Class Articulata.
         </div>
@@ -20665,7 +20688,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Conodont Phosphatic Microfossil Morphology and CAI Index" src="figures_2019_Q073/conodont_phosphatic_microfossil.png"/>
+<img loading="lazy" decoding="async" alt="Conodont Phosphatic Microfossil Morphology and CAI Index" src="figures_2019_Q073/conodont_phosphatic_microfossil.png"/>
 <div class="tb-caption">
 <strong>Figure 73.1: Conodont Anatomy and Geochemical Nature.</strong> Phosphatic element morphology (carbonate-apatite composition) and Conodont Alteration Index (CAI) thermal maturation scale.
         </div>
@@ -20901,7 +20924,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Bivalve Hinge Dentition Arca Taxodont Dentition" src="figures_2019_Q074/arca_taxodont_bivalve_dentition.png"/>
+<img loading="lazy" decoding="async" alt="Bivalve Hinge Dentition Arca Taxodont Dentition" src="figures_2019_Q074/arca_taxodont_bivalve_dentition.png"/>
 <div class="tb-caption">
 <strong>Figure 74.1: Bivalve Hinge Dentition Categories.</strong> Comb-like taxodont dentition in *Arca* contrasted with heterodont (*Venus*), dysodont (*Mytilus*), and desmodont (*Pholadomya*) systems.
         </div>
@@ -21143,7 +21166,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 </div>
 <!-- TEXTBOOK / SCIENTIFIC PLATE -->
 <div class="tb-figure">
-<img alt="Ichnofossils Trace Fossils Ethological Classification" src="figures_2019_Q075/ichnofossils_trace_fossils_classification.png"/>
+<img loading="lazy" decoding="async" alt="Ichnofossils Trace Fossils Ethological Classification" src="figures_2019_Q075/ichnofossils_trace_fossils_classification.png"/>
 <div class="tb-caption">
 <strong>Figure 75.1: Ichnology &amp; Trace Fossil Categorization.</strong> Behavioral classification (Repichnia footprints/trails, Domichnia burrows, Cubichnia resting marks) versus skeletal body fossils.
         </div>
@@ -21393,7 +21416,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{In Acid Granitoids: } \text{Total } SiO_2 \ge 66 \text{ wt\%} \implies \text{Modal Free Quartz } \ge 10\text{ vol\% (typically } 20\text{--}35\%\text{)}$$
       </div>
 <div class="figure-container">
-<img alt="Acid Igneous Rocks Total Silica vs Free Quartz" class="figure-img" src="figures_2019_Q076/acid_intermediate_basic_ultrabasic_quartz_silica.png"/>
+<img loading="lazy" decoding="async" alt="Acid Igneous Rocks Total Silica vs Free Quartz" class="figure-img" src="figures_2019_Q076/acid_intermediate_basic_ultrabasic_quartz_silica.png"/>
 <div class="figure-caption">Figure 76: Quantitative comparison between bulk silica content (wt%) and modal free quartz across the four fundamental igneous rock classes. Acid rocks characteristically contain ≥ 10% free quartz.</div>
 </div>
 </div>
@@ -21596,7 +21619,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         <div class="quote-author">— John D. Winter, <em>Principles of Igneous and Metamorphic Petrology</em> (2nd Ed., Chapter 2, pp. 24–28)</div>
 </div>
 <div class="figure-container">
-<img alt="Andesite Intermediate Volcanic Rock TAS and QAPF" class="figure-img" src="figures_2019_Q077/andesite_intermediate_volcanic_rock_tas_qapf.png"/>
+<img loading="lazy" decoding="async" alt="Andesite Intermediate Volcanic Rock TAS and QAPF" class="figure-img" src="figures_2019_Q077/andesite_intermediate_volcanic_rock_tas_qapf.png"/>
 <div class="figure-caption">Figure 77: Position of Andesite within the IUGS Total Alkali-Silica (TAS) diagram and volcanic rock suite, illustrating its classification as an intermediate extrusive rock (52–63 wt% SiO2).</div>
 </div>
 </div>
@@ -21792,7 +21815,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\therefore \text{First mineral formed in continuous series} \equiv \mathbf{Calcic\ Plagioclase\ (Anorthite)}$$
       </div>
 <div class="figure-container">
-<img alt="Bowen Reaction Series Continuous Branch Calcic Plagioclase" class="figure-img" src="figures_2019_Q078/bowen_reaction_series_continuous_calcic_plagioclase.png"/>
+<img loading="lazy" decoding="async" alt="Bowen Reaction Series Continuous Branch Calcic Plagioclase" class="figure-img" src="figures_2019_Q078/bowen_reaction_series_continuous_calcic_plagioclase.png"/>
 <div class="figure-caption">Figure 78: Bowen's Reaction Series illustrating the continuous plagioclase solid-solution branch (right) and the discontinuous ferromagnesian branch (left), demonstrating that calcic plagioclase forms first.</div>
 </div>
 </div>
@@ -22001,7 +22024,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Key REE-Bearing Minerals in Carbonatites: Bastn\ddot{a}site } [(\text{Ce},\text{La})CO_3F], \text{ Monazite } [(\text{Ce},\text{La},\text{Nd})PO_4], \text{ Pyrochlore } [(\text{Na},\text{Ca})_2\text{Nb}_2\text{O}_6(\text{OH},\text{F})]$$
       </div>
 <div class="figure-container">
-<img alt="Carbonatite Magmatic Carbonate Rock REE Deposit" class="figure-img" src="figures_2019_Q079/carbonatite_magmatic_carbonate_ree_deposit.png"/>
+<img loading="lazy" decoding="async" alt="Carbonatite Magmatic Carbonate Rock REE Deposit" class="figure-img" src="figures_2019_Q079/carbonatite_magmatic_carbonate_ree_deposit.png"/>
 <div class="figure-caption">Figure 79: Cross-section through a zoned alkaline-carbonatite complex showing the central carbonatite plug, surrounding ijolite-syenite ring dykes, outer fenitization aureole, and primary REE-Nb mineral concentration.</div>
 </div>
 </div>
@@ -22207,7 +22230,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Dehydration Breakdown Reaction: } \text{Biotite} + \text{Quartz} \rightleftharpoons \mathbf{Hypersthene} + \text{K-Feldspar} + H_2O \uparrow \quad (\text{at } T &gt; 750^\circ\text{C}, a_{CO_2} \gg a_{H_2O})$$
       </div>
 <div class="figure-container">
-<img alt="Charnockite Series Mineral Composition QAPF" class="figure-img" src="figures_2019_Q080/charnockite_hypersthene_granite_mineralogy_qapf.png"/>
+<img loading="lazy" decoding="async" alt="Charnockite Series Mineral Composition QAPF" class="figure-img" src="figures_2019_Q080/charnockite_hypersthene_granite_mineralogy_qapf.png"/>
 <div class="figure-caption">Figure 80: The Charnockite Series plotted on the QAPF classification, highlighting the diagnostic Quartz-Feldspar-Hypersthene mineralogy of charnockite sensu stricto.</div>
 </div>
 </div>
@@ -22414,7 +22437,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{When Ferromagnesian Content } \rightarrow 100\% \implies \text{Feldspar} \rightarrow 0\% \implies \mathbf{Perkinite}\ (\text{Hornblende} + \text{Pyroxene Ultramafic})$$
       </div>
 <div class="figure-container">
-<img alt="Diorite Perkinite Meladiorite Spectrum" class="figure-img" src="figures_2019_Q081/diorite_perkinite_meladiorite_ultramafic_spectrum.png"/>
+<img loading="lazy" decoding="async" alt="Diorite Perkinite Meladiorite Spectrum" class="figure-img" src="figures_2019_Q081/diorite_perkinite_meladiorite_ultramafic_spectrum.png"/>
 <div class="figure-caption">Figure 81: Color index classification bar showing the continuous transition from Leucodiorite through Diorite and Meladiorite to 100% ferromagnesian Perkinite.</div>
 </div>
 </div>
@@ -22616,7 +22639,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{Dolerite\ (Hypabyssal)} \equiv \mathbf{Basalt\ (Volcanic)} \equiv \mathbf{Gabbro\ (Plutonic)}$$
       </div>
 <div class="figure-container">
-<img alt="Dolerite Basalt Gabbro Compositional Equivalents" class="figure-img" src="figures_2019_Q082/dolerite_basalt_gabbro_compositional_equivalents.png"/>
+<img loading="lazy" decoding="async" alt="Dolerite Basalt Gabbro Compositional Equivalents" class="figure-img" src="figures_2019_Q082/dolerite_basalt_gabbro_compositional_equivalents.png"/>
 <div class="figure-caption">Figure 82: The basic igneous rock triad showing compositional equivalence between coarse plutonic Gabbro, medium hypabyssal Dolerite, and fine volcanic Basalt.</div>
 </div>
 </div>
@@ -22819,7 +22842,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Texture: Granoblastic / Aplitic (Non-ophitic, granular microgabbro)} \implies \mathbf{Gabbro\ Family\ (Option\ A)}$$
       </div>
 <div class="figure-container">
-<img alt="Beerbachite Microgabbro Granular Texture" class="figure-img" src="figures_2019_Q083/beerbachite_microgabbro_hornfelsic_granular_texture.png"/>
+<img loading="lazy" decoding="async" alt="Beerbachite Microgabbro Granular Texture" class="figure-img" src="figures_2019_Q083/beerbachite_microgabbro_hornfelsic_granular_texture.png"/>
 <div class="figure-caption">Figure 83: Position of Beerbachite within the Gabbro clan as a fine-grained granular/aplitic variety alongside Norite, Troctolite, and Anorthosite.</div>
 </div>
 </div>
@@ -23038,7 +23061,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Quartz Content: } 20\% \le Q \le 60\% \quad \text{of Total } (Q + A + P)$$
       </div>
 <div class="figure-container">
-<img alt="Adamellite Quartz Monzonite QAPF Diagram" class="figure-img" src="figures_2019_Q084/adamellite_quartz_monzonite_qapf_diagram.png"/>
+<img loading="lazy" decoding="async" alt="Adamellite Quartz Monzonite QAPF Diagram" class="figure-img" src="figures_2019_Q084/adamellite_quartz_monzonite_qapf_diagram.png"/>
 <div class="figure-caption">Figure 84: IUGS QAPF classification of granitoids highlighting Field 3b (Adamellite / Quartz Monzonite) positioned at the balanced center where Oligoclase and K-feldspar are roughly equal.</div>
 </div>
 </div>
@@ -23245,7 +23268,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Eutectic Phase Ratio: } \approx 72\text{ wt\% Feldspar} : 28\text{ wt\% Quartz} \quad (\text{Constant across global graphic pegmatites})$$
       </div>
 <div class="figure-container">
-<img alt="Graphic Texture Runic Pegmatite" class="figure-img" src="figures_2019_Q085/graphic_texture_runic_pegmatite_eutectic.png"/>
+<img loading="lazy" decoding="async" alt="Graphic Texture Runic Pegmatite" class="figure-img" src="figures_2019_Q085/graphic_texture_runic_pegmatite_eutectic.png"/>
 <div class="figure-caption">Figure 85: Schematic thin-section view of graphic texture in granitic pegmatite, showing skeletal quartz rods mimicking runic writing embedded in a single microcline host crystal.</div>
 </div>
 </div>
@@ -23465,7 +23488,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Result: Overlying strata flexed into a dome } \implies \mathbf{Concordant\ Domed\ Pluton \equiv Laccolith}$$
       </div>
 <div class="figure-container">
-<img alt="Laccolith vs Lopolith vs Bysmalith" class="figure-img" src="figures_2019_Q086/laccolith_vs_lopolith_bysmalith_pluton_morphology.png"/>
+<img loading="lazy" decoding="async" alt="Laccolith vs Lopolith vs Bysmalith" class="figure-img" src="figures_2019_Q086/laccolith_vs_lopolith_bysmalith_pluton_morphology.png"/>
 <div class="figure-caption">Figure 86: Cross-sectional comparisons of concordant igneous intrusions highlighting the domed-up roof and planar floor of a Laccolith compared to a saucer-shaped Lopolith and faulted Bysmalith.</div>
 </div>
 </div>
@@ -23669,7 +23692,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{Upward\ Magma\ Ascent\ via\ Xenolith\ Engulfment \equiv Magmatic\ Stoping\ (Option\ C)}$$
       </div>
 <div class="figure-container">
-<img alt="Magmatic Stoping Piecemeal Roof Shattering" class="figure-img" src="figures_2019_Q087/magmatic_stoping_piecemeal_roof_shattering.png"/>
+<img loading="lazy" decoding="async" alt="Magmatic Stoping Piecemeal Roof Shattering" class="figure-img" src="figures_2019_Q087/magmatic_stoping_piecemeal_roof_shattering.png"/>
 <div class="figure-caption">Figure 87: Cross-section of a magmatic chamber demonstrating overhead stoping: thermal fracturing of roof rocks, detachment and gravitational sinking of xenoliths, and upward migration of the intrusion.</div>
 </div>
 </div>
@@ -23880,7 +23903,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Family Affiliation: } \mathbf{Lamprophyre\ (Option\ D)}$$
       </div>
 <div class="figure-container">
-<img alt="Lamprophyre Classification Minette Vogesite Kersantite" class="figure-img" src="figures_2019_Q088/lamprophyre_classification_minette_vogesite_kersantite.png"/>
+<img loading="lazy" decoding="async" alt="Lamprophyre Classification Minette Vogesite Kersantite" class="figure-img" src="figures_2019_Q088/lamprophyre_classification_minette_vogesite_kersantite.png"/>
 <div class="figure-caption">Figure 88: Standard 2x2 classification matrix of calc-alkaline lamprophyres, showing the exact position of Minette (Biotite + Orthoclase) alongside Kersantite, Vogesite, and Spessartite.</div>
 </div>
 </div>
@@ -24093,7 +24116,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Etymology: Greek } \pi\acute{\alpha}\lambda\iota\nu\ (\text{again}) + \gamma\acute{\epsilon}\nu\epsilon\sigma\iota\varsigma\ (\text{birth}) \equiv \mathbf{'Rebirth\ of\ Magma' \equiv Palingenesis\ (Option\ D)}$$
       </div>
 <div class="figure-container">
-<img alt="Palingenesis Crustal Melting Anatexis Cycle" class="figure-img" src="figures_2019_Q089/palingenesis_crustal_melting_anatexis_cycle.png"/>
+<img loading="lazy" decoding="async" alt="Palingenesis Crustal Melting Anatexis Cycle" class="figure-img" src="figures_2019_Q089/palingenesis_crustal_melting_anatexis_cycle.png"/>
 <div class="figure-caption">Figure 89: The crustal palingenesis cycle: burial of sediment $\rightarrow$ prograde metamorphism $\rightarrow$ anatexis (partial melting) $\rightarrow$ palingenetic magma coalescence and plutonic intrusion.</div>
 </div>
 </div>
@@ -24299,7 +24322,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\therefore \text{Liquid immiscibility results from: } \mathbf{Unmixing\ of\ two\ liquids\ of\ different\ composition\ (Option\ C)}$$
       </div>
 <div class="figure-container">
-<img alt="Liquid Immiscibility Solvus Phase Diagram" class="figure-img" src="figures_2019_Q090/liquid_immiscibility_silicate_melt_phase_diagram.png"/>
+<img loading="lazy" decoding="async" alt="Liquid Immiscibility Solvus Phase Diagram" class="figure-img" src="figures_2019_Q090/liquid_immiscibility_silicate_melt_phase_diagram.png"/>
 <div class="figure-caption">Figure 90: Binary phase diagram illustrating the liquid immiscibility dome (solvus), showing a homogeneous single melt separating into two coexisting immiscible liquids of different composition upon cooling.</div>
 </div>
 </div>
@@ -24510,7 +24533,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{Feldspar\ (F) &gt; 25\%} \quad \text{and} \quad \frac{\text{Feldspar}}{\text{Lithics}} &gt; 3 \implies \mathbf{Arkose\ (Option\ C)}$$
       </div>
 <div class="figure-container">
-<img alt="Arkose Sandstone Folk Ternary Feldspar" class="figure-img" src="figures_2019_Q091/arkose_sandstone_folk_ternary_feldspar.png"/>
+<img loading="lazy" decoding="async" alt="Arkose Sandstone Folk Ternary Feldspar" class="figure-img" src="figures_2019_Q091/arkose_sandstone_folk_ternary_feldspar.png"/>
 <div class="figure-caption">Figure 91: Folk (1968) QFL ternary classification of sandstones highlighting the Arkose field defined by &gt; 25% feldspar and F/L &gt; 3:1.</div>
 </div>
 </div>
@@ -24751,7 +24774,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Lower Limit of Silt: } d = \frac{1}{256}\text{ mm} = 0.0039\text{ mm} \implies \phi = -\log_2(2^{-8}) = \mathbf{+8.0\ \phi}$$
       </div>
 <div class="figure-container">
-<img alt="Udden Wentworth Grain Size Scale Silt Grade" class="figure-img" src="figures_2019_Q092/udden_wentworth_grain_size_scale_silt_grade.png"/>
+<img loading="lazy" decoding="async" alt="Udden Wentworth Grain Size Scale Silt Grade" class="figure-img" src="figures_2019_Q092/udden_wentworth_grain_size_scale_silt_grade.png"/>
 <div class="figure-caption">Figure 92: The Udden-Wentworth grain size scale highlighting the exact Silt Grade range (1/16 mm to 1/256 mm / +4 phi to +8 phi) bounded by Sand and Clay.</div>
 </div>
 </div>
@@ -24953,7 +24976,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Sedimentary Classification: } \mathbf{Intraformational\ Rip\text{-}Up\ Clasts \equiv Clay\ Galls\ (Option\ D)}$$
       </div>
 <div class="figure-container">
-<img alt="Clay Galls Mud Rip Up Clasts Sandstone" class="figure-img" src="figures_2019_Q093/clay_galls_mud_rip_up_clasts_sandstone.png"/>
+<img loading="lazy" decoding="async" alt="Clay Galls Mud Rip Up Clasts Sandstone" class="figure-img" src="figures_2019_Q093/clay_galls_mud_rip_up_clasts_sandstone.png"/>
 <div class="figure-caption">Figure 93: Schematic cross-section of sandstone containing flat, lens-shaped clay galls (mud rip-up clasts) formed by desiccation, erosion, and rapid redeposition.</div>
 </div>
 </div>
@@ -25178,7 +25201,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\phi = -\log_2(64) = -6\ \phi \quad \text{to} \quad \phi = -\log_2(256) = -8\ \phi$$
       </div>
 <div class="figure-container">
-<img alt="Clast Size Classification Cobble Pebble Boulder" class="figure-img" src="figures_2019_Q094/clast_size_classification_cobble_pebble_boulder.png"/>
+<img loading="lazy" decoding="async" alt="Clast Size Classification Cobble Pebble Boulder" class="figure-img" src="figures_2019_Q094/clast_size_classification_cobble_pebble_boulder.png"/>
 <div class="figure-caption">Figure 94: Clast size scale comparing Boulder (&gt;256 mm), Cobble (64 to 256 mm), Pebble (4 to 64 mm), and Granule (2 to 4 mm).</div>
 </div>
 </div>
@@ -25379,7 +25402,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Palaeocurrent Vector} \equiv \text{Down-dip Azimuth of Foreset (Current Bed) Laminae}$$
       </div>
 <div class="figure-container">
-<img alt="Current Bedding Cross Stratification Geometry" class="figure-img" src="figures_2019_Q095/current_bedding_cross_stratification_geometry.png"/>
+<img loading="lazy" decoding="async" alt="Current Bedding Cross Stratification Geometry" class="figure-img" src="figures_2019_Q095/current_bedding_cross_stratification_geometry.png"/>
 <div class="figure-caption">Figure 95: Cross-sectional architecture of current bedding, showing inclined foreset current beds dipping down-current between horizontal master bedding planes.</div>
 </div>
 </div>
@@ -25585,7 +25608,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Lithification} \equiv \mathbf{Compaction\ (Mechanical\ Dewatering)} + \mathbf{Cementation\ (Chemical\ Authigenesis)} \subset \mathbf{Diagenesis\ (Option\ D)}$$
       </div>
 <div class="figure-container">
-<img alt="Sedimentary Diagenesis Compaction Cementation" class="figure-img" src="figures_2019_Q096/sedimentary_diagenesis_compaction_cementation.png"/>
+<img loading="lazy" decoding="async" alt="Sedimentary Diagenesis Compaction Cementation" class="figure-img" src="figures_2019_Q096/sedimentary_diagenesis_compaction_cementation.png"/>
 <div class="figure-caption">Figure 96: Progressive stages of sedimentary diagenesis: from uncompacted loose grains at deposition, through mechanical compaction, to mineral cementation producing lithified sedimentary rock.</div>
 </div>
 </div>
@@ -25791,7 +25814,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Ripple Index: } \text{RI} = \frac{\text{Wavelength } (L)}{\text{Height } (H)} \le 8\text{--}10 \implies \mathbf{Beach\ Environment\ (Option\ B)}$$
       </div>
 <div class="figure-container">
-<img alt="Oscillation Ripples Symmetrical Wave Action" class="figure-img" src="figures_2019_Q097/oscillation_ripples_symmetrical_wave_action.png"/>
+<img loading="lazy" decoding="async" alt="Oscillation Ripples Symmetrical Wave Action" class="figure-img" src="figures_2019_Q097/oscillation_ripples_symmetrical_wave_action.png"/>
 <div class="figure-caption">Figure 97: Hydrodynamic formation of symmetrical oscillation wave ripples in shallow beach/nearshore waters, showing circular-to-elliptical orbital paths producing sharp crests and broad troughs.</div>
 </div>
 </div>
@@ -25998,7 +26021,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Deep Burial Reduction: } \text{Fe}^{3+}\text{-oxides} + \text{Organic Carbon} \xrightarrow{\text{Anaerobic Burial}} \mathbf{Fe^{2+}\ (\text{Soluble})} \rightarrow \mathbf{(Ca,Fe)CO_3\ (Ferroan\ Calcite)}$$
       </div>
 <div class="figure-container">
-<img alt="Ferroan Calcite Cement Deep Burial Diagenesis" class="figure-img" src="figures_2019_Q098/ferroan_calcite_cement_deep_burial_diagenesis.png"/>
+<img loading="lazy" decoding="async" alt="Ferroan Calcite Cement Deep Burial Diagenesis" class="figure-img" src="figures_2019_Q098/ferroan_calcite_cement_deep_burial_diagenesis.png"/>
 <div class="figure-caption">Figure 98: Carbonate diagenetic realms showing the transition from shallow oxidized non-ferroan cements to the deep burial reducing anoxic realm where ferroan calcite precipitates.</div>
 </div>
 </div>
@@ -26212,7 +26235,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{High\ Sedimentation\ Rate\ (Option\ D)} \implies \text{Soft-Sediment Deformation Structures (SSDS)}$$
       </div>
 <div class="figure-container">
-<img alt="Syn-Sedimentary Deformation Structures Flame Structures" class="figure-img" src="figures_2019_Q099/syn_sedimentary_deformation_convolute_flame_structures.png"/>
+<img loading="lazy" decoding="async" alt="Syn-Sedimentary Deformation Structures Flame Structures" class="figure-img" src="figures_2019_Q099/syn_sedimentary_deformation_convolute_flame_structures.png"/>
 <div class="figure-caption">Figure 99: Soft-sediment deformation structures (flame structures and ball-and-pillow) triggered by rapid sedimentation loading dense sand onto undercompacted water-saturated mud.</div>
 </div>
 </div>
@@ -26413,7 +26436,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Coarse Organic Detritus Tail } \implies \phi_5 \ll \phi_{50} \implies \mathbf{Sk_I &lt; 0\ (Negative\ Skewness\ \equiv Option\ C)}$$
       </div>
 <div class="figure-container">
-<img alt="Sedimentary Skewness Grain Size Distribution" class="figure-img" src="figures_2019_Q100/sedimentary_skewness_grain_size_distribution.png"/>
+<img loading="lazy" decoding="async" alt="Sedimentary Skewness Grain Size Distribution" class="figure-img" src="figures_2019_Q100/sedimentary_skewness_grain_size_distribution.png"/>
 <div class="figure-caption">Figure 100: Grain size frequency distribution curves comparing normal distribution (Sk=0), positive skewness (fine tail), and negative skewness (coarse tail caused by organic shell detritus).</div>
 </div>
 </div>
@@ -26620,7 +26643,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\therefore \mathbf{Shallow\ Marine\ Palaeocurrents \equiv Both\ Bimodal\ and\ Polymodal\ (Option\ D)}$$
       </div>
 <div class="figure-container">
-<img alt="Palaeocurrent Rose Diagram Shallow Marine" class="figure-img" src="figures_2019_Q101/palaeocurrent_rose_diagram_shallow_marine.png"/>
+<img loading="lazy" decoding="async" alt="Palaeocurrent Rose Diagram Shallow Marine" class="figure-img" src="figures_2019_Q101/palaeocurrent_rose_diagram_shallow_marine.png"/>
 <div class="figure-caption">Figure 101: Palaeocurrent rose diagrams comparing Unimodal fluvial flow, Bimodal tidal reversing flow, and complex Polymodal storm-shelf marine patterns.</div>
 </div>
 </div>
@@ -26831,7 +26854,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Formula: } \mathbf{Adjacent\ to\ Craton} + \mathbf{Thinner\ Sediments} + \mathbf{Zero\ Volcanics} \equiv \mathbf{Miogeosyncline\ (Option\ B)}$$
       </div>
 <div class="figure-container">
-<img alt="Miogeosyncline vs Eugeosyncline Craton Margin" class="figure-img" src="figures_2019_Q102/miogeosyncline_vs_eugeosyncline_craton_margin.png"/>
+<img loading="lazy" decoding="async" alt="Miogeosyncline vs Eugeosyncline Craton Margin" class="figure-img" src="figures_2019_Q102/miogeosyncline_vs_eugeosyncline_craton_margin.png"/>
 <div class="figure-caption">Figure 102: Cross-section of classical geosynclinal architecture showing the non-volcanic Miogeosyncline adjacent to the stable craton transitioning oceanward to the volcanic Eugeosyncline.</div>
 </div>
 </div>
@@ -27043,7 +27066,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Comparison: } \text{Arkose (Feldspar)} \quad \text{Siltstone (Quartz Silt)} \quad \text{Dolostone (Dolomite)} \implies \mathbf{Greywacke\ (Option\ C)}$$
       </div>
 <div class="figure-container">
-<img alt="Greywacke Clay Matrix Petrography" class="figure-img" src="figures_2019_Q103/greywacke_clay_matrix_peteology_dott.png"/>
+<img loading="lazy" decoding="async" alt="Greywacke Clay Matrix Petrography" class="figure-img" src="figures_2019_Q103/greywacke_clay_matrix_peteology_dott.png"/>
 <div class="figure-caption">Figure 103: Microscopic petrographic view of Greywacke, highlighting angular grains of quartz and lithics embedded in an abundant paste of clay minerals, chlorite, and sericite.</div>
 </div>
 </div>
@@ -27251,7 +27274,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{Waning\ Current\ Deposition} \rightarrow \mathbf{Graded\ Bedding\ (Primary\ Depositional\ Structure \equiv Option\ A)}$$
       </div>
 <div class="figure-container">
-<img alt="Graded Bedding Turbidite Bouma Sequence" class="figure-img" src="figures_2019_Q104/graded_bedding_bouma_sequence_turbidite.png"/>
+<img loading="lazy" decoding="async" alt="Graded Bedding Turbidite Bouma Sequence" class="figure-img" src="figures_2019_Q104/graded_bedding_bouma_sequence_turbidite.png"/>
 <div class="figure-caption">Figure 104: Anatomy of graded bedding in a turbidite (Bouma Ta division), showing normal upward fining from coarse pebbles/sand at the base to fine silt and pelagic mud at the top.</div>
 </div>
 </div>
@@ -27463,7 +27486,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Dunham (1962) Classification: Grain-Supported, Mud-Free Carbonate } \equiv \mathbf{Grainstone / Rudstone (Option\ B)}$$
       </div>
 <div class="figure-container">
-<img alt="Coquina Organic Detritus Limestone" class="figure-img" src="figures_2019_Q105/coquina_fossiliferous_organic_detritus_limestone.png"/>
+<img loading="lazy" decoding="async" alt="Coquina Organic Detritus Limestone" class="figure-img" src="figures_2019_Q105/coquina_fossiliferous_organic_detritus_limestone.png"/>
 <div class="figure-caption">Figure 105: Anatomy of Coquina: a bioclastic allochemical limestone formed almost exclusively of loosely cemented broken molluscan shell fragments and organic skeletal debris.</div>
 </div>
 </div>
@@ -27672,7 +27695,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Lateral Boundary Condition: } \sigma_2 = \sigma_3 = 0 \implies \mathbf{UNCONFINED\ (Option\ D)}$$
       </div>
 <div class="figure-container">
-<img alt="Unconfined Compressive Strength UCS Test" class="figure-img" src="figures_2019_Q106/unconfined_compressive_strength_ucs_test.png"/>
+<img loading="lazy" decoding="async" alt="Unconfined Compressive Strength UCS Test" class="figure-img" src="figures_2019_Q106/unconfined_compressive_strength_ucs_test.png"/>
 <div class="figure-caption">Figure 106: Laboratory Unconfined Compressive Strength (UCS) testing configuration (IS: 9143) showing axial compressive failure of an unconfined cylindrical rock core specimen.</div>
 </div>
 </div>
@@ -27879,7 +27902,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{Maximum\ Force\ Per\ Unit\ Area\ Without\ Rupturing} \equiv \mathbf{Compressive\ Strength\ (Option\ C)}$$
       </div>
 <div class="figure-container">
-<img alt="Compressive Strength Stress Strain Curve" class="figure-img" src="figures_2019_Q107/compressive_strength_stress_strain_curve.png"/>
+<img loading="lazy" decoding="async" alt="Compressive Strength Stress Strain Curve" class="figure-img" src="figures_2019_Q107/compressive_strength_stress_strain_curve.png"/>
 <div class="figure-caption">Figure 107: Complete rock stress-strain curve under compressive loading, demonstrating the peak stress (compressive strength) sustained prior to physical rupture.</div>
 </div>
 </div>
@@ -28086,7 +28109,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\therefore \mathbf{Rocks\ with\ Very\ High\ Compressive\ Strength \equiv IGNEOUS\ ROCKS\ (Option\ A)}$$
       </div>
 <div class="figure-container">
-<img alt="Compressive Strength Rock Types Comparison" class="figure-img" src="figures_2019_Q108/compressive_strength_rock_types_comparison.png"/>
+<img loading="lazy" decoding="async" alt="Compressive Strength Rock Types Comparison" class="figure-img" src="figures_2019_Q108/compressive_strength_rock_types_comparison.png"/>
 <div class="figure-caption">Figure 108: Comparative unconfined compressive strength across rock types, demonstrating the commanding strength dominance of crystalline igneous rocks over sedimentary and foliated metamorphic rocks.</div>
 </div>
 </div>
@@ -28289,7 +28312,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Inter-relationship: } n = \frac{e}{1 + e} \quad \text{and} \quad e = \frac{n}{1 - n}$$
       </div>
 <div class="figure-container">
-<img alt="Porosity vs Void Ratio Rock Mechanics" class="figure-img" src="figures_2019_Q109/porosity_vs_void_ratio_rock_mechanics.png"/>
+<img loading="lazy" decoding="async" alt="Porosity vs Void Ratio Rock Mechanics" class="figure-img" src="figures_2019_Q109/porosity_vs_void_ratio_rock_mechanics.png"/>
 <div class="figure-caption">Figure 109: Three-phase diagram of rock volume illustrating the precise difference between Porosity (Vv / Vt) and Void Ratio (Vv / Vs).</div>
 </div>
 </div>
@@ -28496,7 +28519,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Relationship with Dry Density: } \rho_b = \rho_d (1 + w) \quad (w = \text{Natural Moisture Content})$$
       </div>
 <div class="figure-container">
-<img alt="Rock Bulk Density Natural Moisture Content" class="figure-img" src="figures_2019_Q110/rock_bulk_density_natural_moisture_content.png"/>
+<img loading="lazy" decoding="async" alt="Rock Bulk Density Natural Moisture Content" class="figure-img" src="figures_2019_Q110/rock_bulk_density_natural_moisture_content.png"/>
 <div class="figure-caption">Figure 110: Comparison of the three standard rock density states: Dry Density (pores air-filled), Bulk Density (with natural moisture), and Saturated Density (pores 100% water-filled).</div>
 </div>
 </div>
@@ -28705,7 +28728,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{Impact\ Testing\ of\ Stone} \implies \mathbf{Determines\ TOUGHNESS\ (Option\ D)}$$
       </div>
 <div class="figure-container">
-<img alt="Impact Testing Toughness Page Impact Test" class="figure-img" src="figures_2019_Q111/impact_testing_toughness_page_impact_test.png"/>
+<img loading="lazy" decoding="async" alt="Impact Testing Toughness Page Impact Test" class="figure-img" src="figures_2019_Q111/impact_testing_toughness_page_impact_test.png"/>
 <div class="figure-caption">Figure 111: Impact testing apparatus and mechanics for determining stone toughness (resistance to sudden impact loads) alongside crushing and abrasion tests.</div>
 </div>
 </div>
@@ -28913,7 +28936,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\text{Rock Burst Criterion (Hoek): } \frac{\sigma_\theta}{\text{UCS}} &gt; 0.8\text{ to } 1.0 \implies \mathbf{Sudden\ Explosive\ Failure \equiv ROCK\ BURST\ (Option\ B)}$$
       </div>
 <div class="figure-container">
-<img alt="Rock Burst Tunneling High Stress Release" class="figure-img" src="figures_2019_Q112/rock_burst_tunneling_high_stress_release.png"/>
+<img loading="lazy" decoding="async" alt="Rock Burst Tunneling High Stress Release" class="figure-img" src="figures_2019_Q112/rock_burst_tunneling_high_stress_release.png"/>
 <div class="figure-caption">Figure 112: Mechanics of rock burst in deep tunneling: concentration of high tangential stresses at tunnel walls triggering explosive failure and ejection of rock slabs.</div>
 </div>
 </div>
@@ -29126,7 +29149,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
         $$\mathbf{Dip\ Angle\ Range: } 15^\circ \le \theta \le 45^\circ \implies \mathbf{MODERATELY\ INCLINED\ STRATA\ (Option\ A)}$$
       </div>
 <div class="figure-container">
-<img alt="Strata Dip Classification Moderately Inclined" class="figure-img" src="figures_2019_Q113/strata_dip_classification_moderately_inclined.png"/>
+<img loading="lazy" decoding="async" alt="Strata Dip Classification Moderately Inclined" class="figure-img" src="figures_2019_Q113/strata_dip_classification_moderately_inclined.png"/>
 <div class="figure-caption">Figure 113: Geometrical classification of bedded strata based on dip angle: Gently Inclined (&lt;15°), Moderately Inclined (15° to 45°), and Steeply Inclined (&gt;45°).</div>
 </div>
 </div>
@@ -29340,7 +29363,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 <li><strong>Contact &amp; Backfill Grouting in Tunnels:</strong> Seals open radial joints in the blast-damaged excavation disturbed zone (EDZ) and fills overbreak cavities behind the concrete tunnel lining.</li>
 </ul>
 <div class="fig-box">
-<img alt="Foundation Grouting of Rock Joints in Dam Engineering" src="figures_2019_Q114/grouting_rectification_rock_joints_dam_foundation.png"/>
+<img loading="lazy" decoding="async" alt="Foundation Grouting of Rock Joints in Dam Engineering" src="figures_2019_Q114/grouting_rectification_rock_joints_dam_foundation.png"/>
 <div class="fig-cap">Figure 114.1: Engineering geological cross-section of a concrete gravity dam resting on jointed bedrock, illustrating shallow grid Consolidation Grouting (strengthening jointed rock mass) and deep upstream Curtain Grouting (cutting off seepage and reducing hydraulic uplift pressure).</div>
 </div>
 </div>
@@ -29573,7 +29596,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 <li><strong>Consequence of Oblique Bedding ($\beta = 30^\circ\text{--}60^\circ$):</strong> Maximum resolved shear stress acts along the bedding planes, leading to premature shear sliding at a fraction ($20\%\text{--}50\%$) of the intact rock strength.</li>
 </ul>
 <div class="fig-box">
-<img alt="Anisotropic Rock Strength vs Bedding Orientation (Donath U-Curve)" src="figures_2019_Q115/anisotropic_rock_strength_stress_vs_bedding.png"/>
+<img loading="lazy" decoding="async" alt="Anisotropic Rock Strength vs Bedding Orientation (Donath U-Curve)" src="figures_2019_Q115/anisotropic_rock_strength_stress_vs_bedding.png"/>
 <div class="fig-cap">Figure 115.1: Jaeger-Donath U-shaped strength anisotropy curve plotting Unconfined Compressive Strength ($\sigma_c$) against bedding inclination angle ($\beta$), showing peak strength when stress is applied normal to bedding ($\beta = 90^\circ$) and minimum strength at oblique shear inclinations ($\beta \approx 30^\circ\text{--}45^\circ$).</div>
 </div>
 </div>
@@ -29804,7 +29827,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 <li><strong>Lateritic Zone Hazard (Option C):</strong> Laterite is a deeply leached tropical residual weathering profile rich in hydrous iron and aluminium oxides with vermicular tubular voids and underlying soft kaolinitic saprolite ("lithomarge" clay) that loses strength upon saturation.</li>
 </ul>
 <div class="fig-box">
-<img alt="Comparative Dam Foundation Geology: Granitic Bedrock vs Limestone, Shear Zone, and Laterite" src="figures_2019_Q116/granitic_bedrock_dam_site_engineering.png"/>
+<img loading="lazy" decoding="async" alt="Comparative Dam Foundation Geology: Granitic Bedrock vs Limestone, Shear Zone, and Laterite" src="figures_2019_Q116/granitic_bedrock_dam_site_engineering.png"/>
 <div class="fig-cap">Figure 116.1: Engineering geological evaluation of four candidate dam foundations: (A) Massive Granitic Bedrock (ideal interlocking, high-strength, impervious foundation) vs. hazardous alternatives (B) Sheared fracture zone, (C) Porous lateritic profile, and (D) Cavernous karstic limestone.</div>
 </div>
 </div>
@@ -30036,7 +30059,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 <li><strong>Fire Resistance Limitation:</strong> The one engineering weakness of granite is <em>poor fire resistance</em>. Under intense fire ($&gt; 573^\circ\text{C}$, the $\alpha \to \beta$ quartz inversion point), quartz undergoes a sudden $0.85\%$ volumetric expansion and differential thermal expansion relative to feldspar, causing granite blocks to crack, spall, and decrepitate when doused with water.</li>
 </ul>
 <div class="fig-box">
-<img alt="Engineering Properties of Granite: High Crushing Strength, Low Porosity, High Polish, Durability" src="figures_2019_Q117/granite_crushing_strength_and_durability.png"/>
+<img loading="lazy" decoding="async" alt="Engineering Properties of Granite: High Crushing Strength, Low Porosity, High Polish, Durability" src="figures_2019_Q117/granite_crushing_strength_and_durability.png"/>
 <div class="fig-cap">Figure 117.1: Petrological and geotechnical summary of granite, showing its interlocking quartz-feldspar-biotite crystal fabric, superior crushing strength ($100\text{--}250\text{ MPa}$), ultra-low porosity ($&lt; 1\%$), and high resistance to weathering.</div>
 </div>
 </div>
@@ -30263,7 +30286,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 <li><strong>Hydrophilic Rocks (Acidic Siliceous Rocks):</strong> Pure quartzite, sandstone, and granite have high free $\text{SiO}_2$ ($&gt; 65\%$) carrying negative surface charges. They attract polar water molecules more strongly than bitumen, causing the bitumen film to peel off ("stripping") when submerged in rainwater unless anti-stripping amine additives are used.</li>
 </ul>
 <div class="fig-box">
-<img alt="Desirable vs Undesirable Properties of Road Metal Aggregates" src="figures_2019_Q118/road_metal_aggregate_desirable_properties.png"/>
+<img loading="lazy" decoding="async" alt="Desirable vs Undesirable Properties of Road Metal Aggregates" src="figures_2019_Q118/road_metal_aggregate_desirable_properties.png"/>
 <div class="fig-cap">Figure 118.1: Engineering comparison of road metal properties: Desirable qualities (hydrophobic bitumen adhesion and high crushing strength) vs. Undesirable defects (strongly sheared/flaky rock and highly porous/permeable rock).</div>
 </div>
 </div>
@@ -30489,7 +30512,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 <li><strong>Low Workability Stones:</strong> <strong>Granite, Basalt, Trap, and Quartzite</strong> are extremely hard and tough; dressing them with hand chisels is slow and costly, restricting their traditional use to rubble masonry or mechanically sawed/polished slabs.</li>
 </ul>
 <div class="fig-box">
-<img alt="Workability of Building Stones: Extraction, Quarry Sap, and Dressing" src="figures_2019_Q119/workability_stone_extraction_dressing.png"/>
+<img loading="lazy" decoding="async" alt="Workability of Building Stones: Extraction, Quarry Sap, and Dressing" src="figures_2019_Q119/workability_stone_extraction_dressing.png"/>
 <div class="fig-cap">Figure 119.1: Engineering concept of Stone Workability, illustrating extraction along natural joints/bedding, ease of chisel dressing while containing fresh "quarry sap", and the inverse trade-off between mechanical hardness/strength and workability across rock types.</div>
 </div>
 </div>
@@ -30729,7 +30752,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
 <li><strong>Field Quality Ring Test:</strong> A first-class roofing slate gives a sharp, clear <em>metallic ringing sound</em> when struck lightly with a knuckle or hammer, does not feel greasy to the touch, and shows zero free carbonate ($\text{CaCO}_3$) effervescence with dilute $\text{HCl}$ (since calcite dissolves in acid rain and ruins the roof).</li>
 </ul>
 <div class="fig-box">
-<img alt="Slate Roofing Slabs and Microscopic Slaty Cleavage Mechanism" src="figures_2019_Q120/slate_roofing_slab_slaty_cleavage.png"/>
+<img loading="lazy" decoding="async" alt="Slate Roofing Slabs and Microscopic Slaty Cleavage Mechanism" src="figures_2019_Q120/slate_roofing_slab_slaty_cleavage.png"/>
 <div class="fig-cap">Figure 120.1: Formation of penetrative slaty cleavage by tectonic alignment of mica/chlorite platelets perpendicular to $\sigma_1$, allowing slate to be split into thin, impervious, high-flexural-strength roofing slabs, contrasted with massive granite, granoblastic marble, and coarse-banded gneiss.</div>
 </div>
 </div>
@@ -30881,6 +30904,21 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
   let currentQ = 1;
   const totalQ = 120;
   let isViewAll = false;
+  const mathTypesetSet = new Set();
+  let mathObserver = null;
+
+  window.typesetModule = function(el) {
+    if (!el) return;
+    const qId = el.id;
+    if (mathTypesetSet.has(qId)) return;
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([el]).then(() => {
+        mathTypesetSet.add(qId);
+      }).catch(err => console.warn(err));
+    } else {
+      document.addEventListener('mathjax-ready', () => window.typesetModule(el), { once: true });
+    }
+  };
 
   function selectQuestion(qNum) {
     if (isViewAll) {
@@ -30896,6 +30934,7 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
     const target = document.getElementById('q' + qNum);
     if (target) {
       target.classList.add('visible');
+      window.typesetModule(target);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     highlightNav(qNum);
@@ -30927,16 +30966,37 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
     if (currentQ > 1) selectQuestion(currentQ - 1);
   }
 
+  function initMathObserver() {
+    if (mathObserver) return;
+    mathObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          window.typesetModule(entry.target);
+        }
+      });
+    }, { rootMargin: '400px 0px' });
+  }
+
   function toggleViewAll() {
     isViewAll = !isViewAll;
     const btn = document.getElementById('viewAllToggle');
     if (isViewAll) {
+      document.body.classList.add('view-all');
       document.querySelectorAll('.question-module').forEach(el => el.classList.add('visible'));
       btn.textContent = 'Single Question View';
       btn.classList.remove('nav-btn-primary');
+      initMathObserver();
+      document.querySelectorAll('.question-module').forEach(el => {
+        mathObserver.observe(el);
+      });
     } else {
+      document.body.classList.remove('view-all');
+      document.querySelectorAll('.question-module').forEach(el => el.classList.remove('visible'));
       btn.textContent = 'View All Questions';
       btn.classList.add('nav-btn-primary');
+      if (mathObserver) {
+        document.querySelectorAll('.question-module').forEach(el => mathObserver.unobserve(el));
+      }
       selectQuestion(currentQ);
     }
   }
@@ -30946,18 +31006,22 @@ ho pprox 2.8	ext{ g/cm}^3$) are more buoyant than mantle ($3.3	ext{ g/cm}^3$) b
     if (sidebar) sidebar.classList.toggle('open');
   }
 
+  let searchDebounceTimer = null;
   function filterQuestions(query) {
-    query = query.toLowerCase().trim();
-    document.querySelectorAll('.nav-item').forEach(item => {
-      const title = item.querySelector('.nav-title').textContent.toLowerCase();
-      const preview = item.querySelector('.nav-preview').textContent.toLowerCase();
-      const badge = item.querySelector('.nav-badge').textContent.toLowerCase();
-      if (!query || title.includes(query) || preview.includes(query) || badge.includes(query)) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
-      }
-    });
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      query = query.toLowerCase().trim();
+      document.querySelectorAll('.nav-item').forEach(item => {
+        const title = item.querySelector('.nav-title').textContent.toLowerCase();
+        const preview = item.querySelector('.nav-preview').textContent.toLowerCase();
+        const badge = item.querySelector('.nav-badge').textContent.toLowerCase();
+        if (!query || title.includes(query) || preview.includes(query) || badge.includes(query)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }, 100);
   }
 
   // Keyboard Navigation

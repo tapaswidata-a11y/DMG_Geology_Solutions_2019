@@ -95,6 +95,7 @@ for q in questions:
                 inner_html = page_div.decode_contents()
                 inner_html = inner_html.replace('src="../../figures_Q', 'src="figures_Q')
                 inner_html = inner_html.replace('src="../figures_Q', 'src="figures_Q')
+                inner_html = re.sub(r'<img\s+(?!loading=)', '<img loading="lazy" decoding="async" ', inner_html)
                 embedded_images_count += len(re.findall(r'<img\s+[^>]*src=[\"\']([^\"\']+)[\"\']', inner_html))
                 body_content = inner_html
     
@@ -453,13 +454,17 @@ window.MathJax = {{
 
   .question-module {{
     display: none;
+    content-visibility: hidden;
   }}
   .question-module.active {{
     display: block;
-    animation: fadeIn 0.15s ease-in-out;
+    content-visibility: visible;
+    animation: fadeIn 0.12s ease-in-out;
   }}
   body.view-all .question-module {{
     display: block !important;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
     border-bottom: 2px solid #e2e8f0;
     margin-bottom: 50px;
     padding-bottom: 50px;
@@ -835,6 +840,11 @@ window.MathJax = {{
       <span class="brand-badge">OPSC 2021 · Complete Suite</span>
       <h1 class="brand-title">Odisha Geology Masterclass</h1>
       <div class="brand-sub">150 Comprehensive Textbook Chapters</div>
+      <!-- Multi-Year Examination Switcher -->
+      <div style="display: flex; gap: 6px; margin: 10px 0 8px 0;">
+        <a href="index.html" style="flex:1; text-align:center; font-size:11.5px; font-weight:700; padding:6px 4px; border-radius:5px; text-decoration:none; background:#0284c7; color:#fff; box-shadow:0 2px 6px rgba(2,132,199,0.4);" title="Current: 2021 Exam (150/150 Questions Live)">2021 Exam (150 Live)</a>
+        <a href="index_2019.html" style="flex:1; text-align:center; font-size:11.5px; font-weight:700; padding:6px 4px; border-radius:5px; text-decoration:none; background:#1e293b; color:#94a3b8; border:1px solid #334155;" title="Open 2019 Exam Portal">2019 Exam (Batch 1)</a>
+      </div>
       <div class="brand-nav-links">
         <a href="../index.html" class="brand-nav-btn">← Assam DGMS Portal</a>
         <a href="https://github.com/tapaswidata-a11y/DMG_Geology_Solutions_2019" target="_blank" class="brand-nav-btn">GitHub Repo ↗</a>

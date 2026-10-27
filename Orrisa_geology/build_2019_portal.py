@@ -100,6 +100,7 @@ for q in questions:
                 # Rewrite relative image paths
                 inner_html = inner_html.replace('src="../../figures_2019_Q', 'src="figures_2019_Q')
                 inner_html = inner_html.replace('src="../figures_2019_Q', 'src="figures_2019_Q')
+                inner_html = re.sub(r'<img\s+(?!loading=)', '<img loading="lazy" decoding="async" ', inner_html)
                 embedded_images_count += len(re.findall(r'<img\s+[^>]*src=[\"\']([^\"\']+)[\"\']', inner_html))
                 body_content = inner_html
     
@@ -444,8 +445,17 @@ portal_css = """
     margin-bottom: 32px;
     box-shadow: var(--shadow-sm);
     overflow: hidden;
+    content-visibility: hidden;
   }
-  .question-module.visible { display: block; }
+  .question-module.visible {
+    display: block;
+    content-visibility: visible;
+  }
+  body.view-all .question-module {
+    display: block !important;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
 
   .module-topbar {
     background: #f8fafc;
