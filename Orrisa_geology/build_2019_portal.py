@@ -129,7 +129,7 @@ for q in questions:
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
             ← Previous Question
           </button>
-          <button class="nav-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to Top">
+          <button class="nav-btn" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}})" title="Scroll to Top">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
             ↑ Back to Top
           </button>
@@ -199,12 +199,47 @@ portal_css = """
     flex-shrink: 0;
     border-right: 1px solid #1e293b;
     box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+    transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (min-width: 901px) {
+    .app-container.sidebar-collapsed .sidebar {
+      margin-left: calc(-1 * var(--sidebar-width));
+      pointer-events: none;
+      visibility: hidden;
+      transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s;
+    }
   }
 
   .sidebar-header {
     padding: 20px 20px 16px 20px;
     border-bottom: 1px solid #1e293b;
     background: #050811;
+  }
+  .sidebar-header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .sidebar-close-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #94a3b8;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+  }
+  .sidebar-close-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.3);
   }
   .brand-badge {
     display: inline-block;
@@ -392,14 +427,57 @@ portal_css = """
   .navbar-left {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
+    min-width: 0;
+  }
+  .sidebar-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    color: #1e293b;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  .sidebar-toggle-btn:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+    color: #0f172a;
+  }
+  .sidebar-toggle-btn:active {
+    transform: scale(0.97);
+  }
+  .sidebar-toggle-btn .toggle-icon-expand {
+    display: none;
+  }
+  .sidebar-toggle-btn .toggle-icon-collapse {
+    display: block;
+  }
+  .app-container.sidebar-collapsed .sidebar-toggle-btn .toggle-icon-collapse {
+    display: none;
+  }
+  .app-container.sidebar-collapsed .sidebar-toggle-btn .toggle-icon-expand {
+    display: block;
+  }
+  .app-container.sidebar-collapsed .sidebar-toggle-btn {
+    background: #0284c7;
+    border-color: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(2, 132, 199, 0.3);
+  }
+  .app-container.sidebar-collapsed .sidebar-toggle-btn:hover {
+    background: #0369a1;
+    border-color: #0369a1;
   }
   .mobile-menu-btn {
     display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-main);
   }
   .current-q-indicator {
     display: flex;
@@ -794,15 +872,69 @@ portal_css = """
     line-height: 1.55;
   }
 
+  /* ── MOBILE DRAWER & BACKDROP ── */
+  .sidebar-backdrop {
+    display: none;
+  }
   @media (max-width: 900px) {
     .sidebar {
       position: fixed;
       left: -100%;
-      transition: left 0.3s ease;
+      top: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 85vw;
+      z-index: 100;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-left: 0 !important;
     }
-    .sidebar.open { left: 0; }
-    .mobile-menu-btn { display: block; }
-    .content-area { padding: 20px 16px; }
+    .sidebar.open {
+      left: 0;
+    }
+    .sidebar-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(2px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .sidebar-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .sidebar-toggle-btn .sidebar-toggle-text {
+      display: none;
+    }
+    .sidebar-toggle-btn {
+      padding: 7px;
+    }
+    .content-area {
+      padding: 20px 16px;
+    }
+  }
+
+  .bottom-module-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px dashed #e2e8f0;
+  }
+  @media (max-width: 600px) {
+    .bottom-module-nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bottom-module-nav button {
+      width: 100%;
+      justify-content: center;
+    }
   }
 """
 
@@ -829,6 +961,16 @@ portal_js = """
     }
     highlightNav(qNum);
     updateNavbarIndicator(qNum);
+
+    // Auto-close sidebar on mobile after selecting a question
+    if (window.innerWidth <= 900) {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (sidebar && sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('active');
+      }
+    }
   }
 
   function highlightNav(qNum) {
@@ -871,9 +1013,44 @@ portal_js = """
   }
 
   function toggleSidebar() {
+    const isMobile = window.innerWidth <= 900;
+    const container = document.querySelector('.app-container') || document.body;
     const sidebar = document.getElementById('sidebar');
-    if (sidebar) sidebar.classList.toggle('open');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const toggleBtn = document.getElementById('sidebarToggleBtn');
+
+    if (isMobile) {
+      const isOpen = sidebar.classList.toggle('open');
+      if (backdrop) backdrop.classList.toggle('active', isOpen);
+    } else {
+      const isCollapsed = container.classList.toggle('sidebar-collapsed');
+      try {
+        localStorage.setItem('odisha_sidebar_collapsed', isCollapsed ? 'true' : 'false');
+      } catch (e) {}
+      if (toggleBtn) {
+        toggleBtn.setAttribute('title', isCollapsed ? 'Expand Sidebar (Ctrl+B)' : 'Collapse Sidebar (Ctrl+B)');
+        const text = toggleBtn.querySelector('.sidebar-toggle-text');
+        if (text) text.textContent = isCollapsed ? 'Expand' : 'Sidebar';
+      }
+    }
   }
+
+  // Restore saved sidebar state
+  (function initSidebar() {
+    try {
+      const saved = localStorage.getItem('odisha_sidebar_collapsed');
+      if (saved === 'true' && window.innerWidth > 900) {
+        const container = document.querySelector('.app-container');
+        if (container) container.classList.add('sidebar-collapsed');
+        const toggleBtn = document.getElementById('sidebarToggleBtn');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('title', 'Expand Sidebar (Ctrl+B)');
+          const text = toggleBtn.querySelector('.sidebar-toggle-text');
+          if (text) text.textContent = 'Expand';
+        }
+      }
+    } catch (e) {}
+  })();
 
   function filterQuestions(query) {
     query = query.toLowerCase().trim();
@@ -889,11 +1066,20 @@ portal_js = """
     });
   }
 
-  // Keyboard Navigation
+  // Keyboard Navigation & Shortcuts
   window.addEventListener('keydown', (e) => {
-    if (e.target.tagName === 'INPUT') return;
-    if (e.key === 'ArrowRight') nextQuestion();
-    if (e.key === 'ArrowLeft') prevQuestion();
+    if (e.target && ['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+      e.preventDefault();
+      toggleSidebar();
+    } else if (e.key === '[') {
+      e.preventDefault();
+      toggleSidebar();
+    } else if (e.key === 'ArrowRight') {
+      nextQuestion();
+    } else if (e.key === 'ArrowLeft') {
+      prevQuestion();
+    }
   });
 
   // Handle hash on load
@@ -935,37 +1121,31 @@ window.MathJax = {{
 
 <style>
 {portal_css}
-  .bottom-module-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 2px dashed #e2e8f0;
-  }
-  @media (max-width: 600px) {
-    .bottom-module-nav {
-      flex-direction: column;
-      gap: 10px;
-    }
-    .bottom-module-nav button {
-      width: 100%;
-      justify-content: center;
-    }
-  }
 </style>
 </head>
 <body>
 
 <div class="app-container">
 
+  <!-- Mobile Backdrop Overlay -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
   <!-- ── SIDEBAR NAVIGATION ── -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <span class="brand-badge">OPSC 2019 · Active Phase</span>
-      <h1 class="brand-title">Odisha Geology Masterclass</h1>
-      <div class="brand-sub">Paper-II (GGM - 2/2019) · Complete Solutions</div>
+      <div class="sidebar-header-top">
+        <div>
+          <span class="brand-badge">OPSC 2019 · Active Phase</span>
+          <h1 class="brand-title">Odisha Geology Masterclass</h1>
+          <div class="brand-sub">Paper-II (GGM - 2/2019) · Complete Solutions</div>
+        </div>
+        <button class="sidebar-close-btn" onclick="toggleSidebar()" aria-label="Collapse Sidebar" title="Collapse Sidebar (Ctrl+B)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="11 17 6 12 11 7"></polyline>
+            <polyline points="18 17 13 12 18 7"></polyline>
+          </svg>
+        </button>
+      </div>
       
       <!-- Multi-Year Switcher -->
       <div class="year-switcher">
@@ -991,8 +1171,20 @@ window.MathJax = {{
     <!-- Top Navbar -->
     <header class="top-navbar">
       <div class="navbar-left">
-        <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Toggle menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebar()" aria-label="Toggle Sidebar Navigation" title="Collapse / Expand Sidebar (Ctrl+B)">
+          <!-- Collapse Icon -->
+          <svg class="toggle-icon-collapse" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <path d="M15 9l-3 3 3 3"></path>
+          </svg>
+          <!-- Expand Icon -->
+          <svg class="toggle-icon-expand" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <path d="M13 9l3 3-3 3"></path>
+          </svg>
+          <span class="sidebar-toggle-text">Sidebar</span>
         </button>
         <div class="current-q-indicator">
           <span class="current-badge" id="currentBadge">Q001</span>
