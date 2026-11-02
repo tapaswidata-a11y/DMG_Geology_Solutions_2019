@@ -335,6 +335,7 @@ portal_css = """
     flex: 1;
     overflow-y: auto;
     padding: 12px 10px;
+    contain: layout style;
   }
   .sidebar-nav::-webkit-scrollbar { width: 5px; }
   .sidebar-nav::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
@@ -346,9 +347,13 @@ portal_css = """
     letter-spacing: 0.8px;
     color: #64748b;
     padding: 14px 10px 6px 10px;
+    contain: layout style;
   }
   .nav-list { list-style: none; margin-bottom: 10px; }
-  .nav-item { margin-bottom: 3px; }
+  .nav-item {
+    margin-bottom: 3px;
+    contain: layout style;
+  }
   .nav-link {
     display: flex;
     align-items: flex-start;
@@ -537,11 +542,11 @@ portal_css = """
     margin-bottom: 32px;
     box-shadow: var(--shadow-sm);
     overflow: hidden;
-    content-visibility: hidden;
+    contain: content;
   }
   .question-module.visible {
     display: block;
-    content-visibility: visible;
+    contain: none;
   }
   body.view-all .question-module {
     display: block !important;
@@ -942,6 +947,33 @@ portal_js = """
   let currentQ = 1;
   const totalQ = """ + str(len(questions)) + """;
   let isViewAll = false;
+  const typesetModules = new Set();
+  let activeModuleEl = null;
+  let activeNavItemEl = null;
+
+  function typesetQuestion(el, qNum) {
+    if (!el || !window.MathJax || !window.MathJax.typesetPromise) return;
+    if (typesetModules.has(qNum)) return;
+    typesetModules.add(qNum);
+    window.MathJax.typesetPromise([el]).catch(function(err) {
+      console.warn('MathJax error on Q' + qNum, err);
+    });
+  }
+
+  function setupMathJaxListener() {
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+      window.MathJax.startup.promise.then(function() {
+        const activeModule = document.querySelector('.question-module.visible');
+        if (activeModule) {
+          const q = parseInt(activeModule.getAttribute('data-q') || '1', 10);
+          typesetQuestion(activeModule, q);
+        }
+      });
+    } else {
+      setTimeout(setupMathJaxListener, 80);
+    }
+  }
+  setupMathJaxListener();
 
   function selectQuestion(qNum) {
     if (isViewAll) {
@@ -953,14 +985,26 @@ portal_js = """
       return;
     }
     currentQ = qNum;
-    document.querySelectorAll('.question-module').forEach(el => el.classList.remove('visible'));
-    const target = document.getElementById('q' + qNum);
-    if (target) {
-      target.classList.add('visible');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Fast targeted active state update in sidebar
+    if (activeNavItemEl) activeNavItemEl.classList.remove('active');
+    activeNavItemEl = document.querySelector(`.nav-item[data-q="${qNum}"]`);
+    if (activeNavItemEl) {
+      activeNavItemEl.classList.add('active');
+      activeNavItemEl.scrollIntoView({ block: 'nearest' });
     }
-    highlightNav(qNum);
+
+    // Fast targeted active module update
+    if (activeModuleEl) activeModuleEl.classList.remove('visible');
+    activeModuleEl = document.getElementById('q' + qNum);
+    if (activeModuleEl) {
+      activeModuleEl.classList.add('visible');
+    }
+
     updateNavbarIndicator(qNum);
+
+    // Instant scroll to top (zero stutter)
+    window.scrollTo(0, 0);
 
     // Auto-close sidebar on mobile after selecting a question
     if (window.innerWidth <= 900) {
@@ -971,14 +1015,19 @@ portal_js = """
         if (backdrop) backdrop.classList.remove('active');
       }
     }
+
+    // Typeset MathJax ONLY for this single active module on demand
+    if (activeModuleEl) {
+      typesetQuestion(activeModuleEl, qNum);
+    }
   }
 
   function highlightNav(qNum) {
-    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-    const navItem = document.querySelector(`.nav-item[data-q="${qNum}"]`);
-    if (navItem) {
-      navItem.classList.add('active');
-      navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (activeNavItemEl) activeNavItemEl.classList.remove('active');
+    activeNavItemEl = document.querySelector(`.nav-item[data-q="${qNum}"]`);
+    if (activeNavItemEl) {
+      activeNavItemEl.classList.add('active');
+      activeNavItemEl.scrollIntoView({ block: 'nearest' });
     }
   }
 
@@ -998,6 +1047,8 @@ portal_js = """
     if (currentQ > 1) selectQuestion(currentQ - 1);
   }
 
+  let viewAllObserver = null;
+
   function toggleViewAll() {
     isViewAll = !isViewAll;
     const btn = document.getElementById('viewAllToggle');
@@ -1005,7 +1056,25 @@ portal_js = """
       document.querySelectorAll('.question-module').forEach(el => el.classList.add('visible'));
       btn.textContent = 'Single Question View';
       btn.classList.remove('nav-btn-primary');
+
+      // Lazily typeset visible modules on scroll in view-all mode
+      if ('IntersectionObserver' in window) {
+        if (!viewAllObserver) {
+          viewAllObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const q = parseInt(entry.target.getAttribute('data-q'), 10);
+                typesetQuestion(entry.target, q);
+              }
+            });
+          }, { rootMargin: '200px 0px' });
+        }
+        document.querySelectorAll('.question-module').forEach(m => viewAllObserver.observe(m));
+      }
     } else {
+      if (viewAllObserver) {
+        viewAllObserver.disconnect();
+      }
       btn.textContent = 'View All Questions';
       btn.classList.add('nav-btn-primary');
       selectQuestion(currentQ);
@@ -1052,18 +1121,28 @@ portal_js = """
     } catch (e) {}
   })();
 
+  let searchDebounce = null;
+  let cachedNavItems = null;
+
   function filterQuestions(query) {
-    query = query.toLowerCase().trim();
-    document.querySelectorAll('.nav-item').forEach(item => {
-      const title = item.querySelector('.nav-title').textContent.toLowerCase();
-      const preview = item.querySelector('.nav-preview').textContent.toLowerCase();
-      const badge = item.querySelector('.nav-badge').textContent.toLowerCase();
-      if (!query || title.includes(query) || preview.includes(query) || badge.includes(query)) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
+    if (typeof query !== 'string') {
+      const input = document.querySelector('.search-input');
+      query = input ? input.value : '';
+    }
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+      const q = (query || '').toLowerCase().trim();
+      if (!cachedNavItems) {
+        cachedNavItems = Array.from(document.querySelectorAll('.nav-item')).map(item => ({
+          el: item,
+          text: item.textContent.toLowerCase()
+        }));
       }
-    });
+      for (let i = 0; i < cachedNavItems.length; i++) {
+        const item = cachedNavItems[i];
+        item.el.style.display = (!q || item.text.includes(q)) ? '' : 'none';
+      }
+    }, 60);
   }
 
   // Keyboard Navigation & Shortcuts
@@ -1108,9 +1187,15 @@ full_portal_html = f"""<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script>
 window.MathJax = {{
+  startup: {{
+    typeset: false
+  }},
   tex: {{
     inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
     displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
+  }},
+  options: {{
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   }},
   svg: {{ fontCache: 'global' }}
 }};

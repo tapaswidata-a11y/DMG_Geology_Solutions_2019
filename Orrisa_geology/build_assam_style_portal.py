@@ -155,9 +155,15 @@ portal_html = f'''<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script>
 window.MathJax = {{
+  startup: {{
+    typeset: false
+  }},
   tex: {{
     inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
     displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
+  }},
+  options: {{
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   }},
   svg: {{ fontCache: 'global' }}
 }};
@@ -340,6 +346,7 @@ window.MathJax = {{
     flex: 1;
     overflow-y: auto;
     padding: 12px 10px 24px 10px;
+    contain: layout style;
   }}
   .sidebar-nav::-webkit-scrollbar {{ width: 6px; }}
   .sidebar-nav::-webkit-scrollbar-thumb {{ background: #334155; border-radius: 3px; }}
@@ -353,10 +360,14 @@ window.MathJax = {{
     padding: 14px 10px 6px 10px;
     margin-top: 4px;
     border-top: 1px solid rgba(255,255,255,0.05);
+    contain: layout style;
   }}
   .nav-section-title:first-child {{ border-top: none; }}
   .nav-list {{ list-style: none; }}
-  .nav-item {{ margin-bottom: 3px; }}
+  .nav-item {{
+    margin-bottom: 3px;
+    contain: layout style;
+  }}
   .nav-link {{
     display: flex;
     align-items: flex-start;
@@ -545,11 +556,11 @@ window.MathJax = {{
 
   .question-module {{
     display: none;
-    content-visibility: hidden;
+    contain: content;
   }}
   .question-module.active {{
     display: block;
-    content-visibility: visible;
+    contain: none;
     animation: fadeIn 0.12s ease-in-out;
   }}
   body.view-all .question-module {{
@@ -1081,34 +1092,64 @@ window.MathJax = {{
     {', '.join([f'{q["q"]}: "{q.get("topic", "").replace(chr(34), "")}"' for q in questions])}
   }};
 
+  const typesetModules = new Set();
+  let activeModuleEl = null;
+  let activeNavItemEl = null;
+
+  function typesetQuestion(el, qNum) {{
+    if (!el || !window.MathJax || !window.MathJax.typesetPromise) return;
+    if (typesetModules.has(qNum)) return;
+    typesetModules.add(qNum);
+    window.MathJax.typesetPromise([el]).catch(function(err) {{
+      console.warn('MathJax error on Q' + qNum, err);
+    }});
+  }}
+
+  function setupMathJaxListener() {{
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {{
+      window.MathJax.startup.promise.then(function() {{
+        const activeModule = document.querySelector('.question-module.active');
+        if (activeModule) {{
+          const q = parseInt(activeModule.getAttribute('data-q') || '1', 10);
+          typesetQuestion(activeModule, q);
+        }}
+      }});
+    }} else {{
+      setTimeout(setupMathJaxListener, 80);
+    }}
+  }}
+  setupMathJaxListener();
+
   function selectQuestion(qNum) {{
     currentQ = qNum;
 
-    // Update active state in sidebar
-    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-    const activeItem = document.querySelector(`.nav-item[data-q="${{qNum}}"]`);
-    if (activeItem) {{
-      activeItem.classList.add('active');
-      activeItem.scrollIntoView({{ block: 'nearest' }});
+    // Fast targeted active state update in sidebar
+    if (activeNavItemEl) activeNavItemEl.classList.remove('active');
+    activeNavItemEl = document.querySelector(`.nav-item[data-q="${{qNum}}"]`);
+    if (activeNavItemEl) {{
+      activeNavItemEl.classList.add('active');
+      activeNavItemEl.scrollIntoView({{ block: 'nearest' }});
     }}
 
-    // Update main view
-    document.querySelectorAll('.question-module').forEach(el => el.classList.remove('active'));
-    const activeModule = document.getElementById(`q${{qNum}}`);
-    if (activeModule) {{
-      activeModule.classList.add('active');
+    // Fast targeted active module update
+    if (activeModuleEl) activeModuleEl.classList.remove('active');
+    activeModuleEl = document.getElementById(`q${{qNum}}`);
+    if (activeModuleEl) {{
+      activeModuleEl.classList.add('active');
     }}
 
     // Update navbar badge and title
     const padQ = String(qNum).padStart(3, '0');
-    document.getElementById('currentBadge').textContent = `Q${{padQ}}`;
-    document.getElementById('currentTitle').textContent = qTopics[qNum] || `Question ${{qNum}}`;
+    const badgeEl = document.getElementById('currentBadge');
+    const titleEl = document.getElementById('currentTitle');
+    if (badgeEl) badgeEl.textContent = `Q${{padQ}}`;
+    if (titleEl) titleEl.textContent = qTopics[qNum] || `Question ${{qNum}}`;
 
     // Update URL hash without jumping
     history.replaceState(null, null, `#q${{qNum}}`);
 
-    // Scroll main window to top
-    window.scrollTo({{ top: 0, behavior: 'smooth' }});
+    // Instant scroll to top (zero stutter)
+    window.scrollTo(0, 0);
 
     // Auto-close sidebar on mobile
     if (window.innerWidth <= 900) {{
@@ -1120,9 +1161,9 @@ window.MathJax = {{
       }}
     }}
 
-    // Typeset MathJax
-    if (window.MathJax && window.MathJax.typesetPromise) {{
-      MathJax.typesetPromise();
+    // Typeset MathJax ONLY for this single active module on demand
+    if (activeModuleEl) {{
+      typesetQuestion(activeModuleEl, qNum);
     }}
   }}
 
@@ -1134,6 +1175,8 @@ window.MathJax = {{
     if (currentQ < totalQ) selectQuestion(currentQ + 1);
   }}
 
+  let viewAllObserver = null;
+
   function toggleViewAll() {{
     isViewAll = !isViewAll;
     const body = document.body;
@@ -1142,14 +1185,29 @@ window.MathJax = {{
       body.classList.add('view-all');
       btn.textContent = 'Single Question View';
       btn.classList.remove('nav-btn-primary');
+
+      // Lazily typeset visible modules on scroll in view-all mode
+      if ('IntersectionObserver' in window) {{
+        if (!viewAllObserver) {{
+          viewAllObserver = new IntersectionObserver((entries) => {{
+            entries.forEach(entry => {{
+              if (entry.isIntersecting) {{
+                const q = parseInt(entry.target.getAttribute('data-q'), 10);
+                typesetQuestion(entry.target, q);
+              }}
+            }});
+          }}, {{ rootMargin: '200px 0px' }});
+        }}
+        document.querySelectorAll('.question-module').forEach(m => viewAllObserver.observe(m));
+      }}
     }} else {{
+      if (viewAllObserver) {{
+        viewAllObserver.disconnect();
+      }}
       body.classList.remove('view-all');
       btn.textContent = 'View All Questions';
       btn.classList.add('nav-btn-primary');
       selectQuestion(currentQ);
-    }}
-    if (window.MathJax && window.MathJax.typesetPromise) {{
-      MathJax.typesetPromise();
     }}
   }}
 
@@ -1193,16 +1251,28 @@ window.MathJax = {{
     }} catch (e) {{}}
   }})();
 
-  function filterQuestions() {{
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    document.querySelectorAll('.nav-item').forEach(item => {{
-      const text = item.textContent.toLowerCase();
-      if (text.includes(query)) {{
-        item.style.display = '';
-      }} else {{
-        item.style.display = 'none';
+  let searchDebounce = null;
+  let cachedNavItems = null;
+
+  function filterQuestions(query) {{
+    if (typeof query !== 'string') {{
+      const input = document.getElementById('searchInput') || document.querySelector('.search-input');
+      query = input ? input.value : '';
+    }}
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {{
+      const q = (query || '').toLowerCase().trim();
+      if (!cachedNavItems) {{
+        cachedNavItems = Array.from(document.querySelectorAll('.nav-item')).map(item => ({{
+          el: item,
+          text: item.textContent.toLowerCase()
+        }}));
       }}
-    }});
+      for (let i = 0; i < cachedNavItems.length; i++) {{
+        const item = cachedNavItems[i];
+        item.el.style.display = (!q || item.text.includes(q)) ? '' : 'none';
+      }}
+    }}, 60);
   }}
 
   // Keyboard navigation & shortcuts

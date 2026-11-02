@@ -12,9 +12,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script>
 window.MathJax = {
+  startup: {
+    typeset: false
+  },
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
     displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   svg: { fontCache: 'global' }
 };
@@ -197,6 +203,7 @@ window.MathJax = {
     flex: 1;
     overflow-y: auto;
     padding: 12px 10px 24px 10px;
+    contain: layout style;
   }
   .sidebar-nav::-webkit-scrollbar { width: 6px; }
   .sidebar-nav::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
@@ -210,10 +217,14 @@ window.MathJax = {
     padding: 14px 10px 6px 10px;
     margin-top: 4px;
     border-top: 1px solid rgba(255,255,255,0.05);
+    contain: layout style;
   }
   .nav-section-title:first-child { border-top: none; }
   .nav-list { list-style: none; }
-  .nav-item { margin-bottom: 3px; }
+  .nav-item {
+    margin-bottom: 3px;
+    contain: layout style;
+  }
   .nav-link {
     display: flex;
     align-items: flex-start;
@@ -402,11 +413,11 @@ window.MathJax = {
 
   .question-module {
     display: none;
-    content-visibility: hidden;
+    contain: content;
   }
   .question-module.active {
     display: block;
-    content-visibility: visible;
+    contain: none;
     animation: fadeIn 0.12s ease-in-out;
   }
   body.view-all .question-module {
@@ -52970,34 +52981,64 @@ ightleftharpoons 	ext{Grs} + 2	ext{Ky} + 	ext{Qtz}$)</h1>
     1: "Slope Stability & Landslide Shear Plane Mechanics", 2: "Channel Sinuosity Index & River Morphology", 3: "Triad Controls of Aeolian Sediment Transport", 4: "Tectonic Activity Indices in Drainage Basin Analysis", 5: "Pedestal Rocks & Mushroom Rocks (Wind Abrasion)", 6: "Optically Stimulated Luminescence (OSL) Dating Principles", 7: "Fluvial Megafans vs Alluvial Fans in Foreland Basins", 8: "Trellis Drainage Pattern in Folded & Tilted Strata", 9: "Fanglomerate Lithification & Alluvial Fan Facies", 10: "Hogback vs Cuesta Morphometrics in Dipping Strata", 11: "Rayleigh Atmospheric Scattering & Sky Coloration", 12: "Molecular Vibrational Modes in SWIR & TIR Spectroscopy", 13: "Sun-Synchronous Orbital Mechanics & Local Solar Time", 14: "Spatial Resolution & Ground Target Clarity", 15: "Fiducial Marks & Principal Point Geometry", 16: "Synthetic Aperture Radar (SAR) vs Real Aperture Radar (RAR)", 17: "Soil Moisture Absorption in Near-Infrared (NIR) Band", 18: "Chlorophyll Pigment Control of Green Peak Reflectance", 19: "IRS-1D Satellite Sensor Spatial Resolutions", 20: "Shuttle Radar Topography Mission (SRTM) 3D Topographic Data", 21: "Thrust Faults Dip Angle Definition (< 45 deg)", 22: "Plunge of Linear Geological Structures", 23: "Hooke's Law in Linear Elastic Rock Deformation", 24: "Fold Hinge Line as Line of Maximum Curvature", 25: "Parallel (Concentric) Folds & Depth Curvature Evolution", 26: "Graben, Horst & Rift Valley Tectonics", 27: "Plunge of Linear Features & Coordinate Geometry", 28: "Fault Classification: Dip-Slip vs Strike-Slip Kinematics", 29: "Unconformity Types: Disconformity vs Nonconformity", 30: "Map Scaling & Representative Fraction (RF 1:25,000)", 31: "Apparent Dip vs True Dip Trigonometry & Nomography", 32: "Himalayan Orogenic Wedge: Folds & Thrust Faults", 33: "Recumbent Fold Geometry & Axial Surface Inclination", 34: "Upper Crustal Deformation: Brittle Regime & Byerlee's Law", 35: "Anderson's Fault Theory: Normal Fault Dip Angles", 36: "Indian Drainage Systems: Peninsular Shield vs Rift Valleys", 37: "Global Mid-Ocean Ridges & Deep-Sea Trenches", 38: "Seismology: Epicenter, Hypocenter & Intensity Attenuation", 39: "Seismic Wave Propagation: Body Waves vs Surface Waves", 40: "Landslide Morphology: Displaced Mass vs Subjacent Bedrock", 41: "Genetic Mountain Classification: Tectonic vs Residual Relief", 42: "Asthenosphere Rheology & Low Velocity Zone (LVZ)", 43: "Earth Chemical Layering: Suess SIAL, SIMA, NIFE Model", 44: "P-Wave Core Transmission & PKIKP Phases", 45: "Principles of Isostasy: Archimedean Gravitational Equilibrium", 46: "Cretaceous of Cauvery Basin: Uttatur, Trichinopoly & Ariyalur", 47: "Vindhyan Supergroup: Semri, Kaimur, Rewa & Bhander Groups", 48: "Talchir Formation: Basal Gondwana Glacial Tillite Succession", 49: "Muth Quartzite (Spiti Valley): Arthropod Trace Fossils", 50: "Ammonites as Index Fossils in Jurassic Stratigraphy", 51: "Barren Measures Formation (Mid-Permian)", 52: "Digboi Oilfield Anticlinal Trap & Tipam Group", 53: "Principle of Uniformitarianism (Hutton & Lyell)", 54: "Spiti Valley: The 'Museum of Indian Geology'", 55: "Vindhyan Supergroup Four Groups (Bhander Group)", 56: "Chronostratigraphic Correlation & Time Equivalence", 57: "Talcher Coalfield Stratigraphy (Raja Rao 1982)", 58: "Aravalli Mountain Belt Stratigraphic Succession", 59: "Lameta Formation as Infratrappean Beds", 60: "Eparchean Unconformity at Tirupati Hills", 61: "Ordovician Early Vertebrates & Bone Structure", 62: "Amphioxus Notochord Anterior Extension", 63: "Triadobatrachus massinoti: Link to Modern Anura", 64: "Petrolacosaurus & Araeoscelis (Order Araeoscelidia)", 65: "Class Placodermi: Heavily Armored Jawed Fishes", 66: "Foraminiferal Heterotrophic Feeding Mode", 67: "Genus Pliopithecus: Miocene Anthropoid Primates", 68: "Earliest Mammaliaforms in Upper Triassic & Lower Jurassic", 69: "Major Fossil Phyla (Mollusca Dominance)", 70: "Ammonites as Cretaceous & Mesozoic Index Fossils", 71: "Rugosa: Tetracoralla or Horn Corals", 72: "Brachiopod Dominance in Paleozoic Ecosystems", 73: "Agglutinated Foraminifera & Thermal Maturity (FCI)", 74: "Early Cretaceous Transgression Dinoflagellate Cysts", 75: "Discocyclina ranikotensis Confined to Late Paleocene", 76: "Primary Magma Generation & Mantle Melting", 77: "Igneous Textures & Rock Types", 78: "Alkaline Rocks & Foid Suites (Ijolite)", 79: "Intergrowth Textures (Myrmekite)", 80: "Charnockite Series & Hypersthene Granulite", 81: "Subsolidus Feldspar Exsolution (Antiperthite)", 82: "Autometamorphism & Deuteric Alteration", 83: "Himalayan Tectonic Architecture (MCT)", 84: "Forms of Igneous Intrusions (Bysmalith)", 85: "Lamprophyre Petrography & Panidiomorphic Texture", 86: "Monomineralic & Ultrabasic Rocks (Anorthosite)", 87: "Alkaline Plutonic Rocks (Fergusite)", 88: "IUGS QAPF Classification (Quartz Monzonite)", 89: "Ultramafic Rocks & Peridotites (Harzburgite)", 90: "Intermediate Volcanics (Andesite)", 91: "Sandstone Classification & Cements (Argillaceous)", 92: "Shale Petrography & Laminar Structure", 93: "Clastic Sedimentary Rocks Definition", 94: "Spheroidal Weathering along Joints", 95: "Karst Topography & Carbonate Bedrock", 96: "Arid Paleoclimates & Continental Red Beds", 97: "Chemical Sediments & Evaporites (Gypsum)", 98: "Sedimentary Diagenesis vs Lithification", 99: "Textural & Mineralogical Maturity (ZTR Index)", 100: "Granulometric Analysis (Grain Size Distribution)", 101: "Folk & Ward Graphic Size Parameters", 102: "Sandstone Classification QFL Ternary", 103: "Heavy Minerals & Provenance Analysis", 104: "Clastic Grain Size Classes (Rudaceous)", 105: "Folk Carbonate Classification & Allochems", 106: "Migmatites & High-Grade Anatexis", 107: "Pelitic Metamorphism & Protolith Lineage", 108: "Metamorphic Foliation & Thermodynamic Stress", 109: "Barrovian Zonal Sequence (Garnet-Schist)", 110: "Greenschist Facies P-T Conditions", 111: "Classical Metamorphic Triad (Regional)", 112: "Net-Transfer Reactions & GASP Barometer", 113: "Index Minerals & Typomorphic Minerals", 114: "Thermodynamic & Kinetic Metamorphic Controls", 115: "HP-LT Blueschist Facies & Subduction Margins", 116: "Granulite Facies & Charnockite Suite", 117: "Augen Gneiss & Porphyroclast Structures", 118: "Hydrothermal Metamorphism & Metasomatism", 119: "Contact Metamorphism Hornfels Temperatures", 120: "Contact Metasomatic Skarn Zones", 121: "Unconfined Compressive Strength (UCS)", 122: "Transverse Strength (Modulus of Rupture)", 123: "Void Ratio vs Porosity Formulation", 124: "Bulk Density & In-Situ Mass", 125: "Schmidt Hammer Rebound Hardness Testing", 126: "Brazilian Indirect Tensile Test", 127: "Natural vs Artificial Pozzolanic Materials", 128: "Deep Mixing Methods (DMM) Ground Stabilization", 129: "In-Situ Field Testing vs Laboratory Methods", 130: "Schlumberger Array Resistivity Configuration", 131: "GIS Vector Geometric Primitives", 132: "Map Scale and Feature Linear Dimensions", 133: "Planar Coordinate Dimensionality in GIS", 134: "Geoprocessing Inputs (Alphanumeric)", 135: "Digital Data Capture (Digitization & Orthoimagery)", 136: "GIS Accuracy & Error Propagation", 137: "Spatio-Temporal GIS (Time as Fourth Dimension)", 138: "Spatial Data Structures (Spaghetti Vector Model)", 139: "Spatial Databases & Geodatabase Architecture", 140: "Spatial Resolution Capabilities of SAR and LiDAR", 141: "Flow Net Seepage Calculation Parameters", 142: "Environmental Controls on Evapotranspiration", 143: "Aquifer Storativity Hierarchy", 144: "Constant Head Permeameter Limitations", 145: "Freshwater-Saline Water Parabolic Interface Geometry", 146: "Pumping Period vs Recovery Period Parameters", 147: "Cooper-Jacob Method Validity Limits", 148: "Cable Tool Drilling in Bhabar Boulder Beds", 149: "Optimal Aquifer Textural Parameters (D10 and Cu)", 150: "Electrical Conductivity (EC) to TDS Conversion Factor"
   };
 
+  const typesetModules = new Set();
+  let activeModuleEl = null;
+  let activeNavItemEl = null;
+
+  function typesetQuestion(el, qNum) {
+    if (!el || !window.MathJax || !window.MathJax.typesetPromise) return;
+    if (typesetModules.has(qNum)) return;
+    typesetModules.add(qNum);
+    window.MathJax.typesetPromise([el]).catch(function(err) {
+      console.warn('MathJax error on Q' + qNum, err);
+    });
+  }
+
+  function setupMathJaxListener() {
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+      window.MathJax.startup.promise.then(function() {
+        const activeModule = document.querySelector('.question-module.active');
+        if (activeModule) {
+          const q = parseInt(activeModule.getAttribute('data-q') || '1', 10);
+          typesetQuestion(activeModule, q);
+        }
+      });
+    } else {
+      setTimeout(setupMathJaxListener, 80);
+    }
+  }
+  setupMathJaxListener();
+
   function selectQuestion(qNum) {
     currentQ = qNum;
 
-    // Update active state in sidebar
-    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-    const activeItem = document.querySelector(`.nav-item[data-q="${qNum}"]`);
-    if (activeItem) {
-      activeItem.classList.add('active');
-      activeItem.scrollIntoView({ block: 'nearest' });
+    // Fast targeted active state update in sidebar
+    if (activeNavItemEl) activeNavItemEl.classList.remove('active');
+    activeNavItemEl = document.querySelector(`.nav-item[data-q="${qNum}"]`);
+    if (activeNavItemEl) {
+      activeNavItemEl.classList.add('active');
+      activeNavItemEl.scrollIntoView({ block: 'nearest' });
     }
 
-    // Update main view
-    document.querySelectorAll('.question-module').forEach(el => el.classList.remove('active'));
-    const activeModule = document.getElementById(`q${qNum}`);
-    if (activeModule) {
-      activeModule.classList.add('active');
+    // Fast targeted active module update
+    if (activeModuleEl) activeModuleEl.classList.remove('active');
+    activeModuleEl = document.getElementById(`q${qNum}`);
+    if (activeModuleEl) {
+      activeModuleEl.classList.add('active');
     }
 
     // Update navbar badge and title
     const padQ = String(qNum).padStart(3, '0');
-    document.getElementById('currentBadge').textContent = `Q${padQ}`;
-    document.getElementById('currentTitle').textContent = qTopics[qNum] || `Question ${qNum}`;
+    const badgeEl = document.getElementById('currentBadge');
+    const titleEl = document.getElementById('currentTitle');
+    if (badgeEl) badgeEl.textContent = `Q${padQ}`;
+    if (titleEl) titleEl.textContent = qTopics[qNum] || `Question ${qNum}`;
 
     // Update URL hash without jumping
     history.replaceState(null, null, `#q${qNum}`);
 
-    // Scroll main window to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Instant scroll to top (zero stutter)
+    window.scrollTo(0, 0);
 
     // Auto-close sidebar on mobile
     if (window.innerWidth <= 900) {
@@ -53009,9 +53050,9 @@ ightleftharpoons 	ext{Grs} + 2	ext{Ky} + 	ext{Qtz}$)</h1>
       }
     }
 
-    // Typeset MathJax
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      MathJax.typesetPromise();
+    // Typeset MathJax ONLY for this single active module on demand
+    if (activeModuleEl) {
+      typesetQuestion(activeModuleEl, qNum);
     }
   }
 
@@ -53023,6 +53064,8 @@ ightleftharpoons 	ext{Grs} + 2	ext{Ky} + 	ext{Qtz}$)</h1>
     if (currentQ < totalQ) selectQuestion(currentQ + 1);
   }
 
+  let viewAllObserver = null;
+
   function toggleViewAll() {
     isViewAll = !isViewAll;
     const body = document.body;
@@ -53031,14 +53074,29 @@ ightleftharpoons 	ext{Grs} + 2	ext{Ky} + 	ext{Qtz}$)</h1>
       body.classList.add('view-all');
       btn.textContent = 'Single Question View';
       btn.classList.remove('nav-btn-primary');
+
+      // Lazily typeset visible modules on scroll in view-all mode
+      if ('IntersectionObserver' in window) {
+        if (!viewAllObserver) {
+          viewAllObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const q = parseInt(entry.target.getAttribute('data-q'), 10);
+                typesetQuestion(entry.target, q);
+              }
+            });
+          }, { rootMargin: '200px 0px' });
+        }
+        document.querySelectorAll('.question-module').forEach(m => viewAllObserver.observe(m));
+      }
     } else {
+      if (viewAllObserver) {
+        viewAllObserver.disconnect();
+      }
       body.classList.remove('view-all');
       btn.textContent = 'View All Questions';
       btn.classList.add('nav-btn-primary');
       selectQuestion(currentQ);
-    }
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      MathJax.typesetPromise();
     }
   }
 
@@ -53082,16 +53140,28 @@ ightleftharpoons 	ext{Grs} + 2	ext{Ky} + 	ext{Qtz}$)</h1>
     } catch (e) {}
   })();
 
-  function filterQuestions() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    document.querySelectorAll('.nav-item').forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (text.includes(query)) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
+  let searchDebounce = null;
+  let cachedNavItems = null;
+
+  function filterQuestions(query) {
+    if (typeof query !== 'string') {
+      const input = document.getElementById('searchInput') || document.querySelector('.search-input');
+      query = input ? input.value : '';
+    }
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+      const q = (query || '').toLowerCase().trim();
+      if (!cachedNavItems) {
+        cachedNavItems = Array.from(document.querySelectorAll('.nav-item')).map(item => ({
+          el: item,
+          text: item.textContent.toLowerCase()
+        }));
       }
-    });
+      for (let i = 0; i < cachedNavItems.length; i++) {
+        const item = cachedNavItems[i];
+        item.el.style.display = (!q || item.text.includes(q)) ? '' : 'none';
+      }
+    }, 60);
   }
 
   // Keyboard navigation & shortcuts
