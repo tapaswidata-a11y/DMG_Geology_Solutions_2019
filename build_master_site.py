@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import os
 import re
+import json
 from bs4 import BeautifulSoup
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 q_metadata = [
     {
@@ -1012,7 +1015,8 @@ extracted_content = []
 for meta in q_metadata:
     fname = meta["file"]
     q_num = meta["q"]
-    with open(fname, "r", encoding="utf-8") as f:
+    filepath = os.path.join(BASE_DIR, fname)
+    with open(filepath, "r", encoding="utf-8") as f:
         soup = BeautifulSoup(f.read(), "html.parser")
         
         # find container
@@ -1074,6 +1078,7 @@ for sec, q_list in sections_dict.items():
 
 sidebar_html = "\n".join(sidebar_nav_html)
 all_articles_html = "\n".join(extracted_content)
+q_topics_json = json.dumps({m['q']: m['topic'] for m in q_metadata})
 
 # HTML Template
 index_template = f'''<!DOCTYPE html>
@@ -1090,9 +1095,15 @@ index_template = f'''<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
 window.MathJax = {{
+  startup: {{
+    typeset: false
+  }},
   tex: {{
     inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
     displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
+  }},
+  options: {{
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   }},
   svg: {{ fontCache: 'global' }}
 }};
@@ -1156,12 +1167,78 @@ window.MathJax = {{
     flex-shrink: 0;
     border-right: 1px solid #1e293b;
     box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+    transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }}
+
+  @media (min-width: 901px) {{
+    .app-container.sidebar-collapsed .sidebar {{
+      margin-left: calc(-1 * var(--sidebar-width));
+      pointer-events: none;
+      visibility: hidden;
+      transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s;
+    }}
   }}
 
   .sidebar-header {{
     padding: 20px 20px 16px 20px;
     border-bottom: 1px solid #1e293b;
     background: #090d16;
+  }}
+  .sidebar-header-top {{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }}
+  .sidebar-close-btn {{
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #94a3b8;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+  }}
+  .sidebar-close-btn:hover {{
+    background: rgba(255, 255, 255, 0.18);
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.3);
+  }}
+
+  /* Multi-Year Examination Switcher */
+  .year-switcher {{
+    display: flex;
+    gap: 6px;
+    margin: 12px 0 6px 0;
+  }}
+  .year-btn {{
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 4px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }}
+  .year-btn.active {{
+    background: #2563eb;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(37,99,235,0.4);
+  }}
+  .year-btn.inactive {{
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+  }}
+  .year-btn.inactive:hover {{
+    background: #334155;
+    color: #f8fafc;
   }}
   .brand-badge {{
     display: inline-block;
@@ -1308,7 +1385,54 @@ window.MathJax = {{
   .navbar-left {{
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
+    min-width: 0;
+  }}
+  .sidebar-toggle-btn {{
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    color: #1e293b;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+    flex-shrink: 0;
+  }}
+  .sidebar-toggle-btn:hover {{
+    background: #e2e8f0;
+    border-color: #94a3b8;
+    color: #0f172a;
+  }}
+  .sidebar-toggle-btn:active {{
+    transform: scale(0.97);
+  }}
+  .sidebar-toggle-btn .toggle-icon-expand {{
+    display: none;
+  }}
+  .sidebar-toggle-btn .toggle-icon-collapse {{
+    display: block;
+  }}
+  .app-container.sidebar-collapsed .sidebar-toggle-btn .toggle-icon-collapse {{
+    display: none;
+  }}
+  .app-container.sidebar-collapsed .sidebar-toggle-btn .toggle-icon-expand {{
+    display: block;
+  }}
+  .app-container.sidebar-collapsed .sidebar-toggle-btn {{
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+  }}
+  .app-container.sidebar-collapsed .sidebar-toggle-btn:hover {{
+    background: #1d4ed8;
+    border-color: #1d4ed8;
   }}
   .current-q-indicator {{
     font-size: 14px;
@@ -1375,6 +1499,7 @@ window.MathJax = {{
     display: none; /* hidden until selected in single-view */
     background: transparent;
     margin-bottom: 40px;
+    contain: content;
   }}
   .question-module.active {{
     display: block;
@@ -1446,22 +1571,46 @@ window.MathJax = {{
     color: #1e40af;
   }}
 
-  /* Mobile Responsive Drawer */
-  .mobile-menu-btn {{
+  /* ── Mobile Responsive Drawer & Backdrop ── */
+  .sidebar-backdrop {{
     display: none;
-    background: none;
-    border: none;
-    color: #334155;
-    cursor: pointer;
   }}
   @media (max-width: 900px) {{
     .sidebar {{
       position: fixed;
       left: -100%;
-      transition: left 0.3s ease;
+      top: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 85vw;
+      z-index: 100;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-left: 0 !important;
     }}
-    .sidebar.open {{ left: 0; }}
-    .mobile-menu-btn {{ display: block; }}
+    .sidebar.open {{
+      left: 0;
+    }}
+    .sidebar-backdrop {{
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(2px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }}
+    .sidebar-backdrop.active {{
+      opacity: 1;
+      pointer-events: auto;
+    }}
+    .sidebar-toggle-btn .sidebar-toggle-text {{
+      display: none;
+    }}
+    .sidebar-toggle-btn {{
+      padding: 7px;
+    }}
   }}
 
   /* ── Master Question Module Component Styles ── */
@@ -1748,12 +1897,32 @@ window.MathJax = {{
 
 <div class="app-container">
 
+  <!-- Mobile Backdrop Overlay -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
   <!-- ── SIDEBAR NAVIGATION ── -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <span class="brand-badge">DGMS 2019 · Complete Suite</span>
-      <h1 class="brand-title">Geology Master Solution</h1>
-      <div class="brand-sub">{len(q_metadata)} Comprehensive Textbook Guides</div>
+      <div class="sidebar-header-top">
+        <div>
+          <span class="brand-badge">DGMS 2019 · Complete Suite</span>
+          <h1 class="brand-title">Geology Master Solution</h1>
+          <div class="brand-sub">{len(q_metadata)} Comprehensive Textbook Guides</div>
+        </div>
+        <button class="sidebar-close-btn" onclick="toggleSidebar()" aria-label="Collapse Sidebar" title="Collapse Sidebar (Ctrl+B)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="11 17 6 12 11 7"></polyline>
+            <polyline points="18 17 13 12 18 7"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Multi-Year Examination Switcher -->
+      <div class="year-switcher">
+        <a href="index.html" class="year-btn active" title="Current Portal: Assam DGMS 2019 Exam">Assam 2019 (100 Live)</a>
+        <a href="Orrisa_geology/index.html" class="year-btn inactive" title="Open Odisha 2021 Portal">Odisha 2021 (150 Live)</a>
+        <a href="Orrisa_geology/index_2019.html" class="year-btn inactive" title="Open Odisha 2019 Portal">Odisha 2019 (Batch 1)</a>
+      </div>
     </div>
 
     <div class="sidebar-search">
@@ -1773,8 +1942,20 @@ window.MathJax = {{
     <!-- Sticky Top Navbar -->
     <header class="top-navbar">
       <div class="navbar-left">
-        <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Toggle menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebar()" aria-label="Toggle Sidebar Navigation" title="Collapse / Expand Sidebar (Ctrl+B)">
+          <!-- Collapse Icon -->
+          <svg class="toggle-icon-collapse" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <path d="M15 9l-3 3 3 3"></path>
+          </svg>
+          <!-- Expand Icon -->
+          <svg class="toggle-icon-expand" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <path d="M13 9l3 3-3 3"></path>
+          </svg>
+          <span class="sidebar-toggle-text">Sidebar</span>
         </button>
         <div class="current-q-indicator">
           <span class="current-badge" id="currentBadge">Q01</span>
@@ -1806,53 +1987,86 @@ window.MathJax = {{
 
 <!-- ── INTERACTIVE CONTROLLER ── -->
 <script>
+  const qTopics = {q_topics_json};
   let currentQ = 1;
   const totalQ = {len(q_metadata)};
   let isViewAll = false;
+  const typesetModules = new Set();
+  let activeModuleEl = null;
+  let activeNavItemEl = null;
+
+  function typesetQuestion(el, qNum) {{
+    if (!el || !window.MathJax || !window.MathJax.typesetPromise) return;
+    if (typesetModules.has(qNum)) return;
+    typesetModules.add(qNum);
+    window.MathJax.typesetPromise([el]).catch(function(err) {{
+      console.warn('MathJax error on Q' + qNum, err);
+    }});
+  }}
+
+  function setupMathJaxListener() {{
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {{
+      window.MathJax.startup.promise.then(function() {{
+        const activeModule = document.querySelector('.question-module.active');
+        if (activeModule) {{
+          const q = parseInt(activeModule.getAttribute('data-q') || '1', 10);
+          typesetQuestion(activeModule, q);
+        }}
+      }});
+    }} else {{
+      setTimeout(setupMathJaxListener, 80);
+    }}
+  }}
+  setupMathJaxListener();
 
   function selectQuestion(qNum) {{
     if (isViewAll) {{
       toggleViewAll();
     }}
     currentQ = qNum;
-    
-    // Update active module
-    document.querySelectorAll('.question-module').forEach(el => {{
-      el.classList.remove('active');
-    }});
-    const activeEl = document.getElementById('q' + qNum);
-    if (activeEl) {{
-      activeEl.classList.add('active');
+
+    // Fast targeted active state update in sidebar (O(1))
+    if (activeNavItemEl) activeNavItemEl.classList.remove('active');
+    activeNavItemEl = document.querySelector(`.nav-item[data-q="${{qNum}}"]`);
+    if (activeNavItemEl) {{
+      activeNavItemEl.classList.add('active');
+      activeNavItemEl.scrollIntoView({{ block: 'nearest' }});
     }}
 
-    // Update active nav link
-    document.querySelectorAll('.nav-item').forEach(el => {{
-      el.classList.remove('active');
-      if (parseInt(el.getAttribute('data-q')) === qNum) {{
-        el.classList.add('active');
-        el.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
-      }}
-    }});
+    // Fast targeted active module update (O(1))
+    if (activeModuleEl) activeModuleEl.classList.remove('active');
+    activeModuleEl = document.getElementById(`q${{qNum}}`);
+    if (activeModuleEl) {{
+      activeModuleEl.classList.add('active');
+    }}
 
     // Update navbar indicator
     const qBadge = document.getElementById('currentBadge');
     const qTitle = document.getElementById('currentTitle');
-    if (activeEl) {{
-      qBadge.textContent = 'Q' + (qNum < 10 ? '0' + qNum : qNum);
-      qTitle.textContent = activeEl.getAttribute('data-topic');
-    }}
+    if (qBadge) qBadge.textContent = 'Q' + (qNum < 10 ? '0' + qNum : qNum);
+    if (qTitle) qTitle.textContent = qTopics[qNum] || (activeModuleEl ? activeModuleEl.getAttribute('data-topic') : `Question ${{qNum}}`);
 
-    // Update URL hash cleanly
+    // Update URL hash cleanly without page jump
     if (history.replaceState) {{
       history.replaceState(null, null, '#q' + qNum);
     }}
 
-    // Scroll main window to top
-    window.scrollTo({{ top: 0, behavior: 'smooth' }});
+    // Instant zero-lag scroll to top
+    window.scrollTo(0, 0);
 
-    // Typeset MathJax
-    if (window.MathJax && window.MathJax.typesetPromise) {{
-      MathJax.typesetPromise();
+    // Auto-close sidebar on mobile upon question selection
+    if (window.innerWidth <= 900) {{
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (sidebar && sidebar.classList.contains('open')) {{
+        sidebar.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('active');
+      }}
+    }}
+
+    // Typeset MathJax ONLY for this single active module on demand
+    if (activeModuleEl) {{
+      typesetQuestion(activeModuleEl, qNum);
     }}
   }}
 
@@ -1864,6 +2078,8 @@ window.MathJax = {{
     if (currentQ < totalQ) selectQuestion(currentQ + 1);
   }}
 
+  let viewAllObserver = null;
+
   function toggleViewAll() {{
     isViewAll = !isViewAll;
     const body = document.body;
@@ -1872,38 +2088,110 @@ window.MathJax = {{
       body.classList.add('view-all');
       btn.textContent = 'Single Question View';
       btn.classList.remove('nav-btn-primary');
+
+      // Lazily typeset visible modules on scroll in view-all mode
+      if ('IntersectionObserver' in window) {{
+        if (!viewAllObserver) {{
+          viewAllObserver = new IntersectionObserver((entries) => {{
+            entries.forEach(entry => {{
+              if (entry.isIntersecting) {{
+                const q = parseInt(entry.target.getAttribute('data-q'), 10);
+                typesetQuestion(entry.target, q);
+              }}
+            }});
+          }}, {{ rootMargin: '200px 0px' }});
+        }}
+        document.querySelectorAll('.question-module').forEach(m => viewAllObserver.observe(m));
+      }}
     }} else {{
+      if (viewAllObserver) {{
+        viewAllObserver.disconnect();
+      }}
       body.classList.remove('view-all');
       btn.textContent = 'View All Questions';
       btn.classList.add('nav-btn-primary');
       selectQuestion(currentQ);
     }}
-    if (window.MathJax && window.MathJax.typesetPromise) {{
-      MathJax.typesetPromise();
-    }}
   }}
 
   function toggleSidebar() {{
-    document.getElementById('sidebar').classList.toggle('open');
-  }}
+    const isMobile = window.innerWidth <= 900;
+    const container = document.querySelector('.app-container') || document.body;
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const toggleBtn = document.getElementById('sidebarToggleBtn');
 
-  function filterQuestions() {{
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    document.querySelectorAll('.nav-item').forEach(item => {{
-      const text = item.textContent.toLowerCase();
-      if (text.includes(query)) {{
-        item.style.display = '';
-      }} else {{
-        item.style.display = 'none';
+    if (isMobile) {{
+      const isOpen = sidebar.classList.toggle('open');
+      if (backdrop) backdrop.classList.toggle('active', isOpen);
+    }} else {{
+      const isCollapsed = container.classList.toggle('sidebar-collapsed');
+      try {{
+        localStorage.setItem('assam_sidebar_collapsed', isCollapsed ? 'true' : 'false');
+      }} catch (e) {{}}
+      if (toggleBtn) {{
+        toggleBtn.setAttribute('title', isCollapsed ? 'Expand Sidebar (Ctrl+B)' : 'Collapse Sidebar (Ctrl+B)');
+        const text = toggleBtn.querySelector('.sidebar-toggle-text');
+        if (text) text.textContent = isCollapsed ? 'Expand' : 'Sidebar';
       }}
-    }});
+    }}
   }}
 
-  // Keyboard navigation
+  // Restore saved sidebar state
+  (function initSidebar() {{
+    try {{
+      const saved = localStorage.getItem('assam_sidebar_collapsed');
+      if (saved === 'true' && window.innerWidth > 900) {{
+        const container = document.querySelector('.app-container');
+        if (container) container.classList.add('sidebar-collapsed');
+        const toggleBtn = document.getElementById('sidebarToggleBtn');
+        if (toggleBtn) {{
+          toggleBtn.setAttribute('title', 'Expand Sidebar (Ctrl+B)');
+          const text = toggleBtn.querySelector('.sidebar-toggle-text');
+          if (text) text.textContent = 'Expand';
+        }}
+      }}
+    }} catch (e) {{}}
+  }})();
+
+  let searchDebounce = null;
+  let cachedNavItems = null;
+
+  function filterQuestions(query) {{
+    if (typeof query !== 'string') {{
+      const input = document.getElementById('searchInput') || document.querySelector('.search-input');
+      query = input ? input.value : '';
+    }}
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {{
+      const q = (query || '').toLowerCase().trim();
+      if (!cachedNavItems) {{
+        cachedNavItems = Array.from(document.querySelectorAll('.nav-item')).map(item => ({{
+          el: item,
+          text: item.textContent.toLowerCase()
+        }}));
+      }}
+      for (let i = 0; i < cachedNavItems.length; i++) {{
+        const item = cachedNavItems[i];
+        item.el.style.display = (!q || item.text.includes(q)) ? '' : 'none';
+      }}
+    }}, 60);
+  }}
+
+  // Keyboard navigation & shortcuts
   document.addEventListener('keydown', (e) => {{
-    if (e.target.tagName === 'INPUT') return;
-    if (e.key === 'ArrowLeft') prevQuestion();
-    if (e.key === 'ArrowRight') nextQuestion();
+    if (e.target && ['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {{
+      e.preventDefault();
+      toggleSidebar();
+    }} else if (e.key === '[') {{
+      e.preventDefault();
+      toggleSidebar();
+    }} else if (e.key === 'ArrowLeft') {{
+      prevQuestion();
+    }} else if (e.key === 'ArrowRight') {{
+      nextQuestion();
+    }}
   }});
 
   // Handle URL hash on load and change
@@ -1928,7 +2216,7 @@ window.MathJax = {{
 </html>
 '''
 
-with open("index.html", "w", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "index.html"), "w", encoding="utf-8") as f:
     f.write(index_template)
 
 print("Master application successfully created at index.html!")
@@ -2180,7 +2468,7 @@ function filterCards() {{
 </body>
 </html>'''
 
-with open("questions.html", "w", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "questions.html"), "w", encoding="utf-8") as f:
     f.write(questions_catalog_html)
 
 print("Questions directory successfully created at questions.html!")
