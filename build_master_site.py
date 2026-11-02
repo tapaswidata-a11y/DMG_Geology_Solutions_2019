@@ -1776,33 +1776,83 @@ window.MathJax = {{
     letter-spacing: 0.5px;
   }}
 
-  .tb-figure {{
+  /* Universal Responsive Figure & Image Styles */
+  .tb-figure, .figure-container {{
     background: #fff;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 12px;
-    margin: 18px 0;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 22px 0;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
   }}
-  .tb-figure img {{
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
+  .tb-figure img, .figure-container img, .question-module img {{
+    max-width: 100% !important;
+    width: 100%;
+    height: auto !important;
+    border-radius: 6px;
     display: block;
-    margin: 0 auto 10px auto;
-    max-height: 480px;
+    margin: 0 auto 12px auto;
+    max-height: 560px;
     object-fit: contain;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   }}
-  .tb-figure .caption {{
-    font-size: 12px;
+  .tb-figure .caption, .figure-caption {{
+    font-size: 13px;
     color: #475569;
     text-align: left;
     border-top: 1px solid #e2e8f0;
-    padding-top: 8px;
-    line-height: 1.45;
+    padding-top: 10px;
+    line-height: 1.5;
+    font-style: italic;
   }}
-  .tb-figure .caption strong {{ color: #1e293b; }}
+  .tb-figure .caption strong, .figure-caption strong {{
+    color: #1e293b;
+    font-style: normal;
+  }}
+
+  .formula-box {{
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13.5px;
+    color: #1e3a8a;
+    line-height: 1.6;
+  }}
+  .numerical-box {{
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }}
+  .numerical-box h4 {{
+    color: #b45309;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }}
+  .key-takeaway {{
+    background: #f0fdfa;
+    border-left: 4px solid #0d9488;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+  }}
+  .key-takeaway h4 {{
+    font-size: 15px;
+    color: #0f766e;
+    margin-bottom: 6px;
+  }}
+  .table-box {{
+    margin: 18px 0 24px 0;
+    overflow-x: auto;
+    border-radius: 8px;
+  }}
 
   .option {{
     border: 1px solid #e2e8f0;
