@@ -1086,6 +1086,9 @@ index_template = f'''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>DGMS 2019 Geology · Comprehensive Textbook Solutions & Masterclass Portal</title>
 <meta name="description" content="Authoritative, textbook-grounded solutions and concept guides for all questions of the DGMS 2019 Junior Scientific Officer (Geology) Examination.">
 
@@ -1389,7 +1392,7 @@ window.MathJax = {{
     min-width: 0;
   }}
   .sidebar-toggle-btn {{
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     gap: 7px;
     padding: 6px 12px;
@@ -1403,6 +1406,7 @@ window.MathJax = {{
     transition: all 0.18s ease;
     user-select: none;
     flex-shrink: 0;
+    z-index: 50;
   }}
   .sidebar-toggle-btn:hover {{
     background: #e2e8f0;
@@ -1441,6 +1445,13 @@ window.MathJax = {{
     display: flex;
     align-items: center;
     gap: 8px;
+    min-width: 0;
+    overflow: hidden;
+  }}
+  #currentTitle {{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }}
   .current-badge {{
     background: #eff6ff;
