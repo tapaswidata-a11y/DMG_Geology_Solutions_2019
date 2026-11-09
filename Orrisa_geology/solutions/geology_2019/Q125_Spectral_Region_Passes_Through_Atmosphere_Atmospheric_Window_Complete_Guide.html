@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q125: Remote Sensing - Atmospheric Windows and Atmospheric Transmission | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q125" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 125 • Atmospheric Physics</div>
+    <h1>Atmospheric Radiative Transfer: Atmospheric Windows and Transmission Bands in Remote Sensing</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Atmospheric Attenuation & Remote Sensing Spectrum • <strong>Key Concept:</strong> Atmospheric Transmission Windows vs. Absorption Bands ($	ext{H}_2	ext{O}, 	ext{CO}_2, 	ext{O}_3$) • <strong>Textbooks:</strong> T.M. Lillesand, R.W. Kiefer, & J.W. Chipman (Ch. 1); K.M. Bangar (p. 208); Floyd F. Sabins (Ch. 2)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: Atmospheric Absorption and Atmospheric Windows</div>
+      <p>Electromagnetic radiation propagating through the Earth's atmosphere undergoes <strong>attenuation</strong> via two distinct physical processes: <strong>scattering</strong> (Rayleigh, Mie, and non-selective scattering by gas molecules, aerosols, and water droplets) and <strong>absorption</strong> (quantum transition absorption by atmospheric gases, primarily $\text{H}_2\text{O}, \text{CO}_2, \text{O}_3, \text{CH}_4$, and $\text{N}_2\text{O}$).</p>
+
+      <p>Atmospheric absorption varies dramatically across the electromagnetic spectrum. The spectral regions where atmospheric gases absorb strongly are termed <strong>absorption bands</strong> (opaque to EMR). Conversely, the specific wavelength ranges where the atmosphere is highly transparent and allows radiation to pass through without substantial attenuation are formally designated as <strong>Atmospheric Windows</strong> (Lillesand & Kiefer; Sabins; Bangar):</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Atmospheric Window</th>
+              <th>Spectral Range</th>
+              <th>Primary Absorbers Outside Window</th>
+              <th>Remote Sensing Sensor Utilization</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff;">
+              <td><strong>Visible & Near-Infrared (VNIR)</strong></td>
+              <td>$0.4\text{--}1.0\text{ }\mu\text{m}$</td>
+              <td>UV ozone absorption ($\lambda < 0.3\text{ }\mu\text{m}$) and water vapor bands</td>
+              <td>Landsat, Sentinel-2, IRS LISS-IV, aerial cameras; optical vegetation & geology mapping.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>Shortwave Infrared 1 (SWIR-1)</strong></td>
+              <td>$1.55\text{--}1.75\text{ }\mu\text{m}$</td>
+              <td>$\text{H}_2\text{O}$ vapor absorption at $1.4\text{ }\mu\text{m}$ and $1.9\text{ }\mu\text{m}$</td>
+              <td>Moisture stress, snow/cloud discrimination, lithological clay delineation.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>Shortwave Infrared 2 (SWIR-2)</strong></td>
+              <td>$2.08\text{--}2.35\text{ }\mu\text{m}$</td>
+              <td>Strong $\text{H}_2\text{O}$ absorption at $1.9\text{ }\mu\text{m}$ and $\text{CO}_2$ at $2.7\text{ }\mu\text{m}$</td>
+              <td>Hydrothermal alteration minerals (alunite, kaolinite, illite), carbonate absorption.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>Thermal Infrared 1 (TIR-1)</strong></td>
+              <td>$3.5\text{--}4.1\text{ }\mu\text{m}$ (Mid-IR)</td>
+              <td>$\text{CO}_2$ at $4.3\text{ }\mu\text{m}$</td>
+              <td>Wildfire detection, volcanic hot-spot monitoring, night sea-surface temperature.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>Thermal Infrared 2 (TIR-2)</strong></td>
+              <td>$8.0\text{--}14.0\text{ }\mu\text{m}$ (split by $\text{O}_3$ at $9.6\text{ }\mu\text{m}$)</td>
+              <td>Strong $\text{H}_2\text{O}$ vapor band below $8\text{ }\mu\text{m}$ and $\text{CO}_2$ above $14\text{ }\mu\text{m}$</td>
+              <td>Peak terrestrial thermal emission ($\sim 300\text{ K}$, $\lambda_{\text{max}} \approx 9.7\text{ }\mu\text{m}$); land surface temperature.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>Microwave Window</strong></td>
+              <td>$1\text{ mm}$ to $>1\text{ m}$</td>
+              <td>Minor oxygen ($60\text{ GHz}$) and $\text{H}_2\text{O}$ ($22\text{ GHz}$) lines</td>
+              <td>Synthetic Aperture Radar (SAR), radar altimeters; complete cloud/haze penetration.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q125/atmospheric_windows_electromagnetic_transmission.png" alt="Atmospheric Windows in Remote Sensing" class="figure-img">
+        <div class="figure-caption">Figure 125: Atmospheric transmission percentage as a function of wavelength, highlighting the primary Atmospheric Windows (Option B) utilized by satellite sensors.</div>
+      </div>
+
+      <p>Because satellite sensors cannot record meaningful surface data in opaque spectral regions, all spaceborne optical, thermal, and microwave sensors are strictly engineered to operate inside these <strong>Atmospheric Windows</strong> (Option B).</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 125</div>
+        <div class="raw-q-text">The spectral region of the electromagnetic radiation which passes through the atmosphere without much attenuation in known as:</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> Ozone hole</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> Atmospheric window</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> Ozone window</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> Black hole</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION B (Atmospheric window)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION B &bull; CORRECT</div>
+          <div class="opt-title">Atmospheric window</div>
+          <p>By international scientific definition across remote sensing, meteorology, and astrophysics (Lillesand & Kiefer; Sabins; Bangar, p. 208), an <strong>Atmospheric Window</strong> is a wavelength band where the transmission of electromagnetic radiation through the Earth's atmosphere approaches high percentages with minimal attenuation from absorption or scattering.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION A &bull; DISTRACTOR</div>
+          <div class="opt-title">Ozone hole</div>
+          <p>The "ozone hole" refers to seasonal anthropogenic stratospheric depletion of ozone ($\text{O}_3$) over Antarctica caused by chlorofluorocarbons (CFCs). It is an atmospheric environmental phenomenon, not a spectral transmission window.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; DISTRACTOR</div>
+          <div class="opt-title">Ozone window</div>
+          <p>Ozone is an intense absorber of ultraviolet radiation (Hartley/Huggins bands, $\lambda < 0.32\text{ }\mu\text{m}$) and exhibits a prominent absorption band at $9.6\text{ }\mu\text{m}$ in the thermal infrared. There is no standard remote sensing term called an "ozone window".</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; DISTRACTOR</div>
+          <div class="opt-title">Black hole</div>
+          <p>A black hole is a general relativistic astronomical object whose gravitational field is so intense that nothing, not even electromagnetic radiation, can escape from beyond its event horizon. It has zero connection to terrestrial remote sensing.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Atmospheric Gas</th>
+              <th>Primary Absorption Wavelengths</th>
+              <th>Absorption Mechanism</th>
+              <th>Impact on Satellite Remote Sensing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Water Vapor ($\text{H}_2\text{O}$)</td><td>$0.9\text{ }\mu\text{m}, 1.1\text{ }\mu\text{m}, 1.4\text{ }\mu\text{m}, 1.9\text{ }\mu\text{m}, 5.5\text{--}7.5\text{ }\mu\text{m}$</td><td>Molecular vibration-rotation bands</td><td>Creates major blind zones separating VNIR, SWIR-1, and SWIR-2 windows</td></tr>
+            <tr><td>Carbon Dioxide ($\text{CO}_2$)</td><td>$2.7\text{ }\mu\text{m}, 4.3\text{ }\mu\text{m}, 13\text{--}17.5\text{ }\mu\text{m}$</td><td>Asymmetric stretch & bending vibrations</td><td>Terminates the longwave thermal infrared window at $14\text{ }\mu\text{m}$</td></tr>
+            <tr><td>Ozone ($\text{O}_3$)</td><td>$<0.32\text{ }\mu\text{m}$ (UV) & $9.6\text{ }\mu\text{m}$ (TIR)</td><td>Electronic transitions (UV) & asymmetric stretch (IR)</td><td>Shields Earth from lethal UV-C/B; divides the $8\text{--}14\text{ }\mu\text{m}$ thermal window</td></tr>
+            <tr><td>Oxygen ($\text{O}_2$)</td><td>$0.76\text{ }\mu\text{m}$ (Fraunhofer A-band) & $60\text{ GHz}$</td><td>Electronic and magnetic dipole transitions</td><td>Used for atmospheric pressure and cloud-top height sounding</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. Why are the spectral bands around $1.4\text{ }\mu\text{m}$ and $1.9\text{ }\mu\text{m}$ omitted from optical satellite sensors like Landsat and Sentinel-2?</div>
+        <div class="pq-ans">Answer: Because atmospheric water vapor ($\text{H}_2\text{O}$) strongly absorbs all radiation in these bands, rendering the atmosphere opaque.</div>
+        <div class="pq-exp">Sensors split their shortwave infrared detectors into SWIR-1 ($1.55\text{--}1.75\text{ }\mu\text{m}$) and SWIR-2 ($2.1\text{--}2.3\text{ }\mu\text{m}$) around these water absorption peaks.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. Which atmospheric window is utilized to monitor Earth's ambient land surface temperatures (LST) and sea surface temperatures (SST)?</div>
+        <div class="pq-ans">Answer: The $8.0\text{--}14.0\text{ }\mu\text{m}$ thermal infrared window (specifically $10.5\text{--}12.5\text{ }\mu\text{m}$).</div>
+        <div class="pq-exp">By Wien's displacement law, the Earth at $300\text{ K}$ emits peak radiant energy at $\lambda_{\text{max}} = 2898 / 300 \approx 9.7\text{ }\mu\text{m}$, right inside this window.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. What is the "red edge" in remote sensing and in which atmospheric window does it occur?</div>
+        <div class="pq-ans">Answer: The abrupt increase in plant leaf reflectance between the red chlorophyll absorption trough ($0.68\text{ }\mu\text{m}$) and the near-infrared mesophyll reflection plateau ($0.75\text{--}0.85\text{ }\mu\text{m}$) in the VNIR window.</div>
+        <div class="pq-exp">The red edge is the fundamental diagnostic feature used in NDVI and vegetation vigor indices.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. Why does Rayleigh scattering primarily affect the visible blue band rather than infrared windows?</div>
+        <div class="pq-ans">Answer: Rayleigh scattering cross-section is inversely proportional to the fourth power of wavelength ($\sigma_R \propto \lambda^{-4}$).</div>
+        <div class="pq-exp">Blue light ($\lambda \approx 0.45\text{ }\mu\text{m}$) is scattered $\approx 5.5$ times more intensely than red light ($\lambda \approx 0.70\text{ }\mu\text{m}$), creating atmospheric haze.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. Which atmospheric window is completely immune to cloud cover, rain, and haze?</div>
+        <div class="pq-ans">Answer: The microwave window ($\lambda > 1\text{ cm}$, e.g. C, S, L, and P radar bands).</div>
+        <div class="pq-exp">Because radar wavelengths are orders of magnitude larger than rain and cloud droplet radii, scattering is negligible.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. Which diagnostic mineral absorption feature occurs in the $2.1\text{--}2.35\text{ }\mu\text{m}$ (SWIR-2) atmospheric window?</div>
+        <div class="pq-ans">Answer: $\text{Al-OH}$ and $\text{Mg-OH}$ molecular bond vibrational overtones and combinations in clay minerals (kaolinite, illite, montmorillonite) and micas.</div>
+        <div class="pq-exp">This window enables spaceborne mapping of hydrothermal alteration zones associated with porphyry copper and epithermal gold deposits.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. What is the ozone absorption feature that divides the thermal infrared window into two parts?</div>
+        <div class="pq-ans">Answer: The $9.6\text{ }\mu\text{m}$ stratospheric ozone absorption band.</div>
+        <div class="pq-exp">Sensors split the TIR window around $9.6\text{ }\mu\text{m}$ into Band 10 ($10.6\text{--}11.2\text{ }\mu\text{m}$) and Band 11 ($11.5\text{--}12.5\text{ }\mu\text{m}$) for split-window atmospheric correction.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is "path radiance" in remote sensing atmospheric transmission?</div>
+        <div class="pq-ans">Answer: Sunlight scattered directly into the sensor's field of view by the atmosphere without ever reaching the ground surface.</div>
+        <div class="pq-exp">Path radiance adds an unwanted additive haze offset ($L_p$) to dark water and shadow targets, requiring atmospheric dark-object subtraction (DOS).</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>

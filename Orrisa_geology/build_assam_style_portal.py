@@ -1045,7 +1045,7 @@ window.MathJax = {{
       <div class="year-switcher">
         <a href="../index.html" class="year-btn inactive" title="Open Assam DGMS 2019 Portal">Assam 2019 (100 Live)</a>
         <a href="index.html" class="year-btn active" title="Current: Odisha 2021 Exam (150 Live)">Odisha 2021 (150 Live)</a>
-        <a href="index_2019.html" class="year-btn inactive" title="Open Odisha 2019 Portal">Odisha 2019 (Batch 1)</a>
+        <a href="index_2019.html" class="year-btn inactive" title="Open Odisha 2019 Portal">Odisha 2019 (150 Live)</a>
       </div>
       <div class="brand-nav-links" style="margin-top: 6px;">
         <a href="https://github.com/tapaswidata-a11y/DMG_Geology_Solutions_2019" target="_blank" class="brand-nav-btn">GitHub Repo ↗</a>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q129: Optical Physics - Fresnel Reflection at Dielectric Boundary | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q129" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 129 • Wave Optics & Electromagnetics</div>
+    <h1>Electromagnetic Wave Theory: Fresnel Reflection and Transmission Across Media Interfaces</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Wave Optics & Boundary Conditions • <strong>Key Concept:</strong> Fresnel Reflection Coefficients ($R_s, R_p$) & Dielectric Boundary Physics • <strong>Textbooks:</strong> Eugene Hecht (<em>Optics</em>, 5th Ed., Ch. 4); Max Born & Emil Wolf (<em>Principles of Optics</em>); T.M. Lillesand et al. (Ch. 1); K.M. Bangar (p. 208)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: Fresnel Reflection and Boundary Electrodynamics</div>
+      <p>When an electromagnetic (EM) plane wave propagating through a medium of refractive index $n_1$ impinges upon a smooth, planar boundary separating it from a second dielectric medium of refractive index $n_2$, classical electrodynamics (governed by Maxwell's boundary equations) dictates that the incident wave divides into two components:</p>
+      <ul>
+        <li>A <strong>reflected wave</strong> that turns back into the original incident medium at angle $\theta_r = \theta_i$ (Law of Reflection).</li>
+        <li>A <strong>transmitted (refracted) wave</strong> that penetrates and propagates through the second medium at refracted angle $\theta_t$ governed by Snell's Law ($n_1 \sin \theta_i = n_2 \sin \theta_t$).</li>
+      </ul>
+
+      <p>The mathematical and physical description of how the incident energy is partitioned between reflection and transmission as a function of incidence angle ($\theta_i$), refractive indices ($n_1, n_2$), and polarization state was formulated by <strong>Augustin-Jean Fresnel</strong> in 1823, and is universally designated as <strong>Fresnel Reflection</strong> (and the <strong>Fresnel Equations</strong>):</p>
+
+      <div class="math-block">
+        $$\text{Perpendicular (s-polarized / TE): } r_s = \frac{n_1 \cos\theta_i - n_2 \cos\theta_t}{n_1 \cos\theta_i + n_2 \cos\theta_t} = -\frac{\sin(\theta_i - \theta_t)}{\sin(\theta_i + \theta_t)}$$
+        $$\text{Parallel (p-polarized / TM): } r_p = \frac{n_2 \cos\theta_i - n_1 \cos\theta_t}{n_2 \cos\theta_i + n_1 \cos\theta_t} = \frac{\tan(\theta_i - \theta_t)}{\tan(\theta_i + \theta_t)}$$
+      </div>
+
+      <p>The fraction of reflected power (reflectance, $R$) is given by $R_s = |r_s|^2$ and $R_p = |r_p|^2$. At normal incidence ($\theta_i = 0^\circ$):</p>
+
+      <div class="math-block">
+        $$R = \left(\frac{n_2 - n_1}{n_2 + n_1}\right)^2$$
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Boundary Phenomenon</th>
+              <th>Governing Formulation</th>
+              <th>Physical Focus</th>
+              <th>Distinction from Other Terms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;">
+              <td><strong>FRESNEL REFLECTION</strong> (Option A)</td>
+              <td>Fresnel Equations ($r_s, r_p, R$)</td>
+              <td>Quantifies the <strong>amplitude and power fraction of the wave reflected back</strong> into the initial medium from a dielectric boundary.</td>
+              <td>Covers both reflection and transmission wave splitting across media of different refractive indices.</td>
+            </tr>
+            <tr>
+              <td>Snell's Law (Option C)</td>
+              <td>$n_1 \sin \theta_i = n_2 \sin \theta_t$</td>
+              <td>Defines only the <strong>angular trajectory (direction)</strong> of the transmitted beam; does not compute reflected/transmitted energy fractions.</td>
+              <td>Geometric ray path only; ignores wave amplitudes, polarization, and energy.</td>
+            </tr>
+            <tr>
+              <td>Fresnel Refraction (Option B)</td>
+              <td>$t_s, t_p$ transmission coefficients</td>
+              <td>Non-standard terminology; the transmitted portion is termed <em>Fresnel transmission</em> or refraction.</td>
+              <td>The question specifically highlights the wave reflected back into the incident medium.</td>
+            </tr>
+            <tr>
+              <td>Spectral Reflectance (Option D)</td>
+              <td>$\rho(\lambda) = \frac{\Phi_r(\lambda)}{\Phi_i(\lambda)}$</td>
+              <td>Macroscopic ratio of reflected to incident radiant flux as a function of wavelength for natural terrain surfaces.</td>
+              <td>Empirical terrain surface property; not the microscopic wave boundary splitting phenomenon.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q129/fresnel_reflection_transmission_dielectric_boundary.png" alt="Fresnel Reflection and Transmission at Dielectric Boundary" class="figure-img">
+        <div class="figure-caption">Figure 129: Electromagnetic plane wave impinging on a boundary between two media with refractive indices $n_1$ and $n_2$, illustrating Fresnel Reflection and Transmission (Option A).</div>
+      </div>
+
+      <p>Therefore, the classic physical phenomenon wherein an electromagnetic wave strikes a boundary between two media with different refractive indices, with a portion reflected back into the incident medium and the rest transmitted into the second medium, is universally known as <strong>Fresnel Reflection</strong> (Option A).</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 129</div>
+        <div class="raw-q-text">“An Electromagnetic wave falls on to a boundary between two less homogeneous media with different refractive indices and a part of the wave is reflected back to the incident medium and the rest is transmitted on to the second media.” This phenomenon is known as :</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> Fresnel reflection</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> Fresnel refraction</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> Snell’s law</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> Spectral reflectance</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION A (Fresnel reflection)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION A &bull; CORRECT</div>
+          <div class="opt-title">Fresnel reflection</div>
+          <p>The stated definition is the verbatim textbook definition of <strong>Fresnel reflection</strong> (Hecht; Born & Wolf; Lillesand & Kiefer). It describes the fundamental electromagnetic boundary-value problem where impedance mismatch between two media of differing refractive indices ($n_1 \ne n_2$) forces a portion of the incident wave energy to be reflected back into the incident medium while transmitting the remainder.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION B &bull; DISTRACTOR</div>
+          <div class="opt-title">Fresnel refraction</div>
+          <p>"Fresnel refraction" is an informal/non-standard phrase. The transmitted component is governed by Fresnel transmission coefficients ($t_s, t_p$). Because the question emphasizes the reflected wave component returning to the incident medium, the universal scientific term for this boundary phenomenon is Fresnel reflection.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; DISTRACTOR</div>
+          <div class="opt-title">Snell’s law</div>
+          <p>Snell's Law ($n_1 \sin\theta_i = n_2 \sin\theta_t$) specifies only the geometric direction of the refracted ray. It does not predict or compute how much energy is reflected back versus transmitted, nor does it account for wave polarization.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; DISTRACTOR</div>
+          <div class="opt-title">Spectral reflectance</div>
+          <p>Spectral reflectance ($\rho_\lambda$) is an empirical remote sensing measure describing the percentage of incident light reflected by a natural target (like green leaves, water, or granite) across individual wavelength bands. It is not the foundational wave-optics boundary principle defined in the question.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Boundary Phenomenon</th>
+              <th>Incidence Condition</th>
+              <th>Governing Equation / Property</th>
+              <th>Geological / Remote Sensing Significance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Normal Fresnel Reflection</td><td>$\theta_i = 0^\circ$</td><td>$R = \left(\frac{n_2 - n_1}{n_2 + n_1}\right)^2$</td><td>Calibrates air-water surface reflection ($R \approx 2\%$ for water, $n=1.33$)</td></tr>
+            <tr><td>Brewster's Angle</td><td>$\theta_i = \theta_B = \arctan(n_2/n_1)$</td><td>$r_p = 0 \implies R_p = 0$</td><td>Parallel polarized light completely penetrates without reflection; reflected beam is $100\%$ s-polarized (used in polarizing sunglasses)</td></tr>
+            <tr><td>Total Internal Reflection (TIR)</td><td>$\theta_i \ge \theta_c = \arcsin(n_2/n_1)$ (from dense to rare)</td><td>$R = 1.0$ ($100\%$ reflection)</td><td>Forms optical fiber waveguides and refractometer critical angle salinometers</td></tr>
+            <tr><td>Diffuse (Lambertian) Reflection</td><td>Rough surface ($h > \lambda / (8 \cos\theta)$)</td><td>$I(\theta) = I_0 \cos\theta$</td><td>Scatters incident sunlight equally in all directions; models soil and rock outcrops</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. What is the normal-incidence Fresnel reflectance ($R$) at the boundary between air ($n_1 = 1.0$) and pure water ($n_2 = 1.333$)?</div>
+        <div class="pq-ans">Answer: Approximately $0.0204$ (or $2.04\%$).</div>
+        <div class="pq-exp">$$R = \left(\frac{1.333 - 1.0}{1.333 + 1.0}\right)^2 = \left(\frac{0.333}{2.333}\right)^2 \approx (0.1427)^2 \approx 0.0204$$. Roughly $98\%$ of the light is transmitted into the water column.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. What is Brewster's angle ($\theta_B$) for light incident from air ($n_1 = 1.0$) onto a flat water surface ($n_2 = 1.333$)?</div>
+        <div class="pq-ans">Answer: Approximately $53.1^\circ$.</div>
+        <div class="pq-exp">$$\theta_B = \arctan\left(\frac{n_2}{n_1}\right) = \arctan(1.333) \approx 53.1^\circ$$. At this angle, p-polarized reflection drops to zero.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. Under what optical condition does total internal reflection occur according to Fresnel formulas?</div>
+        <div class="pq-ans">Answer: When light travels from an optically denser medium to a rarer medium ($n_1 > n_2$) at an angle of incidence exceeding the critical angle ($\theta_i \ge \theta_c = \arcsin(n_2/n_1)$).</div>
+        <div class="pq-exp">Beyond the critical angle, the refracted wave becomes an evanescent wave decaying exponentially along the boundary, yielding $100\%$ reflection.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. How does surface roughness modify pure specular Fresnel reflection in remote sensing?</div>
+        <div class="pq-ans">Answer: By the Rayleigh roughness criterion ($h > \lambda / (8 \cos\theta)$), microscopic surface roughness breaks coherent specular reflection into diffuse Lambertian scattering.</div>
+        <div class="pq-exp">Mirror-like Fresnel reflection only occurs on smooth water or polished mineral faces; natural soils exhibit diffuse scattering.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. What causes "sun glint" in optical satellite imagery over oceans?</div>
+        <div class="pq-ans">Answer: Direct specular Fresnel reflection of sunlight into the satellite sensor's aperture from wind-roughened ocean wave facets.</div>
+        <div class="pq-exp">Sun glint saturates optical detectors, obscuring chlorophyll and ocean color information.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. In radar remote sensing, how does the dielectric constant of moist soil affect Fresnel reflection?</div>
+        <div class="pq-ans">Answer: Water has a high dielectric constant ($\epsilon_r \approx 80$) compared to dry soil ($\epsilon_r \approx 3\text{--}4$); increasing soil moisture dramatically elevates Fresnel reflectivity and radar backscatter.</div>
+        <div class="pq-exp">This physical dependence enables spaceborne mapping of soil moisture by SAR and microwave radiometers.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. Why is the reflected light at Brewster's angle purely linearly polarized?</div>
+        <div class="pq-ans">Answer: Because at Brewster's angle, the reflected and transmitted rays are perpendicular ($\theta_i + \theta_t = 90^\circ$); electric dipoles oscillating parallel to the reflection plane have zero radiation along their axis, extinguishing the p-wave.</div>
+        <div class="pq-exp">Only the s-polarized component (oscillating perpendicular to the plane of incidence) is reflected.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is the complex refractive index ($\tilde{n} = n + i k$) and how does the extinction coefficient ($k$) relate to Fresnel reflection?</div>
+        <div class="pq-ans">Answer: The imaginary part $k$ represents optical absorption; high values of $k$ (as in metals and metallic sulfides) produce very high Fresnel reflectivity even at normal incidence.</div>
+        <div class="pq-exp">$$R = \frac{(n-1)^2 + k^2}{(n+1)^2 + k^2}$$; this explains the bright metallic luster of pyrite and galena under reflected-light ore microscopy.</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>

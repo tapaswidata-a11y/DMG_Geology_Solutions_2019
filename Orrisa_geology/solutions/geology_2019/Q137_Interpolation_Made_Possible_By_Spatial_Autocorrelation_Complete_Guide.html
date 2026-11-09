@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q137: Spatial Statistics - Spatial Autocorrelation and Tobler's Law | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q137" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 137 • Spatial Statistics & Geostatistics</div>
+    <h1>Spatial Statistics & Geostatistics: Spatial Autocorrelation as the Theoretical Foundation of Spatial Interpolation</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Spatial Statistics & Tobler's First Law • <strong>Key Concept:</strong> Spatial Autocorrelation (Moran's $I$, Geary's $C$) & Geostatistical Semivariance • <strong>Textbooks:</strong> Waldo Tobler (1970, <em>Economic Geography</em>); Kang-tsung Chang (Ch. 15); P.A. Burrough & R.A. McDonnell (Ch. 6); K.M. Bangar (p. 217); A.G. Journel & C.J. Huijbregts (<em>Mining Geostatistics</em>)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: Spatial Autocorrelation and Tobler's First Law</div>
+      <p>In spatial analysis, geostatistics, and GIS, <strong>spatial interpolation</strong>—the estimation of unknown values at unmeasured locations using sample points of known values—is fundamentally predicated on a foundational geographical axiom formulated by Waldo Tobler in 1970, known as <strong>Tobler's First Law of Geography</strong>:</p>
+
+      <div class="math-block">
+        $$\text{“Everything is related to everything else, but near things are more related than distant things.”}$$
+      </div>
+
+      <p>This universal phenomenon is formally quantified in mathematical statistics as <strong>Spatial Autocorrelation</strong> (Option A). Spatial autocorrelation measures the correlation of a variable with itself across geographic space. If near locations have similar attribute values, the dataset exhibits <strong>positive spatial autocorrelation</strong>:</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Spatial Autocorrelation State</th>
+              <th>Mathematical Metric (Moran's $I$)</th>
+              <th>Physical / Geological Manifestation</th>
+              <th>Impact on Spatial Interpolation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;">
+              <td><strong>Positive Spatial Autocorrelation</strong> (Option A)</td>
+              <td>$$I > 0 \quad (\text{Approaching } +1.0)$$</td>
+              <td>High values cluster near high values; low values cluster near low values. Smooth, continuous gradients (e.g. elevation, ore grade, groundwater head).</td>
+              <td><strong>Enables Reliable Interpolation:</strong> Nearby control points provide strong, predictive weighting for estimating intervening unmeasured points.</td>
+            </tr>
+            <tr>
+              <td>Zero Spatial Autocorrelation (Randomness)</td>
+              <td>$$I \approx -\frac{1}{N - 1} \approx 0$$</td>
+              <td>Spatial randomness (white noise); values at one point provide zero information about neighboring points.</td>
+              <td><strong>Interpolation Fails:</strong> Estimating unknown values from neighbors is no better than guessing the global dataset mean.</td>
+            </tr>
+            <tr>
+              <td>Negative Spatial Autocorrelation (Dispersion)</td>
+              <td>$$I < 0 \quad (\text{Approaching } -1.0)$$</td>
+              <td>Checkerboard pattern; high values systematically surrounded by low values (extreme spatial repulsion).</td>
+              <td>Standard distance-weighted interpolation yields severe inverse errors.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q137/spatial_autocorrelation_toblers_law_variogram.png" alt="Spatial Autocorrelation and Semivariogram" class="figure-img">
+        <div class="figure-caption">Figure 137: Theoretical semivariogram $\gamma(h)$ demonstrating spatial autocorrelation: semivariance is small at short lag distances $h$ (high correlation) and reaches the sill at range $a$, proving why interpolation works (Option A).</div>
+      </div>
+
+      <h4>Mathematical Formulation: Moran's $I$ and Semivariance $\gamma(h)$</h4>
+      <p>The global degree of spatial autocorrelation in a spatial dataset is formally quantified by <strong>Moran's $I$ Index</strong>:</p>
+
+      <div class="math-block">
+        $$I = \frac{N}{\sum_{i=1}^N \sum_{j=1}^N w_{ij}} \frac{\sum_{i=1}^N \sum_{j=1}^N w_{ij} (z_i - \bar{z})(z_j - \bar{z})}{\sum_{i=1}^N (z_i - \bar{z})^2}$$
+      </div>
+
+      <p>where $w_{ij}$ is the spatial weight between points $i$ and $j$, $z_i$ is the attribute value, and $\bar{z}$ is the mean. In geostatistics (Matheron; Journel), this spatial continuity is modeled by the <strong>experimental semivariogram</strong> $\gamma(h)$:</p>
+
+      <div class="math-block">
+        $$\gamma(h) = \frac{1}{2 N(h)} \sum_{i=1}^{N(h)} [z(x_i) - z(x_i + h)]^2$$
+      </div>
+
+      <p>Because $\gamma(h)$ is small at short separation distances ($h$), nearby points are statistically dependent. This fundamental principle of <strong>Spatial Autocorrelation</strong> is what makes spatial interpolation mathematically possible and valid.</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 137</div>
+        <div class="raw-q-text">Interpolation is made possible by a principle called :</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> Spatial Autocorrelation</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> Spatial auto-correction</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> Thematic Autocorrelation</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> Thematic auto-correction</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION A (Spatial Autocorrelation)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION A &bull; CORRECT</div>
+          <div class="opt-title">Spatial Autocorrelation</div>
+          <p>By international GIS and spatial statistical standards (Tobler 1970; Burrough & McDonnell; Chang, Ch. 15; Bangar, p. 217), <strong>Spatial Autocorrelation</strong> is the foundational scientific principle that justifies all spatial interpolation methods. It states that spatial attributes are correlated across distance, allowing unmeasured values to be predicted from nearby sample points.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION B &bull; DISTRACTOR</div>
+          <div class="opt-title">Spatial auto-correction</div>
+          <p>Fabricated distractor mimicking technical phrasing. "Auto-correction" refers to automated software correction of typographical or geometric errors (e.g. snapping dangling nodes in GIS digitizing), not the statistical spatial continuity principle.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; DISTRACTOR</div>
+          <div class="opt-title">Thematic Autocorrelation</div>
+          <p>Spurious terminology. Autocorrelation in GIS is inherently <em>spatial</em> (evaluating attribute covariance across geographical distance $h$). "Thematic autocorrelation" is not a recognized scientific term.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; DISTRACTOR</div>
+          <div class="opt-title">Thematic auto-correction</div>
+          <p>Fabricated distractor combining unrelated GIS words. It has no mathematical or statistical existence in GIScience.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Spatial Autocorrelation Statistic</th>
+              <th>Formula / Mathematical Index</th>
+              <th>Value Range</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Global Moran's $I$</td><td>$I = \frac{N}{S_0} \frac{\sum \sum w_{ij} (z_i - \bar{z})(z_j - \bar{z})}{\sum (z_i - \bar{z})^2}$</td><td>$-1.0 \le I \le +1.0$</td><td>$+1$: Perfect clustering (Positive)<br>$0$: Completely random<br>$-1$: Perfect dispersion (Negative)</td></tr>
+            <tr><td>Geary's $C$ (Ratio)</td><td>$C = \frac{(N-1)}{2 S_0} \frac{\sum \sum w_{ij} (z_i - z_j)^2}{\sum (z_i - \bar{z})^2}$</td><td>$0 \le C \le 2.0$</td><td>$C < 1$: Positive autocorrelation<br>$C = 1$: Spatial randomness<br>$C > 1$: Negative autocorrelation</td></tr>
+            <tr><td>Local Moran's $I_i$ (LISA)</td><td>$I_i = \frac{z_i - \bar{z}}{s^2} \sum_j w_{ij} (z_j - \bar{z})$</td><td>Varies locally</td><td>Identifies local spatial clusters: High-High, Low-Low, and spatial outliers (High-Low)</td></tr>
+            <tr><td>Getis-Ord $G_i^*$ (Hotspot)</td><td>$G_i^* = \frac{\sum_j w_{ij} x_j - \bar{X} \sum_j w_{ij}}{S \sqrt{\frac{n \sum w_{ij}^2 - (\sum w_{ij})^2}{n-1}}}$</td><td>Standard normal $Z$-score</td><td>$Z > +1.96$: Statistically significant Hot Spot ($95\%$ conf.)<br>$Z < -1.96$: Statistically significant Cold Spot</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. What is the fundamental assumption of all distance-decay spatial interpolation algorithms (like IDW)?</div>
+        <div class="pq-ans">Answer: That spatial autocorrelation is positive and decreases monotonically with increasing geographical distance ($w_i \propto 1/d_i^p$).</div>
+        <div class="pq-exp">Closer sample points are given exponentially higher weights because their values are more strongly correlated with the target point.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. In a geostatistical semivariogram $\gamma(h)$, what is the "Range" ($a$)?</div>
+        <div class="pq-ans">Answer: The separation distance beyond which sample points are no longer spatially autocorrelated and become statistically independent.</div>
+        <div class="pq-exp">At the range, the semivariogram reaches an asymptotic plateau known as the "Sill" ($C_0 + C$).</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. What does the "Nugget Effect" ($C_0$) represent in a semivariogram?</div>
+        <div class="pq-ans">Answer: Measurement error and micro-scale spatial variability occurring at distances shorter than the smallest sampling interval.</div>
+        <div class="pq-exp">A pure nugget semivariogram (flat line) indicates zero spatial autocorrelation at the sampled scale.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. If a spatial dataset has a Moran's $I$ of $+0.85$ with a $p$-value of $0.0001$, what does this indicate?</div>
+        <div class="pq-ans">Answer: Strong, statistically significant positive spatial autocorrelation (values are heavily clustered in space).</div>
+        <div class="pq-exp">The probability that this clustered spatial pattern arose by random chance is less than $0.01\%$.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. What does LISA stand for in spatial statistics?</div>
+        <div class="pq-ans">Answer: Local Indicators of Spatial Association (developed by Luc Anselin, 1995).</div>
+        <div class="pq-exp">LISA decomposes global spatial autocorrelation into local components to map specific spatial clusters and anomalies.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. Why does classic Ordinary Least Squares (OLS) regression fail when applied to spatially autocorrelated geographic data?</div>
+        <div class="pq-ans">Answer: It violates the standard Gauss-Markov assumption of independent and identically distributed (i.i.d.) residual errors ($\text{Cov}(\epsilon_i, \epsilon_j) = 0$).</div>
+        <div class="pq-exp">Spatial autocorrelation inflates type-I error rates, requiring Spatial Autoregressive (SAR) or Geographically Weighted Regression (GWR) models.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. How does Inverse Distance Weighting (IDW) utilize Tobler's First Law?</div>
+        <div class="pq-ans">Answer: By assigning weights inversely proportional to distance raised to a power $p$: $\hat{z}(x_0) = \frac{\sum z_i / d_i^p}{\sum 1 / d_i^p}$.</div>
+        <div class="pq-exp">Commonly, $p=2$ (inverse distance squared), reflecting rapid distance-decay of spatial autocorrelation.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is the difference between Ordinary Kriging and IDW?</div>
+        <div class="pq-ans">Answer: IDW uses an arbitrary fixed geometric weighting function ($1/d^p$); Kriging uses an optimized semivariogram model of the data's actual spatial autocorrelation to provide Best Linear Unbiased Estimates (BLUE) and estimation variance.</div>
+        <div class="pq-exp">Kriging accounts for spatial clustering and redundancy among neighboring sample points.</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>

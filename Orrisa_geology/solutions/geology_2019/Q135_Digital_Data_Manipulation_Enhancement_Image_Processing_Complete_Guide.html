@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q135: Digital Image Processing - Foundations and Core Operations | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q135" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 135 • Digital Image Processing (DIP)</div>
+    <h1>Digital Image Processing: The Core Framework of Preprocessing, Enhancement, Transformation, and Classification</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Digital Image Processing Principles • <strong>Key Concept:</strong> The Four Core Domains of DIP: Restoration, Enhancement, Transformation & Classification • <strong>Textbooks:</strong> J.R. Jensen (<em>Introductory Digital Image Processing: A Remote Sensing Perspective</em>, 4th Ed.); T.M. Lillesand et al. (Ch. 7); R.C. Gonzalez & R.E. Woods (<em>Digital Image Processing</em>); K.M. Bangar (p. 211)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: The Scope of Digital Image Processing (DIP)</div>
+      <p>In remote sensing and computer vision, <strong>Digital Image Processing (DIP)</strong> encompasses the broad scientific discipline, theoretical framework, and computational manipulation of digital matrix data (pixel arrays) to extract information, improve visual interpretability, and correct geometric/radiometric distortions.</p>
+
+      <p>A digital satellite image is fundamentally modeled as a discrete two-dimensional spatial function $f(x, y)$, where $x$ and $y$ are spatial coordinates and the amplitude of $f$ at any coordinate is the <strong>Brightness Value (BV)</strong> or <strong>Digital Number (DN)</strong>. DIP is systematically divided into four foundational sequential sub-disciplines (Jensen; Lillesand & Kiefer; Gonzalez & Woods):</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>DIP Processing Domain</th>
+              <th>Core Mathematical Operations</th>
+              <th>Primary Technical Objective</th>
+              <th>Specific Methods & Algorithms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Radiometric & Geometric Rectification (Restoration)</strong></td>
+              <td>Sensor calibration, line-dropout repair, atmospheric dark-object subtraction (DOS), polynomial geometric warping.</td>
+              <td>Corrects sensor errors, atmospheric path radiance, and geometric distortions to restore ground fidelity.</td>
+              <td>Affine transformation, GCP regression, Nearest Neighbor / Bilinear resampling, FLAASH.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Image Enhancement</strong></td>
+              <td>Point and local neighborhood spatial operators: $g(x,y) = T[f(x,y)]$.</td>
+              <td>Maximizes visual contrast and feature discrimination for human visual interpretation.</td>
+              <td>Linear contrast stretching, Histogram equalization, High-pass/directional filtering, Edge detection (Sobel/Laplacian).</td>
+            </tr>
+            <tr>
+              <td><strong>3. Spectral Transformation</strong></td>
+              <td>Band arithmetic, orthogonal subspace rotations, color space conversions.</td>
+              <td>Reduces dimensionality, compresses correlation, and highlights diagnostic geological absorption.</td>
+              <td>Principal Component Analysis (PCA), Band Ratios (e.g. Clay Ratio $1.6/2.2$), Normalized Difference Vegetation Index (NDVI).</td>
+            </tr>
+            <tr>
+              <td><strong>4. Image Classification</strong></td>
+              <td>Supervised and unsupervised statistical and machine-learning pattern recognition.</td>
+              <td>Converts continuous spectral pixel values into thematic, discrete land cover / geological rock-type classes.</td>
+              <td>Maximum Likelihood (MLC), Minimum Distance, ISODATA, Random Forest, Support Vector Machines (SVM).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q135/digital_image_processing_enhancement_classification_rectification.png" alt="Digital Image Processing Operations" class="figure-img">
+        <div class="figure-caption">Figure 135: End-to-end architecture of Digital Image Processing (Option B), spanning image rectification, enhancement, spectral band transformation, and thematic classification.</div>
+      </div>
+
+      <p>By formal scientific definition, the umbrella discipline encompassing <em>"the art and science of manipulation of digital data including enhancement, classification, and rectification"</em> is universally known as <strong>Image Processing</strong> (or <em>Digital Image Processing</em>, Option B). Orthorectification (Option A) and Rectification (Option C) represent individual sub-operations within the broader image processing domain.</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 135</div>
+        <div class="raw-q-text">The art and science of manipulation of digital data including enhancement, classification and rectification is known as :</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> Orthorectification</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> Image processing</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> Rectification</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> Geometric correction</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION B (Image processing)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION B &bull; CORRECT</div>
+          <div class="opt-title">Image processing</div>
+          <p>By international remote sensing and photogrammetric definitions (Jensen; Lillesand & Kiefer; Gonzalez & Woods; Bangar, p. 211), <strong>Image Processing</strong> (Digital Image Processing, DIP) is the overarching field that integrates all computational algorithms for manipulating digital image data—including radiometric/geometric rectification, contrast enhancement, spatial filtering, band transformation, and automated multispectral classification.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION A &bull; SUBSET OPERATION</div>
+          <div class="opt-title">Orthorectification</div>
+          <p>Orthorectification is a specialized sub-procedure of geometric rectification that corrects for terrain relief displacement using a Digital Elevation Model (DEM). It does not encompass contrast enhancement, spatial filtering, or thematic classification.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; SUBSET OPERATION</div>
+          <div class="opt-title">Rectification</div>
+          <p>Rectification is the geometric process of transforming image pixel coordinates into a standard map projection coordinate system. It is only one preparatory phase of image processing, completely omitting enhancement and classification.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; SUBSET OPERATION</div>
+          <div class="opt-title">Geometric correction</div>
+          <p>Geometric correction addresses sensor distortions and platform wobble. Like Options A and C, it is a sub-component of image restoration, not the comprehensive science defined in the question.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Image Processing Sub-Operation</th>
+              <th>Input Data</th>
+              <th>Mathematical Operator</th>
+              <th>Output Product</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Contrast Stretching</td><td>Raw low-contrast digital scene</td><td>Linear min-max normalization: $\text{DN}' = \frac{\text{DN} - \text{MIN}}{\text{MAX} - \text{MIN}} \times 255$</td><td>Enhanced visual contrast image utilizing full dynamic range</td></tr>
+            <tr><td>Spatial Filtering (High-Pass)</td><td>Rectified multispectral image</td><td>$3 \times 3$ convolution kernel: $\sum \sum w_{ij} f(x+i, y+j)$</td><td>Sharpened structural lineaments, geological contacts, and faults</td></tr>
+            <tr><td>Principal Component Analysis</td><td>$k$ highly correlated spectral bands</td><td>Eigenvector decomposition of covariance matrix: $\mathbf{Y} = \mathbf{V}^T \mathbf{X}$</td><td>Uncorrelated PC bands concentrating $>95\%$ variance in PC1/PC2</td></tr>
+            <tr><td>Supervised Classification</td><td>Multispectral image + Training sites</td><td>Bayesian Maximum Likelihood decision rule ($P(\omega_i | x)$)</td><td>Thematic lithological / land use map with quantified class boundaries</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. What is the fundamental difference between supervised and unsupervised image classification?</div>
+        <div class="pq-ans">Answer: Supervised classification uses user-defined training sites of known ground-truth classes to train a classifier; unsupervised classification automatically clusters pixels into natural statistical spectral groupings (e.g. K-means, ISODATA) without prior training data.</div>
+        <div class="pq-exp">Supervised classification requires prior field knowledge; unsupervised classification discovers intrinsic data structure.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. What is Histogram Equalization in image enhancement?</div>
+        <div class="pq-ans">Answer: A non-linear contrast enhancement technique that redistributes pixel brightness values so that the cumulative distribution function (CDF) of the output image is linear, producing a uniform flat histogram.</div>
+        <div class="pq-exp">It expands contrast in the most heavily populated brightness ranges at the expense of sparsely populated tails.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. Why are band ratio images (e.g. Landsat Band 5 / Band 7) uniquely powerful in geological exploration?</div>
+        <div class="pq-ans">Answer: Band ratios cancel out topographic shadow effects (illumination variations) while accentuating diagnostic mineral absorption features (e.g. clay and hydroxyl minerals absorb in Band 7 and reflect in Band 5).</div>
+        <div class="pq-exp">Ratioing isolates intrinsic spectral reflectance from extrinsic lighting and slope geometry.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. What is the purpose of a Low-Pass spatial filter in digital image processing?</div>
+        <div class="pq-ans">Answer: To suppress high-frequency spatial noise, smooth the image, and blur sharp boundaries by computing local neighborhood averages.</div>
+        <div class="pq-exp">Low-pass filters reduce random speckle noise in radar and optical images before classification.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. What is the Normalized Difference Vegetation Index (NDVI) formula?</div>
+        <div class="pq-ans">Answer: $$\text{NDVI} = \frac{\text{NIR} - \text{Red}}{\text{NIR} + \text{Red}}$$.</div>
+        <div class="pq-exp">Healthy green vegetation absorbs red light for photosynthesis and strongly reflects near-infrared from spongy mesophyll tissue, yielding high positive NDVI ($0.5\text{--}0.85$).</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. In supervised classification, what statistical decision rule assumes a multivariate normal (Gaussian) distribution for each spectral class?</div>
+        <div class="pq-ans">Answer: The Maximum Likelihood Classifier (MLC).</div>
+        <div class="pq-exp">MLC calculates the probability that a pixel belongs to each candidate class based on the mean vector and covariance matrix, assigning it to the highest-probability class.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. What is an "Error Matrix" or "Confusion Matrix" in remote sensing classification accuracy assessment?</div>
+        <div class="pq-ans">Answer: A cross-tabulation table comparing classified map categories against verified reference ground-truth data to compute Producer's Accuracy, User's Accuracy, Overall Accuracy, and the Kappa Coefficient ($\hat{K}$).</div>
+        <div class="pq-exp">Kappa evaluates accuracy while accounting for chance agreement.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is "Pansharpening" (Image Fusion) in digital image processing?</div>
+        <div class="pq-ans">Answer: Merging a high-spatial-resolution panchromatic band with lower-spatial-resolution multispectral bands (using IHS, Brovey, or Gram-Schmidt transforms) to produce high-resolution color imagery.</div>
+        <div class="pq-exp">Pansharpening preserves the spatial sharpness of the panchromatic image while retaining the spectral colors of the multispectral data.</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>

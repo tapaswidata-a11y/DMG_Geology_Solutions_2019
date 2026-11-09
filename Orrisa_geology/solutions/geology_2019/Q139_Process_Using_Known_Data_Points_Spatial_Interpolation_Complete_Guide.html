@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q139: Spatial Analysis - Spatial Interpolation Foundations | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q139" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 139 • Spatial Analysis & Surface Modeling</div>
+    <h1>Spatial Surface Modeling: Spatial Interpolation Using Known Sample Points to Estimate Values at Unknown Locations</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Spatial Surface Interpolation • <strong>Key Concept:</strong> Spatial Estimation, IDW, Kriging & Radial Basis Functions • <strong>Textbooks:</strong> Kang-tsung Chang (<em>Introduction to Geographic Information Systems</em>, 9th Ed., Ch. 15); P.A. Burrough & R.A. McDonnell (Ch. 6); K.M. Bangar (p. 217); E.H. Isaaks & R.M. Srivastava (<em>Applied Geostatistics</em>)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: The Spatial Interpolation Process</div>
+      <p>In earth science, environmental geology, mining engineering, and GIS, financial and logistical constraints make it impossible to collect physical measurements at every point across a continuous landscape. Instead, scientists collect field data at a discrete set of known sample locations (e.g. exploration boreholes, groundwater monitoring wells, seismic shotpoints, or weather stations).</p>
+
+      <p>By international GIS definition (Chang; Burrough & McDonnell; Isaaks & Srivastava), <strong>the computational and mathematical process of using data points with known values to estimate values at unknown, unmeasured points in any given area is called Spatial Interpolation</strong> (Option B):</p>
+
+      <div class="math-block">
+        $$\hat{z}(x_0, y_0) = \sum_{i=1}^n \lambda_i \cdot z(x_i, y_i)$$
+      </div>
+
+      <p>where $\hat{z}(x_0, y_0)$ is the estimated attribute value at the unknown target location $(x_0, y_0)$, $z(x_i, y_i)$ are the known sample values, and $\lambda_i$ are mathematical weights assigned to each sample point (typically subject to $\sum \lambda_i = 1$).</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Interpolation Method Class</th>
+              <th>Underlying Mathematical Theory</th>
+              <th>Specific Algorithms</th>
+              <th>Geological & Environmental Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff;">
+              <td><strong>Deterministic Interpolation (Distance-Based)</strong></td>
+              <td>Assigns weights purely based on geometric distance or mathematical smoothness; provides no statistical error estimate.</td>
+              <td>• <strong>Inverse Distance Weighting (IDW):</strong> $\lambda_i = \frac{d_i^{-p}}{\sum d_i^{-p}}$<br>• <strong>Splines (Thin Plate / Tension):</strong> Minimizes surface curvature.<br>• <strong>Trend Surface Analysis:</strong> Global polynomial regression.</td>
+              <td>Quick rainfall surface mapping, regional gravity anomaly separation, preliminary terrain elevation modeling.</td>
+            </tr>
+            <tr style="background:#eff6ff; font-weight:700;">
+              <td><strong>Geostatistical Interpolation (Probabilistic / Spatial Structure)</strong></td>
+              <td>Uses spatial autocorrelation modeled via the experimental semivariogram ($\gamma(h)$) to calculate Best Linear Unbiased Estimates (BLUE).</td>
+              <td>• <strong>Ordinary Kriging (OK)</strong><br>• <strong>Universal Kriging (UK)</strong> (handles spatial trend)<br>• <strong>Indicator Kriging (IK)</strong> (threshold exceedance)<br>• <strong>Cokriging</strong> (uses secondary covariate).</td>
+              <td>Mining ore reserve block estimation, groundwater hydraulic head, soil contaminant plumes; <strong>provides prediction standard error map $\sigma_k(x_0)$</strong>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q139/spatial_interpolation_idw_kriging_unknown_points.png" alt="Spatial Interpolation Process" class="figure-img">
+        <div class="figure-caption">Figure 139: Conceptual mechanics of Spatial Interpolation (Option B): estimating the unknown value $\hat{z}(x_0)$ from surrounding known control points $z_1, z_2, z_3, z_4$ using distance-decay weights.</div>
+      </div>
+
+      <p>Spatial interpolation transforms sparse point samples into an uninterrupted, continuous raster grid surface or contour map, which is essential for digital elevation modeling, ore grade contouring, and hydrological modeling.</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 139</div>
+        <div class="raw-q-text">The process of using data points with known values to estimate values at unknown points in any given area is called :</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> Spatial Prediction</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> Spatial interpolation</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> Spatial Adjustment</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> Spatial Reflection</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION B (Spatial interpolation)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION B &bull; CORRECT</div>
+          <div class="opt-title">Spatial interpolation</div>
+          <p>By verbatim textbook and standard GIS definition (Chang, Ch. 15; Burrough & McDonnell; Bangar, p. 217), the exact process of taking known geographic sample data points and estimating values at unmeasured locations within the bounds of the study area is called <strong>Spatial Interpolation</strong>.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION A &bull; DISTRACTOR</div>
+          <div class="opt-title">Spatial Prediction</div>
+          <p>While geostatistics sometimes uses "spatial prediction" informally as an umbrella term, "spatial interpolation" is the precise, formal technical term universally used in GIS and spatial analysis curricula for estimating unknown points from known sample points.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; DISTRACTOR</div>
+          <div class="opt-title">Spatial Adjustment</div>
+          <p>Spatial adjustment refers to rubbersheeting, edge-matching, and geometric coordinate transformation of digitized vector linework to align with georeferenced base features. It does not estimate surface attribute values.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; DISTRACTOR</div>
+          <div class="opt-title">Spatial Reflection</div>
+          <p>Fabricated distractor mixing wave optics ("reflection") with spatial terminology; has no meaning in spatial analysis.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Interpolation Method</th>
+              <th>Exact vs Inexact</th>
+              <th>Local vs Global</th>
+              <th>Primary Strength / Characteristic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Inverse Distance Weighting (IDW)</td><td>Exact (passes through known points)</td><td>Local</td><td>Simple, intuitive, computationally fast; creates "bull's-eye" artifacts around isolated extrema.</td></tr>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Ordinary Kriging (OK)</td><td>Exact (if nugget = 0)</td><td>Local</td><td><strong>BLUE:</strong> Best Linear Unbiased Estimator; minimizes estimation variance and outputs error map.</td></tr>
+            <tr><td>Regularized Spline</td><td>Exact</td><td>Local</td><td>Produces smooth, continuous, visually pleasing surfaces with continuous first and second derivatives.</td></tr>
+            <tr><td>Trend Surface Analysis</td><td>Inexact (does not pass through points)</td><td>Global</td><td>Fits a single global polynomial plane/surface to separate regional trends from local residuals.</td></tr>
+            <tr><td>Thiessen (Voronoi) Polygons</td><td>Exact (stepwise)</td><td>Local</td><td>Assigns the exact value of the nearest sample point to every cell; creates abrupt stepped boundaries.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. What is the fundamental difference between Spatial Interpolation and Spatial Extrapolation?</div>
+        <div class="pq-ans">Answer: Interpolation estimates values *inside* the spatial boundary bounded by the control points; extrapolation estimates values *outside* the convex hull of known points (which carries extreme uncertainty).</div>
+        <div class="pq-exp">Interpolation is statistically constrained by surrounding points; extrapolation diverges rapidly.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. What distinguishes an "Exact" interpolator from an "Inexact" interpolator?</div>
+        <div class="pq-ans">Answer: An exact interpolator predicts values that match the original sample values identically at the sample locations ($\hat{z}(x_i) = z(x_i)$); an inexact interpolator smooths the surface and may predict different values at sample points.</div>
+        <div class="pq-exp">IDW and Splines are exact; Trend surface analysis is inexact.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. What is the effect of increasing the power parameter ($p$) in Inverse Distance Weighting (IDW)?</div>
+        <div class="pq-ans">Answer: Higher power values (e.g. $p=3$ or $4$) concentrate influence almost entirely on the immediately adjacent nearest neighbor, making the surface steeper around points; lower power ($p=1$) smooths the surface.</div>
+        <div class="pq-exp">The standard default value in GIS software is $p=2$ (inverse distance squared).</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. Why is Kriging widely regarded as superior to deterministic methods in mining ore evaluation?</div>
+        <div class="pq-ans">Answer: Because Kriging models the spatial continuity structure (semivariogram), accounts for clustering of sample boreholes (declustering effect), and outputs an objective Kriging Variance map quantifying estimation uncertainty.</div>
+        <div class="pq-exp">Mining companies use the kriging error map to identify drill-hole gaps before sinking expensive shafts.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. What is "Cokriging"?</div>
+        <div class="pq-ans">Answer: A geostatistical technique that interpolates a primary sparsely sampled variable (e.g. soil heavy metal concentration) by utilizing cross-correlation with a densely sampled, cheaper secondary variable (e.g. airborne radiometrics or elevation).</div>
+        <div class="pq-exp">Cokriging leverages the cross-semivariogram between two correlated spatial variables.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. What causes the "Bull's-Eye" effect in IDW interpolated surfaces?</div>
+        <div class="pq-ans">Answer: As the estimation point approaches an isolated extreme high or low sample point, distance $d \to 0$, causing weight $1/d^p \to \infty$ and creating concentric circular contour rings.</div>
+        <div class="pq-exp">Bull's-eyes are artificial artifacts of distance weighting without directional derivative constraints.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. What is the Cross-Validation technique used to evaluate the accuracy of spatial interpolation?</div>
+        <div class="pq-ans">Answer: "Leave-One-Out" cross-validation: temporarily remove one sample point, estimate its value using the remaining $n-1$ points, compute residual error ($z_i - \hat{z}_i$), and repeat for all $n$ points to calculate RMSE.</div>
+        <div class="pq-exp">The method yielding the lowest RMSE is selected as the optimal interpolation model.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is Universal Kriging used for in geological terrain modeling?</div>
+        <div class="pq-ans">Answer: For spatial datasets that exhibit a non-stationary regional deterministic trend (drift) along with local random spatial correlation.</div>
+        <div class="pq-exp">Universal Kriging separates the global trend (e.g. regional fault dip) from local stationary semivariance residuals.</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>

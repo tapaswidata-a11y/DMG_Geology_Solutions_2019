@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q131: Satellite Orbits - Sun-Synchronous Orbit for Dynamic Monitoring | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q131" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 131 • Satellite Orbits</div>
+    <h1>Satellite Remote Sensing: Sun-Synchronous Orbit Architecture for Monitoring Dynamic Terrestrial Changes</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Satellite Orbital Mechanics & Earth Observation • <strong>Key Concept:</strong> Sun-Synchronous Polar Orbits, Nodal Precession & Constant Solar Illumination • <strong>Textbooks:</strong> T.M. Lillesand et al. (Ch. 6); Floyd F. Sabins (Ch. 2); K.M. Bangar (p. 210); C.D. Brown (<em>Elements of Spacecraft Design</em>)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: Sun-Synchronous Orbit Physics and Dynamic Monitoring</div>
+      <p>When monitoring dynamic surface phenomena on Earth—such as seasonal vegetation phenology, crop growth, volcanic thermal activity, reservoir storage, glacial retreat, urban sprawl, and coastal erosion—satellite data must be collected under <strong>consistent, repeatable solar illumination conditions</strong> over successive repeat passes.</p>
+
+      <p>If solar elevation and azimuth change radically between acquisition dates, differing shadows and changing solar illumination geometry introduce massive false radiance variations that corrupt automated image differencing and change-detection algorithms. To eliminate this critical error source, Earth observation satellites are placed into a <strong>Sun-Synchronous Orbit</strong> (Option B).</p>
+
+      <h4>Orbital Mechanics of Sun-Synchronism</h4>
+      <p>Because the Earth is an oblate spheroid (flattened at the poles with equatorial bulge $J_2 = 1.08263 \times 10^{-3}$), its non-spherical gravitational field exerts a torque on inclined orbits, causing the orbital plane to rotate or precess about the Earth's polar axis. This rate of <strong>nodal precession</strong> ($\dot{\Omega}$) is governed by:</p>
+
+      <div class="math-block">
+        $$\dot{\Omega} = -\frac{3}{2} J_2 \left(\frac{R_E}{a(1-e^2)}\right)^2 \sqrt{\frac{G M_E}{a^3}} \cos i$$
+      </div>
+
+      <p>where $a$ is the semi-major axis, $e$ is orbital eccentricity, and $i$ is orbital inclination. For an orbit to be <strong>sun-synchronous</strong>, the orbital plane must precess eastward at exactly the same rate as the Earth's mean orbital revolution around the Sun ($360^\circ / 365.25\text{ days} = 0.9856^\circ/\text{day} = 1.991 \times 10^{-7}\text{ rad/s}$):</p>
+
+      <div class="math-block">
+        $$\dot{\Omega} = +0.9856^\circ / \text{day} \implies \cos i < 0 \implies 90^\circ < i < 180^\circ \text{ (Retrograde Orbit)}$$
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Orbit Type</th>
+              <th>Orbital Characteristics</th>
+              <th>Illumination Geometry</th>
+              <th>Suitability for Monitoring Dynamic Changes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;">
+              <td><strong>SUN-SYNCHRONOUS ORBIT</strong> (Option B)</td>
+              <td>Near-polar, retrograde ($i \approx 97^\circ\text{--}99^\circ$), low altitude ($600\text{--}800\text{ km}$). Precesses at $0.9856^\circ/\text{day}$.</td>
+              <td><strong>Constant Local Solar Time:</strong> Satellite crosses the equator at the exact same local solar time (typically 10:00 to 10:30 AM) on every pass.</td>
+              <td><strong>Ideal & Standard:</strong> Landsat, Sentinel-2, IRS LISS, SPOT. Consistent shadow lengths enable automated multitemporal change detection.</td>
+            </tr>
+            <tr>
+              <td>Non-Synchronous Circular Orbit (Option A)</td>
+              <td>Circular orbit ($e=0$) at arbitrary inclination (e.g., ISS at $51.6^\circ$).</td>
+              <td>Solar time drifts continuously; passes over targets at dawn, noon, dusk, or midnight.</td>
+              <td>Poor: Massive seasonal and diurnal illumination shifts obscure true ground reflectance changes.</td>
+            </tr>
+            <tr>
+              <td>Near Polar Orbit (Option C)</td>
+              <td>Inclination near $90^\circ$ but without exact sun-synchronous precession tuning.</td>
+              <td>Does not maintain constant local solar time; orbital plane slowly drifts relative to the Sun.</td>
+              <td>Sub-optimal: Lacks fixed solar illumination angle; causes seasonal shadow drift.</td>
+            </tr>
+            <tr>
+              <td>Geostationary Orbit (GEO)</td>
+              <td>$h \approx 35,786\text{ km}$, $i = 0^\circ$ over the equator.</td>
+              <td>Continuous view of one hemisphere, but spatial resolution is coarse ($1\text{--}4\text{ km}$).</td>
+              <td>Excellent for rapid weather/clouds, but poor spatial resolution for terrestrial geological change.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q131/sun_synchronous_orbit_dynamic_change_monitoring.png" alt="Sun-Synchronous Orbit Dynamic Monitoring" class="figure-img">
+        <div class="figure-caption">Figure 131: Mechanics of a Sun-Synchronous Orbit showing the orbital plane precessing $0.9856^\circ/\text{day}$ to maintain a constant solar angle throughout Earth's annual revolution (Option B).</div>
+      </div>
+
+      <p>Because the sun-synchronous orbit ensures that the satellite crosses every terrestrial latitude at precisely the same local solar time, it provides identical solar elevation angles, minimizes shadow differences, and maximizes radiometric comparability across multitemporal scenes.</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 131</div>
+        <div class="raw-q-text">For interpolation of satellite data used for monitoring dynamic changes that occur on the earth surface, the most suitable orbit for the satellite is :</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> Circular orbit</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> Sun-synchronous orbit</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> Near polar orbit</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> None of these</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION B (Sun-synchronous orbit)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION B &bull; CORRECT</div>
+          <div class="opt-title">Sun-synchronous orbit</div>
+          <p>A sun-synchronous orbit is precisely tuned so that the satellite's orbital plane precesses eastward at the exact rate of Earth's solar revolution. This guarantees that the satellite passes over any given location on Earth at the <strong>identical local solar time</strong> on every repeat cycle, ensuring uniform sun angle and shadow conditions essential for multitemporal analysis and monitoring dynamic surface changes.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION A &bull; INSUFFICIENT SPECIFICATION</div>
+          <div class="opt-title">Circular orbit</div>
+          <p>While sun-synchronous orbits are circular ($e \approx 0$) to keep scale constant, a generic circular orbit can have any inclination (e.g. $28^\circ$ or $51^\circ$). If not sun-synchronous, its overpass time drifts around the clock, causing erratic illumination changes that make dynamic monitoring impossible.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; INCOMPLETE SPECIFICATION</div>
+          <div class="opt-title">Near polar orbit</div>
+          <p>Sun-synchronous orbits are indeed near-polar ($i \approx 98^\circ$). However, "near polar" alone does not guarantee sun-synchronism; an orbit with $i = 90^\circ$ (true polar) has zero nodal precession ($\cos 90^\circ = 0$), causing its overpass time to drift relative to the Sun by 2 hours every month.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; DISTRACTOR</div>
+          <div class="opt-title">None of these</div>
+          <p>Incorrect, because Option B is the universally accepted standard orbit across all international Earth observation satellite programs.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Satellite Mission</th>
+              <th>Orbital Altitude</th>
+              <th>Inclination ($i$)</th>
+              <th>Equatorial Crossing Time</th>
+              <th>Repeat Cycle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Landsat 8 & 9 (OLI/TIRS)</td><td>$705\text{ km}$</td><td>$98.2^\circ$</td><td>10:00 AM &plusmn; 15 min (Descending)</td><td>16 days (8 days combined)</td></tr>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Sentinel-2A & 2B (MSI)</td><td>$786\text{ km}$</td><td>$98.62^\circ$</td><td>10:30 AM (Descending)</td><td>5 days (combined)</td></tr>
+            <tr style="background:#eff6ff; font-weight:700;"><td>IRS Resourcesat-1 & 2 (LISS)</td><td>$817\text{ km}$</td><td>$98.7^\circ$</td><td>10:30 AM (Descending)</td><td>24 days</td></tr>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Terra & Aqua (MODIS)</td><td>$705\text{ km}$</td><td>$98.2^\circ$</td><td>10:30 AM (Terra) / 1:30 PM (Aqua)</td><td>1 to 2 days (wide swath)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. Why do almost all optical land-monitoring satellites choose a descending equatorial crossing time around 10:00 to 10:30 AM?</div>
+        <div class="pq-ans">Answer: 10:00 to 10:30 AM provides the ideal compromise: sun elevation is sufficiently high to provide strong radiance, but convective afternoon cloud buildup (cumulus formation) has not yet begun.</div>
+        <div class="pq-exp">Waiting until solar noon creates severe afternoon cloudiness over tropical and temperate landmasses.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. Why must the orbital inclination of a sun-synchronous satellite be greater than $90^\circ$ (retrograde)?</div>
+        <div class="pq-ans">Answer: Because nodal precession must be positive (eastward, $+0.9856^\circ/\text{day}$); since the precession formula contains $-\cos i$, $\cos i$ must be negative, requiring $90^\circ < i < 180^\circ$.</div>
+        <div class="pq-exp">A retrograde orbit travels slightly against the direction of Earth's rotation to achieve positive nodal precession.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. What is the "temporal resolution" or "repeat cycle" of an Earth observation satellite?</div>
+        <div class="pq-ans">Answer: The time interval required for the satellite to complete an integer number of orbits and retrace its exact same ground track.</div>
+        <div class="pq-exp">Landsat has a 16-day repeat cycle (233 orbits); Sentinel-2 has a 10-day cycle per satellite (5 days with two satellites).</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. What is a "frozen orbit" in satellite Earth observation?</div>
+        <div class="pq-ans">Answer: An orbit whose eccentricity ($e$) and argument of perigee ($\omega$) are chosen so that gravitational perturbations cancel, keeping orbital altitude over any given latitude constant over time.</div>
+        <div class="pq-exp">Sun-synchronous imaging satellites are placed in frozen orbits to ensure image scale remains identical across repeat tracks.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. What happens to the nodal precession rate of an orbit if its altitude is increased?</div>
+        <div class="pq-ans">Answer: The precession rate decreases ($d\Omega/dt \propto a^{-7/2}$); therefore, to remain sun-synchronous at higher altitudes, the inclination must increase further into retrograde ($i$ increases).</div>
+        <div class="pq-exp">At $h=705\text{ km}$, $i=98.2^\circ$; at $h=817\text{ km}$, $i=98.7^\circ$.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. Which satellite change-detection technique computes the algebraic difference between pixel values of two registered, radiometrically calibrated scenes?</div>
+        <div class="pq-ans">Answer: Image Differencing ($\Delta BV = BV_{t2} - BV_{t1} + C$).</div>
+        <div class="pq-exp">Image differencing requires identical solar illumination geometry provided by sun-synchronous orbits.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. Can a geostationary satellite provide global coverage of the Earth's polar regions?</div>
+        <div class="pq-ans">Answer: No; because geostationary satellites orbit above the equator ($i=0^\circ$), their line of sight cannot view polar latitudes beyond $\approx 81^\circ\text{N/S}$.</div>
+        <div class="pq-exp">Polar monitoring strictly requires polar and sun-synchronous orbits.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is a "dawn-dusk" sun-synchronous orbit and what remote sensing instruments typically use it?</div>
+        <div class="pq-ans">Answer: A sun-synchronous orbit riding the solar terminator line (crossing equator at ~6:00 AM/PM); used by active SAR satellites (e.g. Radarsat) to maintain continuous solar array illumination.</div>
+        <div class="pq-exp">A dawn-dusk orbit avoids the Earth's shadow, providing uninterrupted electrical power to high-drain radar transmitters.</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q130: Satellite Geodesy - Normal Altitude of GPS Satellites | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q130" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 130 • Satellite Geodesy & GPS</div>
+    <h1>Satellite Geodesy: Orbital Altitude, Constellation Architecture, and Orbital Mechanics of the Global Positioning System (GPS)</h1>
+    <div class="meta">
+      <strong>Topic:</strong> GPS Space Segment & Orbital Dynamics • <strong>Key Concept:</strong> Semi-Synchronous Medium Earth Orbit (MEO) at $20,200\text{ km}$ • <strong>Textbooks:</strong> B. Hofmann-Wellenhof et al. (<em>GNSS: GPS, GLONASS, Galileo and more</em>); G. Xu (<em>GPS: Theory, Algorithms and Applications</em>); K.M. Bangar (p. 212)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: GPS Space Segment Orbital Architecture</div>
+      <p>The Global Positioning System (GPS, formally NAVSTAR GPS) consists of three interconnected segments: the <strong>Space Segment</strong> (satellite constellation), the <strong>Control Segment</strong> (master control stations, tracking stations, and ground antennas), and the <strong>User Segment</strong> (GPS receivers).</p>
+
+      <p>The baseline nominal constellation of the GPS Space Segment is designed as a Walker $24/6/1$ constellation (24 operational satellites distributed evenly across 6 orbital planes inclined at $55^\circ$ to the equator, with 4 satellites per plane plus on-orbit spares). According to Kepler's Third Law, the orbital period ($T$) of a satellite depends strictly on the semi-major axis ($a$) of its orbit:</p>
+
+      <div class="math-block">
+        $$T = 2\pi \sqrt{\frac{a^3}{G M_E}}$$
+      </div>
+
+      <p>where $G M_E = 3.986004418 \times 10^{14}\text{ m}^3\text{s}^{-2}$ is the Earth's standard gravitational parameter. GPS satellites are engineered into a <strong>semi-synchronous circular orbit</strong> having an orbital period of exactly <strong>half a sidereal day</strong> (11 hours, 58 minutes, or $43,080\text{ seconds}$):</p>
+
+      <div class="math-block">
+        $$a = \left[G M_E \left(\frac{T}{2\pi}\right)^2\right]^{1/3} \approx 26,560\text{ km}$$
+      </div>
+
+      <p>Subtracting the mean equatorial radius of the Earth ($R_E \approx 6,378\text{ km}$), we obtain the nominal <strong>orbital altitude</strong> ($h$) above the Earth's surface:</p>
+
+      <div class="math-block">
+        $$h = a - R_E = 26,560\text{ km} - 6,378\text{ km} \approx \mathbf{20,182\text{ km}} \approx \mathbf{20,200\text{ km}}$$
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Satellite System / Regime</th>
+              <th>Orbital Regime</th>
+              <th>Nominal Altitude ($h$)</th>
+              <th>Orbital Period ($T$)</th>
+              <th>Orbital Inclination ($i$)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;">
+              <td><strong>NAVSTAR GPS (USA)</strong> (Option B)</td>
+              <td><strong>Medium Earth Orbit (MEO)</strong></td>
+              <td><strong>$\approx 20,200\text{ km}$</strong></td>
+              <td><strong>11 hr 58 min (Half Sidereal Day)</strong></td>
+              <td>$55.0^\circ$</td>
+            </tr>
+            <tr>
+              <td>GLONASS (Russia)</td>
+              <td>Medium Earth Orbit (MEO)</td>
+              <td>$19,100\text{ km}$</td>
+              <td>11 hr 15 min</td>
+              <td>$64.8^\circ$</td>
+            </tr>
+            <tr>
+              <td>Galileo (European Union)</td>
+              <td>Medium Earth Orbit (MEO)</td>
+              <td>$23,222\text{ km}$</td>
+              <td>14 hr 05 min</td>
+              <td>$56.0^\circ$</td>
+            </tr>
+            <tr>
+              <td>Low Earth Orbit (LEO, e.g. Landsat, Sentinel)</td>
+              <td>Low Earth Orbit (LEO)</td>
+              <td>$700\text{--}800\text{ km}$</td>
+              <td>$\approx 90\text{--}100\text{ min}$</td>
+              <td>$\approx 98^\circ$ (Sun-synchronous)</td>
+            </tr>
+            <tr>
+              <td>Geostationary Orbit (GEO, e.g. INSAT, GOES)</td>
+              <td>Geostationary / Geosynchronous</td>
+              <td>$35,786\text{ km} \approx 36,000\text{ km}$ (Option D)</td>
+              <td>23 hr 56 min (1 Sidereal Day)</td>
+              <td>$0.0^\circ$ (Equatorial)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q130/gps_satellite_normal_altitude_20200_km_meo.png" alt="Normal Altitude of GPS Satellites" class="figure-img">
+        <div class="figure-caption">Figure 130: Orbital altitude comparison across satellite classes, showing GPS positioned in Medium Earth Orbit at $20,200\text{ km}$ with an orbital radius of $26,560\text{ km}$ (Option B).</div>
+      </div>
+
+      <p>This orbital altitude provides the optimal geometric compromise: high enough that a single satellite's footprint covers over $38\%$ of the globe, ensuring that anywhere on Earth at least 4 to 12 satellites are continuously visible simultaneously above a $15^\circ$ elevation cutoff mask.</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 130</div>
+        <div class="raw-q-text">The normal altitude of GPS satellite is about:</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> 16,200 km</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> 20,200 km</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> 24,400 km</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> 36,100 km</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION B (20,200 km)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION B &bull; CORRECT</div>
+          <div class="opt-title">20,200 km</div>
+          <p>By international GPS geodetic specification (ICD-GPS-200; Hofmann-Wellenhof et al.; Bangar, p. 212), the semi-major axis of a GPS satellite orbit is $a = 26,560\text{ km}$. Subtracting the Earth's radius ($R_E \approx 6,378\text{ km}$) yields the nominal orbital altitude of <strong>$\approx 20,200\text{ km}$</strong> (or $20,182\text{ km}$ exact). This semi-synchronous orbit delivers a repeat track period of 12 sidereal hours.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION A &bull; DISTRACTOR</div>
+          <div class="opt-title">16,200 km</div>
+          <p>Incorrect altitude. An altitude of $16,200\text{ km}$ would produce an orbital period of $\approx 8.8\text{ hours}$, which is not resonant with Earth's rotation and would destroy the repeating ground-track geometry of the GPS constellation.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; DISTRACTOR</div>
+          <div class="opt-title">24,400 km</div>
+          <p>Incorrect altitude. While closer to the European Galileo constellation ($23,222\text{ km}$), it does not correspond to the United States GPS constellation altitude.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; DISTRACTOR</div>
+          <div class="opt-title">36,100 km</div>
+          <p>This approximates the altitude of a <strong>Geostationary / Geosynchronous orbit</strong> ($h \approx 35,786\text{ km}$), typical of communication and meteorological satellites (e.g. INSAT, Meteosat, GOES) and SBAS augmentation payloads (GAGAN, WAAS), but not the core MEO GPS satellites.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Constellation Parameter</th>
+              <th>GPS (NAVSTAR) Value</th>
+              <th>GLONASS (Russia)</th>
+              <th>Galileo (Europe)</th>
+              <th>BeiDou-3 MEO (China)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;"><td>Nominal Altitude</td><td><strong>$20,200\text{ km}$</strong></td><td>$19,100\text{ km}$</td><td>$23,222\text{ km}$</td><td>$21,528\text{ km}$</td></tr>
+            <tr><td>Orbital Radius ($a$)</td><td>$26,560\text{ km}$</td><td>$25,510\text{ km}$</td><td>$29,600\text{ km}$</td><td>$27,906\text{ km}$</td></tr>
+            <tr><td>Orbital Period</td><td>$11\text{ hr } 58\text{ min}$</td><td>$11\text{ hr } 15\text{ min}$</td><td>$14\text{ hr } 05\text{ min}$</td><td>$12\text{ hr } 53\text{ min}$</td></tr>
+            <tr><td>Number of Orbital Planes</td><td>6 planes ($55^\circ$ inclination)</td><td>3 planes ($64.8^\circ$)</td><td>3 planes ($56^\circ$)</td><td>3 planes ($55^\circ$)</td></tr>
+            <tr><td>Ground Track Repeat</td><td>1 sidereal day (repeats daily $4\text{ min}$ earlier)</td><td>8 sidereal days (17 orbits)</td><td>10 sidereal days (17 orbits)</td><td>7 sidereal days (13 orbits)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. Why do GPS satellite ground tracks repeat approximately 4 minutes earlier each solar day?</div>
+        <div class="pq-ans">Answer: Because the GPS orbital period is half a sidereal day ($11\text{ hr } 58\text{ min}$); two full orbits take 1 sidereal day ($23\text{ hr } 56\text{ min } 4\text{ sec}$), which is $\approx 3\text{ min } 56\text{ sec}$ shorter than a mean solar day ($24\text{ hours}$).</div>
+        <div class="pq-exp">A surveyor observing satellite geometry at 10:00 AM on Monday will see the identical constellation geometry at 09:56 AM on Tuesday.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. Why are GPS satellites placed at $20,200\text{ km}$ altitude rather than in Low Earth Orbit (LEO, $800\text{ km}$)?</div>
+        <div class="pq-ans">Answer: At $20,200\text{ km}$, each satellite has a vast footprint covering over $38\%$ of Earth's surface, requiring only 24 satellites for global continuous coverage (compared to hundreds needed in LEO).</div>
+        <div class="pq-exp">Higher altitude also avoids atmospheric drag and provides stable, precisely predictable Keplerian orbits.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. What is the minimum number of GPS satellites that a receiver must track simultaneously to determine a unique 3D position and receiver clock offset?</div>
+        <div class="pq-ans">Answer: Exactly 4 satellites.</div>
+        <div class="pq-exp">Four pseudorange equations are mathematically required to solve for the four unknowns: $X, Y, Z$ coordinates and receiver clock bias $\Delta t_r$.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. How does the orbital altitude of $20,200\text{ km}$ impact the signal travel time from a GPS satellite to a ground receiver?</div>
+        <div class="pq-ans">Answer: The one-way travel time of the radio wave ($t = d/c$) ranges from approximately $0.067\text{ seconds}$ (at zenith) to $0.086\text{ seconds}$ (at the horizon).</div>
+        <div class="pq-exp">$$\frac{20,200\text{ km}}{300,000\text{ km/s}} \approx 0.0673\text{ s}$$.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. What relativistic effect must be corrected because of the GPS orbital altitude of $20,200\text{ km}$?</div>
+        <div class="pq-ans">Answer: General relativistic gravitational blueshift: clocks at $20,200\text{ km}$ tick faster than ground clocks by $+45.9\text{ }\mu\text{s/day}$, while special relativistic velocity slows them by $-7.2\text{ }\mu\text{s/day}$ (net $+38.7\text{ }\mu\text{s/day}$).</div>
+        <div class="pq-exp">Satellite atomic clocks are intentionally pre-set to run slower at $10.22999999543\text{ MHz}$ instead of $10.23\text{ MHz}$ so they match ground time exactly.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. What is Dilution of Precision (DOP) in GPS positioning?</div>
+        <div class="pq-ans">Answer: A dimensionless multiplier that expresses how the geometric distribution of tracked satellites magnifies ranging measurement errors into final position errors ($\sigma_{\text{pos}} = \text{GDOP} \cdot \sigma_0$).</div>
+        <div class="pq-exp">Low DOP values ($<2$) indicate excellent geometry with satellites widely spaced across the sky.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. What is the name of India's regional satellite navigation system and how do its satellite altitudes differ from GPS?</div>
+        <div class="pq-ans">Answer: NavIC (IRNSS); it operates at geostationary and inclined geosynchronous altitudes ($\approx 36,000\text{ km}$), whereas GPS operates at $20,200\text{ km}$ MEO.</div>
+        <div class="pq-exp">NavIC's higher orbit focuses continuous coverage over India and the surrounding $1500\text{ km}$ region with only 7 satellites.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is the difference between Pseudorange (code phase) and Carrier Phase measurements in GPS?</div>
+        <div class="pq-ans">Answer: Pseudorange measures transit time using PRN chipping codes (meter-scale accuracy); carrier phase tracks the cycles of the RF carrier wave ($\lambda \approx 19\text{ cm}$, achieving millimeter-scale geodetic accuracy).</div>
+        <div class="pq-exp">Carrier phase tracking requires resolving the integer cycle ambiguity ($N$).</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q145: GIS Spatial Analysis - Reclassification | OPSC Geology 2019 Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    line-height: 1.65;
+    padding: 24px 16px;
+  }
+  .page { max-width: 960px; margin: 0 auto; }
+  
+  @page { size: A4; margin: 14mm; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .no-print { display: none !important; }
+    .part-banner { break-before: page; }
+    .first-part { break-before: avoid !important; }
+  }
+
+  .back-nav { margin-bottom: 16px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    background: #e0f2fe;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .back-link:hover { background: #bae6fd; color: #0369a1; }
+
+  .header {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+  .badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .meta {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .meta strong { color: #cbd5e1; }
+
+  .part-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 26px 0 16px 0;
+    color: #fff;
+    background: #0284c7;
+  }
+  .part-banner.green { background: #059669; }
+  .part-banner.purple { background: #7c3aed; }
+  .part-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .part-title { font-size: 15px; font-weight: 700; }
+  .part-sub { font-size: 11.5px; opacity: 0.9; margin-left: auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #fff;
+  }
+  .bg-blue   { background: #0284c7; }
+  .bg-teal   { background: #0d9488; }
+  .bg-emerald{ background: #059669; }
+  .bg-indigo { background: #4f46e5; }
+  .bg-purple { background: #7c3aed; }
+  .bg-slate  { background: #475569; }
+  .card-body { padding: 16px 20px; font-size: 13.5px; color: #334155; line-height: 1.65; }
+  .card-body p { margin-bottom: 10px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body ul, .card-body ol { margin-left: 20px; margin-bottom: 10px; }
+  .card-body li { margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+  th { background: #f8fafc; font-weight: 700; color: #0f172a; }
+  tr:nth-child(even) { background: #f8fafc; }
+
+  .quote-box {
+    border-left: 4px solid #0284c7;
+    background: #f0f9ff;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #0c4a6e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .quote-box.bangar { border-left-color: #0284c7; background: #f0f9ff; }
+  .quote-ref {
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+    font-style: normal;
+    color: #0369a1;
+    font-size: 12px;
+  }
+
+  .tb-figure {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .tb-figure img {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .tb-caption {
+    font-size: 12.5px;
+    color: #334155;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1.5;
+    background: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid #0284c7;
+  }
+  .tb-caption strong { color: #0f172a; font-weight: 700; }
+
+  .formula-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  .formula-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .question-box {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1d4ed8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+  .q-stmt {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .raw-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .raw-opt {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+  }
+  .raw-opt.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 700;
+  }
+
+  .answer-banner {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  }
+  .answer-banner .tick { font-size: 32px; line-height: 1; font-weight: bold; }
+  .answer-banner .text { font-size: 17.5px; font-weight: 700; }
+  .answer-banner .sub { font-size: 13.5px; opacity: 0.95; margin-top: 4px; line-height: 1.45; }
+
+  .option {
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .option.correct { border-color: #10b981; }
+  .option.wrong   { border-color: #f43f5e; }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .option.correct .option-header { background: #d1fae5; color: #065f46; }
+  .option.wrong   .option-header { background: #ffe4e6; color: #9f1239; }
+  .option-body { padding: 12px 16px 14px; background: #fafafa; font-size: 13.5px; color: #334155; line-height: 1.6; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  .practice-q {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+  .pq-header {
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .pq-ans {
+    margin-top: 6px;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pq-exp {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) {
+    .raw-options { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="back-nav no-print">
+    <a href="../../index_2019.html#q145" class="back-link">← Back to 2019 Master Portal</a>
+  </div>
+  
+  <div class="header">
+    <div class="badge">OPSC 2019 Geology Paper-II • Question 145 • GIS Spatial Analysis</div>
+    <h1>GIS Spatial Analysis & Raster Modeling: The Principles and Operations of Reclassification</h1>
+    <div class="meta">
+      <strong>Topic:</strong> Raster Geoprocessing & Spatial Analysis • <strong>Key Concept:</strong> Reclassification, Value Slicing, Attribute Recoding & Suitability Modeling • <strong>Textbooks:</strong> Kang-tsung Chang (<em>Introduction to Geographic Information Systems</em>, 9th Ed., Ch. 12); P.A. Burrough & R.A. McDonnell (Ch. 5); C. Dana Tomlin (<em>GIS and Cartographic Modeling</em>); K.M. Bangar (p. 219)
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part-banner first-part">
+    <div class="part-num">PART I</div>
+    <div>
+      <div class="part-title">Theoretical Foundation & Scientific Principles</div>
+      <div class="part-sub">Authoritative textbook grounding, analytical derivations, and geomorphic mechanics</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">1. Theoretical Foundation: Reclassification in Raster GIS</div>
+      <p>In Geographic Information Systems (GIS), <strong>reclassification</strong> (also termed <em>re-coding</em> or <em>value slicing</em>) is a fundamental cell-by-cell local operation in Map Algebra. It replaces existing input cell values in a raster dataset with new output values based on a user-defined lookup table, mathematical function, or range threshold (Chang; Burrough & McDonnell; Tomlin):</p>
+
+      <p>By international GIS definition, <strong>reclassification is the process of combining one or more data ranges (or discrete values) into a new data range (or new categorical value) to create a new derived data layer</strong> (Option A):</p>
+
+      <div class="math-block">
+        $$\text{Output Cell } g(x, y) = T[f(x, y)]$$
+      </div>
+
+      <p>where $f(x, y)$ is the input raster value, $g(x, y)$ is the new reclassified value, and $T$ is the reclassification mapping function.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Reclassification Mechanism</th>
+              <th>Operation Description</th>
+              <th>Practical Geospatial / Geological Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;">
+              <td><strong>1. Range Slicing (Class Binning)</strong> (Option A)</td>
+              <td>Groups continuous numerical values into discrete ordinal or nominal categories based on specified range intervals.</td>
+              <td><strong>Slope Reclassification:</strong><br>• $0^\circ\text{--}5^\circ \implies \text{Class 1 (Flat / Low Landslide Risk)}$<br>• $5^\circ\text{--}20^\circ \implies \text{Class 2 (Moderate)}$<br>• $>20^\circ \implies \text{Class 3 (High Landslide Hazard)}$.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>2. One-to-One Value Remapping</strong></td>
+              <td>Replaces each unique categorical or numerical value directly with another specific code.</td>
+              <td><strong>Lithological Coding:</strong> Remapping 50 detailed stratigraphical formation codes into 3 broad rock classes: Sedimentary (1), Igneous (2), Metamorphic (3).</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>3. Boolean Thresholding (Binary Masking)</strong></td>
+              <td>Evaluates a conditional expression to output a binary mask: $1$ if true, $0$ or NoData if false.</td>
+              <td><strong>Aquifer Protection Mask:</strong> Cells where depth to water table $< 5\text{ m}$ become $1$ (Vulnerable); all others become $0$.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>4. Common Scale Normalization (Suitability Modeling)</strong></td>
+              <td>Rescales disparate variables (slope, soil depth, distance to faults, rainfall) onto a common evaluation scale (e.g. 1 to 10).</td>
+              <td>Multi-Criteria Decision Analysis (MCDA) for mining lease site selection or landfill suitability mapping.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-container">
+        <img src="../../figures_2019_Q145/gis_reclassification_data_ranges_new_layer.png" alt="GIS Reclassification Process" class="figure-img">
+        <div class="figure-caption">Figure 145: Reclassification workflow in GIS: grouping continuous numerical elevation/slope data ranges into new categorical classes to produce a derived thematic layer (Option A).</div>
+      </div>
+
+      <p>Reclassification does not modify the original input dataset; it creates an entirely <strong>new data layer</strong> with generalized or transformed attribute values, acting as the mandatory preparatory step for weighted raster overlay and multi-criteria spatial decision support.</p>
+    </div>
+    
+
+  <!-- PART II -->
+  <div class="part-banner green">
+    <div class="part-num">PART II</div>
+    <div>
+      <div class="part-title">Official Examination Question & Critical Option Dissection</div>
+      <div class="part-sub">Rigorous forensic analysis refuting all distractors with physical principles</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">2. Official Examination Question & Forensic Option Analysis</div>
+      <div class="raw-question">
+        <div class="raw-q-num">QUESTION 145</div>
+        <div class="raw-q-text">What is reclassification ?</div>
+        <div class="raw-options">
+          <div class="raw-opt"><span class="opt-letter">A</span> The process of combining one or more data ranges into a new data range to create a new data layer</div>
+          <div class="raw-opt"><span class="opt-letter">B</span> An analytical technique based on point data</div>
+          <div class="raw-opt"><span class="opt-letter">C</span> The process of simplifying data in a data layer</div>
+          <div class="raw-opt"><span class="opt-letter">D</span> The process of combining two or more data layers</div>
+        </div>
+      </div>
+
+      <div class="ans-banner">
+        CORRECT ANSWER: OPTION A (The process of combining one or more data ranges into a new data range to create a new data layer)
+      </div>
+
+      <div class="option-grid">
+        <div class="option-card correct">
+          <div class="opt-tag">OPTION A &bull; CORRECT</div>
+          <div class="opt-title">The process of combining one or more data ranges into a new data range to create a new data layer</div>
+          <p>By authoritative GIScience and Map Algebra definitions (Chang, Ch. 12; Burrough & McDonnell; Tomlin; Bangar, p. 219), <strong>reclassification</strong> is precisely the operational process of grouping, re-assigning, or combining one or more existing data values/ranges into new values or ranges to generate an entirely new derived thematic data layer.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION B &bull; DISTRACTOR</div>
+          <div class="opt-title">An analytical technique based on point data</div>
+          <p>Reclassification is a generic local spatial operation primarily applied to raster grids and tabular polygon attributes. It is not an analytical technique specifically based on point data (which would refer to spatial interpolation or point pattern analysis).</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION C &bull; INCOMPLETE DEFINITION</div>
+          <div class="opt-title">The process of simplifying data in a data layer</div>
+          <p>While reclassification can simplify continuous data into categories, "simplifying data" is a vague description that also encompasses vector line generalization (e.g. Douglas-Peucker) and feature elimination. Option A provides the rigorous, formal definition of reclassification.</p>
+        </div>
+
+        <div class="option-card wrong">
+          <div class="opt-tag">OPTION D &bull; DISTRACTOR</div>
+          <div class="opt-title">The process of combining two or more data layers</div>
+          <p>Combining two or more different data layers is the definition of <strong>Spatial Overlay</strong> (e.g. Intersect, Union, Weighted Overlay) or Mosaic/Merge, not reclassification. Reclassification operates on a <em>single</em> input layer at a time.</p>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- PART III -->
+  <div class="part-banner purple">
+    <div class="part-num">PART III</div>
+    <div>
+      <div class="part-title">Synthesis Reference Tables & High-Yield Practice Questions</div>
+      <div class="part-sub">8 Curated exam-standard practice problems with complete step-by-step worked solutions</div>
+    </div>
+  </div>
+  
+    <div class="card">
+      <div class="card-title">3. Synthesis Comparison & High-Yield Practice Questions</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Map Algebra Operation Category</th>
+              <th>Spatial Neighborhood Scope</th>
+              <th>Representative Tools</th>
+              <th>Input Layers Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#eff6ff; font-weight:700;"><td><strong>Local Operation</strong> (e.g. Reclassification)</td><td>Single cell location $(x, y)$ independently</td><td><strong>Reclassify</strong>, Raster Calculator ($A + B$), Trigonometric math, Conditional (Con)</td><td>Single raster (or multiple rasters evaluated cell-by-cell)</td></tr>
+            <tr><td>Focal (Neighborhood) Operation</td><td>Target cell + surrounding roving window ($3 \times 3$, $5 \times 5$)</td><td>Focal Mean, Focal Variety, Slope, Aspect, Hillshade, High-pass filter</td><td>Single raster</td></tr>
+            <tr><td>Zonal Operation</td><td>Groups of cells sharing the same zone ID</td><td>Zonal Statistics (Zonal Mean elevation per geological formation)</td><td>Two rasters (Zone layer + Value layer)</td></tr>
+            <tr><td>Global Operation</td><td>Entire raster grid surface simultaneously</td><td>Euclidean Distance, Cost-Distance, Viewshed, Flow Accumulation</td><td>Single raster</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">1. To which class of Map Algebra operations does Reclassification belong according to C. Dana Tomlin's classification?</div>
+        <div class="pq-ans">Answer: Local Operations.</div>
+        <div class="pq-exp">The output value at cell $(x, y)$ is computed strictly from the input value at that exact same cell $(x, y)$ without referencing neighboring cells.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">2. In landfill site suitability modeling, why is Reclassification a mandatory prerequisite before Weighted Overlay?</div>
+        <div class="pq-ans">Answer: Because input datasets have completely different physical units (slope in degrees, distance in meters, geology in text names); reclassification converts all layers onto a common standardized suitability scale (e.g. 1 = Unsuitable to 5 = Highly Suitable).</div>
+        <div class="pq-exp">Without reclassification, layers with different measurement scales cannot be combined mathematically.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">3. What is "Equal Interval" vs. "Quantile" reclassification of continuous data?</div>
+        <div class="pq-ans">Answer: Equal Interval divides the range ($Max - Min$) into classes of equal numerical width; Quantile assigns an equal number of grid cells/records to each class.</div>
+        <div class="pq-exp">Quantile produces visually balanced maps for skewed datasets; Equal Interval is preferred for naturally continuous gradients (temperatures).</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">4. What is the "Natural Breaks" (Jenks) classification method commonly used in GIS reclassification?</div>
+        <div class="pq-ans">Answer: An optimization algorithm that minimizes variance within each class while maximizing the variance between different classes.</div>
+        <div class="pq-exp">It identifies natural groupings inherent in the data distribution.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">5. What happens to cells assigned the value "NoData" during a reclassification operation?</div>
+        <div class="pq-ans">Answer: They are treated as missing/null; in most operations they remain NoData in the output, or can be explicitly remapped to a valid numeric value if desired.</div>
+        <div class="pq-exp">NoData masking prevents invalid calculations outside the study boundary.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">6. How does vector reclassification differ from raster reclassification?</div>
+        <div class="pq-ans">Answer: Vector reclassification adds a new attribute column to the table and populates it with recoded values using SQL (<code>UPDATE table SET class = 1 WHERE slope < 5</code>), followed optionally by a <code>Dissolve</code> operation.</div>
+        <div class="pq-exp">Raster reclassification writes a new grid file containing the replaced cell matrix values.</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">7. What is a "Boolean Sieve" in GIS suitability modeling?</div>
+        <div class="pq-ans">Answer: Reclassifying multiple thematic layers into binary $1$ (suitable) and $0$ (unsuitable) masks, and multiplying them together ($L_1 \times L_2 \times L_3$) so that only areas meeting all criteria receive a $1$.</div>
+        <div class="pq-exp">If any single criterion fails ($0$), the entire product becomes zero (veto power).</div>
+      </div>
+
+      <div class="pq-item">
+        <div class="pq-q">8. What is "Slice" in raster geoprocessing?</div>
+        <div class="pq-ans">Answer: An automated reclassification tool that divides the range of cell values into a specified number of equal-interval or equal-area output classes without requiring a manual lookup table.</div>
+        <div class="pq-exp">It automates linear or quantile binning into $N$ output integer bins.</div>
+      </div>
+    </div>
+    
+
+</div>
+</body>
+</html>
