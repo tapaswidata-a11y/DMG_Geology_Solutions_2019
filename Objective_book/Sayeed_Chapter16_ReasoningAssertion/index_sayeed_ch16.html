@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 16: Reasoning and Assertion | Dr. Ausaf Sayeed Masterclass Portal</title>
+    <!-- MathJax 3.2.2 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary: #312e81;
+            --primary-dark: #1e1b4b;
+            --primary-light: #e0e7ff;
+            --primary-mid: #4338ca;
+            --accent: #4f46e5;
+            --accent-glow: #6366f1;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #c7d2fe;
+            --success: #059669;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --shadow: 0 4px 6px -1px rgba(49, 46, 129, 0.08), 0 2px 4px -2px rgba(49, 46, 129, 0.04);
+            --shadow-lg: 0 10px 25px -5px rgba(49, 46, 129, 0.12), 0 8px 10px -6px rgba(49, 46, 129, 0.08);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 24px;
+        }
+        .portal-container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+        .portal-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-mid) 100%);
+            color: white;
+            padding: 36px 32px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+        .header-nav a {
+            color: #c7d2fe;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .header-nav a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .portal-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+        .portal-subtitle {
+            font-size: 1.05rem;
+            color: #e0e7ff;
+            max-width: 850px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        .portal-stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .stat-pill {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .celebration-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: var(--radius);
+            padding: 18px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .celebration-icon {
+            font-size: 2.2rem;
+        }
+        .celebration-text {
+            color: #065f46;
+            font-size: 0.98rem;
+        }
+        .celebration-text strong {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .controls-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box:focus {
+            border-color: var(--primary);
+        }
+        .q-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .q-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .meta-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.04em;
+        }
+        .badge-qnum { background: var(--primary-dark); color: white; }
+        .badge-sec { background: var(--primary-light); color: var(--primary-dark); }
+        .badge-topic { background: #ede9fe; color: #5b21b6; }
+        .badge-diff { background: #fef3c7; color: #92400e; }
+        .statement-panel {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--primary-mid);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+        .statement-row {
+            display: flex;
+            gap: 8px;
+            font-size: 1.05rem;
+            line-height: 1.45;
+        }
+        .statement-tag {
+            font-weight: 700;
+            color: var(--primary-dark);
+            min-width: 125px;
+        }
+        .statement-content {
+            color: var(--text-main);
+        }
+        .options-container {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .opt-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background: #fafafa;
+            font-size: 0.92rem;
+        }
+        .opt-row.revealed.correct-row {
+            background: #ecfdf5;
+            border-color: var(--success);
+            font-weight: 600;
+        }
+        .opt-key {
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 24px;
+        }
+        .badge-corr {
+            display: none;
+            background: var(--success);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: auto;
+        }
+        .opt-row.revealed .badge-corr {
+            display: inline-block;
+        }
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-reveal {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border: 1px solid var(--primary-mid);
+        }
+        .btn-reveal:hover {
+            background: #c7d2fe;
+        }
+        .btn-sol {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+        .btn-sol:hover {
+            background: var(--primary-dark);
+        }
+        .answer-drawer {
+            display: none;
+            margin-top: 16px;
+            padding: 14px 18px;
+            background: #fdf2f8;
+            border-left: 4px solid #db2777;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.92rem;
+        }
+        .answer-drawer.open {
+            display: block;
+        }
+        .drawer-header {
+            font-weight: 700;
+            color: #831843;
+            margin-bottom: 6px;
+        }
+        .drawer-note {
+            color: #475569;
+            font-size: 0.88rem;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 24px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <!-- Portal Header -->
+        <header class="portal-header">
+            <div class="header-nav">
+                <a href="../../index.html">&larr; Main Solutions Index</a>
+                <div>
+                    <a href="../Sayeed_Chapter15_AppliedGeology/index_sayeed_ch15.html">&larr; Chapter 15 (Applied Geology)</a>
+                </div>
+            </div>
+            <h1 class="portal-title">Chapter 16: Questions Based on Assertion and Reasoning</h1>
+            <p class="portal-subtitle">
+                The Final Masterclass Chapter of Dr. Ausaf Sayeed's Objective Geology.
+                Rigorous forensic evaluation of 35 Assertion-Reasoning problems covering Geodynamics, Mineral Optics, Petrology, Stratigraphy, and Structural Mechanics.
+            </p>
+            <div class="portal-stats">
+                <span class="stat-pill">Total Questions: 35</span>
+                <span class="stat-pill">Format: 5-Option Assertion & Reason</span>
+                <span class="stat-pill">Verified Key: 100% Complete</span>
+                <span class="stat-pill">Book Status: 16 of 16 Chapters Solved!</span>
+            </div>
+        </header>
+
+        <!-- Celebration Banner -->
+        <div class="celebration-box">
+            <div class="celebration-icon">&#127942;</div>
+            <div class="celebration-text">
+                <strong>Textbook Milestone Achieved: Complete 16-Chapter Masterclass Solutions!</strong>
+                Every chapter from Chapter 1 (General Geology & Geotectonics) to Chapter 16 (Reasoning & Assertion) has now been fully solved with exhaustive 3-part Masterclass solutions, responsive SPA portals, and MathJax quantitative formulations.
+            </div>
+        </div>
+
+        <!-- Controls: Search -->
+        <div class="controls-card">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search questions by topic, statement keywords, or mineral/concept (e.g. Bouguer, Curie, Cinnabar, Dollo, Andesite)..." onkeyup="filterQuestions()">
+        </div>
+
+        <!-- Question Cards Grid -->
+        <main id="questionsGrid">
+            
+    <div class="q-card" data-qid="1" data-topic="marine gravity anomalies & isostasy">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q01</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Marine Gravity Anomalies & Isostasy</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Bouguer anomalies over oceans have high positive values.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Oceans have mass deficiency and high subsurface density.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(1)">Reveal Logical Verdict</button>
+            <a href="solutions/Q001_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-1">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (c) — Assertion (A) is true, but Reason (R) is false
+            </div>
+            <div class="drawer-note">
+                Domain: Marine Gravity Anomalies & Isostasy. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="2" data-topic="marine magnetic striping & paleomagnetism">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q02</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Marine Magnetic Striping & Paleomagnetism</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">The linear magnetic anomalies of the oceans are caused by normal and reversed magnetizations in basaltic layer-2 of the oceanic crust.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">These anomalies cannot be caused by sediment layers, which are essentially non-magnetic.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(2)">Reveal Logical Verdict</button>
+            <a href="solutions/Q002_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-2">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Marine Magnetic Striping & Paleomagnetism. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="3" data-topic="shield geophysics & lithospheric roots">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q03</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Shield Geophysics & Lithospheric Roots</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">The free-air gravity anomalies are negative in shield areas.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Low-velocity zones are absent or poorly developed in these areas.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(3)">Reveal Logical Verdict</button>
+            <a href="solutions/Q003_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-3">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Shield Geophysics & Lithospheric Roots. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="4" data-topic="curie geotherm & crustal magnetism">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q04</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Curie Geotherm & Crustal Magnetism</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Mantle material is the major contributor of magnetic anomalies.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Temperatures in the mantle are always maintained below the Curie point of natural magnetic materials.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(4)">Reveal Logical Verdict</button>
+            <a href="solutions/Q004_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-4">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (d) — Both Assertion (A) and Reason (R) are false
+            </div>
+            <div class="drawer-note">
+                Domain: Curie Geotherm & Crustal Magnetism. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="5" data-topic="andean cordilleran orogeny & subduction">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q05</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Andean Cordilleran Orogeny & Subduction</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Andes mountains are the most extensive modern continental volcanic mountain chains in the world.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">They are formed by the subduction/collision of oceanic and continental lithospheric plates.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(5)">Reveal Logical Verdict</button>
+            <a href="solutions/Q005_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-5">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Andean Cordilleran Orogeny & Subduction. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="6" data-topic="island-arc explosive volcanism">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q06</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Island-Arc Explosive Volcanism</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Several worst natural disasters are caused by volcanic activity occurring in island-arc systems.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">It is due to central-vent explosive andesitic/dacitic volcanism that generates catastrophic pyroclastic flows and tsunamis over large inhabited regions.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(6)">Reveal Logical Verdict</button>
+            <a href="solutions/Q006_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-6">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Island-Arc Explosive Volcanism. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="7" data-topic="pratt vs airy isostasy models">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q07</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Pratt vs Airy Isostasy Models</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">According to Pratt's hypothesis of Isostasy, compensation takes place by adjustment of crustal base.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">The thickness of the crust varies at the top and the bottom.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(7)">Reveal Logical Verdict</button>
+            <a href="solutions/Q007_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-7">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (c) — Assertion (A) is true, but Reason (R) is false
+            </div>
+            <div class="drawer-note">
+                Domain: Pratt vs Airy Isostasy Models. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="8" data-topic="ganga foreland basin & sub-surface vindhyans">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q08</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Ganga Foreland Basin & Sub-Surface Vindhyans</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">The Ganga Basin represents a large-scale depression on the Vindhyan syneclise.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">It is a northward continuation of the Vindhyan sediments beneath the Himalayan foreland.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(8)">Reveal Logical Verdict</button>
+            <a href="solutions/Q008_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-8">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Ganga Foreland Basin & Sub-Surface Vindhyans. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="9" data-topic="sedimentary basin petroleum generation">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q09</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Sedimentary Basin Petroleum Generation</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Cratonic basins provide an ideal setting for the accumulation of oil and gas.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">High geothermal gradients and increasing pressure as burial of sediments facilitates the conversion of organic matter into oil and gas.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(9)">Reveal Logical Verdict</button>
+            <a href="solutions/Q009_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-9">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Sedimentary Basin Petroleum Generation. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="10" data-topic="evaporite mineral density & hydration">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q10</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Evaporite Mineral Density & Hydration</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Gypsum has lower density than Anhydrite.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Hydrated minerals tend to expand many times the original volume of the anhydrous minerals.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(10)">Reveal Logical Verdict</button>
+            <a href="solutions/Q010_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-10">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Evaporite Mineral Density & Hydration. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="11" data-topic="coastal geomorphology - erosional landforms">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q11</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Coastal Geomorphology - Erosional Landforms</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Presence of sea caves, arches and stacks indicates submergence of the coastlines.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">These coastlines are produced by the subsidence of land or rise in sea levels.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(11)">Reveal Logical Verdict</button>
+            <a href="solutions/Q011_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-11">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Coastal Geomorphology - Erosional Landforms. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="12" data-topic="glacial landforms - drumlins vs roches moutonnées">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q12</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Glacial Landforms - Drumlins vs Roches Moutonnées</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Drumlins show morphological features opposite to those of Roches Moutonnées.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">In drumlins the stoss side is steep and blunt while the lee side is gently tapered; whereas in roches moutonnées the stoss side is smoothed and gently sloping while the lee side is steep and plucking-roughened.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(12)">Reveal Logical Verdict</button>
+            <a href="solutions/Q012_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-12">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Glacial Landforms - Drumlins vs Roches Moutonnées. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="13" data-topic="ore microscopy & fresnel reflectivity">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q13</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Ore Microscopy & Fresnel Reflectivity</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Cinnabar has more reflectivity than diamond in reflected light microscopy.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Reflectivity depends on the Refractive Index; as cinnabar has higher RI ($n \approx 2.9$--$3.2$) than diamond ($n \approx 2.42$), it exhibits greater reflecting power than diamond.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(13)">Reveal Logical Verdict</button>
+            <a href="solutions/Q013_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-13">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Ore Microscopy & Fresnel Reflectivity. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="14" data-topic="luminescence & activators in calcite">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q14</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Luminescence & Activators in Calcite</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Calcite shows red, pink or yellow fluorescence under ultraviolet radiation.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">These colours are a result of the substitution of rare-earth elements or divalent manganese/lead activators for a small amount of calcium in the lattice.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(14)">Reveal Logical Verdict</button>
+            <a href="solutions/Q014_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-14">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (c) — Assertion (A) is true, but Reason (R) is false
+            </div>
+            <div class="drawer-note">
+                Domain: Luminescence & Activators in Calcite. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="15" data-topic="displacive phase transformations in quartz">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q15</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Displacive Phase Transformations in Quartz</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">The transformation $\alpha$-Quartz $\rightleftharpoons$ $\beta$-Quartz is reversible.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Change is only due to the displacive alteration of crystal symmetry without causing the breaking up of $\mathrm{Si-O}$ tetrahedral bonds.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(15)">Reveal Logical Verdict</button>
+            <a href="solutions/Q015_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-15">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Displacive Phase Transformations in Quartz. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="16" data-topic="feldspar polymorphism & al-si ordering">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q16</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Feldspar Polymorphism & Al-Si Ordering</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Microcline has higher crystal symmetry than Sanidine.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Microcline has poor ordering of ions in the crystal structure.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(16)">Reveal Logical Verdict</button>
+            <a href="solutions/Q016_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-16">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (d) — Both Assertion (A) and Reason (R) are false
+            </div>
+            <div class="drawer-note">
+                Domain: Feldspar Polymorphism & Al-Si Ordering. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="17" data-topic="hand specimen mineral identification">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q17</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Hand Specimen Mineral Identification</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">In a hand specimen, quartz can be easily distinguished from orthoclase.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Orthoclase is biaxial negative and has lower refractive index than quartz.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(17)">Reveal Logical Verdict</button>
+            <a href="solutions/Q017_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-17">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (c) — Assertion (A) is true, but Reason (R) is false
+            </div>
+            <div class="drawer-note">
+                Domain: Hand Specimen Mineral Identification. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="18" data-topic="seismic surface wave hazard">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q18</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Seismic Surface Wave Hazard</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">L-waves (surface waves: Love and Rayleigh) are responsible for most of the destructive damage in earthquakes.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">They are surface waves with large amplitudes and low dispersion developed in the shallow crust spreading outwards from the epicentre.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(18)">Reveal Logical Verdict</button>
+            <a href="solutions/Q018_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-18">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Seismic Surface Wave Hazard. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="19" data-topic="glacial valley morphometry">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q19</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Glacial Valley Morphometry</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Glacial valleys have characteristic transverse U-shaped profiles.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Valley glaciers erode both their valley walls and floor simultaneously through combined abrasion and plucking across the entire cross-section.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(19)">Reveal Logical Verdict</button>
+            <a href="solutions/Q019_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-19">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Glacial Valley Morphometry. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="20" data-topic="drainage evolution & subsequent streams">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q20</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Drainage Evolution & Subsequent Streams</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Subsequent valleys are those streams which have shifted from an original consequent position to belts of weak, easily erosible rock.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Subsequent valleys represent structurally adjusted stream courses following lines of structural weakness (strike valleys along soft shales or faults).</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(20)">Reveal Logical Verdict</button>
+            <a href="solutions/Q020_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-20">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Drainage Evolution & Subsequent Streams. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="21" data-topic="volatile-bearing minerals in plutonic vs volcanic rocks">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q21</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Volatile-Bearing Minerals in Plutonic vs Volcanic Rocks</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Minerals with --OH components such as hornblende and biotite are characteristic of plutonic igneous rocks.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Hydroxyl-bearing hydrous minerals tend to dehydrate and break down under low water-vapour pressures in high-temperature subaerial volcanic environments.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(21)">Reveal Logical Verdict</button>
+            <a href="solutions/Q021_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-21">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Volatile-Bearing Minerals in Plutonic vs Volcanic Rocks. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="22" data-topic="continental drift & gondwana paleobotany">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q22</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Continental Drift & Gondwana Paleobotany</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Continents have drifted in the geologic past.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">The Glossopteris and Gangamopteris flora are found on all the Southern continents (South America, Africa, Antarctica, Australia) and Peninsular India.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(22)">Reveal Logical Verdict</button>
+            <a href="solutions/Q022_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-22">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Continental Drift & Gondwana Paleobotany. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="23" data-topic="sedimentary granulometry & skewness">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q23</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Sedimentary Granulometry & Skewness</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Beach sands can be distinguished from river sands by the symmetry of their grain-size distribution.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Beach sands are symmetrically distributed, while river sands show marked asymmetry.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(23)">Reveal Logical Verdict</button>
+            <a href="solutions/Q023_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-23">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (c) — Assertion (A) is true, but Reason (R) is false
+            </div>
+            <div class="drawer-note">
+                Domain: Sedimentary Granulometry & Skewness. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="24" data-topic="silica undersaturation & feldspathoids">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q24</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Silica Undersaturation & Feldspathoids</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Sodalite and leucite do not commonly occur in equilibrium association with quartz.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">These are silica-undersaturated feldspathoids which react with free silica under magmatic conditions to form albite and K-feldspar.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(24)">Reveal Logical Verdict</button>
+            <a href="solutions/Q024_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-24">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Silica Undersaturation & Feldspathoids. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="25" data-topic="biostratigraphy & dollo's law of irreversibility">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q25</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Biostratigraphy & Dollo's Law of Irreversibility</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Correlation based on paleontologic criteria is based on the Law of Irreversibility of biological evolution.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Any given species or evolutionary lineage never repeats itself again in geologic time once extinct (Dollo's Law).</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(25)">Reveal Logical Verdict</button>
+            <a href="solutions/Q025_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-25">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Biostratigraphy & Dollo's Law of Irreversibility. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="26" data-topic="cuddapah basin cyclothems & stratigraphy">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q26</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Cuddapah Basin Cyclothems & Stratigraphy</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">In the Cuddapah Supergroup, each division/group begins with coarse clastic sediments (conglomerates/sandstones) and terminates in finer sediments/carbonates.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">The deposition took place in several cyclical transgressions within an intracratonic basin (autogeosyncline).</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(26)">Reveal Logical Verdict</button>
+            <a href="solutions/Q026_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-26">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Cuddapah Basin Cyclothems & Stratigraphy. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="27" data-topic="vindhyan paleoclimate & red beds">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q27</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Vindhyan Paleoclimate & Red Beds</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">The Upper Vindhyan rocks were deposited under predominantly dry, oxidizing climatic conditions.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">The texture is fine-grained and the pervasive pigmentation of the sediments is brick red due to ferric iron oxides.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(27)">Reveal Logical Verdict</button>
+            <a href="solutions/Q027_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-27">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Vindhyan Paleoclimate & Red Beds. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="28" data-topic="plate tectonics & rigid lithospheric plates">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q28</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Plate Tectonics & Rigid Lithospheric Plates</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Large lithospheric plates are able to move across the asthenosphere without undergoing pervasive internal deformation.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">The length-to-thickness ratio and mechanical rigidity of the cold lithosphere allow tectonic driving forces (ridge push and slab pull) to be transmitted across the plate interior.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(28)">Reveal Logical Verdict</button>
+            <a href="solutions/Q028_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-28">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Plate Tectonics & Rigid Lithospheric Plates. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="29" data-topic="precambrian-cambrian boundary in india">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q29</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Precambrian-Cambrian Boundary in India</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">The exact base of the Cambrian (Precambrian-Cambrian boundary) cannot be uniquely fixed at a single sharp unconformity in many Indian successions.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">The beds formed across the transitional terminal Neoproterozoic-Cambrian interval in sections like Spiti and the Lesser Himalaya (Krol-Tal) are conformable and continuous.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(29)">Reveal Logical Verdict</button>
+            <a href="solutions/Q029_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-29">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Precambrian-Cambrian Boundary in India. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="30" data-topic="permian pangaean aridity & red beds">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q30</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Permian Pangaean Aridity & Red Beds</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">In many parts of the world, the Permian succession is characterised by the widespread development of continental red beds and evaporites.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">There was a worldwide marine regression and supercontinental assembly of Pangaea causing pervasive aridity at the close of the Permian.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(30)">Reveal Logical Verdict</button>
+            <a href="solutions/Q030_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-30">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Permian Pangaean Aridity & Red Beds. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="31" data-topic="cleavage-bedding relationships & shear sense">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q31</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Cleavage-Bedding Relationships & Shear Sense</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Fracture cleavage can be used to determine the direction of relative shear and folding vergence of rock beds.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">The acute angle between bedding and fracture cleavage points in the direction of relative shear displacement of beds.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(31)">Reveal Logical Verdict</button>
+            <a href="solutions/Q031_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-31">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Cleavage-Bedding Relationships & Shear Sense. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="32" data-topic="fault mechanics - strike-slip faults">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q32</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Fault Mechanics - Strike-Slip Faults</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Strike-slip faults show horizontal displacement of crustal blocks on either side.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Vertical strike-slip faults possess no geometric hanging wall or footwall.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(32)">Reveal Logical Verdict</button>
+            <a href="solutions/Q032_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-32">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Fault Mechanics - Strike-Slip Faults. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="33" data-topic="andesite line & volcanic explosivity">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q33</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Andesite Line & Volcanic Explosivity</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Pyroclastic deposits erupted from the continental (inland) side of the Andesite Line are substantially more voluminous and explosive than those on the oceanic side.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Volcanoes on the continental side of the Andesite Line tap water- and volatile-rich, highly differentiated silicic-intermediate magmas charged with high-pressure gas.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(33)">Reveal Logical Verdict</button>
+            <a href="solutions/Q033_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-33">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Andesite Line & Volcanic Explosivity. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="34" data-topic="mid-oceanic ridge heat flow & mantle convection">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q34</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Mid-Oceanic Ridge Heat Flow & Mantle Convection</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">The axial rift valleys of Mid-Oceanic Ridges (MOR) are regions of highest conductive and convective heat flow on the Earth.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">They are located directly over the ascending limbs of mantle convection cells where hot asthenospheric magma upwells to form new oceanic lithosphere.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row correct-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(34)">Reveal Logical Verdict</button>
+            <a href="solutions/Q034_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-34">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (a) — Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Mid-Oceanic Ridge Heat Flow & Mantle Convection. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+    <div class="q-card" data-qid="35" data-topic="perlitic texture in volcanic glasses">
+        <div class="card-meta">
+            <span class="meta-badge badge-qnum">Q35</span>
+            <span class="meta-badge badge-sec">Assertion-Reasoning</span>
+            <span class="meta-badge badge-topic">Perlitic Texture in Volcanic Glasses</span>
+            <span class="meta-badge badge-diff">Advanced</span>
+        </div>
+        <div class="statement-panel">
+            <div class="statement-row">
+                <span class="statement-tag">Assertion (A):</span>
+                <span class="statement-content">Perlitic cracks are concentric, onion-skin microfractures formed due to contraction and shrinkage during rapid hydration and cooling of volcanic glass.</span>
+            </div>
+            <div class="statement-row" style="margin-top: 10px;">
+                <span class="statement-tag">Reason (R):</span>
+                <span class="statement-content">Perlitic cracks are typical of felsites and form due to slow devitrification into microcrystalline quartz and feldspar.</span>
+            </div>
+        </div>
+        <div class="options-container">
+            
+        <div class="opt-row" data-opt="a">
+            <div class="opt-key">(a)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)</div>
+            
+        </div>
+        
+        <div class="opt-row correct-row" data-opt="b">
+            <div class="opt-key">(b)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)</div>
+            <span class="badge-corr">CORRECT VERDICT</span>
+        </div>
+        
+        <div class="opt-row" data-opt="c">
+            <div class="opt-key">(c)</div>
+            <div class="opt-val">Assertion (A) is true, but Reason (R) is false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="d">
+            <div class="opt-key">(d)</div>
+            <div class="opt-val">Both Assertion (A) and Reason (R) are false</div>
+            
+        </div>
+        
+        <div class="opt-row" data-opt="e">
+            <div class="opt-key">(e)</div>
+            <div class="opt-val">Assertion (A) is false, but Reason (R) is true</div>
+            
+        </div>
+        
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-reveal" onclick="toggleAnswer(35)">Reveal Logical Verdict</button>
+            <a href="solutions/Q035_sayeed_ch16.html" class="btn btn-sol" target="_blank">Full Masterclass Solution &rarr;</a>
+        </div>
+        <div class="answer-drawer" id="drawer-35">
+            <div class="drawer-header">
+                <strong>Verified Key:</strong> Option (b) — Both Assertion (A) and Reason (R) are true, but Reason (R) is NOT the correct explanation of Assertion (A)
+            </div>
+            <div class="drawer-note">
+                Domain: Perlitic Texture in Volcanic Glasses. Complete logical proof, factual verification of (A) and (R), causality analysis, and foundational formulas available in the Masterclass Solution.
+            </div>
+        </div>
+    </div>
+    
+        </main>
+
+        <!-- Portal Footer -->
+        <footer class="footer">
+            <p><strong>Dr. Ausaf Sayeed's Objective Geology — Masterclass Solutions Portal</strong></p>
+            <p>Chapter 16: Questions Based on Assertion and Reasoning (35 Questions) &bull; Final Textbook Chapter &bull; 100% Solved</p>
+            <p style="margin-top: 8px;"><a href="../../index.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">Return to Main Index Portal</a></p>
+        </footer>
+    </div>
+
+    <!-- Interactive Portal Logic -->
+    <script>
+        function toggleAnswer(qid) {
+            const drawer = document.getElementById('drawer-' + qid);
+            const card = drawer.closest('.q-card');
+            const rows = card.querySelectorAll('.opt-row');
+            
+            if (drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                rows.forEach(r => r.classList.remove('revealed'));
+            } else {
+                drawer.classList.add('open');
+                rows.forEach(r => r.classList.add('revealed'));
+            }
+        }
+
+        function filterQuestions() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.q-card');
+
+            cards.forEach(card => {
+                const cardText = card.innerText.toLowerCase();
+                if (!query || cardText.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
