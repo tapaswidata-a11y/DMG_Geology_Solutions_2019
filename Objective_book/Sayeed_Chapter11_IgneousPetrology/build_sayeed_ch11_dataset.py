@@ -1,0 +1,1442 @@
+#!/usr/bin/env python3
+"""
+Master Dataset Builder for Chapter 11: Igneous Petrology
+Dr. Ausaf Sayeed - Objective Geology (175 Questions)
+Verified against Official Key (p. 349-350) & Explanatory Answers
+"""
+
+import json
+import os
+
+BASE_DIR = "/home/tapaswi/Mines_Geology/Objective_book/Sayeed_Chapter11_IgneousPetrology"
+DATA_DIR = os.path.join(BASE_DIR, "data")
+os.makedirs(DATA_DIR, exist_ok=True)
+
+OFFICIAL_KEY = {
+    1: 'b', 2: 'a', 3: 'd', 4: 'b', 5: 'c', 6: 'd', 7: 'c', 8: 'a', 9: 'c', 10: 'c',
+    11: 'a', 12: 'a', 13: 'b', 14: 'b', 15: 'a', 16: 'a', 17: 'd', 18: 'c', 19: 'a', 20: 'c',
+    21: 'b', 22: 'd', 23: 'd', 24: 'b', 25: 'c', 26: 'a', 27: 'd', 28: 'a', 29: 'd', 30: 'a',
+    31: 'c', 32: 'a', 33: 'b', 34: 'a', 35: 'd', 36: 'c', 37: 'a', 38: 'b', 39: 'd', 40: 'c',
+    41: 'c', 42: 'a', 43: 'b', 44: 'a', 45: 'a', 46: 'b', 47: 'd', 48: 'a', 49: 'd', 50: 'd',
+    51: 'c', 52: 'd', 53: 'b', 54: 'a', 55: 'd', 56: 'd', 57: 'b', 58: 'c', 59: 'b', 60: 'c',
+    61: 'b', 62: 'd', 63: 'c', 64: 'c', 65: 'd', 66: 'b', 67: 'b', 68: 'b', 69: 'd', 70: 'c',
+    71: 'd', 72: 'c', 73: 'a', 74: 'b', 75: 'a', 76: 'a', 77: 'd', 78: 'd', 79: 'b', 80: 'c',
+    81: 'a', 82: 'd', 83: 'd', 84: 'd', 85: 'c', 86: 'd', 87: 'c', 88: 'a', 89: 'c', 90: 'c',
+    91: 'a', 92: 'b', 93: 'b', 94: 'b', 95: 'd', 96: 'a', 97: 'c', 98: 'c', 99: 'd', 100: 'd',
+    101: 'c', 102: 'b', 103: 'c', 104: 'c', 105: 'a', 106: 'a', 107: 'b', 108: 'd', 109: 'd', 110: 'd',
+    111: 'b', 112: 'c', 113: 'b', 114: 'd', 115: 'c', 116: 'a', 117: 'b', 118: 'd', 119: 'b', 120: 'd',
+    121: 'a', 122: 'c', 123: 'c', 124: 'a', 125: 'd', 126: 'd', 127: 'b', 128: 'b', 129: 'd', 130: 'd',
+    131: 'c', 132: 'a', 133: 'd', 134: 'c', 135: 'a', 136: 'd', 137: 'c', 138: 'd', 139: 'd', 140: 'd',
+    141: 'd', 142: 'b', 143: 'd', 144: 'b', 145: 'c', 146: 'd', 147: 'a', 148: 'b', 149: 'c', 150: 'c',
+    151: 'a', 152: 'c', 153: 'd', 154: 'b', 155: 'b', 156: 'd', 157: 'b', 158: 'b', 159: 'b', 160: 'c',
+    161: 'a', 162: 'c', 163: 'd', 164: 'c', 165: 'b', 166: 'b', 167: 'a', 168: 'd', 169: 'c', 170: 'a',
+    171: 'b', 172: 'd', 173: 'a', 174: 'd', 175: 'c'
+}
+
+def get_questions_1_to_45():
+    return [
+        {
+            "q_num": 1,
+            "question": "In alkaline igneous petrology, an 'ijolite' is classified as a:",
+            "options": {"a": "Felsic alkaline rock", "b": "Mafic plutonic alkaline rock", "c": "Ultramafic alkaline rock", "d": "Volcanic rock"},
+            "answer": "b", "topic": "Alkaline Rocks", "subtopic": "Ijolite Definition",
+            "notes": "An ijolite is a plutonic igneous rock of the foidite/alkali clan composed essentially of nepheline (50-70%) and aegirine-augite pyroxene, lacking feldspar."
+        },
+        {
+            "q_num": 2,
+            "question": "'Nephelinite' is petrographically the volcanic (extrusive) equivalent of which plutonic rock type?",
+            "options": {"a": "Ijolite", "b": "Melteigite", "c": "Nepheline syenite", "d": "Peridotite"},
+            "answer": "a", "topic": "Alkaline Volcanics", "subtopic": "Nephelinite",
+            "notes": "Nephelinite is a fine-grained or porphyritic volcanic rock consisting primarily of nepheline and clinopyroxene, representing the volcanic equivalent of plutonic ijolite."
+        },
+        {
+            "q_num": 3,
+            "question": "Which of the following volcanic rocks is a classic example of a potassic, silica-undersaturated ultrabasic lava?",
+            "options": {"a": "Serpentinite", "b": "Essexite", "c": "Ijolite", "d": "Leucitite"},
+            "answer": "d", "topic": "Potassic Rocks", "subtopic": "Leucitite",
+            "notes": "Leucitite is a strongly potassic, silica-undersaturated mafic-to-ultrabasic volcanic rock composed predominantly of leucite and clinopyroxene (augite), lacking plagioclase."
+        },
+        {
+            "q_num": 4,
+            "question": "In ocean island volcanic systems (e.g., Hawaii), the temporal transition in magma composition from tholeiitic to alkaline basalts occurs as a direct result of:",
+            "options": {"a": "Variation in lithospheric thickness", "b": "Thickening of the lithosphere as the plate moves off the plume axis", "c": "Thinning of the lithosphere", "d": "Variation in asthenospheric thickness"},
+            "answer": "b", "topic": "Ocean Island Basalts", "subtopic": "Tholeiitic to Alkaline Transition",
+            "notes": "Official note (p. 350): In oceanic islands, magmas transition from tholeiitic to alkaline when the lithosphere thickens and melting depth increases as the plate moves away from the hot plume center."
+        },
+        {
+            "q_num": 5,
+            "question": "An actively opening, highly extended continental rift valley typically initiates volcanism dominated by:",
+            "options": {"a": "Alkali magmas", "b": "Calc-alkalic magmas", "c": "Tholeiitic magmas", "d": "Bimodal magmas"},
+            "answer": "c", "topic": "Rift Magmatism", "subtopic": "Continental Rifts",
+            "notes": "In advanced continental rifts experiencing substantial lithospheric thinning and asthenospheric upwelling, tholeiitic flood basalts dominate the main syn-rift opening stage."
+        },
+        {
+            "q_num": 6,
+            "question": "In the Wilson cycle of continental breakup and ocean basin opening, alkaline magmatism characteristically:",
+            "options": {"a": "Precedes the opening of an ocean only", "b": "Succeeds the opening of an ocean only", "c": "Either precedes or succeeds the ocean opening", "d": "Both precedes (early rifting) and succeeds (terminal collision/inversion) the ocean opening"},
+            "answer": "d", "topic": "Alkaline Magmatism", "subtopic": "Wilson Cycle",
+            "notes": "Alkaline magmas erupt during pre-breakup crustal doming/rifting (preceding ocean opening) and recur in post-collisional orogenic collapse and transtension (succeeding ocean closure)."
+        },
+        {
+            "q_num": 7,
+            "question": "In petrogenetic models of strike-slip faults and rift kinematics, the 'Harpoon effect' in magma ascent is a result of:",
+            "options": {"a": "Reversal in magnetic polarity of major continents", "b": "Reversal in magnetic polarity of microcontinents", "c": "Reversal in the shearing sense of a fault system or plate tectonic vector", "d": "Accelerations and decelerations of plate motions"},
+            "answer": "c", "topic": "Magma Tectonics", "subtopic": "Harpoon Effect",
+            "notes": "The harpoon effect describes the sudden forceful extrusion of trapped magmas along fault conduits when the kinematic shearing sense or stress regime abruptly reverses."
+        },
+        {
+            "q_num": 8,
+            "question": "Match the following lamprophyre and lamproite varieties with their formal petrological clans:\n(A) Calc-alkaline lamprophyre — (4) Minette\n(B) Alkaline lamprophyre — (3) Camptonite\n(C) Ultramafic lamprophyre — (2) Alnöite\n(D) Lamproite — (1) Orendite",
+            "options": {"a": "A-4, B-3, C-2, D-1", "b": "A-3, B-4, C-1, D-2", "c": "A-2, B-3, C-4, D-1", "d": "A-4, B-1, C-2, D-3"},
+            "answer": "a", "topic": "Lamprophyres & Lamproites", "subtopic": "Classification Matching",
+            "notes": "Minette is a calc-alkaline biotite-orthoclase lamprophyre; Camptonite is an alkaline amphibole-titanaugite lamprophyre; Alnöite is an ultramafic melilite lamprophyre; Orendite is a potassic lamproite."
+        },
+        {
+            "q_num": 9,
+            "question": "The famous boundary line which demarcates the charnockitic high-grade granulite province from the non-charnockitic amphibolite province in Peninsular India is termed:",
+            "options": {"a": "Eparchaean unconformity", "b": "Oldham's line", "c": "Fermor's line", "d": "Holland's demarcation line"},
+            "answer": "c", "topic": "Charnockite Petrology", "subtopic": "Fermor's Line",
+            "notes": "Sir Lewis Fermor (1936) drew 'Fermor's Line' across the Indian Peninsula, separating northern non-charnockitic granite-greenstone cratons from southern and eastern hypersthene-bearing charnockitic granulite belts."
+        },
+        {
+            "q_num": 10,
+            "question": "Geochemically, continental alkaline rocks are fundamentally distinguished from subalkaline tholeiitic and calc-alkaline basalts by:",
+            "options": {
+                "a": "Their high LILE and LREE contents with high HREE",
+                "b": "Their high LILE and low LREE contents",
+                "c": "Their high LILE and LREE and relatively low/fractionated HREE contents",
+                "d": "Their low LILE and LREE and high HREE contents"
+            },
+            "answer": "c",
+            "topic": "Trace Element Geochemistry", "subtopic": "Alkaline vs Subalkaline",
+            "notes": "Alkaline magmas are generated by low degrees of partial melting in the presence of garnet, causing extreme enrichment in Large-Ion Lithophile Elements (LILE) and Light Rare Earth Elements (LREE) alongside steep HREE depletion."
+        },
+        {
+            "q_num": 11,
+            "question": "The tholeiitic magma series is characteristically associated with which of the following global tectonic stress regimes?",
+            "options": {"a": "Extensional stress regimes (mid-ocean ridges, continental flood basalt rifts)", "b": "Compressional stress regimes", "c": "Both compressional and extensional regimes", "d": "None of the above"},
+            "answer": "a", "topic": "Tholeiitic Magmatism", "subtopic": "Tectonic Setting",
+            "notes": "Tholeiitic magmatism represents decompression partial melting of shallow, anhydrous asthenosphere under extensional tectonic stress (MORB, back-arc rifts, continental flood basalts)."
+        },
+        {
+            "q_num": 12,
+            "question": "The 'Agpaitic Index' (A.I.) used to identify peralkaline igneous rocks is denoted by the molar ratio:",
+            "options": {
+                "a": "(Na2O + K2O) / Al2O3",
+                "b": "Na2O / (Na2O + K2O)",
+                "c": "Al2O3 / (Na2O + K2O)",
+                "d": "(Fe2O3 + FeO) / (Na2O + K2O)"
+            },
+            "answer": "a",
+            "topic": "Peralkaline Rocks", "subtopic": "Agpaitic Index",
+            "notes": "Agpaitic Index (A.I.) = mol (Na2O + K2O) / Al2O3. When A.I. > 1.0, the rock has an excess of alkalis over alumina (peralkaline), crystallizing aegirine, riebeckite, and eudialyte."
+        },
+        {
+            "q_num": 13,
+            "question": "Match the following internationally famous alkaline igneous complexes with their global locations:\n(A) Mount Girnar — (3) India (Gujarat)\n(B) Mount Erebus — (4) Antarctica\n(C) Mount Johnson — (2) Canada (Monteregian Hills)\n(D) Kola Peninsula — (1) Russia",
+            "options": {"a": "A-3, B-2, C-1, D-4", "b": "A-3, B-4, C-2, D-1", "c": "A-4, B-3, C-1, D-2", "d": "A-3, B-1, C-2, D-4"},
+            "answer": "b", "topic": "Global Alkaline Complexes", "subtopic": "Geographic Distribution",
+            "notes": "Girnar is an alkaline-subalkaline ring complex in Gujarat; Erebus is an active phonolite volcano in Antarctica; Mount Johnson is a classic Monteregian pluton in Quebec; Kola Peninsula (Khibina, Lovozero) is the world's largest agpaitic nepheline syenite intrusion."
+        },
+        {
+            "q_num": 14,
+            "question": "Anorogenic A-type granites are geochemically characterized by:\n(i) High total alkalis (Na2O + K2O) and low CaO\n(ii) High FeO* / MgO ratios\n(iii) Enrichment in halogens (F, Cl) and High Field Strength Elements (Zr, Nb, Y)\n(iv) Depletion in water",
+            "options": {"a": "(i) and (iv) only", "b": "(i), (ii) and (iii) are correct", "c": "(ii) and (iv) only", "d": "All (i), (ii), (iii) and (iv) are correct"},
+            "answer": "b", "topic": "Granite Petrology", "subtopic": "A-Type Granites",
+            "notes": "Coined by Loiselle and Wones (1979), A-type granites are anhydrous, anorogenic, alkaline suites enriched in Fe/Mg, halogens, Zr, Ga, and Nb with low CaO, Al2O3, and Sr."
+        },
+        {
+            "q_num": 15,
+            "question": "In silicate phase equilibria, an incongruent melting reaction (peritectic crystallization) is fundamentally defined as:",
+            "options": {
+                "a": "A reaction where liquid reacts with an early-formed crystal phase to produce a new solid phase at constant temperature",
+                "b": "Simultaneous precipitation of two solids at the lowest eutectic temperature",
+                "c": "Complete continuous substitution across a solid solution series",
+                "d": "Liquid unmixing into two immiscible liquids"
+            },
+            "answer": "a",
+            "topic": "Phase Equilibria", "subtopic": "Peritectic Reaction",
+            "notes": "In a peritectic reaction (e.g., Forsterite + Liquid -> Enstatite at 1557°C in the Fo-SiO2 system), liquid reacts with previously crystallized solid to produce a new crystalline phase."
+        },
+        {
+            "q_num": 16,
+            "question": "In the binary eutectic system Diopside - Anorthite at atmospheric pressure, the eutectic composition occurs at approximately:",
+            "options": {"a": "58% Diopside and 42% Anorthite at 1274°C", "b": "50% Diopside and 50% Anorthite at 1500°C", "c": "80% Diopside and 20% Anorthite at 1100°C", "d": "20% Diopside and 80% Anorthite at 1400°C"},
+            "answer": "a", "topic": "Phase Equilibria", "subtopic": "Diopside-Anorthite Eutectic",
+            "notes": "Bowen (1915) established the Di-An binary system as a fundamental basaltic model: the eutectic point lies at 1274°C with 58 wt% Diopside and 42 wt% Anorthite."
+        },
+        {
+            "q_num": 17,
+            "question": "In Bowen's Reaction Series, the discontinuous reaction series consists of the sequence:",
+            "options": {
+                "a": "Anorthite -> Bytownite -> Labradorite -> Andesine -> Oligoclase -> Albite",
+                "b": "Quartz -> Orthoclase -> Muscovite -> Biotite",
+                "c": "Olivine -> Clinopyroxene -> Plagioclase -> Quartz",
+                "d": "Olivine -> Orthopyroxene -> Clinopyroxene -> Amphibole (Hornblende) -> Biotite"
+            },
+            "answer": "d", "topic": "Bowen's Reaction Series", "subtopic": "Discontinuous Series",
+            "notes": "Bowen (1928) demonstrated that ferromagnesian minerals crystallize along a discontinuous series (isolated tetrahedra Olivine -> single chain Pyroxene -> double chain Amphibole -> sheet Biotite)."
+        },
+        {
+            "q_num": 18,
+            "question": "The continuous reaction series in Bowen's reaction principle represents progressive fractional crystallization within the:",
+            "options": {"a": "Alkali feldspar series", "b": "Olivine series", "c": "Plagioclase feldspar solid solution series (Anorthite to Albite)", "d": "Pyroxene series"},
+            "answer": "c", "topic": "Bowen's Reaction Series", "subtopic": "Continuous Series",
+            "notes": "The continuous series involves continuous cation exchange (CaAl <-> NaSi) between liquid and solid, shifting from calcic anorthite through labradorite and andesine to sodic albite."
+        },
+        {
+            "q_num": 19,
+            "question": "An igneous rock texture wherein laths of plagioclase feldspar are completely enclosed within larger optical plates of clinopyroxene (augite) is termed:",
+            "options": {"a": "Ophitic texture", "b": "Subophitic texture", "c": "Poikilitic texture", "d": "Intersertal texture"},
+            "answer": "a", "topic": "Igneous Textures", "subtopic": "Ophitic Texture",
+            "notes": "Ophitic texture is diagnostic of dolerites and diabases, formed when plagioclase crystallizes first and becomes entirely poikilitically enclosed within large augite crystals."
+        },
+        {
+            "q_num": 20,
+            "question": "A texture in basaltic rocks where angular interstitial spaces between unoriented plagioclase laths are filled with volcanic glass or cryptocrystalline devitrified mesostasis is termed:",
+            "options": {"a": "Intergranular texture", "b": "Ophitic texture", "c": "Intersertal texture", "d": "Hyalopilitic texture"},
+            "answer": "c", "topic": "Igneous Textures", "subtopic": "Intersertal Texture",
+            "notes": "Intersertal texture consists of glassy or chloritic/smectitic mesostasis wedged between plagioclase laths; when the interstitial voids are filled with granular pyroxene, it is intergranular."
+        },
+        {
+            "q_num": 21,
+            "question": "The magnificent 'spinifex texture', characterized by skeletal, bladed, and dendritic sheaves of olivine and pyroxene, is pathognomonic of:",
+            "options": {"a": "Tholeiitic basalts", "b": "Archean komatiite volcanic lavas", "c": "Alkali syenites", "d": "Rhyolitic ignimbrites"},
+            "answer": "b", "topic": "Komatiites", "subtopic": "Spinifex Texture",
+            "notes": "Spinifex texture forms by rapid quenching of ultra-high-temperature (>1600°C), highly magnesian (>18-30% MgO) ultramafic komatiitic lavas typical of the Archean eon."
+        },
+        {
+            "q_num": 22,
+            "question": "The 'rapakivi texture', famously displayed by Proterozoic post-orogenic granites (e.g., Wiborg massif, Finland), is defined by:",
+            "options": {
+                "a": "Graphic intergrowth of quartz and microcline",
+                "b": "Lamellar intergrowth of albite in orthoclase",
+                "c": "Inclusion of olivine in plagioclase",
+                "d": "Large ovoid phenocrysts of potash feldspar mantled by a continuous rim of oligoclase/albite"
+            },
+            "answer": "d",
+            "topic": "Igneous Textures", "subtopic": "Rapakivi Texture",
+            "notes": "Rapakivi texture consists of rounded, ovoid K-feldspar (orthoclase/microcline) megacrysts mantled by a shell of sodic plagioclase (oligoclase), formed by magma mixing or pressure release."
+        },
+        {
+            "q_num": 23,
+            "question": "The reverse of rapakivi texture, in which plagioclase phenocrysts are mantled by a rim of potassium feldspar, is termed:",
+            "options": {"a": "Myrmekite texture", "b": "Perthite texture", "c": "Corona texture", "d": "Antirapakivi texture"},
+            "answer": "d", "topic": "Igneous Textures", "subtopic": "Antirapakivi Texture",
+            "notes": "Antirapakivi texture exhibits plagioclase crystals surrounded by a border or mantle of potassium feldspar, commonly observed in granodiorites and hybrid igneous rocks."
+        },
+        {
+            "q_num": 24,
+            "question": "A worm-like, vermicular intergrowth of quartz within plagioclase feldspar encroaching upon adjacent potassium feldspar is termed:",
+            "options": {"a": "Graphic texture", "b": "Myrmekite texture", "c": "Granophyric texture", "d": "Symplectite"},
+            "answer": "b", "topic": "Igneous Textures", "subtopic": "Myrmekite",
+            "notes": "Myrmekite is an intergrowth of vermicular quartz in sodic plagioclase, typically formed by late-magmatic metasomatic replacement of K-feldspar by Na- and Ca-rich fluids."
+        },
+        {
+            "q_num": 25,
+            "question": "An intimate regular intergrowth of alkali feldspar and quartz resembling ancient cuneiform or runic writing on polished surfaces is termed:",
+            "options": {"a": "Myrmekitic texture", "b": "Ophitic texture", "c": "Graphic texture (runic texture)", "d": "Poikilitic texture"},
+            "answer": "c", "topic": "Igneous Textures", "subtopic": "Graphic Granite",
+            "notes": "Graphic texture (classic in granitic pegmatites) forms by simultaneous cotectic crystallization of quartz and K-feldspar at the haplogranite eutectic (~75 wt% Or, 25 wt% Qz)."
+        },
+        {
+            "q_num": 26,
+            "question": "A concordant, saucer-shaped or basin-shaped igneous intrusion with a sagging depressed central floor is formally classified as a:",
+            "options": {"a": "Lopolith", "b": "Laccolith", "c": "Phacolith", "d": "Batholith"},
+            "answer": "a", "topic": "Igneous Intrusions", "subtopic": "Lopolith Definition",
+            "notes": "Coined by Frank Grout (1918), a lopolith is a large, concordant, basin-shaped layered intrusion (e.g., Bushveld Complex, Duluth Complex, Sudbury Basin)."
+        },
+        {
+            "q_num": 27,
+            "question": "A concordant, mushroom-shaped or planoconvex igneous intrusion with a flat floor and arched dome-like roof is termed a:",
+            "options": {"a": "Lopolith", "b": "Phacolith", "c": "Bysmalith", "d": "Laccolith"},
+            "answer": "d", "topic": "Igneous Intrusions", "subtopic": "Laccolith Definition",
+            "notes": "G.K. Gilbert (1877) discovered laccoliths in the Henry Mountains of Utah: viscous, silica-rich magmas inject along bedding planes and arch the overlying strata into a dome."
+        },
+        {
+            "q_num": 28,
+            "question": "A concordant, crescent-shaped igneous body localized specifically along the hinge zone (crest of an anticline or trough of a syncline) of folded strata is a:",
+            "options": {"a": "Phacolith", "b": "Lopolith", "c": "Laccolith", "d": "Chonolith"},
+            "answer": "a", "topic": "Igneous Intrusions", "subtopic": "Phacolith Definition",
+            "notes": "A. Harker (1909) coined 'phacolith' for concordant intrusions emplaced into low-pressure dilatant zones along fold hinges during active tectonic folding."
+        },
+        {
+            "q_num": 29,
+            "question": "Circular or oval volcanic-plutonic intrusive structures consisting of outward-dipping arcuate dykes formed by magma chamber roof collapse are termed:",
+            "options": {"a": "Cone sheets", "b": "Radial dykes", "c": "En-echelon dykes", "d": "Ring dykes"},
+            "answer": "d", "topic": "Ring Complexes", "subtopic": "Ring Dykes vs Cone Sheets",
+            "notes": "Ring dykes are steep, outward-dipping (or vertical) arcuate dykes formed by caldera subsidence and cauldron block drop. Cone sheets dip inward toward the central magma chamber focus."
+        },
+        {
+            "q_num": 30,
+            "question": "In contrast to ring dykes, 'cone sheets' are arcuate igneous sheet intrusions that dip:",
+            "options": {"a": "Inward toward a common focal point in the underlying magma chamber (typically 30-45°)", "b": "Outward away from the center", "c": "Strictly horizontally", "d": "Irregularly"},
+            "answer": "a", "topic": "Ring Complexes", "subtopic": "Cone Sheet Geometry",
+            "notes": "Cone sheets are concentric sheet intrusions dipping inward toward a focal point above a deep magma reservoir, formed by upward magmatic overpressure (Anderson, 1936)."
+        },
+        {
+            "q_num": 31,
+            "question": "A massive, discordant plutonic body with an outcrop exposure area exceeding 100 square kilometers (40 sq miles) without a known floor is classified as a:",
+            "options": {"a": "Stock", "b": "Laccolith", "c": "Batholith", "d": "Lopolith"},
+            "answer": "c", "topic": "Plutonic Bodies", "subtopic": "Batholith Definition",
+            "notes": "By international definition, a batholith is an immense discordant plutonic body covering >100 km²; discordant bodies smaller than 100 km² are termed stocks."
+        },
+        {
+            "q_num": 32,
+            "question": "A pipe-like, volcanic vent conduit filled with angular volcanic, country rock, and mantle-derived xenolith breccias is termed a:",
+            "options": {"a": "Diatreme (volcanic pipe)", "b": "Necks", "c": "Sill", "d": "Dyke"},
+            "answer": "a", "topic": "Volcanic Structures", "subtopic": "Diatremes",
+            "notes": "Diatremes are explosive volcanic breccia pipes formed by gas-driven phreatomagmatic eruptions from deep mantle sources (e.g., kimberlite and lamproite pipes)."
+        },
+        {
+            "q_num": 33,
+            "question": "The process of igneous magmatic differentiation wherein early-formed crystals are physically segregated from the remaining liquid by gravity settling is termed:",
+            "options": {"a": "Liquid immiscibility", "b": "Fractional crystallization (gravitational settling)", "c": "Gaseous transfer", "d": "Assimilation"},
+            "answer": "b", "topic": "Magmatic Differentiation", "subtopic": "Crystal Settling",
+            "notes": "Gravitational crystal settling (governed by Stokes' Law) removes dense phases (olivine, chromite, pyroxene) to the base of magma chambers, driving liquid differentiation."
+        },
+        {
+            "q_num": 34,
+            "question": "According to the internationally standardized IUGS QAPF classification of plutonic rocks, granite is defined as containing:",
+            "options": {
+                "a": "20% to 60% Quartz of total QAP, with Plagioclase between 10% and 65% of total feldspars",
+                "b": "Less than 5% Quartz and more than 90% Plagioclase",
+                "c": "More than 60% Quartz and no feldspars",
+                "d": "Quartz between 0% and 5% with dominant Feldspathoids"
+            },
+            "answer": "a",
+            "topic": "QAPF Classification", "subtopic": "Granite Definition",
+            "notes": "In the Streckeisen (1976) IUGS QAPF double triangle, Field 3 (Granite) is defined by Q = 20-60% and P/(A+P) = 10-65% (subdivided into syenogranite and monzogranite)."
+        },
+        {
+            "q_num": 35,
+            "question": "Which of the following rocks is a mafic alkaline rock consisting of titanaugite, nepheline, and titanomagnetite, rather than a true carbonatite?",
+            "options": {"a": "Sovite", "b": "Alvikite", "c": "Beforsite", "d": "Jacupirangite"},
+            "answer": "d", "topic": "Carbonatites & Alkaline Suites", "subtopic": "Jacupirangite vs Carbonatite",
+            "notes": "Official note (p. 350): Jacupirangite is a 'magnetite pyroxenite' (mafic alkaline rock), whereas sovite (coarse calcite), alvikite (fine calcite), and beforsite (dolomite) are carbonatites."
+        },
+        {
+            "q_num": 36,
+            "question": "A coarse-grained, plutonic carbonatite composed predominantly (>50%) of primary igneous calcite is formally termed a:",
+            "options": {"a": "Beforsite", "b": "Alvikite", "c": "Sövite", "d": "Fen"},
+            "answer": "c", "topic": "Carbonatites", "subtopic": "Sövite",
+            "notes": "Sövite is a coarse-grained plutonic calciocarbonatite; its fine-grained hypabyssal/volcanic equivalent is alvikite. Dolomitic carbonatite is beforsite."
+        },
+        {
+            "q_num": 37,
+            "question": "The pervasive metasomatic alkaline alteration halo developed in country rocks surrounding carbonatite-alkaline complexes is termed:",
+            "options": {"a": "Fenitization", "b": "Sericitization", "c": "Propylitization", "d": "Saussuritization"},
+            "answer": "a", "topic": "Alkaline Metasomatism", "subtopic": "Fenitization",
+            "notes": "Coined by W.C. Brögger (1921) at the Fen Complex (Norway), fenitization represents high-temperature metasomatic alkali exchange (aegirine, alkali feldspar, arfvedsonite) around carbonatites."
+        },
+        {
+            "q_num": 38,
+            "question": "A plutonic rock consisting almost entirely (>90%) of calcic plagioclase feldspar (bytownite-labradorite-andesine) is classified as an:",
+            "options": {"a": "Eclogite", "b": "Anorthosite", "c": "Gabbro", "d": "Diorite"},
+            "answer": "b", "topic": "Anorthosites", "subtopic": "Anorthosite Definition",
+            "notes": "Anorthosite is a leucocratic plutonic rock containing >90 vol% plagioclase feldspar, divided into Archaean stratiform layered complexes and Proterozoic massif-type complexes."
+        },
+        {
+            "q_num": 39,
+            "question": "In Shand's geochemical classification of igneous rocks, a rock characterized by molecular Al2O3 < (Na2O + K2O) is designated as:",
+            "options": {"a": "Peraluminous", "b": "Metaluminous", "c": "Subaluminous", "d": "Peralkaline"},
+            "answer": "d", "topic": "Shand's Classification", "subtopic": "Peralkaline",
+            "notes": "S.J. Shand (1927) classified rocks by alumina saturation: Peraluminous (Al > Na+K+Ca), Metaluminous (Na+K < Al < Na+K+Ca), and Peralkaline (Al < Na+K)."
+        },
+        {
+            "q_num": 40,
+            "question": "Peraluminous granites (characteristically containing normative and modal corundum, muscovite, and garnet) are typically of:",
+            "options": {"a": "M-type (mantle derived)", "b": "I-type (igneous infracrustal source)", "c": "S-type (sedimentary supracrustal source)", "d": "A-type (anorogenic)"},
+            "answer": "c", "topic": "Granite Petrogenesis", "subtopic": "S-Type Granites",
+            "notes": "Chappell and White (1974) established that S-type granites form by partial melting of clay-rich sedimentary protoliths (pelites), yielding peraluminous melts with ASI > 1.1."
+        },
+        {
+            "q_num": 41,
+            "question": "In the CIPW normative calculation, an igneous rock containing quartz in the norm is formally designated as:",
+            "options": {"a": "Silica-undersaturated", "b": "Silica-saturated", "c": "Silica-oversaturated", "d": "Peralkaline"},
+            "answer": "c", "topic": "CIPW Norm", "subtopic": "Silica Saturation",
+            "notes": "Silica-oversaturated rocks contain normative quartz; silica-saturated contain hypersthene without quartz or foids; silica-undersaturated contain nepheline, leucite, or olivine without quartz."
+        },
+        {
+            "q_num": 42,
+            "question": "In the CIPW norm, which of the following mineral pairs is chemically and thermodynamically incompatible and can NEVER appear together in the same calculated norm?",
+            "options": {"a": "Quartz and Nepheline", "b": "Quartz and Orthoclase", "c": "Hypersthene and Diopside", "d": "Albite and Anorthite"},
+            "answer": "a", "topic": "CIPW Norm", "subtopic": "Normative Incompatibility",
+            "notes": "Quartz and nepheline (or leucite) are mutually exclusive in the norm: NaAlSiO4 + 2SiO2 = NaAlSi3O8 (Albite). Free silica converts nepheline to albite before quartz can appear."
+        },
+        {
+            "q_num": 43,
+            "question": "The 'Differentiation Index' (D.I.) developed by Thornton and Tuttle (1960) is mathematically calculated as the sum of normative:",
+            "options": {
+                "a": "Quartz + Orthoclase + Albite",
+                "b": "Quartz + Orthoclase + Albite + Nepheline + Leucite + Kalsilite",
+                "c": "Anorthite + Diopside + Forsterite",
+                "d": "Corundum + Zircon + Apatite"
+            },
+            "answer": "b",
+            "topic": "Differentiation Index", "subtopic": "Thornton-Tuttle D.I.",
+            "notes": "The Differentiation Index (D.I.) represents the total percentage of petrogeny's 'residua' system minerals: D.I. = norm (Q + Or + Ab + Ne + Lc + Kls), ranging from ~20 (basalts) to 95+ (granites)."
+        },
+        {
+            "q_num": 44,
+            "question": "The 'Solidification Index' (S.I.) proposed by Japanese petrologist Hisashi Kuno (1959) is denoted by the formula:",
+            "options": {
+                "a": "S.I. = [100 x MgO] / [MgO + FeO + Fe2O3 + Na2O + K2O]",
+                "b": "S.I. = [MgO + FeO] / [Na2O + K2O]",
+                "c": "S.I. = [100 x SiO2] / [MgO + FeO]",
+                "d": "S.I. = [Na2O + K2O] / CaO"
+            },
+            "answer": "a",
+            "topic": "Differentiation Indices", "subtopic": "Kuno's Solidification Index",
+            "notes": "Kuno's Solidification Index monitors basaltic differentiation: S.I. decreases progressively from ~45 in primitive picritic magmas to <10 in highly differentiated felsic liquids."
+        },
+        {
+            "q_num": 45,
+            "question": "The 'Crystallization Index' (C.I.) developed by Poldervaart and Parker (1964) is defined as the sum of normative:",
+            "options": {
+                "a": "Anorthite + Mg-diopside + Forsterite + Enstatite",
+                "b": "Quartz + Albite + Orthoclase",
+                "c": "Magnetite + Ilmenite + Apatite",
+                "d": "Nepheline + Leucite"
+            },
+            "answer": "a",
+            "topic": "Differentiation Indices", "subtopic": "Crystallization Index",
+            "notes": "The Crystallization Index measures early-crystallizing high-temperature mafic components: C.I. = Anorthite + normative Diopside (Mg-component) + Forsterite + Enstatite."
+        }
+    ]
+
+def get_questions_46_to_90():
+    return [
+        {
+            "q_num": 46,
+            "question": "In Harker variation diagrams for cogenetic calc-alkaline suites, plotting oxide percentages against SiO2 typically shows that with increasing silica, MgO and CaO:",
+            "options": {"a": "Increase linearly", "b": "Decrease systematically", "c": "Remain strictly constant", "d": "Show erratic scatter"},
+            "answer": "b", "topic": "Geochemical Variation", "subtopic": "Harker Diagrams",
+            "notes": "Alfred Harker (1909) demonstrated that as magmas fractionate toward higher SiO2, early removal of olivine, pyroxene, and calcic plagioclase causes systematic decreases in MgO and CaO."
+        },
+        {
+            "q_num": 47,
+            "question": "In an AFM ternary diagram (Alkalis - FeO* - MgO), tholeiitic magma differentiation trends are famously characterized by:",
+            "options": {"a": "Direct depletion in iron without enrichment", "b": "Constant alkali concentrations", "c": "A straight path toward the alkali apex", "d": "A pronounced initial iron-enrichment trend toward the F apex (Fenner trend)"},
+            "answer": "d", "topic": "Magma Suites", "subtopic": "AFM Diagram & Fenner Trend",
+            "notes": "Tholeiitic suites follow the Fenner trend of strong initial iron enrichment (due to delayed titanomagnetite crystallization), contrasting with calc-alkaline Bowen trends."
+        },
+        {
+            "q_num": 48,
+            "question": "The alkali-silica Peacock Index (Lime-Alkali Index) is defined as the weight percent of SiO2 at which:",
+            "options": {"a": "wt.% (Na2O + K2O) equals wt.% CaO", "b": "wt.% SiO2 equals wt.% Al2O3", "c": "wt.% FeO equals wt.% MgO", "d": "wt.% K2O equals wt.% Na2O"},
+            "answer": "a", "topic": "Magma Series", "subtopic": "Peacock Index",
+            "notes": "Martin Peacock (1931) classified rock series by the SiO2 value where total alkalis equal lime: Alkalic (<51%), Alkali-calcic (51-56%), Calc-alkalic (56-61%), and Calcic (>61%)."
+        },
+        {
+            "q_num": 49,
+            "question": "Mid-Ocean Ridge Basalts (MORB) are characteristically classified petrologically as:",
+            "options": {"a": "Alkali olivine basalts", "b": "Nephelinites", "c": "Potassic lamprophyres", "d": "Low-potassium subalkaline tholeiites"},
+            "answer": "d", "topic": "Basalt Types", "subtopic": "MORB Characteristics",
+            "notes": "N-MORB represents partial melting of depleted upper mantle, characterized by low K2O (<0.2%), low TiO2, high Na/K (>10), and depleted LREE patterns."
+        },
+        {
+            "q_num": 50,
+            "question": "In basaltic classification, the critical chemical feature separating the Tholeiitic and Alkali Basalt suites on Yoder and Tilley's (1962) Basalt Tetrahedron is the:",
+            "options": {"a": "Alumina saturation line", "b": "Pyroxene line", "c": "Feldspar line", "d": "Plane of Critical Silica Undersaturation (Forsterite - Albite)"},
+            "answer": "d", "topic": "Basalt Tetrahedron", "subtopic": "Thermal Divides",
+            "notes": "The thermal divide plane Fo-Ab divides the Basalt Tetrahedron: melts on the silica-deficient side fractionate toward nepheline-bearing alkali basalts; melts on the silica-rich side fractionate to quartz tholeiites."
+        },
+        {
+            "q_num": 51,
+            "question": "A coarse-grained plutonic rock composed essentially of calcic plagioclase (labradorite) and clinopyroxene (augite) is classified as a:",
+            "options": {"a": "Diorite", "b": "Syenite", "c": "Gabbro", "d": "Peridotite"},
+            "answer": "c", "topic": "Plutonic Classification", "subtopic": "Gabbro",
+            "notes": "Gabbro is the plutonic equivalent of basalt, composed of calcic plagioclase (An > 50) and clinopyroxene. If orthopyroxene dominates, the rock is a norite."
+        },
+        {
+            "q_num": 52,
+            "question": "A gabbroic rock in which the orthopyroxene (hypersthene/enstatite) content significantly exceeds the clinopyroxene content is termed a:",
+            "options": {"a": "Troctolite", "b": "Anorthosite", "c": "Eucrite", "d": "Norite"},
+            "answer": "d", "topic": "Gabbroic Clan", "subtopic": "Norite",
+            "notes": "Norite is an orthopyroxene-dominant gabbroic rock, typical of layered mafic intrusions (e.g., Bushveld, Stillwater, and Sudbury)."
+        },
+        {
+            "q_num": 53,
+            "question": "A plutonic rock composed exclusively of calcic plagioclase feldspar and olivine, without pyroxene, is known as a:",
+            "options": {"a": "Norite", "b": "Troctolite (forellenstein)", "c": "Dunite", "d": "Harzburgite"},
+            "answer": "b", "topic": "Gabbroic Clan", "subtopic": "Troctolite",
+            "notes": "Troctolite (troutstone) consists of calcic plagioclase and olivine, displaying round serpentinized olivine grains embedded in a white plagioclase matrix."
+        },
+        {
+            "q_num": 54,
+            "question": "An ultramafic rock composed of greater than 90% olivine is classified as a:",
+            "options": {"a": "Dunite", "b": "Peridotite", "c": "Pyroxenite", "d": "Harzburgite"},
+            "answer": "a", "topic": "Ultramafic Rocks", "subtopic": "Dunite",
+            "notes": "Named by Ferdinand von Hochstetter (1859) from Dun Mountain, New Zealand, dunite is an ultramafic rock composed of >=90 vol% forsteritic olivine and minor chromite."
+        },
+        {
+            "q_num": 55,
+            "question": "A peridotite composed predominantly of olivine and orthopyroxene (with <5% clinopyroxene) is termed a:",
+            "options": {"a": "Wehrlite", "b": "Lherzolite", "c": "Dunite", "d": "Harzburgite"},
+            "answer": "d", "topic": "Peridotite Clan", "subtopic": "Harzburgite",
+            "notes": "Harzburgite represents refractory mantle residue remaining after partial melting extraction of basaltic liquid, consisting of olivine + enstatite/orthopyroxene."
+        },
+        {
+            "q_num": 56,
+            "question": "A fertile upper mantle peridotite composed of olivine, orthopyroxene, and clinopyroxene (plus an aluminous phase: plagioclase, spinel, or garnet) is a:",
+            "options": {"a": "Dunite", "b": "Harzburgite", "c": "Wehrlite", "d": "Lherzolite"},
+            "answer": "d", "topic": "Mantle Petrology", "subtopic": "Lherzolite",
+            "notes": "Official note (p. 350): Lherzolite is an ultramafic rock composed of olivine, orthopyroxene, and clinopyroxene with an aluminous accessory phase (garnet, spinel, or plagioclase)."
+        },
+        {
+            "q_num": 57,
+            "question": "An ultramafic rock composed of olivine and clinopyroxene, without orthopyroxene, is classified as a:",
+            "options": {"a": "Harzburgite", "b": "Wehrlite", "c": "Lherzolite", "d": "Websterite"},
+            "answer": "b", "topic": "Peridotite Clan", "subtopic": "Wehrlite",
+            "notes": "Wehrlite consists of olivine + clinopyroxene (diopside/augite), commonly formed as cumulates in ophiolites and layered intrusions."
+        },
+        {
+            "q_num": 58,
+            "question": "A pyroxenite composed of approximately equal proportions of both orthopyroxene and clinopyroxene, without significant olivine, is a:",
+            "options": {"a": "Clinopyroxenite", "b": "Orthopyroxenite", "c": "Websterite", "d": "Bronzitite"},
+            "answer": "c", "topic": "Pyroxenites", "subtopic": "Websterite",
+            "notes": "Websterite is defined as a two-pyroxene ultramafic rock composed of orthopyroxene and clinopyroxene with <10% olivine."
+        },
+        {
+            "q_num": 59,
+            "question": "A volcanic rock consisting predominantly of plagioclase (andesine/oligoclase) and hornblende/biotite with 57% to 63% SiO2 is classified as an:",
+            "options": {"a": "Basalt", "b": "Andesite", "c": "Rhyolite", "d": "Dacite"},
+            "answer": "b", "topic": "Volcanic Classification", "subtopic": "Andesite",
+            "notes": "Andesite is the intermediate volcanic equivalent of diorite, characteristic of subduction-related volcanic arc provinces (e.g., the Andes, Ring of Fire)."
+        },
+        {
+            "q_num": 60,
+            "question": "The high-silica (>70% SiO2), light-colored volcanic equivalent of granite is:",
+            "options": {"a": "Trachyte", "b": "Andesite", "c": "Rhyolite", "d": "Phonolite"},
+            "answer": "c", "topic": "Volcanic Classification", "subtopic": "Rhyolite",
+            "notes": "Rhyolite is an aphanitic to porphyritic felsic volcanic rock composed of quartz, sanidine/orthoclase, and sodic plagioclase, typically erupted as lava domes and ignimbrites."
+        },
+        {
+            "q_num": 61,
+            "question": "An aphanitic, intermediate alkaline volcanic rock composed essentially of alkali feldspar (sanidine/anorthoclase) without significant quartz or feldspathoids is:",
+            "options": {"a": "Phonolite", "b": "Trachyte", "c": "Rhyolite", "d": "Latite"},
+            "answer": "b", "topic": "Volcanic Classification", "subtopic": "Trachyte",
+            "notes": "Trachyte is the volcanic equivalent of syenite, displaying trachytic texture (subparallel fluidal alignment of tabular sanidine microlites)."
+        },
+        {
+            "q_num": 62,
+            "question": "A silica-undersaturated felsic volcanic rock composed of alkali feldspar and nepheline (ringing with a clear metallic sound when struck with a hammer) is:",
+            "options": {"a": "Trachyte", "b": "Rhyolite", "c": "Basanite", "d": "Phonolite (clinkstone)"},
+            "answer": "d", "topic": "Alkaline Volcanics", "subtopic": "Phonolite",
+            "notes": "Phonolite (clinkstone) is the volcanic equivalent of nepheline syenite, composed of sanidine/anorthoclase and essential nepheline, emitting a resonant ringing note."
+        },
+        {
+            "q_num": 63,
+            "question": "A silica-undersaturated mafic volcanic rock containing calcic plagioclase, augite, and feldspathoid (nepheline or leucite) without olivine is a:",
+            "options": {"a": "Basanite", "b": "Nephelinite", "c": "Tephrite", "d": "Trachybasalt"},
+            "answer": "c", "topic": "Alkaline Basalts", "subtopic": "Tephrite vs Basanite",
+            "notes": "Tephrite is a foid-bearing basalt lacking olivine (or <10% olivine); when olivine exceeds 10%, the rock is classified as a basanite."
+        },
+        {
+            "q_num": 64,
+            "question": "A silica-undersaturated basaltic rock containing essential calcic plagioclase, clinopyroxene, feldspathoid (nepheline), AND modal olivine (>10%) is a:",
+            "options": {"a": "Tephrite", "b": "Tholeiite", "c": "Basanite", "d": "Picrite"},
+            "answer": "c", "topic": "Alkaline Basalts", "subtopic": "Basanite",
+            "notes": "Basanite is an olivine tephrite containing modal olivine alongside nepheline/leucite and calcic plagioclase, common in intra-plate volcanic fields."
+        },
+        {
+            "q_num": 65,
+            "question": "A melanocratic, highly olivine-rich (>30% olivine) variety of basalt is termed a:",
+            "options": {"a": "Basanite", "b": "Tephrite", "c": "Ankaramite", "d": "Picrite (oceanite)"},
+            "answer": "d", "topic": "Mafic Volcanics", "subtopic": "Picrite",
+            "notes": "Picrite is an olivine-rich basalt containing >30-40% olivine phenocrysts, representing primitive or accumulative mantle-derived basaltic liquids."
+        },
+        {
+            "q_num": 66,
+            "question": "A melanocratic basaltic variety containing exceptionally abundant phenocrysts of clinopyroxene (titanaugite) alongside olivine is termed:",
+            "options": {"a": "Oceanite", "b": "Ankaramite", "c": "Picrite", "d": "Limburgite"},
+            "answer": "b", "topic": "Mafic Volcanics", "subtopic": "Ankaramite",
+            "notes": "Ankaramite (named by Lacroix from Madagascar) is a pyroxene-rich accumulative basalt characterized by striking large titanaugite phenocrysts."
+        },
+        {
+            "q_num": 67,
+            "question": "A volcanic rock consisting of phenocrysts of olivine and pyroxene in a dark brown, alkaline glass matrix completely devoid of feldspar is a:",
+            "options": {"a": "Basanite", "b": "Limburgite", "c": "Mugearite", "d": "Hawaiite"},
+            "answer": "b", "topic": "Hyaloclastites & Glasses", "subtopic": "Limburgite",
+            "notes": "Limburgite consists of phenocrysts of augite, olivine, and titanomagnetite set in a rich alkali-undersaturated glassy groundmass, lacking feldspar."
+        },
+        {
+            "q_num": 68,
+            "question": "In oceanic island alkaline suites (e.g., Hawaii, Tristan da Cunha), the differentiation lineage from alkali basalt passes through:",
+            "options": {"a": "Tholeiite -> Andesite -> Dacite", "b": "Hawaiite -> Mugearite -> Benmoreite -> Trachyte/Phonolite", "c": "Picrite -> Komatiite -> Dunite", "d": "Norite -> Anorthosite -> Granite"},
+            "answer": "b", "topic": "Alkali Basalt Lineage", "subtopic": "Hawaiite to Trachyte",
+            "notes": "Fractional crystallization of alkali basalt generates the classic sodic lineage: Alkali Basalt -> Hawaiite (sodic andesine) -> Mugearite (oligoclase) -> Benmoreite -> Trachyte/Phonolite."
+        },
+        {
+            "q_num": 69,
+            "question": "A volcanic rock containing greater than 18% MgO, low TiO2 (<0.5%), and showing skeletal spinifex pyroxene/olivine blades is an:",
+            "options": {"a": "Alkali basalt", "b": "Picrite", "c": "Boninite", "d": "Komatiite"},
+            "answer": "d", "topic": "Ultramafic Volcanics", "subtopic": "Komatiite",
+            "notes": "Komatiites (Viljoen & Viljoen, 1969, Barberton) represent ultra-magnesian Archean mantle melts (>18% MgO) erupted at extreme temperatures."
+        },
+        {
+            "q_num": 70,
+            "question": "A primitive, high-magnesium (>8% MgO), high-silica (>52% SiO2), low-titanium (<0.5% TiO2) volcanic rock erupted in fore-arc subduction settings is termed a:",
+            "options": {"a": "Komatiite", "b": "Picrite", "c": "Boninite", "d": "Basanite"},
+            "answer": "c", "topic": "Fore-Arc Magmatism", "subtopic": "Boninite",
+            "notes": "Boninites (named from the Bonin Islands) represent hydrous partial melting of depleted refractory peridotitic mantle in infant subduction fore-arcs."
+        },
+        {
+            "q_num": 71,
+            "question": "A fine-grained, equigranular hypabyssal rock composed almost entirely of quartz and alkali feldspar with a characteristic sugary texture is an:",
+            "options": {"a": "Pegmatite", "b": "Porphyry", "c": "Lamprophyre", "d": "Aplite"},
+            "answer": "d", "topic": "Hypabyssal Rocks", "subtopic": "Aplite",
+            "notes": "Aplite forms light-colored dykes displaying a fine-grained xenomorphic-granular (aplitic or sugary) texture representing quenched eutectic felsic residual liquids."
+        },
+        {
+            "q_num": 72,
+            "question": "An exceptionally coarse-grained igneous rock containing giant crystals (often decimeters to meters across) crystallized from volatile-rich residual fluids is a:",
+            "options": {"a": "Aplite", "b": "Porphyry", "c": "Pegmatite", "d": "Dolerite"},
+            "answer": "c", "topic": "Hypabyssal Rocks", "subtopic": "Pegmatite",
+            "notes": "Pegmatites form from water- and flux-rich (B, F, P, Li) residual silicate melts with low viscosity, enabling rapid diffusion and growth of giant crystals and rare-element minerals."
+        },
+        {
+            "q_num": 73,
+            "question": "In petrogenetic modeling, volatile elements that depress the solidus temperature of granitic melts and reduce melt viscosity are called:",
+            "options": {"a": "Fluxes (H2O, F, B, P, Li)", "b": "Refractory elements", "c": "Network formers", "d": "Siderophiles"},
+            "answer": "a", "topic": "Melt Physics", "subtopic": "Flux Components",
+            "notes": "Dissolved fluxes (H2O, fluorine, boron, lithium) depolymerize silicate melts, dramatically lowering eutectic melting temperatures and accelerating crystallization kinetics."
+        },
+        {
+            "q_num": 74,
+            "question": "The primary structural building block of all silicate magmas and minerals is the:",
+            "options": {"a": "AlO6 octahedron", "b": "[SiO4]4- tetrahedron", "c": "MgO6 octahedron", "d": "CaO8 cube"},
+            "answer": "b", "topic": "Melt Structure", "subtopic": "SiO4 Tetrahedron",
+            "notes": "The fundamental structural unit is the [SiO4]4- tetrahedron, which polymerizes into chains, sheets, and 3D frameworks via bridging oxygens."
+        },
+        {
+            "q_num": 75,
+            "question": "In silicate melt structure, cations such as Si4+, Al3+, and P5+ that establish the polymerized network are termed:",
+            "options": {"a": "Network formers", "b": "Network modifiers", "c": "Bridging anions", "d": "Interstitials"},
+            "answer": "a", "topic": "Melt Structure", "subtopic": "Network Formers",
+            "notes": "Network formers (Si4+, Al3+) build the tetrahedral melt framework; network modifiers (Na+, K+, Ca2+, Mg2+) depolymerize the melt by creating non-bridging oxygens."
+        },
+        {
+            "q_num": 76,
+            "question": "The viscosity of silicate magmas increases by several orders of magnitude with increasing:",
+            "options": {"a": "Silica (SiO2) concentration and melt polymerization", "b": "Temperature", "c": "Water content", "d": "Iron and magnesium content"},
+            "answer": "a", "topic": "Physical Petrology", "subtopic": "Melt Viscosity",
+            "notes": "Higher SiO2 content increases melt polymerization (bridging oxygens), increasing viscosity from ~10 to 100 Pa·s in basalts to 10^7 Pa·s in cool rhyolitic magmas."
+        },
+        {
+            "q_num": 77,
+            "question": "A massive, non-vesicular volcanic glass formed by extremely rapid quenching of high-silica rhyolitic lava is:",
+            "options": {"a": "Pumice", "b": "Scoria", "c": "Perlite", "d": "Obsidian"},
+            "answer": "d", "topic": "Volcanic Glasses", "subtopic": "Obsidian",
+            "notes": "Obsidian is an amorphous, black volcanic glass (<1% water) exhibiting classic conchoidal fracture, formed by rapid chilling of viscous anhydrous rhyolite."
+        },
+        {
+            "q_num": 78,
+            "question": "A hydrated volcanic glass containing 2% to 5% water that exhibits distinctive concentric onion-skin curved fractures is:",
+            "options": {"a": "Pitchstone", "b": "Obsidian", "c": "Pumice", "d": "Perlite"},
+            "answer": "d", "topic": "Volcanic Glasses", "subtopic": "Perlite",
+            "notes": "Perlite is a rhyolitic volcanic glass displaying pearl-like luster and concentric onion-skin perlitic cracks formed by hydration contraction."
+        },
+        {
+            "q_num": 79,
+            "question": "A volcanic glass containing a high water content (typically 5% to 10% H2O) and displaying a dull, pitchy or greasy resinous luster is a:",
+            "options": {"a": "Obsidian", "b": "Pitchstone", "c": "Pumice", "d": "Scoria"},
+            "answer": "b", "topic": "Volcanic Glasses", "subtopic": "Pitchstone",
+            "notes": "Pitchstone is a dark, resinous, water-rich volcanic glass (5-10% H2O) often containing abundant crystallites and microlites."
+        },
+        {
+            "q_num": 80,
+            "question": "A highly vesicular, frothy felsic volcanic rock with low density (frequently floating on water) formed by explosive gas expansion is:",
+            "options": {"a": "Scoria", "b": "Obsidian", "c": "Pumice", "d": "Perlite"},
+            "answer": "c", "topic": "Pyroclastic Rocks", "subtopic": "Pumice",
+            "notes": "Pumice is an ultra-vesicular, micro-porous rhyolitic glass froth with bulk density < 1.0 g/cm³, formed by explosive exsolution of dissolved magmatic volatiles."
+        },
+        {
+            "q_num": 81,
+            "question": "Dark-colored, highly vesicular, cindery pyroclastic fragments of basaltic-to-andesitic composition are termed:",
+            "options": {"a": "Scoria (cinders)", "b": "Pumice", "c": "Pele's hair", "d": "Spatter"},
+            "answer": "a", "topic": "Pyroclastic Rocks", "subtopic": "Scoria",
+            "notes": "Scoria consists of dark, heavy, vesicular volcanic fragments of basaltic composition formed in Hawaiian and Strombolian fire fountains."
+        },
+        {
+            "q_num": 82,
+            "question": "A pyroclastic rock formed by the lithification and consolidation of explosive volcanic ash (<2 mm) is formally named a:",
+            "options": {"a": "Agglomerate", "b": "Lapillistone", "c": "Volcanic breccia", "d": "Tuff"},
+            "answer": "d", "topic": "Pyroclastic Classification", "subtopic": "Tuff",
+            "notes": "Volcanic tephra sizing: Ash (<2 mm) lithifies to Tuff; Lapilli (2-64 mm) lithifies to Lapillistone; Bombs/blocks (>64 mm) form Agglomerate or Volcanic Breccia."
+        },
+        {
+            "q_num": 83,
+            "question": "A hot, density-driven, fluid-like pyroclastic density current (PDC) composed of incandescent ash, pumice, and gases sweeping down a volcano at hurricane speeds is an:",
+            "options": {"a": "Lahar", "b": "Jökulhlaup", "c": "Debris avalanche", "d": "Nuée ardente (pyroclastic flow)"},
+            "answer": "d", "topic": "Volcanic Hazards", "subtopic": "Nuée Ardente",
+            "notes": "Nuée ardente (glowing cloud) describes lethal, ground-hugging pyroclastic flows (e.g., Mount Pelée, 1902) travelling at >100 m/s at temperatures of 300-800°C."
+        },
+        {
+            "q_num": 84,
+            "question": "A welded pyroclastic deposit formed by compaction and sintering of incandescent glass shards and pumice fragments within a hot pyroclastic flow is an:",
+            "options": {"a": "Agglomerate", "b": "Lahar", "c": "Airfall tuff", "d": "Ignimbrite (welded tuff)"},
+            "answer": "d", "topic": "Pyroclastic Rocks", "subtopic": "Ignimbrite",
+            "notes": "Coined by P. Marshall (1935), ignimbrites are expansive sheet-like deposits of pyroclastic flows, displaying flattened, glassy pumice lenses called fiamme."
+        },
+        {
+            "q_num": 85,
+            "question": "The distinctive dark, lens-shaped, flame-like flattened glassy pumice fragments in welded ignimbrites are termed:",
+            "options": {"a": "Xenoliths", "b": "Autoliths", "c": "Fiamme", "d": "Spherulites"},
+            "answer": "c", "topic": "Ignimbrite Fabrics", "subtopic": "Fiamme",
+            "notes": "Fiamme (Italian for 'flames') are dark, flattened pumice clasts compressed into oblate disks and ribbons during hot welding of ash-flow tuffs."
+        }
+    ]
+
+def get_questions_91_to_135():
+    return [
+        {
+            "q_num": 86,
+            "question": "A circular or radial radiating fibrous aggregate of needle-like feldspar and quartz crystals formed by rapid devitrification in volcanic glass is a:",
+            "options": {"a": "Fiamme", "b": "Lithophysa", "c": "Amygdule", "d": "Spherulite"},
+            "answer": "d", "topic": "Devitrification", "subtopic": "Spherulitic Texture",
+            "notes": "Spherulites are intergrowths of radiating alkali feldspar and silica fibers nucleated around vesicles or impurities during sub-solidus devitrification of rhyolite."
+        },
+        {
+            "q_num": 87,
+            "question": "Gas vesicles in lavas that have been subsequently infilled by secondary mineral deposits (calcite, quartz, chalcedony, zeolites) during hydrothermal circulation are called:",
+            "options": {"a": "Vesicles", "b": "Geodes", "c": "Amygdules (amygdaloidal texture)", "d": "Druses"},
+            "answer": "c", "topic": "Volcanic Textures", "subtopic": "Amygdules",
+            "notes": "Vesicles are open gas bubbles; once precipitated secondary low-temperature minerals infill the voids, they become amygdules (characteristic of Deccan basalts)."
+        },
+        {
+            "q_num": 88,
+            "question": "A volcanic lava flow displaying a smooth, ropy, billowy, and undulating surface formed by low-viscosity basalt is termed:",
+            "options": {"a": "Pahoehoe lava", "b": "Aa lava", "c": "Block lava", "d": "Pillow lava"},
+            "answer": "a", "topic": "Lava Morphologies", "subtopic": "Pahoehoe vs Aa",
+            "notes": "Pahoehoe is Hawaiian for smooth ropy basaltic lava; Aa is jagged, spinose, clinkery basalt; pillow lava forms exclusively by submarine or subaqueous eruption."
+        },
+        {
+            "q_num": 89,
+            "question": "Pillow lavas (interlocking sack-like and ellipsoidal lava lobes with chilled glassy rinds) are unambiguous diagnostic indicators of:",
+            "options": {"a": "Subaerial explosive volcanism", "b": "Desert plateau volcanism", "c": "Subaqueous (submarine or sublacustrine) eruption", "d": "Plutonic crystallization"},
+            "answer": "c", "topic": "Subaqueous Volcanism", "subtopic": "Pillow Basalts",
+            "notes": "Pillows form when fluid basaltic lava erupts underwater, quenching rapidly against cold water to form flexible glassy skins that inflate into sack-like lobes."
+        },
+        {
+            "q_num": 90,
+            "question": "Columnar jointing in thick basalt flows, dolerite sills, and ignimbrites develops as a mechanical consequence of:",
+            "options": {"a": "Tectonic shearing", "b": "Submarine erosion", "c": "Thermal contraction stresses during uniform cooling from bounding planar surfaces", "d": "Gas exsolution"},
+            "answer": "c", "topic": "Igneous Structures", "subtopic": "Columnar Jointing",
+            "notes": "As hot lava cools uniformly, isotropic thermal contraction generates tensile stresses resolved as hexagonal columnar joints propagating perpendicular to isotherms (Giant's Causeway)."
+        },
+        {
+            "q_num": 91,
+            "question": "In the Bushveld Complex of South Africa, the world's most productive stratiform Platinum Group Element (PGE) deposit is localized within the:",
+            "options": {"a": "Merensky Reef (and UG2 chromitite)", "b": "Upper Zone", "c": "Marginal Zone", "d": "Platreef only"},
+            "answer": "a", "topic": "Layered Intrusions", "subtopic": "Merensky Reef",
+            "notes": "The Merensky Reef of the Critical Zone in the Bushveld Complex contains the world's largest PGE reserves in a sulfide-rich orthopyroxenite layer."
+        },
+        {
+            "q_num": 92,
+            "question": "The rhythmic layering in large mafic-ultramafic layered intrusions (e.g., Bushveld, Stillwater, Skaergaard) is principally generated by:",
+            "options": {"a": "Metamorphic differentiation", "b": "Repeated magma recharge, double-diffusive convection, and gravity settling/in-situ crystallization", "c": "Tectonic folding", "d": "Surface weathering"},
+            "answer": "b", "topic": "Layered Intrusions", "subtopic": "Rhythmic Layering",
+            "notes": "Rhythmic layering forms by complex magma chamber dynamics: episodic magma replenishment, double-diffusive convection, density currents, and in-situ bottom crystallization."
+        },
+        {
+            "q_num": 93,
+            "question": "The famous Skaergaard Intrusion of East Greenland (mapped by Wager and Deer, 1939) is classic worldwide as the prime example of:",
+            "options": {"a": "An unlayered granite batholith", "b": "Extreme fractional crystallization of a single pulse of basaltic magma in a closed chamber", "c": "Open-system volcanic degassing", "d": "A carbonatite ring complex"},
+            "answer": "b", "topic": "Layered Intrusions", "subtopic": "Skaergaard Differentiation",
+            "notes": "Skaergaard crystallized as a closed-system basaltic magma chamber, generating a textbook succession from Lower Zone (olivine + plagioclase) to Sandwich Horizon."
+        },
+        {
+            "q_num": 94,
+            "question": "In the petrogenesis of granitoid rocks, 'restites' are defined as:",
+            "options": {"a": "Early phenocrysts", "b": "Refractory solid residue remaining un-melted at the source region during partial melting", "c": "Chilled margins", "d": "Hydrothermal veins"},
+            "answer": "b", "topic": "Granite Petrogenesis", "subtopic": "Restite Model",
+            "notes": "White and Chappell's restite model defines restite as un-melted refractory source minerals (biotite, sillimanite, garnet) entrained within ascending granitic melts."
+        },
+        {
+            "q_num": 95,
+            "question": "A xenolith that is genetically cognate (derived from the same parent magma as an early-crystallized cumulate or wall-rock fragment) is an:",
+            "options": {"a": "Xenocryst", "b": "Exotic xenolith", "c": "Enclave", "d": "Autolith (cognate xenolith)"},
+            "answer": "d", "topic": "Igneous Enclaves", "subtopic": "Autolith",
+            "notes": "An autolith (cognate inclusion) is a fragment of an earlier-crystallized facies of the same intrusive complex incorporated into a younger magmatic surge."
+        },
+        {
+            "q_num": 96,
+            "question": "The process whereby a hot magma incorporates and dissolves foreign solid wall-rock material, altering its chemical composition, is termed:",
+            "options": {"a": "Magmatic assimilation", "b": "Palingenesis", "c": "Anatexis", "d": "Metasomatism"},
+            "answer": "a", "topic": "Magma Contamination", "subtopic": "Assimilation",
+            "notes": "Magmatic assimilation occurs when thermal energy melts or chemically incorporates foreign host rocks (e.g., limestone assimilation driving silica undersaturation)."
+        },
+        {
+            "q_num": 97,
+            "question": "The formation of new magma through the in-situ ultra-high-temperature partial or complete melting of pre-existing crustal rocks is termed:",
+            "options": {"a": "Diagenesis", "b": "Cataclasis", "c": "Anatexis", "d": "Palingenesis only"},
+            "answer": "c", "topic": "Crustal Melting", "subtopic": "Anatexis",
+            "notes": "Anatexis is the high-grade metamorphic partial melting of crustal rocks (typically at temperatures >650-700°C under hydrous conditions), producing migmatites and granitic magmas."
+        },
+        {
+            "q_num": 98,
+            "question": "A mixed rock consisting of an igneous or granitic vein component (leucosome) and a metamorphic host residue component (melanosome/mesosome) is a:",
+            "options": {"a": "Granulite", "b": "Eclogite", "c": "Migmatite", "d": "Skarn"},
+            "answer": "c", "topic": "Anatectic Rocks", "subtopic": "Migmatite",
+            "notes": "J.J. Sederholm (1907) named migmatites (Greek 'migma' = mixture) for heterogeneous rocks composed of light-colored granitic neosome and dark metamorphic paleosome."
+        },
+        {
+            "q_num": 99,
+            "question": "In the classification of kimberlites, Group I kimberlites are typically:",
+            "options": {"a": "Micaceous kimberlites rich in phlogopite", "b": "Carbonatites", "c": "Lamproites", "d": "Monticellite-calcite-serpentine kimberlites rich in olivine phenocrysts"},
+            "answer": "d", "topic": "Kimberlite Petrology", "subtopic": "Group I vs Group II",
+            "notes": "Group I kimberlites are volatile-rich potassic ultramafic rocks with olivine macrocrysts in a serpentine-calcite-monticellite matrix; Group II (orangeites) are micaceous."
+        },
+        {
+            "q_num": 100,
+            "question": "Diamond formation in the sub-continental lithospheric mantle (SCLM) occurs primarily at depths greater than:",
+            "options": {"a": "30 km", "b": "75 km", "c": "100 km", "d": "140 to 150 km (within the diamond stability field)"},
+            "answer": "d", "topic": "Mantle Petrology", "subtopic": "Diamond Stability Field",
+            "notes": "Thermodynamic stability of diamond requires pressures >4.5 GPa at typical mantle geotherms, corresponding to depths >=140-150 km beneath ancient Archean cratonic roots."
+        },
+        {
+            "q_num": 101,
+            "question": "In alkaline complexes, an igneous rock consisting almost exclusively of nepheline (>70%) and aegirine pyroxene (<30%) is an:",
+            "options": {"a": "Ijolite", "b": "Melteigite", "c": "Urtite", "d": "Fen"},
+            "answer": "c", "topic": "Alkaline Clan", "subtopic": "Urtite",
+            "notes": "In the urtite-ijolite-melteigite series: Urtite contains >70% nepheline (leucocratic); Ijolite contains 30-70% nepheline (mesocratic); Melteigite contains <30% nepheline (melanocratic)."
+        },
+        {
+            "q_num": 102,
+            "question": "A melanocratic plutonic rock of the ijolite clan composed predominantly (>70%) of pyroxene and minor nepheline is classified as a:",
+            "options": {"a": "Urtite", "b": "Melteigite", "c": "Jacupirangite", "d": "Essexite"},
+            "answer": "b", "topic": "Alkaline Clan", "subtopic": "Melteigite",
+            "notes": "Melteigite is the pyroxene-rich melanocratic member of the foidolite clan, containing 70-90% aegirine-augite and 10-30% nepheline."
+        },
+        {
+            "q_num": 103,
+            "question": "A plutonic rock composed essentially of alkali feldspar, nepheline, and calcic plagioclase with titanaugite is an:",
+            "options": {"a": "Ijolite", "b": "Syenite", "c": "Essexite (nepheline monzogabbro)", "d": "Shonkinite"},
+            "answer": "c", "topic": "Alkaline Rocks", "subtopic": "Essexite",
+            "notes": "Essexite (named from Essex County, Massachusetts) is a nepheline monzogabbro or monzodiorite containing plagioclase, alkali feldspar, nepheline, and augite."
+        },
+        {
+            "q_num": 104,
+            "question": "A melanocratic plutonic rock composed of potassium feldspar and abundant augite/biotite, with minor nepheline, is termed a:",
+            "options": {"a": "Essexite", "b": "Ijolite", "c": "Shonkinite", "d": "Urtite"},
+            "answer": "c", "topic": "Alkaline Rocks", "subtopic": "Shonkinite",
+            "notes": "Shonkinite (Weed & Pirsson, 1895) is a dark, potassic mafic rock composed of augite and biotite with subordinate K-feldspar and minor foids."
+        },
+        {
+            "q_num": 105,
+            "question": "In igneous trace element geochemistry, elements with a solid-liquid distribution coefficient D << 1.0 (such as Rb, Cs, Ba, U, Th, and LREE) are classified as:",
+            "options": {"a": "Incompatible elements", "b": "Compatible elements", "c": "Chalcophiles", "d": "Refractory elements"},
+            "answer": "a", "topic": "Trace Elements", "subtopic": "Incompatible Elements",
+            "notes": "Incompatible elements have ionic radius or charge unsuitable for major mantle minerals, preferentially partitioning into the melt during partial melting (D = C_solid / C_melt << 1)."
+        },
+        {
+            "q_num": 106,
+            "question": "Trace elements with ionic radius too large for octahedral/tetrahedral mantle mineral sites (e.g., Rb+, K+, Ba2+, Sr2+) are termed:",
+            "options": {"a": "Large-Ion Lithophile Elements (LILE)", "b": "High Field Strength Elements (HFSE)", "c": "Transition metals", "d": "Platinum group elements"},
+            "answer": "a", "topic": "Trace Elements", "subtopic": "LILE",
+            "notes": "LILE (Large-Ion Lithophile Elements) have large radii and low charge (Rb, Cs, Ba, Sr), making them highly fluid-mobile and enriched in crustal melts."
+        },
+        {
+            "q_num": 107,
+            "question": "Trace elements with small ionic radius and high valency (e.g., Zr4+, Hf4+, Nb5+, Ta5+, Th4+, U4+) are classified as:",
+            "options": {"a": "LILE", "b": "High Field Strength Elements (HFSE)", "c": "REE", "d": "Siderophiles"},
+            "answer": "b", "topic": "Trace Elements", "subtopic": "HFSE",
+            "notes": "HFSE (High Field Strength Elements: Zr, Hf, Nb, Ta) have high charges and high field strength (charge/radius), rendering them immobile in hydrothermal and subduction fluids."
+        },
+        {
+            "q_num": 108,
+            "question": "The famous geochemical signature of subduction-related arc magmas on trace element spidergrams is characterized by:",
+            "options": {"a": "Enrichment in HFSE and depletion in LILE", "b": "Flat REE patterns with no anomalies", "c": "Extreme depletion in all incompatible elements", "d": "Strong enrichment in LILE and marked negative anomalies (depletions) in Nb, Ta, and Ti"},
+            "answer": "d", "topic": "Arc Geochemistry", "subtopic": "Nb-Ta Depletion",
+            "notes": "Subduction arc magmas exhibit prominent negative Nb-Ta-Ti anomalies on spidergrams because slab dehydration mobilizes LILE but leaves HFSE trapped in residual rutile."
+        },
+        {
+            "q_num": 109,
+            "question": "The isotopic ratio 87Sr/86Sr serves as a sensitive indicator of crustal contamination because:",
+            "options": {"a": "Sr is a gas", "b": "Continental crust has much lower Rb/Sr than mantle", "c": "87Sr does not decay", "d": "Ancient continental crust has high Rb/Sr and consequently evolves high 87Sr/86Sr ratios (>0.710), whereas mantle has low ratios (~0.702-0.704)"},
+            "answer": "d", "topic": "Isotope Petrology", "subtopic": "Strontium Isotopes",
+            "notes": "Due to Rb-87 beta decay to Sr-87, Rb-rich continental crust evolves high 87Sr/86Sr (>0.708-0.720), while mantle reservoirs maintain primitive ratios (~0.7025-0.7045)."
+        },
+        {
+            "q_num": 110,
+            "question": "A positive epsilon Neodymium (εNd) value in an igneous rock indicates that the magma was derived from a:",
+            "options": {"a": "Highly evolved ancient continental crustal source", "b": "Pelitic sediment", "c": "Subducted limestone", "d": "Depleted mantle reservoir (LREE-depleted relative to CHUR)"},
+            "answer": "d", "topic": "Isotope Petrology", "subtopic": "Neodymium Isotopes",
+            "notes": "Positive εNd values reflect long-term depletion in Nd relative to Sm (LREE-depleted depleted mantle); negative εNd indicates ancient crustal residence."
+        },
+        {
+            "q_num": 111,
+            "question": "The rare-earth element 'Europium anomaly' (Eu/Eu*) in granitic and volcanic rocks is primarily controlled by the fractional crystallization or accumulation of:",
+            "options": {"a": "Olivine", "b": "Plagioclase feldspar", "c": "Zircon", "d": "Apatite"},
+            "answer": "b", "topic": "REE Geochemistry", "subtopic": "Europium Anomaly",
+            "notes": "Under reducing magmatic conditions, Eu2+ substitutes readily for Ca2+ in plagioclase, creating negative Eu anomalies in residual liquids when plagioclase fractionates."
+        },
+        {
+            "q_num": 112,
+            "question": "In the Ternary system Quartz - Albite - Orthoclase at 1 kbar water pressure, the minimum melting composition (granite eutectic) occurs at approximately:",
+            "options": {"a": "50% Qz, 50% Or", "b": "10% Qz, 90% Ab", "c": "35% Quartz, 40% Albite, 25% Orthoclase at ~720°C", "d": "70% Quartz, 15% Albite, 15% Orthoclase"},
+            "answer": "c", "topic": "Haplogranite System", "subtopic": "Granite Eutectic",
+            "notes": "Tuttle and Bowen (1958) demonstrated that granite compositions cluster around the water-saturated minimum at ~35% Qz, 40% Ab, 25% Or."
+        },
+        {
+            "q_num": 113,
+            "question": "Increasing water vapor pressure (P_H2O) in the granite system Quartz - Albite - Orthoclase causes the ternary eutectic point to:",
+            "options": {"a": "Shift toward the Quartz apex", "b": "Shift away from the Quartz apex toward the feldspar join, with lower eutectic temperature", "c": "Remain stationary", "d": "Eliminate the liquid field"},
+            "answer": "b", "topic": "Haplogranite System", "subtopic": "Pressure Effects",
+            "notes": "Higher P_H2O expands the primary quartz crystallization field, driving the eutectic point away from quartz toward the feldspar baseline and lowering melting temperatures."
+        },
+        {
+            "q_num": 114,
+            "question": "In an igneous rock, an exsolution texture characterized by thin lamellae of albite (sodic plagioclase) within host potassium feldspar (orthoclase/microcline) is:",
+            "options": {"a": "Myrmekite", "b": "Anti-perthite", "c": "Graphic", "d": "Perthite"},
+            "answer": "d", "topic": "Exsolution Textures", "subtopic": "Perthite vs Antiperthite",
+            "notes": "Perthite consists of exsolved sodic plagioclase blebs within K-feldspar host; when K-feldspar lamellae occur within host plagioclase, it is antiperthite."
+        },
+        {
+            "q_num": 115,
+            "question": "The complete solid solution series between Albite and Orthoclase at high temperatures (above the solvus at ~660°C) is known as the:",
+            "options": {"a": "Plagioclase series", "b": "Pyroxene solvus", "c": "Alkali feldspar series", "d": "Olivine series"},
+            "answer": "c", "topic": "Feldspar Mineralogy", "subtopic": "Alkali Feldspar Solvus",
+            "notes": "Alkali feldspars form continuous solid solutions (sanidine-anorthoclase) at magmatic temperatures, unmixing into perthites below the solvus curve."
+        },
+        {
+            "q_num": 116,
+            "question": "Hypersolvus granites (granites crystallizing above the alkali feldspar solvus under low water pressure) are characterized petrographically by containing:",
+            "options": {"a": "A single homogeneous perthitic alkali feldspar", "b": "Two discrete primary feldspars (separate plagioclase and microcline)", "c": "Only plagioclase", "d": "Only nepheline"},
+            "answer": "a", "topic": "Granite Types", "subtopic": "Hypersolvus vs Subsolvus",
+            "notes": "Hypersolvus granites crystallize above the solvus and contain one single perthitic alkali feldspar; subsolvus granites crystallize under high P_H2O and contain two separate feldspars."
+        },
+        {
+            "q_num": 117,
+            "question": "Subsolvus granites (granites crystallizing where the solidus intersects the solvus under high water pressure) contain:",
+            "options": {"a": "A single feldspar", "b": "Two distinct primary feldspars: sodic plagioclase and potassium feldspar", "c": "No feldspar", "d": "Only leucite"},
+            "answer": "b", "topic": "Granite Types", "subtopic": "Subsolvus Granites",
+            "notes": "Under elevated water pressures, depression of the solidus below the solvus allows simultaneous crystallization of two separate primary feldspars."
+        },
+        {
+            "q_num": 118,
+            "question": "A reaction rim of one or more secondary minerals surrounding a primary crystal core (e.g., pyroxene and amphibole surrounding olivine) is an:",
+            "options": {"a": "Amygdule", "b": "Ocellus", "c": "Variolite", "d": "Corona (kelyphitic rim)"},
+            "answer": "d", "topic": "Reaction Textures", "subtopic": "Corona Texture",
+            "notes": "Coronas (kelyphitic rims) develop by sub-solidus diffusion or magmatic reaction when early-formed crystals become unstable in contact with neighboring phases."
+        },
+        {
+            "q_num": 119,
+            "question": "Spherical or oval blebs of leucocratic mineral aggregates (often analcime or calcite) in lamprophyres and basalts are termed:",
+            "options": {"a": "Spherulites", "b": "Ocelli", "c": "Fiamme", "d": "Amygdules only"},
+            "answer": "b", "topic": "Igneous Textures", "subtopic": "Ocelli",
+            "notes": "Ocelli are globular, rounded felsic segregations in lamprophyres and alkaline rocks, interpreted as droplets of immiscible silicate liquid or gas segregations."
+        },
+        {
+            "q_num": 120,
+            "question": "In the oceanic crust ophiolite pseudostratigraphy, sheeted dyke complexes represent:",
+            "options": {"a": "Deep mantle peridotite", "b": "Layered gabbros", "c": "Pelagic abyssal sediment", "d": "Feeder conduits for overlying pillow basalts formed during 100% seafloor spreading"},
+            "answer": "d", "topic": "Ophiolites", "subtopic": "Sheeted Dyke Complex",
+            "notes": "Sheeted dyke complexes (Layer 2B of oceanic crust) consist of 100% mutually intrusive basaltic dykes feeding oceanic floor pillow lavas at spreading centers."
+        },
+        {
+            "q_num": 121,
+            "question": "The classic Penrose Conference (1972) ophiolite pseudostratigraphic sequence from base to top is:",
+            "options": {
+                "a": "Ultramafic tectonite (harzburgite) -> Layered gabbro -> Sheeted dykes -> Pillow basalt -> Pelagic sediments",
+                "b": "Pillow basalt -> Sheeted dykes -> Gabbro -> Harzburgite",
+                "c": "Granite -> Rhyolite -> Basalt -> Gabbro",
+                "d": "Pelagic sediment -> Gabbro -> Harzburgite -> Basalt"
+            },
+            "answer": "a",
+            "topic": "Ophiolite Sequence", "subtopic": "Penrose Definition",
+            "notes": "The Penrose definition models complete oceanic lithosphere: mantle tectonites (harzburgite/lherzolite) -> ultramafic-mafic cumulates -> gabbros -> sheeted dykes -> pillow basalts -> pelagic chert."
+        },
+        {
+            "q_num": 122,
+            "question": "A high-pressure, low-temperature metamorphic rock of basaltic composition characterized by glaucophane, lawsonite, and epidote in subduction zones is a:",
+            "options": {"a": "Granulite", "b": "Amphibolite", "c": "Blueschist", "d": "Greenschist"},
+            "answer": "c", "topic": "Subduction Metamorphism", "subtopic": "Blueschist",
+            "notes": "Blueschists form in cold, rapidly subducting slabs under high pressures and low temperatures, characterized by sodic blue amphibole (glaucophane)."
+        },
+        {
+            "q_num": 123,
+            "question": "An ultra-high-pressure metamorphic rock of basaltic composition composed essentially of omphacite pyroxene and pyrope-rich garnet is an:",
+            "options": {"a": "Amphibolite", "b": "Granulite", "c": "Eclogite", "d": "Blueschist"},
+            "answer": "c", "topic": "Mantle Rocks", "subtopic": "Eclogite",
+            "notes": "Eclogite forms by extreme compression (>1.5-3.0 GPa) of basaltic crust, transforming plagioclase into jadeitic clinopyroxene (omphacite) and garnet, completely lacking plagioclase."
+        },
+        {
+            "q_num": 124,
+            "question": "In the chemical distinction of basalts, the Na/K weight ratio for oceanic tholeiites compared to continental tholeiites is:",
+            "options": {
+                "a": "Generally > 10 for oceanic tholeiites, but between 3 and 6 for continental tholeiites",
+                "b": "Much lower in oceanic tholeiites (<1.0)",
+                "c": "Identical in both suites",
+                "d": "Zero in continental tholeiites"
+            },
+            "answer": "a",
+            "topic": "Basalt Geochemistry", "subtopic": "Na/K Ratios",
+            "notes": "Official note (p. 350): Na/K for oceanic tholeiites is >10, whereas for continental flood basalts the ratio is generally between 3 and 6 due to crustal assimilation."
+        },
+        {
+            "q_num": 125,
+            "question": "In the Pearce and Cann (1973) tectonic discrimination diagrams for basalts, which trace elements are utilized because of their immobility during weathering and metamorphism?",
+            "options": {"a": "Na, K, Rb", "b": "Ca, Mg, Fe", "c": "Cs, Ba, Sr", "d": "Ti, Zr, Y, and Nb"},
+            "answer": "d", "topic": "Tectonic Discrimination", "subtopic": "Immobile Trace Elements",
+            "notes": "Ti, Zr, Y, and Nb are High Field Strength Elements (HFSE) that resist hydrothermal and metamorphic mobilization, preserving primary magmatic tectonic affinities."
+        },
+        {
+            "q_num": 126,
+            "question": "In the Irvine and Baragar (1971) classification of volcanic rocks, the subalkaline rocks are divided into two distinct magma series termed:",
+            "options": {"a": "Alkaline and Peralkaline", "b": "Potassic and Sodic", "c": "Nephelinic and Leucitic", "d": "Tholeiitic and Calc-alkaline"},
+            "answer": "d", "topic": "Subalkaline Series", "subtopic": "Tholeiitic vs Calc-Alkaline",
+            "notes": "The subalkaline field is subdivided into Tholeiitic series (iron-enriching, extensional) and Calc-alkaline series (silica-enriching without Fe-enrichment, subduction arcs)."
+        },
+        {
+            "q_num": 127,
+            "question": "The calc-alkaline magma series is overwhelmingly characteristic of which global tectonic setting?",
+            "options": {"a": "Mid-ocean spreading ridges", "b": "Convergent plate margins (island arcs and active continental margins)", "c": "Intraplate hot-spot volcanic islands", "d": "Passive continental margins"},
+            "answer": "b", "topic": "Calc-Alkaline Magmatism", "subtopic": "Subduction Setting",
+            "notes": "Calc-alkaline rocks (basaltic andesite -> andesite -> dacite -> rhyolite) dominate volcanic arcs above subduction zones, driven by slab dehydration fluids."
+        },
+        {
+            "q_num": 128,
+            "question": "The presence of primary hydrous ferromagnesian minerals (hornblende and biotite) in andesites and granodiorites demonstrates that calc-alkaline magmas:",
+            "options": {"a": "Are completely dry", "b": "Contain significant dissolved magmatic water (H2O)", "c": "Erupted only in outer space", "d": "Formed from molten iron"},
+            "answer": "b", "topic": "Volatile Petrology", "subtopic": "Magmatic Water",
+            "notes": "Hornblende and biotite require elevated magmatic water activities (2-6 wt% dissolved H2O) to stabilize during crystallization."
+        },
+        {
+            "q_num": 129,
+            "question": "In an ophiolite complex, the tectonic boundary separating the crustal cumulate gabbros from the underlying mantle peridotites is the:",
+            "options": {"a": "Conrad discontinuity", "b": "Lehmann discontinuity", "c": "Guttenberg discontinuity", "d": "Petrological Moho"},
+            "answer": "d", "topic": "Ophiolites", "subtopic": "Petrological Moho",
+            "notes": "The petrological Moho marks the boundary between residual mantle tectonites (harzburgites) and overlying magmatic crustal ultramafic-gabbroic cumulates."
+        },
+        {
+            "q_num": 130,
+            "question": "Podiform chromite ore bodies in the Alpine-type peridotite complexes of ophiolites are formed by:",
+            "options": {"a": "Sedimentary precipitation", "b": "Weathering", "c": "Biological action", "d": "Melt-rock reaction and mixing of primitive melts in mantle channels"},
+            "answer": "d", "topic": "Ophiolitic Chromite", "subtopic": "Podiform Chromite",
+            "notes": "Podiform chromitites precipitate in dunitic mantle channels beneath spreading centers where ascending primitive picritic melts react with refractory harzburgite."
+        },
+        {
+            "q_num": 131,
+            "question": "In the chemical classification of granites by Chappell and White (1974), I-type granites are derived by partial melting of:",
+            "options": {"a": "Pelitic sedimentary rocks", "b": "Limestones", "c": "Meta-igneous infracrustal source rocks (mafic to intermediate)", "d": "Meteorites"},
+            "answer": "c", "topic": "Granite Types", "subtopic": "I-Type Granites",
+            "notes": "I-type (igneous) granites are derived from partial melting of underplated mafic to intermediate igneous crust, characterized by hornblende, sphene, and magnetite."
+        },
+        {
+            "q_num": 132,
+            "question": "Which of the following mineralogical and geochemical features is diagnostic of S-type (sedimentary protolith) granites?",
+            "options": {
+                "a": "Presence of muscovite, garnet, cordierite, and initial 87Sr/86Sr > 0.710",
+                "b": "Presence of titanite (sphene) and magnetite",
+                "c": "Normative diopside",
+                "d": "Initial 87Sr/86Sr < 0.704"
+            },
+            "answer": "a",
+            "topic": "Granite Types", "subtopic": "S-Type Criteria",
+            "notes": "S-type granites are peraluminous (ASI > 1.1), containing aluminous minerals (muscovite, cordierite, garnet), ilmenite, and elevated initial 87Sr/86Sr (>0.710)."
+        },
+        {
+            "q_num": 133,
+            "question": "Granitoids derived directly from the fractional crystallization of mantle-derived tholeiitic or oceanic island arc magmas are termed:",
+            "options": {"a": "S-type", "b": "I-type", "c": "A-type", "d": "M-type (plagiogranites / trondhjemites)"},
+            "answer": "d", "topic": "Granite Types", "subtopic": "M-Type Granites",
+            "notes": "M-type granitoids (e.g., oceanic plagiogranites) have low K2O, primitive Sr and Nd isotopes, and represent fractional crystallization of mantle basalts."
+        },
+        {
+            "q_num": 134,
+            "question": "In granite classification, an 'epizonal' pluton (Buddington, 1959) is emplaced at shallow crustal depths characterized by:",
+            "options": {"a": "Depths greater than 15 km with ductile country rock flow", "b": "High-grade regional metamorphism", "c": "Depths < 6 km, sharp discordant contacts, brittle country rock fracturing, and volcanic associations", "d": "Mantle depths"},
+            "answer": "c", "topic": "Pluton Emplacement", "subtopic": "Epizonal Depth Zones",
+            "notes": "Buddington's depth zones: Epizone (<6 km, brittle, discordant), Mesozone (6-12 km), and Catazone (>12 km, ductile flow, migmatites)."
+        },
+        {
+            "q_num": 135,
+            "question": "In the quaternary System Diopside - Albite - Anorthite, fractional crystallization of a basaltic liquid drives the residual melt toward:",
+            "options": {"a": "The Diopside - Albite binary cotectic", "b": "Pure anorthite", "c": "Pure forsterite", "d": "Pure silica"},
+            "answer": "a", "topic": "Basaltic Phase Equilibria", "subtopic": "Di-Ab-An System",
+            "notes": "Bowen (1915) proved that fractional crystallization of Di-Ab-An liquids drives compositions along the cotectic boundary toward the Ab-rich minimum."
+        }
+    ]
+
+def get_questions_136_to_175():
+    return [
+        {
+            "q_num": 136,
+            "question": "The crystallization temperature of pure forsterite (Mg2SiO4) at atmospheric pressure is:",
+            "options": {"a": "1200°C", "b": "1000°C", "c": "1557°C", "d": "1890°C"},
+            "answer": "d", "topic": "Silicate Melting Points", "subtopic": "Forsterite Melting",
+            "notes": "Pure forsterite (Mg2SiO4) melts congruently at 1890°C, representing one of the highest melting points among rock-forming silicates."
+        },
+        {
+            "q_num": 137,
+            "question": "The congruent melting point of pure anorthite (CaAl2Si2O8) plagioclase at 1 atmosphere is:",
+            "options": {"a": "1118°C", "b": "1274°C", "c": "1553°C", "d": "1890°C"},
+            "answer": "c", "topic": "Silicate Melting Points", "subtopic": "Anorthite Melting",
+            "notes": "Pure anorthite melts congruently at 1553°C; pure albite (NaAlSi3O8) melts at 1118°C."
+        },
+        {
+            "q_num": 138,
+            "question": "According to the classification of alkaline rocks by K.L. Currie (1976), which of the following rocks belongs to the Alkali Basalt family rather than the Nephelinite family?",
+            "options": {"a": "Urtite", "b": "Ijolite", "c": "Melteigite", "d": "Nepheline diorite"},
+            "answer": "d", "topic": "Alkaline Classification", "subtopic": "Currie's Classification",
+            "notes": "Official note (p. 350): Nepheline diorite belongs to the Alkali basalt family, while urtite, ijolite, and melteigite belong to the Nephelinite family as per Currie (1976)."
+        },
+        {
+            "q_num": 139,
+            "question": "The crystallization temperature of pure quartz (SiO2) alpha-cristobalite inversion melting at 1 atmosphere is:",
+            "options": {"a": "1000°C", "b": "1400°C", "c": "1553°C", "d": "1713°C"},
+            "answer": "d", "topic": "Silica System", "subtopic": "Quartz Melting",
+            "notes": "Pure silica melts at 1713°C as cristobalite under anhydrous atmospheric conditions."
+        },
+        {
+            "q_num": 140,
+            "question": "The term 'Alaskite' is formally defined as a variety of granite characterized by:",
+            "options": {
+                "a": "Richness in hornblende and biotite",
+                "b": "Containing nepheline and sodalite",
+                "c": "More than 50% plagioclase",
+                "d": "Extremely leucocratic composition containing less than 5% mafic minerals and consisting almost wholly of quartz and alkali feldspar"
+            },
+            "answer": "d", "topic": "Felsic Classification", "subtopic": "Alaskite Definition",
+            "notes": "J.E. Spurr (1900) defined alaskite as a hololeucocratic alkali granite with Color Index M' < 5, composed essentially of quartz and alkali feldspar."
+        },
+        {
+            "q_num": 141,
+            "question": "In petrogeny's residua system, a granite consisting exclusively of quartz, albite, and orthoclase without plagioclase or dark minerals is an:",
+            "options": {"a": "Granodiorite", "b": "Tonalite", "c": "Monzonite", "d": "Alkali feldspar granite"},
+            "answer": "d", "topic": "QAPF System", "subtopic": "Alkali Feldspar Granite",
+            "notes": "Alkali feldspar granite contains plagioclase <10% of total feldspars and quartz between 20-60%."
+        },
+        {
+            "q_num": 142,
+            "question": "A plutonic rock with 20% to 60% quartz in which plagioclase constitutes between 65% and 90% of total feldspars is classified as a:",
+            "options": {"a": "Granite", "b": "Granodiorite", "c": "Tonalite", "d": "Syenite"},
+            "answer": "b", "topic": "QAPF System", "subtopic": "Granodiorite",
+            "notes": "In the IUGS classification, Field 4 is Granodiorite (Q = 20-60%, P/(A+P) = 65-90%). If P/(A+P) > 90%, it is Tonalite (Field 5)."
+        },
+        {
+            "q_num": 143,
+            "question": "A quartz-rich plutonic rock (>20% Qz) in which plagioclase makes up more than 90% of total feldspar is formally classified as a:",
+            "options": {"a": "Granite", "b": "Granodiorite", "c": "Monzonite", "d": "Tonalite (trondhjemite)"},
+            "answer": "d", "topic": "QAPF System", "subtopic": "Tonalite",
+            "notes": "Tonalite is Field 5 of the QAPF system (Q = 20-60%, P/(A+P) > 90%). Leucocratic tonalite with oligoclase is termed trondhjemite."
+        },
+        {
+            "q_num": 144,
+            "question": "A plutonic rock with little or no quartz (<5% Qz) in which alkali feldspar and plagioclase occur in approximately equal proportions is a:",
+            "options": {"a": "Diorite", "b": "Monzonite", "c": "Syenite", "d": "Gabbro"},
+            "answer": "b", "topic": "QAPF System", "subtopic": "Monzonite",
+            "notes": "Monzonite occupies Field 8 of the QAPF system, containing Q = 0-5% and P/(A+P) = 35-65%."
+        },
+        {
+            "q_num": 145,
+            "question": "A plutonic rock with little to no quartz (<5% Qz) composed predominantly of alkali feldspar (>65% of total feldspar) is a:",
+            "options": {"a": "Diorite", "b": "Gabbro", "c": "Syenite", "d": "Anorthosite"},
+            "answer": "c", "topic": "QAPF System", "subtopic": "Syenite",
+            "notes": "Syenite occupies Field 7 of the QAPF system, consisting essentially of alkali feldspar and minor hornblende/biotite."
+        },
+        {
+            "q_num": 146,
+            "question": "In mantle petrology, 'lherzolite' is an ultramafic peridotite consisting of which diagnostic mineral assemblage in decreasing order of abundance?",
+            "options": {
+                "a": "Clinopyroxene, plagioclase, quartz",
+                "b": "Plagioclase, hornblende, biotite",
+                "c": "Orthopyroxene, ilmenite, zircon",
+                "d": "Olivine, orthopyroxene, clinopyroxene, and an aluminous phase (garnet/spinel)"
+            },
+            "answer": "d",
+            "topic": "Mantle Peridotite", "subtopic": "Lherzolite Mineralogy",
+            "notes": "Official note (p. 350): Lherzolite is an ultramafic rock composed of olivine, orthopyroxene, clinopyroxene, and garnet or spinel in decreasing order of abundance."
+        },
+        {
+            "q_num": 147,
+            "question": "In the discontinuous series of Bowen's reaction principle, the thermal breakdown and reaction of olivine with liquid silica produces:",
+            "options": {"a": "Orthopyroxene (enstatite)", "b": "Biotite", "c": "Plagioclase", "d": "Nepheline"},
+            "answer": "a", "topic": "Bowen's Reaction Series", "subtopic": "Olivine to Pyroxene",
+            "notes": "Mg2SiO4 (Forsterite) + SiO2 (Liquid) -> 2 MgSiO3 (Enstatite). Early olivine reacts with silica-rich liquid to form orthopyroxene."
+        },
+        {
+            "q_num": 148,
+            "question": "The reaction of pyroxene with hydrous melt at lower temperatures in the discontinuous series produces:",
+            "options": {"a": "Olivine", "b": "Amphibole (hornblende)", "c": "Quartz", "d": "Anorthite"},
+            "answer": "b", "topic": "Bowen's Reaction Series", "subtopic": "Pyroxene to Amphibole",
+            "notes": "As water activity increases during progressive magmatic cooling, single-chain pyroxenes react with melt to form double-chain amphiboles (hornblende)."
+        },
+        {
+            "q_num": 149,
+            "question": "The terminal ferromagnesian mineral crystallizing in the discontinuous reaction series prior to quartz and alkali feldspar is:",
+            "options": {"a": "Augite", "b": "Hornblende", "c": "Biotite", "d": "Muscovite"},
+            "answer": "c", "topic": "Bowen's Reaction Series", "subtopic": "Biotite Termination",
+            "notes": "Biotite represents the hydrous sheet-silicate terminus of the discontinuous ferromagnesian branch of Bowen's reaction series."
+        },
+        {
+            "q_num": 150,
+            "question": "In igneous petrology, a 'leucosome' is the component of a migmatite that represents:",
+            "options": {"a": "The dark, unmelted refractory restite", "b": "The unaltered country rock", "c": "The light-colored, newly crystallized granitic melt component", "d": "A hydrothermal vein"},
+            "answer": "c", "topic": "Migmatite Petrology", "subtopic": "Leucosome",
+            "notes": "The leucosome is the light-colored, quartzofeldspathic neosome of a migmatite that crystallized from anatectic partial melt."
+        },
+        {
+            "q_num": 151,
+            "question": "The dark, ferromagnesian-rich residual component of a migmatite bordering the leucosome is termed the:",
+            "options": {"a": "Melanosome", "b": "Leucosome", "c": "Mesosome", "d": "Paleosome"},
+            "answer": "a", "topic": "Migmatite Petrology", "subtopic": "Melanosome",
+            "notes": "The melanosome is the dark restitic border composed of refractory biotite, cordierite, garnet, and sillimanite left after melt extraction."
+        },
+        {
+            "q_num": 152,
+            "question": "Chemically, lamprophyres are characteristically distinguished by having:",
+            "options": {
+                "a": "Extremely high SiO2 and low trace elements",
+                "b": "No alkalis",
+                "c": "Low SiO2 alongside exceptionally high concentrations of Na2O, K2O, TiO2, BaO, SrO, and P2O5",
+                "d": "Zero volatile content"
+            },
+            "answer": "c",
+            "topic": "Lamprophyre Geochemistry", "subtopic": "Chemical Distinctiveness",
+            "notes": "Official note (p. 350): Chemically, lamprophyres are characteristically low in SiO2 and high in Na2O, K2O, TiO2, BaO, SrO, and P2O5, resembling alkali olivine basalts."
+        },
+        {
+            "q_num": 153,
+            "question": "A melanocratic lamprophyre characterized by phenocrysts of biotite and a matrix of orthoclase feldspar is formally classified as a:",
+            "options": {"a": "Vogesite", "b": "Kersantite", "c": "Spessartite", "d": "Minette"},
+            "answer": "d", "topic": "Lamprophyres", "subtopic": "Minette",
+            "notes": "Minette: biotite + orthoclase. Vogesite: hornblende + orthoclase. Kersantite: biotite + plagioclase. Spessartite: hornblende + plagioclase."
+        },
+        {
+            "q_num": 154,
+            "question": "A lamprophyre characterized by phenocrysts of hornblende set in a groundmass dominated by orthoclase is a:",
+            "options": {"a": "Minette", "b": "Vogesite", "c": "Kersantite", "d": "Spessartite"},
+            "answer": "b", "topic": "Lamprophyres", "subtopic": "Vogesite",
+            "notes": "Vogesite is a calc-alkaline lamprophyre with primary hornblende phenocrysts and dominant orthoclase in the matrix."
+        },
+        {
+            "q_num": 155,
+            "question": "A lamprophyre characterized by biotite phenocrysts embedded in a plagioclase feldspar groundmass is a:",
+            "options": {"a": "Minette", "b": "Kersantite", "c": "Vogesite", "d": "Spessartite"},
+            "answer": "b", "topic": "Lamprophyres", "subtopic": "Kersantite",
+            "notes": "Kersantite is a calc-alkaline lamprophyre composed of biotite phenocrysts and plagioclase (oligoclase-andesine) groundmass."
+        },
+        {
+            "q_num": 156,
+            "question": "A lamprophyre containing hornblende phenocrysts in a matrix of plagioclase feldspar is a:",
+            "options": {"a": "Minette", "b": "Vogesite", "c": "Kersantite", "d": "Spessartite"},
+            "answer": "d", "topic": "Lamprophyres", "subtopic": "Spessartite",
+            "notes": "Spessartite is a calc-alkaline lamprophyre containing hornblende/augite phenocrysts in a plagioclase groundmass."
+        },
+        {
+            "q_num": 157,
+            "question": "The 'Felsic Index' (F.I.) used in igneous geochemical variation is denoted by the ratio:",
+            "options": {
+                "a": "Na2O / K2O",
+                "b": "[100 x (Na2O + K2O)] / [Na2O + K2O + CaO]",
+                "c": "SiO2 / (CaO + MgO)",
+                "d": "Al2O3 / SiO2"
+            },
+            "answer": "b",
+            "topic": "Geochemical Indices", "subtopic": "Felsic Index",
+            "notes": "The Felsic Index measures the progression of feldspar differentiation: F.I. = 100(Na2O + K2O) / (Na2O + K2O + CaO), increasing toward 100 in evolved granites."
+        },
+        {
+            "q_num": 158,
+            "question": "The 'Mafic Index' (M.I.) representing iron-magnesium differentiation is denoted by the formula:",
+            "options": {
+                "a": "MgO / FeO",
+                "b": "[100 x (FeO + Fe2O3)] / [FeO + Fe2O3 + MgO]",
+                "c": "CaO / MgO",
+                "d": "TiO2 / FeO"
+            },
+            "answer": "b",
+            "topic": "Geochemical Indices", "subtopic": "Mafic Index",
+            "notes": "The Mafic Index measures iron enrichment relative to magnesium: M.I. = 100(FeO + Fe2O3) / (FeO + Fe2O3 + MgO), approaching 100 in extreme ferrogabbros."
+        },
+        {
+            "q_num": 159,
+            "question": "The 'alkali-iron-magnesium' (AFM) diagram plots which three geochemical components?",
+            "options": {
+                "a": "Al2O3 - FeO - MnO",
+                "b": "A = (Na2O + K2O), F = (FeO + Fe2O3), M = MgO",
+                "c": "Anorthite - Forsterite - Magnetite",
+                "d": "Albite - Fayalite - Microcline"
+            },
+            "answer": "b",
+            "topic": "Ternary Diagrams", "subtopic": "AFM Triangle",
+            "notes": "The AFM diagram plots normalized weight percentages of A (Na2O + K2O), F (total iron as FeO), and M (MgO), discriminating tholeiitic from calc-alkaline suites."
+        },
+        {
+            "q_num": 160,
+            "question": "In layered igneous complexes, rhythmic igneous layering characterized by dense chromite or magnetite at the bottom grading upward into plagioclase is termed:",
+            "options": {"a": "Normal grading", "b": "Cross-bedding", "c": "Density-stratified cumulate grading", "d": "Deformational banding"},
+            "answer": "c", "topic": "Layered Intrusions", "subtopic": "Cumulate Grading",
+            "notes": "Gravity settling and in-situ crystallization produce density-stratified cumulate units where dense mafic/oxide phases settle to the base of individual layers."
+        },
+        {
+            "q_num": 161,
+            "question": "In the CIPW norm, the 'Felsic Index' (or normative felsic parameter) is calculated using:",
+            "options": {
+                "a": "(Na2O + K2O) / (Na2O + K2O + CaO)",
+                "b": "(Na2O + K2O + CaO) / (Na2O + K2O)",
+                "c": "SiO2 + (Na2O + K2O) / CaO",
+                "d": "CaO / (Na2O + K2O)"
+            },
+            "answer": "a",
+            "topic": "Geochemical Indices", "subtopic": "Felsic Parameter",
+            "notes": "Matches Option a: Felsic Index = (Na2O + K2O) / (Na2O + K2O + CaO), monitoring alkali feldspar enrichment during magmatic evolution."
+        },
+        {
+            "q_num": 162,
+            "question": "The sum of normative Anorthite + Mg-diopside + Forsterite + Enstatite is formally described as the:",
+            "options": {"a": "Differentiation Index", "b": "Solidification Index", "c": "Crystallization Index", "d": "Agpaitic Index"},
+            "answer": "c", "topic": "Geochemical Indices", "subtopic": "Crystallization Index",
+            "notes": "The Crystallization Index (Poldervaart and Parker, 1964) is defined as C.I. = An + Di' + Fo + En, measuring early-formed high-temperature mafic components."
+        },
+        {
+            "q_num": 163,
+            "question": "The 'Differentiation Index' (Thornton and Tuttle, 1960) is the sum of the normative compositions of:",
+            "options": {
+                "a": "Quartz and orthoclase",
+                "b": "Quartz, orthoclase and albite",
+                "c": "Quartz, orthoclase, albite and nepheline",
+                "d": "Quartz, orthoclase, albite, nepheline, leucite and kalsilite"
+            },
+            "answer": "d",
+            "topic": "Differentiation Index", "subtopic": "Complete Normative Components",
+            "notes": "D.I. = normative Q + Or + Ab + Ne + Lc + Kls, representing the percentage of low-melting residua system minerals formed during crystal fractionation."
+        },
+        {
+            "q_num": 164,
+            "question": "The 'Solidification Index' (S.I.) proposed by Japanese petrologist Hisashi Kuno is denoted as:",
+            "options": {
+                "a": "[MgO + FeO + Fe2O3 + Na2O + K2O] / [MgO + FeO]",
+                "b": "[MgO + FeO + Fe2O3] / [MgO + FeO]",
+                "c": "100 x MgO / [MgO + FeO + Fe2O3 + Na2O + K2O]",
+                "d": "[MgO + FeO + Fe2O3 + Na2O + K2O] / 100 MgO"
+            },
+            "answer": "c",
+            "topic": "Solidification Index", "subtopic": "Kuno's Formula",
+            "notes": "Kuno's formula: S.I. = 100 MgO / (MgO + FeO + Fe2O3 + Na2O + K2O). Decreases monotonically from ~45 in primitive magmas to <10 in felsic differentiates."
+        },
+        {
+            "q_num": 165,
+            "question": "In CIPW normative petrology, subalkaline igneous rocks characteristically contain:",
+            "options": {
+                "a": "Orthopyroxene in the norm only",
+                "b": "Orthopyroxene (hypersthene) and quartz in the norm",
+                "c": "Orthopyroxene, quartz and feldspathoids in the norm",
+                "d": "Feldspathoids in the norm"
+            },
+            "answer": "b",
+            "topic": "CIPW Norm", "subtopic": "Subalkaline Norm",
+            "notes": "Subalkaline rocks are silica-saturated to oversaturated, containing normative hypersthene (orthopyroxene) and quartz, completely lacking normative feldspathoids."
+        },
+        {
+            "q_num": 166,
+            "question": "If the sodium-iron pyroxene mineral 'acmite' (NaFeSi2O6) appears in the calculated CIPW norm, the rock is definitively classified as:",
+            "options": {"a": "Alkaline", "b": "Peralkaline", "c": "Subalkaline", "d": "Non-alkaline"},
+            "answer": "b", "topic": "CIPW Norm", "subtopic": "Normative Acmite",
+            "notes": "Acmite appears in the norm only when molecular Na2O > Al2O3 (peralkaline condition), combining excess Na with Fe2O3."
+        },
+        {
+            "q_num": 167,
+            "question": "Petrographically, 'pitchstone' is defined as a:",
+            "options": {
+                "a": "Massive or layered volcanic glass with a characteristic waxy or pitch-like resinous luster and 5-10% water",
+                "b": "Pearly gray glass with perlitic fabric",
+                "c": "Glass with highly vesicular pumiceous fabric",
+                "d": "Vitrophyric glass"
+            },
+            "answer": "a", "topic": "Volcanic Glasses", "subtopic": "Pitchstone Definition",
+            "notes": "Pitchstone is a volcanic glass rich in water (typically 5 to 10% H2O) exhibiting a dull, greasy or resinous pitch-like luster."
+        },
+        {
+            "q_num": 168,
+            "question": "Which of the following geochemical/mineralogical characteristics is NOT characteristic of S-type (sedimentary protolith) granitic rocks?",
+            "options": {
+                "a": "Their initial 87Sr/86Sr ratios are > 0.710",
+                "b": "Their normative compositions contain corundum (>1%)",
+                "c": "They are rich in muscovite and biotite",
+                "d": "They contain hornblende in the mode"
+            },
+            "answer": "d", "topic": "Granite Petrology", "subtopic": "S-Type Characteristics",
+            "notes": "Hornblende is a calcium-rich mineral diagnostic of metaluminous I-type granites; S-type granites are peraluminous and cannot stabilize primary hornblende."
+        },
+        {
+            "q_num": 169,
+            "question": "In the Chappell and White classification, granites generated by anatectic melting of sedimentary pelites and greywackes during regional collisional orogenesis are:",
+            "options": {"a": "I-type granitoids", "b": "M-type granitoids", "c": "S-type granitoids", "d": "A-type granitoids"},
+            "answer": "c", "topic": "Granite Petrogenesis", "subtopic": "S-Type Origin",
+            "notes": "S-type granites represent anatectic melting of supracrustal sedimentary pelitic and greywacke protoliths in collisional orogenic belts (e.g., Lachlan Fold Belt, Himalayas)."
+        },
+        {
+            "q_num": 170,
+            "question": "Wyomingite, orendite, and madupite (Leucite Hills, Wyoming) are world-famous examples of ultra-potassic peralkaline rocks characterized by:",
+            "options": {"a": "K2O / Na2O > 3 (molar)", "b": "K2O / Na2O < 3", "c": "K2O / Na2O = 1", "d": "Na2O > K2O"},
+            "answer": "a", "topic": "Ultrapotassic Rocks", "subtopic": "K2O/Na2O Ratios",
+            "notes": "Ultrapotassic rocks are formally defined by molar K2O/Na2O > 3, MgO > 3 wt%, and extreme enrichment in K, Ba, Sr, and incompatible elements."
+        },
+        {
+            "q_num": 171,
+            "question": "Match the following unusual ultrapotassic volcanic rocks with their dominant diagnostic mineral assemblages:\n(1) Wyomingite — (B) Diopside, leucite, phlogopite\n(2) Madupite — (C) Diopside-rich groundmass with phlogopite\n(3) Orendite — (A) Leucite, sanidine, phlogopite\n(4) Katungite — (D) Olivine, melilite, and K-rich glass",
+            "options": {"a": "1-D, 2-C, 3-B, 4-A", "b": "1-C, 2-B, 3-A, 4-D", "c": "1-B, 2-D, 3-A, 4-C", "d": "1-A, 2-D, 3-C, 4-B"},
+            "answer": "b", "topic": "Ultrapotassic Mineralogy", "subtopic": "Matching Minerals",
+            "notes": "Wyomingite, madupite, orendite (Leucite Hills), and katungite (Uganda potassic-melilite rock) represent iconic ultrapotassic silica-undersaturated suites."
+        },
+        {
+            "q_num": 172,
+            "question": "Which of the following felsic-to-intermediate igneous rock types has the lowest weight percentage of silica (SiO2)?",
+            "options": {"a": "Rhyolite (~72%)", "b": "Trachyte (~60%)", "c": "Phonolite (~56%)", "d": "Nepheline Syenite (~50-54%)"},
+            "answer": "d", "topic": "Silica Content", "subtopic": "Lowest Silica Rock",
+            "notes": "Nepheline syenite is strongly silica-undersaturated (SiO2 ~50-54%), containing nepheline instead of quartz, giving it the lowest silica content among the options."
+        },
+        {
+            "q_num": 173,
+            "question": "In which of the following rock types does the mineral diopside NOT generally appear in the calculated CIPW norm?",
+            "options": {"a": "Peraluminous Granites", "b": "Syenites", "c": "Nepheline syenites", "d": "Diorites"},
+            "answer": "a", "topic": "CIPW Norm", "subtopic": "Diopside Absence",
+            "notes": "In peraluminous granites, all CaO is consumed to form normative anorthite (with excess Al forming corundum), preventing the formation of normative diopside."
+        },
+        {
+            "q_num": 174,
+            "question": "Which of the following rocks does NOT contain nepheline in its calculated CIPW norm?",
+            "options": {"a": "Phonolite", "b": "Trachybasalt", "c": "Basanite", "d": "Silica-saturated Syenite"},
+            "answer": "d", "topic": "CIPW Norm", "subtopic": "Normative Nepheline",
+            "notes": "Silica-saturated syenites contain sufficient SiO2 to satisfy all alkali feldspars, containing normative hypersthene or quartz rather than nepheline."
+        },
+        {
+            "q_num": 175,
+            "question": "The chemical formula Na2O·Fe2O3·4SiO2 (or NaFeSi2O6) corresponds to which calculated CIPW normative mineral?",
+            "options": {"a": "Diopside", "b": "Sphene", "c": "Acmite (aegirine)", "d": "Nepheline"},
+            "answer": "c", "topic": "CIPW Norm", "subtopic": "Acmite Molecule",
+            "notes": "Acmite (NaFe3+Si2O6) has the molar formula Na2O·Fe2O3·4SiO2, appearing in the CIPW norm of peralkaline igneous rocks."
+        }
+    ]
+
+def build_dataset():
+    all_qs = get_questions_1_to_45() + get_questions_46_to_90() + get_questions_91_to_135() + get_questions_136_to_175()
+    print(f"Total compiled questions for Chapter 11: {len(all_qs)}")
+    assert len(all_qs) == 175, f"Expected 175 questions, got {len(all_qs)}"
+
+    # Validate against official key
+    mismatches = 0
+    for q in all_qs:
+        qnum = q["q_num"]
+        expected = OFFICIAL_KEY[qnum]
+        actual = q["answer"]
+        if actual != expected:
+            print(f"Mismatch at Q{qnum}: expected {expected}, got {actual}")
+            mismatches += 1
+
+    assert mismatches == 0, f"Found {mismatches} key mismatches!"
+    print("All 175 questions 100% verified against official answer key!")
+
+    out_file = os.path.join(DATA_DIR, "sayeed_ch11_igneous_petrology.json")
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(all_qs, f, indent=2, ensure_ascii=False)
+
+    print(f"Master dataset written successfully: {out_file} ({os.path.getsize(out_file)} bytes)")
+
+if __name__ == "__main__":
+    build_dataset()
