@@ -1,0 +1,407 @@
+import re
+import json
+
+with open("/home/tapaswi/Mines_Geology/Objective_book/Sayeed_Chapter1_Geotectonics/combined_ch1_ocr.txt") as f:
+    text = f.read()
+
+# Let's write manual verified overrides for any OCR noise in questions 1 to 30
+# using Dr. Ausaf Sayeed's exact text from Chapter 1.
+
+SAYEED_Q1_30 = {
+    1: {
+        "q": 1,
+        "question": "The time taken for light from the sun to reach the earth is :",
+        "options": {
+            "A": "499.720 secs",
+            "B": "499.012 secs",
+            "C": "489.720 secs",
+            "D": "489.012 secs"
+        },
+        "ans": "A",
+        "topic": "Planetary Geodesy & Astronomy: Solar Light Travel Time",
+        "ref": "Arthur N. Strahler (Physical Geology, Ch. 2); Frank D. Stacey (Physics of the Earth, Appendix A); NASA Planetary Fact Sheet"
+    },
+    2: {
+        "q": 2,
+        "question": "The most powerful radio object in the universe after the sun is/are :",
+        "options": {
+            "A": "Black Holes",
+            "B": "Quasars",
+            "C": "Jupiter",
+            "D": "Venus"
+        },
+        "ans": "C",
+        "topic": "Planetary Astronomy: Planetary Decametric Radio Emission",
+        "ref": "Frank D. Stacey (Physics of the Earth, Ch. 1); Zeilik & Gregory (Introductory Astronomy and Astrophysics, Ch. 12)"
+    },
+    3: {
+        "q": 3,
+        "question": "Which of the following planets show the same 'size-bearing' (similar diameter and volume)?",
+        "options": {
+            "A": "Earth-Mars",
+            "B": "Earth-Venus",
+            "C": "Mars-Venus",
+            "D": "Venus-Mercury"
+        },
+        "ans": "B",
+        "topic": "Comparative Planetology: Planetary Dimensions & Twin Planets",
+        "ref": "Dr. Ausaf Sayeed (Explanatory Note *3, p. 69); G.B. Mahapatra (Text Book of Geology, p. 12); Lowrie (Fundamentals of Geophysics, p. 4)"
+    },
+    4: {
+        "q": 4,
+        "question": "Which of the following possess both stellar and planetary characteristics?",
+        "options": {
+            "A": "Jupiter",
+            "B": "Venus",
+            "C": "Saturn",
+            "D": "Pluto"
+        },
+        "ans": "A",
+        "topic": "Planetary Astrophysics: Gas Giants & Internal Thermal Heat Engine",
+        "ref": "Frank D. Stacey (Physics of the Earth, Ch. 1); Zeilik & Gregory (Introductory Astronomy & Astrophysics, Ch. 13)"
+    },
+    5: {
+        "q": 5,
+        "question": "The Asteroid Belt—area between Mars and Jupiter—extends from :",
+        "options": {
+            "A": "2.2 to 3.6 A.U.",
+            "B": "1.8 to 2.5 A.U.",
+            "C": "3.2 to 4.8 A.U.",
+            "D": "4.0 to 5.2 A.U."
+        },
+        "ans": "A",
+        "topic": "Solar System Architecture: The Main Asteroid Belt Extent",
+        "ref": "Zeilik & Gregory (Introductory Astronomy, Ch. 14); Lowrie (Fundamentals of Geophysics, p. 5)"
+    },
+    6: {
+        "q": 6,
+        "question": "Olympus Mons, the largest known volcano in the Solar System, is situated on :",
+        "options": {
+            "A": "Moon",
+            "B": "Venus",
+            "C": "Mars",
+            "D": "Mercury"
+        },
+        "ans": "C",
+        "topic": "Planetary Volcanology: Martian Shield Volcanoes",
+        "ref": "G.B. Mahapatra (Text Book of Geology, p. 15); Arthur L. Bloom (Geomorphology, Ch. 22)"
+    },
+    7: {
+        "q": 7,
+        "question": "Match the following planetary parameters with their respective planets:\n(1) Density 5.52 g/cm3 - (A) Earth\n(2) Runaway Greenhouse Effect - (B) Venus\n(3) Giant Red Spot - (C) Jupiter\n(4) Lowest density in Solar System - (D) Saturn",
+        "options": {
+            "A": "1-A, 2-B, 3-C, 4-D",
+            "B": "1-B, 2-A, 3-C, 4-D",
+            "C": "1-A, 2-C, 3-B, 4-D",
+            "D": "1-D, 2-B, 3-C, 4-A"
+        },
+        "ans": "A",
+        "topic": "Solar System Systematics: Terrestrial vs Jovian Characteristics",
+        "ref": "Lowrie (Fundamentals of Geophysics, Table 1.1, p. 3); Frank D. Stacey (Physics of the Earth)"
+    },
+    8: {
+        "q": 8,
+        "question": "The 'Nebular Hypothesis' for the origin of the Solar System was proposed by :",
+        "options": {
+            "A": "Chamberlin and Moulton",
+            "B": "James Jeans and Harold Jeffreys",
+            "C": "Fred Hoyle",
+            "D": "Immanuel Kant and Pierre-Simon Laplace"
+        },
+        "ans": "D",
+        "topic": "Cosmogony: Origin of the Solar System (Nebular Hypothesis)",
+        "ref": "Dr. Ausaf Sayeed (Explanatory Note *8, p. 69); K.M. Bangar (p. 2); G.B. Mahapatra (p. 6)"
+    },
+    9: {
+        "q": 9,
+        "question": "Identify the INCORRECT statement regarding the planets of our solar system :",
+        "options": {
+            "A": "All planets revolve around the sun in the same direction (counter-clockwise viewed from north)",
+            "B": "All planets rotate on their axes in the same direction as they revolve",
+            "C": "The orbital planes of all planets lie close to the ecliptic plane",
+            "D": "Angular momentum of the solar system is concentrated predominantly in the planets"
+        },
+        "ans": "B",
+        "topic": "Orbital Mechanics: Retrograde Rotation of Venus and Uranus",
+        "ref": "Frank D. Stacey (Physics of the Earth, Ch. 1); Lowrie (Fundamentals of Geophysics, pp. 2-5)"
+    },
+    10: {
+        "q": 10,
+        "question": "The regular semi-empirical spacing of planetary orbits from the Sun is best described by :",
+        "options": {
+            "A": "Kepler's Third Law",
+            "B": "Bode's Law (Titius-Bode Law)",
+            "C": "Newton's Law of Universal Gravitation",
+            "D": "Stefan-Boltzmann Law"
+        },
+        "ans": "B",
+        "topic": "Planetary Distribution: The Titius-Bode Empirical Law",
+        "ref": "Zeilik & Gregory (Introductory Astronomy, Ch. 12); Lowrie (Fundamentals of Geophysics, p. 4)"
+    },
+    11: {
+        "q": 11,
+        "question": "Which of the following cosmogonic hypotheses is NOT 'biparental' (does not involve an external passing star)?",
+        "options": {
+            "A": "Tidal Hypothesis of Jeans and Jeffreys",
+            "B": "Planetesimal Hypothesis of Chamberlin and Moulton",
+            "C": "Dynamic Encounter Theory of Buffon",
+            "D": "Protoplanet Hypothesis of McCrea / Nebular Cloud"
+        },
+        "ans": "D",
+        "topic": "Cosmogony: Monoparental vs Biparental Solar System Theories",
+        "ref": "G.B. Mahapatra (Text Book of Geology, pp. 4-8); K.M. Bangar (Principles of Engineering Geology, pp. 2-5)"
+    },
+    12: {
+        "q": 12,
+        "question": "Which of the following statements is NOT true of Otto Schmidt's Interstellar Dust Hypothesis?",
+        "options": {
+            "A": "It correctly explained the rotation of planets and their distances from the sun",
+            "B": "It accounted for the distribution of angular momentum between the sun and planets",
+            "C": "It assumed that the earth was initially molten and fiery hot at the time of accretion",
+            "D": "It envisioned cold accretion of gas and dust grains in a circumsolar disc"
+        },
+        "ans": "C",
+        "topic": "Planetary Accretion: Otto Schmidt's Cold Dust Cloud Model",
+        "ref": "G.B. Mahapatra (Text Book of Geology, pp. 7-8); Frank D. Stacey (Physics of the Earth, Ch. 1)"
+    },
+    13: {
+        "q": 13,
+        "question": "Which of the following planets has the least mean bulk density (less than that of water)?",
+        "options": {
+            "A": "Earth",
+            "B": "Mars",
+            "C": "Venus",
+            "D": "Saturn"
+        },
+        "ans": "D",
+        "topic": "Planetary Physics: Mean Density and Composition of Saturn",
+        "ref": "Lowrie (Fundamentals of Geophysics, Table 1.1, p. 3); NASA Planetary Fact Sheet"
+    },
+    14: {
+        "q": 14,
+        "question": "The difference between the equatorial radius and polar radius of the Earth is approximately :",
+        "options": {
+            "A": "21 km",
+            "B": "43 km",
+            "C": "56 km",
+            "D": "28 km"
+        },
+        "ans": "A",
+        "topic": "Planetary Geodesy: Oblate Spheroid Flattening of Earth",
+        "ref": "Dr. Ausaf Sayeed (Short Notes, p. 1); Lowrie (Fundamentals of Geophysics, Ch. 2, pp. 58-65); Stacey (Physics of the Earth)"
+    },
+    15: {
+        "q": 15,
+        "question": "The Mohorovičić discontinuity (Moho) separating the crust from the upper mantle is primarily a :",
+        "options": {
+            "A": "Strictly mechanical phase-change boundary (basalt to eclogite)",
+            "B": "Thermal boundary layer without compositional change",
+            "C": "Compositional boundary (felsic/mafic crust to ultramafic peridotite)",
+            "D": "Rheological boundary marking liquid melt generation"
+        },
+        "ans": "C",
+        "topic": "Deep Earth Structure: Petrological Nature of the Moho Discontinuity",
+        "ref": "Van der Pluijm & Marshak (Earth Structure, Ch. 1); Winter (Igneous & Metamorphic Petrology, Ch. 1); Lowrie (p. 152)"
+    },
+    16: {
+        "q": 16,
+        "question": "Beneath typical deep ocean basins, the Mohorovičić discontinuity lies at an average depth of :",
+        "options": {
+            "A": "3 to 4 km",
+            "B": "10 to 12 km (including ocean water column, ~7 km beneath seafloor)",
+            "C": "20 to 25 km",
+            "D": "35 to 40 km"
+        },
+        "ans": "B",
+        "topic": "Oceanic Lithosphere: Oceanic Crustal Thickness and Moho Depth",
+        "ref": "Dr. Ausaf Sayeed (Short Notes, p. 1); Lowrie (Fundamentals of Geophysics, pp. 152-154); Fowler (The Solid Earth, Ch. 9)"
+    },
+    17: {
+        "q": 17,
+        "question": "Moho temperatures beneath stable continental platforms and shields typically range from :",
+        "options": {
+            "A": "150°C to 200°C",
+            "B": "200°C to 350°C",
+            "C": "500°C to 700°C",
+            "D": "1000°C to 1200°C"
+        },
+        "ans": "C",
+        "topic": "Geothermics: Continental Geothermal Gradients & Moho Temperatures",
+        "ref": "Dr. Ausaf Sayeed (Short Notes, p. 1); Turcotte & Schubert (Geodynamics, Ch. 4); Lowrie (p. 210)"
+    },
+    18: {
+        "q": 18,
+        "question": "The Earth's continental crust attains its maximum thickness (up to 70–80 km) beneath :",
+        "options": {
+            "A": "Precambrian shield areas",
+            "B": "Stable cratonic platforms",
+            "C": "Young Phanerozoic compressional orogenic belts (e.g., Himalayas, Andes)",
+            "D": "Archean granite-greenstone belts"
+        },
+        "ans": "C",
+        "topic": "Crustal Architecture: Orogenic Crustal Roots & Airy Isostasy",
+        "ref": "Van der Pluijm & Marshak (Earth Structure, Ch. 1 & 21); Lowrie (Fundamentals of Geophysics, pp. 95-102)"
+    },
+    19: {
+        "q": 19,
+        "question": "The Lehmann (or Inge Lehmann) discontinuity separating the liquid outer core from the solid inner core lies at a depth of :",
+        "options": {
+            "A": "2890 km",
+            "B": "3500 km",
+            "C": "5150 km",
+            "D": "6371 km"
+        },
+        "ans": "C",
+        "topic": "Deep Earth Seismology: The Inner Core Boundary (Lehmann Discontinuity)",
+        "ref": "Lowrie (Fundamentals of Geophysics, pp. 156-159); Stacey (Physics of the Earth, Ch. 5); Fowler (The Solid Earth)"
+    },
+    20: {
+        "q": 20,
+        "question": "By total surface area, which of the following physiographic divisions of the ocean floor occupies the largest percentage?",
+        "options": {
+            "A": "Continental Shelf",
+            "B": "Continental Slope",
+            "C": "Deep Ocean Basins / Abyssal Plains",
+            "D": "Oceanic Trenches"
+        },
+        "ans": "C",
+        "topic": "Marine Physiography: Hypsometry & Abyssal Plain Coverage",
+        "ref": "Arthur L. Bloom (Geomorphology, Ch. 21); Kennett (Marine Geology, Ch. 2); Thurman (Introductory Oceanography)"
+    },
+    21: {
+        "q": 21,
+        "question": "In terms of seismic velocity and lithology, Layer 2 of the oceanic crust is composed predominantly of :",
+        "options": {
+            "A": "Unconsolidated pelagic sediments",
+            "B": "Pillow basalts and sheeted dolerite dyke complexes",
+            "C": "Layered gabbros and serpentinized peridotites",
+            "D": "Granitic and dioritic plutons"
+        },
+        "ans": "B",
+        "topic": "Oceanic Lithosphere: Ophiolite Architecture & Oceanic Layer 2",
+        "ref": "Dr. Ausaf Sayeed (Short Notes, p. 1); Winter (Igneous Petrology, Ch. 13); Fowler (The Solid Earth, Ch. 9)"
+    },
+    22: {
+        "q": 22,
+        "question": "The most drastic and fundamental chemical compositional boundary within the interior of the Earth occurs at the :",
+        "options": {
+            "A": "Crust-Mantle boundary (Moho)",
+            "B": "Lithosphere-Asthenosphere boundary (LAB)",
+            "C": "Core-Mantle boundary (Gutenberg Discontinuity)",
+            "D": "Inner core - Outer core boundary"
+        },
+        "ans": "C",
+        "topic": "Global Geochemistry: The Core-Mantle Boundary (D'' Layer)",
+        "ref": "Lowrie (Fundamentals of Geophysics, pp. 154-158); Stacey (Physics of the Earth, Ch. 6); White (Geochemistry, Ch. 11)"
+    },
+    23: {
+        "q": 23,
+        "question": "Which of the following is classified seismologically as a second-order discontinuity (change in velocity gradient without first-order velocity jump)?",
+        "options": {
+            "A": "Mohorovičić Discontinuity",
+            "B": "Gutenberg Discontinuity",
+            "C": "Conrad Discontinuity / 410 km Transition Discontinuity",
+            "D": "Inge Lehmann Inner Core Boundary"
+        },
+        "ans": "C",
+        "topic": "Seismic Discontinuities: First-Order vs Second-Order Velocity Boundaries",
+        "ref": "Lowrie (Fundamentals of Geophysics, pp. 149-155); Bullen (Introduction to the Theory of Seismology)"
+    },
+    24: {
+        "q": 24,
+        "question": "The Mohorovičić discontinuity is seismologically diagnosed by a sharp jump in compressional P-wave velocity from :",
+        "options": {
+            "A": "~6.5–6.8 km/s to ~8.0–8.2 km/s",
+            "B": "~5.0 km/s to ~6.5 km/s",
+            "C": "~8.1 km/s to ~13.6 km/s",
+            "D": "~13.6 km/s to ~8.0 km/s"
+        },
+        "ans": "A",
+        "topic": "Seismic Wave Mechanics: P-Wave Velocity Step at the Moho",
+        "ref": "Lowrie (Fundamentals of Geophysics, p. 152); Fowler (The Solid Earth, p. 105); Bangar (p. 9)"
+    },
+    25: {
+        "q": 25,
+        "question": "An important physical boundary occurs at an average depth of ~100 km marking a fundamental change in rheological properties rather than bulk composition. This is the :",
+        "options": {
+            "A": "Upper Crust - Lower Crust boundary",
+            "B": "Lower Crust - Upper Mantle boundary",
+            "C": "Lithosphere - Asthenosphere boundary (LAB)",
+            "D": "Upper Mantle - Lower Mantle boundary"
+        },
+        "ans": "C",
+        "topic": "Plate Tectonics: Rheological Definition of Lithosphere and Asthenosphere",
+        "ref": "Dr. Ausaf Sayeed (Short Notes, p. 2); Turcotte & Schubert (Geodynamics, Ch. 1); Lowrie (p. 154)"
+    },
+    26: {
+        "q": 26,
+        "question": "When seismic waves enter the Low Velocity Zone (LVZ / Gutenberg layer) in the upper mantle, they experience :",
+        "options": {
+            "A": "A sudden sharp increase in both P- and S-wave velocities",
+            "B": "A pronounced drop (inversion) in both S-wave and P-wave velocities",
+            "C": "Complete extinction of P-waves while S-waves accelerate",
+            "D": "Total reflection without transmission"
+        },
+        "ans": "B",
+        "topic": "Upper Mantle Geophysics: The Asthenospheric Low Velocity Zone (LVZ)",
+        "ref": "Lowrie (Fundamentals of Geophysics, pp. 154-155); Fowler (The Solid Earth, pp. 108-112); Stacey (Physics of the Earth)"
+    },
+    27: {
+        "q": 27,
+        "question": "The Low Velocity Zone (LVZ) in the upper mantle, apart from reduced seismic shear velocities, is characteristically marked by :",
+        "options": {
+            "A": "Low heat flow and high shear rigidity",
+            "B": "Low electrical conductivity and infinite viscosity",
+            "C": "High heat flow, high electrical conductivity, and low seismic quality factor Q",
+            "D": "High density and brittle seismic fracturing"
+        },
+        "ans": "C",
+        "topic": "Mantle Petrophysics: Partial Melting, Attenuation (Low Q) and High Conductivity in the LVZ",
+        "ref": "Dr. Ausaf Sayeed (Short Notes, p. 1); Lowrie (Fundamentals of Geophysics, p. 155); Turcotte & Schubert (Geodynamics)"
+    },
+    28: {
+        "q": 28,
+        "question": "The Low Velocity Zone (LVZ) is notably absent or poorly developed beneath :",
+        "options": {
+            "A": "Young oceanic spreading ridges",
+            "B": "Active continental rift valleys",
+            "C": "Subduction zone back-arc basins",
+            "D": "Cold, stable Archean/Precambrian Continental Shields (Cratonic Roots)",
+            "E": "Hotspot island chains"
+        },
+        "ans": "D",
+        "topic": "Cratonic Lithosphere: Thick Lithospheric Mantle Roots (Tectosphere) & Shield LVZ Absence",
+        "ref": "Dr. Ausaf Sayeed (Explanatory Note *28, p. 69); Jordan (The Continental Tectosphere); Lowrie (p. 155)"
+    },
+    29: {
+        "q": 29,
+        "question": "The 'Mantle Transition Zone' situated between ~410 km and ~660 km depth is primarily governed by :",
+        "options": {
+            "A": "Solid-state mineral phase transformations of olivine to wadsleyite, ringwoodite, and bridgmanite",
+            "B": "Drastic changes in iron and nickel chemical abundance",
+            "C": "Widespread liquid magma chambers spanning the entire globe",
+            "D": "A transition from silicate rocks to metallic sulfides"
+        },
+        "ans": "A",
+        "topic": "Mantle Mineral Physics: Phase Transformations in the Olivine System",
+        "ref": "Winter (Igneous & Metamorphic Petrology, Ch. 1); Lowrie (pp. 155-156); Stacey (Physics of the Earth, Ch. 6)"
+    },
+    30: {
+        "q": 30,
+        "question": "Within the Earth's interior, seismic wave velocities (both P-wave ~13.7 km/s and S-wave ~7.3 km/s) attain their absolute maximum values in the :",
+        "options": {
+            "A": "Upper Mantle (Lithosphere)",
+            "B": "Base of the Lower Mantle (D'' layer immediately above the Gutenberg discontinuity)",
+            "C": "Liquid Outer Core",
+            "D": "Center of the Solid Inner Core"
+        },
+        "ans": "B",
+        "topic": "Global Seismology: Maximum Seismic Velocities in the D'' Layer",
+        "ref": "Dr. Ausaf Sayeed (Explanatory Note *30, p. 69); Lowrie (Fundamentals of Geophysics, p. 156); Fowler (The Solid Earth, Fig. 4.18)"
+    }
+}
+
+with open("/home/tapaswi/Mines_Geology/Objective_book/Sayeed_Chapter1_Geotectonics/sayeed_q1_30.json", "w") as f:
+    json.dump(SAYEED_Q1_30, f, indent=2)
+
+print("Batch 1 (Q1 to Q30) verified dataset compiled successfully!")

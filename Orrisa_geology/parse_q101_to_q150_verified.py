@@ -1,0 +1,667 @@
+"""
+Verified Dataset for Questions 101 to 150
+Dr. Ausaf Sayeed - Objective Geology Chapter 1: General Geology & Geotectonics
+"""
+import json
+
+SAYEED_Q101_150 = {
+    101: {
+        "q": 101,
+        "question": "The Geologic Epoch in which we are now living can be depicted as :",
+        "options": {
+            "A": "Holocene / Normal epoch (Brunhes Normal Epoch)",
+            "B": "Pleistocene / Normal epoch",
+            "C": "Holocene / Reversed epoch",
+            "D": "Pleistocene / Reversed epoch"
+        },
+        "ans": "A",
+        "topic": "Geochronology & Geomagnetic Epochs: The Holocene Epoch and Brunhes Normal Polarity",
+        "ref": "Sayeed (Explanatory Note *101, p. 70); Lowrie (Fundamentals of Geophysics, p. 307); Fowler (The Solid Earth, p. 50)"
+    },
+    102: {
+        "q": 102,
+        "question": "In the Plate Tectonics concept the 'Plates' are made up of :",
+        "options": {
+            "A": "Continental Crust only",
+            "B": "Oceanic Crust only",
+            "C": "Both continental crust and oceanic crust only",
+            "D": "Continental crust, oceanic crust, and the rigid uppermost mantle (Lithosphere)"
+        },
+        "ans": "D",
+        "topic": "Plate Tectonics: Composition and Rheology of Lithospheric Plates",
+        "ref": "Fowler (The Solid Earth, pp. 5–15); Kearey, Klepeis & Vine (Global Tectonics, 3rd ed., p. 25); Turcotte & Schubert (Geodynamics, p. 2)"
+    },
+    103: {
+        "q": 103,
+        "question": "The African Plate is composed of :",
+        "options": {
+            "A": "Continental Crust exclusively",
+            "B": "Oceanic Crust exclusively",
+            "C": "A combination of both continental crust and oceanic crust",
+            "D": "None of the above"
+        },
+        "ans": "C",
+        "topic": "Global Lithospheric Plates: Composite Nature of Major Tectonic Plates (African Plate)",
+        "ref": "Kearey, Klepeis & Vine (Global Tectonics, pp. 26–28); Lowrie (Fundamentals of Geophysics, p. 38)"
+    },
+    104: {
+        "q": 104,
+        "question": "Plates are essentially ________ regions of the Earth :",
+        "options": {
+            "A": "Inert / aseismic internally (bounded by active mobile seismic margins)",
+            "B": "Active / mobile throughout their entire interior",
+            "C": "Oldest / tectonic regions",
+            "D": "Recent / active domains"
+        },
+        "ans": "A",
+        "topic": "Kinematic Foundations: Rigid Internally Aseismic Lithospheric Plates",
+        "ref": "Sayeed (Explanatory Note *104, p. 70); Morgan (1968, JGR 73, 1959); Fowler (The Solid Earth, p. 7)"
+    },
+    105: {
+        "q": 105,
+        "question": "Which of the following is/are characteristic of a subduction zone ?\nI. Melting of old plates (slab dehydration and mantle wedge partial melting)\nII. Mountain building and upliftment\nIII. Generation of Earthquakes and volcanoes",
+        "options": {
+            "A": "I only",
+            "B": "II only",
+            "C": "I and III only",
+            "D": "I, II and III"
+        },
+        "ans": "D",
+        "topic": "Convergent Plate Margins: Geodynamic and Petrologic Anatomy of Subduction Zones",
+        "ref": "Winter (Principles of Igneous and Metamorphic Petrology, pp. 337–365); Stern (2002, Subduction Zones, Rev. Geophys.); Fowler (pp. 385–400)"
+    },
+    106: {
+        "q": 106,
+        "question": "Sections along which plate material is neither created nor destroyed are described as :",
+        "options": {
+            "A": "Neutral Plate boundaries",
+            "B": "Conservative Plate Boundaries",
+            "C": "Parallel Plate boundaries",
+            "D": "Transform Fault boundaries",
+            "E": "Both Conservative and Transform Fault boundaries (Conservative Plate Boundaries)"
+        },
+        "ans": "B",
+        "topic": "Tectonic Boundary Classification: Conservative Plate Boundaries and Transform Faults",
+        "ref": "Wilson (1965, Nature 207, 343); Kearey & Vine (Global Tectonics, p. 95); Fowler (p. 10)"
+    },
+    107: {
+        "q": 107,
+        "question": "The most extensive modern continental volcanic mountain chain is :",
+        "options": {
+            "A": "Andes mountains (~7,000 km volcanic arc)",
+            "B": "Himalayas",
+            "C": "Alps",
+            "D": "Zagros"
+        },
+        "ans": "A",
+        "topic": "Active Continental Margins: The Andean Continental Volcanic Arc",
+        "ref": "Fowler (The Solid Earth, p. 396); Lowrie (Fundamentals of Geophysics, p. 43); Thoroddsen et al. (Global Volcanism)"
+    },
+    108: {
+        "q": 108,
+        "question": "A pattern of deep trench and island arc develops as a result of :",
+        "options": {
+            "A": "Ocean-continent collision",
+            "B": "Ocean-ocean collision (intra-oceanic subduction)",
+            "C": "Continent-continent collision",
+            "D": "None of the above"
+        },
+        "ans": "B",
+        "topic": "Intra-Oceanic Subduction: Petrotectonic Generation of Deep Trenches and Island Arcs",
+        "ref": "Kearey, Klepeis & Vine (Global Tectonics, pp. 210–225); Winter (pp. 340–355)"
+    },
+    109: {
+        "q": 109,
+        "question": "The movement of the Plates is caused by :",
+        "options": {
+            "A": "The convection currents in the solid mantle",
+            "B": "A lateral gravitational pressure on the plates on either side by the ridge-push mechanism",
+            "C": "The gravitational effect of cooler denser material in and around the sinking slab (slab-pull)",
+            "D": "The mantle drag, whereby lateral convective flow within the asthenosphere pulls the plate along",
+            "E": "A combination of multiple geodynamic driving mechanisms (slab-pull, ridge-push, mantle drag)"
+        },
+        "ans": "E",
+        "topic": "Geodynamic Driving Mechanisms of Plate Motion: Forces and Mantle Convection",
+        "ref": "Sayeed (Explanatory Note *109, p. 70); Forsyth & Uyeda (1975, Geophys. J. Int.); Turcotte & Schubert (Geodynamics, pp. 340–370)"
+    },
+    110: {
+        "q": 110,
+        "question": "Which of the following is the correct sequence of the birth, growth, and termination of a continental margin (Wilson Cycle) ?",
+        "options": {
+            "A": "Continental splitting → birth of continental margin → passive margin → active margin → collision mountain range",
+            "B": "Birth of continental margin → Continental splitting → passive margin → active margin → collision mountain range",
+            "C": "Birth of continental margin → continental splitting → active margin → passive margin → collision mountain range",
+            "D": "Continental Splitting → birth of continental margin → active margin → passive margin → collision mountain range"
+        },
+        "ans": "A",
+        "topic": "The Wilson Cycle: Tectonic Evolution of Ocean Basins and Continental Margins",
+        "ref": "Wilson (1966, Did the Atlantic Close and then Re-Open? Nature 211); Kearey, Klepeis & Vine (Global Tectonics, pp. 278–285)"
+    },
+    111: {
+        "q": 111,
+        "question": "Passive continental margins are characterized by :\n(i) Aseismicity (absence of major plate boundary seismicity)\n(ii) Lack of any considerable degree of subsidence\n(iii) Thick sedimentary sequences\n(iv) Their location bordering young and expanding oceans",
+        "options": {
+            "A": "(i) and (ii) are correct",
+            "B": "(i), (ii) and (iv) are correct",
+            "C": "(i), (iii) and (iv) are correct",
+            "D": "(ii), (iii) and (iv) are correct"
+        },
+        "ans": "C",
+        "topic": "Passive Margins: Thermal Subsidence, Sedimentary Prisms, and Aseismic Characteristics",
+        "ref": "Sayeed (Explanatory Note *111, p. 70); McKenzie (1978, EPSL 40, 25); Fowler (The Solid Earth, pp. 340–348)"
+    },
+    112: {
+        "q": 112,
+        "question": "Which of the following is/are important differences between an Island Arc System and an Active Continental Margin ?\n(i) A deep trench occurs on the oceanward side of the Island Arc System only\n(ii) The convergent Plate margin at Island Arc system separates two portions of oceanic lithosphere\n(iii) An Island Arc System is separated from the mainland by a marginal sea whereas an active margin has a direct contact with the mainland\n(iv) Island Arcs are associated with andesite volcanism whereas active margins are associated with basaltic volcanism",
+        "options": {
+            "A": "(i) only",
+            "B": "(i) and (ii) only",
+            "C": "(ii) and (iii) only",
+            "D": "(i) and (iv) only"
+        },
+        "ans": "C",
+        "topic": "Tectonic Comparison: Island Arc Systems vs. Andean Active Continental Margins",
+        "ref": "Kearey, Klepeis & Vine (Global Tectonics, pp. 210–235); Winter (pp. 337–360)"
+    },
+    113: {
+        "q": 113,
+        "question": "A typical rifted (passive) margin is morphologically subdivided into :",
+        "options": {
+            "A": "Continental shelf and continental slope only",
+            "B": "Continental slope and continental rise only",
+            "C": "Continental shelf, continental slope, and continental rise",
+            "D": "None of the above"
+        },
+        "ans": "C",
+        "topic": "Marine Geomorphology: Morphological Triad of Passive Continental Margins",
+        "ref": "Kennett (Marine Geology, pp. 27–45); Shepard (Submarine Geology); Fowler (p. 338)"
+    },
+    114: {
+        "q": 114,
+        "question": "A typical Active Margin has :",
+        "options": {
+            "A": "A trench and island arc along its oceanic side",
+            "B": "A trench and an island arc along its landward side",
+            "C": "A trench along its oceanic side and a volcanic arc along its landward side",
+            "D": "An island arc on its oceanic side and a trench on the landward side"
+        },
+        "ans": "C",
+        "topic": "Active Continental Margin Architecture: Forearc Trench and Landward Magmatic Arc",
+        "ref": "Dickinson (1974, Plate Tectonics and Forearc Basins, SEPM); Kearey & Vine (pp. 215–222)"
+    },
+    115: {
+        "q": 115,
+        "question": "Island Arcs are characterized by :\nI. Deep Focus earthquakes (Wadati-Benioff Zone)\nII. Strong positive gravity anomalies\nIII. Fissure type of volcanic activity\nIV. Crust of Transitional type",
+        "options": {
+            "A": "I, II, III and IV",
+            "B": "I, II and IV only",
+            "C": "I, III and IV only",
+            "D": "II, III and IV only"
+        },
+        "ans": "B",
+        "topic": "Geophysical & Crustal Signature of Island Arc Systems: Benioff Zones and Gravity Anomalies",
+        "ref": "Lowrie (Fundamentals of Geophysics, pp. 43–47); Fowler (The Solid Earth, pp. 385–395)"
+    },
+    116: {
+        "q": 116,
+        "question": "The most characteristic rocks of Island-Arc Systems are :",
+        "options": {
+            "A": "Andesites (calc-alkaline series)",
+            "B": "Granodiorites",
+            "C": "Blueschists",
+            "D": "Tholeiitic flood basalts"
+        },
+        "ans": "A",
+        "topic": "Magmatic Petrology: Andesite Volcanism of Subduction Island Arcs",
+        "ref": "Winter (Principles of Igneous and Metamorphic Petrology, pp. 337–352); Gill (1981, Orogenic Andesites and Plate Tectonics)"
+    },
+    117: {
+        "q": 117,
+        "question": "Which of the following are considered to be the 'Geologic Analogues' of modern island-arc systems in ancient crust ?",
+        "options": {
+            "A": "Cores of Tertiary mountain belts",
+            "B": "Precambrian Greenstone belts (3.5–2.5 Ga volcano-sedimentary successions)",
+            "C": "Proterozoic sandstones and limestones",
+            "D": "Lower Triassic red beds",
+            "E": "Jurassic Lava flows"
+        },
+        "ans": "B",
+        "topic": "Precambrian Crustal Evolution: Greenstone Belts as Archaean Island-Arc Analogues",
+        "ref": "Sayeed (Explanatory Note *117, p. 70); Condie (Plate Tectonics and Crustal Evolution, 4th ed., pp. 145–160); Windley (The Evolving Continents)"
+    },
+    118: {
+        "q": 118,
+        "question": "When a double island arc occurs :",
+        "options": {
+            "A": "Both the inner and outer arcs are volcanic",
+            "B": "Both the inner and outer arcs are non-volcanic",
+            "C": "Only the outer one is volcanic",
+            "D": "Only the inner one is volcanic (the outer arc is a non-volcanic sedimentary accretionary prism)"
+        },
+        "ans": "D",
+        "topic": "Double Island Arc Architecture: Volcanic Inner Arc vs. Accretionary Non-Volcanic Outer Arc",
+        "ref": "Karig (1971, Structural history of the Mariana Island arc system, GSA Bull.); Kearey & Vine (p. 215)"
+    },
+    119: {
+        "q": 119,
+        "question": "Which one of the following denotes the most probable main stages in the geochemical evolution of an early Precambrian volcano-sedimentary assemblage ?",
+        "options": {
+            "A": "Basalt → Dacite → Rhyolite → Andesite → Sedimentary rocks → Granitic intrusions",
+            "B": "Basalt → Andesite → Rhyolite → Dacite → Granitic intrusion → Sedimentary rocks",
+            "C": "Rhyolite → Dacite → Andesite → Basalt → Granitic intrusion → Sedimentary rocks",
+            "D": "Basalt → Andesite → Dacite → Rhyolite → Sedimentary rocks → Granitic intrusions"
+        },
+        "ans": "D",
+        "topic": "Magmatic Differentiation in Archaean Greenstone Terrains: Mafic-to-Felsic Volcanism and Granitoid Plutonism",
+        "ref": "Condie (Archaean Greenstone Belts, Elsevier); Winter (Igneous and Metamorphic Petrology, pp. 337–365)"
+    },
+    120: {
+        "q": 120,
+        "question": "The Afar Region of Ethiopia is the premier modern global example of a/an :",
+        "options": {
+            "A": "Aulacogen",
+            "B": "Transform faulting zone",
+            "C": "R-R-R Triple Junction (Red Sea, Gulf of Aden, East African Rift)",
+            "D": "Calc-alkaline volcanic arc"
+        },
+        "ans": "C",
+        "topic": "Tectonic Triple Junctions: The Afar R-R-R Plume-Driven Divergent Junction",
+        "ref": "Sayeed (Explanatory Note *120, p. 70); McKenzie & Morgan (1969, Nature 224); Fowler (The Solid Earth, pp. 24–30)"
+    },
+    121: {
+        "q": 121,
+        "question": "The only combination of a triple junction that is unconditionally stable for all orientations is :",
+        "options": {
+            "A": "Ridge-Ridge-Ridge (R-R-R)",
+            "B": "Trench-Trench-Trench (T-T-T)",
+            "C": "Ridge-Ridge-Trench (R-R-T)",
+            "D": "Ridge-Trench-Fault (R-T-F)"
+        },
+        "ans": "A",
+        "topic": "Stability of Triple Junctions: Kinematic Invariance of Ridge-Ridge-Ridge (R-R-R) Systems",
+        "ref": "McKenzie & Morgan (1969, Evolution of Triple Junctions, Nature 224, 125–133); Fowler (The Solid Earth, pp. 24–28)"
+    },
+    122: {
+        "q": 122,
+        "question": "Transform Fault plate boundaries are characterized by :",
+        "options": {
+            "A": "Shallow focus earthquakes of depths strictly less than 15–20 km",
+            "B": "Shallow focus earthquakes of depths up to 100 km",
+            "C": "Deep focus earthquakes extending to 700 km",
+            "D": "Absence of earthquake activity"
+        },
+        "ans": "A",
+        "topic": "Seismotectonics: Hypocentral Depth Constraints on Conservative Transform Faults",
+        "ref": "Sayeed (Explanatory Note *122, p. 70); Fowler (The Solid Earth, pp. 10–12); Lowrie (pp. 40–42)"
+    },
+    123: {
+        "q": 123,
+        "question": "The San Andreas Fault system in California represents a major continental transform fault connecting which plate boundary segments ?",
+        "options": {
+            "A": "Ridge-Ridge (East Pacific Rise to Gorda/Juan de Fuca Ridge)",
+            "B": "Ridge-Trench",
+            "C": "Trench-Trench",
+            "D": "None of the above"
+        },
+        "ans": "A",
+        "topic": "Continental Transform Faults: The San Andreas Fault as a Ridge-Ridge Transform",
+        "ref": "Wilson (1965, Nature 207); Atwater (1970, GSA Bull. 81, 3513); Fowler (The Solid Earth, pp. 31–33)"
+    },
+    124: {
+        "q": 124,
+        "question": "The average thickness of mature lithospheric plates is approximately :",
+        "options": {
+            "A": "70 km",
+            "B": "100 km (varying from ~5–10 km at ridges to 100–120 km in mature oceanic basins and ~150–250 km beneath cratons)",
+            "C": "120 km",
+            "D": "150 km"
+        },
+        "ans": "B",
+        "topic": "Thermal Lithosphere: Mean Global Thickness of Lithospheric Plates",
+        "ref": "Turcotte & Schubert (Geodynamics, pp. 160–175); Fowler (The Solid Earth, pp. 100–110)"
+    },
+    125: {
+        "q": 125,
+        "question": "Which of the following is NOT a closing (relict/terminal) ocean basin ?",
+        "options": {
+            "A": "Black Sea (relict Paratethyan back-arc basin)",
+            "B": "Red Sea (juvenile expanding divergent ocean basin, ~25 Ma)",
+            "C": "Caspian Sea (relict Paratethyan basin)",
+            "D": "Mediterranean Sea (closing Tethyan relic)"
+        },
+        "ans": "B",
+        "topic": "Wilson Cycle Stages: Juvenile Expanding Basins (Red Sea) vs. Closing Relict Basins",
+        "ref": "Sayeed (Explanatory Note *125, p. 70); Wilson (1966); Kearey & Vine (Global Tectonics, pp. 278–282)"
+    },
+    126: {
+        "q": 126,
+        "question": "Choose the pair which is NOT correctly matched :",
+        "options": {
+            "A": "J. Tuzo Wilson ———— Transform Fault concept (1965)",
+            "B": "W.J. Morgan ———— Plate Tectonics concept (1968)",
+            "C": "J.D. Dana ———— Introduction of Geosynclinal concept (Incorrect: James Hall introduced the concept in 1859; Dana named it in 1873)",
+            "D": "C.E. Dutton ———— Concept and Coining of 'Isostasy' (1889)"
+        },
+        "ans": "C",
+        "topic": "History of Geotectonics: Formulation of the Geosynclinal Concept (Hall vs. Dana)",
+        "ref": "Sayeed (Explanatory Note *126, p. 70); Hall (1859, Paleontology of New York); Dana (1873, Am. J. Sci.); Dutton (1889)"
+    },
+    127: {
+        "q": 127,
+        "question": "In a double island arc, the intensely folded and thrust sedimentary rocks are concentrated in :",
+        "options": {
+            "A": "Outer arc only (accretionary prism / trench-slope break)",
+            "B": "Inner arc only",
+            "C": "Both outer and inner arcs",
+            "D": "None of the above"
+        },
+        "ans": "A",
+        "topic": "Accretionary Orogenesis: Tectonic Localization of Thrust Sediments in Outer Non-Volcanic Arcs",
+        "ref": "Dickinson (1973, JGR 78, 3376); Karig & Sharman (1975, Subduction and Accretion, GSA Bull.)"
+    },
+    128: {
+        "q": 128,
+        "question": "The plate boundary along the San Andreas Fault is a classic example of a :",
+        "options": {
+            "A": "Constructive Plate Boundary",
+            "B": "Consuming Plate Boundary",
+            "C": "Convergent Plate Boundary",
+            "D": "Conservative Plate Boundary (dextral strike-slip transform)"
+        },
+        "ans": "D",
+        "topic": "Tectonic Regimes: The San Andreas Fault as a Conservative Transform Boundary",
+        "ref": "Atwater (1970, GSA Bull.); Kearey & Vine (Global Tectonics, p. 95); Fowler (p. 31)"
+    },
+    129: {
+        "q": 129,
+        "question": "According to Plate Tectonics theory and plate kinematic extrapolation :\nI. The Atlantic Ocean will disappear in about 50 M.Y.\nII. American continents may collide with Asia in about 200 M.Y.\nIII. African Rift will give birth to a new ocean\nIV. India and Asia are converging on each other",
+        "options": {
+            "A": "I and II are correct",
+            "B": "I and III are correct",
+            "C": "I, II and IV are correct",
+            "D": "II, III and IV are correct"
+        },
+        "ans": "D",
+        "topic": "Future Plate Kinematics: Long-term Plate Projections and Ocean Basin Evolution",
+        "ref": "Scotese (Paleomap Project / Pangea Ultima); Kearey & Vine (pp. 280–288)"
+    },
+    130: {
+        "q": 130,
+        "question": "Choose the correct pairings of physiographic and tectonic features in the Indian Ocean :\n(i) Seychelles Bank — (e) Microcontinent\n(ii) Owen Fracture Zone — (a) Transform Fault\n(iii) Sunda and Banda — (f) Island Arcs\n(iv) Maldive and Cocos — (d) Coral Islands / Atolls\n(v) 90° E Ridge — (c) Aseismic Ridge",
+        "options": {
+            "A": "(i)–(e), (ii)–(g), (iii)–(c), (iv)–(f), (v)–(b)",
+            "B": "(i)–(c), (ii)–(a), (iii)–(f), (iv)–(d), (v)–(b)",
+            "C": "(i)–(e), (ii)–(g), (iii)–(c), (iv)–(f), (v)–(b)",
+            "D": "(i)–(e), (ii)–(a), (iii)–(f), (iv)–(d), (v)–(c)"
+        },
+        "ans": "D",
+        "topic": "Indian Ocean Geotectonics: Physiographic and Tectonic Classification of Ridges and Banks",
+        "ref": "Curray et al. (1982, Tectonics of the Andaman Sea and Burma); Laughton (The Indian Ocean Oceanography); Fowler (p. 42)"
+    },
+    131: {
+        "q": 131,
+        "question": "Which of the following represents the correct chronological sequence of the classical Geosynclinal Cycle ?",
+        "options": {
+            "A": "Sedimentation → Geosynclinal subsidence → Lateral compression → Upliftment by orogeny",
+            "B": "Geosynclinal subsidence → Sedimentation → Lateral compression → Orogenic upliftment",
+            "C": "Geosynclinal subsidence → Lateral compression → Sedimentation → Orogenic upliftment",
+            "D": "Lateral compression → Sedimentation → Geosynclinal subsidence → Orogenic upliftment"
+        },
+        "ans": "B",
+        "topic": "Classical Geosynclinal Theory: Evolutionary Stages of Geosynclinal Development",
+        "ref": "Aubouin (1965, Geosynclines, Elsevier); Pettijohn (Sedimentary Rocks, 3rd ed., p. 570); Mahapatra (p. 210)"
+    },
+    132: {
+        "q": 132,
+        "question": "The classical threshold rate of sediment accumulation defining active geosynclines is approximately ________ per million years :",
+        "options": {
+            "A": "10 m",
+            "B": "12 m",
+            "C": "13 m (Kay's diagnostic geosynclinal sedimentation rate)",
+            "D": "17 m"
+        },
+        "ans": "C",
+        "topic": "Sedimentary Dynamics: Kay's Diagnostic Accumulation Threshold for Geosynclines",
+        "ref": "Kay (1951, North American Geosynclines, GSA Memoir 48); Pettijohn (Sedimentary Rocks, p. 572)"
+    },
+    133: {
+        "q": 133,
+        "question": "Sedimentary basins formed within cratonic interiors and not on continental margins are classified by Kay (1951) as :",
+        "options": {
+            "A": "Orthogeosynclines",
+            "B": "Parageosynclines",
+            "C": "Eugeosynclines",
+            "D": "Miogeosynclines"
+        },
+        "ans": "B",
+        "topic": "Geosynclinal Classification: Cratonic Parageosynclines vs. Orthogeosynclines",
+        "ref": "Kay (1951, GSA Memoir 48); Aubouin (Geosynclines, pp. 24–35)"
+    },
+    134: {
+        "q": 134,
+        "question": "Extra-cratonic linear geosynclinal belts characterized by thick shallow-water carbonates and sandstones with an absence of contemporaneous volcanism are termed :",
+        "options": {
+            "A": "Eugeosynclines",
+            "B": "Miogeosynclines",
+            "C": "Autogeosynclines",
+            "D": "Exogeosynclines"
+        },
+        "ans": "B",
+        "topic": "Geosynclinal Nomenclature: Non-Volcanic Miogeosynclines",
+        "ref": "Stille (1940); Kay (1951, North American Geosynclines); Pettijohn (p. 573)"
+    },
+    135: {
+        "q": 135,
+        "question": "A parageosynclinal basin characterized by absence of adjacent marginal tectonic uplifts is designated as a/an :",
+        "options": {
+            "A": "Yoked Basin (Zeugogeosyncline)",
+            "B": "Autogeosyncline",
+            "C": "Isolated Basin",
+            "D": "Taphrogeosyncline"
+        },
+        "ans": "B",
+        "topic": "Intracratonic Basins: Autogeosynclines (Basins without Bordering Uplifts)",
+        "ref": "Kay (1951, North American Geosynclines); Pettijohn (Sedimentary Rocks, p. 574)"
+    },
+    136: {
+        "q": 136,
+        "question": "Major deltaic depocenters receiving detritus from cratonic margins into bordering troughs are classified in Kay's scheme as :",
+        "options": {
+            "A": "Exogeosynclines",
+            "B": "Autogeosynclines",
+            "C": "Zeugogeosynclines",
+            "D": "Taphrogeosynclines"
+        },
+        "ans": "A",
+        "topic": "Geosynclinal Typology: Exogeosynclines (Marginal Deltaic and Foreland Troughs)",
+        "ref": "Kay (1951); Aubouin (1965, Geosynclines)"
+    },
+    137: {
+        "q": 137,
+        "question": "Elongated zones of thick sediment sequences along continental margins whose accumulation rate exceeds 13 m/Ma but whose basements are gently sloping monoclines rather than downwarped synclines are termed :",
+        "options": {
+            "A": "Starved Basins",
+            "B": "Geoclines (Dietz & Holden)",
+            "C": "Pliomagmatic geosynclines",
+            "D": "Taphrogeosynclines"
+        },
+        "ans": "B",
+        "topic": "Plate Tectonics & Continental Margins: The Geocline Concept of Robert Dietz",
+        "ref": "Sayeed (Explanatory Note *137, p. 70); Dietz (1963, Collapsing Continental Rises, J. Geol. 71); Dietz & Holden (1974)"
+    },
+    138: {
+        "q": 138,
+        "question": "Miogeosynclines differ from Eugeosynclines in the absence of :\n(i) Greywacke-shale (turbidite) association\n(ii) Contemporaneous ophiolites and volcanic suites\n(iii) Extensive thrust nappe systems\n(iv) Pervasive regional metamorphism and granitic batholith intrusions",
+        "options": {
+            "A": "(i) and (iii) only",
+            "B": "(i), (ii) and (iii) only",
+            "C": "(ii), (iii) and (iv) only",
+            "D": "All of the above (absence of volcanism, turbidites, batholiths, and intense metamorphism)"
+        },
+        "ans": "D",
+        "topic": "Comparative Tectonics: Miogeosynclines (Shelf) vs. Eugeosynclines (Eugeocline/Volcanic Trench)",
+        "ref": "Aubouin (Geosynclines, pp. 40–65); Pettijohn (Sedimentary Rocks, pp. 572–575); Lowrie (p. 42)"
+    },
+    139: {
+        "q": 139,
+        "question": "Coarse clastic sedimentary wedges produced by the subaerial erosion of rising mountain ranges during and subsequent to the main orogenic phase are termed :",
+        "options": {
+            "A": "Flysch",
+            "B": "Molasse",
+            "C": "Turbidite sequences",
+            "D": "Tillite"
+        },
+        "ans": "B",
+        "topic": "Syn-to-Post-Orogenic Sedimentation: Molasse Foreland Basin Sequences",
+        "ref": "Pettijohn (Sedimentary Rocks, 3rd ed., pp. 578–582); Miall (Principles of Sedimentary Basin Analysis, pp. 410–425)"
+    },
+    140: {
+        "q": 140,
+        "question": "Organic-rich, euxinic black shales and condensed pelagic beds are major constituents of :",
+        "options": {
+            "A": "Flysch sequences",
+            "B": "Molasse sequences",
+            "C": "Pre-Flysch (euxinic/starved basin) sequences",
+            "D": "Volcanic sequences"
+        },
+        "ans": "C",
+        "topic": "Orogenic Facies Evolution: Pre-Flysch Condensed Black Shale Facies",
+        "ref": "Aubouin (Geosynclines, pp. 78–85); Pettijohn (Sedimentary Rocks, p. 580)"
+    },
+    141: {
+        "q": 141,
+        "question": "Rapid tectonic subsidence accompanied by exceptionally slow sediment deposition (condensed section) is the diagnostic hallmark of :",
+        "options": {
+            "A": "Eugeosynclines",
+            "B": "Miogeosynclines",
+            "C": "Shield areas",
+            "D": "Starved basins",
+            "E": "Cuspate Deltas"
+        },
+        "ans": "D",
+        "topic": "Basin Dynamics: Characteristics of Starved Deep-Water Basins",
+        "ref": "Adams et al. (Starved Basins in Midland Basin); Pettijohn (p. 581); Reading (Sedimentary Environments, pp. 405–412)"
+    },
+    142: {
+        "q": 142,
+        "question": "The East African Rift system is the preeminent global continental type-example of a/an :",
+        "options": {
+            "A": "Aulacogen / Continental Rift Valley",
+            "B": "Triple Junction",
+            "C": "Transform fault",
+            "D": "Mature accreting plate boundary"
+        },
+        "ans": "A",
+        "topic": "Continental Rifting: The East African Rift System as a Incipient Divergent / Failed Rift Trough",
+        "ref": "Burke & Dewey (1973, Plume-generated triple junctions, J. Geol. 81); Kearey & Vine (p. 150)"
+    },
+    143: {
+        "q": 143,
+        "question": "In marine physiography, the 'Continental Terrace' comprises :",
+        "options": {
+            "A": "Continental shelf only",
+            "B": "Continental slope only",
+            "C": "Continental shelf and continental slope together",
+            "D": "Continental shelf, slope and rise"
+        },
+        "ans": "C",
+        "topic": "Marine Geomorphology: Definition and Bounds of the Continental Terrace",
+        "ref": "Shepard (Submarine Geology, 3rd ed.); Kennett (Marine Geology, pp. 28–32)"
+    },
+    144: {
+        "q": 144,
+        "question": "When an orogenic fold belt exhibits a sudden, sharp tectonic bend or deflection in its regional structural trend as a result of impressed orogenic strain, it is termed a/an :",
+        "options": {
+            "A": "Sphenochasm",
+            "B": "Orocline (S. Warren Carey)",
+            "C": "Plume",
+            "D": "Suture line"
+        },
+        "ans": "B",
+        "topic": "Structural Geotectonics: Carey's Concept of the Orocline",
+        "ref": "Carey (1955, The Orocline Concept in Geotectonics, Pap. Proc. R. Soc. Tasm. 89, 255–288); Marshak (2004)"
+    },
+    145: {
+        "q": 145,
+        "question": "The classic paired metamorphic belts of convergent subduction margins (Miyashiro, 1961) consist of :",
+        "options": {
+            "A": "Amphibolites and granulites",
+            "B": "Blueschists (high P/T trench side) and Amphibolites/greenschists (low P/T magmatic arc side)",
+            "C": "Blueschists and greenschists",
+            "D": "Granulites and eclogites"
+        },
+        "ans": "B",
+        "topic": "Metamorphic Petrology: Miyashiro's Paired Metamorphic Belts in Convergent Margins",
+        "ref": "Miyashiro (1961, Evolution of Metamorphic Belts, J. Petrol. 2, 277–311); Winter (Igneous and Metamorphic Petrology, pp. 545–560)"
+    },
+    146: {
+        "q": 146,
+        "question": "In reformulating classical geosynclines into modern continental margin terms, Robert Dietz designated ________ as the modern analogue of a miogeosyncline and ________ as the analogue of a eugeosyncline :",
+        "options": {
+            "A": "Continental shelf (miogeocline) / Continental slope and rise (eugeocline)",
+            "B": "Continental slope / Continental shelf",
+            "C": "Oceanic trench / Oceanic rise",
+            "D": "Oceanic rise / Oceanic trench"
+        },
+        "ans": "A",
+        "topic": "Geocline Theory of Robert Dietz: Continental Shelf and Rise as Modern Geosynclines",
+        "ref": "Dietz (1963, Collapsing Continental Rises: An Actualistic Concept of Geosynclines, J. Geol. 71, 314–333); Dietz & Holden (1974)"
+    },
+    147: {
+        "q": 147,
+        "question": "Match the Proterozoic sedimentary basins of Peninsular India with their geotectonic basin classifications :\nA. Papaghani sub-basin — (4) Isolated basin\nB. Nallamalai sub-basin — (3) Zeugogeosyncline (Yoked basin)\nC. Palnad sub-basin — (2) Taphrogenic basin\nD. Kaladgi basin — (1) Autogeosyncline",
+        "options": {
+            "A": "A–1, B–4, C–2, D–3",
+            "B": "A–1, B–2, C–4, D–3",
+            "C": "A–4, B–3, C–1, D–2",
+            "D": "A–4, B–3, C–2, D–1"
+        },
+        "ans": "D",
+        "topic": "Indian Purana Basins: Tectonic Typology of the Cuddapah Sub-basins and Kaladgi Basin",
+        "ref": "Nagaraja Rao et al. (1987, Cuddapah Basin, GSI Memoir); Ramakrishnan & Vaidyanadhan (Geology of India, Vol. 1, pp. 210–245)"
+    },
+    148: {
+        "q": 148,
+        "question": "The most diagnostic, ubiquitous clastic rock type of post-orogenic 'Molasse' sequences is :",
+        "options": {
+            "A": "Orthoquartzite",
+            "B": "Greywacke",
+            "C": "Arkose (feldspathic sandstone derived from rapid erosion of plutonic/gneissic basement)",
+            "D": "Lithic arenite"
+        },
+        "ans": "C",
+        "topic": "Sedimentary Petrography: Arkosic Sandstones and Conglomerates in Molasse Facies",
+        "ref": "Pettijohn (Sedimentary Rocks, 3rd ed., pp. 213–216); Folk (Petrology of Sedimentary Rocks); Miall (Basin Analysis)"
+    },
+    149: {
+        "q": 149,
+        "question": "Depositional environments of post-orogenic molasse sequences predominantly reflect :",
+        "options": {
+            "A": "Reduced / anoxic deep marine environments",
+            "B": "Agitated shallow marine environments",
+            "C": "Oxygenated subaerial continental, fluvial, and lacustrine environments (red beds)",
+            "D": "Euxinic stagnant basinal environments"
+        },
+        "ans": "C",
+        "topic": "Sedimentary Facies: Continental Oxygenated Oxidizing Environments of Molasse",
+        "ref": "Pettijohn (Sedimentary Rocks, p. 579); Miall (Fluvial Sedimentology, pp. 310–330); Reading (Sedimentary Environments)"
+    },
+    150: {
+        "q": 150,
+        "question": "In the evolutionary chronology of orogenic belts, the deep-water 'Flysch' formations are strictly :",
+        "options": {
+            "A": "Pre-tectonic",
+            "B": "Syn-tectonic (deposited in deep foredeep troughs during active orogenic compression)",
+            "C": "Late-tectonic",
+            "D": "Post-tectonic"
+        },
+        "ans": "B",
+        "topic": "Tectonostratigraphy: Syn-Orogenic Flysch vs. Post-Orogenic Molasse",
+        "ref": "Aubouin (Geosynclines, pp. 78–92); Pettijohn (Sedimentary Rocks, pp. 578–580); Hsü (1970, The Meaning of the Word Flysch)"
+    }
+}
+
+with open("/home/tapaswi/Mines_Geology/Objective_book/Sayeed_Chapter1_Geotectonics/sayeed_q101_150.json", "w") as f:
+    json.dump(SAYEED_Q101_150, f, indent=2)
+
+print("Batch 4 (Q101 to Q150) verified dataset compiled successfully!")

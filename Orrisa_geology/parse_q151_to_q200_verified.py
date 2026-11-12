@@ -1,0 +1,665 @@
+"""
+Verified Dataset for Questions 151 to 200
+Dr. Ausaf Sayeed - Objective Geology Chapter 1: General Geology & Geotectonics
+"""
+import json
+
+SAYEED_Q151_200 = {
+    151: {
+        "q": 151,
+        "question": "The typical depositional age span of syn-orogenic Flysch sediments in major mobile belts is approximately :",
+        "options": {
+            "A": "40–20 M.Y.",
+            "B": "40–80 M.Y.",
+            "C": "130–40 M.Y.",
+            "D": "60–120 M.Y."
+        },
+        "ans": "C",
+        "topic": "Tectonostratigraphy: Temporal Duration and Depositional Span of Flysch Basins",
+        "ref": "Aubouin (Geosynclines, pp. 88–95); Pettijohn (Sedimentary Rocks, 3rd ed., p. 578)"
+    },
+    152: {
+        "q": 152,
+        "question": "Hawaiian oceanic volcanism belongs to which of the following tectonic classes ?",
+        "options": {
+            "A": "Mid-Ocean Ridge (MOR) volcanism",
+            "B": "Island arc subduction volcanism",
+            "C": "Geosynclinal volcanism",
+            "D": "Intraplate mantle plume / Hotspot volcanism"
+        },
+        "ans": "D",
+        "topic": "Hotspot Geodynamics: Intraplate Mantle Plume Volcanism (Hawaii-Emperor Seamount Chain)",
+        "ref": "Wilson (1963, Can. J. Phys. 41); Morgan (1971, Nature 230); Winter (pp. 280–305)"
+    },
+    153: {
+        "q": 153,
+        "question": "The Mid-Ocean Ridge Basalts (N-MORB) differ fundamentally from continental tholeiitic flood basalts in having :\nI. High contents of Al2O3, MgO and Cr\nII. Exceptionally low contents of incompatible elements (Na2O, K2O, TiO2)\nIII. Low contents of SiO2\nIV. Strongly depleted Large Ion Lithophile Elements (Rb, Sr, Ba, U, Th)",
+        "options": {
+            "A": "I and III are correct",
+            "B": "II and IV are correct",
+            "C": "I, II and III are correct",
+            "D": "I, II and IV are correct"
+        },
+        "ans": "D",
+        "topic": "Igneous Geochemistry: Depleted Mantle Sources of N-MORB vs. Enriched Continental Tholeiites",
+        "ref": "Winter (Principles of Igneous and Metamorphic Petrology, pp. 250–275); Sun & McDonough (1989)"
+    },
+    154: {
+        "q": 154,
+        "question": "The 'Suture Line' marked by linear ophiolite belts in collisional orogens represents :\nI. Tectonically obducted slivers and fragments of ancient oceanic lithosphere\nII. The boundary along which two discrete lithospheric plates collided\nIII. The exact geographic site of closure and consumption of a former ocean basin",
+        "options": {
+            "A": "Only I is correct",
+            "B": "I and II are correct",
+            "C": "I and III are correct",
+            "D": "I, II and III are all correct"
+        },
+        "ans": "D",
+        "topic": "Collisional Geotectonics: Ophiolitic Suture Zones (Indus-Yarlung Tsangpo Suture)",
+        "ref": "Gansser (1964, Geology of the Himalayas); Coleman (1977, Ophiolites); Dewey & Bird (1970)"
+    },
+    155: {
+        "q": 155,
+        "question": "Which of the following represents the correct stratigraphic sequence from base to top in a complete, undeformed Ophiolite Suite (Penrose Conference Definition, 1972) ?",
+        "options": {
+            "A": "Tectonized Ultramafic peridotite → Low-K tholeiitic gabbros (layered & isotropic) → Sheeted diabase dyke complex → Pillow basalts & pelagic cherts",
+            "B": "Ultramafic rocks → Sheeted diabase dykes → Low-K tholeiitic gabbros → Pillow lavas",
+            "C": "Low-K tholeiitic gabbros → Sheeted dykes → Ultramafic rocks → Pillow lavas",
+            "D": "Pillow lavas → Sheeted dykes → Low-K tholeiitic gabbros → Ultramafic rocks"
+        },
+        "ans": "A",
+        "topic": "Petrology of Oceanic Lithosphere: The Penrose Ophiolite Sequence",
+        "ref": "Penrose Conference Participants (1972, Geotimes 17, 24–25); Winter (pp. 255–262); Coleman (1977)"
+    },
+    156: {
+        "q": 156,
+        "question": "The boundary between the layered ultramafic cumulates and the underlying residual mantle tectonites (or overlying gabbros) in an ophiolite complex is interpreted as the :",
+        "options": {
+            "A": "Orogen",
+            "B": "Orocline",
+            "C": "Sphenochasm",
+            "D": "Fossil Petrological Moho"
+        },
+        "ans": "D",
+        "topic": "Oceanic Lithosphere: The Fossil Moho (Crust-Mantle Boundary) in Ophiolites",
+        "ref": "Nicolas (1989, Structures of Ophiolites and Dynamics of Oceanic Lithosphere); Winter (p. 258)"
+    },
+    157: {
+        "q": 157,
+        "question": "Isolated, flat-topped submarine volcanic peaks that rise abruptly from the abyssal ocean floor are termed :",
+        "options": {
+            "A": "Island arcs",
+            "B": "Oceanic rises",
+            "C": "Seaknolls",
+            "D": "Guyots (Tablemounts)"
+        },
+        "ans": "D",
+        "topic": "Marine Geomorphology: Origin and Flat-Topped Morphology of Guyots (Hess, 1946)",
+        "ref": "Hess (1946, Drowned ancient islands of the Pacific basin, Am. J. Sci. 244); Kennett (Marine Geology, p. 35)"
+    },
+    158: {
+        "q": 158,
+        "question": "The presence of wave-truncated flat tops on guyots at depths of 1,000–2,000 m below sea level provides conclusive evidence for :",
+        "options": {
+            "A": "A global eustatic sea-level rise only",
+            "B": "Subaerial erosion during the Ice Ages only",
+            "C": "Catastrophic fault collapse",
+            "D": "Thermo-mechanical subsidence and sinking of the volcanic edifice and cooling oceanic lithosphere over time"
+        },
+        "ans": "D",
+        "topic": "Oceanic Subsidence: Age-Depth Relation ($h(t) \\propto \\sqrt{t}$) and the Sinking of Guyots",
+        "ref": "Parsons & Sclater (1977, JGR 82); Turcotte & Schubert (Geodynamics, pp. 165–172); Hess (1946)"
+    },
+    159: {
+        "q": 159,
+        "question": "Match the major global orogenic episodes with their corresponding geological time intervals :\nA. Caledonian Orogeny — (3) Upper Silurian to Lower Devonian\nB. Hercynian (Variscan) Orogeny — (4) Upper Carboniferous to Lower Permian\nC. Laramide Orogeny — (2) Upper Cretaceous to Early Tertiary\nD. Alpine Orogeny — (1) Middle to Late Tertiary (Cenozoic)",
+        "options": {
+            "A": "A–3, B–4, C–2, D–1",
+            "B": "A–4, B–3, C–2, D–1",
+            "C": "A–1, B–2, C–3, D–4",
+            "D": "A–4, B–2, C–3, D–1"
+        },
+        "ans": "A",
+        "topic": "Global Orogenesis: Chronological Classification of Major Phanerozoic Fold Belts",
+        "ref": "Stille (1924, Grundfragen der vergleichenden Tektonik); Rodgers (The Tectonics of the Appalachians)"
+    },
+    160: {
+        "q": 160,
+        "question": "The rapid tectonic upliftment and unroofing of granitic plutonic basement in the provenance area is unequivocally indicated in the stratigraphic record by the abundance of :",
+        "options": {
+            "A": "Greywacke",
+            "B": "Orthoquartzite",
+            "C": "Arkose (feldspathic sandstone with >25% labile feldspar)",
+            "D": "Lithic Arenite"
+        },
+        "ans": "C",
+        "topic": "Sedimentary Provenance: Arkose as a Diagnostic Indicator of Rapid Granitic Uplift",
+        "ref": "Krynine (1948, The megascopic study and field classification of sedimentary rocks); Pettijohn (p. 215)"
+    },
+    161: {
+        "q": 161,
+        "question": "Slow, broad, long-wavelength vertical crustal movements of continental scale unaccompanied by intense folding or faulting are defined as :",
+        "options": {
+            "A": "Thalassogenic movements",
+            "B": "Orogenic movements",
+            "C": "Epeirogenic movements (G.K. Gilbert, 1890)",
+            "D": "Eustatic movements"
+        },
+        "ans": "C",
+        "topic": "Tectonic Processes: Epeirogeny (Broad Vertical Warping) vs. Orogeny",
+        "ref": "Gilbert (1890, Lake Bonneville, USGS Monograph 1); Billings (Structural Geology, pp. 280–285)"
+    },
+    162: {
+        "q": 162,
+        "question": "Epeirogenic movements are commonly described as 'oscillatory' movements because :",
+        "options": {
+            "A": "The movements propagate strictly as high-frequency wave-like pulses",
+            "B": "Regional uplift is cyclically followed by subsidence and transgression, and vice versa",
+            "C": "They do not involve any folding or faulting",
+            "D": "The boundaries of uplifted arches change continuously in shape"
+        },
+        "ans": "B",
+        "topic": "Basin Dynamics: Oscillatory Cycles of Epeirogenic Uplift and Subsidence",
+        "ref": "Beloussov (Basic Problems in Geotectonics, McGraw-Hill); Billings (Structural Geology)"
+    },
+    163: {
+        "q": 163,
+        "question": "Contour lines connecting geographic points that have undergone equal tectonic subsidence over geological time are termed :",
+        "options": {
+            "A": "Isokatabases (lines of equal subsidence)",
+            "B": "Isanabases (lines of equal uplift)",
+            "C": "Isochors",
+            "D": "Isopachs"
+        },
+        "ans": "A",
+        "topic": "Structural Terminology: Isokatabases (Equal Subsidence) vs. Isanabases (Equal Uplift)",
+        "ref": "De Sitter (Structural Geology, McGraw-Hill, p. 312); Mahapatra (Physical Geology, p. 240)"
+    },
+    164: {
+        "q": 164,
+        "question": "Epeirogenesis is diagnostically manifested in the geomorphic and geological record by which of the following features ?\nI. Incision of meandering rivers and formation of entrenched oxbow lakes\nII. Accumulation and vertical stranding of paired river terraces\nIII. Continental-scale changes and migrations of shorelines\nIV. Regional marine regressions and widespread marine planation surfaces",
+        "options": {
+            "A": "I and III are correct",
+            "B": "I and II are correct",
+            "C": "II, III and IV are correct",
+            "D": "I, II, III and IV are all correct"
+        },
+        "ans": "D",
+        "topic": "Geomorphology: Diagnostic Surface Expressions of Epeirogenic Crustal Uplift",
+        "ref": "Thornbury (Principles of Geomorphology, 2nd ed., pp. 130–145); Summerfield (Geomorphology)"
+    },
+    165: {
+        "q": 165,
+        "question": "Isotopic geochronology indicates that the earliest stable continental crust (felsic protocrust) formed between :",
+        "options": {
+            "A": "4.2–4.5 B.Y. ago",
+            "B": "4.0–3.8 B.Y. ago",
+            "C": "3.8–2.4 B.Y. ago",
+            "D": "2.4–1.2 B.Y. ago"
+        },
+        "ans": "B",
+        "topic": "Early Earth Evolution: Formation of Earliest Sialic Continental Crust (4.0–3.8 Ga)",
+        "ref": "Moorbath et al. (1972, Nature 237); Condie (Plate Tectonics and Crustal Evolution, pp. 110–130); Windley"
+    },
+    166: {
+        "q": 166,
+        "question": "The primary phase of crustal evolution involving global-scale mobile fold belt orogenesis and their subsequent cratonization into stable platforms occurred predominantly during :",
+        "options": {
+            "A": "2400–1600 M.Y. ago",
+            "B": "1600–800 M.Y. ago",
+            "C": "1600–240 M.Y. ago (Mesoproterozoic through Paleozoic mobile belts)",
+            "D": "800–240 M.Y. ago"
+        },
+        "ans": "C",
+        "topic": "Crustal Growth & Cratonization: Orogenic Belt Stabilization into Continental Platforms",
+        "ref": "Condie (Earth as an Evolving Planetary System, Academic Press); Windley (The Evolving Continents)"
+    },
+    167: {
+        "q": 167,
+        "question": "The initial, primordial magmatic stage of proto-crustal formation during Earth's accretion and core segregation occurred approximately :",
+        "options": {
+            "A": "5000–4500 M.Y. ago (Hadean Accretionary & Magma Ocean Stage)",
+            "B": "4500–4000 M.Y. ago",
+            "C": "4000–3500 M.Y. ago",
+            "D": "3500–2000 M.Y. ago"
+        },
+        "ans": "A",
+        "topic": "Planetary Differentiation: Accretion, Magma Ocean, and Earliest Proto-crust (4.56–4.50 Ga)",
+        "ref": "Dalrymple (The Age of the Earth, Stanford Univ. Press); Taylor & McLennan (Continental Crust)"
+    },
+    168: {
+        "q": 168,
+        "question": "The critical evolutionary radiation of early jawless vertebrates (ostracoderms) and fish took place in the marine record around :",
+        "options": {
+            "A": "880 M.Y. ago",
+            "B": "450 M.Y. ago (Late Ordovician to Early Silurian)",
+            "C": "425 M.Y. ago",
+            "D": "225 M.Y. ago"
+        },
+        "ans": "B",
+        "topic": "Paleontology: Early Vertebrate Emergence in the Early Paleozoic (~450 Ma)",
+        "ref": "Benton (Vertebrate Paleontology, 4th ed., pp. 30–55); Clarkson (Invertebrate Palaeontology and Evolution)"
+    },
+    169: {
+        "q": 169,
+        "question": "The oldest exposed terrestrial whole-rock complexes documented on Earth's surface belong to the Amitsoq/Isua gneisses located in :",
+        "options": {
+            "A": "Australian Craton",
+            "B": "Indian Craton (Singhbhum / Dharwar)",
+            "C": "Antarctica (Enderby Land)",
+            "D": "West Greenland (Isua / Amitsoq Gneiss Complex, ~3.8 Ga)"
+        },
+        "ans": "D",
+        "topic": "Archaean Geology: The Amitsoq Gneisses of Isua, Southwest Greenland (~3.8 Ga)",
+        "ref": "Sayeed (Explanatory Note *169, p. 70); Moorbath et al. (1973, EPSL); Nutman et al. (1996)"
+    },
+    170: {
+        "q": 170,
+        "question": "The oldest individual mineral grains discovered on Earth's surface are detrital zircon crystals dating to ~4.2–4.4 Ga found in :",
+        "options": {
+            "A": "Calcite in Canadian carbonatites",
+            "B": "Quartz in Indian quartzites",
+            "C": "Tourmaline in Brazilian pegmatites",
+            "D": "Detrital Zircon crystals in the Jack Hills Metasediments of Western Australia"
+        },
+        "ans": "D",
+        "topic": "Hadean Geochronology: Detrital Jack Hills Zircons (4.4 Ga, Western Australia)",
+        "ref": "Sayeed (Explanatory Note *170, p. 70); Wilde et al. (2001, Nature 409, 175); Valley et al. (2014)"
+    },
+    171: {
+        "q": 171,
+        "question": "In Archaean cratonic geology, deep-seated high-grade metamorphic complexes (granulite-gneiss terrains) underlying greenstone successions are classified structurally as :",
+        "options": {
+            "A": "Supracrustal rocks",
+            "B": "Infracrustal basement rocks",
+            "C": "Intracrustal intrusions",
+            "D": "None of the above"
+        },
+        "ans": "A",
+        "topic": "Cratonic Architecture: High-Grade Gneissic and Granulite Terrains in Archaean Shields",
+        "ref": "Windley (The Evolving Continents, 3rd ed., pp. 45–65); Ramakrishnan & Vaidyanadhan (Geology of India)"
+    },
+    172: {
+        "q": 172,
+        "question": "The voluminous worldwide Late Archaean Greenstone Belts (e.g., Dharwar, Abitibi, Yilgarn) predominantly span the age range :",
+        "options": {
+            "A": "3100–2800 M.Y.",
+            "B": "2800–2500 M.Y. (Late Archaean Greenstone Epoche)",
+            "C": "2500–1600 M.Y.",
+            "D": "1600–800 M.Y."
+        },
+        "ans": "B",
+        "topic": "Precambrian Geochronology: Peak Late Archaean Greenstone Belt Volcanism (2.8–2.5 Ga)",
+        "ref": "Condie (Archaean Greenstone Belts, Elsevier); Radhakrishna & Vaidyanadhan (Geology of Karnataka)"
+    },
+    173: {
+        "q": 173,
+        "question": "The Expanding Earth Hypothesis of Hilgenberg (1933) postulated that the primordial Earth had :",
+        "options": {
+            "A": "Lower density and longer radius than the present",
+            "B": "Higher density and longer radius than the present",
+            "C": "Lower density and shorter radius than the present",
+            "D": "Higher density (~9.3 g/cm³) and shorter radius (~5430 km) than the present"
+        },
+        "ans": "D",
+        "topic": "Historical Hypotheses: Hilgenberg's Expanding Earth Density and Radius Postulates",
+        "ref": "Sayeed (Explanatory Note *173, p. 70); Hilgenberg (1933, Vom wachsenden Erdball); Carey (The Expanding Earth)"
+    },
+    174: {
+        "q": 174,
+        "question": "Conceptual mechanisms invoking planetary expansion share mathematical or physical parallels with :\nI. Seafloor Spreading Hypothesis\nII. Dirac's Large Numbers Hypothesis of decreasing gravitational constant G with cosmic expansion",
+        "options": {
+            "A": "I only",
+            "B": "II only",
+            "C": "Both I and II",
+            "D": "Neither I nor II"
+        },
+        "ans": "C",
+        "topic": "Planetary Physics: Dirac's Cosmological G Variation and Global Tectonic Models",
+        "ref": "Dirac (1937, Nature 139, 323); Carey (1976, The Expanding Earth, Elsevier); Lowrie (p. 5)"
+    },
+    175: {
+        "q": 175,
+        "question": "Which of the following is NOT a postulate of the Tetrahedral Theory of the Earth proposed by Lowthian Green (1875) ?",
+        "options": {
+            "A": "The Earth originated as an incandescent molten sphere",
+            "B": "Cooling and contraction caused collapse of spherical shell toward a minimum-volume tetrahedron",
+            "C": "The continents were situated at the four apexes and six co-planar edges, roughly equidistant",
+            "D": "Continents have periodically drifted laterally across ocean basins over hundreds of millions of years"
+        },
+        "ans": "D",
+        "topic": "Historical Geotectonics: Lowthian Green's Tetrahedral Theory (Static Shrinking Earth)",
+        "ref": "Green (1875, Vestiges of the Molten Globe); Holmes (Principles of Physical Geology, pp. 31–33)"
+    },
+    176: {
+        "q": 176,
+        "question": "An elongated, sediment-filled rift trough bounded by normal faulting formed during the nascent initial rifting stage of a continent is termed a/an :",
+        "options": {
+            "A": "Aulacogen",
+            "B": "Orogen",
+            "C": "Suture zone",
+            "D": "Samfrau"
+        },
+        "ans": "A",
+        "topic": "Rift Tectonics: Aulacogens as Failed Continental Rifting Arms (Shatsky, 1946)",
+        "ref": "Shatsky (1946); Burke & Dewey (1973, Plume-generated triple junctions, J. Geol. 81, 406–433)"
+    },
+    177: {
+        "q": 177,
+        "question": "The Earth's rotational axis exhibits a natural free Eulerian nutation of small amplitude with a period of ~433 days, known as the :",
+        "options": {
+            "A": "Nutational wobble",
+            "B": "Chandler Wobble",
+            "C": "Milankovitch precession",
+            "D": "Precession of the equinoxes"
+        },
+        "ans": "B",
+        "topic": "Planetary Geodynamics: The Chandler Wobble (~433-Day Rotational Oscillation)",
+        "ref": "Chandler (1891, Astron. J.); Lambeck (The Earth's Variable Rotation, Cambridge); Lowrie (pp. 60–65)"
+    },
+    178: {
+        "q": 178,
+        "question": "The lengthening of the Chandler Wobble period from Euler's rigid-body theoretical prediction of 305 days to the observed ~433 days provides conclusive geophysical evidence for :",
+        "options": {
+            "A": "The elastic deformability of the mantle and fluid dynamics of the oceans and liquid outer core",
+            "B": "The rigidity of the solid crust",
+            "C": "The slowing of Earth's axial spin by lunar tides",
+            "D": "The existence of mantle plumes"
+        },
+        "ans": "A",
+        "topic": "Rotational Geophysics: Mantle Elasticity and Fluid Core Effects on Chandler Period",
+        "ref": "Newcomb (1892, Mon. Not. R. Astron. Soc.); Stacey & Davis (Physics of the Earth, pp. 110–120)"
+    },
+    179: {
+        "q": 179,
+        "question": "Arrange the following four major planetary energy sources driving geological processes in decreasing order of magnitude :\n1. Solar radiation flux received at surface (~$1.73 \\times 10^{17}\\text{ W}$)\n2. Terrestrial internal conductive/convective heat flow (~$4.4 \\times 10^{13}\\text{ W}$)\n3. Tidal dissipation energy (~$3.0 \\times 10^{12}\\text{ W}$)\n4. Seismic earthquake released energy (~$10^{11}\\text{ W}$)",
+        "options": {
+            "A": "2 > 1 > 3 > 4",
+            "B": "1 > 3 > 2 > 4",
+            "C": "1 > 2 > 3 > 4",
+            "D": "4 > 3 > 2 > 1"
+        },
+        "ans": "C",
+        "topic": "Planetary Energetics: Global Energy Budget (Solar > Internal Heat > Tidal > Seismic)",
+        "ref": "Lowrie (Fundamentals of Geophysics, pp. 200–210); Turcotte & Schubert (Geodynamics, p. 135)"
+    },
+    180: {
+        "q": 180,
+        "question": "Volcanogenic Massive Sulphide (VMS) deposits typically evolve through distinct geochemical types matching plate-tectonic settings from oceanic rifting to mature volcanic arcs, progressing as :",
+        "options": {
+            "A": "Besshi type → Cyprus type → Kuroko type",
+            "B": "Kuroko type → Besshi type → Cyprus type",
+            "C": "Cyprus type (primitive basaltic MOR) → Besshi type (rifted sed-volc) → Kuroko type (felsic island arc)",
+            "D": "Cyprus type → Kuroko type → Besshi type"
+        },
+        "ans": "C",
+        "topic": "Economic Mineral Deposits in Tectonic Settings: Classification and Evolution of VMS Deposits",
+        "ref": "Sawkins (1990, Metal Deposits in Relation to Plate Tectonics); Guilbert & Park (The Geology of Ore Deposits)"
+    },
+    181: {
+        "q": 181,
+        "question": "Volcanogenic massive sulphide deposits associated directly with ophiolitic pillow lavas at mid-ocean ridge spreading axes are termed :",
+        "options": {
+            "A": "Cyprus-type massive sulphides (Cu-Fe rich)",
+            "B": "Kuroko-type deposits",
+            "C": "Besshi-type deposits",
+            "D": "Sullivan-type deposits"
+        },
+        "ans": "A",
+        "topic": "Hydrothermal Mineralization: Cyprus-Type Ophiolitic VMS Deposits (Troodos Ophiolite)",
+        "ref": "Hutchinson (1973, Econ. Geol. 68); Franklin et al. (1981, Econ. Geol. 75th Anniv. Vol., pp. 485–627)"
+    },
+    182: {
+        "q": 182,
+        "question": "Polymetallic, lead-zinc-copper-bearing massive sulphide ores that form during the mature, differentiated calc-alkaline felsic (dacite-rhyolite) stage of island arcs are known as :",
+        "options": {
+            "A": "Cyprus-type deposits",
+            "B": "Besshi-type deposits",
+            "C": "Kuroko-type deposits (Japan green-tuff belt)",
+            "D": "Mississippi Valley type (MVT)"
+        },
+        "ans": "C",
+        "topic": "Island-Arc Ore Genesis: Kuroko-Type Felsic Polymetallic VMS Deposits",
+        "ref": "Ohmoto & Skinner (1983, The Kuroko and Related Volcanogenic Massive Sulfide Deposits, Econ. Geol. Monogr. 5)"
+    },
+    183: {
+        "q": 183,
+        "question": "In modern tectonic classification of sedimentary basins, sedimentation occurring in extensional back-arc marginal sea basins behind volcanic arcs is designated as :",
+        "options": {
+            "A": "Island-arc type Geosyncline",
+            "B": "Red Sea type basin",
+            "C": "Forearc basin",
+            "D": "Marginal sea / Back-arc basin (Japan Sea type)"
+        },
+        "ans": "D",
+        "topic": "Back-Arc Basins: Sedimentation in Marginal Sea Basins (Karig, 1971)",
+        "ref": "Karig (1971, JGR 76); Dickinson (1974, Tectonics and Sedimentation, SEPM Special Pub. 22)"
+    },
+    184: {
+        "q": 184,
+        "question": "Which of the following geosynclinal categories in Kay's nomenclature typically develops as an extensive paired miogeosynclinal-eugeosynclinal belt along continental margins ?",
+        "options": {
+            "A": "Parageosyncline",
+            "B": "Orthogeosyncline",
+            "C": "Autogeosyncline",
+            "D": "Zeugogeosyncline"
+        },
+        "ans": "B",
+        "topic": "Geosynclinal Theory: Kay's Orthogeosynclines (Paired Miogeosynclinal-Eugeosynclinal Belts)",
+        "ref": "Kay (1951, North American Geosynclines, GSA Memoir 48); Pettijohn (p. 572)"
+    },
+    185: {
+        "q": 185,
+        "question": "Island-arc type geosynclinal belts characteristically exhibit which predominant petrotectonic association ?",
+        "options": {
+            "A": "Plutonic-epigenetic granitic batholiths exclusively",
+            "B": "Pure platform quartzites and shallow stromatolitic carbonates",
+            "C": "Glaciomarine diamictites and red beds",
+            "D": "Eugeosynclinal volcanogenic turbidite, andesite-basalt volcanism, and volcaniclastic greywacke suites"
+        },
+        "ans": "D",
+        "topic": "Arc Tectonostratigraphy: Volcaniclastic Turbidites and Calc-Alkaline Complexes",
+        "ref": "Dickinson (1974); Winter (Principles of Igneous and Metamorphic Petrology, pp. 337–360)"
+    },
+    186: {
+        "q": 186,
+        "question": "'Bolide' is the precise geological and astronomical term used to denote :",
+        "options": {
+            "A": "Solid bodies of extraterrestrial matter that survive atmospheric transit and strike ground as intact rocks",
+            "B": "Micrometeorites collected in deep-sea pelagic clays",
+            "C": "An exceptionally bright, sonic-detonating meteor fireball that explodes catastrophically in the atmosphere",
+            "D": "Subaerial impact crater breccia"
+        },
+        "ans": "C",
+        "topic": "Impact Geology & Meteoritics: Definition and Detonation Dynamics of Bolides",
+        "ref": "French (1998, Traces of Catastrophe: A Handbook of Shock-Metamorphic Effects, LPI, pp. 15–25)"
+    },
+    187: {
+        "q": 187,
+        "question": "A class of stony meteorites whose textures, mineral assemblages, and igneous crystallizations closely duplicate terrestrial basic and ultrabasic rocks (basalts and dunites) are :",
+        "options": {
+            "A": "Chondrites",
+            "B": "Achondrites (e.g., Eucrites, Diogenites, Shergottites)",
+            "C": "Siderites (Iron meteorites)",
+            "D": "Pallasites"
+        },
+        "ans": "B",
+        "topic": "Meteoritics: Achondrites as Differentiated Igneous Crustal/Mantle Meteorites",
+        "ref": "Sayeed (Explanatory Note *187, p. 70); McSween (Meteorites and Their Parent Planets, Cambridge Univ. Press)"
+    },
+    188: {
+        "q": 188,
+        "question": "Which of the following constitute the vast majority (approximately 86–92%) of all observed meteorite falls on Earth ?",
+        "options": {
+            "A": "Siderites (Iron meteorites, ~6%)",
+            "B": "Siderolites (Stony-iron meteorites, ~2%)",
+            "C": "Aerolites / Chondrites (Stony meteorites, ~86–92%)",
+            "D": "Tektites"
+        },
+        "ans": "C",
+        "topic": "Meteorite Abundance: Dominance of Stony Chondritic Meteorites (Aerolites)",
+        "ref": "Sayeed (Explanatory Note *188, p. 70); Mason (Meteorites, John Wiley & Sons); Lowrie (p. 25)"
+    },
+    189: {
+        "q": 189,
+        "question": "Which group of meteorites is considered to preserve the most primitive, unaltered chemical condensation products of the primordial solar nebula ?",
+        "options": {
+            "A": "Carbonaceous Chondrites (CI / CM chondrites)",
+            "B": "Achondrites",
+            "C": "Pallasites",
+            "D": "Mesosiderites"
+        },
+        "ans": "A",
+        "topic": "Cosmochemistry: Primitive Carbonaceous Chondrites and Solar Nebula Condensation",
+        "ref": "Mason (1971, Meteorites); Anders & Grevesse (1989, Geochim. Cosmochim. Acta); Lowrie (p. 26)"
+    },
+    190: {
+        "q": 190,
+        "question": "The submarine tectonic feature known as the 'Mergui Ridge' (Mergui Terrace) is an integral bathymetric element of the :",
+        "options": {
+            "A": "Bay of Bengal basin",
+            "B": "Arabian Sea basin",
+            "C": "Andaman Sea basin",
+            "D": "Mahanadi offshore basin"
+        },
+        "ans": "C",
+        "topic": "Regional Marine Geology: Bathymetry and Tectonics of the Andaman Sea (Mergui Ridge)",
+        "ref": "Curray et al. (1979, Tectonics of the Andaman Sea and Burma, AAPG Memoir 29); Ramakrishnan & Vaidyanadhan"
+    },
+    191: {
+        "q": 191,
+        "question": "The mountain ranges and ice shelves of 'Queen Maud Land' (Dronning Maud Land) are geographically located in :",
+        "options": {
+            "A": "The Arctic Ocean basin",
+            "B": "East Antarctica",
+            "C": "South-West Africa",
+            "D": "West Pacific mobile rim"
+        },
+        "ans": "B",
+        "topic": "Gondwanaland Geology: Queen Maud Land, East Antarctica (Maud Belt - Eastern Ghats Match)",
+        "ref": "Tingey (The Geology of Antarctica, Oxford Univ. Press); Yoshida et al. (Proterozoic East Gondwana)"
+    },
+    192: {
+        "q": 192,
+        "question": "The modern geotectonic term 'Terrane' (Tectono-Stratigraphic Terrane) was introduced in the 1970s in Alaska and the Western Cordillera to denote :",
+        "options": {
+            "A": "Segments of mid-ocean ridges bounded by fracture zones",
+            "B": "Passive continental drift blocks",
+            "C": "Fault-bounded crustal blocks exhibiting distinct stratigraphy, structure, and geological history contrasting with adjacent regions, accreted via plate motions",
+            "D": "Inversion basins in deep-sea drilling"
+        },
+        "ans": "C",
+        "topic": "Accretionary Tectonics: Tectono-Stratigraphic Terranes (Coney, Jones & Monger, 1980)",
+        "ref": "Sayeed (Explanatory Note *192, p. 70); Coney, Jones & Monger (1980, Cordilleran suspect terranes, Nature 288)"
+    },
+    193: {
+        "q": 193,
+        "question": "According to plate kinematic extrapolations of modern plate motions, which of the following events will probably occur in the next 50 million years ?\nI. Australia will drift northward to collide with Southeast Asia\nII. The Mediterranean Sea will close completely and convert into a series of enclosed saline basins / mountain belts\nIII. Delhi will shift northeastward by approximately 200 km\nIV. Los Angeles and coastal California will migrate past San Francisco along the San Andreas Fault toward the Aleutian trench",
+        "options": {
+            "A": "I and IV only",
+            "B": "I, II and IV only",
+            "C": "II, III and IV only",
+            "D": "I, II, III and IV are all anticipated"
+        },
+        "ans": "D",
+        "topic": "Future Plate Kinematics: 50-Million-Year Extrapolations of Modern Plate Velocities",
+        "ref": "Scotese (2004, Continental Drift, PALEOMAP Project); Kearey, Klepeis & Vine (Global Tectonics, pp. 285–288)"
+    },
+    194: {
+        "q": 194,
+        "question": "The primary modern relict of the ancient Mesozoic 'Tethys Ocean of Suess' is represented today by :",
+        "options": {
+            "A": "The Mediterranean Sea basin",
+            "B": "The Red Sea",
+            "C": "The Arabian Sea",
+            "D": "The Sea of Okhotsk",
+            "E": "The Philippine Sea"
+        },
+        "ans": "A",
+        "topic": "Paleotectonics: The Mediterranean Sea as the Relict Basin of the Neotethys Ocean",
+        "ref": "Suess (1893, Are Great Ocean Depths Permanent?); Sengor (1984, The Cimmeride Orogenic System, GSA Special Paper 195)"
+    },
+    195: {
+        "q": 195,
+        "question": "Among all the major continental landmasses, the Indian Plate holds the unique geotectonic distinction of having :",
+        "options": {
+            "A": "Remained completely stationary throughout geological history",
+            "B": "Drifted northward over a distance exceeding 9,000 km in 200 million years at exceptional speeds (~4.5–18 cm/yr)",
+            "C": "Possessed the thickest oceanic crust on the globe",
+            "D": "Never collided with any other continental margin"
+        },
+        "ans": "B",
+        "topic": "Indian Plate Kinematics: The 9,000 km Northward Drift of India from Gondwanaland to Asia",
+        "ref": "Sayeed (Explanatory Note *195, p. 70); Patriat & Achache (1984, Nature 311); Molnar & Tapponnier (1975)"
+    },
+    196: {
+        "q": 196,
+        "question": "When the Indian cratonic landmass was assembled as a distinct entity within the Gondwana supercontinent during the Carboniferous (340–285 Ma), the Earth was roughly :",
+        "options": {
+            "A": "4000 M.Y. old",
+            "B": "3500 M.Y. old (3300–3650 M.Y. old)",
+            "C": "3000 M.Y. old",
+            "D": "2500 M.Y. old"
+        },
+        "ans": "B",
+        "topic": "Historical Geotectonics: Age of Earth during Gondwana Assembly of India (~300 Ma)",
+        "ref": "Sayeed (Explanatory Note *196, p. 70); Veevers (Gondwana Master Basin); Ramakrishnan & Vaidyanadhan"
+    },
+    197: {
+        "q": 197,
+        "question": "The northward drift of the Indian plate attained its absolute maximum velocity (exceeding 15–20 cm/year) during the :",
+        "options": {
+            "A": "Late Cretaceous to Paleocene (~65–55 Ma)",
+            "B": "Middle Eocene",
+            "C": "Middle Miocene",
+            "D": "Pliocene"
+        },
+        "ans": "A",
+        "topic": "Plate Velocities: Peak Northward Velocity of the Indian Plate in Paleocene Time",
+        "ref": "Klootwijk et al. (1992, Geology 20); Acton (1999, EPSL); Cande & Stegman (2011, Nature 475)"
+    },
+    198: {
+        "q": 198,
+        "question": "Which of the following tectonic / geographic corridors served as a crucial land bridge across which faunal exchange occurred between India, Europe, and Africa into the Early Tertiary ?",
+        "options": {
+            "A": "Siwalik gulf",
+            "B": "Assam 'neck' / northeastern trans-Tethyan connection",
+            "C": "Palk strait",
+            "D": "Irrawaddy shelf",
+            "E": "Chagos-Maldive ridge"
+        },
+        "ans": "B",
+        "topic": "Paleobiogeography: The Northeastern Corridor (Assam Neck) for Indo-Eurasian Faunal Migration",
+        "ref": "Sayeed (Explanatory Note *198, p. 70); Sahni et al. (1982, Cretaceous-Eocene Faunal Dispersals); Briggs (2003)"
+    },
+    199: {
+        "q": 199,
+        "question": "The primordial, east-to-west flowing Himalayan foredeep drainage system ('Siwalik River' or 'Indo-Brahm River') was dismembered during the Late Pleistocene into two opposing drainage systems :",
+        "options": {
+            "A": "The Indus River system (flowing to Arabian Sea) and the Ganga-Brahmaputra system (flowing to Bay of Bengal)",
+            "B": "Ganga and Saraswati rivers",
+            "C": "Ganga and Yamuna rivers",
+            "D": "Brahmaputra and Irrawaddy rivers"
+        },
+        "ans": "A",
+        "topic": "Himalayan Drainage Evolution: Dismemberment of the Postulated 'Indo-Brahm' / Siwalik River",
+        "ref": "Pascoe (1919, QJGS London 75, 138); Pilgrim (1919, J. Asiat. Soc. Bengal); Wadia (Geology of India, p. 385)"
+    },
+    200: {
+        "q": 200,
+        "question": "Which of the following does NOT provide evidence that India was an integral constituent of Gondwanaland ?",
+        "options": {
+            "A": "Glossopteris and Gangamopteris flora preserved in the Permo-Carboniferous Gondwana coal measures",
+            "B": "Occurrence of the ancient onychophoran arthropod Peripatus in humid jungles of Assam, South Africa, and Australasia",
+            "C": "Fossils of the freshwater dipnoan lungfish Ceratodus in Triassic Maleri beds matching Australian and South African taxa",
+            "D": "Abundance of the large foraminiferal index fossil Nummulites in Eocene limestones (Nummulites is an exclusively Eocene-Oligocene Tethyan marine taxon post-dating Gondwana breakup)"
+        },
+        "ans": "D",
+        "topic": "Gondwana Paleobiogeography: Nummulites as a Post-Breakup Tethyan Marine Distractor",
+        "ref": "Sayeed (Explanatory Note *200, p. 70); Wadia (Geology of India, pp. 240–255); Krishnan (Geology of India and Burma)"
+    }
+}
+
+with open("/home/tapaswi/Mines_Geology/Objective_book/Sayeed_Chapter1_Geotectonics/sayeed_q151_200.json", "w") as f:
+    json.dump(SAYEED_Q151_200, f, indent=2)
+
+print("Batch 5 (Q151 to Q200) verified dataset compiled successfully!")

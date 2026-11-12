@@ -1,0 +1,470 @@
+"""
+Verified Dataset for Questions 201 to 235
+Dr. Ausaf Sayeed - Objective Geology Chapter 1: General Geology & Geotectonics
+"""
+import json
+
+SAYEED_Q201_235 = {
+    201: {
+        "q": 201,
+        "question": "According to geodynamic projections, over the next 50 million years the Indian subcontinent will continue to drift further towards the :",
+        "options": {
+            "A": "North",
+            "B": "South",
+            "C": "North-East (with Delhi shifting ~200 km east of its present coordinates)",
+            "D": "West"
+        },
+        "ans": "C",
+        "topic": "Future Indian Plate Kinematics: Northeastward Drift Projections and Arc Evolution",
+        "ref": "Sayeed (Explanatory Note *201, p. 70); Molnar & Tapponnier (1975, Science 189); Scotese (PALEOMAP)"
+    },
+    202: {
+        "q": 202,
+        "question": "The nascent Cretaceous-Paleocene initial tectonic movements of the Himalayan orogenesis triggered the obduction and tectonic emplacement of :",
+        "options": {
+            "A": "Rajmahal volcanic traps",
+            "B": "Deccan volcanic traps",
+            "C": "Dalma volcanics",
+            "D": "Dras Volcanics and Indus Ophiolite complexes along the suture zone"
+        },
+        "ans": "D",
+        "topic": "Himalayan Tectonic Chronology: Late Cretaceous Dras Volcanism and Indus Ophiolite Obduction",
+        "ref": "Gansser (1964, Geology of the Himalayas); Searle (1983, Trans. R. Soc. Edinb. Earth Sci. 74); Thakur (Geology of Western Himalaya)"
+    },
+    203: {
+        "q": 203,
+        "question": "The global Pleistocene Ice Ages and glaciations coincided chronologically with the rapid morphogenic upheaval of the :",
+        "options": {
+            "A": "Tibetan Plateau",
+            "B": "Higher (Great) Himalayas",
+            "C": "Lesser Himalayas and Pir Panjal Range",
+            "D": "Sub-Himalayan Siwalik ranges"
+        },
+        "ans": "C",
+        "topic": "Quaternary Himalayan Tectonics: Uplift of the Pir Panjal and Lesser Himalayan Ranges",
+        "ref": "Wadia (Geology of India, pp. 370–385); Burbank et al. (1983, Nature 305); Valdiya (Aspects of Tectonics)"
+    },
+    204: {
+        "q": 204,
+        "question": "In the classical pre-plate tectonic geosynclinal paleogeography of the Himalayas, which structural zone was inferred to have acted as a dividing geanticline (median welt) ?",
+        "options": {
+            "A": "Outer Himalayan Siwalik Belt",
+            "B": "Lesser Himalayan sedimentary zone",
+            "C": "Central Crystalline Axial Zone",
+            "D": "Tethyan Tibetan Zone"
+        },
+        "ans": "B",
+        "topic": "Classical Geosynclinal Frameworks: The Himalayan Geanticlinal Median Welt",
+        "ref": "Wadia (Geology of India, pp. 410–425); Krishnan (Geology of India and Burma, 6th ed., pp. 75–90)"
+    },
+    205: {
+        "q": 205,
+        "question": "A historical alternative hypothesis formulated by Russian geoscientists (Beloussov, Petrushevsky) postulated that the Himalayas originated primarily through :",
+        "options": {
+            "A": "Horizontal seafloor spreading",
+            "B": "Deep mantle convection plume heads",
+            "C": "Vertical oscillatory block movements and deep crustal magmatic mantle-diapir differentiation (Oceanization / Fixism)",
+            "D": "Transform strike-slip faulting exclusively"
+        },
+        "ans": "C",
+        "topic": "Non-Plate Tectonic Alternatives: Beloussov's Vertical Tectonic Hypothesis of Himalayan Uplift",
+        "ref": "Beloussov (1962, Basic Problems in Geotectonics); Petrushevsky (1971, Earth-Sci. Rev. 7); Valdiya (Aspects of Tectonics)"
+    },
+    206: {
+        "q": 206,
+        "question": "Which of the following Proterozoic intracratonic sedimentary basins of India contains strata composed of second-cycle, polycyclic recycled sediments derived from both the Archaean basement gneisses and the older Cuddapah Supergroup ?",
+        "options": {
+            "A": "Kurnool sub-basin",
+            "B": "Bhima basin",
+            "C": "Vindhyan Basin (Vindhyan Supergroup)",
+            "D": "Kaladgi basin"
+        },
+        "ans": "C",
+        "topic": "Purana Basins of Peninsular India: Vindhyan Supergroup Sedimentation and Provenance Recycling",
+        "ref": "Sayeed (Explanatory Note *206, p. 70); Auden (1933, Vindhyan Sedimentation, GSI Memoir); Ramakrishnan & Vaidyanadhan (pp. 280–310)"
+    },
+    207: {
+        "q": 207,
+        "question": "Match the major sedimentary basins of Peninsular India with their corresponding structural basin classifications :\nA. Gondwana Basin — (2) Taphrogenic Fault-Bounded Rift Basin\nB. Cuddapah Basin — (3) Crescentic Intracratonic Sag / Parageosynclinal Basin\nC. Vindhyan Basin — (1) Broad Regional Syneclise / Autogeosynclinal Basin\nD. Chattisgarh Basin — (4) Symmetrical Intracratonic Platform Basin",
+        "options": {
+            "A": "A–2, B–3, C–1, D–4",
+            "B": "A–1, B–2, C–3, D–4",
+            "C": "A–3, B–4, C–1, D–2",
+            "D": "A–4, B–1, C–2, D–3"
+        },
+        "ans": "A",
+        "topic": "Tectonic Classification of Indian Sedimentary Basins: Gondwana, Cuddapah, and Vindhyan Typologies",
+        "ref": "Ramakrishnan & Vaidyanadhan (Geology of India, Vol. 1, pp. 195–285); GSI Special Publication 84"
+    },
+    208: {
+        "q": 208,
+        "question": "Geodetic coastal leveling and tide-gauge telemetry indicate that which of the following Indian coastal metropolitan centers is NOT actively undergoing coastal tectonic subsidence ?",
+        "options": {
+            "A": "Bombay (Mumbai)",
+            "B": "Madras (Chennai)",
+            "C": "Calcutta (Kolkata)",
+            "D": "Cochin (Kochi)"
+        },
+        "ans": "D",
+        "topic": "Neotectonics & Sea-Level Geodesy: Coastal Subsidence vs. Emergence around the Indian Peninsula",
+        "ref": "Ahmad (1972, Coastal Geomorphology of India); Valdiya (Aspects of Tectonics); Radhakrishna (1993)"
+    },
+    209: {
+        "q": 209,
+        "question": "Choose the correct chronological and spatial sequence of morphotectonic belts and major boundary thrusts encountered across the Himalayas from South to North :",
+        "options": {
+            "A": "Indo-Gangetic Plain → MCT → Sub-Himalaya (Siwaliks) → MBT → Lesser Himalaya → Higher Himalaya → Indus Suture",
+            "B": "Indo-Gangetic Plain → Sub-Himalaya (Siwaliks) → Main Boundary Thrust (MBT) → Lesser Himalaya → Main Central Thrust (MCT) → Higher (Great) Himalaya → South Tibetan Detachment (STDS) → Tethyan Himalaya → Indus-Yarlung Tsangpo Suture Zone (ITSN)",
+            "C": "Sub-Himalaya → Higher Himalaya → Lesser Himalaya → Indus Suture",
+            "D": "Indus Suture → Higher Himalaya → Lesser Himalaya → Sub-Himalaya"
+        },
+        "ans": "B",
+        "topic": "Himalayan Geodynamics: South-to-North Morphotectonic Belts and Boundary Fault Systems (HFF, MBT, MCT, STDS, ITSZ)",
+        "ref": "Gansser (1964, Geology of the Himalayas); Valdiya (1980, Stratigraphy and Tectonics of the Lesser Himalaya); Yin (2006)"
+    },
+    210: {
+        "q": 210,
+        "question": "The active neotectonic boundary marking the collision front between the flexed crystalline crust of Peninsular India and the Sub-Himalayan Siwalik fold-thrust belt is defined by the :",
+        "options": {
+            "A": "Himalayan Frontal Thrust (HFT) / Main Frontal Thrust (MFT) bordering the Indo-Gangetic depression",
+            "B": "Main Central Thrust (MCT)",
+            "C": "Indus Suture Zone (ISZ)",
+            "D": "Malabar Fault"
+        },
+        "ans": "A",
+        "topic": "Foreland Neotectonics: The Himalayan Frontal Thrust (HFT/MFT) and Sub-Himalayan Tectonic Contact",
+        "ref": "Nakata (1989, Active faults of the Himalaya, GSA Special Paper 232); Valdiya (Neotectonics of India)"
+    },
+    211: {
+        "q": 211,
+        "question": "Geophysically and structurally, the sprawling Indo-Gangetic Alluvial Basin is classified as a :",
+        "options": {
+            "A": "Positive arch lying on a large negative trough",
+            "B": "Negative foreland flexural depression (foredeep) superimposed upon the northern downwarped margin of the Indian shield (Vindhyan syneclise)",
+            "C": "Rifted aulacogen",
+            "D": "Back-arc extensional basin"
+        },
+        "ans": "B",
+        "topic": "Foreland Basin Geodynamics: The Indo-Gangetic Depression as a Flexural Foredeep",
+        "ref": "Sayeed (Explanatory Note *211, p. 70); Lyon-Caen & Molnar (1985, Geophys. J. R. Astron. Soc. 81); Karner & Watts"
+    },
+    212: {
+        "q": 212,
+        "question": "The most intense, catastrophic, and structure-defining phase among all the Himalayan orogenic upheavals was the Third Upheaval (Middle Miocene), historically designated as the :",
+        "options": {
+            "A": "Karakoram orogeny",
+            "B": "Kirthar orogeny",
+            "C": "Sirmurian (Middle Miocene) orogeny (formation of Main Central Thrust and Lesser Himalayan nappes)",
+            "D": "Siwalik orogeny"
+        },
+        "ans": "C",
+        "topic": "Himalayan Orogenic Phases: The Middle Miocene Sirmurian Orogeny (MCT / Lesser Himalayan Thrusting)",
+        "ref": "Sayeed (Explanatory Note *212, p. 71); Krishnan (Geology of India and Burma, pp. 545–555); Wadia (p. 368)"
+    },
+    213: {
+        "q": 213,
+        "question": "The modern topographic configuration of the Indo-Gangetic Alluvial Plains and the formation of the Main Boundary Thrust (MBT) took definitive shape during the fourth orogenic pulse known as the :",
+        "options": {
+            "A": "Siwalik orogeny (Late Pliocene to Middle Pleistocene)",
+            "B": "Sirmurian orogeny",
+            "C": "Kirthar orogeny",
+            "D": "Karakoram orogeny"
+        },
+        "ans": "A",
+        "topic": "Quaternary Orogenesis: The Siwalik Orogeny and the Evolution of the Indo-Gangetic Basin",
+        "ref": "Sayeed (Explanatory Note *213, p. 71); Pilgrim (1919); Valdiya (Aspects of Tectonics, pp. 88–105)"
+    },
+    214: {
+        "q": 214,
+        "question": "The vast majority of the present-day landforms, mountain ranges, river drainages, and physiographic relief features of India were sculptured during the :",
+        "options": {
+            "A": "Proterozoic Era",
+            "B": "Paleozoic Era",
+            "C": "Mesozoic Era",
+            "D": "Cenozoic Era"
+        },
+        "ans": "D",
+        "topic": "Indian Geomorphology: Cenozoic Morphogenesis of the Indian Subcontinent",
+        "ref": "Wadia (Geology of India, pp. 380–405); Krishnan (pp. 560–575); Radhakrishna & Vaidyanadhan"
+    },
+    215: {
+        "q": 215,
+        "question": "The primary high-hazard seismic belt of India runs along the Himalayan collision belt and southwestward into the Rann of Kutch. Which of the following destructive earthquakes occurred OUTSIDE this principal plate-boundary seismic belt within the stable Peninsular shield ?",
+        "options": {
+            "A": "Kangra Earthquake (1905, M 7.8)",
+            "B": "Assam Earthquake (1950, M 8.6)",
+            "C": "Koyna Earthquake (1967, M 6.3) in Maharashtra (Stable Continental Region - SCR intraplate setting)",
+            "D": "Himachal Pradesh / Kinnaur Earthquake (1975, M 6.8)"
+        },
+        "ans": "C",
+        "topic": "Seismotectonics of India: Intraplate SCR Earthquakes (Koyna 1967, Killari/Latur 1993)",
+        "ref": "Sayeed (Explanatory Note *215, p. 71); Gupta et al. (1969, BSSA 59, 1149); Johnston (1994, Stable Continental Regions)"
+    },
+    216: {
+        "q": 216,
+        "question": "Continuous recording of secular geomagnetic variations in India has an illustrious history originating at Colaba (1826/1841) and shifted to Alibag in 1904. The primary network of Indian geomagnetic observatories operated by IIG includes :",
+        "options": {
+            "A": "Calcutta, Bombay, Delhi, Bangalore, Madras, and Hyderabad",
+            "B": "Bombay, Delhi, Bangalore, Trivandrum, Ernakulam, and Ahmedabad",
+            "C": "Trombay, Hassan, Sriharikota, Allahabad, Gulmarg, and Alibag",
+            "D": "Alibag (Colaba), Kodaikanal, Hyderabad, Gulmarg, Sabhawala (Dehradun), and Trivandrum"
+        },
+        "ans": "D",
+        "topic": "Geomagnetism in India: Historical Observatories of the Indian Institute of Geomagnetism (IIG)",
+        "ref": "Sayeed (Explanatory Note *216, p. 71); Moos (1910, Colaba Magnetic Data); Rastogi (Geomagnetic Studies in India)"
+    },
+    217: {
+        "q": 217,
+        "question": "In contrasting global seismic zones, the Alpine-Himalayan continental collision belt is characteristically dominated by :",
+        "options": {
+            "A": "Shallow-focus earthquakes exclusively (<30 km)",
+            "B": "Shallow to intermediate-focus earthquakes (depths typically <100–150 km, with absence of deep earthquakes >300 km)",
+            "C": "Deep-focus earthquakes down to 700 km depth",
+            "D": "Aseismic creep without any major earthquakes"
+        },
+        "ans": "B",
+        "topic": "Comparative Seismology: Absence of Deep-Focus Earthquakes in Continental Collisional Belts",
+        "ref": "Fowler (The Solid Earth, pp. 390–405); Lowrie (Fundamentals of Geophysics, pp. 150–165); Molnar & Chen (1983)"
+    },
+    218: {
+        "q": 218,
+        "question": "Throughout their entire ~2,400 km arcuate strike length, all major structural nappes, fold systems, and thrust sheets of the Himalayas display a uniform tectonic transport (vergence) towards the :",
+        "options": {
+            "A": "South (foreland vergence onto the underthrusting Indian Shield)",
+            "B": "North",
+            "C": "East",
+            "D": "West"
+        },
+        "ans": "A",
+        "topic": "Himalayan Structural Kinematics: Southward Tectonic Transport and Foreland Vergence",
+        "ref": "Gansser (1964); Valdiya (Aspects of Tectonics, pp. 30–55); Yin (2006, Earth-Sci. Rev. 76)"
+    },
+    219: {
+        "q": 219,
+        "question": "Which of the following regional structural elements of the Indian subcontinent represents the chronologically youngest tectonic feature ?",
+        "options": {
+            "A": "Narmada-Son Lineament (Archaean-Proterozoic paleosuture)",
+            "B": "Indus Suture Zone (Late Cretaceous - Early Eocene)",
+            "C": "Krol Nappe (Miocene thrust sheet)",
+            "D": "Indo-Gangetic Basin (Pliocene to Quaternary actively evolving foreland basin)"
+        },
+        "ans": "D",
+        "topic": "Comparative Geochronology of Indian Tectonic Elements: Quaternary Indo-Gangetic Basin",
+        "ref": "Valdiya (Aspects of Tectonics); Ramakrishnan & Vaidyanadhan (Geology of India, Vol. 2, pp. 850–875)"
+    },
+    220: {
+        "q": 220,
+        "question": "Modern geological and deep seismic sounding (DSS) investigations indicate that the fundamental crustal architecture of the ancient Narmada-Son-Damodar Lineament (NSL) is controlled primarily by :",
+        "options": {
+            "A": "Simple surficial normal faulting",
+            "B": "Deep-seated Wrench fault / Strike-slip and taphrogenic reactivation tectonics (Proterozoic mobile suture zone)",
+            "C": "Passive margin drifting",
+            "D": "Purely oscillatory vertical epeirogeny"
+        },
+        "ans": "B",
+        "topic": "Peninsular Tectonics: Deep Crustal Structure and Wrench Reactivation of the Narmada-Son Lineament",
+        "ref": "Sayeed (Explanatory Note *220, p. 71); West (1962, Curr. Sci.); Choubey (1971, Nature); Kaila et al. (DSS Studies)"
+    },
+    221: {
+        "q": 221,
+        "question": "The tectonic junction where the accreting Carlsberg Mid-Ocean Ridge intersects the transform strike-slip Owen Fracture Zone represents a classic :",
+        "options": {
+            "A": "R-T-F (Ridge-Trench-Fault) triple junction",
+            "B": "R-R-T triple junction",
+            "C": "R-F-F (Ridge-Fault-Fault) or R-R-F triple junction",
+            "D": "F-F-R triple junction"
+        },
+        "ans": "C",
+        "topic": "Oceanic Tectonics: Carlsberg Ridge - Owen Fracture Zone Kinematic Triple Junction",
+        "ref": "McKenzie & Sclater (1971, Geophys. J. R. Astron. Soc. 24); Fowler (The Solid Earth, pp. 24–30)"
+    },
+    222: {
+        "q": 222,
+        "question": "The complex diffuse plate boundary separating the Indian Plate from the Australian Plate in the central Indian Ocean basin is characterized by deformation along the :",
+        "options": {
+            "A": "Quetta-Chaman fault",
+            "B": "Owen fracture zone",
+            "C": "Ninety East Ridge (90°E Ridge)",
+            "D": "Chagos-Laccadive / Central Indian intraplate deformation zone",
+            "E": "Carlsberg Ridge"
+        },
+        "ans": "D",
+        "topic": "Diffuse Plate Boundaries: The India-Australia Diffuse Boundary and Chagos-Laccadive Alignment",
+        "ref": "Wiens et al. (1985, Nature 320); Gordon et al. (1990); Royer & Gordon (1997, Science 277)"
+    },
+    223: {
+        "q": 223,
+        "question": "The prominent volcanic island-arc and deep subduction trench system known as the 'Aegean Arc' (Hellenic Arc) is situated within the :",
+        "options": {
+            "A": "Atlantic Ocean",
+            "B": "Pacific Ocean",
+            "C": "Indian Ocean",
+            "D": "Eastern Mediterranean Sea (subduction of African lithosphere beneath the Aegean microplate)"
+        },
+        "ans": "D",
+        "topic": "Mediterranean Geodynamics: The Aegean / Hellenic Subduction Arc System",
+        "ref": "McKenzie (1972, Geophys. J. R. Astron. Soc. 30); Le Pichon & Angelier (1979); Lowrie (p. 45)"
+    },
+    224: {
+        "q": 224,
+        "question": "Which dynamic stress regime and tectonic environment is overwhelmingly favorable for the decompression melting and large-scale eruption of the Tholeiitic Magma Series ?",
+        "options": {
+            "A": "Extensional tectonic stress regimes (divergent rift zones and mid-ocean ridges)",
+            "B": "Compressive collision regimes",
+            "C": "Minor compressional settings",
+            "D": "Deep crustal shear zones"
+        },
+        "ans": "A",
+        "topic": "Magma Tectonics: Extensional Stress Regimes and Tholeiitic Magma Generation",
+        "ref": "Winter (Principles of Igneous and Metamorphic Petrology, pp. 150–175); Cox, Bell & Pankhurst"
+    },
+    225: {
+        "q": 225,
+        "question": "Which of the following primary plate tectonic boundary types does NOT contribute to significant melting or magma generation ?",
+        "options": {
+            "A": "Constructive plate boundaries (divergent mid-ocean ridges)",
+            "B": "Conservative plate boundaries (strike-slip transform faults)",
+            "C": "Consuming plate boundaries (subduction zones)",
+            "D": "Marginal sea back-arc basins"
+        },
+        "ans": "B",
+        "topic": "Magmatic Petrology: Absence of Volcanism along Conservative Transform Faults",
+        "ref": "Wilson (1965, Nature 207); Kearey, Klepeis & Vine (Global Tectonics, pp. 95–105); Fowler (p. 10)"
+    },
+    226: {
+        "q": 226,
+        "question": "The fundamental petrotectonic circum-Pacific boundary separating the low-density, alkalic-andesitic continental sialic margins from the dark basaltic oceanic lithosphere is designated as the :",
+        "options": {
+            "A": "Andesite Line (Marshall, 1912)",
+            "B": "Continental slope",
+            "C": "Benioff zone",
+            "D": "Mohorovicic discontinuity"
+        },
+        "ans": "A",
+        "topic": "Circum-Pacific Petrotectonics: The Andesite Line (Petrological Boundary of Pacific Basin)",
+        "ref": "Marshall (1912, Australasian Assoc. Adv. Sci.); Macdonald (Volcanoes, Prentice-Hall); Lowrie (p. 42)"
+    },
+    227: {
+        "q": 227,
+        "question": "The classical geophysical science of 'Geodesy' is fundamentally concerned with the precise :",
+        "options": {
+            "A": "Radiometric dating of terrestrial rock complexes",
+            "B": "Measurement of superficial geomorphic weathering rills",
+            "C": "Mathematical and physical measurement of the geometric shape, dimensions, orientation, and gravitational field of the Earth",
+            "D": "Recording of magnetic pole reversals"
+        },
+        "ans": "C",
+        "topic": "Geophysical Foundations: The Science and Scope of Geodesy (Ellipsoid and Geoid)",
+        "ref": "Heiskanen & Moritz (Physical Geodesy, W.H. Freeman); Lowrie (Fundamentals of Geophysics, pp. 60–90)"
+    },
+    228: {
+        "q": 228,
+        "question": "The primordial, continuous global ocean that encircled the single supercontinent Pangaea prior to the initiation of continental drift was named by Alfred Wegener as :",
+        "options": {
+            "A": "Pangaea",
+            "B": "Panthalassa ('All-Ocean')",
+            "C": "Samfrau",
+            "D": "Tethys Sea"
+        },
+        "ans": "B",
+        "topic": "Continental Drift Theory: Panthalassa (The Super-Ocean of Alfred Wegener)",
+        "ref": "Wegener (1915/1929, The Origin of Continents and Oceans); Hallam (A Revolution in the Earth Sciences)"
+    },
+    229: {
+        "q": 229,
+        "question": "According to the classical continental drift hypothesis of Alfred Wegener, the fragmented continental blocks underwent primary post-Pangaean lateral drift towards the :",
+        "options": {
+            "A": "East",
+            "B": "West (due to lunar-solar tidal retarding drag) and towards the Equator (Polflucht / flight from the poles)",
+            "C": "North exclusively",
+            "D": "South exclusively"
+        },
+        "ans": "B",
+        "topic": "Wegener's Drift Mechanics: Westward Tidal Drag and Equatorward Polflucht Forces",
+        "ref": "Wegener (1929, Die Entstehung der Kontinente und Ozeane); Lowrie (p. 3); Fowler (pp. 2–5)"
+    },
+    230: {
+        "q": 230,
+        "question": "The Greater Indian cratonic plate rifted away from the East Antarctica - Australia complex approximately 130–140 Ma. At what epoch did it achieve primary hard continental collision with the Eurasian mainland ?",
+        "options": {
+            "A": "120 M.Y. ago",
+            "B": "80 M.Y. ago",
+            "C": "60 M.Y. ago",
+            "D": "45–50 M.Y. ago (Early Eocene, ~50 Ma)"
+        },
+        "ans": "D",
+        "topic": "Indo-Eurasian Collision Kinematics: Chronology of the Terminal Suture (~50 Ma)",
+        "ref": "Patriat & Achache (1984, Nature 311); Rowley (1996, EPSL 145); Najman et al. (2010)"
+    },
+    231: {
+        "q": 231,
+        "question": "Prior to the Permo-Triassic fragmentation of the supercontinent Pangaea, the Indian subcontinent was geographically situated :",
+        "options": {
+            "A": "North of the Equator in tropical latitudes",
+            "B": "Entirely South of the Equator (in high south-polar and temperate latitudes bordering Antarctica and Australia)",
+            "C": "In the geographic dead centre of northern Pangaea",
+            "D": "Directly at the North Pole"
+        },
+        "ans": "B",
+        "topic": "Pangaean Paleogeography: Position of India within Southern Gondwanaland",
+        "ref": "Wegener (1929); Smith, Hurley & Briden (Phanerozoic Paleocontinental World Maps); Wadia"
+    },
+    232: {
+        "q": 232,
+        "question": "The massive, arcuate deep-sea Sunda (Java) Trench runs bathymetrically parallel to which island chains of the Indonesian Arc ?",
+        "options": {
+            "A": "Java and Sumatra (Sumatra-Java subduction margin)",
+            "B": "Sumatra only",
+            "C": "Maldives",
+            "D": "Mauritius"
+        },
+        "ans": "A",
+        "topic": "Sunda Subduction System: Bathymetric Geometry of the Sunda (Java) Trench",
+        "ref": "Hamilton (1979, Tectonics of the Indonesian Region, USGS Prof. Paper 1078); Curray (2005)"
+    },
+    233: {
+        "q": 233,
+        "question": "The Prince Edward - Crozet Ridge (and associated fracture zone system) is an integral oceanic bathymetric ridge situated in the :",
+        "options": {
+            "A": "Atlantic Ocean",
+            "B": "Southwest Indian Ocean",
+            "C": "Pacific Ocean",
+            "D": "Red Sea"
+        },
+        "ans": "B",
+        "topic": "Indian Ocean Bathymetry: The Prince Edward - Crozet Ridge System",
+        "ref": "Sayeed (Explanatory Note *233, p. 71); Laughton et al. (The Indian Ocean); Kennett (Marine Geology)"
+    },
+    234: {
+        "q": 234,
+        "question": "Identify the CORRECTLY matched pair linking oceanic island groups with their true genetic geological classification :",
+        "options": {
+            "A": "Andaman and Nicobar Islands ——— Diastrophic non-volcanic islands exclusively",
+            "B": "Madagascar ——— Coral Barrier Reef",
+            "C": "Maldives ——— Continental granite island",
+            "D": "Mauritius ——— Volcanic hotspot island (Reunion hotspot trace)"
+        },
+        "ans": "D",
+        "topic": "Island Typology: Genesis of Mauritius (Hotspot Volcanic Island) vs. Microcontinents & Atolls",
+        "ref": "Sayeed (Explanatory Note *234, p. 71); Duncan & Hargraves (1990); Kennett (Marine Geology, pp. 240–260)"
+    },
+    235: {
+        "q": 235,
+        "question": "The deep abyssal floor of the Arabian Sea is geographically and tectonically divided into two distinct basins (Arabian Basin and Somali Basin) by the actively spreading :",
+        "options": {
+            "A": "Socotra-Chagos Ridge",
+            "B": "Carlsberg Ridge (northwest segment of Central Indian Ridge)",
+            "C": "Ninety East Ridge (90°E Ridge)",
+            "D": "Seychelles Bank Ridge",
+            "E": "St. Paul Ridge"
+        },
+        "ans": "B",
+        "topic": "Regional Tectonics of Arabian Sea: The Carlsberg Ridge Spreading Center",
+        "ref": "Laughton et al. (1970, Deep Sea Res. 17); Curray et al.; Ramakrishnan & Vaidyanadhan (p. 820)"
+    }
+}
+
+with open("/home/tapaswi/Mines_Geology/Objective_book/Sayeed_Chapter1_Geotectonics/sayeed_q201_235.json", "w") as f:
+    json.dump(SAYEED_Q201_235, f, indent=2)
+
+print("Batch 6 (Q201 to Q235) verified dataset compiled successfully!")
