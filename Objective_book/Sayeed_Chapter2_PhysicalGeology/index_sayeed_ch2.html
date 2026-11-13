@@ -10,7 +10,18 @@
 <script>
   window.MathJax = {
     tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
-    options: { enableMenu: false }
+    options: { enableMenu: false },
+    startup: {
+      ready: () => {
+        MathJax.startup.defaultReady();
+        MathJax.startup.promise.then(() => {
+          const activeMod = document.querySelector('.question-module.active');
+          if (activeMod && window.MathJax.typesetPromise) {
+            window.MathJax.typesetPromise([activeMod]);
+          }
+        });
+      }
+    }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -2206,7 +2217,7 @@
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Weathering Flux:} \quad 2\text{KAlSi}_3\text{O}_8 + 2\text{H}^+ + 9\text{H}_2\text{O} \longrightarrow \text{Al}_2\text{Si}_2\text{O}_5(\text{OH})_4\ (\text{Kaolinite}) + 2\text{K}^+ + 4\text{H}_4\text{SiO}_4</td>
+          <td>$$\text{Weathering Flux:} \quad 2\text{KAlSi}_3\text{O}_8 + 2\text{H}^+ + 9\text{H}_2\text{O} \longrightarrow \text{Al}_2\text{Si}_2\text{O}_5(\text{OH})_4\ (\text{Kaolinite}) + 2\text{K}^+ + 4\text{H}_4\text{SiO}_4$$</td>
           <td>Krauskopf & Bird (Introduction to Geochemistry, Ch. 13); Faure (Principles of Geochemistry)</td>
         </tr>
         <tr>
@@ -2386,7 +2397,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Al}^{3+} + 3\text{H}_2\text{O} \rightleftharpoons \text{Al(OH)}_3\ (\text{Gibbsite}) + 3\text{H}^+ \quad [\text{pH } 4.5 - 9.0: \text{Solubility } < 10^{-8}\text{ mol/L}]</td>
+          <td>$$\text{Al}^{3+} + 3\text{H}_2\text{O} \rightleftharpoons \text{Al(OH)}_3\ (\text{Gibbsite}) + 3\text{H}^+ \quad [\text{pH } 4.5 - 9.0: \text{Solubility } < 10^{-8}\text{ mol/L}]$$</td>
           <td>Mason & Moore (Principles of Geochemistry); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy)</td>
         </tr>
         <tr>
@@ -2563,7 +2574,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -2740,7 +2751,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -2917,7 +2928,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -3094,7 +3105,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]</td>
+          <td>$$\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 382); Winkler (Stone: Properties and Durability in Man's Environment)</td>
         </tr>
         <tr>
@@ -3275,7 +3286,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]</td>
+          <td>$$\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 382); Winkler (Stone: Properties and Durability in Man's Environment)</td>
         </tr>
         <tr>
@@ -3452,7 +3463,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Olivine} < \text{Pyroxene} < \text{Amphibole} < \text{Biotite} < \text{K-Feldspar} < \text{Muscovite} < \text{Quartz}</td>
+          <td>$$\text{Olivine} < \text{Pyroxene} < \text{Amphibole} < \text{Biotite} < \text{K-Feldspar} < \text{Muscovite} < \text{Quartz}$$</td>
           <td>S.S. Goldich (1938, A Study in Rock-Weathering, J. Geol. 46); Sam Boggs Jr. (pp. 14–18)</td>
         </tr>
         <tr>
@@ -3629,7 +3640,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -3806,7 +3817,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -3983,7 +3994,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -4160,7 +4171,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -4337,7 +4348,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -4514,7 +4525,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -4691,7 +4702,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -4868,7 +4879,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]</td>
+          <td>$$q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]$$</td>
           <td>Blackwelder (1934, Yardangs, GSA Bull.); Arthur Holmes (pp. 493–498)</td>
         </tr>
         <tr>
@@ -5045,7 +5056,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]</td>
+          <td>$$q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]$$</td>
           <td>Blackwelder (1934, Yardangs, GSA Bull.); Arthur Holmes (pp. 493–498)</td>
         </tr>
         <tr>
@@ -5222,7 +5233,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -5399,7 +5410,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]</td>
+          <td>$$q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]$$</td>
           <td>Blackwelder (1934, Yardangs, GSA Bull.); Arthur Holmes (pp. 493–498)</td>
         </tr>
         <tr>
@@ -5580,7 +5591,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -5757,7 +5768,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})</td>
+          <td>$$\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})$$</td>
           <td>Bagnold (1941, The Physics of Blown Sand); Fryberger (1979, USGS Prof. Pap. 1052)</td>
         </tr>
         <tr>
@@ -5934,7 +5945,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]</td>
+          <td>$$\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 382); Winkler (Stone: Properties and Durability in Man's Environment)</td>
         </tr>
         <tr>
@@ -6111,7 +6122,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -6288,7 +6299,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -6469,7 +6480,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]</td>
+          <td>$$q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]$$</td>
           <td>Blackwelder (1934, Yardangs, GSA Bull.); Arthur Holmes (pp. 493–498)</td>
         </tr>
         <tr>
@@ -6646,7 +6657,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -6823,7 +6834,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -7000,7 +7011,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -7177,7 +7188,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}</td>
+          <td>$$\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}$$</td>
           <td>G.K. Gilbert (1885, USGS 5th Ann. Rep.); Sam Boggs Jr. (pp. 295–305)</td>
         </tr>
         <tr>
@@ -7354,7 +7365,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}</td>
+          <td>$$\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}$$</td>
           <td>G.K. Gilbert (1885, USGS 5th Ann. Rep.); Sam Boggs Jr. (pp. 295–305)</td>
         </tr>
         <tr>
@@ -7531,7 +7542,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}</td>
+          <td>$$\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}$$</td>
           <td>G.K. Gilbert (1885, USGS 5th Ann. Rep.); Sam Boggs Jr. (pp. 295–305)</td>
         </tr>
         <tr>
@@ -7708,7 +7719,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}</td>
+          <td>$$\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}$$</td>
           <td>G.K. Gilbert (1885, USGS 5th Ann. Rep.); Sam Boggs Jr. (pp. 295–305)</td>
         </tr>
         <tr>
@@ -7885,7 +7896,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]</td>
+          <td>$$\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]$$</td>
           <td>W.M. Davis (1899); Walter Penck (1924, Morphologische Analyse); Thornbury (Principles of Geomorphology, Chs. 1–3)</td>
         </tr>
         <tr>
@@ -8062,7 +8073,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>E_k = \frac{1}{2}m v^2 \propto v^2 \quad \text{and} \quad \text{Competence } (M_{\text{max}}) \propto v^6</td>
+          <td>$$E_k = \frac{1}{2}m v^2 \propto v^2 \quad \text{and} \quad \text{Competence } (M_{\text{max}}) \propto v^6$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 518); Leopold, Wolman & Miller (Fluvial Processes in Geomorphology)</td>
         </tr>
         <tr>
@@ -8239,7 +8250,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})</td>
+          <td>$$v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})$$</td>
           <td>Leopold, Wolman & Miller (1964); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, pp. 242–248)</td>
         </tr>
         <tr>
@@ -8416,7 +8427,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -8593,7 +8604,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -8770,7 +8781,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -8947,7 +8958,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -9124,7 +9135,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -9301,7 +9312,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -9478,7 +9489,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -9655,7 +9666,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})</td>
+          <td>$$v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})$$</td>
           <td>Leopold, Wolman & Miller (1964); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, pp. 242–248)</td>
         </tr>
         <tr>
@@ -9836,7 +9847,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})</td>
+          <td>$$v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})$$</td>
           <td>Leopold, Wolman & Miller (1964); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, pp. 242–248)</td>
         </tr>
         <tr>
@@ -10013,7 +10024,7 @@ III. Formation of residual deposits leads to the concentration of aluminium in s
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -10194,7 +10205,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})</td>
+          <td>$$v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})$$</td>
           <td>Leopold, Wolman & Miller (1964); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, pp. 242–248)</td>
         </tr>
         <tr>
@@ -10371,7 +10382,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -10548,7 +10559,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -10725,7 +10736,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}</td>
+          <td>$$\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}$$</td>
           <td>Benn & Evans (Glaciers and Glaciation, Ch. 9); Arthur Holmes (p. 632)</td>
         </tr>
         <tr>
@@ -10902,7 +10913,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]</td>
+          <td>$$q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]$$</td>
           <td>Blackwelder (1934, Yardangs, GSA Bull.); Arthur Holmes (pp. 493–498)</td>
         </tr>
         <tr>
@@ -11079,7 +11090,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}</td>
+          <td>$$\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}$$</td>
           <td>Benn & Evans (Glaciers and Glaciation, Ch. 9); Arthur Holmes (p. 632)</td>
         </tr>
         <tr>
@@ -11256,7 +11267,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -11433,7 +11444,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -11610,7 +11621,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\dot{\epsilon} = A \tau^n \quad [\text{Glen's Flow Law: } n \approx 3], \quad u(z) = u_b + \frac{2A}{n+1} (\rho g \sin\alpha)^n (H^{n+1} - (H-z)^{n+1})</td>
+          <td>$$\dot{\epsilon} = A \tau^n \quad [\text{Glen's Flow Law: } n \approx 3], \quad u(z) = u_b + \frac{2A}{n+1} (\rho g \sin\alpha)^n (H^{n+1} - (H-z)^{n+1})$$</td>
           <td>J.W. Glen (1955, Proc. R. Soc. London); Paterson (The Physics of Glaciers, 3rd Ed.)</td>
         </tr>
         <tr>
@@ -11787,7 +11798,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -11964,7 +11975,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -12146,7 +12157,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -12323,7 +12334,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -12500,7 +12511,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -12677,7 +12688,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -12854,7 +12865,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -13035,7 +13046,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -13212,7 +13223,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -13389,7 +13400,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]</td>
+          <td>$$\text{CaCO}_3 + \text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{Ca}^{2+} + 2\text{HCO}_3^- \quad [\text{Degassing } \text{CO}_2 \uparrow \implies \text{Speleothem Precipitation}]$$</td>
           <td>Ford & Williams (Karst Hydrogeology and Geomorphology); W.D. Thornbury (pp. 317–335)</td>
         </tr>
         <tr>
@@ -13570,7 +13581,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}</td>
+          <td>$$\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}$$</td>
           <td>Benn & Evans (Glaciers and Glaciation, Ch. 9); Arthur Holmes (p. 632)</td>
         </tr>
         <tr>
@@ -13747,7 +13758,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -13924,7 +13935,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -14101,7 +14112,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -14278,7 +14289,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -14455,7 +14466,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -14632,7 +14643,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -14809,7 +14820,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -14986,7 +14997,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -15163,7 +15174,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -15340,7 +15351,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -15517,7 +15528,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -15694,7 +15705,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -15871,7 +15882,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -16052,7 +16063,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]</td>
+          <td>$$\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 382); Winkler (Stone: Properties and Durability in Man's Environment)</td>
         </tr>
         <tr>
@@ -16229,7 +16240,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -16406,7 +16417,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -16583,7 +16594,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -16760,7 +16771,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -16937,7 +16948,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -17114,7 +17125,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -17291,7 +17302,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -17468,7 +17479,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -17645,7 +17656,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\frac{V_{\text{submerged}}}{V_{\text{total}}} = \frac{\rho_{\text{ice}}}{\rho_{\text{seawater}}} = \frac{0.917\text{ g/cm}^3}{1.025\text{ g/cm}^3} \approx 0.895 \implies V_{\text{above}} \approx \frac{1}{9}\ (\sim 10.5\%)</td>
+          <td>$$\frac{V_{\text{submerged}}}{V_{\text{total}}} = \frac{\rho_{\text{ice}}}{\rho_{\text{seawater}}} = \frac{0.917\text{ g/cm}^3}{1.025\text{ g/cm}^3} \approx 0.895 \implies V_{\text{above}} \approx \frac{1}{9}\ (\sim 10.5\%)$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 623); Paterson (Physics of Glaciers)</td>
         </tr>
         <tr>
@@ -17822,7 +17833,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -17999,7 +18010,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\frac{V_{\text{submerged}}}{V_{\text{total}}} = \frac{\rho_{\text{ice}}}{\rho_{\text{seawater}}} = \frac{0.917\text{ g/cm}^3}{1.025\text{ g/cm}^3} \approx 0.895 \implies V_{\text{above}} \approx \frac{1}{9}\ (\sim 10.5\%)</td>
+          <td>$$\frac{V_{\text{submerged}}}{V_{\text{total}}} = \frac{\rho_{\text{ice}}}{\rho_{\text{seawater}}} = \frac{0.917\text{ g/cm}^3}{1.025\text{ g/cm}^3} \approx 0.895 \implies V_{\text{above}} \approx \frac{1}{9}\ (\sim 10.5\%)$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 623); Paterson (Physics of Glaciers)</td>
         </tr>
         <tr>
@@ -18176,7 +18187,7 @@ IV. Knickpoints and breaks of slope</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}</td>
+          <td>$$\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}$$</td>
           <td>G.K. Gilbert (1885, USGS 5th Ann. Rep.); Sam Boggs Jr. (pp. 295–305)</td>
         </tr>
         <tr>
@@ -18355,7 +18366,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -18532,7 +18543,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -18709,7 +18720,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -18886,7 +18897,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -19067,7 +19078,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -19244,7 +19255,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Olivine} < \text{Pyroxene} < \text{Amphibole} < \text{Biotite} < \text{K-Feldspar} < \text{Muscovite} < \text{Quartz}</td>
+          <td>$$\text{Olivine} < \text{Pyroxene} < \text{Amphibole} < \text{Biotite} < \text{K-Feldspar} < \text{Muscovite} < \text{Quartz}$$</td>
           <td>S.S. Goldich (1938, A Study in Rock-Weathering, J. Geol. 46); Sam Boggs Jr. (pp. 14–18)</td>
         </tr>
         <tr>
@@ -19425,7 +19436,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -19602,7 +19613,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -19779,7 +19790,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -19956,7 +19967,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -20133,7 +20144,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -20310,7 +20321,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -20487,7 +20498,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -20664,7 +20675,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -20841,7 +20852,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -21018,7 +21029,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -21195,7 +21206,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}</td>
+          <td>$$\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}$$</td>
           <td>Benn & Evans (Glaciers and Glaciation, Ch. 9); Arthur Holmes (p. 632)</td>
         </tr>
         <tr>
@@ -21372,7 +21383,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -21549,7 +21560,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -21726,7 +21737,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}</td>
+          <td>$$\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}$$</td>
           <td>G.K. Gilbert (1885, USGS 5th Ann. Rep.); Sam Boggs Jr. (pp. 295–305)</td>
         </tr>
         <tr>
@@ -21907,7 +21918,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})</td>
+          <td>$$v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})$$</td>
           <td>Leopold, Wolman & Miller (1964); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, pp. 242–248)</td>
         </tr>
         <tr>
@@ -22084,7 +22095,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]</td>
+          <td>$$\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 382); Winkler (Stone: Properties and Durability in Man's Environment)</td>
         </tr>
         <tr>
@@ -22261,7 +22272,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -22438,7 +22449,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]</td>
+          <td>$$\text{CaSO}_4\ (\text{Anhydrite}) + 2\text{H}_2\text{O} \longrightarrow \text{CaSO}_4\cdot 2\text{H}_2\text{O}\ (\text{Gypsum}) \quad [\Delta V = +42.27\%,\ \rho: 2.61 \rightarrow 2.32\text{ g/cm}^3]$$</td>
           <td>Arthur Holmes (Principles of Physical Geology, p. 382); Winkler (Stone: Properties and Durability in Man's Environment)</td>
         </tr>
         <tr>
@@ -22615,7 +22626,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -22792,7 +22803,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -22973,7 +22984,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -23150,7 +23161,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -23327,7 +23338,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})</td>
+          <td>$$\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})$$</td>
           <td>Bagnold (1941, The Physics of Blown Sand); Fryberger (1979, USGS Prof. Pap. 1052)</td>
         </tr>
         <tr>
@@ -23504,7 +23515,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]</td>
+          <td>$$q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]$$</td>
           <td>Blackwelder (1934, Yardangs, GSA Bull.); Arthur Holmes (pp. 493–498)</td>
         </tr>
         <tr>
@@ -23681,7 +23692,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})</td>
+          <td>$$\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})$$</td>
           <td>Bagnold (1941, The Physics of Blown Sand); Fryberger (1979, USGS Prof. Pap. 1052)</td>
         </tr>
         <tr>
@@ -23858,7 +23869,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})</td>
+          <td>$$\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})$$</td>
           <td>Bagnold (1941, The Physics of Blown Sand); Fryberger (1979, USGS Prof. Pap. 1052)</td>
         </tr>
         <tr>
@@ -24039,7 +24050,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})</td>
+          <td>$$\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})$$</td>
           <td>Bagnold (1941, The Physics of Blown Sand); Fryberger (1979, USGS Prof. Pap. 1052)</td>
         </tr>
         <tr>
@@ -24216,7 +24227,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})</td>
+          <td>$$\text{Wind Regime Index } (RDP/DP): \quad \text{Unidirectional } (RDP/DP > 0.8 \rightarrow \text{Barchan/Transverse}) \longleftrightarrow \text{Multidirectional } (RDP/DP < 0.3 \rightarrow \text{Star Dune})$$</td>
           <td>Bagnold (1941, The Physics of Blown Sand); Fryberger (1979, USGS Prof. Pap. 1052)</td>
         </tr>
         <tr>
@@ -24393,7 +24404,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]</td>
+          <td>$$q_s \propto (u_* - u_{*t})^3 \quad [\text{Saltation Flux Sandblasting Dominance}]$$</td>
           <td>Blackwelder (1934, Yardangs, GSA Bull.); Arthur Holmes (pp. 493–498)</td>
         </tr>
         <tr>
@@ -24570,7 +24581,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -24747,7 +24758,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})</td>
+          <td>$$v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})$$</td>
           <td>Leopold, Wolman & Miller (1964); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, pp. 242–248)</td>
         </tr>
         <tr>
@@ -24924,7 +24935,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}</td>
+          <td>$$\text{Delta Architecture:} \quad \text{Topset (Fluvial-Marsh)} \longrightarrow \text{Foreset (Clinoform Slope)} \longrightarrow \text{Bottomset (Prodelta Basinal Clay)}$$</td>
           <td>G.K. Gilbert (1885, USGS 5th Ann. Rep.); Sam Boggs Jr. (pp. 295–305)</td>
         </tr>
         <tr>
@@ -25101,7 +25112,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -25278,7 +25289,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>P < P_{\text{vapor}} \implies \text{Bubble Formation}; \quad P > P_{\text{vapor}} \implies \text{Violent Implosion } [P_{\text{shock}} > 1000\text{ MPa}]</td>
+          <td>$$P < P_{\text{vapor}} \implies \text{Bubble Formation}; \quad P > P_{\text{vapor}} \implies \text{Violent Implosion } [P_{\text{shock}} > 1000\text{ MPa}]$$</td>
           <td>Barnes (1956, Cavitation in Stream Hydraulics); K.M. Bangar (Principles of Engineering Geology, p. 69)</td>
         </tr>
         <tr>
@@ -25455,7 +25466,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -25632,7 +25643,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}</td>
+          <td>$$\text{Stoss Side: } \sigma_n > 0 \implies \text{Abrasion (Striations/Polish)}; \quad \text{Lee Side: } \sigma_n \rightarrow 0,\ P_w \uparrow \implies \text{Quarrying / Plucking}$$</td>
           <td>Benn & Evans (Glaciers and Glaciation, Ch. 9); Arthur Holmes (p. 632)</td>
         </tr>
         <tr>
@@ -25809,7 +25820,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -25990,7 +26001,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})</td>
+          <td>$$v_{\text{outer}} > v_{\text{inner}} \implies \tau_{\text{outer}} > \tau_c \ (\text{Cut Bank Erosion}), \quad \tau_{\text{inner}} < \tau_c \ (\text{Point Bar Deposition})$$</td>
           <td>Leopold, Wolman & Miller (1964); Sam Boggs Jr. (Principles of Sedimentology and Stratigraphy, pp. 242–248)</td>
         </tr>
         <tr>
@@ -26167,7 +26178,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]</td>
+          <td>$$\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]$$</td>
           <td>W.M. Davis (1899); Walter Penck (1924, Morphologische Analyse); Thornbury (Principles of Geomorphology, Chs. 1–3)</td>
         </tr>
         <tr>
@@ -26344,7 +26355,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]</td>
+          <td>$$\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]$$</td>
           <td>W.M. Davis (1899); Walter Penck (1924, Morphologische Analyse); Thornbury (Principles of Geomorphology, Chs. 1–3)</td>
         </tr>
         <tr>
@@ -26521,7 +26532,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]</td>
+          <td>$$\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]$$</td>
           <td>W.M. Davis (1899); Walter Penck (1924, Morphologische Analyse); Thornbury (Principles of Geomorphology, Chs. 1–3)</td>
         </tr>
         <tr>
@@ -26698,7 +26709,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}</td>
+          <td>$$\Delta V_{\text{chamber}} \gg \text{Magma Replenishment} \implies \sigma_t > \sigma_{\text{roof}} \implies \text{Piston / Ring-Fracture Collapse}$$</td>
           <td>Howel Williams (1941, Calderas and Their Origin); Cas & Wright (Volcanic Successions)</td>
         </tr>
         <tr>
@@ -26875,7 +26886,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -27052,7 +27063,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -27229,7 +27240,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]</td>
+          <td>$$\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]$$</td>
           <td>W.M. Davis (1899); Walter Penck (1924, Morphologische Analyse); Thornbury (Principles of Geomorphology, Chs. 1–3)</td>
         </tr>
         <tr>
@@ -27406,7 +27417,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]</td>
+          <td>$$\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]$$</td>
           <td>W.M. Davis (1899); Walter Penck (1924, Morphologische Analyse); Thornbury (Principles of Geomorphology, Chs. 1–3)</td>
         </tr>
         <tr>
@@ -27583,7 +27594,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z</td>
+          <td>$$\text{Rate of Denudation } (D) = f(\text{Climate, Lithology, Relief, Time}) \quad \text{where } \nabla z = \frac{\partial z}{\partial t} + \vec{v}\cdot\nabla z$$</td>
           <td>Arthur Holmes (Principles of Physical Geology); W.D. Thornbury (Principles of Geomorphology)</td>
         </tr>
         <tr>
@@ -27760,7 +27771,7 @@ II. Eustatic rise in global sea level (marine transgression)</div>
         </tr>
         <tr>
           <td><strong>Governing Mechanical Law</strong></td>
-          <td>\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]</td>
+          <td>$$\text{Landscape} = f(\text{Structure, Process, Stage}) \quad [\text{Davisian Postulate}] \quad \text{vs.} \quad \frac{dz}{dt} = U(t) - E(t) \quad [\text{Penckian Dynamic Model}]$$</td>
           <td>W.M. Davis (1899); Walter Penck (1924, Morphologische Analyse); Thornbury (Principles of Geomorphology, Chs. 1–3)</td>
         </tr>
         <tr>
@@ -27877,6 +27888,16 @@ II. Eustatic rise in global sea level (marine transgression)</div>
       if (q >= 1 && q <= totalQuestions) activeQuestion = q;
     }
     showQuestion(activeQuestion);
+  });
+
+  window.addEventListener('hashchange', () => {
+    const h = window.location.hash;
+    if (h && h.startsWith('#q')) {
+      const q = parseInt(h.replace('#q', ''));
+      if (q >= 1 && q <= totalQuestions && q !== activeQuestion) {
+        showQuestion(q);
+      }
+    }
   });
 
 </script>
