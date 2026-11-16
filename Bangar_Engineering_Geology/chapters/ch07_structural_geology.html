@@ -219,7 +219,125 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: var(--primary-dark); }
-</style>
+
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+    </style>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
@@ -248,6 +366,13 @@
 <p>
     The structural attitude of any planar geological feature (bedding plane, fault surface, joint, dike) is uniquely defined in 3D space by two angular parameters measured with a Brunton compass:
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/apparent_dip_true_dip_nomogram_trigonometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/apparent_dip_true_dip_nomogram_trigonometry.png" alt="Figure 7.1a: 3D Trigonometric Relationship between True Dip ($\theta$), Strike, and Apparent Dip ($\alpha$) along an oblique vertical section ($\tan\alpha = \tan\theta\cos\beta$)." loading="lazy">
+    <div class="fig-caption">Figure 7.1a: 3D Trigonometric Relationship between True Dip ($\theta$), Strike, and Apparent Dip ($\alpha$) along an oblique vertical section ($\tan\alpha = \tan\theta\cos\beta$).</div>
+</div>
+
 <ul>
     <li><strong>Strike:</strong> The compass direction or bearing of a horizontal line drawn on the planar rock surface. It is always perpendicular to the direction of true dip.</li>
     <li><strong>Dip:</strong> The angle of inclination of the rock surface measured downward from the horizontal plane:
@@ -270,6 +395,25 @@
 <p>
     A <strong>fold</strong> is a wave-like structural undulation or curvature produced in layered rocks as a consequence of ductile compressive deformation.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_anticline_syncline_fold_outcrop.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_anticline_syncline_fold_outcrop.jpg" alt="Figure 7.2a: Field Outcrop of an Upright Compressional Anticline Fold displaying hinge curvature and dipping planar limbs." loading="lazy">
+    <div class="fig-caption">Figure 7.2a: Field Outcrop of an Upright Compressional Anticline Fold displaying hinge curvature and dipping planar limbs.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fold_anatomy_hinge_line_curvature.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fold_anatomy_hinge_line_curvature.png" alt="Figure 7.2b: 3D Geometric Elements of a Folded Surface: Hinge Line, Axial Plane, Crest, Trough, Inflection Line, and Interlimb Angle." loading="lazy">
+    <div class="fig-caption">Figure 7.2b: 3D Geometric Elements of a Folded Surface: Hinge Line, Axial Plane, Crest, Trough, Inflection Line, and Interlimb Angle.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig12_10_ramsay_fold_classes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig12_10_ramsay_fold_classes.png" alt="Figure 7.2c: Ramsay's Dip-Isogon Fold Classification: Class 1B Parallel (concentric, constant orthogonal thickness), Class 1C, Class 2 Similar (constant axial-planar thickness), and Class 3 (Fossen)." loading="lazy">
+    <div class="fig-caption">Figure 7.2c: Ramsay's Dip-Isogon Fold Classification: Class 1B Parallel (concentric, constant orthogonal thickness), Class 1C, Class 2 Similar (constant axial-planar thickness), and Class 3 (Fossen).</div>
+</div>
+
 
 <h3>Anatomy of a Fold</h3>
 <ul>
@@ -301,6 +445,19 @@
 <p>
     A <strong>fault</strong> is a planar rock fracture or fracture zone along which there has been significant measurable displacement of the opposing blocks parallel to the fracture surface.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_normal_reverse_strike_slip_faults.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_normal_reverse_strike_slip_faults.png" alt="Figure 7.3a: USGS 3D Block Diagrams comparing Normal Fault ( crustal extension), Reverse/Thrust Fault (crustal shortening), and Strike-Slip Wrench Fault." loading="lazy">
+    <div class="fig-caption">Figure 7.3a: USGS 3D Block Diagrams comparing Normal Fault ( crustal extension), Reverse/Thrust Fault (crustal shortening), and Strike-Slip Wrench Fault.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/anderson_fault_theory_principal_stresses.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/anderson_fault_theory_principal_stresses.png" alt="Figure 7.3b: E. M. Anderson's Dynamic Theory of Faulting relating Principal Stress Orientations ($\sigma_1 > \sigma_2 > \sigma_3$) to Normal ($\sigma_1$ vertical), Thrust ($\sigma_3$ vertical), and Strike-Slip ($\sigma_2$ vertical) faults." loading="lazy">
+    <div class="fig-caption">Figure 7.3b: E. M. Anderson's Dynamic Theory of Faulting relating Principal Stress Orientations ($\sigma_1 > \sigma_2 > \sigma_3$) to Normal ($\sigma_1$ vertical), Thrust ($\sigma_3$ vertical), and Strike-Slip ($\sigma_2$ vertical) faults.</div>
+</div>
+
 
 <div class="figure-box">
     <img src="../images/bangar_p110_fault_elements_hade_dip.png" alt="Fault Elements - Bangar" style="max-height: 250px; display: inline-block; margin-right: 15px;">
@@ -335,6 +492,19 @@
 <p>
     <strong>Joints:</strong> Fractures or cracks in rocks along which there has been zero or imperceptible displacement. Joints occur as systematic parallel sets or intersecting orthogonal systems. Types include:
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_angular_unconformity_outcrop.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_angular_unconformity_outcrop.jpg" alt="Figure 7.4a: Classic Angular Unconformity at Siccar Point (Hutton's Unconformity): gently dipping Devonian Old Red Sandstone resting upon eroded, vertical Silurian greywackes." loading="lazy">
+    <div class="fig-caption">Figure 7.4a: Classic Angular Unconformity at Siccar Point (Hutton's Unconformity): gently dipping Devonian Old Red Sandstone resting upon eroded, vertical Silurian greywackes.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/unconformity_four_types_cross_section.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/unconformity_four_types_cross_section.png" alt="Figure 7.4b: Comparative Cross-Sections of the Four Types of Unconformities: Angular Unconformity, Disconformity, Paraconformity, and Nonconformity." loading="lazy">
+    <div class="fig-caption">Figure 7.4b: Comparative Cross-Sections of the Four Types of Unconformities: Angular Unconformity, Disconformity, Paraconformity, and Nonconformity.</div>
+</div>
+
 <ul>
     <li><em>Columnar Joints:</em> Hexagonal cooling columns in basaltic lava flows.</li>
     <li><em>Sheet Joints:</em> Horizontal curved joints in granitic exfoliation domes.</li>
@@ -350,6 +520,128 @@
     <li><em>Nonconformity:</em> Sedimentary strata resting directly upon an eroded surface of crystalline igneous or metamorphic basement rocks (e.g., Cuddapah sediments resting on Peninsular Gneiss).</li>
 </ul>
 
+
+<div class="visual-atlas-section">
+    <h2>7.5 Visual Atlas: Fold Kinematics, Fault Regimes, Boudinage & Structural Landforms</h2>
+    <p>Comprehensive structural geology gallery integrating Fossen mechanics diagrams, Ramsay fold profiles, brittle-ductile crustal envelopes, and Bangar structural drawings.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig12_1_fold_hinge_anatomy.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig12_1_fold_hinge_anatomy.png" alt="Antiform, Synform, Neutral Fold, and Overturned Fold geometry (Fossen)." loading="lazy">
+    <div class="fig-caption">Antiform, Synform, Neutral Fold, and Overturned Fold geometry (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig12_8_fold_shapes_inverted_limbs.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig12_8_fold_shapes_inverted_limbs.png" alt="Progressive fold asymmetry: Symmetrical, Asymmetrical, Overturned, Recumbent, and Chevron folds (Fossen)." loading="lazy">
+    <div class="fig-caption">Progressive fold asymmetry: Symmetrical, Asymmetrical, Overturned, Recumbent, and Chevron folds (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/recumbent_fold_axial_surface_geometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/recumbent_fold_axial_surface_geometry.png" alt="Recumbent fold with sub-horizontal axial surface, inverted lower limb, and tectonic nappe thrusting." loading="lazy">
+    <div class="fig-caption">Recumbent fold with sub-horizontal axial surface, inverted lower limb, and tectonic nappe thrusting.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/ramsay_parallel_fold_depth_curvature.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/ramsay_parallel_fold_depth_curvature.png" alt="Concentric parallel folding (Class 1B) showing downward tightening and décollement detachment." loading="lazy">
+    <div class="fig-caption">Concentric parallel folding (Class 1B) showing downward tightening and décollement detachment.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_8_plunging_fold_axis.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_8_plunging_fold_axis.png" alt="Geometry of a Plunging Fold showing horizontal trend and vertical plunge angle ($\phi$) of the fold axis (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Geometry of a Plunging Fold showing horizontal trend and vertical plunge angle ($\phi$) of the fold axis (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_11_close_fold_thickened_crests.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_11_close_fold_thickened_crests.png" alt="Supratenuous and Similar folds exhibiting attenuated limbs and thickened hinge zones (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Supratenuous and Similar folds exhibiting attenuated limbs and thickened hinge zones (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig15_1_pinch_and_swell_boudinage.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig15_1_pinch_and_swell_boudinage.png" alt="Extensional Boudinage and pinch-and-swell structures in competent layers surrounded by ductile matrix (Fossen)." loading="lazy">
+    <div class="fig-caption">Extensional Boudinage and pinch-and-swell structures in competent layers surrounded by ductile matrix (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig6_3_hookes_law_elasticity.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig6_3_hookes_law_elasticity.png" alt="Elastic, ductile (plastic), and brittle rock deformation curves under confining pressure (Fossen)." loading="lazy">
+    <div class="fig-caption">Elastic, ductile (plastic), and brittle rock deformation curves under confining pressure (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/brittle_ductile_transition_crustal_profile.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/brittle_ductile_transition_crustal_profile.png" alt="Crustal strength envelope showing upper brittle frictional faulting (Byerlee's Law) and lower ductile creep (mylonite zone)." loading="lazy">
+    <div class="fig-caption">Crustal strength envelope showing upper brittle frictional faulting (Byerlee's Law) and lower ductile creep (mylonite zone).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/dip_slip_normal_reverse_mechanics.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/dip_slip_normal_reverse_mechanics.png" alt="Hanging-wall and footwall displacement vectors in Dip-Slip Normal vs. Reverse faults." loading="lazy">
+    <div class="fig-caption">Hanging-wall and footwall displacement vectors in Dip-Slip Normal vs. Reverse faults.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_oblique_slip_geometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_oblique_slip_geometry.png" alt="3D vector resolution of Net Slip into Strike-Slip and Dip-Slip components, with Rake (Pitch) angle (Fossen)." loading="lazy">
+    <div class="fig-caption">3D vector resolution of Net Slip into Strike-Slip and Dip-Slip components, with Rake (Pitch) angle (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_rake_pitch_diagram.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_rake_pitch_diagram.png" alt="Measurement of Rake (Pitch) of slickenside lineations on an inclined fault plane." loading="lazy">
+    <div class="fig-caption">Measurement of Rake (Pitch) of slickenside lineations on an inclined fault plane.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/thrust_fault_geometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/thrust_fault_geometry.png" alt="Low-angle Thrust Fault duplex geometry: Ramp, Flat, Klippe (tectonic outlier), and Fenster (Window/Inlier)." loading="lazy">
+    <div class="fig-caption">Low-angle Thrust Fault duplex geometry: Ramp, Flat, Klippe (tectonic outlier), and Fenster (Window/Inlier).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/graben_horst_rift_valley_mechanics.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/graben_horst_rift_valley_mechanics.png" alt="Extensional Horst and Graben rift-basin architecture bounded by conjugate normal faults." loading="lazy">
+    <div class="fig-caption">Extensional Horst and Graben rift-basin architecture bounded by conjugate normal faults.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p115_fault_breccia_gouge_brittle.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p115_fault_breccia_gouge_brittle.png" alt="Brittle fault-zone rocks: angular Fault Breccia, clay-rich Fault Gouge, and slickensides (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Brittle fault-zone rocks: angular Fault Breccia, clay-rich Fault Gouge, and slickensides (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p123_sheet_joints_granite.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p123_sheet_joints_granite.png" alt="Conjugate shear joints, tension joints, and sheet jointing in massive igneous rocks (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Conjugate shear joints, tension joints, and sheet jointing in massive igneous rocks (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/hogback_vs_cuesta_morphology.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/hogback_vs_cuesta_morphology.png" alt="Differential erosion of dipping sedimentary strata: steep symmetrical Hogback vs. gentle asymmetrical Cuesta escarpment." loading="lazy">
+    <div class="fig-caption">Differential erosion of dipping sedimentary strata: steep symmetrical Hogback vs. gentle asymmetrical Cuesta escarpment.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_51_cuesta_hogback.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_51_cuesta_hogback.png" alt="Homoclinal shifting of outcrops and formation of Cuesta and Hogback ridges (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Homoclinal shifting of outcrops and formation of Cuesta and Hogback ridges (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_49_inlier_outlier.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_49_inlier_outlier.png" alt="Erosional Outlier (younger rock surrounded by older rock) vs. Window Inlier (older rock surrounded by younger rock) (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Erosional Outlier (younger rock surrounded by older rock) vs. Window Inlier (older rock surrounded by younger rock) (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_52_mountain_building.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_52_mountain_building.png" alt="Orogenic fold-and-thrust mountain building, block-fault mountains, and residual mountains (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Orogenic fold-and-thrust mountain building, block-fault mountains, and residual mountains (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig7_14_anderson_fault_angle.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig7_14_anderson_fault_angle.png" alt="Coulomb-Mohr fracture criterion and conjugate shear fault orientation at $\theta = 45^\circ - \phi/2$ to $\sigma_1$ (Fossen)." loading="lazy">
+    <div class="fig-caption">Coulomb-Mohr fracture criterion and conjugate shear fault orientation at $\theta = 45^\circ - \phi/2$ to $\sigma_1$ (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig9_2_three_fault_regimes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig9_2_three_fault_regimes.png" alt="Block mechanics of Extensional Normal, Contractional Reverse/Thrust, and Strike-Slip fault regimes (Fossen)." loading="lazy">
+    <div class="fig-caption">Block mechanics of Extensional Normal, Contractional Reverse/Thrust, and Strike-Slip fault regimes (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/fossen_fig9_5_horst_graben.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Fossen Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/fossen_fig9_5_horst_graben.png" alt="Domino fault blocks, Half-Grabens, Listric growth faults, and Horst-Graben structures (Fossen)." loading="lazy">
+    <div class="fig-caption">Domino fault blocks, Half-Grabens, Listric growth faults, and Horst-Graben structures (Fossen).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_11_parallel_folds.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_11_parallel_folds.png" alt="Concentric parallel fold dying out vertically against a planar detachment horizon (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Concentric parallel fold dying out vertically against a planar detachment horizon (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_24_normal_fault_hanging_wall.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_24_normal_fault_hanging_wall.png" alt="Footwall and Hanging-Wall block terminology showing Normal Dip-Slip displacement (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Footwall and Hanging-Wall block terminology showing Normal Dip-Slip displacement (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig7_5_7_8_plunge_fold_axis.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig7_5_7_8_plunge_fold_axis.png" alt="Axial plane attitude and plunging fold hinge geometry (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Axial plane attitude and plunging fold hinge geometry (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p98_recumbent_fold_axial_plane.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p98_recumbent_fold_axial_plane.png" alt="Overturned to Recumbent fold transition and development of overthrust nappe sheets (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Overturned to Recumbent fold transition and development of overthrust nappe sheets (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p123_massive_granite_exfoliation.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p123_massive_granite_exfoliation.png" alt="Unloading sheet jointing and mural joint blocks in massive granite bodies (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Unloading sheet jointing and mural joint blocks in massive granite bodies (K. M. Bangar).</div>
+</div>
+    </div>
+</div>
+
+
 <div class="callout callout-engineering">
     <div class="callout-title">Engineering Implications of Chapter 7</div>
     Fault zones represent catastrophic hazards for dams and tunnels: they act as conduits for high-pressure groundwater leakage, gouge zones have zero shear strength, and active seismic faults can shear an entire concrete dam in two. Tunnels driven parallel to the strike of steep fault planes suffer massive roof collapses, whereas driving across the strike minimizes the hazard zone.
@@ -363,5 +655,48 @@
             <a href="ch08_stratigraphy_india.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

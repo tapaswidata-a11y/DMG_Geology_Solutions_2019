@@ -191,6 +191,124 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: #1d4ed8; }
+    
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
     </style>
     <script>
     window.MathJax = {
@@ -218,6 +336,13 @@
             <p>
                 <strong>Economic Geology</strong> is the scientific study of earth materials that can be extracted, processed, and utilized by human industry for economic profit. Key technical terms include:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/goldschmidt_geochemical_classification_periodic_table.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/goldschmidt_geochemical_classification_periodic_table.png" alt="Figure 9.0a: Goldschmidt's Geochemical Classification of the Elements into Siderophile (iron-loving), Chalcophile (sulfide-loving), Lithophile (silicate-loving), and Atmophile groups." loading="lazy">
+    <div class="fig-caption">Figure 9.0a: Goldschmidt's Geochemical Classification of the Elements into Siderophile (iron-loving), Chalcophile (sulfide-loving), Lithophile (silicate-loving), and Atmophile groups.</div>
+</div>
+
             <ul>
                 <li><strong>Ore Mineral:</strong> A naturally occurring mineral compound containing one or more valuable metallic elements that can be extracted commercially at a profit (e.g., Chalcopyrite $\text{CuFeS}_2$ for copper; Hematite $\text{Fe}_2\text{O}_3$ for iron).</li>
                 <li><strong>Gangue Minerals:</strong> The worthless, non-metalliferous non-metallic minerals associated with the ore in a deposit (e.g., quartz, calcite, fluorite, barite, feldspar) that must be separated during beneficiation.</li>
@@ -235,6 +360,25 @@
             <p>
                 Based on physico-chemical processes of concentration, ore deposits are classified into nine primary genetic groups (Lindgren-Bateman classification):
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/liquid_immiscibility_silicate_melt_phase_diagram.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/liquid_immiscibility_silicate_melt_phase_diagram.png" alt="Figure 9.0b: Magmatic Sulfide Liquid Immiscibility and Gravitational Cumulate Segregation of Chromite and Ni-Cu-PGE Ores in layered ultramafic intrusions." loading="lazy">
+    <div class="fig-caption">Figure 9.0b: Magmatic Sulfide Liquid Immiscibility and Gravitational Cumulate Segregation of Chromite and Ni-Cu-PGE Ores in layered ultramafic intrusions.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_p640_hydrothermal_metasomatism_allochemical.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_p640_hydrothermal_metasomatism_allochemical.png" alt="Figure 9.0c: Hydrothermal Fluid Circulation, Wall-Rock Alteration Zones, and Hypothermal-Mesothermal-Epithermal Vein Deposition." loading="lazy">
+    <div class="fig-caption">Figure 9.0c: Hydrothermal Fluid Circulation, Wall-Rock Alteration Zones, and Hypothermal-Mesothermal-Epithermal Vein Deposition.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/supergene_copper_weathering_profile.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/supergene_copper_weathering_profile.png" alt="Figure 9.0d: Vertical Zoning in Oxidation and Supergene Sulfide Enrichment: Surface Limonitic Gossan ('Iron Hat'), Leached Zone, Oxidized Zone, Water Table, Supergene Chalcocite ($\text{Cu}_2\text{S}$) Blanket, and Primary Hypogene Protore." loading="lazy">
+    <div class="fig-caption">Figure 9.0d: Vertical Zoning in Oxidation and Supergene Sulfide Enrichment: Surface Limonitic Gossan ('Iron Hat'), Leached Zone, Oxidized Zone, Water Table, Supergene Chalcocite ($\text{Cu}_2\text{S}$) Blanket, and Primary Hypogene Protore.</div>
+</div>
+
 
             <h3>1. Magmatic Concentration</h3>
             <p>
@@ -425,7 +569,58 @@
                 </table>
             </div>
 
-            <div class="callout callout-engineering">
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_banded_iron_formation_specimen.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_banded_iron_formation_specimen.jpg" alt="Figure 9.2a: Precambrian Banded Iron Formation (BIF / BHJ) displaying alternating dark metallic Hematite-Magnetite bands and red chert/jasper layers." loading="lazy">
+    <div class="fig-caption">Figure 9.2a: Precambrian Banded Iron Formation (BIF / BHJ) displaying alternating dark metallic Hematite-Magnetite bands and red chert/jasper layers.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_open_pit_mine_benches.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_open_pit_mine_benches.jpg" alt="Figure 9.2b: Large-Scale Open-Pit Metalliferous Mine showcasing terraced haulage benches, pit slope angles, and ore extraction zones." loading="lazy">
+    <div class="fig-caption">Figure 9.2b: Large-Scale Open-Pit Metalliferous Mine showcasing terraced haulage benches, pit slope angles, and ore extraction zones.</div>
+</div>
+
+
+            
+<div class="visual-atlas-section">
+    <h2>9.5 Visual Atlas: Metallic Ores, Skarns, BIFs & Hydrocarbon Reservoirs</h2>
+    <p>Reference photographs of principal metallic ore minerals, contact metasomatic skarn models, Algoma vs. Superior iron formations, and Indian petroliferous basins.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_chalcopyrite_copper_ore.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_chalcopyrite_copper_ore.jpg" alt="Brass-yellow Chalcopyrite ($\text{CuFeS}_2$, $34.5\%\text{ Cu}$) associated with secondary blue Azurite and brown Limonite." loading="lazy">
+    <div class="fig-caption">Brass-yellow Chalcopyrite ($\text{CuFeS}_2$, $34.5\%\text{ Cu}$) associated with secondary blue Azurite and brown Limonite.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_galena_cubic_cleavage_ore.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_galena_cubic_cleavage_ore.jpg" alt="High-density Galena ($\text{PbS}$, $86.6\%\text{ Pb}$, $G=7.58$) exhibiting brilliant metallic luster and cubic $\{100\}$ cleavage steps." loading="lazy">
+    <div class="fig-caption">High-density Galena ($\text{PbS}$, $86.6\%\text{ Pb}$, $G=7.58$) exhibiting brilliant metallic luster and cubic $\{100\}$ cleavage steps.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_p494_skarn_carbonate_contact_metasomatism.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_p494_skarn_carbonate_contact_metasomatism.png" alt="Contact Metasomatic (Pyrometasomatic) Skarn Zonation along a granitic pluton intruding reactive carbonate country rocks." loading="lazy">
+    <div class="fig-caption">Contact Metasomatic (Pyrometasomatic) Skarn Zonation along a granitic pluton intruding reactive carbonate country rocks.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/algoma_vs_superior_iron_formations.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/algoma_vs_superior_iron_formations.png" alt="Depositional environments of Archean Algoma-type (volcanogenic) vs. Paleoproterozoic Lake Superior-type (continental shelf) Banded Iron Formations." loading="lazy">
+    <div class="fig-caption">Depositional environments of Archean Algoma-type (volcanogenic) vs. Paleoproterozoic Lake Superior-type (continental shelf) Banded Iron Formations.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/carbonatite_magmatic_carbonate_ree_deposit.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/carbonatite_magmatic_carbonate_ree_deposit.png" alt="Alkaline Carbonatite Igneous Complexes hosting Rare Earth Elements (REE), Niobium (Pyrochlore), Fluorite, and Apatite (e.g., Amba Dongar, India)." loading="lazy">
+    <div class="fig-caption">Alkaline Carbonatite Igneous Complexes hosting Rare Earth Elements (REE), Niobium (Pyrochlore), Fluorite, and Apatite (e.g., Amba Dongar, India).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/vdpm_salt_diapir_piercement.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Van der Pluijm & Marshak Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/vdpm_salt_diapir_piercement.png" alt="Buoyant Salt Dome (Diapir) piercement forming structural flank, cap-rock, and supradome petroleum traps." loading="lazy">
+    <div class="fig-caption">Buoyant Salt Dome (Diapir) piercement forming structural flank, cap-rock, and supradome petroleum traps.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/hydrocarbon_deposits_india_matching.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/hydrocarbon_deposits_india_matching.png" alt="Major Sedimentary Petroliferous Basins of India: Mumbai Offshore, Assam-Arakan (Digboi, Naharkatiya), Cambay (Ankleshwar), and Krishna-Godavari (KG) Basins." loading="lazy">
+    <div class="fig-caption">Major Sedimentary Petroliferous Basins of India: Mumbai Offshore, Assam-Arakan (Digboi, Naharkatiya), Cambay (Ankleshwar), and Krishna-Godavari (KG) Basins.</div>
+</div>
+    </div>
+</div>
+
+
+<div class="callout callout-engineering">
                 <div class="callout-title">Engineering & Mining Geotechnical Implications</div>
                 Subsurface ore extraction creates massive geotechnical hazards:
                 <ul>
@@ -442,5 +637,48 @@
             <a href="ch10_engineering_geology.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

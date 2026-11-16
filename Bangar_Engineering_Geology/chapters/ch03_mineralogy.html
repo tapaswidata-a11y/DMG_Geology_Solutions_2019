@@ -219,7 +219,125 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: var(--primary-dark); }
-</style>
+
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+    </style>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
@@ -249,6 +367,25 @@
     A <strong>mineral</strong> is a naturally occurring, homogeneous, inorganic solid substance having a definite chemical composition and an ordered, periodic internal atomic arrangement.
 </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_quartz_crystal_cluster.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_quartz_crystal_cluster.jpg" alt="Figure 3.1: Euhedral Hexagonal Prismatic Quartz Crystals ($\text{SiO}_2$, $H=7$) exhibiting vitreous luster and rhombohedral terminations." loading="lazy">
+    <div class="fig-caption">Figure 3.1: Euhedral Hexagonal Prismatic Quartz Crystals ($\text{SiO}_2$, $H=7$) exhibiting vitreous luster and rhombohedral terminations.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_calcite_double_refraction.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_calcite_double_refraction.jpg" alt="Figure 3.2: Optical Double Refraction (Birefringence) in rhombohedral Iceland Spar Calcite ($\text{CaCO}_3$, $H=3$, 3 perfect cleavage directions at $75^\circ$)." loading="lazy">
+    <div class="fig-caption">Figure 3.2: Optical Double Refraction (Birefringence) in rhombohedral Iceland Spar Calcite ($\text{CaCO}_3$, $H=3$, 3 perfect cleavage directions at $75^\circ$).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/dana_mineral_classification_matching.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Dana Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/dana_mineral_classification_matching.png" alt="Figure 3.3: Dana's Chemical Classification of Minerals based on dominant anionic groups (Native Elements, Sulfides, Oxides, Halides, Carbonates, Sulfates, Silicates)." loading="lazy">
+    <div class="fig-caption">Figure 3.3: Dana's Chemical Classification of Minerals based on dominant anionic groups (Native Elements, Sulfides, Oxides, Halides, Carbonates, Sulfates, Silicates).</div>
+</div>
+
+
 <h3>Diagnostic Physical Properties</h3>
 <ul>
     <li><strong>Colour:</strong> Dependent on chemical composition. <em>Idiochromatic</em> minerals possess inherent colour due to major elements (Malachite = green, Azurite = blue). <em>Allochromatic</em> minerals are coloured by trace impurities (Quartz: pure = clear, rose = Ti/Mn, amethyst = Fe³⁺).</li>
@@ -277,6 +414,25 @@
 <p>
     Over $95\%$ of the Earth's crust is composed of silicate minerals. The fundamental building block is the silicon-oxygen tetrahedron <strong>$[\mathrm{SiO_4}]^{4-}$</strong>, consisting of a central $\mathrm{Si}^{4+}$ cation surrounded by four $\mathrm{O}^{2-}$ anions in tetrahedral coordination.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_p364_silicate_structures.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_p364_silicate_structures.png" alt="Figure 3.4: Polymerization of $\text{SiO}_4^{4-}$ Tetrahedra across the Six Structural Subclasses of Silicates (Nesosilicates to Tectosilicates) (Perkins)." loading="lazy">
+    <div class="fig-caption">Figure 3.4: Polymerization of $\text{SiO}_4^{4-}$ Tetrahedra across the Six Structural Subclasses of Silicates (Nesosilicates to Tectosilicates) (Perkins).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_fig17_inosilicate_single_chain.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_fig17_inosilicate_single_chain.png" alt="Figure 3.5: Single-Chain Inosilicate Structure of Pyroxenes ($\text{Si}:\text{O} = 1:3$, e.g., Augite) vs. Double-Chain Amphiboles ($\text{Si}:\text{O} = 4:11$, e.g., Hornblende)." loading="lazy">
+    <div class="fig-caption">Figure 3.5: Single-Chain Inosilicate Structure of Pyroxenes ($\text{Si}:\text{O} = 1:3$, e.g., Augite) vs. Double-Chain Amphiboles ($\text{Si}:\text{O} = 4:11$, e.g., Hornblende).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_fig_mica_tot_structure.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_fig_mica_tot_structure.png" alt="Figure 3.6: Phyllosilicate $T\text{--}O\text{--}T$ ($2:1$) Layered Sheet Structure of Micas (Muscovite and Biotite) explaining perfect $\{001\}$ basal cleavage." loading="lazy">
+    <div class="fig-caption">Figure 3.6: Phyllosilicate $T\text{--}O\text{--}T$ ($2:1$) Layered Sheet Structure of Micas (Muscovite and Biotite) explaining perfect $\{001\}$ basal cleavage.</div>
+</div>
+
 
 <table class="data-table">
     <thead>
@@ -333,6 +489,52 @@
     </tbody>
 </table>
 
+
+<div class="visual-atlas-section">
+    <h2>3.3 Visual Atlas of Rock-Forming Minerals & Silicate Structures</h2>
+    <p>High-resolution mineral specimen photographs and crystallographic structural diagrams of the major rock-forming silicate groups.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_orthoclase_feldspar_mineral.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_orthoclase_feldspar_mineral.jpg" alt="Orthoclase Potassium Feldspar ($\text{KAlSi}_3\text{O}_8$, $H=6$) showing flesh-pink color and $90^\circ$ cleavage." loading="lazy">
+    <div class="fig-caption">Orthoclase Potassium Feldspar ($\text{KAlSi}_3\text{O}_8$, $H=6$) showing flesh-pink color and $90^\circ$ cleavage.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_fig16_feldspar_solvus_perthite.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_fig16_feldspar_solvus_perthite.png" alt="Alkali Feldspar subsolidus exsolution phase diagram explaining Perthite and Antiperthite intergrowths (Winter)." loading="lazy">
+    <div class="fig-caption">Alkali Feldspar subsolidus exsolution phase diagram explaining Perthite and Antiperthite intergrowths (Winter).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/plagioclase_miscibility_gaps_labradorescence.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/plagioclase_miscibility_gaps_labradorescence.png" alt="Ternary Feldspar Classification (Anorthite-Albite-Orthoclase) and plagioclase solid-solution series." loading="lazy">
+    <div class="fig-caption">Ternary Feldspar Classification (Anorthite-Albite-Orthoclase) and plagioclase solid-solution series.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_muscovite_mica_sheets.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_muscovite_mica_sheets.jpg" alt="Muscovite Potash Mica ($\text{KAl}_2(\text{AlSi}_3\text{O}_{10})(\text{OH})_2$) displaying elastic, transparent, silvery-white folia." loading="lazy">
+    <div class="fig-caption">Muscovite Potash Mica ($\text{KAl}_2(\text{AlSi}_3\text{O}_{10})(\text{OH})_2$) displaying elastic, transparent, silvery-white folia.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_almandine_garnet_dodecahedron.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_almandine_garnet_dodecahedron.jpg" alt="Mineralogical plate of Nesosilicates and Cyclosilicates including rhombic dodecahedral Garnet, Olivine, Topaz, and Epidote." loading="lazy">
+    <div class="fig-caption">Mineralogical plate of Nesosilicates and Cyclosilicates including rhombic dodecahedral Garnet, Olivine, Topaz, and Epidote.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_olivine_peridotite_xenolith.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_olivine_peridotite_xenolith.jpg" alt="Granular Olive-Green Olivine ($(\text{Mg,Fe})_2\text{SiO}_4$) in a mantle peridotite xenolith." loading="lazy">
+    <div class="fig-caption">Granular Olive-Green Olivine ($(\text{Mg,Fe})_2\text{SiO}_4$) in a mantle peridotite xenolith.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_fig18_inosilicate_double_chain.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_fig18_inosilicate_double_chain.png" alt="Double-chain tetrahedral linkage in Amphiboles ($\text{Si}_4\text{O}_{11}^{6-}$) producing $56^\circ / 124^\circ$ prism cleavage." loading="lazy">
+    <div class="fig-caption">Double-chain tetrahedral linkage in Amphiboles ($\text{Si}_4\text{O}_{11}^{6-}$) producing $56^\circ / 124^\circ$ prism cleavage.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_fig19_cyclosilicate_beryl_ring.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_fig19_cyclosilicate_beryl_ring.png" alt="Six-membered hexagonal ring structure ($\text{Si}_6\text{O}_{18}^{12-}$) characteristic of Beryl and Tourmaline (Perkins)." loading="lazy">
+    <div class="fig-caption">Six-membered hexagonal ring structure ($\text{Si}_6\text{O}_{18}^{12-}$) characteristic of Beryl and Tourmaline (Perkins).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_fig19_uniaxial_interference_figure_clean.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_fig19_uniaxial_interference_figure_clean.png" alt="Optical mineralogy conoscopic uniaxial interference figure (isogyre cross and isochromatic rings) under crossed polars." loading="lazy">
+    <div class="fig-caption">Optical mineralogy conoscopic uniaxial interference figure (isogyre cross and isochromatic rings) under crossed polars.</div>
+</div>
+    </div>
+</div>
+
+
 <div class="callout callout-engineering">
     <div class="callout-title">Engineering Alert: Swelling Clay Minerals</div>
     <strong>Montmorillonite (Smectite group):</strong> The $2:1$ layer silicate structure has weak van der Waals interlayer bonds that readily absorb water molecules and exchangeable cations ($\mathrm{Na}^+, \mathrm{Ca}^{2+}$), causing up to $300    ext{--}500\%$ volumetric swelling. This is the mineralogical culprit behind "Black Cotton Soils" in Peninsular India, causing intense foundation heave, road buckling, and slope failures.
@@ -346,5 +548,48 @@
             <a href="ch04_crystallography.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

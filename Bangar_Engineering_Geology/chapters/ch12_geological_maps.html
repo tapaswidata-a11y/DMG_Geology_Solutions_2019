@@ -191,6 +191,124 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: #1d4ed8; }
+    
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
     </style>
     <script>
     window.MathJax = {
@@ -218,6 +336,19 @@
             <p>
                 A <strong>Geological Map</strong> represents the distribution, structural attitudes, geological contacts, and ages of rock units exposed on the Earth's surface, projected onto a topographic base map. The fundamental components of a geological map include:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_topographic_contour_map_profile.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_topographic_contour_map_profile.png" alt="Figure 12.1a: Topographic Contour Map and Vertical Cross-Section Profile showing how closed concentric contours represent hills, valleys, ridges, and steep cliffs." loading="lazy">
+    <div class="fig-caption">Figure 12.1a: Topographic Contour Map and Vertical Cross-Section Profile showing how closed concentric contours represent hills, valleys, ridges, and steep cliffs.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/map_scale_rf_ground_distance_triangle.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/map_scale_rf_ground_distance_triangle.png" alt="Figure 12.2a: Cartographic Scale Relationships: Representative Fraction ($RF = \text{Map Distance} / \text{Ground Distance}$) and Ground Coverage vs. Resolution." loading="lazy">
+    <div class="fig-caption">Figure 12.2a: Cartographic Scale Relationships: Representative Fraction ($RF = \text{Map Distance} / \text{Ground Distance}$) and Ground Coverage vs. Resolution.</div>
+</div>
+
             <ul>
                 <li><strong>Topographic Contours:</strong> Imaginary lines joining points of equal ground elevation above mean sea level ($MSL$). The vertical distance between consecutive contour lines is the <strong>Contour Interval ($CI$)</strong>, and the horizontal distance is the <strong>Horizontal Equivalent ($HE$)</strong>:
                     $$\text{Ground Slope } (\tan \theta) = \frac{\text{Contour Interval } (CI)}{\text{Horizontal Equivalent } (HE)}$$
@@ -293,6 +424,13 @@
                         <li><em>Anticlines:</em> Oldest beds occupy the core / center of the structure, flanked symmetrically by progressively younger beds dipping outward.</li>
                         <li><em>Synclines:</em> Youngest beds occupy the core, flanked by progressively older beds dipping inward.</li>
                     </ul>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig12_5_four_unconformities.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig12_5_four_unconformities.png" alt="Figure 12.2b: Block Diagrams of Unconformable Contacts and Outcrop Truncation Patterns on Geological Maps (Boggs)." loading="lazy">
+    <div class="fig-caption">Figure 12.2b: Block Diagrams of Unconformable Contacts and Outcrop Truncation Patterns on Geological Maps (Boggs).</div>
+</div>
+
                 </li>
                 <li><strong>Plunging Folds:</strong> Contacts form parabolic or convergent V-shaped outcrop closures:
                     <ul>
@@ -346,6 +484,25 @@
                 A <strong>Geographic Information System (GIS)</strong> is a computer-based framework that captures, stores, manipulates, analyzes, manages, and presents all types of geographically referenced spatial data.
             </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_gis_thematic_data_layers.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_gis_thematic_data_layers.png" alt="Figure 12.4a: Fundamental Concept of a Geographic Information System (GIS): stacking georeferenced thematic vector and raster layers (Topography, Lithology, Faults, Hydrology, Land Use)." loading="lazy">
+    <div class="fig-caption">Figure 12.4a: Fundamental Concept of a Geographic Information System (GIS): stacking georeferenced thematic vector and raster layers (Topography, Lithology, Faults, Hydrology, Land Use).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/gis_vector_primitives_point_line_polygon.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/gis_vector_primitives_point_line_polygon.png" alt="Figure 12.4b: GIS Vector Data Primitives (0D Points, 1D Polylines, 2D Polygons) linked to Relational Attribute Tables." loading="lazy">
+    <div class="fig-caption">Figure 12.4b: GIS Vector Data Primitives (0D Points, 1D Polylines, 2D Polygons) linked to Relational Attribute Tables.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/raster_matrix_rows_columns_cell_values.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/raster_matrix_rows_columns_cell_values.png" alt="Figure 12.4c: GIS Raster Grid Matrix Architecture (Rows, Columns, Pixel Resolution, and Digital Number attribute values)." loading="lazy">
+    <div class="fig-caption">Figure 12.4c: GIS Raster Grid Matrix Architecture (Rows, Columns, Pixel Resolution, and Digital Number attribute values).</div>
+</div>
+
+
             <div class="fig-box">
                 <img src="../images/bangar_p216_gis_vector_features_points_lines_polygons.png" alt="GIS Vector Features">
                 <div class="fig-caption">Figure 12.3: GIS Vector Data Model: discrete real-world features represented as Points (boreholes, mine shafts), Lines (faults, streams, roads), and Polygons (geological formations, mining lease boundaries) (K. M. Bangar).</div>
@@ -356,7 +513,73 @@
                 <div class="fig-caption">Figure 12.4: Spatial data representation: continuous Raster grid cells (Digital Elevation Models, satellite imagery) versus discrete Vector geometry (K. M. Bangar).</div>
             </div>
 
-            <div class="callout callout-engineering">
+            
+<div class="visual-atlas-section">
+    <h2>12.6 Visual Atlas: Spatial Analysis, Geodatabases, LiDAR & Remote Sensing</h2>
+    <p>Complete spatial technology visual gallery covering vector overlay operations, buffering, coordinate projections, SAR/LiDAR active sensors, and Bangar GIS diagrams.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/map_scale_1_50000_1mm_equals_50_metres.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/map_scale_1_50000_1mm_equals_50_metres.png" alt="Survey of India standard $1:50,000$ topographic map scale conversions ($1\text{ cm} = 500\text{ m}$, $2\text{ cm} = 1\text{ km}$)." loading="lazy">
+    <div class="fig-caption">Survey of India standard $1:50,000$ topographic map scale conversions ($1\text{ cm} = 500\text{ m}$, $2\text{ cm} = 1\text{ km}$).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p218_gis_coordinate_systems_dimensions.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p218_gis_coordinate_systems_dimensions.png" alt="Geographic Coordinate Systems ($\text{Latitude } \phi, \text{Longitude } \lambda, \text{Height } z$) and Planar Map Projections (UTM) (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Geographic Coordinate Systems ($\text{Latitude } \phi, \text{Longitude } \lambda, \text{Height } z$) and Planar Map Projections (UTM) (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/spatial_data_structures_spaghetti_vs_raster.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/spatial_data_structures_spaghetti_vs_raster.png" alt="Comparison of Spaghetti Vector Model, Topological Vector Model, and Regular Raster Grid Model." loading="lazy">
+    <div class="fig-caption">Comparison of Spaghetti Vector Model, Topological Vector Model, and Regular Raster Grid Model.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/gis_buffer_operation_point_line_polygon.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/gis_buffer_operation_point_line_polygon.png" alt="Spatial Proximity Analysis: Buffering around Points (mine shafts), Lines (active faults/rivers), and Polygons (reservoir zones)." loading="lazy">
+    <div class="fig-caption">Spatial Proximity Analysis: Buffering around Points (mine shafts), Lines (active faults/rivers), and Polygons (reservoir zones).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/point_in_polygon_overlay_gis_operation.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/point_in_polygon_overlay_gis_operation.png" alt="Topological Vector Overlay Operations: Point-in-Polygon, Line-in-Polygon, and Polygon-on-Polygon Intersect & Union." loading="lazy">
+    <div class="fig-caption">Topological Vector Overlay Operations: Point-in-Polygon, Line-in-Polygon, and Polygon-on-Polygon Intersect & Union.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p219_geoprocessing_alphanumeric_inputs.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p219_geoprocessing_alphanumeric_inputs.png" alt="Geoprocessing workflow integrating spatial geometry and alphanumeric attribute queries (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Geoprocessing workflow integrating spatial geometry and alphanumeric attribute queries (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p220_digital_data_creation_digitization.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p220_digital_data_creation_digitization.png" alt="Digital spatial data capture: heads-up screen digitization, scanning, GPS surveying, and orthophoto rectification (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Digital spatial data capture: heads-up screen digitization, scanning, GPS surveying, and orthophoto rectification (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p224_spatial_databases_geodatabase.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p224_spatial_databases_geodatabase.png" alt="Object-Relational Geodatabase (RDBMS) architecture for multi-user geological mapping (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Object-Relational Geodatabase (RDBMS) architecture for multi-user geological mapping (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geodatabase_spatial_database_architecture.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/geodatabase_spatial_database_architecture.png" alt="Enterprise Spatial Database Management System (SDBMS) linking feature classes, topology rules, and raster catalogs." loading="lazy">
+    <div class="fig-caption">Enterprise Spatial Database Management System (SDBMS) linking feature classes, topology rules, and raster catalogs.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/active_vs_passive_remote_sensing_sensors.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/active_vs_passive_remote_sensing_sensors.png" alt="Passive Optical/Thermal Remote Sensing (solar reflection) vs. Active Microwave RADAR and LiDAR sensors." loading="lazy">
+    <div class="fig-caption">Passive Optical/Thermal Remote Sensing (solar reflection) vs. Active Microwave RADAR and LiDAR sensors.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/sar_lidar_high_spatial_resolution_capabilities.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/sar_lidar_high_spatial_resolution_capabilities.png" alt="Synthetic Aperture Radar (InSAR) and Airborne LiDAR Digital Terrain Modeling through cloud and forest canopy." loading="lazy">
+    <div class="fig-caption">Synthetic Aperture Radar (InSAR) and Airborne LiDAR Digital Terrain Modeling through cloud and forest canopy.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p225_sar_lidar_spatial_resolution.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p225_sar_lidar_spatial_resolution.png" alt="High-resolution LiDAR point-cloud elevation modeling and SAR interferometry for landslide monitoring (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">High-resolution LiDAR point-cloud elevation modeling and SAR interferometry for landslide monitoring (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p221_gis_accuracy_source_data_processing.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p221_gis_accuracy_source_data_processing.png" alt="Spatial positional accuracy, attribute precision, and error propagation in GIS processing (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Spatial positional accuracy, attribute precision, and error propagation in GIS processing (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p222_gis_fourth_dimension_time.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p222_gis_fourth_dimension_time.png" alt="Spatio-temporal 4D GIS modeling incorporating time-series geological change detection (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Spatio-temporal 4D GIS modeling incorporating time-series geological change detection (K. M. Bangar).</div>
+</div>
+    </div>
+</div>
+
+
+<div class="callout callout-engineering">
                 <div class="callout-title">Engineering Applications of GIS & Map Interpretation</div>
                 <ul>
                     <li><strong>Landslide Susceptibility Zonation (LSZ):</strong> Overlaying thematic raster layers of slope gradient, lithology, structural lineaments, land use, and rainfall using Multi-Criteria Decision Analysis (AHP) to generate regional landslide risk maps.</li>
@@ -372,5 +595,48 @@
             <a href="appendix_tables.html" class="nav-btn">Appendices: Identification Tables &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

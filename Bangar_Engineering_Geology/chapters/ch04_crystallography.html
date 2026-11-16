@@ -219,7 +219,125 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: var(--primary-dark); }
-</style>
+
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+    </style>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
@@ -249,6 +367,13 @@
     A <strong>crystal</strong> is a homogeneous solid bounded by naturally formed planar surfaces called <em>crystal faces</em>, reflecting an underlying ordered, three-dimensional periodic internal space lattice.
 </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_fig13_bragg_law_geometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_fig13_bragg_law_geometry.png" alt="Figure 4.1: Internal Periodic Crystal Lattice Geometry and Bragg's Law of X-Ray Diffraction ($n\lambda = 2d\sin\theta$) (Perkins)." loading="lazy">
+    <div class="fig-caption">Figure 4.1: Internal Periodic Crystal Lattice Geometry and Bragg's Law of X-Ray Diffraction ($n\lambda = 2d\sin\theta$) (Perkins).</div>
+</div>
+
+
 <h3>Steno's Law of Interfacial Angles (1669)</h3>
 <p>
     <em>"The angles between corresponding faces on crystals of the same substance are constant, regardless of the size, shape, or relative development of the faces, provided measurement is made at the same temperature."</em>
@@ -258,6 +383,19 @@
 <p>
     The geometric regularities in crystal face arrangements are defined by three symmetry operations:
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_p270_point_groups_stereonets.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_p270_point_groups_stereonets.png" alt="Figure 4.2: Stereographic Projections and Symmetry Operations of Crystallographic Point Groups (Planes, Axes of Rotation, and Rotoinversion) (Perkins)." loading="lazy">
+    <div class="fig-caption">Figure 4.2: Stereographic Projections and Symmetry Operations of Crystallographic Point Groups (Planes, Axes of Rotation, and Rotoinversion) (Perkins).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_p276_hermann_mauguin_box.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_p276_hermann_mauguin_box.png" alt="Figure 4.3: Hermann-Mauguin International Symmetry Notation across the Crystal Systems (Perkins)." loading="lazy">
+    <div class="fig-caption">Figure 4.3: Hermann-Mauguin International Symmetry Notation across the Crystal Systems (Perkins).</div>
+</div>
+
 <ul>
     <li><strong>Plane of Symmetry ($P$):</strong> An imaginary plane dividing a crystal into two halves, each of which is the exact mirror reflection of the other across the plane.</li>
     <li><strong>Axis of Symmetry ($L$ / $A$):</strong> An imaginary line about which the crystal can be rotated through $360^\circ$ such that it presents identical appearance $n$ times:
@@ -276,6 +414,19 @@
 <p>
     Every crystalline substance crystallizes in one of 32 crystal point groups classified into <strong>Six Crystal Systems</strong> based on their crystallographic axes ($a, b, c$) and interaxial angles ($\alpha, \beta, \gamma$):
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_crystal_systems_bravais_lattices.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_crystal_systems_bravais_lattices.png" alt="Figure 4.4: Complete 3D Geometry of the Crystal Systems and the 14 Three-Dimensional Bravais Space Lattices ($P, I, F, C, R$)." loading="lazy">
+    <div class="fig-caption">Figure 4.4: Complete 3D Geometry of the Crystal Systems and the 14 Three-Dimensional Bravais Space Lattices ($P, I, F, C, R$).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_fig15_general_form_special_forms.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_fig15_general_form_special_forms.png" alt="Figure 4.5: Isometric (Cubic) Crystal Forms: Cube $\{100\}$, Octahedron $\{111\}$, Dodecahedron $\{110\}$, Trapezohedron, and Hexoctahedron (Perkins)." loading="lazy">
+    <div class="fig-caption">Figure 4.5: Isometric (Cubic) Crystal Forms: Cube $\{100\}$, Octahedron $\{111\}$, Dodecahedron $\{110\}$, Trapezohedron, and Hexoctahedron (Perkins).</div>
+</div>
+
 
 <table class="data-table">
     <thead>
@@ -348,6 +499,19 @@ eq 90^\circ$</td>
 <p>
     <strong>Miller Indices:</strong> The orientation of any crystal face is uniquely represented by three whole integers ($hkl$) obtained by taking the reciprocals of the fractional intercepts made by the face on the crystallographic axes $a, b, c$ and clearing fractions. For example, a face intersecting axes at $1a, 2b, \infty c$ has reciprocals $\frac{1}{1}, \frac{1}{2}, \frac{1}{\infty} = 1, \frac{1}{2}, 0$, yielding Miller indices <strong>$(210)$</strong>.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_miller_indices_cubic_planes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_miller_indices_cubic_planes.png" alt="Figure 4.6: 3D Representation of Crystallographic Planes and Miller Indices $(100)$, $(110)$, and $(111)$ in a Cubic Unit Cell." loading="lazy">
+    <div class="fig-caption">Figure 4.6: 3D Representation of Crystallographic Planes and Miller Indices $(100)$, $(110)$, and $(111)$ in a Cubic Unit Cell.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_p320_miller_indices_intercepts.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_p320_miller_indices_intercepts.png" alt="Figure 4.7: Crystallographic Axial Intercepts (Weiss Parameters) and Reciprocal Conversion to Miller Indices $(hkl)$ (Perkins)." loading="lazy">
+    <div class="fig-caption">Figure 4.7: Crystallographic Axial Intercepts (Weiss Parameters) and Reciprocal Conversion to Miller Indices $(hkl)$ (Perkins).</div>
+</div>
+
 <p>
     <strong>Twinning:</strong> A symmetrical intergrowth of two or more single crystals of the same species according to a definite crystallographic law. Types include:
 </p>
@@ -358,7 +522,28 @@ eq 90^\circ$</td>
     <li><em>Feldspar Twin Laws:</em> Carlsbad (penetration/contact along $c$-axis), Baveno (composition plane (021)), Manebach (composition plane (001)).</li>
 </ul>
 
-        </main>
+        
+<div class="visual-atlas-section">
+    <h2>4.5 Visual Atlas: Crystal Forms, Miller Indices & Twinning Laws</h2>
+    <p>Detailed reference illustrations of crystallographic intercept calculations, penetration twins, and contact twins.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/perkins_p322_miller_indices_box1.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Perkins Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/perkins_p322_miller_indices_box1.png" alt="Step-by-step mathematical derivation of Miller Indices $(hkl)$ and Hexagonal Bravais-Miller Indices $(hkil)$ (Perkins)." loading="lazy">
+    <div class="fig-caption">Step-by-step mathematical derivation of Miller Indices $(hkl)$ and Hexagonal Bravais-Miller Indices $(hkil)$ (Perkins).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_staurolite_penetration_twin.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_staurolite_penetration_twin.jpg" alt="Cruciform Penetration Twin of Staurolite ('Fairy Cross') twinned on $\{031\}$ at $90^\circ$ and $\{231\}$ at $60^\circ$." loading="lazy">
+    <div class="fig-caption">Cruciform Penetration Twin of Staurolite ('Fairy Cross') twinned on $\{031\}$ at $90^\circ$ and $\{231\}$ at $60^\circ$.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_gypsum_swallowtail_twin.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_gypsum_swallowtail_twin.jpg" alt="Contact Swallowtail Twin of Gypsum ($\text{CaSO}_4\cdot 2\text{H}_2\text{O}$) twinned along the $\{100\}$ orthopinacoid plane." loading="lazy">
+    <div class="fig-caption">Contact Swallowtail Twin of Gypsum ($\text{CaSO}_4\cdot 2\text{H}_2\text{O}$) twinned along the $\{100\}$ orthopinacoid plane.</div>
+</div>
+    </div>
+</div>
+
+</main>
 
         <div class="chapter-nav">
             <a href="ch03_mineralogy.html" class="nav-btn">&larr; Previous Chapter</a>
@@ -366,5 +551,48 @@ eq 90^\circ$</td>
             <a href="ch05_igneous_petrology.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

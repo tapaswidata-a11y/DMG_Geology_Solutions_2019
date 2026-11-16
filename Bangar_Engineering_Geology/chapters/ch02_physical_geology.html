@@ -219,7 +219,125 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: var(--primary-dark); }
-</style>
+
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+    </style>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
@@ -248,6 +366,25 @@
 <p>
     <strong>Weathering</strong> is the mechanical disintegration and chemical decomposition of rocks in situ under the influence of atmospheric, hydrospheric, and biological agents. Unlike erosion, weathering involves no significant transportation of the fragmented material.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_spheroidal_weathering_basalt.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_spheroidal_weathering_basalt.jpg" alt="Figure 2.1a: Field Photograph of Concentric Spheroidal Weathering (Onion-Skin Exfoliation) in jointed crystalline rock." loading="lazy">
+    <div class="fig-caption">Figure 2.1a: Field Photograph of Concentric Spheroidal Weathering (Onion-Skin Exfoliation) in jointed crystalline rock.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/mushroom_rock_abrasion_genesis.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/mushroom_rock_abrasion_genesis.png" alt="Figure 2.2a: Mechanics of Aeolian Ventifact & Pedestal (Mushroom) Rock Formation via near-surface saltating sand abrasion ($0\text{--}1.5\text{ m}$ zone)." loading="lazy">
+    <div class="fig-caption">Figure 2.2a: Mechanics of Aeolian Ventifact & Pedestal (Mushroom) Rock Formation via near-surface saltating sand abrasion ($0\text{--}1.5\text{ m}$ zone).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_barchan_sand_dunes_desert.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_barchan_sand_dunes_desert.jpg" alt="Figure 2.2b: Crescentic Barchan Sand Dunes migrating downwind with steep leeward slip faces ($32^\circ\text{--}34^\circ$)." loading="lazy">
+    <div class="fig-caption">Figure 2.2b: Crescentic Barchan Sand Dunes migrating downwind with steep leeward slip faces ($32^\circ\text{--}34^\circ$).</div>
+</div>
+
 
 <h3>Types of Weathering</h3>
 <ul>
@@ -281,6 +418,19 @@
     Rivers are the primary sculptors of continental landscapes, operating through three interrelated phases: Erosion, Transportation, and Deposition.
 </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/drainage_patterns_geological_controls.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/drainage_patterns_geological_controls.png" alt="Figure 2.3a: Structural and Lithological Controls on Fluvial Drainage Patterns (Dendritic, Trellis, Radial, Rectangular, Annular)." loading="lazy">
+    <div class="fig-caption">Figure 2.3a: Structural and Lithological Controls on Fluvial Drainage Patterns (Dendritic, Trellis, Radial, Rectangular, Annular).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/sinuosity_threshold_spectrum.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/sinuosity_threshold_spectrum.png" alt="Figure 2.3b: Fluvial Channel Morphology Spectrum: Straight, Braided, and Meandering rivers governed by slope, sediment load, and sinuosity index." loading="lazy">
+    <div class="fig-caption">Figure 2.3b: Fluvial Channel Morphology Spectrum: Straight, Braided, and Meandering rivers governed by slope, sediment load, and sinuosity index.</div>
+</div>
+
+
 <h3>Stream Erosion and Valley Development</h3>
 <ul>
     <li><strong>Erosional Mechanisms:</strong> Hydraulic action (mechanical force of moving water), Abrasion/Corrasion (grinding of bedrock by carried sediment tools), Attrition (mutual collision and rounding of rolling boulders), and Corrosion/Solution.</li>
@@ -302,6 +452,13 @@
 <p>
     <strong>Glaciers:</strong> Large masses of recrystallized perennial land ice moving downhill under gravity.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/alpine_glacial_landforms_arete_col_cirque.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/alpine_glacial_landforms_arete_col_cirque.png" alt="Figure 2.3c: Alpine Glacial Erosional Landforms: Cirque (Corrie), Arête (knife-edge ridge), Pyramidal Horn, Hanging Valley, and U-shaped Glacial Trough." loading="lazy">
+    <div class="fig-caption">Figure 2.3c: Alpine Glacial Erosional Landforms: Cirque (Corrie), Arête (knife-edge ridge), Pyramidal Horn, Hanging Valley, and U-shaped Glacial Trough.</div>
+</div>
+
 <ul>
     <li><strong>Glacial Erosion:</strong> Plucking (quarrying jointed blocks) and Abrasion (striating bedrock with embedded rock tools). Produces Cirques (amphitheatre-shaped rock basins), Arêtes (knife-edge ridges), Horns (pyramidal peaks like Matterhorn), <strong>U-shaped valleys</strong> (steep sides, flat floor), Hanging valleys (tributary valleys left high above the overdeepened main trough), and Roches Moutonnées.</li>
     <li><strong>Glacial Deposition:</strong> <strong>Till (Moraine):</strong> Unstratified, poorly sorted sediment with faceted, striated boulders. Types of moraines: Lateral, Medial, Ground, and Terminal/End moraines. <strong>Glaciofluvial stratified deposits:</strong> Drumlins (streamlined tear-drop hills with steep stoss and tapered lee), Eskers (sinuous gravel ridges of subglacial streams), and Kames.</li>
@@ -316,6 +473,25 @@
 <p>
     Subsurface water occurs in two vertical zones separated by the water table:
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_karst_cave_stalactites_stalagmites.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_karst_cave_stalactites_stalagmites.jpg" alt="Figure 2.4a: Subterranean Karst Limestone Cavern showcasing dripstone Stalactites, Stalagmites, and coalesced Travertine Pillars." loading="lazy">
+    <div class="fig-caption">Figure 2.4a: Subterranean Karst Limestone Cavern showcasing dripstone Stalactites, Stalagmites, and coalesced Travertine Pillars.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/constant_head_permeameter_darcy_apparatus.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/constant_head_permeameter_darcy_apparatus.png" alt="Figure 2.4b: Constant-Head Permeameter Laboratory Setup demonstrating Darcy's Law ($Q = K A \frac{\Delta h}{L}$) for hydraulic conductivity." loading="lazy">
+    <div class="fig-caption">Figure 2.4b: Constant-Head Permeameter Laboratory Setup demonstrating Darcy's Law ($Q = K A \frac{\Delta h}{L}$) for hydraulic conductivity.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/aquifer_storativity_hierarchy_confined_unconfined.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/aquifer_storativity_hierarchy_confined_unconfined.png" alt="Figure 2.4c: Hydrogeological Architecture of Unconfined (Water-Table) and Confined (Artesian) Aquifers with piezometric surface levels." loading="lazy">
+    <div class="fig-caption">Figure 2.4c: Hydrogeological Architecture of Unconfined (Water-Table) and Confined (Artesian) Aquifers with piezometric surface levels.</div>
+</div>
+
 <ul>
     <li><strong>Zone of Aeration (Vadose Zone):</strong> Pore spaces contain both water and air. Divided into soil water zone, intermediate vadose zone, and capillary fringe.</li>
     <li><strong>Zone of Saturation (Phreatic Zone):</strong> All voids and fractures are completely filled with water under hydrostatic pressure. The upper surface is the <strong>Water Table</strong>.</li>
@@ -337,6 +513,19 @@
     An <strong>earthquake</strong> is the rapid shaking of the ground caused by sudden brittle slip along a fault and instantaneous release of accumulated elastic strain energy (Reid's Elastic Rebound Theory, 1906).
 </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/earthquake_focus_epicenter_rupture_geometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/earthquake_focus_epicenter_rupture_geometry.png" alt="Figure 2.5a: 3D Seismogenic Fault Rupture Geometry illustrating Hypocenter (Focus), Epicenter, Focal Depth, and Isoseismal contours." loading="lazy">
+    <div class="fig-caption">Figure 2.5a: 3D Seismogenic Fault Rupture Geometry illustrating Hypocenter (Focus), Epicenter, Focal Depth, and Isoseismal contours.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_stratovolcano_eruption_diagram.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_stratovolcano_eruption_diagram.png" alt="Figure 2.6a: Cross-Section of a Composite Stratovolcano showing magma chamber, central conduit, parasitic cone, dike, sill, and pyroclastic tephra layers." loading="lazy">
+    <div class="fig-caption">Figure 2.6a: Cross-Section of a Composite Stratovolcano showing magma chamber, central conduit, parasitic cone, dike, sill, and pyroclastic tephra layers.</div>
+</div>
+
+
 <div class="figure-box">
     <img src="../images/bangar_fig2_39_focus_epicentre.png" alt="Focus and Epicentre - Bangar Fig 2.39" style="max-height: 250px; display: inline-block; margin-right: 15px;">
     <img src="../images/bangar_fig2_41_seismogram_p_s_waves.png" alt="Seismogram P and S Waves - Bangar Fig 2.41" style="max-height: 250px; display: inline-block;">
@@ -355,6 +544,164 @@
     <li><strong>Surface Waves:</strong> Rayleigh (elliptical retrograde ground motion) and Love (transverse horizontal ground motion). Arrive last but possess largest amplitudes and lowest frequencies, causing over $90\%$ of structural building damage.</li>
 </ul>
 
+
+<div class="visual-atlas-section">
+    <h2>2.6 Visual Atlas: Surface Processes, Hydrogeology, Volcanism & Seismology</h2>
+    <p>Expanded collection of high-resolution geomorphological models, Boggs sediment transport diagrams, coastal saltwater intrusion profiles, and Bangar physical geology figures.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_table1_1_weathering_processes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_table1_1_weathering_processes.png" alt="Summary classification of physical and chemical weathering processes and reaction products (Boggs)." loading="lazy">
+    <div class="fig-caption">Summary classification of physical and chemical weathering processes and reaction products (Boggs).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p20_exfoliation_weathering_massive_rocks.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p20_exfoliation_weathering_massive_rocks.png" alt="Unloading sheet joints and exfoliation domes in massive granitoid plutons (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Unloading sheet joints and exfoliation domes in massive granitoid plutons (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p20_spheroidal_weathering_exfoliation.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p20_spheroidal_weathering_exfoliation.png" alt="Chemical water alteration along intersecting joint blocks producing rounded corestones (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Chemical water alteration along intersecting joint blocks producing rounded corestones (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/aeolian_control_triad.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/aeolian_control_triad.png" alt="Aeolian sediment transport modes: surface creep, saltation, and turbulent suspension." loading="lazy">
+    <div class="fig-caption">Aeolian sediment transport modes: surface creep, saltation, and turbulent suspension.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig8_17_barchan_transverse_dunes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig8_17_barchan_transverse_dunes.png" alt="Morphology and wind-regime controls of Barchan, Transverse, Linear (Seif), and Star dunes." loading="lazy">
+    <div class="fig-caption">Morphology and wind-regime controls of Barchan, Transverse, Linear (Seif), and Star dunes.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig8_17_eolian_dune_types.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig8_17_eolian_dune_types.png" alt="Cross-bedding internal architecture of major eolian sand dune systems (Boggs)." loading="lazy">
+    <div class="fig-caption">Cross-bedding internal architecture of major eolian sand dune systems (Boggs).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p23_wind_transport_sand_dunes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p23_wind_transport_sand_dunes.png" alt="Windward gentle slope and leeward slip-face migration of desert sand dunes (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Windward gentle slope and leeward slip-face migration of desert sand dunes (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig2_4_transport_modes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig2_4_transport_modes.png" alt="Fluvial bedload (traction and saltation) vs. suspended load sediment transport in stream channels." loading="lazy">
+    <div class="fig-caption">Fluvial bedload (traction and saltation) vs. suspended load sediment transport in stream channels.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p24_river_valleys_canyons_gorges.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p24_river_valleys_canyons_gorges.png" alt="Youthful V-shaped river valley downcutting, gorge incision, and waterfall retreat (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Youthful V-shaped river valley downcutting, gorge incision, and waterfall retreat (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/alluvial_fan_fanglomerate_facies.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/alluvial_fan_fanglomerate_facies.png" alt="Piedmont Alluvial Fan and coalescing Bajada apron at mountain-front fault scarps." loading="lazy">
+    <div class="fig-caption">Piedmont Alluvial Fan and coalescing Bajada apron at mountain-front fault scarps.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p25_alluvial_fans_bajada.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p25_alluvial_fans_bajada.png" alt="Alluvial fan cone deposition where high-gradient mountain torrents emerge onto plains (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Alluvial fan cone deposition where high-gradient mountain torrents emerge onto plains (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p25_braided_stream_channels.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p25_braided_stream_channels.png" alt="Anastomosing braided river channels choked with longitudinal sand and gravel bars (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Anastomosing braided river channels choked with longitudinal sand and gravel bars (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig8_9_meandering_morphology.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig8_9_meandering_morphology.png" alt="Meandering river point-bar deposition, cut-bank erosion, and oxbow lake cutoff evolution." loading="lazy">
+    <div class="fig-caption">Meandering river point-bar deposition, cut-bank erosion, and oxbow lake cutoff evolution.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig9_12_delta_components.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig9_12_delta_components.png" alt="Internal stratigraphy of a Gilbert-type river delta: topset, foreset, and bottomset beds." loading="lazy">
+    <div class="fig-caption">Internal stratigraphy of a Gilbert-type river delta: topset, foreset, and bottomset beds.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p27_dendritic_trellis_drainage.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p27_dendritic_trellis_drainage.png" alt="Comparison of Dendritic (uniform lithology) and Trellis (folded strata) drainage networks (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Comparison of Dendritic (uniform lithology) and Trellis (folded strata) drainage networks (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p27_drainage_density_basin_morphometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p27_drainage_density_basin_morphometry.png" alt="Horton's drainage density and watershed morphometric parameters (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Horton's drainage density and watershed morphometric parameters (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p31_glacial_fiords_u_valleys.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p31_glacial_fiords_u_valleys.png" alt="Glacially overdeepened U-shaped valleys and submerged coastal fjords (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Glacially overdeepened U-shaped valleys and submerged coastal fjords (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p32_esker_glaciofluvial.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p32_esker_glaciofluvial.png" alt="Sinuous glaciofluvial Esker ridges, drumlins, and kettle lakes (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Sinuous glaciofluvial Esker ridges, drumlins, and kettle lakes (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p32_glacial_moraines_till.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p32_glacial_moraines_till.png" alt="Lateral, medial, recessional, and terminal moraine ridges deposited by valley glaciers (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Lateral, medial, recessional, and terminal moraine ridges deposited by valley glaciers (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig9_21_beach_morphology.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig9_21_beach_morphology.png" alt="Marine coastal profile: backshore berm, foreshore swash zone, and offshore longshore bars." loading="lazy">
+    <div class="fig-caption">Marine coastal profile: backshore berm, foreshore swash zone, and offshore longshore bars.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p35_ocean_depth_zones_shelf_abyssal.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p35_ocean_depth_zones_shelf_abyssal.png" alt="Bathymetric provinces of the ocean floor: Continental Shelf, Slope, Rise, and Abyssal Plain (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Bathymetric provinces of the ocean floor: Continental Shelf, Slope, Rise, and Abyssal Plain (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p36_seamounts_guyots_trenches.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p36_seamounts_guyots_trenches.png" alt="Submarine volcanic Seamounts, flat-topped wave-planed Guyots, and deep oceanic trenches (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Submarine volcanic Seamounts, flat-topped wave-planed Guyots, and deep oceanic trenches (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p28_flow_net_groundwater_discharge.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p28_flow_net_groundwater_discharge.png" alt="Orthogonal equipotential lines and flow lines in a 2D groundwater seepage flow net (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Orthogonal equipotential lines and flow lines in a 2D groundwater seepage flow net (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p29_evapotranspiration_controls.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p29_evapotranspiration_controls.png" alt="Hydrological cycle and vadose zone soil-moisture evapotranspiration zones (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Hydrological cycle and vadose zone soil-moisture evapotranspiration zones (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p30_storage_coefficient_aquifer_types.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p30_storage_coefficient_aquifer_types.png" alt="Storativity ($S$) and specific yield ($S_y$) in confined vs. unconfined aquifers (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Storativity ($S$) and specific yield ($S_y$) in confined vs. unconfined aquifers (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p31_constant_head_permeameter.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p31_constant_head_permeameter.png" alt="Laboratory permeameter setup for measuring coefficient of permeability $K$ (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Laboratory permeameter setup for measuring coefficient of permeability $K$ (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/ghyben_herzberg_saltwater_intrusion.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/ghyben_herzberg_saltwater_intrusion.png" alt="Ghyben-Herzberg hydrostatic relation ($z = 40 h_f$) governing freshwater-saltwater lenses in coastal aquifers." loading="lazy">
+    <div class="fig-caption">Ghyben-Herzberg hydrostatic relation ($z = 40 h_f$) governing freshwater-saltwater lenses in coastal aquifers.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p32_coastal_freshwater_saline_interface.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p32_coastal_freshwater_saline_interface.png" alt="Upconing of the saline interface beneath over-pumped coastal wells (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Upconing of the saline interface beneath over-pumped coastal wells (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p38_stalactite_stalagmite_solution.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p38_stalactite_stalagmite_solution.png" alt="Karst sinkholes (dolines), solution cavities, and speleothem precipitation in limestone (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Karst sinkholes (dolines), solution cavities, and speleothem precipitation in limestone (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/seismic_wave_classification_body_vs_surface.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/seismic_wave_classification_body_vs_surface.png" alt="Particle motion mechanics of P-waves (compressional), S-waves (shear), Love waves, and Rayleigh waves." loading="lazy">
+    <div class="fig-caption">Particle motion mechanics of P-waves (compressional), S-waves (shear), Love waves, and Rayleigh waves.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/richter_magnitude_nomogram_wood_anderson.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/richter_magnitude_nomogram_wood_anderson.png" alt="Richter Local Magnitude ($M_L$) nomogram based on Wood-Anderson seismogram amplitude and S-P lag time." loading="lazy">
+    <div class="fig-caption">Richter Local Magnitude ($M_L$) nomogram based on Wood-Anderson seismogram amplitude and S-P lag time.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/earthquake_epicenter_triangulation_stations.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/earthquake_epicenter_triangulation_stations.png" alt="Three-station seismic triangulation method for pinpointing an earthquake epicenter." loading="lazy">
+    <div class="fig-caption">Three-station seismic triangulation method for pinpointing an earthquake epicenter.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_fig2_volcano_types_profiles.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_fig2_volcano_types_profiles.png" alt="Comparative scale and slope profiles of Shield Volcanoes (Mauna Loa), Stratovolcanoes, and Cinder Cones." loading="lazy">
+    <div class="fig-caption">Comparative scale and slope profiles of Shield Volcanoes (Mauna Loa), Stratovolcanoes, and Cinder Cones.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p48_composite_stratovolcano.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p48_composite_stratovolcano.png" alt="Internal structure of a Composite Cone (Stratovolcano) with alternating lava and ash layers (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Internal structure of a Composite Cone (Stratovolcano) with alternating lava and ash layers (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p49_pelean_volcano_types.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p49_pelean_volcano_types.png" alt="Hawaiian, Strombolian, Vulcanian, Vesuvian, and Pelean (Nuée Ardente) volcanic eruption styles (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Hawaiian, Strombolian, Vulcanian, Vesuvian, and Pelean (Nuée Ardente) volcanic eruption styles (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p15_caldera_crater_volcano.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p15_caldera_crater_volcano.png" alt="Collapse Caldera formation following rapid evacuation of a shallow magma chamber (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Collapse Caldera formation following rapid evacuation of a shallow magma chamber (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p33_marine_transgression_eustasy.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p33_marine_transgression_eustasy.png" alt="Eustatic sea-level fluctuations, marine transgression (onlap), and regression (offlap) (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Eustatic sea-level fluctuations, marine transgression (onlap), and regression (offlap) (K. M. Bangar).</div>
+</div>
+    </div>
+</div>
+
+
 <div class="callout callout-engineering">
     <div class="callout-title">Civil Engineering Significance of Chapter 2</div>
     Foundations must never be founded on active alluvial meander cutoffs or expansive clayey floodplains without deep piles. In karst limestone terrains, undetected subsurface caverns cause sudden sinkhole collapse beneath dams and highways. In seismic zones, liquefaction of saturated loose fine sands during earthquake shaking triggers catastrophic bearing capacity failure.
@@ -368,5 +715,48 @@
             <a href="ch03_mineralogy.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

@@ -219,7 +219,125 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: var(--primary-dark); }
-</style>
+
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+    </style>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
@@ -248,6 +366,25 @@
 <p>
     <strong>Sedimentary rocks</strong> form through the lithification of loose sediments deposited by surface agents (wind, water, ice) or through chemical precipitation and organic accumulation. They cover $\approx 75\%$ of the continental surface area.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/udden_wentworth_grain_size_scale_silt_grade.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/udden_wentworth_grain_size_scale_silt_grade.png" alt="Figure 6.1a: Udden-Wentworth Clastic Grain-Size Scale and Krumbein Phi ($\phi = -\log_2 D$) divisions from Boulder to Clay." loading="lazy">
+    <div class="fig-caption">Figure 6.1a: Udden-Wentworth Clastic Grain-Size Scale and Krumbein Phi ($\phi = -\log_2 D$) divisions from Boulder to Clay.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/arkose_sandstone_folk_ternary_feldspar.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/arkose_sandstone_folk_ternary_feldspar.png" alt="Figure 6.1b: Folk and Pettijohn Ternary Classification of Sandstones ($\text{Quartz-Feldspar-Lithic Fragments}$: Quartz Arenite, Arkose, Litharenite, Greywacke)." loading="lazy">
+    <div class="fig-caption">Figure 6.1b: Folk and Pettijohn Ternary Classification of Sandstones ($\text{Quartz-Feldspar-Lithic Fragments}$: Quartz Arenite, Arkose, Litharenite, Greywacke).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/Dunhum_class.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/Dunhum_class.png" alt="Figure 6.1c: Dunham Textural Classification of Limestones (Mudstone, Wackestone, Packstone, Grainstone, Boundstone) based on depositional fabric." loading="lazy">
+    <div class="fig-caption">Figure 6.1c: Dunham Textural Classification of Limestones (Mudstone, Wackestone, Packstone, Grainstone, Boundstone) based on depositional fabric.</div>
+</div>
+
 
 <h3>Diagenesis and Lithification</h3>
 <p>
@@ -286,10 +423,42 @@
     <li><strong>Mud Cracks (Sun Cracks):</strong> Polygonal shrinkage fissures formed by desiccation of wet mud under subaerial exposure, tapering downward to a 'V' shape (useful top-and-bottom indicator).</li>
 </ul>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_cross_bedding_sandstone_outcrop.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_cross_bedding_sandstone_outcrop.jpg" alt="Figure 6.2a: Field Outcrop of Large-Scale Tabular and Trough Cross-Bedding (Current Bedding) in Siliciclastic Sandstone." loading="lazy">
+    <div class="fig-caption">Figure 6.2a: Field Outcrop of Large-Scale Tabular and Trough Cross-Bedding (Current Bedding) in Siliciclastic Sandstone.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/current_bedding_cross_stratification_geometry.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/current_bedding_cross_stratification_geometry.png" alt="Figure 6.2b: Internal Geometry of Cross-Bedding (Topset, Foreset, Bottomset) used to determine paleocurrent flow direction and way-up (top-and-bottom) of strata." loading="lazy">
+    <div class="fig-caption">Figure 6.2b: Internal Geometry of Cross-Bedding (Topset, Foreset, Bottomset) used to determine paleocurrent flow direction and way-up (top-and-bottom) of strata.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/graded_bedding_bouma_sequence_turbidite.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/graded_bedding_bouma_sequence_turbidite.png" alt="Figure 6.2c: Graded Bedding and the Ideal Bouma Turbidite Sequence ($T_a \to T_e$) formed by waning submarine turbidity currents." loading="lazy">
+    <div class="fig-caption">Figure 6.2c: Graded Bedding and the Ideal Bouma Turbidite Sequence ($T_a \to T_e$) formed by waning submarine turbidity currents.</div>
+</div>
+
+
 <h2>6.3 Metamorphism: Agents, Types, and Facies</h2>
 <p>
     <strong>Metamorphism</strong> is the mineralogical, chemical, and structural reconstitution of solid pre-existing rocks (igneous or sedimentary protoliths) in response to physical and chemical conditions differing from those under which they originally formed, occurring below the zone of melting ($T \approx 150\text{--}800^\circ\text{C}$).
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_metamorphic_facies_pt_diagram.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_metamorphic_facies_pt_diagram.png" alt="Figure 6.3a: Eskola's Metamorphic Facies in Pressure-Temperature ($P\text{--}T$) Space showing Subduction (Blueschist-Eclogite), Regional Barrovian (Greenschist-Amphibolite-Granulite), and Contact (Hornfels) trends." loading="lazy">
+    <div class="fig-caption">Figure 6.3a: Eskola's Metamorphic Facies in Pressure-Temperature ($P\text{--}T$) Space showing Subduction (Blueschist-Eclogite), Regional Barrovian (Greenschist-Amphibolite-Granulite), and Contact (Hornfels) trends.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_p430_barrovian_zones_garnet_schist_grade.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_p430_barrovian_zones_garnet_schist_grade.png" alt="Figure 6.3b: Progressive Barrovian Metamorphic Index Mineral Zones ($\text{Chlorite} \to \text{Biotite} \to \text{Garnet} \to \text{Staurolite} \to \text{Kyanite} \to \text{Sillimanite}$)." loading="lazy">
+    <div class="fig-caption">Figure 6.3b: Progressive Barrovian Metamorphic Index Mineral Zones ($\text{Chlorite} \to \text{Biotite} \to \text{Garnet} \to \text{Staurolite} \to \text{Kyanite} \to \text{Sillimanite}$).</div>
+</div>
+
 
 <h3>Agents of Metamorphism</h3>
 <ul>
@@ -355,7 +524,76 @@
     </tbody>
 </table>
 
-        </main>
+        
+<div class="visual-atlas-section">
+    <h2>6.5 Visual Atlas: Sedimentary Facies, Diagenesis & Metamorphic Fabrics</h2>
+    <p>Detailed petrological diagrams illustrating clast rounding, diagenetic compaction, ripple marks, metamorphic textures, and regional vs. contact metamorphism.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/clast_size_classification_cobble_pebble_boulder.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/clast_size_classification_cobble_pebble_boulder.png" alt="Rudaceous clast morphology: rounded Conglomerate vs. angular fault/talus Breccia." loading="lazy">
+    <div class="fig-caption">Rudaceous clast morphology: rounded Conglomerate vs. angular fault/talus Breccia.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/sedimentary_diagenesis_compaction_cementation.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/sedimentary_diagenesis_compaction_cementation.png" alt="Diagenetic transformation of loose sediment into lithified sedimentary rock via mechanical compaction, pressure solution, and pore cementation." loading="lazy">
+    <div class="fig-caption">Diagenetic transformation of loose sediment into lithified sedimentary rock via mechanical compaction, pressure solution, and pore cementation.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig6_15_carbonate_cements.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig6_15_carbonate_cements.png" alt="Microscopic habits of carbonate diagenetic cements: isopachous rim, drusy mosaic, and syntaxial overgrowth (Boggs)." loading="lazy">
+    <div class="fig-caption">Microscopic habits of carbonate diagenetic cements: isopachous rim, drusy mosaic, and syntaxial overgrowth (Boggs).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/oscillation_ripples_symmetrical_wave_action.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/oscillation_ripples_symmetrical_wave_action.png" alt="Symmetrical Oscillation Wave Ripples (pointed crests, rounded troughs) vs. Asymmetrical Current Ripples." loading="lazy">
+    <div class="fig-caption">Symmetrical Oscillation Wave Ripples (pointed crests, rounded troughs) vs. Asymmetrical Current Ripples.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig4_10_bedforms_flow_regimes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig4_10_bedforms_flow_regimes.png" alt="Sequence of subaqueous bedforms (ripples, dunes, plane bed, antidunes) with increasing Froude number ($Fr$) flow regime." loading="lazy">
+    <div class="fig-caption">Sequence of subaqueous bedforms (ripples, dunes, plane bed, antidunes) with increasing Froude number ($Fr$) flow regime.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig4_35_flute_genesis.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig4_35_flute_genesis.png" alt="Erosional sole marks: Flute Casts and Groove Casts on the base of turbidite sandstone beds." loading="lazy">
+    <div class="fig-caption">Erosional sole marks: Flute Casts and Groove Casts on the base of turbidite sandstone beds.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/clay_galls_mud_rip_up_clasts_sandstone.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/clay_galls_mud_rip_up_clasts_sandstone.png" alt="Intra-formational mud rip-up clasts and clay galls embedded in channel-floor sandstones." loading="lazy">
+    <div class="fig-caption">Intra-formational mud rip-up clasts and clay galls embedded in channel-floor sandstones.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/coquina_fossiliferous_organic_detritus_limestone.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/coquina_fossiliferous_organic_detritus_limestone.png" alt="Bioclastic Coquina and fossiliferous limestone fabrics." loading="lazy">
+    <div class="fig-caption">Bioclastic Coquina and fossiliferous limestone fabrics.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_p410_metamorphism_types_contact_regional_dynamic.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_p410_metamorphism_types_contact_regional_dynamic.png" alt="Geological settings of Contact (Thermal), Regional (Dynamothermal), Cataclastic, and Subduction-zone Metamorphism." loading="lazy">
+    <div class="fig-caption">Geological settings of Contact (Thermal), Regional (Dynamothermal), Cataclastic, and Subduction-zone Metamorphism.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_fig25_2_facies_pt.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_fig25_2_facies_pt.png" alt="Detailed Pressure-Temperature-Depth ($P\text{--}T\text{--}z$) grid of Metamorphic Facies and geothermal gradients (Winter)." loading="lazy">
+    <div class="fig-caption">Detailed Pressure-Temperature-Depth ($P\text{--}T\text{--}z$) grid of Metamorphic Facies and geothermal gradients (Winter).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_fig23_9_granoblastic_polygonal.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_fig23_9_granoblastic_polygonal.png" alt="Non-foliated Granoblastic Polygonal Texture with $120^\circ$ triple-junction grain boundaries in Quartzite and Marble (Winter)." loading="lazy">
+    <div class="fig-caption">Non-foliated Granoblastic Polygonal Texture with $120^\circ$ triple-junction grain boundaries in Quartzite and Marble (Winter).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_p452_augen_gneiss_eye_structures.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_p452_augen_gneiss_eye_structures.png" alt="Augen Gneiss microstructure showing lenticular porphyroclasts ('eyes') of K-feldspar wrapped by sheared mica folia." loading="lazy">
+    <div class="fig-caption">Augen Gneiss microstructure showing lenticular porphyroclasts ('eyes') of K-feldspar wrapped by sheared mica folia.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/slate_roofing_slab_slaty_cleavage.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/slate_roofing_slab_slaty_cleavage.png" alt="Slaty cleavage in low-grade metamorphic Slate splitting into thin, planar, impervious roofing slabs." loading="lazy">
+    <div class="fig-caption">Slaty cleavage in low-grade metamorphic Slate splitting into thin, planar, impervious roofing slabs.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_table7_1_evaporite_salts.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_table7_1_evaporite_salts.png" alt="Chemical precipitation sequence of marine evaporite minerals (Calcite $\to$ Gypsum/Anhydrite $\to$ Halite $\to$ Sylvite/Carnallite) (Boggs)." loading="lazy">
+    <div class="fig-caption">Chemical precipitation sequence of marine evaporite minerals (Calcite $\to$ Gypsum/Anhydrite $\to$ Halite $\to$ Sylvite/Carnallite) (Boggs).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/ferroan_calcite_cement_deep_burial_diagenesis.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/ferroan_calcite_cement_deep_burial_diagenesis.png" alt="Deep-burial carbonate diagenesis and ferroan calcite pore-filling cementation." loading="lazy">
+    <div class="fig-caption">Deep-burial carbonate diagenesis and ferroan calcite pore-filling cementation.</div>
+</div>
+    </div>
+</div>
+
+</main>
 
         <div class="chapter-nav">
             <a href="ch05_igneous_petrology.html" class="nav-btn">&larr; Previous Chapter</a>
@@ -363,5 +601,48 @@
             <a href="ch07_structural_geology.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

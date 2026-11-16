@@ -191,6 +191,124 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: #1d4ed8; }
+    
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
     </style>
     <script>
     window.MathJax = {
@@ -218,6 +336,13 @@
             <p>
                 <strong>Stratigraphy</strong> is the branch of historical geology that deals with the study of layered (stratified) rocks—their chronological sequence, composition, fossil content, correlation, and mutual structural relationships. The fundamental principles underlying stratigraphical interpretation include:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geologic_time_scale_precambrian_duration.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/geologic_time_scale_precambrian_duration.png" alt="Figure 8.0a: Standard Geological Time Scale illustrating the Eons (Hadean, Archean, Proterozoic, Phanerozoic), Eras, Periods, and major evolutionary milestones." loading="lazy">
+    <div class="fig-caption">Figure 8.0a: Standard Geological Time Scale illustrating the Eons (Hadean, Archean, Proterozoic, Phanerozoic), Eras, Periods, and major evolutionary milestones.</div>
+</div>
+
             <ul>
                 <li><strong>Law of Superposition (Steno, 1669):</strong> In any undeformed sequence of sedimentary rocks, the oldest layers are deposited at the bottom, and successively younger strata lie at the top.</li>
                 <li><strong>Principle of Original Horizontality:</strong> Sediments are initially deposited under gravity as essentially horizontal planar sheets. Tilted or folded strata have suffered subsequent tectonic deformation.</li>
@@ -296,6 +421,13 @@
             <p>
                 The Archean basement occupies more than two-thirds of the Indian Peninsula, constituting the rigid crystalline cratonic shield upon which all younger geological formations were deposited. It comprises:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/dharwar_craton_stratigraphy_closepet_granite.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/dharwar_craton_stratigraphy_closepet_granite.png" alt="Figure 8.0b: Tectono-Stratigraphic Architecture of the Dharwar Craton (Western & Eastern blocks separated by the Closepet Granite; Sargur, Bababudan, and Chitradurga Groups)." loading="lazy">
+    <div class="fig-caption">Figure 8.0b: Tectono-Stratigraphic Architecture of the Dharwar Craton (Western & Eastern blocks separated by the Closepet Granite; Sargur, Bababudan, and Chitradurga Groups).</div>
+</div>
+
             <ul>
                 <li><strong>Peninsular Gneiss:</strong> A polyphase granodioritic to tonalitic gneiss complex (3.4 to 2.9 Ga) forming the country rock of South India.</li>
                 <li><strong>Fundamental Granite (Closepet Granite):</strong> Late-stage potassic granite plutons (2.5 Ga) intruding the older gneisses.</li>
@@ -317,6 +449,13 @@
             <p>
                 The <strong>Purana Supergroup</strong> marks a protracted period of tectonic stability following the Eparchean unconformity, characterized by intracratonic sag basins receiving thick shallow-marine, deltaic, and fluvial sedimentary piles:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/vindhyan_supergroup_four_groups_stratigraphy.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/vindhyan_supergroup_four_groups_stratigraphy.png" alt="Figure 8.0c: Lithostratigraphic Classification of the Vindhyan Supergroup (Semri, Kaimur, Rewa, and Bhander Groups) and diamondiferous Panna conglomerates." loading="lazy">
+    <div class="fig-caption">Figure 8.0c: Lithostratigraphic Classification of the Vindhyan Supergroup (Semri, Kaimur, Rewa, and Bhander Groups) and diamondiferous Panna conglomerates.</div>
+</div>
+
 
             <h3>1. The Cuddapah Basin</h3>
             <p>
@@ -344,6 +483,19 @@
             <p>
                 The <strong>Gondwana Supergroup</strong> (named by H. B. Medlicott in 1872 after the ancient Kingdom of the Gonds) spans from the Upper Carboniferous to the Lower Cretaceous ($\sim 300\text{ to }100\text{ Ma}$). It was deposited in intracratonic linear fault-bounded rift/graben basins aligned along ancient suture zones:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_glossopteris_gondwana_fossil.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_glossopteris_gondwana_fossil.jpg" alt="Figure 8.2a: Diagnostic Lower Gondwana Seed-Fern Leaf Fossil (Glossopteris) from Permian Damuda Coal Measures, proving the unity of southern Gondwanaland." loading="lazy">
+    <div class="fig-caption">Figure 8.2a: Diagnostic Lower Gondwana Seed-Fern Leaf Fossil (Glossopteris) from Permian Damuda Coal Measures, proving the unity of southern Gondwanaland.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/talchir_boulder_bed_gondwana_glaciation.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/talchir_boulder_bed_gondwana_glaciation.png" alt="Figure 8.2b: Permo-Carboniferous Glaciogenic Talchir Boulder Bed (Tillite with faceted, striated pebbles) at the base of the Gondwana Supergroup." loading="lazy">
+    <div class="fig-caption">Figure 8.2b: Permo-Carboniferous Glaciogenic Talchir Boulder Bed (Tillite with faceted, striated pebbles) at the base of the Gondwana Supergroup.</div>
+</div>
+
             <ul>
                 <li><em>Damodar Valley Basin:</em> Raniganj, Jharia, Bokaro, Karanpura (Jharkhand & West Bengal).</li>
                 <li><em>Mahanadi Valley Basin:</em> Talcher, Ib River, Mand-Raigarh (Odisha & Chhattisgarh).</li>
@@ -378,6 +530,19 @@
             <p>
                 The <strong>Deccan Traps</strong> constitute one of the largest Large Igneous Provinces (LIP) on Earth, covering over 500,000 $\text{km}^2$ across Maharashtra, Gujarat, Madhya Pradesh, and parts of Karnataka and Andhra Pradesh. They originated from massive fissure eruptions during the late Cretaceous ($\sim 66\text{ Ma}$) when the Indian continent drifted over the Reunion mantle hotspot during its northward transit across the Indian Ocean.
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_deccan_traps_basalt_flows.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_deccan_traps_basalt_flows.jpg" alt="Figure 8.3a: Step-like Flat-Topped Terraces ('Trappean Topography') of the Late Cretaceous Deccan Flood Basalts in the Western Ghats (Mahabaleshwar), Maharashtra." loading="lazy">
+    <div class="fig-caption">Figure 8.3a: Step-like Flat-Topped Terraces ('Trappean Topography') of the Late Cretaceous Deccan Flood Basalts in the Western Ghats (Mahabaleshwar), Maharashtra.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/deccan_traps_flood_basalts_cretaceous.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/deccan_traps_flood_basalts_cretaceous.png" alt="Figure 8.3b: Stratigraphy and Volcanology of the Deccan Traps LIP: Lower, Middle, and Upper Traps, Inter-trappean fossiliferous beds, and Red Bole horizons." loading="lazy">
+    <div class="fig-caption">Figure 8.3b: Stratigraphy and Volcanology of the Deccan Traps LIP: Lower, Middle, and Upper Traps, Inter-trappean fossiliferous beds, and Red Bole horizons.</div>
+</div>
+
             <ul>
                 <li><strong>Geomorphic Trappean Staircase:</strong> Successive sub-horizontal tholeiitic basalt lava flows (10 to 50 meters thick each) cool to form flat-topped step-like plateaus and mesas (from Swedish <em>trappa</em>, meaning steps).</li>
                 <li><strong>Inter-trappean Beds:</strong> Thin lacustrine, fluviatile, or marshy sedimentary beds (1 to 3 m thick) deposited in fresh-water lakes on the cooled surface of a lava flow before the next eruption. Contain fossil freshwater gastropods (<em>Physa prinsepii</em>), ostracods, charophyte algae, and vertebrate bones.</li>
@@ -388,6 +553,19 @@
             <p>
                 The Himalayan collision between the Indian and Eurasian plates during the Tertiary gave rise to extensive foreland molasse troughs, into which vast quantities of river sediments were poured from the rising mountain chains:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/himalayan_thrust_belt_mct_mbt_mft.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/himalayan_thrust_belt_mct_mbt_mft.png" alt="Figure 8.4a: Tectonic Cross-Section of the Himalaya showing the Tethyan, Greater, Lesser, and Sub-Himalayan (Siwalik) zones bounded by the STDS, MCT, MBT, and HFT." loading="lazy">
+    <div class="fig-caption">Figure 8.4a: Tectonic Cross-Section of the Himalaya showing the Tethyan, Greater, Lesser, and Sub-Himalayan (Siwalik) zones bounded by the STDS, MCT, MBT, and HFT.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/siwalik_mammalian_fauna_stratigraphy.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/siwalik_mammalian_fauna_stratigraphy.png" alt="Figure 8.4b: Stratigraphic Subdivision of the Siwalik Foreland Molasse Supergroup (Lower, Middle, and Upper Siwaliks) and vertebrate mammalian biozones." loading="lazy">
+    <div class="fig-caption">Figure 8.4b: Stratigraphic Subdivision of the Siwalik Foreland Molasse Supergroup (Lower, Middle, and Upper Siwaliks) and vertebrate mammalian biozones.</div>
+</div>
+
             <ul>
                 <li><strong>Siwalik Supergroup (Middle Miocene to Lower Pleistocene):</strong> An 8,000 m thick sub-Himalayan freshwater molasse deposit divided into:
                     <ol>
@@ -398,7 +576,33 @@
                 </li>
             </ul>
 
-            <div class="callout callout-engineering">
+            
+<div class="visual-atlas-section">
+    <h2>8.7 Visual Atlas: Indian Cratons, Rift Basins & Phanerozoic Stratigraphy</h2>
+    <p>Regional stratigraphic charts covering the Delhi Supergroup, Peninsular Gondwana grabens, Jurassic of Kutch, and Cretaceous of Tiruchirappalli.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/delhi_supergroup_erinpura_granite.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/delhi_supergroup_erinpura_granite.png" alt="Aravalli-Delhi Orogenic Belt stratigraphy (Alwar and Ajabgarh Groups) and Erinpura/Malani igneous suites." loading="lazy">
+    <div class="fig-caption">Aravalli-Delhi Orogenic Belt stratigraphy (Alwar and Ajabgarh Groups) and Erinpura/Malani igneous suites.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/indian_peninsular_rift_valleys_narmada_son_damodar.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/indian_peninsular_rift_valleys_narmada_son_damodar.png" alt="Structural Map of Peninsular India showing linear intracratonic Gondwana Rift Basins (Damodar, Son-Narmada, Mahanadi, and Pranhita-Godavari grabens)." loading="lazy">
+    <div class="fig-caption">Structural Map of Peninsular India showing linear intracratonic Gondwana Rift Basins (Damodar, Son-Narmada, Mahanadi, and Pranhita-Godavari grabens).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/kutch_jurassic_stratigraphy_biozones.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/kutch_jurassic_stratigraphy_biozones.png" alt="Classic Marine Jurassic Stratigraphy of Kutch (Patcham, Chari, Katrol, and Umia formations) rich in ammonite biostratigraphic zones." loading="lazy">
+    <div class="fig-caption">Classic Marine Jurassic Stratigraphy of Kutch (Patcham, Chari, Katrol, and Umia formations) rich in ammonite biostratigraphic zones.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/cauvery_basin_trichinopoly_cretaceous_stratigraphy.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/cauvery_basin_trichinopoly_cretaceous_stratigraphy.png" alt="Marine Cretaceous Transgression of Tiruchirappalli (Uttatur, Trichinopoly, Ariyalur, and Niniyur stages) in the Cauvery Basin." loading="lazy">
+    <div class="fig-caption">Marine Cretaceous Transgression of Tiruchirappalli (Uttatur, Trichinopoly, Ariyalur, and Niniyur stages) in the Cauvery Basin.</div>
+</div>
+    </div>
+</div>
+
+
+<div class="callout callout-engineering">
                 <div class="callout-title">Engineering Geology Considerations of Indian Stratigraphy</div>
                 <ul>
                     <li><strong>Archean Granites & Charnockites:</strong> Ideal, unyielding foundations for mega-gravity dams and underground cavern excavations (e.g., Nagarjunasagar Dam, Sardar Sarovar Dam).</li>
@@ -416,5 +620,48 @@
             <a href="ch09_ore_deposits.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

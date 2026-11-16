@@ -219,7 +219,125 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: var(--primary-dark); }
-</style>
+
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+    </style>
     <script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
@@ -249,6 +367,19 @@
     <strong>Magma</strong> is a naturally occurring, mobile, molten or semi-molten silicate melt generated in the upper mantle or lower crust, consisting of a liquid phase, solid suspended crystals, and dissolved volatile gases ($\mathrm{H_2O, CO_2, SO_2, HCl}$). When magma erupts onto the Earth's surface, it loses its dissolved volatiles and is termed <strong>Lava</strong>.
 </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_bowen_reaction_series_color.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_bowen_reaction_series_color.jpg" alt="Figure 5.1a: Bowen's Reaction Series showing the Discontinuous Ferromagnesian Branch (Olivine $\to$ Biotite) and Continuous Plagioclase Branch ($\text{An}_{100} \to \text{Ab}_{100}$)." loading="lazy">
+    <div class="fig-caption">Figure 5.1a: Bowen's Reaction Series showing the Discontinuous Ferromagnesian Branch (Olivine $\to$ Biotite) and Continuous Plagioclase Branch ($\text{An}_{100} \to \text{Ab}_{100}$).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bowen_reaction_series_continuous_calcic_plagioclase.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bowen_reaction_series_continuous_calcic_plagioclase.png" alt="Figure 5.1b: Detailed Phase Equilibria and Magmatic Differentiation along Bowen's Reaction Series." loading="lazy">
+    <div class="fig-caption">Figure 5.1b: Detailed Phase Equilibria and Magmatic Differentiation along Bowen's Reaction Series.</div>
+</div>
+
+
 <h3>Bowen's Reaction Series (1928)</h3>
 <p>
     N. L. Bowen demonstrated experimentally that fractional crystallization of a parental basaltic magma follows two parallel reaction series during cooling:
@@ -270,6 +401,19 @@
 <p>
     Igneous rocks are classified by their geological setting into <strong>Extrusive (Volcanic)</strong> and <strong>Intrusive (Plutonic/Hypabyssal)</strong> bodies. Intrusive bodies are further divided based on structural relations with the host country rock:
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_igneous_plutons_volcanic_landforms.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_igneous_plutons_volcanic_landforms.png" alt="Figure 5.1c: 3D Block Diagram of Concordant and Discordant Igneous Intrusions: Batholith, Stock, Laccolith, Sill, Dike, and Volcanic Neck." loading="lazy">
+    <div class="fig-caption">Figure 5.1c: 3D Block Diagram of Concordant and Discordant Igneous Intrusions: Batholith, Stock, Laccolith, Sill, Dike, and Volcanic Neck.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/laccolith_vs_lopolith_bysmalith_pluton_morphology.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/laccolith_vs_lopolith_bysmalith_pluton_morphology.png" alt="Figure 5.1d: Comparative Structural Morphology of Concordant Plutons: arched Laccolith, saucer-shaped Lopolith, faulted Bysmalith, and folded Phacolith." loading="lazy">
+    <div class="fig-caption">Figure 5.1d: Comparative Structural Morphology of Concordant Plutons: arched Laccolith, saucer-shaped Lopolith, faulted Bysmalith, and folded Phacolith.</div>
+</div>
+
 
 <div class="figure-box">
     <img src="../images/bangar_p55_bysmalith_laccolith_forms.png" alt="Forms of Igneous Bodies - Bangar">
@@ -304,6 +448,19 @@
             <li><em>Ophitic Texture:</em> Laths of plagioclase feldspar are completely enclosed within large pyroxene (augite) plates, universally diagnostic of <strong>Dolerite</strong>.</li>
             <li><em>Poikilitic / Panidiomorphic:</em> Grains of various minerals enclosed inside hosts or all exhibiting euhedral crystal faces (Lamprophyre).</li>
         </ul>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_columnar_basalt_jointing.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_columnar_basalt_jointing.jpg" alt="Figure 5.2a: Hexagonal Columnar Jointing in Basaltic Lava Flows formed by polygonal thermal contraction perpendicular to cooling surfaces." loading="lazy">
+    <div class="fig-caption">Figure 5.2a: Hexagonal Columnar Jointing in Basaltic Lava Flows formed by polygonal thermal contraction perpendicular to cooling surfaces.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/graphic_texture_runic_pegmatite_eutectic.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/graphic_texture_runic_pegmatite_eutectic.png" alt="Figure 5.2b: Graphic (Runic) Intergrowth Texture of Quartz cuneiform rods inside Orthoclase Feldspar crystallized at the granitic eutectic." loading="lazy">
+    <div class="fig-caption">Figure 5.2b: Graphic (Runic) Intergrowth Texture of Quartz cuneiform rods inside Orthoclase Feldspar crystallized at the granitic eutectic.</div>
+</div>
+
     </li>
     <li><strong>Structures:</strong> Vesicular structure (gas escape cavities), Amygdaloidal structure (vesicles later filled by secondary minerals like quartz, calcite, zeolites), Columnar jointing (hexagonal cooling columns in Deccan Traps), and Pillow lava (subaqueous basaltic eruption).</li>
 </ul>
@@ -352,7 +509,64 @@
     </tbody>
 </table>
 
-        </main>
+        
+<div class="visual-atlas-section">
+    <h2>5.5 Visual Atlas: IUGS QAPF Diagrams, Plutonic Emplacement & Microtextures</h2>
+    <p>Comprehensive petrological charts covering IUGS QAPF classification, magmatic stoping, dolerite-basalt-gabbro equivalents, charnockites, and lamprophyres.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_p28_quartz_monzonite_qapf.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_p28_quartz_monzonite_qapf.png" alt="IUGS QAPF Double-Triangle Modal Classification of Plutonic Igneous Rocks (Streckeisen / Winter)." loading="lazy">
+    <div class="fig-caption">IUGS QAPF Double-Triangle Modal Classification of Plutonic Igneous Rocks (Streckeisen / Winter).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_p29_harzburgite_ultramafic_ternary.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_p29_harzburgite_ultramafic_ternary.png" alt="IUGS Ternary Classification of Ultramafic Rocks (Olivine-Orthopyroxene-Clinopyroxene: Dunite, Harzburgite, Lherzolite, Wehrlite)." loading="lazy">
+    <div class="fig-caption">IUGS Ternary Classification of Ultramafic Rocks (Olivine-Orthopyroxene-Clinopyroxene: Dunite, Harzburgite, Lherzolite, Wehrlite).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/magmatic_stoping_piecemeal_roof_shattering.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/magmatic_stoping_piecemeal_roof_shattering.png" alt="Mechanics of Magmatic Stoping: thermal shattering of country-rock roof blocks and xenolith sinking into rising plutons." loading="lazy">
+    <div class="fig-caption">Mechanics of Magmatic Stoping: thermal shattering of country-rock roof blocks and xenolith sinking into rising plutons.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p168_bysmalith_laccolith_forms.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p168_bysmalith_laccolith_forms.png" alt="Cross-sections of Laccolith and fault-bounded cylindrical Bysmalith intrusions (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Cross-sections of Laccolith and fault-bounded cylindrical Bysmalith intrusions (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p166_ophitic_texture_dolerite.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p166_ophitic_texture_dolerite.png" alt="Ophitic and Sub-ophitic texture in Dolerite: random plagioclase laths enclosed within large augite plates (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Ophitic and Sub-ophitic texture in Dolerite: random plagioclase laths enclosed within large augite plates (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/dolerite_basalt_gabbro_compositional_equivalents.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/dolerite_basalt_gabbro_compositional_equivalents.png" alt="Depth-of-emplacement textural equivalents of mafic magma: Plutonic Gabbro, Hypabyssal Dolerite, and Volcanic Basalt." loading="lazy">
+    <div class="fig-caption">Depth-of-emplacement textural equivalents of mafic magma: Plutonic Gabbro, Hypabyssal Dolerite, and Volcanic Basalt.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/andesite_intermediate_volcanic_rock_tas_qapf.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/andesite_intermediate_volcanic_rock_tas_qapf.png" alt="Total Alkali-Silica (TAS) and QAPF position of Andesite and Diorite intermediate magmas." loading="lazy">
+    <div class="fig-caption">Total Alkali-Silica (TAS) and QAPF position of Andesite and Diorite intermediate magmas.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p182_andesite_petrology.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p182_andesite_petrology.png" alt="Petrographic characteristics and porphyritic pilotaxitic texture of Andesite (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Petrographic characteristics and porphyritic pilotaxitic texture of Andesite (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/charnockite_hypersthene_granite_mineralogy_qapf.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/charnockite_hypersthene_granite_mineralogy_qapf.png" alt="Mineralogy and QAPF classification of Hypersthene Granite (Charnockite Series of South & Eastern India)." loading="lazy">
+    <div class="fig-caption">Mineralogy and QAPF classification of Hypersthene Granite (Charnockite Series of South & Eastern India).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/lamprophyre_classification_minette_vogesite_kersantite.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/lamprophyre_classification_minette_vogesite_kersantite.png" alt="Mineralogical classification of panidiomorphic melanocratic Lamprophyre dike rocks (Minette, Vogesite, Kersantite, Spessartite)." loading="lazy">
+    <div class="fig-caption">Mineralogical classification of panidiomorphic melanocratic Lamprophyre dike rocks (Minette, Vogesite, Kersantite, Spessartite).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p178_lamprophyre_panidiomorphic.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p178_lamprophyre_panidiomorphic.png" alt="Panidiomorphic-granular porphyritic texture in Lamprophyres with euhedral mafic phenocrysts (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Panidiomorphic-granular porphyritic texture in Lamprophyres with euhedral mafic phenocrysts (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/diorite_perkinite_meladiorite_ultramafic_spectrum.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/diorite_perkinite_meladiorite_ultramafic_spectrum.png" alt="Color Index (M') spectrum from Leucocratic, Mesocratic (Diorite), Melanocratic to Holomelanocratic (Perknite/Ultramafic)." loading="lazy">
+    <div class="fig-caption">Color Index (M') spectrum from Leucocratic, Mesocratic (Diorite), Melanocratic to Holomelanocratic (Perknite/Ultramafic).</div>
+</div>
+    </div>
+</div>
+
+</main>
 
         <div class="chapter-nav">
             <a href="ch04_crystallography.html" class="nav-btn">&larr; Previous Chapter</a>
@@ -360,5 +574,48 @@
             <a href="ch06_sedimentary_metamorphic.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

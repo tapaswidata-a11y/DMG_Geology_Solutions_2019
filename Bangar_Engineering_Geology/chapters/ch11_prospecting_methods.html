@@ -191,6 +191,124 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: #1d4ed8; }
+    
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
     </style>
     <script>
     window.MathJax = {
@@ -218,6 +336,13 @@
             <p>
                 <strong>Geophysical Prospecting</strong> is the indirect remote detection, delineation, and mapping of subsurface structures, mineral deposits, groundwater aquifers, and bedrock topography by measuring physical property contrasts at the Earth&#39;s surface. An anomalous deviation from the regional background field indicates a subsurface target:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geophysical_methods_units_gravity_magnetic.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/geophysical_methods_units_gravity_magnetic.png" alt="Figure 11.0a: Overview of Geophysical Exploration Methods, Physical Property Contrasts, Measurement Units (mGal, nT, $\Omega\cdot\text{m}$, $\text{m/s}$), and Depth Penetration." loading="lazy">
+    <div class="fig-caption">Figure 11.0a: Overview of Geophysical Exploration Methods, Physical Property Contrasts, Measurement Units (mGal, nT, $\Omega\cdot\text{m}$, $\text{m/s}$), and Depth Penetration.</div>
+</div>
+
             <div class="table-container">
                 <table>
                     <thead>
@@ -267,6 +392,19 @@
             <p>
                 The electrical resistivity method is the workhorse of engineering site investigations and hydrogeological prospecting. Electric current ($I$) is injected into the ground through two metal current electrodes ($A$ and $B$), and the resulting electrical potential difference ($\Delta V$) is measured between two intermediate potential electrodes ($M$ and $N$).
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/schlumberger_vs_wenner_resistivity_array.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/schlumberger_vs_wenner_resistivity_array.png" alt="Figure 11.2a: Side-by-Side Comparison of Wenner ($AM=MN=NB=a$) and Schlumberger ($AB=2L \gg MN=2l$) Four-Electrode Resistivity Arrays and Current Flow Lines." loading="lazy">
+    <div class="fig-caption">Figure 11.2a: Side-by-Side Comparison of Wenner ($AM=MN=NB=a$) and Schlumberger ($AB=2L \gg MN=2l$) Four-Electrode Resistivity Arrays and Current Flow Lines.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/aquifer_resistivity_saturation_salinity.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/aquifer_resistivity_saturation_salinity.png" alt="Figure 11.2b: Electrical Resistivity Spectrum of Subsurface Rocks and Groundwater (Archie's Law): Fresh Water Aquifers vs. Brackish/Saline Intrusion and Metallic Sulfide Conductors." loading="lazy">
+    <div class="fig-caption">Figure 11.2b: Electrical Resistivity Spectrum of Subsurface Rocks and Groundwater (Archie's Law): Fresh Water Aquifers vs. Brackish/Saline Intrusion and Metallic Sulfide Conductors.</div>
+</div>
+
             <p>
                 From Ohm&#39;s Law, the <strong>Apparent Resistivity</strong> ($\rho_a$) of the subsurface is given by:
             </p>
@@ -313,6 +451,13 @@
             <p>
                 The seismic refraction method utilizes elastic compression waves (P-waves) generated by a sledgehammer impact on a steel plate or a shallow explosive blast. Waves propagate downward, and upon striking an underlying layer with higher seismic velocity ($V_2 &gt; V_1$, e.g., solid granite bedrock beneath loose alluvium), they refract according to <strong>Snell&#39;s Law</strong>:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_seismic_refraction_raypaths.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_seismic_refraction_raypaths.png" alt="Figure 11.3: Seismic Refraction Survey Geometry showing Direct Wave ($V_1$), Critically Refracted Head Wave ($V_2 > V_1$, $\sin i_c = V_1/V_2$), Geophone Array, and Travel-Time ($t\text{--}x$) Plot." loading="lazy">
+    <div class="fig-caption">Figure 11.3: Seismic Refraction Survey Geometry showing Direct Wave ($V_1$), Critically Refracted Head Wave ($V_2 > V_1$, $\sin i_c = V_1/V_2$), Geophone Array, and Travel-Time ($t\text{--}x$) Plot.</div>
+</div>
+
             $$\frac{\sin i}{\sin r} = \frac{V_1}{V_2}$$
             <p>
                 When the angle of incidence equals the <strong>Critical Angle</strong> ($i_c$), the refracted wave travels along the interface boundary at velocity $V_2$ as a "head wave", continuously transmitting energy back to surface geophones at angle $i_c$:
@@ -356,6 +501,13 @@
             <p>
                 Measures tiny variations in Earth&#39;s gravitational acceleration (expressed in milligals: $1\text{ mgal} = 10^{-3}\text{ cm/s}^2 = 10^{-5}\text{ m/s}^2$). Raw field gravity measurements are reduced to the <strong>Bouguer Anomaly</strong> by applying:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geochemical_anomaly_background_threshold_profile.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/geochemical_anomaly_background_threshold_profile.png" alt="Figure 11.4: Geochemical & Geophysical Anomaly Profile illustrating Regional Background, Threshold Level, Peak Anomaly over a buried ore body, and Dispersion Halo." loading="lazy">
+    <div class="fig-caption">Figure 11.4: Geochemical & Geophysical Anomaly Profile illustrating Regional Background, Threshold Level, Peak Anomaly over a buried ore body, and Dispersion Halo.</div>
+</div>
+
             <ul>
                 <li><em>Latitude Correction:</em> Accounts for Earth&#39;s centrifugal flattening.</li>
                 <li><em>Free-Air Correction:</em> Elevational change without mass ($\Delta g_F = +0.3086 \, h\text{ mgal}$).</li>
@@ -368,7 +520,45 @@
                 Measures variations in the total geomagnetic field intensity (in nanoteslas, $\text{nT}$). Highly magnetized rocks containing magnetite produce intense dipolar anomalies. Widely used for airborne reconnaissance surveys across prospective mineral belts.
             </p>
 
-            <div class="callout callout-engineering">
+            
+<div class="visual-atlas-section">
+    <h2>11.5 Visual Atlas: Hydrogeophysical Logging, Aquifer Pumping Tests & Water Quality</h2>
+    <p>Field hydrogeology and geophysical interpretation charts covering Cooper-Jacob drawdown analysis, residual recovery tests, and EC-to-TDS conversions.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/cooper_jacob_validity_condition_theis_comparison.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/cooper_jacob_validity_condition_theis_comparison.png" alt="Theis Non-Equilibrium Type Curve and Cooper-Jacob Semi-Log Straight-Line Approximation ($u = \frac{r^2 S}{4 T t} < 0.01$) for aquifer transmissivity ($T$) and storativity ($S$)." loading="lazy">
+    <div class="fig-caption">Theis Non-Equilibrium Type Curve and Cooper-Jacob Semi-Log Straight-Line Approximation ($u = \frac{r^2 S}{4 T t} < 0.01$) for aquifer transmissivity ($T$) and storativity ($S$).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p34_cooper_jacob_method_conditions.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p34_cooper_jacob_method_conditions.png" alt="Cooper-Jacob time-drawdown pumping test analysis and cone of depression geometry (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Cooper-Jacob time-drawdown pumping test analysis and cone of depression geometry (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/pumping_test_recovery_residual_drawdown_timeline.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/pumping_test_recovery_residual_drawdown_timeline.png" alt="Pumping and Recovery Phase timeline showing Residual Drawdown ($s'$) vs. $\log(t/t')$ for calculating aquifer transmissivity." loading="lazy">
+    <div class="fig-caption">Pumping and Recovery Phase timeline showing Residual Drawdown ($s'$) vs. $\log(t/t')$ for calculating aquifer transmissivity.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p33_pumping_test_residual_drawdown.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p33_pumping_test_residual_drawdown.png" alt="Theis recovery method for evaluating well performance and aquifer parameters (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Theis recovery method for evaluating well performance and aquifer parameters (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/ec_to_tds_hydrochemical_conversion_chart.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/ec_to_tds_hydrochemical_conversion_chart.png" alt="Hydrochemical relationship between Electrical Conductivity ($EC$ in $\mu\text{S/cm}$) and Total Dissolved Solids ($\text{TDS in mg/L} \approx 0.64 \times EC$)." loading="lazy">
+    <div class="fig-caption">Hydrochemical relationship between Electrical Conductivity ($EC$ in $\mu\text{S/cm}$) and Total Dissolved Solids ($\text{TDS in mg/L} \approx 0.64 \times EC$).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p36_electrical_conductivity_tds_conversion.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p36_electrical_conductivity_tds_conversion.png" alt="Groundwater salinity classification based on specific electrical conductance (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Groundwater salinity classification based on specific electrical conductance (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p35_cable_tool_drilling_bhabar_piedmont.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p35_cable_tool_drilling_bhabar_piedmont.png" alt="Cable-tool percussion and rotary water-well drilling across piedmont Bhabar boulder fans and Terai artesian belts (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Cable-tool percussion and rotary water-well drilling across piedmont Bhabar boulder fans and Terai artesian belts (K. M. Bangar).</div>
+</div>
+    </div>
+</div>
+
+
+<div class="callout callout-engineering">
                 <div class="callout-title">Engineering Application Summary of Chapter 11</div>
                 Geophysical techniques eliminate blind drilling:
                 <ul>
@@ -385,5 +575,48 @@
             <a href="ch12_geological_maps.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

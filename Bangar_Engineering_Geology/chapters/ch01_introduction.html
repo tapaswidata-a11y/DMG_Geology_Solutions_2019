@@ -219,6 +219,124 @@
             transition: background 0.2s;
         }
         .nav-btn:hover { background: var(--primary-dark); }
+    
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
     </style>
     <script>
         window.MathJax = {
@@ -248,6 +366,13 @@
 <p>
     <strong>Geology</strong> (derived from Greek <em>Geo</em> = Earth, <em>Logos</em> = Discourse/Study) is the branch of natural science that investigates the Earth's origin, history, composition, internal architecture, dynamic surface modifications, and life evolution preserved in rock records.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p1_uniformitarianism_geology.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p1_uniformitarianism_geology.png" alt="Figure 1.1a: Principle of Uniformitarianism (James Hutton & Charles Lyell): present-day geological processes as the key to interpreting past rock records (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Figure 1.1a: Principle of Uniformitarianism (James Hutton & Charles Lyell): present-day geological processes as the key to interpreting past rock records (K. M. Bangar).</div>
+</div>
+
 <p>
     For civil and mining engineers, geology forms the essential foundation upon which tunnels, dams, reservoirs, highways, slopes, and foundations are designed. The major branches include:
 </p>
@@ -264,6 +389,13 @@
 <p>
     Various cosmogonic hypotheses explain the origin of our solar system and Earth:
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/concordia_discordia_schematic_hd.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/concordia_discordia_schematic_hd.png" alt="Figure 1.1b: U-Pb Zircon Geochronology Concordia-Discordia Diagram illustrating radiogenic lead loss and crystallization age determination." loading="lazy">
+    <div class="fig-caption">Figure 1.1b: U-Pb Zircon Geochronology Concordia-Discordia Diagram illustrating radiogenic lead loss and crystallization age determination.</div>
+</div>
+
 <ul>
     <li><strong>Nebular Hypothesis (Kant & Laplace):</strong> Postulated that a primordial rotating hot gaseous nebula contracted under gravitation. Rapid rotation led to centrifugal flattening, shedding concentric rings that condensed into orbiting planets around the central Sun.</li>
     <li><strong>Planetesimal Hypothesis (Chamberlin & Moulton):</strong> A passing massive star exerted intense tidal attraction on the early Sun, drawing out bolts of solar matter that cooled into millions of solid particles called <em>planetesimals</em>, which aggregated through accretion into planets.</li>
@@ -289,6 +421,19 @@
     Seismic wave velocities ($V_p$ and $V_s$) recorded from deep earthquakes reveal that the Earth consists of three concentric compositional shells separated by first-order seismic discontinuities:
 </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_earth_cutaway_layers.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_earth_cutaway_layers.jpg" alt="Figure 1.1c: Full-Color Cutaway Model of the Terrestrial Interior showing compositional shells (Crust, Mantle, Outer Liquid Core, Inner Solid Core)." loading="lazy">
+    <div class="fig-caption">Figure 1.1c: Full-Color Cutaway Model of the Terrestrial Interior showing compositional shells (Crust, Mantle, Outer Liquid Core, Inner Solid Core).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/earth_interior_lithosphere_asthenosphere_lvz.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/earth_interior_lithosphere_asthenosphere_lvz.png" alt="Figure 1.1d: Mechanical layering of Earth's interior: rigid Lithosphere, plastic Low-Velocity Zone (LVZ) Asthenosphere, and seismic velocity discontinuities." loading="lazy">
+    <div class="fig-caption">Figure 1.1d: Mechanical layering of Earth's interior: rigid Lithosphere, plastic Low-Velocity Zone (LVZ) Asthenosphere, and seismic velocity discontinuities.</div>
+</div>
+
+
 <div class="figure-box">
     <img src="../images/bangar_fig1_4_1_5_earth_interior.png" alt="Earth Interior - Bangar Fig 1.4 and 1.5">
     <div class="fig-caption">Figure 1.1: Internal concentric layering of the Earth showing Crust, Mantle, and Core with seismic P-wave and S-wave velocity profiles (K. M. Bangar).</div>
@@ -306,6 +451,13 @@
 <p>
     <strong>Isostasy</strong> (Dutton, 1889) is the state of mechanical gravitational equilibrium between the Earth's crustal topography and the denser underlying mantle. Two classical models explain isostatic compensation:
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/isostasy_airy_pratt_mechanisms.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/isostasy_airy_pratt_mechanisms.png" alt="Figure 1.3a: High-Resolution Color Comparison of Airy's Root-of-Mountains Hypothesis (uniform density, variable thickness) versus Pratt's Variable-Density Columns." loading="lazy">
+    <div class="fig-caption">Figure 1.3a: High-Resolution Color Comparison of Airy's Root-of-Mountains Hypothesis (uniform density, variable thickness) versus Pratt's Variable-Density Columns.</div>
+</div>
+
 
 <div class="figure-box">
     <img src="../images/bangar_fig1_6_pratt_isostasy.png" alt="Pratt Isostasy - Bangar Fig 1.6" style="max-height: 250px; display: inline-block; margin-right: 15px;">
@@ -344,6 +496,19 @@
 <p>
     Alfred Wegener (1912) proposed that all continents were formerly conjoined into a supercontinent, <strong>Pangaea</strong>, surrounded by the universal ocean <strong>Panthalassa</strong>. Pangaea fragmented during the Mesozoic into northern <strong>Laurasia</strong> and southern <strong>Gondwanaland</strong>, separated by the east-west <strong>Tethys Sea</strong>.
 </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_tectonic_plates_global_map.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_tectonic_plates_global_map.png" alt="Figure 1.4a: Global Lithospheric Plates Map (USGS) showing divergent mid-ocean ridges, convergent subduction zones, and transform boundaries." loading="lazy">
+    <div class="fig-caption">Figure 1.4a: Global Lithospheric Plates Map (USGS) showing divergent mid-ocean ridges, convergent subduction zones, and transform boundaries.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_mid_ocean_ridge_magnetic_stripes.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_mid_ocean_ridge_magnetic_stripes.png" alt="Figure 1.4b: Symmetrical Marine Magnetic Anomaly Stripes across a spreading Mid-Oceanic Ridge Axis (Vine-Matthews-Morley hypothesis)." loading="lazy">
+    <div class="fig-caption">Figure 1.4b: Symmetrical Marine Magnetic Anomaly Stripes across a spreading Mid-Oceanic Ridge Axis (Vine-Matthews-Morley hypothesis).</div>
+</div>
+
 <div class="callout">
     <div class="callout-title">Gondwanaland Evidences</div>
     <ul>
@@ -368,6 +533,64 @@
     <li><strong>Transform Faults (Conservative):</strong> Plates slide horizontally past one another without crustal creation or consumption (e.g., San Andreas Fault).</li>
 </ul>
 
+
+<div class="visual-atlas-section">
+    <h2>1.6 Visual Atlas: Earth Interior, Seismology & Plate Tectonics</h2>
+    <p>Comprehensive visual gallery comparing textbook diagrams, PREM seismic velocity profiles, Suess geochemical layers (SIAL, SIMA, NIFE), and global tectonic maps.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/seismic_p_s_core_shadow_zones.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/seismic_p_s_core_shadow_zones.png" alt="P-wave ($103^\circ\text{--}142^\circ$) and S-wave ($>103^\circ$) Seismic Shadow Zones proving a liquid outer core." loading="lazy">
+    <div class="fig-caption">P-wave ($103^\circ\text{--}142^\circ$) and S-wave ($>103^\circ$) Seismic Shadow Zones proving a liquid outer core.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_fig3_seismic_velocity_prem_profile.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_fig3_seismic_velocity_prem_profile.png" alt="Preliminary Reference Earth Model (PREM): P-wave ($V_p$), S-wave ($V_s$), and density ($\rho$) variations with depth (Winter)." loading="lazy">
+    <div class="fig-caption">Preliminary Reference Earth Model (PREM): P-wave ($V_p$), S-wave ($V_s$), and density ($\rho$) variations with depth (Winter).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/suess_compositional_layers_sial_sima_nife.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/suess_compositional_layers_sial_sima_nife.png" alt="Eduard Suess's classical chemical zoning of the Earth: granitic SIAL, basaltic SIMA, and metallic NIFE core." loading="lazy">
+    <div class="fig-caption">Eduard Suess's classical chemical zoning of the Earth: granitic SIAL, basaltic SIMA, and metallic NIFE core.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p12_suess_sial_sima_nife.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p12_suess_sial_sima_nife.png" alt="K. M. Bangar reference profile of SIAL, SIMA, and NIFE concentric shells." loading="lazy">
+    <div class="fig-caption">K. M. Bangar reference profile of SIAL, SIMA, and NIFE concentric shells.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/winter_fig1_11_lithosphere_structure.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Winter Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/winter_fig1_11_lithosphere_structure.png" alt="Crustal and uppermost mantle cross-section illustrating Moho depth beneath continents vs. oceans." loading="lazy">
+    <div class="fig-caption">Crustal and uppermost mantle cross-section illustrating Moho depth beneath continents vs. oceans.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig1_4_earth_core_velocity.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig1_4_earth_core_velocity.png" alt="Seismic wave refraction trajectories and velocity jumps at the Mohorovicic and Gutenberg discontinuities (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Seismic wave refraction trajectories and velocity jumps at the Mohorovicic and Gutenberg discontinuities (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig1_7_airy_isostasy_crustal_roots.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig1_7_airy_isostasy_crustal_roots.png" alt="Buoyant continental mountain roots submerged in denser mantle sima under Airy's isostatic balance (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Buoyant continental mountain roots submerged in denser mantle sima under Airy's isostatic balance (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig1_12_mid_ocean_ridge_divergent.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig1_12_mid_ocean_ridge_divergent.png" alt="Upwelling asthenospheric convection currents and new oceanic crust accretion at divergent plate margins (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Upwelling asthenospheric convection currents and new oceanic crust accretion at divergent plate margins (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/global_mid_ocean_ridges_trenches_tectonic_map.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/global_mid_ocean_ridges_trenches_tectonic_map.png" alt="Global distribution of Mid-Oceanic Ridge rift systems and deep-sea Benioff subduction trenches." loading="lazy">
+    <div class="fig-caption">Global distribution of Mid-Oceanic Ridge rift systems and deep-sea Benioff subduction trenches.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/global_circum_pacific_trenches_map.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/global_circum_pacific_trenches_map.png" alt="The Circum-Pacific 'Ring of Fire' subduction trench system and active volcanic arcs." loading="lazy">
+    <div class="fig-caption">The Circum-Pacific 'Ring of Fire' subduction trench system and active volcanic arcs.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geothermal_energy_plate_boundaries_gradients.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/geothermal_energy_plate_boundaries_gradients.png" alt="Geothermal heat flow gradients and magma generation along tectonic plate boundaries." loading="lazy">
+    <div class="fig-caption">Geothermal heat flow gradients and magma generation along tectonic plate boundaries.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p50_subduction_trenches_ring_of_fire.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p50_subduction_trenches_ring_of_fire.png" alt="Convergent plate subduction trench and volcanic island arc mechanics (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Convergent plate subduction trench and volcanic island arc mechanics (K. M. Bangar).</div>
+</div>
+    </div>
+</div>
+
+
 <div class="callout callout-engineering">
     <div class="callout-title">Civil Engineering Significance of Chapter 1</div>
     Earthquake epicentral distribution and active tectonic plate boundaries dictate the National Building Code (NBC) seismic zonation map of India (Zones II through V). Mega-projects in active convergent belts (e.g., Tehri Dam in the Himalayan foothills) require dynamic seismotectonic analysis, peak ground acceleration (PGA) modeling, and fault rupture displacement allowance.
@@ -381,5 +604,48 @@
             <a href="ch02_physical_geology.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>

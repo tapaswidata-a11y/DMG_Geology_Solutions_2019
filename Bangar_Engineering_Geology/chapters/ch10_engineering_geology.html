@@ -191,6 +191,124 @@
         transition: background 0.2s;
     }
     .nav-btn:hover { background: #1d4ed8; }
+    
+    /* Visual Atlas & Interactive Figure Enhancements */
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        position: relative;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .fig-badge-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .fig-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 3px 10px;
+        border-radius: 9999px;
+    }
+    .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .zoom-hint {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .visual-atlas-section {
+        margin-top: 44px;
+        padding-top: 24px;
+        border-top: 3px solid var(--primary-light);
+    }
+    .fig-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .fig-grid .fig-box {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #f8fafc;
+    }
+    .fig-grid .fig-box img {
+        max-height: 290px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+        .fig-grid { grid-template-columns: 1fr; }
+    }
+    /* Fullscreen Lightbox Modal */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        flex-direction: column;
+        backdrop-filter: blur(4px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img {
+        max-width: 94vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        background: white;
+        padding: 8px;
+        object-fit: contain;
+    }
+    .lightbox-caption {
+        color: #f8fafc;
+        margin-top: 16px;
+        max-width: 850px;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        background: rgba(30, 41, 59, 0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(255,255,255,0.12);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
     </style>
     <script>
     window.MathJax = {
@@ -218,6 +336,19 @@
             <p>
                 Civil engineering structures—such as massive dams, highway tunnels, deep bridge caissons, and high-rise foundations—are founded directly upon or driven through rock masses and soils. The safety, cost, longevity, and structural integrity of these works depend entirely upon the geological conditions of the site. A thorough geological investigation proceeds in three distinct stages:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/rmr_parameters_bieniawski_classification.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/rmr_parameters_bieniawski_classification.png" alt="Figure 10.0a: Bieniawski's Geomechanics Rock Mass Rating (RMR) System integrating 6 core parameters: Intact Rock UCS, RQD, Joint Spacing, Joint Condition, Groundwater, and Joint Orientation." loading="lazy">
+    <div class="fig-caption">Figure 10.0a: Bieniawski's Geomechanics Rock Mass Rating (RMR) System integrating 6 core parameters: Intact Rock UCS, RQD, Joint Spacing, Joint Condition, Groundwater, and Joint Orientation.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p186_in_situ_field_testing_methods.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p186_in_situ_field_testing_methods.png" alt="Figure 10.0b: In-Situ Geotechnical Field Testing & Site Investigation Methods for large civil engineering foundations (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Figure 10.0b: In-Situ Geotechnical Field Testing & Site Investigation Methods for large civil engineering foundations (K. M. Bangar).</div>
+</div>
+
             <ol>
                 <li><strong>Preliminary Reconnaissance:</strong> Studying regional geological maps, aerial photographs, satellite imagery, and surface exposures to establish broad lithological boundaries and structural trends.</li>
                 <li><strong>Surface Exploration:</strong> Detailed 1:1,000 or 1:500 geological mapping of the project footprint, recording dip, strike, joint patterns, shear zones, weathered profiles, and river gravel depths.</li>
@@ -250,6 +381,31 @@
                 A <strong>Dam</strong> is an impervious barrier constructed across a river valley to impound water for irrigation, hydroelectric generation, or flood control. The resulting body of impounded water is the <strong>Reservoir</strong>.
             </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/dam_foundation_dip_upstream_downstream.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/dam_foundation_dip_upstream_downstream.png" alt="Figure 10.0c: Mechanical Comparison of Dam Foundations on Upstream-Dipping Strata (Safe: resultant vector $R$ normal to bedding, long seepage path) vs. Downstream-Dipping Strata (Hazardous: $R$ parallel to bedding, shear sliding & uplift risk)." loading="lazy">
+    <div class="fig-caption">Figure 10.0c: Mechanical Comparison of Dam Foundations on Upstream-Dipping Strata (Safe: resultant vector $R$ normal to bedding, long seepage path) vs. Downstream-Dipping Strata (Hazardous: $R$ parallel to bedding, shear sliding & uplift risk).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/arch_dam_abutment_thrust_mechanics.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/arch_dam_abutment_thrust_mechanics.png" alt="Figure 10.0d: Structural Mechanics of a Concrete Arch Dam transferring hydrostatic reservoir load laterally into rigid canyon rock abutments." loading="lazy">
+    <div class="fig-caption">Figure 10.0d: Structural Mechanics of a Concrete Arch Dam transferring hydrostatic reservoir load laterally into rigid canyon rock abutments.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_arch_gravity_dam_structure.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_arch_gravity_dam_structure.jpg" alt="Figure 10.0e: High Concrete Arch-Gravity Dam founded in a steep, competent crystalline rock canyon." loading="lazy">
+    <div class="fig-caption">Figure 10.0e: High Concrete Arch-Gravity Dam founded in a steep, competent crystalline rock canyon.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/grouting_rectification_rock_joints_dam_foundation.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/grouting_rectification_rock_joints_dam_foundation.png" alt="Figure 10.0f: Foundation Treatment of Jointed & Faulted Dam Bedrock: shallow Consolidation Grouting grid and deep high-pressure Curtain Grouting cutoff." loading="lazy">
+    <div class="fig-caption">Figure 10.0f: Foundation Treatment of Jointed & Faulted Dam Bedrock: shallow Consolidation Grouting grid and deep high-pressure Curtain Grouting cutoff.</div>
+</div>
+
+
             <h3>Types of Dams</h3>
             <ul>
                 <li><strong>Gravity Dam:</strong> Massive concrete or stone masonry structure designed to resist hydrostatic overturning and sliding forces purely by its own dead weight (e.g., Bhakra Dam, Sardar Sarovar Dam). Requires hard, unyielding crystalline foundation rock ($UCS &gt; 60\text{ MPa}$).</li>
@@ -281,6 +437,25 @@
                 A <strong>Tunnel</strong> is an underground passageway driven through rock or soil without disturbing the overlying ground surface. The highest point of the tunnel cross-section is the <strong>Crown</strong> (roof), the sides are the <strong>Haunches / Walls</strong>, and the floor is the <strong>Invert</strong>.
             </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/tunneling_geological_conditions_strata.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/tunneling_geological_conditions_strata.png" alt="Figure 10.0g: Geological Stability of Tunnels driven through Horizontal Strata (safe beam arch), Anticlinal Crests (self-draining but radial tension joints), and Synclinal Troughs (severe artesian flooding & invert heave)." loading="lazy">
+    <div class="fig-caption">Figure 10.0g: Geological Stability of Tunnels driven through Horizontal Strata (safe beam arch), Anticlinal Crests (self-draining but radial tension joints), and Synclinal Troughs (severe artesian flooding & invert heave).</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_tunnel_boring_machine_rock.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_tunnel_boring_machine_rock.jpg" alt="Figure 10.0h: Full-Face Hard-Rock Tunnel Boring Machine (TBM) Cutterhead with disc cutters and segmental concrete lining." loading="lazy">
+    <div class="fig-caption">Figure 10.0h: Full-Face Hard-Rock Tunnel Boring Machine (TBM) Cutterhead with disc cutters and segmental concrete lining.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/rock_burst_tunneling_high_stress_release.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/rock_burst_tunneling_high_stress_release.png" alt="Figure 10.0i: Violent Brittle Rockburst and Spalling Failure in deep high-overburden hard-rock tunnels due to tangential stress concentration." loading="lazy">
+    <div class="fig-caption">Figure 10.0i: Violent Brittle Rockburst and Spalling Failure in deep high-overburden hard-rock tunnels due to tangential stress concentration.</div>
+</div>
+
+
             <h3>Structural Controls on Tunnel Alignment</h3>
             <ul>
                 <li><strong>Tunneling Along the Strike of Tilted Beds:</strong> Highly dangerous. Asymmetrical rock pressure develops because the strata on one side of the tunnel dip into the opening while those on the opposite side dip away. This leads to continuous rock falls, roof sagging, and heavy side thrust.</li>
@@ -303,6 +478,19 @@
             <p>
                 A <strong>Landslide</strong> is the rapid or gradual downward and outward movement of a mass of rock, earth, or debris down a slope under the direct influence of gravity along an identifiable shear failure surface:
             </p>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/landslide_anatomy_crown_scarp_rupture_surface.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/landslide_anatomy_crown_scarp_rupture_surface.png" alt="Figure 10.3a: Complete 3D Anatomy of a Rotational-Translational Landslide: Crown Cracks, Main Scarp, Minor Scarps, Transverse Cracks, Zone of Depletion, Foot, Toe, and Surface of Rupture." loading="lazy">
+    <div class="fig-caption">Figure 10.3a: Complete 3D Anatomy of a Rotational-Translational Landslide: Crown Cracks, Main Scarp, Minor Scarps, Transverse Cracks, Zone of Depletion, Foot, Toe, and Surface of Rupture.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/landslide_shear_plane_mechanics.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/landslide_shear_plane_mechanics.png" alt="Figure 10.3b: Limit-Equilibrium Mohr-Coulomb Force Balance on an Inclined Slope ($W\sin\alpha$ driving shear vs. $[c' + (W\cos\alpha - u)\tan\phi']$ resisting strength)." loading="lazy">
+    <div class="fig-caption">Figure 10.3b: Limit-Equilibrium Mohr-Coulomb Force Balance on an Inclined Slope ($W\sin\alpha$ driving shear vs. $[c' + (W\cos\alpha - u)\tan\phi']$ resisting strength).</div>
+</div>
+
 
             <div class="fig-box">
                 <img src="../images/bangar_fig10_20_slump_shear_plane.png" alt="Rotational Slump Shear Plane">
@@ -338,6 +526,19 @@
                 Rock used as building stone, concrete aggregate, ballast, or foundation bedrock must withstand crushing, tensile, and weathering stresses. Key laboratory and field testing methods include:
             </p>
 
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/compressive_strength_stress_strain_curve.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/compressive_strength_stress_strain_curve.png" alt="Figure 10.6a: Complete Uniaxial Stress-Strain Curve of Intact Rock illustrating Crack Closure, Linear Elastic Deformation ($E$), Crack Propagation, Peak Strength ($UCS$), and Post-Peak Brittle Failure." loading="lazy">
+    <div class="fig-caption">Figure 10.6a: Complete Uniaxial Stress-Strain Curve of Intact Rock illustrating Crack Closure, Linear Elastic Deformation ($E$), Crack Propagation, Peak Strength ($UCS$), and Post-Peak Brittle Failure.</div>
+</div>
+
+<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/anisotropic_rock_strength_stress_vs_bedding.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/anisotropic_rock_strength_stress_vs_bedding.png" alt="Figure 10.6b: Strength Anisotropy in Foliated/Bedded Rocks: U-shaped variation of compressive strength with foliation orientation angle $\beta$ (minimum strength at $\beta \approx 30^\circ\text{--}45^\circ$)." loading="lazy">
+    <div class="fig-caption">Figure 10.6b: Strength Anisotropy in Foliated/Bedded Rocks: U-shaped variation of compressive strength with foliation orientation angle $\beta$ (minimum strength at $\beta \approx 30^\circ\text{--}45^\circ$).</div>
+</div>
+
+
             <h3>1. Unconfined Compressive Strength ($UCS$)</h3>
             <div class="fig-box">
                 <img src="../images/bangar_p186_unconfined_compressive_strength.png" alt="Unconfined Compressive Strength Test">
@@ -364,7 +565,85 @@
                 <div class="fig-caption">Figure 10.6: Non-destructive Schmidt Rebound Hammer testing for rapid field assessment of rock surface rebound hardness ($R_N$) and joint wall compressive strength (JCS) (K. M. Bangar).</div>
             </div>
 
-            <div class="callout callout-engineering">
+            
+<div class="visual-atlas-section">
+    <h2>10.6 Visual Atlas: Geotechnical Testing, Ground Improvement & Slope Engineering</h2>
+    <p>Comprehensive rock mechanics and civil engineering diagrams covering bending strength, porosity-void ratio relations, pozzolans, deep mixing, and aggregate standards.</p>
+    <div class="fig-grid">
+        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/granitic_bedrock_dam_site_engineering.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/granitic_bedrock_dam_site_engineering.png" alt="Engineering geological profile of a gravity dam founded on massive granitic bedrock with shear-zone dental treatment." loading="lazy">
+    <div class="fig-caption">Engineering geological profile of a gravity dam founded on massive granitic bedrock with shear-zone dental treatment.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p190_grouting_deep_mixing_methods.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p190_grouting_deep_mixing_methods.png" alt="Subsurface jet grouting, permeation grouting, and deep soil-cement mixing columns (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Subsurface jet grouting, permeation grouting, and deep soil-cement mixing columns (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/deep_mixing_methods_ground_improvement_dmm.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/deep_mixing_methods_ground_improvement_dmm.png" alt="Deep Mixing Method (DMM) ground improvement for liquefiable and weak alluvial foundations." loading="lazy">
+    <div class="fig-caption">Deep Mixing Method (DMM) ground improvement for liquefiable and weak alluvial foundations.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_landslide_slope_failure_scarp.jpg', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_landslide_slope_failure_scarp.jpg" alt="Field photograph of an active Rotational Slump showing the arcuate main headwall scarp and backward-tilted slump blocks." loading="lazy">
+    <div class="fig-caption">Field photograph of an active Rotational Slump showing the arcuate main headwall scarp and backward-tilted slump blocks.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p378_landslides_verbatim_definition.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p378_landslides_verbatim_definition.png" alt="Classification of mass movements: soil creep, solifluction, earthflows, mudflows, debris avalanches, and rockfalls (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Classification of mass movements: soil creep, solifluction, earthflows, mudflows, debris avalanches, and rockfalls (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_fig10_20_21_landslide_shear_plane.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_fig10_20_21_landslide_shear_plane.png" alt="Side-by-side comparison of curved rotational failure in cohesive soils vs. planar sliding along rock dip slopes (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Side-by-side comparison of curved rotational failure in cohesive soils vs. planar sliding along rock dip slopes (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/compressive_strength_rock_types_comparison.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/compressive_strength_rock_types_comparison.png" alt="Comparative Unconfined Compressive Strength ($UCS$, MPa) ranges across major igneous, sedimentary, and metamorphic rocks." loading="lazy">
+    <div class="fig-caption">Comparative Unconfined Compressive Strength ($UCS$, MPa) ranges across major igneous, sedimentary, and metamorphic rocks.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/brazilian_test_tensile_strength.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/brazilian_test_tensile_strength.png" alt="Stress distribution in the ISRM Brazilian Indirect Tensile Strength disc test ($\sigma_t = \frac{2P}{\pi D t}$)." loading="lazy">
+    <div class="fig-caption">Stress distribution in the ISRM Brazilian Indirect Tensile Strength disc test ($\sigma_t = \frac{2P}{\pi D t}$).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/three_point_bending_modulus_rupture.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/three_point_bending_modulus_rupture.png" alt="Three-Point Flexural Bending Test setup for determining Modulus of Rupture ($R_m = \frac{3PL}{2bd^2}$) of dimension stones." loading="lazy">
+    <div class="fig-caption">Three-Point Flexural Bending Test setup for determining Modulus of Rupture ($R_m = \frac{3PL}{2bd^2}$) of dimension stones.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p187_transverse_bending_strength.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p187_transverse_bending_strength.png" alt="Transverse bending strength apparatus for stone lintels and beams (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Transverse bending strength apparatus for stone lintels and beams (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/porosity_vs_void_ratio_rock_mechanics.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/porosity_vs_void_ratio_rock_mechanics.png" alt="Phase relationships between Porosity ($n$), Void Ratio ($e = \frac{n}{1-n}$), Bulk Density, and Degree of Saturation." loading="lazy">
+    <div class="fig-caption">Phase relationships between Porosity ($n$), Void Ratio ($e = \frac{n}{1-n}$), Bulk Density, and Degree of Saturation.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p187_void_ratio_porosity_rock_mass.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p187_void_ratio_porosity_rock_mass.png" alt="Three-phase rock/soil diagram relating solid mineral grains, water, and air voids (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Three-phase rock/soil diagram relating solid mineral grains, water, and air voids (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p187_bulk_density_natural_moisture.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p187_bulk_density_natural_moisture.png" alt="Laboratory determination of bulk density, dry density, and natural moisture content (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Laboratory determination of bulk density, dry density, and natural moisture content (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/atterberg_limits_phase_diagram.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/atterberg_limits_phase_diagram.png" alt="Atterberg Consistency Limits of fine-grained soils: Shrinkage Limit ($SL$), Plastic Limit ($PL$), Liquid Limit ($LL$), and Plasticity Index ($PI$)." loading="lazy">
+    <div class="fig-caption">Atterberg Consistency Limits of fine-grained soils: Shrinkage Limit ($SL$), Plastic Limit ($PL$), Liquid Limit ($LL$), and Plasticity Index ($PI$).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/road_metal_aggregate_desirable_properties.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/road_metal_aggregate_desirable_properties.png" alt="Desirable engineering properties of crushed rock aggregates for highway pavements and railway ballast (Los Angeles Abrasion, Aggregate Impact Value, Crushing Value, Hydrophobic Bitumen Affinity)." loading="lazy">
+    <div class="fig-caption">Desirable engineering properties of crushed rock aggregates for highway pavements and railway ballast (Los Angeles Abrasion, Aggregate Impact Value, Crushing Value, Hydrophobic Bitumen Affinity).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p188_pozzolanic_materials_flyash.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p188_pozzolanic_materials_flyash.png" alt="Pozzolanic supplementary cementitious materials (Fly Ash, Calcined Clay, Volcanic Tuff) for mass concrete dams (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Pozzolanic supplementary cementitious materials (Fly Ash, Calcined Clay, Volcanic Tuff) for mass concrete dams (K. M. Bangar).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p378_mass_wasting_gravity.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/bangar_p378_mass_wasting_gravity.png" alt="Gravitational shear stress components driving hillslope mass wasting (K. M. Bangar)." loading="lazy">
+    <div class="fig-caption">Gravitational shear stress components driving hillslope mass wasting (K. M. Bangar).</div>
+</div>
+    </div>
+</div>
+
+
+<div class="callout callout-engineering">
                 <div class="callout-title">Engineering Summary of Building Stones</div>
                 <ul>
                     <li><strong>Granite &amp; Charnockite:</strong> Unmatched compressive strength ($180\text{--}220\text{ MPa}$), low porosity ($&lt;0.5\%$), zero water absorption. Superb foundation rock and monumental dimension stone.</li>
@@ -382,5 +661,48 @@
             <a href="ch11_prospecting_methods.html" class="nav-btn">Next Chapter &rarr;</a>
         </div>
     </div>
+
+    <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
+        <div id="lightboxCap" class="lightbox-caption"></div>
+    </div>
+    <script>
+    function openLightbox(src, captionText) {
+        const modal = document.getElementById('lightboxModal');
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCap').textContent = captionText;
+        modal.classList.add('active');
+    }
+    function closeLightbox(e) {
+        if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) modal.classList.remove('active');
+        }
+    });
+    // Also make pre-existing fig-boxes clickable for zoom
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
+            const img = box.querySelector('img');
+            const cap = box.querySelector('.fig-caption');
+            if (img && cap) {
+                box.classList.add('fig-card-interactive');
+                if (!box.querySelector('.fig-badge-row')) {
+                    const row = document.createElement('div');
+                    row.className = 'fig-badge-row';
+                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
+                    box.insertBefore(row, img);
+                }
+                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
+            }
+        });
+    });
+    </script>
+
 </body>
 </html>
