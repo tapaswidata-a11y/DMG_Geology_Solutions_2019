@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Introduction to Geology & Earth Dynamics | Bangar Engineering Geology</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #0f172a;
+            --primary-light: #eff6ff;
+            --accent: #2563eb;
+            --accent-amber: #d97706;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 0;
+        }
+        .top-nav {
+            background: var(--primary-dark);
+            color: white;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .top-nav a {
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-nav a:hover { color: white; }
+        .book-badge {
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 10px;
+            border-radius: 9999px;
+            color: #e2e8f0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 32px auto;
+            padding: 0 20px 60px 20px;
+        }
+        .chapter-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #3b82f6 100%);
+            color: white;
+            padding: 40px 36px;
+            border-radius: var(--radius);
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+        }
+        .ch-number {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: #bfdbfe;
+            margin-bottom: 8px;
+        }
+        .ch-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .ch-subtitle {
+            font-size: 1.05rem;
+            color: #dbeafe;
+            font-style: italic;
+        }
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+        }
+        h2 {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 36px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+        }
+        h2:first-of-type { margin-top: 0; }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 28px;
+            font-size: 1.02rem;
+        }
+        li { margin-bottom: 8px; }
+        .figure-box {
+            margin: 28px 0;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .figure-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background: white;
+        }
+        .fig-caption {
+            margin-top: 10px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #475569;
+            text-align: center;
+        }
+        .callout {
+            border-left: 4px solid var(--accent);
+            background: var(--primary-light);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0;
+            font-size: 1rem;
+        }
+        .callout-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .callout-engineering {
+            border-left-color: #059669;
+            background: #ecfdf5;
+        }
+        .callout-engineering .callout-title { color: #065f46; }
+        .callout-exam {
+            border-left-color: #d97706;
+            background: #fffbeb;
+        }
+        .callout-exam .callout-title { color: #92400e; }
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.98rem;
+        }
+        table.data-table th, table.data-table td {
+            border: 1px solid #cbd5e1;
+            padding: 12px 16px;
+            text-align: left;
+        }
+        table.data-table th {
+            background: #f1f5f9;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .formula-box {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            text-align: center;
+            font-size: 1.15rem;
+        }
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .nav-btn {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .nav-btn:hover { background: var(--primary-dark); }
+    </style>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html">&larr; Bangar Textbook Portal</a>
+        <span class="book-badge">Principles of Engineering Geology &bull; K. M. Bangar</span>
+        <a href="../index.html">All Chapters &rarr;</a>
+    </div>
+
+    <div class="container">
+        <header class="chapter-header">
+            <div class="ch-number">Chapter 1</div>
+            <h1 class="ch-title">Introduction to Geology & Earth Dynamics</h1>
+            <div class="ch-subtitle">Branches of Geology, Cosmogony, Geochronology, Internal Shells, Isostasy & Plate Tectonics</div>
+        </header>
+
+        <main class="content-card">
+            
+<h2>1.1 Science of Geology and Its Branches</h2>
+<p>
+    <strong>Geology</strong> (derived from Greek <em>Geo</em> = Earth, <em>Logos</em> = Discourse/Study) is the branch of natural science that investigates the Earth's origin, history, composition, internal architecture, dynamic surface modifications, and life evolution preserved in rock records.
+</p>
+<p>
+    For civil and mining engineers, geology forms the essential foundation upon which tunnels, dams, reservoirs, highways, slopes, and foundations are designed. The major branches include:
+</p>
+<ul>
+    <li><strong>Physical Geology:</strong> Investigates the geomorphic processes (wind, rivers, glaciers, seas, groundwater, volcanism, earthquakes) altering the Earth's relief.</li>
+    <li><strong>Mineralogy:</strong> The scientific study of naturally occurring inorganic crystalline substances, their crystal symmetry, chemical bonding, and diagnostic physical properties.</li>
+    <li><strong>Petrology:</strong> The study of rocks—their origin, mineral constituents, texture, structure, and classification (Igneous, Sedimentary, Metamorphic).</li>
+    <li><strong>Structural Geology:</strong> Deals with the architecture of rocks, deformation mechanisms, stress-strain relations, and rock fractures such as folds, faults, joints, and unconformities.</li>
+    <li><strong>Stratigraphy:</strong> Chronological ordering and correlation of stratified sedimentary strata to reconstruct historical geological events and paleogeography.</li>
+    <li><strong>Engineering Geology:</strong> The application of geological knowledge and geomechanical testing to engineering design, ensuring structural safety against catastrophic ground failure.</li>
+</ul>
+
+<h2>1.2 Origin and Age of the Earth</h2>
+<p>
+    Various cosmogonic hypotheses explain the origin of our solar system and Earth:
+</p>
+<ul>
+    <li><strong>Nebular Hypothesis (Kant & Laplace):</strong> Postulated that a primordial rotating hot gaseous nebula contracted under gravitation. Rapid rotation led to centrifugal flattening, shedding concentric rings that condensed into orbiting planets around the central Sun.</li>
+    <li><strong>Planetesimal Hypothesis (Chamberlin & Moulton):</strong> A passing massive star exerted intense tidal attraction on the early Sun, drawing out bolts of solar matter that cooled into millions of solid particles called <em>planetesimals</em>, which aggregated through accretion into planets.</li>
+    <li><strong>Gaseous Tidal Hypothesis (Jeans & Jeffreys):</strong> A passing star produced a cigar-shaped gaseous filament drawn from the Sun, which ruptured and condensed into planetary spheres with the largest planets (Jupiter, Saturn) in the central bulge.</li>
+</ul>
+
+<h3>Quantitative Age Determination of the Earth</h3>
+<div class="formula-box">
+    $$N(t) = N_0 e^{-\lambda t} \implies t = \frac{1}{\lambda} \ln\left(1 + \frac{D}{P}\right)$$
+</div>
+<p>
+    Early physical methods based on ocean salinity (Joly) or sedimentation accumulation rates provided rough minimum estimates. Modern precision geochronology utilizes radiometric decay of unstable parent isotopes ($P$) into radiogenic daughter isotopes ($D$):
+</p>
+<ul>
+    <li><strong>Potassium-Argon (${}^{40}    ext{K}     o {}^{40}    ext{Ar}$):</strong> Half-life $T_{1/2} = 1.25     imes 10^9$ years. Widely used for dating igneous rocks and volcanic tephra.</li>
+    <li><strong>Uranium-Lead (${}^{238}    ext{U}     o {}^{206}    ext{Pb}$, ${}^{235}    ext{U}     o {}^{207}    ext{Pb}$):</strong> Concordia-Discordia zircon geochronology establishes the Earth's age at <strong>$4.54 \pm 0.05     ext{ billion years}$</strong>.</li>
+    <li><strong>Rubidium-Strontium (${}^{87}    ext{Rb}     o {}^{87}    ext{Sr}$):</strong> Isochron methodology resolving deep Precambrian cratonic metamorphic ages.</li>
+    <li><strong>Radiocarbon (${}^{14}    ext{C}$):</strong> Half-life $5,730     ext{ years}$. Used for dating late Quaternary sediments, peat, and Holocene geoengineering sites.</li>
+</ul>
+
+<h2>1.3 Internal Constitution of the Earth</h2>
+<p>
+    Seismic wave velocities ($V_p$ and $V_s$) recorded from deep earthquakes reveal that the Earth consists of three concentric compositional shells separated by first-order seismic discontinuities:
+</p>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig1_4_1_5_earth_interior.png" alt="Earth Interior - Bangar Fig 1.4 and 1.5">
+    <div class="fig-caption">Figure 1.1: Internal concentric layering of the Earth showing Crust, Mantle, and Core with seismic P-wave and S-wave velocity profiles (K. M. Bangar).</div>
+</div>
+
+<ul>
+    <li><strong>Crust:</strong> The outermost solid brittle skin. Continental crust (average thickness 35–40 km, up to 70 km under mountains) consists predominantly of granitic/felsic rocks rich in Silica and Alumina (<strong>SIAL</strong>, density $\approx 2.7     ext{ g/cm}^3$). Oceanic crust (5–7 km thick) consists of dense basaltic/gabbroic rocks rich in Silica and Magnesia (<strong>SIMA</strong>, density $\approx 3.0     ext{ g/cm}^3$).</li>
+    <li><strong>Mohorovičić Discontinuity (Moho):</strong> Marks the sharp boundary between the crust and mantle, where $P$-wave velocity abruptly jumps from $\sim 6.5     ext{ km/s}$ to $\sim 8.1     ext{ km/s}$.</li>
+    <li><strong>Mantle:</strong> Extends to a depth of $2,900     ext{ km}$. Composed of dense ultramafic peridotite. The upper mantle contains the <strong>Asthenosphere</strong> ($100    ext{--}250     ext{ km}$ depth), a mechanically weak, plastic, low-velocity zone (LVZ) upon which rigid lithospheric plates glide.</li>
+    <li><strong>Gutenberg Discontinuity:</strong> Occurs at $2,900     ext{ km}$ depth, separating the solid mantle from the outer core. P-wave velocity drops sharply from $13.7     ext{ km/s}$ to $8.1     ext{ km/s}$, and $S$-waves cease completely, proving the outer core is liquid.</li>
+    <li><strong>Core (Barysphere / NIFE):</strong> Extends from $2,900     ext{ km}$ to the Earth's center ($6,371     ext{ km}$). Composed of Iron and Nickel alloy. The Outer Core is liquid ($2,900    ext{--}5,150     ext{ km}$), generating Earth's geomagnetic dynamo; the Inner Core ($5,150    ext{--}6,371     ext{ km}$) is solid iron due to extreme pressures exceeding $3.6     ext{ Mbar}$.</li>
+</ul>
+
+<h2>1.4 Isostasy: Pratt vs. Airy Hypotheses</h2>
+<p>
+    <strong>Isostasy</strong> (Dutton, 1889) is the state of mechanical gravitational equilibrium between the Earth's crustal topography and the denser underlying mantle. Two classical models explain isostatic compensation:
+</p>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig1_6_pratt_isostasy.png" alt="Pratt Isostasy - Bangar Fig 1.6" style="max-height: 250px; display: inline-block; margin-right: 15px;">
+    <img src="../images/bangar_fig1_7_airy_isostasy.png" alt="Airy Isostasy - Bangar Fig 1.7" style="max-height: 250px; display: inline-block;">
+    <div class="fig-caption">Figure 1.2: Mechanical comparison of Pratt's model (varying density, uniform compensation depth) and Airy's model (uniform density, deep crustal roots) (K. M. Bangar).</div>
+</div>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Pratt's Hypothesis (1859)</th>
+            <th>Airy's Hypothesis (1855)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Crustal Density</strong></td>
+            <td>Variable: High mountains have lower density; ocean basins have higher density ($\rho \cdot h =     ext{const}$).</td>
+            <td>Uniform: All crustal blocks have equal density ($\rho_c \approx 2.67     ext{ g/cm}^3$).</td>
+        </tr>
+        <tr>
+            <td><strong>Depth of Compensation</strong></td>
+            <td>Uniform level of compensation at a constant depth ($D \approx 100     ext{ km}$).</td>
+            <td>Variable: Mountains possess deep roots projecting into the denser mantle like icebergs ($t = \frac{h \rho_c}{\rho_m - \rho_c}$).</td>
+        </tr>
+        <tr>
+            <td><strong>Geological Reality</strong></td>
+            <td>Applies partially to mid-ocean ridges and volcanic plateaus.</td>
+            <td>Dominates continental mountain belts (Himalayas, Alps possess 65-70 km deep crustal roots).</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>1.5 Continental Drift and Plate Tectonics</h2>
+<p>
+    Alfred Wegener (1912) proposed that all continents were formerly conjoined into a supercontinent, <strong>Pangaea</strong>, surrounded by the universal ocean <strong>Panthalassa</strong>. Pangaea fragmented during the Mesozoic into northern <strong>Laurasia</strong> and southern <strong>Gondwanaland</strong>, separated by the east-west <strong>Tethys Sea</strong>.
+</p>
+<div class="callout">
+    <div class="callout-title">Gondwanaland Evidences</div>
+    <ul>
+        <li><strong>Jigsaw Coastal Fit:</strong> Continental margin matching across the Atlantic (South America and Africa).</li>
+        <li><strong>Paleontological Flora & Fauna:</strong> Distribution of <em>Glossopteris</em> and <em>Gangamopteris</em> seed ferns, and reptiles (<em>Mesosaurus</em>, <em>Lystrosaurus</em>) across India, South Africa, Antarctica, South America, and Australia.</li>
+        <li><strong>Permo-Carboniferous Glaciation:</strong> Striated pavements and glacial tillites (Talchir Boulder Bed in India, Dwyka tillite in South Africa) indicating a common polar ice sheet.</li>
+    </ul>
+</div>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig1_12_1_13_plate_boundaries.png" alt="Plate Boundaries - Bangar Fig 1.12">
+    <div class="fig-caption">Figure 1.3: The three primary classes of lithospheric plate boundaries: Divergent (constructive), Convergent (destructive/subduction), and Transform (conservative) (K. M. Bangar).</div>
+</div>
+
+<h3>The Modern Plate Tectonic Paradigm</h3>
+<p>
+    The lithosphere is divided into major rigid plates (Pacific, North American, South American, Eurasian, African, Indo-Australian, Antarctic) moving atop the asthenosphere driven by mantle convection, slab pull, and ridge push:
+</p>
+<ul>
+    <li><strong>Divergent Margins (Constructive):</strong> Plates move apart along Mid-Oceanic Ridges (e.g., Mid-Atlantic Ridge), creating new basaltic oceanic crust via sea-floor spreading (Hess, 1962).</li>
+    <li><strong>Convergent Margins (Destructive):</strong> Plates collide. Ocean-Continent or Ocean-Ocean subduction produces deep trenches, volcanic island arcs, and Wadati-Benioff seismic zones. Continent-Continent collision (e.g., India colliding with Eurasia) produces orogenic belts like the Himalayas.</li>
+    <li><strong>Transform Faults (Conservative):</strong> Plates slide horizontally past one another without crustal creation or consumption (e.g., San Andreas Fault).</li>
+</ul>
+
+<div class="callout callout-engineering">
+    <div class="callout-title">Civil Engineering Significance of Chapter 1</div>
+    Earthquake epicentral distribution and active tectonic plate boundaries dictate the National Building Code (NBC) seismic zonation map of India (Zones II through V). Mega-projects in active convergent belts (e.g., Tehri Dam in the Himalayan foothills) require dynamic seismotectonic analysis, peak ground acceleration (PGA) modeling, and fault rupture displacement allowance.
+</div>
+
+        </main>
+
+        <div class="chapter-nav">
+            <a href="../index.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch02_physical_geology.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

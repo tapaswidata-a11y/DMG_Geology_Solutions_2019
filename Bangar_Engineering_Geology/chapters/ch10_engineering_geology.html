@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10: Engineering Geology & Rock Mechanics | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 40px auto;
+        padding: 0 24px 60px 24px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        color: white;
+        padding: 40px;
+        border-radius: var(--radius);
+        margin-bottom: 36px;
+        box-shadow: var(--shadow-lg);
+    }
+    .chapter-num {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #93c5fd;
+        margin-bottom: 8px;
+    }
+    .chapter-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+    .chapter-desc {
+        font-size: 1.05rem;
+        color: #bfdbfe;
+        max-width: 760px;
+    }
+    main {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+    }
+    h2 {
+        color: var(--primary-dark);
+        font-size: 1.55rem;
+        font-weight: 700;
+        margin: 32px 0 16px 0;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--border);
+    }
+    h3 {
+        color: var(--primary);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 24px 0 12px 0;
+    }
+    p { margin-bottom: 18px; font-size: 1.05rem; }
+    ul, ol { margin: 0 0 20px 24px; font-size: 1.05rem; }
+    li { margin-bottom: 8px; }
+    .table-container {
+        overflow-x: auto;
+        margin: 24px 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+    }
+    th, td {
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        text-align: left;
+    }
+    th {
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        font-weight: 700;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    .fig-box {
+        background: #f1f5f9;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        margin: 28px 0;
+        text-align: center;
+    }
+    .fig-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        background: white;
+    }
+    .fig-caption {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: 10px;
+        font-style: italic;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: #eff6ff;
+        padding: 18px 20px;
+        margin: 24px 0;
+        border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+    }
+    .callout-engineering {
+        border-left-color: var(--accent-amber);
+        background: #fffbeb;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #1d4ed8; }
+    </style>
+    <script>
+    window.MathJax = {
+        tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+        svg: { fontCache: "global" }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header class="top-nav">
+        <a href="../index.html">&larr; Principles of Engineering Geology</a>
+        <span class="book-badge">K. M. Bangar &bull; Digital Edition</span>
+    </header>
+
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-num">Chapter 10</div>
+            <h1 class="chapter-title">Engineering Geology & Rock Mechanics</h1>
+            <p class="chapter-desc">Geological investigations for civil infrastructure: dam site selection, reservoir water tightness, tunnel stability, landslide mechanisms, and mechanical testing of building stones.</p>
+        </div>
+
+        <main>
+            <h2>10.1 Role of Geology in Civil Engineering Projects</h2>
+            <p>
+                Civil engineering structures—such as massive dams, highway tunnels, deep bridge caissons, and high-rise foundations—are founded directly upon or driven through rock masses and soils. The safety, cost, longevity, and structural integrity of these works depend entirely upon the geological conditions of the site. A thorough geological investigation proceeds in three distinct stages:
+            </p>
+            <ol>
+                <li><strong>Preliminary Reconnaissance:</strong> Studying regional geological maps, aerial photographs, satellite imagery, and surface exposures to establish broad lithological boundaries and structural trends.</li>
+                <li><strong>Surface Exploration:</strong> Detailed 1:1,000 or 1:500 geological mapping of the project footprint, recording dip, strike, joint patterns, shear zones, weathered profiles, and river gravel depths.</li>
+                <li><strong>Subsurface Investigation:</strong> Core drilling, geophysical logging, water pressure tests (Lugeon tests), and test pits. Rock core quality is quantified using <strong>Rock Quality Designation (RQD)</strong> (Deere, 1964):
+                    $$\text{RQD} = \frac{\sum \text{Length of Sound Core Pieces } \ge 10\text{ cm}}{\text{Total Length of Core Run}} \times 100\%$$
+                </li>
+            </ol>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RQD Range (%)</th>
+                            <th>Rock Mass Quality Classification</th>
+                            <th>Engineering Implications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>$90\text{--}100\%$</td><td><strong>Excellent</strong></td><td>Massive, unweathered rock; requires minimal support; ideal dam foundation.</td></tr>
+                        <tr><td>$75\text{--}90\%$</td><td><strong>Good</strong></td><td>Minor jointing; suitable for gravity dams with routine consolidation grouting.</td></tr>
+                        <tr><td>$50\text{--}75\%$</td><td><strong>Fair</strong></td><td>Moderately jointed; requires rock bolts, shotcrete, and drainage relief.</td></tr>
+                        <tr><td>$25\text{--}50\%$</td><td><strong>Poor</strong></td><td>Heavily fractured; high permeability; requires heavy steel rib sets or curtain grouting.</td></tr>
+                        <tr><td>$&lt;25\%$</td><td><strong>Very Poor</strong></td><td>Crushed fault gouge / weathered rock; prone to swelling, squeezing, and cave-ins.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>10.2 Geological Investigations for Dams and Reservoirs</h2>
+            <p>
+                A <strong>Dam</strong> is an impervious barrier constructed across a river valley to impound water for irrigation, hydroelectric generation, or flood control. The resulting body of impounded water is the <strong>Reservoir</strong>.
+            </p>
+
+            <h3>Types of Dams</h3>
+            <ul>
+                <li><strong>Gravity Dam:</strong> Massive concrete or stone masonry structure designed to resist hydrostatic overturning and sliding forces purely by its own dead weight (e.g., Bhakra Dam, Sardar Sarovar Dam). Requires hard, unyielding crystalline foundation rock ($UCS &gt; 60\text{ MPa}$).</li>
+                <li><strong>Arch Dam:</strong> Upstream-curved concrete structure that transfers the major hydrostatic water thrust to the rocky valley abutments by arch action (e.g., Idukki Dam, Kerala). Requires exceptionally sound, rigid canyon walls with zero joint deformation.</li>
+                <li><strong>Buttress Dam:</strong> Sloping upstream deck supported at regular intervals by downstream triangular concrete buttress walls.</li>
+                <li><strong>Earth / Rockfill Dam:</strong> Embankment of compacted earth, gravel, and rip-rap with an impervious clay core. Adaptable to wider valleys with weak or compressible alluvial foundations (e.g., Tehri Dam, Hirakud Dam).</li>
+            </ul>
+
+            <h3>Effect of Dip and Strike on Dam Foundation Stability</h3>
+            <p>
+                The orientation of rock bedding planes relative to the dam axis and river flow is the single most critical structural factor:
+            </p>
+            <ul>
+                <li><strong>Beds Dipping Upstream (Most Favorable Condition):</strong> The resultant force ($R$) of the dam&#39;s weight ($W$) and reservoir water pressure ($P$) acts nearly perpendicular to the bedding planes. This prevents downstream sliding, forces bedding joints closed under compression, and significantly lengthens the seepage percolation path under the heel.</li>
+                <li><strong>Beds Dipping Downstream (Most Unfavorable / Hazardous Condition):</strong> The resultant force acts nearly parallel to the bedding planes. Seepage water under hydrostatic pressure penetrates the bedding planes, lubricating them and developing upward uplift pressure ($U$), which drastically reduces shear resistance and can trigger catastrophic downstream sliding failure of the dam.</li>
+                <li><strong>Horizontal Beds:</strong> Structurally stable against sliding, but horizontal bedding planes can act as continuous leakage channels if weak shale or clay beds are sandwiched between hard sandstones.</li>
+                <li><strong>Vertical Beds Striking Across the River:</strong> Generally sound, provided competent beds (e.g., quartzite) form the foundation across the entire dam width. If vertical beds strike parallel to the river flow, differential erosion creates deep longitudinal gorges and dangerous uneven settlement.</li>
+            </ul>
+
+            <h3>Geological Problems of Reservoirs</h3>
+            <ul>
+                <li><strong>Water Tightness &amp; Leakage:</strong> Subsurface leakage occurs through porous sandstones, fractured fault zones, cavernous karst limestones, and buried paleo-channels. Karst limestone can drain an entire reservoir through subsurface sinkholes.</li>
+                <li><strong>Siltation / Silting:</strong> Inflow of suspended sediment deposited in the quiet reservoir water progressively reduces active live storage capacity. Governed by catchment vegetation and soil erosion rates.</li>
+                <li><strong>Reservoir-Induced Seismicity (RIS):</strong> Impoundment of vast water masses exerts tremendous dead load and increases pore water pressure along pre-existing deep faults, triggering seismic earthquakes (e.g., the M 6.3 Koyna Earthquake of December 11, 1967 in Maharashtra, India).</li>
+            </ul>
+
+            <h2>10.3 Geological Investigations for Tunnels</h2>
+            <p>
+                A <strong>Tunnel</strong> is an underground passageway driven through rock or soil without disturbing the overlying ground surface. The highest point of the tunnel cross-section is the <strong>Crown</strong> (roof), the sides are the <strong>Haunches / Walls</strong>, and the floor is the <strong>Invert</strong>.
+            </p>
+
+            <h3>Structural Controls on Tunnel Alignment</h3>
+            <ul>
+                <li><strong>Tunneling Along the Strike of Tilted Beds:</strong> Highly dangerous. Asymmetrical rock pressure develops because the strata on one side of the tunnel dip into the opening while those on the opposite side dip away. This leads to continuous rock falls, roof sagging, and heavy side thrust.</li>
+                <li><strong>Tunneling Across the Strike of Tilted Beds:</strong> The most favorable alignment. Each individual bed forms a natural self-supporting arch across the roof, and the tunnel quickly passes through different strata into sound rock.</li>
+                <li><strong>Tunneling in Folded Strata:</strong>
+                    <ul>
+                        <li><em>In a Synclinal Core (Highly Treacherous):</em> The syncline acts as a natural subsurface basin, concentrating enormous volumes of pressurized groundwater. Driving a tunnel through the trough causes sudden bursting water inrushes and high hydrostatic head on the lining.</li>
+                        <li><em>In an Anticlinal Core (Favorable for Drainage):</em> Groundwater naturally drains away from the anticlinal axis down the limbs. However, rocks at the crest are under intense tensional stress and develop radial joints; block dropouts and roof rockfalls are common unless stabilized with rock bolts and shotcrete.</li>
+                    </ul>
+                </li>
+                <li><strong>Fault Zones in Tunnels:</strong> Fault planes contain pulverized <em>fault gouge</em> (clayey rock flour) and loose <em>fault breccia</em>. When intersected by a tunnel, saturated gouge turns into "running ground" that surges into the excavation, creating giant overbreak cavities and daylight cave-ins.</li>
+            </ul>
+
+            <h2>10.4 Landslides and Mass Wasting</h2>
+            <div class="fig-box">
+                <img src="../images/bangar_p377_earthflows_vs_landslides_definition.png" alt="Landslides and Earthflows Definition">
+                <div class="fig-caption">Figure 10.1: Mass Wasting Classification: distinction between slow plastic Earthflows and rapid shear-plane Landslides (K. M. Bangar).</div>
+            </div>
+
+            <p>
+                A <strong>Landslide</strong> is the rapid or gradual downward and outward movement of a mass of rock, earth, or debris down a slope under the direct influence of gravity along an identifiable shear failure surface:
+            </p>
+
+            <div class="fig-box">
+                <img src="../images/bangar_fig10_20_slump_shear_plane.png" alt="Rotational Slump Shear Plane">
+                <div class="fig-caption">Figure 10.2: Rotational Slump along a concave-upward spoon-shaped shear failure surface in unconsolidated cohesive materials (K. M. Bangar).</div>
+            </div>
+
+            <div class="fig-box">
+                <img src="../images/bangar_fig10_21_rockslide_slip_plane.png" alt="Translational Rockslide Slip Plane">
+                <div class="fig-caption">Figure 10.3: Translational Rockslide / Planar Slide occurring along an existing planar structural weakness (bedding, foliation, or joint plane) daylighting into the slope (K. M. Bangar).</div>
+            </div>
+
+            <h3>Mechanics and Factor of Safety ($FS$)</h3>
+            <p>
+                Slope stability is governed by the ratio of shear strength ($\tau_f$) resisting failure to the shear stress ($\tau$) driving failure along the prospective slip surface (Mohr-Coulomb criterion):
+            </p>
+            $$FS = \frac{\text{Resisting Shear Strength}}{\text{Driving Shear Stress}} = \frac{c' + (\sigma_n - u) \tan \phi'}{\tau}$$
+            <p>
+                Where:
+            </p>
+            <ul>
+                <li>$c'$ = Effective cohesion of the rock/soil mass ($\text{kPa}$).</li>
+                <li>$\sigma_n$ = Total normal stress perpendicular to the slip plane ($\text{kPa}$).</li>
+                <li>$u$ = Pore water pressure within the slip plane ($\text{kPa}$).</li>
+                <li>$\phi'$ = Effective internal angle of friction ($^\circ$).</li>
+                <li>$\tau$ = Tangential driving component of gravity along the slip plane ($\text{kPa}$).</li>
+            </ul>
+            <p>
+                When $FS &gt; 1.5$, the slope is stable. When $FS \le 1.0$, catastrophic slope failure occurs. Notice that rising pore water pressure ($u$) directly subtracts from the normal stress, reducing the frictional shear resistance $(\sigma_n - u)\tan \phi'$ to near zero during heavy monsoon rains!
+            </p>
+
+            <h2>10.5 Mechanical Properties &amp; Testing of Building Stones</h2>
+            <p>
+                Rock used as building stone, concrete aggregate, ballast, or foundation bedrock must withstand crushing, tensile, and weathering stresses. Key laboratory and field testing methods include:
+            </p>
+
+            <h3>1. Unconfined Compressive Strength ($UCS$)</h3>
+            <div class="fig-box">
+                <img src="../images/bangar_p186_unconfined_compressive_strength.png" alt="Unconfined Compressive Strength Test">
+                <div class="fig-caption">Figure 10.4: Laboratory measurement of Unconfined Compressive Strength ($UCS$, $\sigma_c$) on standard NX cylindrical rock core specimens (Length/Diameter ratio $L/D = 2.0\text{--}2.5$) under uniaxial compressive load (K. M. Bangar).</div>
+            </div>
+            $$\sigma_c = \frac{P}{A}$$
+            <p>
+                Where $P$ is the failure peak load ($\text{N}$) and $A$ is the cross-sectional area ($\text{mm}^2$). High-strength granites, basalts, and quartzites exhibit $\sigma_c = 150\text{--}250\text{ MPa}$, whereas weak shales and porous sandstones fail at $&lt;30\text{ MPa}$.
+            </p>
+
+            <h3>2. Brazilian Indirect Tensile Strength ($\sigma_t$)</h3>
+            <div class="fig-box">
+                <img src="../images/bangar_p187_brazilian_tensile_strength.png" alt="Brazilian Tensile Strength Test">
+                <div class="fig-caption">Figure 10.5: Brazilian Indirect Tensile Strength Test: Diametral line-load compression on circular rock disc creating uniform transverse tensile stress across the vertical diameter (K. M. Bangar).</div>
+            </div>
+            $$\sigma_t = \frac{2P}{\pi D t}$$
+            <p>
+                Where $P$ is the applied failure load, $D$ is the disc diameter, and $t$ is the disc thickness. Intact rocks are exceptionally weak in tension; tensile strength is typically only $\frac{1}{10}\text{ to }\frac{1}{20}$ of compressive strength ($\sigma_t \approx 0.05\text{--}0.10 \times \sigma_c$).
+            </p>
+
+            <h3>3. Schmidt Rebound Hammer Test</h3>
+            <div class="fig-box">
+                <img src="../images/bangar_p188_schmidt_hammer_rebound_hardness.png" alt="Schmidt Rebound Hammer Hardness">
+                <div class="fig-caption">Figure 10.6: Non-destructive Schmidt Rebound Hammer testing for rapid field assessment of rock surface rebound hardness ($R_N$) and joint wall compressive strength (JCS) (K. M. Bangar).</div>
+            </div>
+
+            <div class="callout callout-engineering">
+                <div class="callout-title">Engineering Summary of Building Stones</div>
+                <ul>
+                    <li><strong>Granite &amp; Charnockite:</strong> Unmatched compressive strength ($180\text{--}220\text{ MPa}$), low porosity ($&lt;0.5\%$), zero water absorption. Superb foundation rock and monumental dimension stone.</li>
+                    <li><strong>Basalt (Deccan Trap):</strong> High crushing strength ($150\text{--}200\text{ MPa}$), high abrasion resistance. Prime coarse aggregate for concrete and railway ballast.</li>
+                    <li><strong>Sandstone (Vindhyan):</strong> Uniform grain size, easily dressed along bedding planes, durable silica cement. Premier architectural building stone across North India.</li>
+                    <li><strong>Marble:</strong> Aesthetic crystalline metamorphic rock; easily polished for indoor flooring and cladding, but susceptible to acidic atmospheric weathering ($\text{H}_2\text{SO}_4$ acid rain).</li>
+                    <li><strong>Slate:</strong> Readily splits along planar slaty cleavage into thin, impervious, flat plates used for roof tiling and electrical switchboards.</li>
+                </ul>
+            </div>
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch09_ore_deposits.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch11_prospecting_methods.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

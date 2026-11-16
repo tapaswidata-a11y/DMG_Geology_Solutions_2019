@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: Sedimentary & Metamorphic Petrology | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 20px 60px 20px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #3b82f6 100%);
+        color: white;
+        padding: 40px 36px;
+        border-radius: var(--radius);
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-lg);
+    }
+    .ch-number {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: #bfdbfe;
+        margin-bottom: 8px;
+    }
+    .ch-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+    .ch-subtitle {
+        font-size: 1.05rem;
+        color: #dbeafe;
+        font-style: italic;
+    }
+    .content-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 36px;
+        box-shadow: var(--shadow);
+        margin-bottom: 32px;
+    }
+    h2 {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-top: 36px;
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 8px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    p {
+        margin-bottom: 18px;
+        text-align: justify;
+        font-size: 1.05rem;
+    }
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 28px;
+        font-size: 1.02rem;
+    }
+    li { margin-bottom: 8px; }
+    .figure-box {
+        margin: 28px 0;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: var(--radius);
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .figure-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+    .fig-caption {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #475569;
+        text-align: center;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: var(--primary-light);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 24px 0;
+        font-size: 1rem;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .callout-engineering {
+        border-left-color: #059669;
+        background: #ecfdf5;
+    }
+    .callout-engineering .callout-title { color: #065f46; }
+    .callout-exam {
+        border-left-color: #d97706;
+        background: #fffbeb;
+    }
+    .callout-exam .callout-title { color: #92400e; }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        font-size: 0.98rem;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 12px 16px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #f1f5f9;
+        font-weight: 700;
+        color: var(--primary-dark);
+    }
+    .formula-box {
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        text-align: center;
+        font-size: 1.15rem;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--primary-dark); }
+</style>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html">&larr; Bangar Textbook Portal</a>
+        <span class="book-badge">Principles of Engineering Geology &bull; K. M. Bangar</span>
+        <a href="../index.html">All Chapters &rarr;</a>
+    </div>
+
+    <div class="container">
+        <header class="chapter-header">
+            <div class="ch-number">Chapter 6</div>
+            <h1 class="ch-title">Sedimentary & Metamorphic Petrology</h1>
+            <div class="ch-subtitle">Diagenesis, Clastic/Nonclastic Rocks, Sedimentary Structures, Metamorphic Agents, Facies & Textures</div>
+        </header>
+
+        <main class="content-card">
+            
+<h2>6.1 Origin, Texture, and Classification of Sedimentary Rocks</h2>
+<p>
+    <strong>Sedimentary rocks</strong> form through the lithification of loose sediments deposited by surface agents (wind, water, ice) or through chemical precipitation and organic accumulation. They cover $\approx 75\%$ of the continental surface area.
+</p>
+
+<h3>Diagenesis and Lithification</h3>
+<p>
+    The transformation of loose soft sediment into solid coherent rock occurs via:
+</p>
+<ul>
+    <li><strong>Compaction:</strong> Expulsion of pore water and reduction of pore volume under overburden pressure.</li>
+    <li><strong>Cementation:</strong> Precipitation of mineral cements ($\mathrm{SiO_2}$ as quartz/chalcedony, $\mathrm{CaCO_3}$ as calcite, $\mathrm{Fe_2O_3}$ as hematite) into pore spaces, binding loose sand grains together.</li>
+    <li><strong>Recrystallization & Authigenesis:</strong> Growth of new stable mineral phases during burial diagenesis.</li>
+</ul>
+
+<h3>Classification of Sedimentary Rocks</h3>
+<ul>
+    <li><strong>Clastic (Mechanically Formed) Rocks:</strong> Composed of broken detrital fragments of pre-existing rocks classified by grain size on the <strong>Udden-Wentworth Scale</strong>:
+        <ul>
+            <li><em>Rudaceous (Gravel, $> 2 \text{ mm}$):</em> Conglomerate (rounded pebbles cemented together) and Breccia (sharp angular fragments indicating minimal transport).</li>
+            <li><em>Arenaceous (Sand, $1/16 \text{ mm to } 2 \text{ mm}$):</em> Sandstones (Quartz arenite $>90\%$ quartz; Arkose $>25\%$ feldspar; Greywacke with matrix $>15\%$).</li>
+            <li><em>Argillaceous (Mud/Clay, $< 1/16 \text{ mm}$):</em> Siltstone, Mudstone, and <strong>Shale</strong> (laminated, fissile fine-grained clayey rock).</li>
+        </ul>
+    </li>
+    <li><strong>Non-Clastic (Chemical and Organic) Rocks:</strong>
+        <ul>
+            <li><em>Carbonate Rocks:</em> Limestone ($\mathrm{CaCO_3}$), Dolomite ($\mathrm{CaMg(CO_3)_2}$), Chalk, Marl.</li>
+            <li><em>Evaporites:</em> Gypsum ($\mathrm{CaSO_4 \cdot 2H_2O}$), Anhydrite ($\mathrm{CaSO_4}$), Rock Salt / Halite ($\mathrm{NaCl}$).</li>
+            <li><em>Siliceous & Carbonaceous Deposits:</em> Chert, Flint, Diatomite, Coal, and Lignite.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>6.2 Sedimentary Structures</h2>
+<ul>
+    <li><strong>Stratification & Bedding:</strong> Planar layering parallel to the depositional surface; individual layers $>1 \text{ cm}$ are beds; layers $<1 \text{ cm}$ are laminae.</li>
+    <li><strong>Cross-Bedding (Current Bedding):</strong> Internal laminations inclined at an angle to the main regional bedding planes, formed by wind dunes or river point bars; top sets truncated, bottom sets asymptotic, indicating paleo-current direction and right-side-up beds.</li>
+    <li><strong>Graded Bedding:</strong> Systematic vertical grading from coarse pebbles at the base to fine silt/clay at the top within a single bed, characteristic of <strong>turbidity currents</strong>.</li>
+    <li><strong>Ripple Marks:</strong> Wave-like undulations on bedding planes. <em>Asymmetric ripples</em> indicate unidirectional river/wind flow; <em>Symmetric ripples</em> indicate oscillatory wave action in shallow water.</li>
+    <li><strong>Mud Cracks (Sun Cracks):</strong> Polygonal shrinkage fissures formed by desiccation of wet mud under subaerial exposure, tapering downward to a 'V' shape (useful top-and-bottom indicator).</li>
+</ul>
+
+<h2>6.3 Metamorphism: Agents, Types, and Facies</h2>
+<p>
+    <strong>Metamorphism</strong> is the mineralogical, chemical, and structural reconstitution of solid pre-existing rocks (igneous or sedimentary protoliths) in response to physical and chemical conditions differing from those under which they originally formed, occurring below the zone of melting ($T \approx 150\text{--}800^\circ\text{C}$).
+</p>
+
+<h3>Agents of Metamorphism</h3>
+<ul>
+    <li><strong>Temperature ($T$):</strong> Drives endothermic dehydration and decarbonation reactions, accelerates diffusion, and promotes recrystallization into coarser grains.</li>
+    <li><strong>Confining Pressure ($P_{\text{lithostatic}}$):</strong> Increases with depth ($P = \rho g h$), favouring dense, compact mineral structures (e.g., Kyanite over Andalusite).</li>
+    <li><strong>Directed Stress (Differential Stress):</strong> Tectonic compression inducing plastic deformation, mineral rotation, and preferred planar orientation of platy minerals, producing <strong>Foliation</strong> and <strong>Schistosity</strong>.</li>
+    <li><strong>Chemically Active Pore Fluids:</strong> Supercritical aqueous solutions ($\mathrm{H_2O, CO_2}$) that facilitate ion transport and metasomatic replacement.</li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_p125_cleavage_foliation_lineation.png" alt="Cleavage and Foliation - Bangar">
+    <div class="fig-caption">Figure 6.1: Progressive development of metamorphic directional fabrics under directed stress: Slaty cleavage $\to$ Schistosity $\to$ Gneissose compositional banding (K. M. Bangar).</div>
+</div>
+
+<h3>Types of Metamorphism</h3>
+<ul>
+    <li><strong>Thermal (Contact) Metamorphism:</strong> Driven by heat radiating from igneous intrusions at shallow depths. Produces non-foliated, fine-grained, interlocking metamorphic rocks called <strong>Hornfels</strong> in contact aureoles.</li>
+    <li><strong>Dynamic (Cataclastic) Metamorphism:</strong> Occurs along major fault zones where intense mechanical grinding and shear under high strain rates crush rocks into <strong>Fault Breccia</strong>, <strong>Fault Gouge</strong>, and <strong>Mylonite</strong> without significant heat.</li>
+    <li><strong>Regional (Dynamothermal) Metamorphism:</strong> Operates across extensive orogenic mountain belts under combined high temperatures and directed tectonic stresses. Progresses through index zones: Chlorite $\to$ Biotite $\to$ Garnet $\to$ Staurolite $\to$ Kyanite $\to$ Sillimanite (Barrow's Metamorphic Zones).</li>
+</ul>
+
+<h2>6.4 Petrographic Descriptions of Metamorphic Rocks</h2>
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Rock Type</th>
+            <th>Structure / Fabric</th>
+            <th>Protolith</th>
+            <th>Engineering Characteristics</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Slate</strong></td>
+            <td>Microcrystalline, perfect <em>slaty cleavage</em> independent of bedding.</td>
+            <td>Shale / Mudstone.</td>
+            <td>Splits easily along cleavage into thin roofing tiles; highly anisotropic; weak when loaded perpendicular to cleavage.</td>
+        </tr>
+        <tr>
+            <td><strong>Schist</strong></td>
+            <td>Coarse-grained, pronounced <em>schistosity</em> (foliation) dominated by parallel micas.</td>
+            <td>Shale, basalt, or greywacke.</td>
+            <td>Prone to sliding along schistosity planes; poor foundation and tunneling rock when foliation dips towards excavations.</td>
+        </tr>
+        <tr>
+            <td><strong>Gneiss</strong></td>
+            <td>Alternating light quartz-feldspar and dark biotite-hornblende compositional bands (<em>gneissose structure</em>).</td>
+            <td>Granite (Orthogneiss) or Arkose/Shale (Paragneiss).</td>
+            <td>High mechanical strength across foliation; durable civil engineering construction stone and bridge foundation material.</td>
+        </tr>
+        <tr>
+            <td><strong>Quartzite</strong></td>
+            <td>Granoblastic (sugary mosaic of interlocking recrystallized quartz grains).</td>
+            <td>Pure quartz sandstone.</td>
+            <td>Extremely hard ($H=7$), durable, resistant to weathering; high crushing strength; abrasive to tunneling bits.</td>
+        </tr>
+        <tr>
+            <td><strong>Marble</strong></td>
+            <td>Granoblastic texture of interlocking calcite or dolomite crystals.</td>
+            <td>Limestone or Dolomite.</td>
+            <td>Durable ornamental and building stone; vulnerable to acid rainfall and solution cavities under dam sites.</td>
+        </tr>
+    </tbody>
+</table>
+
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch05_igneous_petrology.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch07_structural_geology.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

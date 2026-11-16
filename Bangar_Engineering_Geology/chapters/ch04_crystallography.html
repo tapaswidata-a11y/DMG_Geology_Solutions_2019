@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: Crystallography & Crystal Systems | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 20px 60px 20px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #3b82f6 100%);
+        color: white;
+        padding: 40px 36px;
+        border-radius: var(--radius);
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-lg);
+    }
+    .ch-number {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: #bfdbfe;
+        margin-bottom: 8px;
+    }
+    .ch-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+    .ch-subtitle {
+        font-size: 1.05rem;
+        color: #dbeafe;
+        font-style: italic;
+    }
+    .content-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 36px;
+        box-shadow: var(--shadow);
+        margin-bottom: 32px;
+    }
+    h2 {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-top: 36px;
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 8px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    p {
+        margin-bottom: 18px;
+        text-align: justify;
+        font-size: 1.05rem;
+    }
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 28px;
+        font-size: 1.02rem;
+    }
+    li { margin-bottom: 8px; }
+    .figure-box {
+        margin: 28px 0;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: var(--radius);
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .figure-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+    .fig-caption {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #475569;
+        text-align: center;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: var(--primary-light);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 24px 0;
+        font-size: 1rem;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .callout-engineering {
+        border-left-color: #059669;
+        background: #ecfdf5;
+    }
+    .callout-engineering .callout-title { color: #065f46; }
+    .callout-exam {
+        border-left-color: #d97706;
+        background: #fffbeb;
+    }
+    .callout-exam .callout-title { color: #92400e; }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        font-size: 0.98rem;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 12px 16px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #f1f5f9;
+        font-weight: 700;
+        color: var(--primary-dark);
+    }
+    .formula-box {
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        text-align: center;
+        font-size: 1.15rem;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--primary-dark); }
+</style>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html">&larr; Bangar Textbook Portal</a>
+        <span class="book-badge">Principles of Engineering Geology &bull; K. M. Bangar</span>
+        <a href="../index.html">All Chapters &rarr;</a>
+    </div>
+
+    <div class="container">
+        <header class="chapter-header">
+            <div class="ch-number">Chapter 4</div>
+            <h1 class="ch-title">Crystallography & Crystal Systems</h1>
+            <div class="ch-subtitle">Symmetry Elements, The Six Crystal Systems, Miller Indices, and Crystal Twinning Laws</div>
+        </header>
+
+        <main class="content-card">
+            
+<h2>4.1 Fundamental Principles of Crystallography</h2>
+<p>
+    A <strong>crystal</strong> is a homogeneous solid bounded by naturally formed planar surfaces called <em>crystal faces</em>, reflecting an underlying ordered, three-dimensional periodic internal space lattice.
+</p>
+
+<h3>Steno's Law of Interfacial Angles (1669)</h3>
+<p>
+    <em>"The angles between corresponding faces on crystals of the same substance are constant, regardless of the size, shape, or relative development of the faces, provided measurement is made at the same temperature."</em>
+</p>
+
+<h2>4.2 Elements of Crystal Symmetry</h2>
+<p>
+    The geometric regularities in crystal face arrangements are defined by three symmetry operations:
+</p>
+<ul>
+    <li><strong>Plane of Symmetry ($P$):</strong> An imaginary plane dividing a crystal into two halves, each of which is the exact mirror reflection of the other across the plane.</li>
+    <li><strong>Axis of Symmetry ($L$ / $A$):</strong> An imaginary line about which the crystal can be rotated through $360^\circ$ such that it presents identical appearance $n$ times:
+        <ul>
+            <li><em>2-fold (Diad):</em> Rotation by $180^\circ$ repeats 2 times.</li>
+            <li><em>3-fold (Triad):</em> Rotation by $120^\circ$ repeats 3 times.</li>
+            <li><em>4-fold (Tetrad):</em> Rotation by $90^\circ$ repeats 4 times.</li>
+            <li><em>6-fold (Hexad):</em> Rotation by $60^\circ$ repeats 6 times.</li>
+        </ul>
+        <em>Note:</em> 5-fold and 7-fold axes of symmetry are geometrically impossible in 3D periodic translation lattices.
+    </li>
+    <li><strong>Centre of Symmetry ($C$):</strong> An internal central point such that every straight line passing through it intersects identical crystal faces at equal distances on opposite sides.</li>
+</ul>
+
+<h2>4.3 The Six Crystal Systems</h2>
+<p>
+    Every crystalline substance crystallizes in one of 32 crystal point groups classified into <strong>Six Crystal Systems</strong> based on their crystallographic axes ($a, b, c$) and interaxial angles ($\alpha, \beta, \gamma$):
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Crystal System</th>
+            <th>Axial Relationships</th>
+            <th>Interaxial Angles</th>
+            <th>Normal Class Symmetry</th>
+            <th>Representative Minerals</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Isometric (Cubic)</strong></td>
+            <td>$a_1 = a_2 = a_3$</td>
+            <td>$\alpha = \beta = \gamma = 90^\circ$</td>
+            <td>$3L_4, 4L_3, 6L_2, 9P, C$ (Total 23 elements)</td>
+            <td>Garnet, Galena, Halite, Pyrite, Fluorite.</td>
+        </tr>
+        <tr>
+            <td><strong>Tetragonal</strong></td>
+            <td>$a_1 = a_2 
+eq c$</td>
+            <td>$\alpha = \beta = \gamma = 90^\circ$</td>
+            <td>$1L_4, 4L_2, 5P, C$</td>
+            <td>Zircon, Cassiterite, Rutile.</td>
+        </tr>
+        <tr>
+            <td><strong>Hexagonal</strong></td>
+            <td>$a_1 = a_2 = a_3 
+eq c$ (4 axes)</td>
+            <td>$    ext{horizontals at } 120^\circ; \ c \perp     ext{plane}$</td>
+            <td>$1L_6, 6L_2, 7P, C$ (or $1L_3, 3L_2, 3P, C$ Trigonal)</td>
+            <td>Beryl, Quartz, Calcite, Tourmaline, Apatite.</td>
+        </tr>
+        <tr>
+            <td><strong>Orthorhombic</strong></td>
+            <td>$a 
+eq b 
+eq c$</td>
+            <td>$\alpha = \beta = \gamma = 90^\circ$</td>
+            <td>$3L_2, 3P, C$</td>
+            <td>Olivine, Barite, Topaz, Enstatite.</td>
+        </tr>
+        <tr>
+            <td><strong>Monoclinic</strong></td>
+            <td>$a 
+eq b 
+eq c$</td>
+            <td>$\alpha = \gamma = 90^\circ, \beta > 90^\circ$</td>
+            <td>$1L_2, 1P, C$</td>
+            <td>Orthoclase, Gypsum, Augite, Hornblende.</td>
+        </tr>
+        <tr>
+            <td><strong>Triclinic</strong></td>
+            <td>$a 
+eq b 
+eq c$</td>
+            <td>$\alpha 
+eq \beta 
+eq \gamma 
+eq 90^\circ$</td>
+            <td>Only $C$ (Centre of symmetry only)</td>
+            <td>Plagioclase, Microcline, Kyanite.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>4.4 Miller Indices ($hkl$) and Crystal Twinning</h2>
+<p>
+    <strong>Miller Indices:</strong> The orientation of any crystal face is uniquely represented by three whole integers ($hkl$) obtained by taking the reciprocals of the fractional intercepts made by the face on the crystallographic axes $a, b, c$ and clearing fractions. For example, a face intersecting axes at $1a, 2b, \infty c$ has reciprocals $\frac{1}{1}, \frac{1}{2}, \frac{1}{\infty} = 1, \frac{1}{2}, 0$, yielding Miller indices <strong>$(210)$</strong>.
+</p>
+<p>
+    <strong>Twinning:</strong> A symmetrical intergrowth of two or more single crystals of the same species according to a definite crystallographic law. Types include:
+</p>
+<ul>
+    <li><em>Contact Twins:</em> Joined along a planar composition plane (e.g., Gypsum "swallow-tail" twin).</li>
+    <li><em>Penetration Twins:</em> Interpenetrating crystals sharing an irregular interface (e.g., Staurolite cross, Fluorite cubes).</li>
+    <li><em>Polysynthetic (Repeated) Twinning:</em> Parallel compositional lamellae producing fine striations, universally diagnostic of <strong>Plagioclase feldspars</strong> (Albite Law).</li>
+    <li><em>Feldspar Twin Laws:</em> Carlsbad (penetration/contact along $c$-axis), Baveno (composition plane (021)), Manebach (composition plane (001)).</li>
+</ul>
+
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch03_mineralogy.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch05_igneous_petrology.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

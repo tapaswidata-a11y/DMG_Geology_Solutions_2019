@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Physical Geology & Geomorphological Agents | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 20px 60px 20px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #3b82f6 100%);
+        color: white;
+        padding: 40px 36px;
+        border-radius: var(--radius);
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-lg);
+    }
+    .ch-number {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: #bfdbfe;
+        margin-bottom: 8px;
+    }
+    .ch-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+    .ch-subtitle {
+        font-size: 1.05rem;
+        color: #dbeafe;
+        font-style: italic;
+    }
+    .content-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 36px;
+        box-shadow: var(--shadow);
+        margin-bottom: 32px;
+    }
+    h2 {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-top: 36px;
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 8px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    p {
+        margin-bottom: 18px;
+        text-align: justify;
+        font-size: 1.05rem;
+    }
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 28px;
+        font-size: 1.02rem;
+    }
+    li { margin-bottom: 8px; }
+    .figure-box {
+        margin: 28px 0;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: var(--radius);
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .figure-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+    .fig-caption {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #475569;
+        text-align: center;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: var(--primary-light);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 24px 0;
+        font-size: 1rem;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .callout-engineering {
+        border-left-color: #059669;
+        background: #ecfdf5;
+    }
+    .callout-engineering .callout-title { color: #065f46; }
+    .callout-exam {
+        border-left-color: #d97706;
+        background: #fffbeb;
+    }
+    .callout-exam .callout-title { color: #92400e; }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        font-size: 0.98rem;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 12px 16px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #f1f5f9;
+        font-weight: 700;
+        color: var(--primary-dark);
+    }
+    .formula-box {
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        text-align: center;
+        font-size: 1.15rem;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--primary-dark); }
+</style>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html">&larr; Bangar Textbook Portal</a>
+        <span class="book-badge">Principles of Engineering Geology &bull; K. M. Bangar</span>
+        <a href="../index.html">All Chapters &rarr;</a>
+    </div>
+
+    <div class="container">
+        <header class="chapter-header">
+            <div class="ch-number">Chapter 2</div>
+            <h1 class="ch-title">Physical Geology & Geomorphological Agents</h1>
+            <div class="ch-subtitle">Weathering, Wind, Streams, Glaciers, Oceans, Groundwater Hydrology, Earthquakes & Volcanoes</div>
+        </header>
+
+        <main class="content-card">
+            
+<h2>2.1 Weathering of Rocks and Soil Formation</h2>
+<p>
+    <strong>Weathering</strong> is the mechanical disintegration and chemical decomposition of rocks in situ under the influence of atmospheric, hydrospheric, and biological agents. Unlike erosion, weathering involves no significant transportation of the fragmented material.
+</p>
+
+<h3>Types of Weathering</h3>
+<ul>
+    <li><strong>Mechanical (Physical) Weathering:</strong> Disintegrates rock into smaller angular fragments without changing chemical or mineralogical composition.
+        <ul>
+            <li><em>Frost Wedging (Congelifraction):</em> Water freezing in cracks expands by $\approx 9\%$ in volume, exerting bursting pressures exceeding $2,000     ext{ kg/cm}^2$, producing scree/talus slopes.</li>
+            <li><em>Thermal Insolation & Exfoliation:</em> Diurnal temperature fluctuations cause differential thermal expansion of mineral grains. In massive homogeneous rocks (granite, basalt), curved concentric sheets spall off in onion-skin fashion (<em>Exfoliation domes</em>).</li>
+            <li><em>Spheroidal Weathering:</em> Jointed blocks attacked by chemical weathering along intersecting joint sets lose their sharp corners, rounding into spherical corestones enclosed in saprolite.</li>
+        </ul>
+    </li>
+    <li><strong>Chemical Weathering:</strong> Alters primary minerals into secondary hydrous minerals (clays, oxides, carbonates) through aqueous reactions:
+        <ul>
+            <li><em>Hydration:</em> Anhydrite ($\mathrm{CaSO_4}$) converts to Gypsum ($\mathrm{CaSO_4 \cdot 2H_2O}$), causing up to $60\%$ volume expansion.</li>
+            <li><em>Hydrolysis:</em> Feldspar breakdown by carbonic acid:
+                $$2\mathrm{KAlSi_3O_8} + 2\mathrm{H_2CO_3} + 9\mathrm{H_2O}     o \mathrm{Al_2Si_2O_5(OH)_4} \ (    ext{Kaolinite}) + 4\mathrm{H_4SiO_4} + 2\mathrm{K}^+ + 2\mathrm{HCO_3}^-$$
+            </li>
+            <li><em>Carbonation:</em> Limestone dissolution: $\mathrm{CaCO_3} + \mathrm{H_2CO_3}     o \mathrm{Ca(HCO_3)_2}$ (soluble).</li>
+            <li><em>Oxidation:</em> Ferrous iron in mafic silicates converts to insoluble ferric oxide/hydroxides (Hematite $\mathrm{Fe_2O_3}$, Goethite $\mathrm{FeO(OH)}$), imparting yellow-red stains.</li>
+        </ul>
+    </li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig2_2_pedestal_rock.png" alt="Pedestal Rock - Bangar Fig 2.2" style="max-height: 250px; display: inline-block; margin-right: 15px;">
+    <img src="../images/bangar_fig2_3_2_4_wind_transport.png" alt="Wind Transport - Bangar Fig 2.3 and 2.4" style="max-height: 250px; display: inline-block;">
+    <div class="fig-caption">Figure 2.1: Eolian Geomorphology: (Left) Pedestal rock / Mushroom rock carved by selective wind abrasion near ground level; (Right) Sand transport mechanics via Saltation, Suspension, and Surface Creep (K. M. Bangar).</div>
+</div>
+
+<h2>2.2 Geological Work of Streams (Rivers)</h2>
+<p>
+    Rivers are the primary sculptors of continental landscapes, operating through three interrelated phases: Erosion, Transportation, and Deposition.
+</p>
+
+<h3>Stream Erosion and Valley Development</h3>
+<ul>
+    <li><strong>Erosional Mechanisms:</strong> Hydraulic action (mechanical force of moving water), Abrasion/Corrasion (grinding of bedrock by carried sediment tools), Attrition (mutual collision and rounding of rolling boulders), and Corrosion/Solution.</li>
+    <li><strong>Erosional Features:</strong> Potholes (drilled by swirling pebbles in riverbeds), Gorges and Canyons (deep, narrow vertical valleys in resistant flat strata), Waterfalls, Knick-points, River terraces, and V-shaped young valleys.</li>
+    <li><strong>Transport Dynamics:</strong>
+        <div class="formula-box">$$L \propto v^6 \quad (    ext{Gilbert's Sixth Power Law of Competence})$$</div>
+        The maximum particle size a stream can move varies with the sixth power of water velocity.
+    </li>
+    <li><strong>Depositional Features:</strong> Alluvial fans and cones (at mountain fronts where slope suddenly decreases), Floodplains, Meanders, Oxbow lakes, Natural levees, Point bars, and Deltas.</li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig2_15_trellis_drainage.png" alt="Drainage Patterns - Bangar Fig 2.15" style="max-height: 260px; display: inline-block; margin-right: 15px;">
+    <img src="../images/bangar_fig2_15_drainage_patterns.png" alt="Drainage Patterns - Bangar" style="max-height: 260px; display: inline-block;">
+    <div class="fig-caption">Figure 2.2: Drainage patterns and structural control: Dendritic (homogenous rock), Trellis (folded alternating strata), Rectangular (jointed bedrock), and Radial (domes/volcanic cones) (K. M. Bangar).</div>
+</div>
+
+<h2>2.3 Geological Work of Glaciers and Oceans</h2>
+<p>
+    <strong>Glaciers:</strong> Large masses of recrystallized perennial land ice moving downhill under gravity.
+</p>
+<ul>
+    <li><strong>Glacial Erosion:</strong> Plucking (quarrying jointed blocks) and Abrasion (striating bedrock with embedded rock tools). Produces Cirques (amphitheatre-shaped rock basins), Arêtes (knife-edge ridges), Horns (pyramidal peaks like Matterhorn), <strong>U-shaped valleys</strong> (steep sides, flat floor), Hanging valleys (tributary valleys left high above the overdeepened main trough), and Roches Moutonnées.</li>
+    <li><strong>Glacial Deposition:</strong> <strong>Till (Moraine):</strong> Unstratified, poorly sorted sediment with faceted, striated boulders. Types of moraines: Lateral, Medial, Ground, and Terminal/End moraines. <strong>Glaciofluvial stratified deposits:</strong> Drumlins (streamlined tear-drop hills with steep stoss and tapered lee), Eskers (sinuous gravel ridges of subglacial streams), and Kames.</li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_p38_karst_topography_limestone.png" alt="Karst Topography - Bangar">
+    <div class="fig-caption">Figure 2.3: Underground groundwater karst topography in soluble limestone: Sinkholes (Dolines), uvalas, caverns, subterranean drainage channels, stalactites, and stalagmites (K. M. Bangar).</div>
+</div>
+
+<h2>2.4 Groundwater Hydrogeology</h2>
+<p>
+    Subsurface water occurs in two vertical zones separated by the water table:
+</p>
+<ul>
+    <li><strong>Zone of Aeration (Vadose Zone):</strong> Pore spaces contain both water and air. Divided into soil water zone, intermediate vadose zone, and capillary fringe.</li>
+    <li><strong>Zone of Saturation (Phreatic Zone):</strong> All voids and fractures are completely filled with water under hydrostatic pressure. The upper surface is the <strong>Water Table</strong>.</li>
+    <li><strong>Aquifer Types:</strong>
+        <ul>
+            <li><em>Unconfined (Phreatic) Aquifer:</em> Directly open to surface recharge; water table fluctuates freely with seasons.</li>
+            <li><em>Confined (Artesian) Aquifer:</em> Trapped between impermeable aquicludes under piezometric pressure. When pierced by a well, water rises above the aquifer top.</li>
+            <li><em>Perched Aquifer:</em> Localized saturated lens supported above the regional water table by a discontinuous clay lens.</li>
+        </ul>
+    </li>
+</ul>
+
+<div class="formula-box">
+    $$Q = -K A \frac{dh}{dl} \quad (    ext{Darcy's Law of Laminar Groundwater Flow})$$
+</div>
+
+<h2>2.5 Earthquakes and Seismology</h2>
+<p>
+    An <strong>earthquake</strong> is the rapid shaking of the ground caused by sudden brittle slip along a fault and instantaneous release of accumulated elastic strain energy (Reid's Elastic Rebound Theory, 1906).
+</p>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig2_39_focus_epicentre.png" alt="Focus and Epicentre - Bangar Fig 2.39" style="max-height: 250px; display: inline-block; margin-right: 15px;">
+    <img src="../images/bangar_fig2_41_seismogram_p_s_waves.png" alt="Seismogram P and S Waves - Bangar Fig 2.41" style="max-height: 250px; display: inline-block;">
+    <div class="fig-caption">Figure 2.4: Earthquake Seismology: (Left) Relationship between subterranean Focus (Hypocentre), surface Epicentre, and focal depth; (Right) Typical three-component seismogram showing sequential arrival of P-waves, S-waves, and large-amplitude Surface L-waves (K. M. Bangar).</div>
+</div>
+
+<ul>
+    <li><strong>Focus (Hypocentre):</strong> The subterranean origin point where rock fracture and fault rupture initiate.</li>
+    <li><strong>Epicentre:</strong> The geographic point on Earth's surface vertically above the focus.</li>
+    <li><strong>Seismic Body Waves:</strong>
+        <ul>
+            <li><em>Primary (P) Waves:</em> Longitudinal/compressional waves. Particle motion is parallel to wave propagation direction. Travel fastest ($V_p \approx 6    ext{--}8     ext{ km/s}$ in crust), propagate through solids, liquids, and gases.</li>
+            <li><em>Secondary (S) Waves:</em> Transverse/shear waves. Particle motion is perpendicular to propagation direction ($V_s \approx 3.5    ext{--}4.5     ext{ km/s}$). Cannot travel through liquids, establishing that Earth's outer core is liquid.</li>
+        </ul>
+    </li>
+    <li><strong>Surface Waves:</strong> Rayleigh (elliptical retrograde ground motion) and Love (transverse horizontal ground motion). Arrive last but possess largest amplitudes and lowest frequencies, causing over $90\%$ of structural building damage.</li>
+</ul>
+
+<div class="callout callout-engineering">
+    <div class="callout-title">Civil Engineering Significance of Chapter 2</div>
+    Foundations must never be founded on active alluvial meander cutoffs or expansive clayey floodplains without deep piles. In karst limestone terrains, undetected subsurface caverns cause sudden sinkhole collapse beneath dams and highways. In seismic zones, liquefaction of saturated loose fine sands during earthquake shaking triggers catastrophic bearing capacity failure.
+</div>
+
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch01_introduction.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch03_mineralogy.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

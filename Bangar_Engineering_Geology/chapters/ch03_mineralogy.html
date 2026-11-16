@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Mineralogy & Rock-Forming Silicates | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 20px 60px 20px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #3b82f6 100%);
+        color: white;
+        padding: 40px 36px;
+        border-radius: var(--radius);
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-lg);
+    }
+    .ch-number {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: #bfdbfe;
+        margin-bottom: 8px;
+    }
+    .ch-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+    .ch-subtitle {
+        font-size: 1.05rem;
+        color: #dbeafe;
+        font-style: italic;
+    }
+    .content-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 36px;
+        box-shadow: var(--shadow);
+        margin-bottom: 32px;
+    }
+    h2 {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-top: 36px;
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 8px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    p {
+        margin-bottom: 18px;
+        text-align: justify;
+        font-size: 1.05rem;
+    }
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 28px;
+        font-size: 1.02rem;
+    }
+    li { margin-bottom: 8px; }
+    .figure-box {
+        margin: 28px 0;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: var(--radius);
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .figure-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+    .fig-caption {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #475569;
+        text-align: center;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: var(--primary-light);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 24px 0;
+        font-size: 1rem;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .callout-engineering {
+        border-left-color: #059669;
+        background: #ecfdf5;
+    }
+    .callout-engineering .callout-title { color: #065f46; }
+    .callout-exam {
+        border-left-color: #d97706;
+        background: #fffbeb;
+    }
+    .callout-exam .callout-title { color: #92400e; }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        font-size: 0.98rem;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 12px 16px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #f1f5f9;
+        font-weight: 700;
+        color: var(--primary-dark);
+    }
+    .formula-box {
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        text-align: center;
+        font-size: 1.15rem;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--primary-dark); }
+</style>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html">&larr; Bangar Textbook Portal</a>
+        <span class="book-badge">Principles of Engineering Geology &bull; K. M. Bangar</span>
+        <a href="../index.html">All Chapters &rarr;</a>
+    </div>
+
+    <div class="container">
+        <header class="chapter-header">
+            <div class="ch-number">Chapter 3</div>
+            <h1 class="ch-title">Mineralogy & Rock-Forming Silicates</h1>
+            <div class="ch-subtitle">Physical Properties, Mohs Scale, Silicate Crystal Chemistry, and Diagnostic Mineral Groups</div>
+        </header>
+
+        <main class="content-card">
+            
+<h2>3.1 Definition and Physical Properties of Minerals</h2>
+<p>
+    A <strong>mineral</strong> is a naturally occurring, homogeneous, inorganic solid substance having a definite chemical composition and an ordered, periodic internal atomic arrangement.
+</p>
+
+<h3>Diagnostic Physical Properties</h3>
+<ul>
+    <li><strong>Colour:</strong> Dependent on chemical composition. <em>Idiochromatic</em> minerals possess inherent colour due to major elements (Malachite = green, Azurite = blue). <em>Allochromatic</em> minerals are coloured by trace impurities (Quartz: pure = clear, rose = Ti/Mn, amethyst = Fe³⁺).</li>
+    <li><strong>Streak:</strong> The colour of a mineral's finely ground powder on an unglazed white porcelain streak plate. Much more reliable than bulk colour (Hematite is steel grey/black, but streak is characteristically <strong>cherry-red</strong>).</li>
+    <li><strong>Lustre:</strong> Appearance of a mineral surface in reflected light. Classified into <em>Metallic</em> (opaque, high reflectivity: Galena, Pyrite) and <em>Non-Metallic</em> (Vitreous like glass: Quartz; Adamantine like diamond; Resinous: Sphalerite; Pearly: Talc; Silky: Asbestos; Earthy: Kaolin).</li>
+    <li><strong>Hardness:</strong> The resistance of a mineral to scratching or abrasion, standardized on the <strong>Mohs Scale of Hardness (1 to 10)</strong>:
+        <table class="data-table" style="max-width: 600px; margin: 15px auto;">
+            <tr><th>Scale</th><th>Mineral</th><th>Formula</th><th>Diagnostic Tool</th></tr>
+            <tr><td>1</td><td>Talc</td><td>$\mathrm{Mg_3Si_4O_{10}(OH)_2}$</td><td>Scratched by fingernail (2.5)</td></tr>
+            <tr><td>2</td><td>Gypsum</td><td>$\mathrm{CaSO_4 \cdot 2H_2O}$</td><td>Scratched by fingernail (2.5)</td></tr>
+            <tr><td>3</td><td>Calcite</td><td>$\mathrm{CaCO_3}$</td><td>Scratched by copper coin (3.5)</td></tr>
+            <tr><td>4</td><td>Fluorite</td><td>$\mathrm{CaF_2}$</td><td>Scratched by knife blade (5.5)</td></tr>
+            <tr><td>5</td><td>Apatite</td><td>$\mathrm{Ca_5(PO_4)_3(F,Cl,OH)}$</td><td>Scratched by knife blade (5.5)</td></tr>
+            <tr><td>6</td><td>Orthoclase</td><td>$\mathrm{KAlSi_3O_8}$</td><td>Scratched by steel file (6.5)</td></tr>
+            <tr><td>7</td><td>Quartz</td><td>$\mathrm{SiO_2}$</td><td>Scratches window glass (5.5)</td></tr>
+            <tr><td>8</td><td>Topaz</td><td>$\mathrm{Al_2SiO_4(F,OH)_2}$</td><td>Scratches quartz</td></tr>
+            <tr><td>9</td><td>Corundum</td><td>$\mathrm{Al_2O_3}$</td><td>Scratches topaz</td></tr>
+            <tr><td>10</td><td>Diamond</td><td>$\mathrm{C}$</td><td>Hardest natural substance</td></tr>
+        </table>
+    </li>
+    <li><strong>Cleavage:</strong> Tendency to split cleanly along smooth, parallel crystallographic planes of weak atomic bonding (Mica: perfect basal 1 direction; Calcite: perfect rhombohedral 3 directions at $75^\circ$; Feldspar: 2 directions at nearly $90^\circ$; Quartz: <em>no cleavage</em>, exhibits conchoidal fracture).</li>
+    <li><strong>Specific Gravity:</strong> Ratio of mineral weight to the weight of an equal volume of pure water at $4^\circ    ext{C}$. Most non-metallic rock-forming silicates range from $2.6    ext{--}2.8$; metallic sulfides range from $4.5    ext{--}7.5$ (Galena = $7.5$).</li>
+</ul>
+
+<h2>3.2 Silicate Mineralogy and Crystal Chemistry</h2>
+<p>
+    Over $95\%$ of the Earth's crust is composed of silicate minerals. The fundamental building block is the silicon-oxygen tetrahedron <strong>$[\mathrm{SiO_4}]^{4-}$</strong>, consisting of a central $\mathrm{Si}^{4+}$ cation surrounded by four $\mathrm{O}^{2-}$ anions in tetrahedral coordination.
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Silicate Class</th>
+            <th>Tetrahedral Linkage</th>
+            <th>$\mathrm{Si:O}$ Ratio</th>
+            <th>Representative Minerals</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Nesosilicates (Orthosilicates)</strong></td>
+            <td>Isolated individual $[\mathrm{SiO_4}]^{4-}$ tetrahedra bonded by divalent cations ($\mathrm{Mg}^{2+}, \mathrm{Fe}^{2+}$).</td>
+            <td>$1:4$</td>
+            <td>Olivine ($\mathrm{(Mg,Fe)_2SiO_4}$), Garnet ($\mathrm{Fe_3Al_2Si_3O_{12}}$), Zircon, Kyanite.</td>
+        </tr>
+        <tr>
+            <td><strong>Sorosilicates</strong></td>
+            <td>Double tetrahedra sharing one oxygen atom ($[\mathrm{Si_2O_7}]^{6-}$).</td>
+            <td>$2:7$</td>
+            <td>Epidote ($\mathrm{Ca_2(Al,Fe)_3Si_3O_{12}(OH)}$).</td>
+        </tr>
+        <tr>
+            <td><strong>Cyclosilicates (Ring Silicates)</strong></td>
+            <td>Closed 3, 4, or 6-membered tetrahedral rings sharing two oxygens.</td>
+            <td>$1:3$ ($[\mathrm{Si_6O_{18}}]^{12-}$)</td>
+            <td>Beryl ($\mathrm{Be_3Al_2Si_6O_{18}}$), Tourmaline.</td>
+        </tr>
+        <tr>
+            <td><strong>Inosilicates (Single Chain)</strong></td>
+            <td>Continuous single chains sharing two oxygen corners. Cleavage at $\approx 87^\circ / 93^\circ$.</td>
+            <td>$1:3$ ($[\mathrm{Si_2O_6}]^{4-}$)</td>
+            <td><strong>Pyroxene Group:</strong> Augite, Enstatite, Diopside, Hypersthene.</td>
+        </tr>
+        <tr>
+            <td><strong>Inosilicates (Double Chain)</strong></td>
+            <td>Double chains sharing alternating 2 and 3 oxygens. Cleavage at $\approx 56^\circ / 124^\circ$.</td>
+            <td>$4:11$ ($[\mathrm{Si_4O_{11}}]^{6-}$)</td>
+            <td><strong>Amphibole Group:</strong> Hornblende, Tremolite, Actinolite.</td>
+        </tr>
+        <tr>
+            <td><strong>Phyllosilicates (Sheet Silicates)</strong></td>
+            <td>Infinite 2D planar sheets sharing 3 oxygens. Perfect basal (001) cleavage.</td>
+            <td>$2:5$ ($[\mathrm{Si_4O_{10}}]^{4-}$)</td>
+            <td><strong>Mica Group:</strong> Muscovite, Biotite; <strong>Clay:</strong> Kaolinite, Montmorillonite; Talc, Chlorite.</td>
+        </tr>
+        <tr>
+            <td><strong>Tectosilicates (Framework Silicates)</strong></td>
+            <td>Complete 3D continuous framework sharing all 4 oxygens. Highly rigid structures.</td>
+            <td>$1:2$ ($\mathrm{SiO_2}$)</td>
+            <td><strong>Quartz Group</strong> ($\mathrm{SiO_2}$); <strong>Feldspar Group</strong> (Orthoclase, Plagioclase); Zeolites.</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="callout callout-engineering">
+    <div class="callout-title">Engineering Alert: Swelling Clay Minerals</div>
+    <strong>Montmorillonite (Smectite group):</strong> The $2:1$ layer silicate structure has weak van der Waals interlayer bonds that readily absorb water molecules and exchangeable cations ($\mathrm{Na}^+, \mathrm{Ca}^{2+}$), causing up to $300    ext{--}500\%$ volumetric swelling. This is the mineralogical culprit behind "Black Cotton Soils" in Peninsular India, causing intense foundation heave, road buckling, and slope failures.
+</div>
+
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch02_physical_geology.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch04_crystallography.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

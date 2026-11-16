@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 9: Mineral Deposits & Economic Geology | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 40px auto;
+        padding: 0 24px 60px 24px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        color: white;
+        padding: 40px;
+        border-radius: var(--radius);
+        margin-bottom: 36px;
+        box-shadow: var(--shadow-lg);
+    }
+    .chapter-num {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #93c5fd;
+        margin-bottom: 8px;
+    }
+    .chapter-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+    .chapter-desc {
+        font-size: 1.05rem;
+        color: #bfdbfe;
+        max-width: 760px;
+    }
+    main {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+    }
+    h2 {
+        color: var(--primary-dark);
+        font-size: 1.55rem;
+        font-weight: 700;
+        margin: 32px 0 16px 0;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--border);
+    }
+    h3 {
+        color: var(--primary);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 24px 0 12px 0;
+    }
+    p { margin-bottom: 18px; font-size: 1.05rem; }
+    ul, ol { margin: 0 0 20px 24px; font-size: 1.05rem; }
+    li { margin-bottom: 8px; }
+    .table-container {
+        overflow-x: auto;
+        margin: 24px 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+    }
+    th, td {
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        text-align: left;
+    }
+    th {
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        font-weight: 700;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    .fig-box {
+        background: #f1f5f9;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        margin: 28px 0;
+        text-align: center;
+    }
+    .fig-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        background: white;
+    }
+    .fig-caption {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: 10px;
+        font-style: italic;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: #eff6ff;
+        padding: 18px 20px;
+        margin: 24px 0;
+        border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+    }
+    .callout-engineering {
+        border-left-color: var(--accent-amber);
+        background: #fffbeb;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #1d4ed8; }
+    </style>
+    <script>
+    window.MathJax = {
+        tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]] },
+        svg: { fontCache: "global" }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header class="top-nav">
+        <a href="../index.html">&larr; Principles of Engineering Geology</a>
+        <span class="book-badge">K. M. Bangar &bull; Digital Edition</span>
+    </header>
+
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-num">Chapter 9</div>
+            <h1 class="chapter-title">Mineral Deposits & Economic Geology</h1>
+            <p class="chapter-desc">Genesis of metallic and non-metallic mineral deposits, magmatic segregation, hydrothermal systems, supergene enrichment, fossil fuels, and major metallogenic provinces of India.</p>
+        </div>
+
+        <main>
+            <h2>9.1 Fundamental Definitions and Tenor of Ores</h2>
+            <p>
+                <strong>Economic Geology</strong> is the scientific study of earth materials that can be extracted, processed, and utilized by human industry for economic profit. Key technical terms include:
+            </p>
+            <ul>
+                <li><strong>Ore Mineral:</strong> A naturally occurring mineral compound containing one or more valuable metallic elements that can be extracted commercially at a profit (e.g., Chalcopyrite $\text{CuFeS}_2$ for copper; Hematite $\text{Fe}_2\text{O}_3$ for iron).</li>
+                <li><strong>Gangue Minerals:</strong> The worthless, non-metalliferous non-metallic minerals associated with the ore in a deposit (e.g., quartz, calcite, fluorite, barite, feldspar) that must be separated during beneficiation.</li>
+                <li><strong>Tenor of Ore:</strong> The concentration or percentage of metal present in the ore. The lowest acceptable grade of ore that can be mined without financial loss is known as the <strong>Cut-Off Grade</strong>:
+                    $$\text{Cut-Off Grade} = \frac{\text{Mining Cost} + \text{Milling Cost} + \text{Smelting Cost}}{\text{Price per Unit Metal} \times \text{Recovery Efficiency}}$$
+                </li>
+                <li><strong>Clarke of Concentration:</strong> The ratio of the average concentration of an element in an ore deposit to its average crustal abundance (Clarke value):
+                    $$\text{Enrichment Factor } (E) = \frac{\text{Grade in Ore Body}}{\text{Crustal Clarke Value}}$$
+                    <em>Examples:</em> Iron needs an enrichment factor of only $\sim 4\times$ to $6\times$ (crustal abundance $5.6\%$, ore grade $\ge 60\%$), whereas Gold requires an enrichment factor of $2000\times$ to $4000\times$ (crustal abundance $0.004\text{ ppm}$, ore grade $\ge 8\text{ g/t}$).
+                </li>
+                <li><strong>Syngenetic vs. Epigenetic:</strong> A <em>syngenetic</em> deposit forms contemporaneously with the enclosing host rock (e.g., sedimentary iron beds, magmatic cumulate chromite layers). An <em>epigenetic</em> deposit forms subsequent to the host rock through fracture infiltration, cavity filling, or replacement (e.g., hydrothermal quartz-sulfide veins).</li>
+            </ul>
+
+            <h2>9.2 Genetic Classification of Mineral Deposits</h2>
+            <p>
+                Based on physico-chemical processes of concentration, ore deposits are classified into nine primary genetic groups (Lindgren-Bateman classification):
+            </p>
+
+            <h3>1. Magmatic Concentration</h3>
+            <p>
+                Formed directly by crystallization, segregation, or gravitational settling from cooling silicate magmas:
+            </p>
+            <ul>
+                <li><strong>Early Magmatic Dissemination:</strong> Crystals disseminate throughout the igneous intrusive without segregation (e.g., diamonds in kimberlite pipes at Panna and Kimberley).</li>
+                <li><strong>Early Magmatic Segregation:</strong> Dense, early-crystallizing refractory oxides settle gravitationally to form stratiform layers at the base of ultramafic sills and lopoliths (e.g., Chromite layers in the Sukinda Valley ultramafic complex of Odisha; Bushveld complex).</li>
+                <li><strong>Late Magmatic Immiscible Liquid Segregation:</strong> Liquid droplets of dense, molten nickel-copper sulfides separate out like oil droplets in water, sink to the base of the magma chamber, and crystallize (e.g., Sudbury Ni-Cu deposits).</li>
+            </ul>
+
+            <h3>2. Pegmatitic Deposits</h3>
+            <p>
+                During the final stages of plutonic crystallization, residual volatile-rich (water, fluorine, boron, lithium) melts crystallize into coarse-grained pegmatite dikes ($T \approx 500^\circ\text{--}700^\circ\text{C}$). Pegmatites are the world&#39;s primary source of giant muscovite mica books (Bihar Mica Belt, Kodarma, Nellore), feldspar, quartz, gem beryl, tourmaline, and rare metals like Lithium (spodumene), Tantalum-Niobium (columbite-tantalite), and Cesium.
+            </p>
+
+            <h3>3. Contact Metasomatic (Skarn / Pyrometasomatic) Deposits</h3>
+            <p>
+                Formed at the contact zone between hot intermediate-to-felsic igneous intrusions and reactive carbonate host rocks (limestones and dolomites) under high temperatures ($400^\circ\text{--}800^\circ\text{C}$) and volatile pressure. High-temperature replacement produces calc-silicate skarns rich in andradite garnet, diopside, wollastonite, epidote, accompanied by scheelite (Tungsten), cassiterite (Tin), magnetite, and chalcopyrite.
+            </p>
+
+            <h3>4. Hydrothermal Deposits</h3>
+            <p>
+                Formed by deposition of metallic minerals from hot, circulating, mineral-laden aqueous solutions ($50^\circ\text{--}500^\circ\text{C}$) under varying pressures. Governed by cavity filling in fractures and metasomatic wall-rock replacement. Classified according to temperature and depth (Waldemar Lindgren):
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hydrothermal Zone</th>
+                            <th>Temperature Range</th>
+                            <th>Depth & Pressure</th>
+                            <th>Typical Mineral Assemblage & Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hypothermal</strong></td>
+                            <td>$300^\circ\text{C} \text{ to } 500^\circ\text{C}$</td>
+                            <td>Deep ($3\text{--}15\text{ km}$), Very High Pressure</td>
+                            <td>Native Gold, Scheelite, Pyrrhotite, Tourmaline, Biotite. (e.g., Kolar Gold Fields, Karnataka).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mesothermal</strong></td>
+                            <td>$200^\circ\text{C} \text{ to } 300^\circ\text{C}$</td>
+                            <td>Intermediate ($1.5\text{--}4.5\text{ km}$), High Pressure</td>
+                            <td>Chalcopyrite, Galena, Sphalerite, Pyrite, Quartz-Carbonate gangue. (e.g., Singhbhum Copper Belt, Jharkhand).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Epithermal</strong></td>
+                            <td>$50^\circ\text{C} \text{ to } 200^\circ\text{C}$</td>
+                            <td>Shallow ($<1.5\text{ km}$), Moderate to Low Pressure</td>
+                            <td>Silver-Gold tellurides, Cinnabar ($\text{HgS}$), Stibnite ($\text{Sb}_2\text{S}_3$), Fluorite, Barite, Chalcedonic quartz.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>5. Sedimentary Deposits</h3>
+            <p>
+                Direct chemical precipitation, biochemical action, or mechanical sedimentation in lakes, lagoons, or shallow seas:
+            </p>
+            <ul>
+                <li><strong>Banded Iron Formations (BIF):</strong> Alternating millimetric bands of iron oxide (hematite/magnetite) and chert/jasper precipitated in Precambrian oceans due to rising photosynthetic oxygen (Iron Ore Supergroup of Odisha and Jharkhand).</li>
+                <li><strong>Sedimentary Manganese:</strong> Bedded oxide deposits (Gondites and Kodurites of Central India).</li>
+                <li><strong>Phosphorites:</strong> Marine chemical deposits rich in collophane/apatite (e.g., Jhamarkotra, Rajasthan).</li>
+                <li><strong>Evaporites:</strong> Halite ($\text{NaCl}$), Gypsum ($\text{CaSO}_4\cdot 2\text{H}_2\text{O}$), and Anhydrite deposited by solar evaporation of barred marine lagoons.</li>
+            </ul>
+
+            <h3>6. Residual Concentration</h3>
+            <p>
+                In tropical and subtropical regions with high rainfall and alternating wet and dry seasons, pervasive chemical weathering leaches away soluble silica, alkalis, and alkaline earths, leaving behind an insoluble residual crust of hydrated oxides:
+            </p>
+            <ul>
+                <li><strong>Bauxite Deposits:</strong> Residual accumulation of aluminum hydroxides (Gibbsite $\text{Al(OH)}_3$, Boehmite $\gamma\text{-AlO(OH)}$) formed over aluminous parent rocks (charnockites, gneisses, basalts). (e.g., The giant bauxite plateau deposits of the Eastern Ghats: Panchpatmali, Pottangi, Damanjodi, Odisha).</li>
+                <li><strong>Residual Lateritic Iron & Nickel:</strong> Hydrated iron oxides (limonite, goethite) and silicate nickel ores forming over weathered peridotites (Sukinda nickeliferous limonite).</li>
+            </ul>
+
+            <h3>7. Mechanical Concentration (Placer Deposits)</h3>
+            <p>
+                Dense, chemically inert, and mechanically durable minerals freed by weathering are sorted and concentrated by running water, waves, or wind:
+            </p>
+            <ul>
+                <li><em>Alluvial Placers:</em> Gold, platinum, and tin (cassiterite) concentrated in river gravel bars and plunge pools.</li>
+                <li><em>Beach Placers:</em> Heavy mineral black sands concentrated along coastlines by swash and backwash wave sorting. (e.g., The world-class Chavara and Manavalakurichi monazite-ilmenite-rutile-zircon sands of Kerala and Tamil Nadu, and the Ganjam coast of Odisha).</li>
+            </ul>
+
+            <h3>8. Oxidation and Supergene Sulphide Enrichment</h3>
+            <p>
+                When a primary (hypogene) copper sulfide deposit (chalcopyrite) is exposed to atmospheric weathering above the water table:
+            </p>
+            <ol>
+                <li><strong>Gossan (Iron Hat):</strong> The upper oxidized zone where pyrite and chalcopyrite are converted into insoluble cellular limonite and hematite, releasing sulfuric acid:
+                    $$2\text{FeS}_2 + 7\text{O}_2 + 2\text{H}_2\text{O} \longrightarrow 2\text{FeSO}_4 + 2\text{H}_2\text{SO}_4$$
+                </li>
+                <li><strong>Zone of Leaching:</strong> The acidic groundwaters dissolve soluble copper as copper sulfate ($\text{CuSO}_4$) and carry it downward below the water table.</li>
+                <li><strong>Supergene Enrichment Zone:</strong> Below the water table in a reducing, anaerobic environment, the descending $\text{CuSO}_4$ solutions react with primary chalcopyrite and pyrite, precipitating high-grade secondary copper sulfides:
+                    $$\text{FeS}_2 + \text{CuSO}_4 \longrightarrow \text{CuS (Covellite)} + \text{FeSO}_4$$
+                    $$5\text{FeS}_2 + 14\text{CuSO}_4 + 12\text{H}_2\text{O} \longrightarrow 7\text{Cu}_2\text{S (Chalcocite)} + 5\text{FeSO}_4 + 12\text{H}_2\text{SO}_4$$
+                    This converts a lean $1\%\text{ Cu}$ primary ore into an ultra-rich $5\text{--}15\%\text{ Cu}$ blanket.
+                </li>
+            </ol>
+
+            <h2>9.3 Fossil Fuels: Coal and Petroleum</h2>
+
+            <h3>Coal Geology</h3>
+            <p>
+                Coal is a combustible biochemical sedimentary rock formed from the compaction, heat, and biochemical alteration of ancient terrestrial plant accumulations in stagnant freshwater peat swamps. The rank progression of coal increases with progressive burial temperature and pressure:
+            </p>
+            $$\text{Peat} \xrightarrow{\Delta P, \Delta T} \text{Lignite} \xrightarrow{\Delta P, \Delta T} \text{Sub-Bituminous} \xrightarrow{\Delta P, \Delta T} \text{Bituminous} \xrightarrow{\Delta P, \Delta T} \text{Anthracite}$$
+            <p>
+                As coal progresses from lignite to anthracite, the moisture and volatile matter decrease, while fixed carbon percentage and calorific value progressively increase:
+            </p>
+            <ul>
+                <li><strong>Lignite:</strong> Carbon $60\text{--}70\%$, high moisture ($30\text{--}40\%$), calorific value $\sim 3000\text{ kcal/kg}$ (Neyveli, Tamil Nadu).</li>
+                <li><strong>Bituminous Coal:</strong> Carbon $75\text{--}88\%$, volatile matter $20\text{--}35\%$, calorific value $6500\text{--}8000\text{ kcal/kg}$ (Gondwana coals of Jharia, Raniganj, Talcher).</li>
+                <li><strong>Anthracite:</strong> Carbon $>90\%$, volatile matter $<8\%$, burns with smokeless blue flame, highest heating value (Jammu & Kashmir).</li>
+            </ul>
+
+            <h3>Petroleum Geology</h3>
+            <p>
+                Petroleum (crude oil and natural gas) is a complex liquid mixture of naturally occurring hydrocarbons formed from microscopic marine phytoplankton and zooplankton buried in fine-grained marine muds (source rock). Under thermal cracking within the <em>oil window</em> ($60^\circ\text{--}150^\circ\text{C}$ at depths of $2\text{--}5\text{ km}$), kerogen transforms into liquid oil and natural gas.
+            </p>
+            <p>
+                An economic petroleum reservoir requires four essential geological elements:
+            </p>
+            <ol>
+                <li><strong>Source Rock:</strong> Organic-rich dark marine shale containing $>1\%$ organic carbon.</li>
+                <li><strong>Reservoir Rock:</strong> Porous ($>15\%$) and permeable ($>50\text{ md}$) rock (sandstone or cavernous limestone) capable of storing fluids.</li>
+                <li><strong>Cap Rock (Seal):</strong> Impermeable fine shale, dense evaporite, or salt bed preventing upward escape of buoyant hydrocarbons.</li>
+                <li><strong>Trap:</strong> Geometric structural or stratigraphic barrier that concentrates oil and gas.</li>
+            </ol>
+
+            <div class="fig-box">
+                <img src="../images/bangar_fig9_17_anticlinal_oil_trap.png" alt="Anticlinal Oil and Gas Trap">
+                <div class="fig-caption">Figure 9.1: Gravitational fluid separation in an Anticlinal Structural Trap: buoyant natural gas caps the anticline crest, overlying crude oil, supported by denser saline basal groundwater (K. M. Bangar).</div>
+            </div>
+
+            <h2>9.4 Major Metallic Mineral Deposits of India</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metal & Chief Ore Minerals</th>
+                            <th>Tenor / Grade</th>
+                            <th>Host Rocks & Genesis</th>
+                            <th>Major Indian Producing Districts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Iron Ore</strong><br>Hematite ($\text{Fe}_2\text{O}_3$), Magnetite ($\text{Fe}_3\text{O}_4$)</td>
+                            <td>$60\text{--}66\%\text{ Fe}$</td>
+                            <td>Banded Iron Formations (BIF/BHJ/BHQ), Archean greenstone belts; sedimentary chemical precipitation & supergene enrichment</td>
+                            <td>Odisha (Keonjhar, Sundargarh, Joda, Barbil); Jharkhand (Singhbhum, Noamundi); Chhattisgarh (Bailadila, Dalli-Rajhara); Karnataka (Kudremukh, Bellary-Hospet).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Manganese Ore</strong><br>Pyrolusite ($\text{MnO}_2$), Psilomelane</td>
+                            <td>$35\text{--}50\%\text{ Mn}$</td>
+                            <td>Gondite and Kodurite series (metamorphosed manganiferous sediments); residual caps</td>
+                            <td>Madhya Pradesh (Balaghat, Ukwa); Maharashtra (Nagpur, Bhandara); Odisha (Sundargarh, Keonjhar); Andhra Pradesh (Srikakulam).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Copper Ore</strong><br>Chalcopyrite ($\text{CuFeS}_2$), Bornite, Malachite</td>
+                            <td>$0.8\text{--}2.0\%\text{ Cu}$</td>
+                            <td>Hydrothermal replacement veins, shear zones, porphyry deposits</td>
+                            <td>Madhya Pradesh (Malanjkhand open cast); Rajasthan (Khetri, Kolihan, Chandmari); Jharkhand (Singhbhum Copper Belt: Mosabani, Rakha).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bauxite (Aluminum)</strong><br>Gibbsite ($\text{Al(OH)}_3$), Boehmite</td>
+                            <td>$40\text{--}55\%\text{ Al}_2\text{O}_3$, $<3\%\text{ SiO}_2$</td>
+                            <td>Residual weathering of granulites, charnockites, gneisses, basalts in tropical monsoonal climate</td>
+                            <td>Odisha (Panchpatmali, Baphlimali, Pottangi - supplies NALCO); Gujarat (Jamnagar); Jharkhand (Lohardaga); Madhya Pradesh (Amarkantak).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gold</strong><br>Native Gold ($\text{Au}$), Calaverite ($\text{AuTe}_2$)</td>
+                            <td>$3\text{--}8\text{ g/tonne}$</td>
+                            <td>Hypothermal auriferous quartz veins in Archean greenstone schist belts</td>
+                            <td>Karnataka (Hutti Gold Mines - Raichur, Kolar Gold Fields); Andhra Pradesh (Ramagiri).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lead and Zinc</strong><br>Galena ($\text{PbS}$), Sphalerite ($\text{ZnS}$)</td>
+                            <td>$6\text{--}12\%\text{ combined Pb+Zn}$</td>
+                            <td>Hydrothermal stratabound replacement in Proterozoic carbonate rocks (dolomite)</td>
+                            <td>Rajasthan (Zawar Mines, Rampura-Agucha, Rajpura-Dariba - Hindustan Zinc Ltd).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-engineering">
+                <div class="callout-title">Engineering & Mining Geotechnical Implications</div>
+                Subsurface ore extraction creates massive geotechnical hazards:
+                <ul>
+                    <li><strong>Ground Subsidence:</strong> Underground longwall coal mining and sublevel caving lead to surface crown collapses, sinkholes, and cracking of surface infrastructure.</li>
+                    <li><strong>Acid Mine Drainage (AMD):</strong> Oxidation of pyrite ($\text{FeS}_2$) in mine waste dumps generates sulfuric acid, mobilizing toxic heavy metals into surface streams and groundwater.</li>
+                    <li><strong>Open-Pit Slope Stability:</strong> Mining deep open-cast benches in bauxite or iron ore requires rigorous slope stability monitoring (limit equilibrium analysis) to avoid circular shear failures along weathered clay contacts.</li>
+                </ul>
+            </div>
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch08_stratigraphy_india.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch10_engineering_geology.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

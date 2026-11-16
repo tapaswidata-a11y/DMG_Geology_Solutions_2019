@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Igneous Petrology | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 20px 60px 20px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #3b82f6 100%);
+        color: white;
+        padding: 40px 36px;
+        border-radius: var(--radius);
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-lg);
+    }
+    .ch-number {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: #bfdbfe;
+        margin-bottom: 8px;
+    }
+    .ch-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+    .ch-subtitle {
+        font-size: 1.05rem;
+        color: #dbeafe;
+        font-style: italic;
+    }
+    .content-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 36px;
+        box-shadow: var(--shadow);
+        margin-bottom: 32px;
+    }
+    h2 {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-top: 36px;
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 8px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    p {
+        margin-bottom: 18px;
+        text-align: justify;
+        font-size: 1.05rem;
+    }
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 28px;
+        font-size: 1.02rem;
+    }
+    li { margin-bottom: 8px; }
+    .figure-box {
+        margin: 28px 0;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: var(--radius);
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .figure-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+    .fig-caption {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #475569;
+        text-align: center;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: var(--primary-light);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 24px 0;
+        font-size: 1rem;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .callout-engineering {
+        border-left-color: #059669;
+        background: #ecfdf5;
+    }
+    .callout-engineering .callout-title { color: #065f46; }
+    .callout-exam {
+        border-left-color: #d97706;
+        background: #fffbeb;
+    }
+    .callout-exam .callout-title { color: #92400e; }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        font-size: 0.98rem;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 12px 16px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #f1f5f9;
+        font-weight: 700;
+        color: var(--primary-dark);
+    }
+    .formula-box {
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        text-align: center;
+        font-size: 1.15rem;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--primary-dark); }
+</style>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html">&larr; Bangar Textbook Portal</a>
+        <span class="book-badge">Principles of Engineering Geology &bull; K. M. Bangar</span>
+        <a href="../index.html">All Chapters &rarr;</a>
+    </div>
+
+    <div class="container">
+        <header class="chapter-header">
+            <div class="ch-number">Chapter 5</div>
+            <h1 class="ch-title">Igneous Petrology</h1>
+            <div class="ch-subtitle">Magma Genesis, Bowen's Reaction Series, Intrusive Forms, Microscopic Textures & Classification</div>
+        </header>
+
+        <main class="content-card">
+            
+<h2>5.1 Nature and Crystallization of Magma</h2>
+<p>
+    <strong>Magma</strong> is a naturally occurring, mobile, molten or semi-molten silicate melt generated in the upper mantle or lower crust, consisting of a liquid phase, solid suspended crystals, and dissolved volatile gases ($\mathrm{H_2O, CO_2, SO_2, HCl}$). When magma erupts onto the Earth's surface, it loses its dissolved volatiles and is termed <strong>Lava</strong>.
+</p>
+
+<h3>Bowen's Reaction Series (1928)</h3>
+<p>
+    N. L. Bowen demonstrated experimentally that fractional crystallization of a parental basaltic magma follows two parallel reaction series during cooling:
+</p>
+<div class="callout">
+    <div class="callout-title">The Bowen Reaction Hierarchy</div>
+    <ul>
+        <li><strong>Discontinuous Reaction Series:</strong> Early-crystallized mafic silicates react with the remaining melt at specific temperatures to form new minerals with distinct crystal structures:
+            $$\text{Olivine} \xrightarrow{1200^\circ\text{C}} \text{Pyroxene (Augite)} \xrightarrow{1050^\circ\text{C}} \text{Amphibole (Hornblende)} \xrightarrow{900^\circ\text{C}} \text{Biotite}$$
+        </li>
+        <li><strong>Continuous Reaction Series:</strong> Plagioclase feldspars undergo continuous solid-solution cation exchange between Calcium and Sodium without changing crystal framework:
+            $$\text{Anorthite (Ca-rich)} \xrightarrow{\text{cooling}} \text{Bytownite} \to \text{Labradorite} \to \text{Andesine} \to \text{Oligoclase} \to \text{Albite (Na-rich)}$$
+        </li>
+        <li><strong>Residual Liquid:</strong> The lowest-temperature eutectic melt ($\approx 600\text{--}750^\circ\text{C}$) crystallizes Potassium Feldspar ($\text{Orthoclase/Microcline}$), Muscovite, and finally free Quartz.</li>
+    </ul>
+</div>
+
+<h2>5.2 Forms of Igneous Rock Bodies</h2>
+<p>
+    Igneous rocks are classified by their geological setting into <strong>Extrusive (Volcanic)</strong> and <strong>Intrusive (Plutonic/Hypabyssal)</strong> bodies. Intrusive bodies are further divided based on structural relations with the host country rock:
+</p>
+
+<div class="figure-box">
+    <img src="../images/bangar_p55_bysmalith_laccolith_forms.png" alt="Forms of Igneous Bodies - Bangar">
+    <div class="fig-caption">Figure 5.1: Geological cross-section of intrusive igneous bodies: Sills, Dykes, Laccoliths, Lopoliths, Phacoliths, Bysmaliths, and deep discordant Batholiths (K. M. Bangar).</div>
+</div>
+
+<h3>Concordant Intrusive Bodies (Parallel to Bedding)</h3>
+<ul>
+    <li><strong>Sill:</strong> A tabular, sheet-like igneous intrusion injected strictly parallel to the bedding planes or foliation of pre-existing country rock. Often mistaken for buried lava flows (sills show baked contacts on <em>both</em> top and bottom).</li>
+    <li><strong>Laccolith:</strong> A mushroom-shaped or plano-convex concordant intrusion with a flat floor and an arched, convex-upward roof that domed the overlying sedimentary strata.</li>
+    <li><strong>Lopolith:</strong> A large, saucer-shaped or basin-shaped intrusion whose central portion has sagged down under the heavy weight of the magma (e.g., Bushveld Complex).</li>
+    <li><strong>Phacolith:</strong> A crescent-shaped, lens-like concordant body occupying the crests of anticlines or troughs of synclines in folded terrains.</li>
+    <li><strong>Bysmalith:</strong> A plug-shaped or cylindrical laccolith that fractured the roof rocks along circular vertical faults during forcible upward piston injection.</li>
+</ul>
+
+<h3>Discordant Intrusive Bodies (Cross-Cutting Bedding)</h3>
+<ul>
+    <li><strong>Dyke:</strong> A tabular, sheet-like vertical or steeply dipping discordant igneous intrusion that cuts across the bedding planes or foliation of surrounding rocks.</li>
+    <li><strong>Ring Dykes & Cone Sheets:</strong> Arcuate discordant intrusions around volcanic cauldrons: Ring dykes dip steeply outward or vertically; Cone sheets dip inward towards a common magmatic focus.</li>
+    <li><strong>Batholith:</strong> A gigantic, plutonic discordant igneous body with an outcrop area exceeding $100 \text{ km}^2$, possessing steep outward-flaring walls and no discernible floor, typically composed of granite or granodiorite.</li>
+</ul>
+
+<h2>5.3 Igneous Textures and Structures</h2>
+<ul>
+    <li><strong>Textures (Degree of Crystallinity & Grain Size):</strong>
+        <ul>
+            <li><em>Holocrystalline:</em> Entirely composed of crystals (typical of deep plutonic granites).</li>
+            <li><em>Holohyaline (Glassy):</em> Entirely composed of non-crystalline glass due to rapid quenching (Obsidian).</li>
+            <li><em>Phaneritic:</em> Mineral grains are coarse enough to be distinguished with the unaided eye.</li>
+            <li><em>Aphanitic:</em> Grains are microcrystalline and cannot be distinguished without a microscope (Basalt).</li>
+            <li><em>Porphyritic Texture:</em> Large, well-formed crystals (<strong>Phenocrysts</strong>) embedded in a finer groundmass, reflecting a two-stage cooling history.</li>
+            <li><em>Ophitic Texture:</em> Laths of plagioclase feldspar are completely enclosed within large pyroxene (augite) plates, universally diagnostic of <strong>Dolerite</strong>.</li>
+            <li><em>Poikilitic / Panidiomorphic:</em> Grains of various minerals enclosed inside hosts or all exhibiting euhedral crystal faces (Lamprophyre).</li>
+        </ul>
+    </li>
+    <li><strong>Structures:</strong> Vesicular structure (gas escape cavities), Amygdaloidal structure (vesicles later filled by secondary minerals like quartz, calcite, zeolites), Columnar jointing (hexagonal cooling columns in Deccan Traps), and Pillow lava (subaqueous basaltic eruption).</li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_p77_igneous_textures_ophitic.png" alt="Ophitic Texture - Bangar" style="max-height: 250px; display: inline-block; margin-right: 15px;">
+    <img src="../images/bangar_p82_lamprophyre_panidiomorphic.png" alt="Lamprophyre Texture - Bangar" style="max-height: 250px; display: inline-block;">
+    <div class="fig-caption">Figure 5.2: Diagnostic microscopic petrological textures: (Left) Ophitic texture in dolerite; (Right) Panidiomorphic / Lamprophyric texture with euhedral mafic phenocrysts (K. M. Bangar).</div>
+</div>
+
+<h2>5.4 Petrographic Descriptions of Common Igneous Rocks</h2>
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Rock Type</th>
+            <th>Texture</th>
+            <th>Essential Mineralogy</th>
+            <th>Engineering Characteristics</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Granite</strong></td>
+            <td>Phaneritic, equigranular, hypidiomorphic.</td>
+            <td>Quartz ($>20\%$), Orthoclase, Plagioclase, Biotite/Hornblende.</td>
+            <td>High unconfined compressive strength ($100\text{--}250 \text{ MPa}$), excellent foundation rock when unweathered, low porosity.</td>
+        </tr>
+        <tr>
+            <td><strong>Basalt</strong></td>
+            <td>Aphanitic, often vesicular/amygdaloidal.</td>
+            <td>Calc-plagioclase (Labradorite), Augite, $\pm$ Olivine, Fe-Ti oxides.</td>
+            <td>Dense, tough, high crushing strength; massive varieties excellent for aggregate; vesicular/zeolitic flows require grouting.</td>
+        </tr>
+        <tr>
+            <td><strong>Dolerite</strong></td>
+            <td>Medium-grained, diagnostic <em>ophitic</em> texture.</td>
+            <td>Labradorite, Augite, Magnetite.</td>
+            <td>Extremely tough and abrasion-resistant due to interlocking ophitic texture; premier road metal and railway ballast.</td>
+        </tr>
+        <tr>
+            <td><strong>Syenite</strong></td>
+            <td>Phaneritic, granitic appearance without quartz.</td>
+            <td>Alkali feldspar ($>65\%$), Hornblende/Biotite, minor plagioclase.</td>
+            <td>Comparable to granite in structural strength; durable building and monumental stone.</td>
+        </tr>
+    </tbody>
+</table>
+
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch04_crystallography.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch06_sedimentary_metamorphic.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

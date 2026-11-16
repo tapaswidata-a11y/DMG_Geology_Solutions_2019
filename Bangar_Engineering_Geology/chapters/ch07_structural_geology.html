@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Structural Geology & Rock Deformation | Bangar Engineering Geology</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding: 0;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-nav a:hover { color: white; }
+    .book-badge {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        color: #e2e8f0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 20px 60px 20px;
+    }
+    .chapter-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #3b82f6 100%);
+        color: white;
+        padding: 40px 36px;
+        border-radius: var(--radius);
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-lg);
+    }
+    .ch-number {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: #bfdbfe;
+        margin-bottom: 8px;
+    }
+    .ch-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+    .ch-subtitle {
+        font-size: 1.05rem;
+        color: #dbeafe;
+        font-style: italic;
+    }
+    .content-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 36px;
+        box-shadow: var(--shadow);
+        margin-bottom: 32px;
+    }
+    h2 {
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-top: 36px;
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 8px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-top: 24px;
+        margin-bottom: 12px;
+    }
+    p {
+        margin-bottom: 18px;
+        text-align: justify;
+        font-size: 1.05rem;
+    }
+    ul, ol {
+        margin-bottom: 20px;
+        padding-left: 28px;
+        font-size: 1.02rem;
+    }
+    li { margin-bottom: 8px; }
+    .figure-box {
+        margin: 28px 0;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: var(--radius);
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .figure-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+    .fig-caption {
+        margin-top: 10px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #475569;
+        text-align: center;
+    }
+    .callout {
+        border-left: 4px solid var(--accent);
+        background: var(--primary-light);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 24px 0;
+        font-size: 1rem;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .callout-engineering {
+        border-left-color: #059669;
+        background: #ecfdf5;
+    }
+    .callout-engineering .callout-title { color: #065f46; }
+    .callout-exam {
+        border-left-color: #d97706;
+        background: #fffbeb;
+    }
+    .callout-exam .callout-title { color: #92400e; }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        font-size: 0.98rem;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 12px 16px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #f1f5f9;
+        font-weight: 700;
+        color: var(--primary-dark);
+    }
+    .formula-box {
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        text-align: center;
+        font-size: 1.15rem;
+    }
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--primary-dark); }
+</style>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="../index.html">&larr; Bangar Textbook Portal</a>
+        <span class="book-badge">Principles of Engineering Geology &bull; K. M. Bangar</span>
+        <a href="../index.html">All Chapters &rarr;</a>
+    </div>
+
+    <div class="container">
+        <header class="chapter-header">
+            <div class="ch-number">Chapter 7</div>
+            <h1 class="ch-title">Structural Geology & Rock Deformation</h1>
+            <div class="ch-subtitle">Dip & Strike, Fold Mechanics, Fault Geometries, Joints, and Unconformity Types</div>
+        </header>
+
+        <main class="content-card">
+            
+<h2>7.1 Dip and Strike: Spatial Orientation of Strata</h2>
+<p>
+    The structural attitude of any planar geological feature (bedding plane, fault surface, joint, dike) is uniquely defined in 3D space by two angular parameters measured with a Brunton compass:
+</p>
+<ul>
+    <li><strong>Strike:</strong> The compass direction or bearing of a horizontal line drawn on the planar rock surface. It is always perpendicular to the direction of true dip.</li>
+    <li><strong>Dip:</strong> The angle of inclination of the rock surface measured downward from the horizontal plane:
+        <ul>
+            <li><em>True Dip:</em> The maximum angle of inclination, measured strictly perpendicular to the strike line.</li>
+            <li><em>Apparent Dip:</em> The angle of inclination measured in any other non-perpendicular direction. Apparent dip is <strong>always less</strong> than true dip:
+                $$\tan(\text{Apparent Dip}) = \tan(\text{True Dip}) \cdot \cos \theta$$
+                where $\theta$ is the horizontal angle between the strike direction and the apparent dip direction.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig7_2_true_apparent_dip.png" alt="True and Apparent Dip - Bangar Fig 7.2">
+    <div class="fig-caption">Figure 7.1: Geometric relationship between horizontal strike line, True Dip, and Apparent Dip in non-perpendicular directions (K. M. Bangar).</div>
+</div>
+
+<h2>7.2 Folds: Anatomy, Mechanics, and Classification</h2>
+<p>
+    A <strong>fold</strong> is a wave-like structural undulation or curvature produced in layered rocks as a consequence of ductile compressive deformation.
+</p>
+
+<h3>Anatomy of a Fold</h3>
+<ul>
+    <li><strong>Anticline:</strong> A convex-upward fold arching strata such that the oldest rocks occupy the core of the fold.</li>
+    <li><strong>Syncline:</strong> A concave-upward trough-like fold such that the youngest rocks occupy the core of the fold.</li>
+    <li><strong>Hinge Line:</strong> The line connecting points of maximum structural curvature on a folded layer.</li>
+    <li><strong>Axial Plane (Axial Surface):</strong> An imaginary planar surface that bisects the fold, passing through the hinge lines of successive folded layers.</li>
+    <li><strong>Limbs (Flanks):</strong> The sloping sides of a fold on either side of the axial plane.</li>
+    <li><strong>Plunge:</strong> The angle of inclination of the fold axis measured from the horizontal plane in the vertical plane.</li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig7_5_fold_axis_hinge.png" alt="Fold Elements - Bangar Fig 7.5" style="max-height: 250px; display: inline-block; margin-right: 15px;">
+    <img src="../images/bangar_fig7_6_recumbent_fold.png" alt="Recumbent Fold - Bangar Fig 7.6" style="max-height: 250px; display: inline-block;">
+    <div class="fig-caption">Figure 7.2: Fold Geometries: (Left) Elements of a fold showing crest, trough, hinge, and axial plane; (Right) Symmetrical, Asymmetrical, Overturned, and Recumbent Folds (K. M. Bangar).</div>
+</div>
+
+<h3>Morphological Classification of Folds</h3>
+<ul>
+    <li><strong>Symmetrical Fold:</strong> Axial plane is vertical; limbs dip in opposite directions at equal angles.</li>
+    <li><strong>Asymmetrical Fold:</strong> Axial plane is inclined; limbs dip in opposite directions at unequal angles.</li>
+    <li><strong>Overturned Fold:</strong> Axial plane is inclined such that both limbs dip in the same general direction, with one limb inverted (upside down).</li>
+    <li><strong>Recumbent Fold:</strong> Axial plane is virtually horizontal ($\text{dip} < 10^\circ$), with the inverted limb lying beneath the normal limb.</li>
+    <li><strong>Isoclinal Fold:</strong> Both limbs dip in the same direction at exactly identical angles (limbs are parallel).</li>
+    <li><strong>Chevron Fold:</strong> Characterized by sharp, angular, razor-like hinges and planar, straight limbs.</li>
+</ul>
+
+<h2>7.3 Faults: Mechanics and Classification</h2>
+<p>
+    A <strong>fault</strong> is a planar rock fracture or fracture zone along which there has been significant measurable displacement of the opposing blocks parallel to the fracture surface.
+</p>
+
+<div class="figure-box">
+    <img src="../images/bangar_p110_fault_elements_hade_dip.png" alt="Fault Elements - Bangar" style="max-height: 250px; display: inline-block; margin-right: 15px;">
+    <img src="../images/bangar_fig7_24_normal_reverse_faults.png" alt="Normal and Reverse Faults - Bangar Fig 7.24" style="max-height: 250px; display: inline-block;">
+    <div class="fig-caption">Figure 7.3: Structural Fault Anatomy: (Left) Hanging wall, Footwall, Dip, Hade, Throw, and Heave; (Right) Normal (extensional) vs. Reverse/Thrust (compressional) faults (K. M. Bangar).</div>
+</div>
+
+<h3>Terminology of Faults</h3>
+<ul>
+    <li><strong>Fault Plane:</strong> The fracture surface along which displacement took place.</li>
+    <li><strong>Hanging Wall:</strong> The block of rock that lies immediately above an inclined fault plane.</li>
+    <li><strong>Footwall:</strong> The block of rock that lies immediately below an inclined fault plane.</li>
+    <li><strong>Hade:</strong> The complementary angle to the dip of the fault plane, measured from the vertical ($\text{Hade} = 90^\circ - \text{Dip}$).</li>
+    <li><strong>Throw:</strong> The vertical component of slip displacement between the displaced blocks.</li>
+    <li><strong>Heave:</strong> The horizontal component of slip displacement measured perpendicular to the fault strike.</li>
+</ul>
+
+<div class="figure-box">
+    <img src="../images/bangar_fig7_30_31_graben_horst.png" alt="Graben and Horst - Bangar Fig 7.30 and 7.31">
+    <div class="fig-caption">Figure 7.4: Extensional tectonic structures: Horst (uplifted central block bounded by normal faults) and Graben / Rift Valley (subsiding downdropped block, e.g., Narmada rift) (K. M. Bangar).</div>
+</div>
+
+<h3>Genetic Classification of Faults</h3>
+<ul>
+    <li><strong>Normal (Gravity) Fault:</strong> Hanging wall moves <em>downward</em> relative to the footwall under extensional tectonic stress ($\sigma_1$ vertical). Results in crustal lengthening.</li>
+    <li><strong>Reverse Fault:</strong> Hanging wall moves <em>upward</em> relative to the footwall under horizontal compressional stress ($\sigma_3$ vertical). A reverse fault with dip $<45^\circ$ is termed a <strong>Thrust Fault</strong>; if dip $<10^\circ\text{--}15^\circ$ with displacement over many kilometers, it forms a <strong>Nappe / Overthrust</strong>.</li>
+    <li><strong>Strike-Slip (Wrench / Tear) Fault:</strong> Movement is purely horizontal, parallel to the fault strike ($\sigma_2$ vertical). Fault plane is usually vertical. Divided into <em>Dextral</em> (right-lateral) and <em>Sinistral</em> (left-lateral).</li>
+    <li><strong>Horst and Graben:</strong> Parallel normal faults produce an uplifted block (<strong>Horst</strong>) or a central downdropped trench (<strong>Graben / Rift Valley</strong>, e.g., Rhine Graben, Narmada Valley).</li>
+</ul>
+
+<h2>7.4 Joints and Unconformities</h2>
+<p>
+    <strong>Joints:</strong> Fractures or cracks in rocks along which there has been zero or imperceptible displacement. Joints occur as systematic parallel sets or intersecting orthogonal systems. Types include:
+</p>
+<ul>
+    <li><em>Columnar Joints:</em> Hexagonal cooling columns in basaltic lava flows.</li>
+    <li><em>Sheet Joints:</em> Horizontal curved joints in granitic exfoliation domes.</li>
+    <li><em>Tectonic Tension & Shear Joints:</em> Formed during folding and faulting at $45^\circ$ to compressive stress.</li>
+</ul>
+
+<p>
+    <strong>Unconformities:</strong> A surface of erosion or non-deposition separating younger strata above from older rocks beneath, representing a major hiatus in the geological time record:
+</p>
+<ul>
+    <li><em>Angular Unconformity:</em> Younger horizontal strata lie upon older tilted, folded, or deformed strata.</li>
+    <li><em>Disconformity:</em> Parallel sedimentary strata separated by an irregular, undulating subaerial erosion surface.</li>
+    <li><em>Nonconformity:</em> Sedimentary strata resting directly upon an eroded surface of crystalline igneous or metamorphic basement rocks (e.g., Cuddapah sediments resting on Peninsular Gneiss).</li>
+</ul>
+
+<div class="callout callout-engineering">
+    <div class="callout-title">Engineering Implications of Chapter 7</div>
+    Fault zones represent catastrophic hazards for dams and tunnels: they act as conduits for high-pressure groundwater leakage, gouge zones have zero shear strength, and active seismic faults can shear an entire concrete dam in two. Tunnels driven parallel to the strike of steep fault planes suffer massive roof collapses, whereas driving across the strike minimizes the hazard zone.
+</div>
+
+        </main>
+
+        <div class="chapter-nav">
+            <a href="ch06_sedimentary_metamorphic.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
+            <a href="ch08_stratigraphy_india.html" class="nav-btn">Next Chapter &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

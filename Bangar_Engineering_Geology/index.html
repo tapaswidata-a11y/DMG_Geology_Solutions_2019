@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principles of Engineering Geology | K. M. Bangar - Digital Edition</title>
+    <style>
+    :root {
+        --primary: #1e3a8a;
+        --primary-dark: #0f172a;
+        --primary-light: #eff6ff;
+        --accent: #2563eb;
+        --accent-amber: #d97706;
+        --text-main: #1f2937;
+        --text-muted: #4b5563;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text-main);
+        line-height: 1.6;
+    }
+    .top-nav {
+        background: var(--primary-dark);
+        color: white;
+        padding: 16px 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .top-nav a {
+        color: #93c5fd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .top-nav a:hover { color: white; }
+    .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+        color: white;
+        padding: 64px 24px;
+        text-align: center;
+    }
+    .hero-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(8px);
+        padding: 6px 16px;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #bfdbfe;
+        margin-bottom: 16px;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+        line-height: 1.2;
+    }
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 820px;
+        margin: 0 auto 28px auto;
+        color: #cbd5e1;
+    }
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+    }
+    .stat-box {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 12px 24px;
+        border-radius: 10px;
+        backdrop-filter: blur(4px);
+    }
+    .stat-num {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #60a5fa;
+    }
+    .stat-label {
+        font-size: 0.85rem;
+        color: #e2e8f0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .container {
+        max-width: 1200px;
+        margin: -30px auto 60px auto;
+        padding: 0 24px;
+        position: relative;
+    }
+    .search-card {
+        background: white;
+        padding: 20px 28px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        border: 1px solid var(--border);
+        margin-bottom: 36px;
+    }
+    .search-input {
+        flex: 1;
+        padding: 14px 18px;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 24px;
+    }
+    .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
+    }
+    .card-header {
+        padding: 20px 24px;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .card-tag {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent);
+        background: #dbeafe;
+        padding: 4px 10px;
+        border-radius: 9999px;
+    }
+    .card-body {
+        padding: 24px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+    .card-text {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+        flex: 1;
+    }
+    .card-topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+    .topic-pill {
+        font-size: 0.75rem;
+        background: #f1f5f9;
+        color: #475569;
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+    .card-action {
+        display: block;
+        text-align: center;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background 0.2s;
+    }
+    .card-action:hover {
+        background: #1d4ed8;
+    }
+    footer {
+        background: var(--primary-dark);
+        color: #94a3b8;
+        padding: 40px 24px;
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: 60px;
+    }
+    footer a { color: #60a5fa; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header class="top-nav">
+        <a href="../index.html">&larr; Return to Mining & Geology Knowledge Portal</a>
+        <span style="font-size: 0.85rem; color: #cbd5e1;">Principles of Engineering Geology &bull; K. M. Bangar</span>
+    </header>
+
+    <div class="hero">
+        <span class="hero-badge">Standard Mining & Civil Engineering Reference</span>
+        <h1>Principles of Engineering Geology</h1>
+        <p>A modernized, complete digital textbook edition authored by <strong>K. M. Bangar</strong>. Fully enriched with interactive mathematical formulations, 128+ authentic geological diagrams, ISRM rock mechanics standards, and comprehensive civil engineering site case studies.</p>
+        
+        <div class="hero-stats">
+            <div class="stat-box">
+                <div class="stat-num">12</div>
+                <div class="stat-label">Complete Chapters</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">128+</div>
+                <div class="stat-label">Authentic Figures</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">MathJax Verified</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">4</div>
+                <div class="stat-label">Identification Tables</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-card">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search chapters, topics (e.g. dams, folds, Wenner array, basalt, Mohs scale)..." onkeyup="filterChapters()">
+        </div>
+
+        <div class="grid" id="chapterGrid">
+            <!-- Chapter 1 -->
+            <div class="card" data-keywords="introduction earth cosmogony geochronology interior isostasy continental drift plate tectonics">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 01</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">18 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Introduction & The Dynamic Earth</h2>
+                    <p class="card-text">Branches of geology, cosmogony hypotheses, isotopic geochronology, Earth's internal structure (Crust, Mantle, Core), Pratt vs. Airy isostasy, and plate tectonics.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Earth Interior</span>
+                        <span class="topic-pill">Isostasy</span>
+                        <span class="topic-pill">Plate Boundaries</span>
+                        <span class="topic-pill">Radioactive Dating</span>
+                    </div>
+                    <a href="chapters/ch01_introduction.html" class="card-action">Read Chapter 1 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="card" data-keywords="physical geology weathering soil wind streams glaciers oceans groundwater karst earthquakes volcanoes">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 02</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">25 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Physical & Dynamic Geology</h2>
+                    <p class="card-text">Exogenic processes: physical and chemical weathering, wind landforms, fluvial erosion and drainage patterns, glacial fiords, karst groundwater dynamics, and volcanoes.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Spheroidal Weathering</span>
+                        <span class="topic-pill">Trellis Drainage</span>
+                        <span class="topic-pill">Karst Limestone</span>
+                        <span class="topic-pill">Seismic Waves</span>
+                    </div>
+                    <a href="chapters/ch02_physical_geology.html" class="card-action">Read Chapter 2 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="card" data-keywords="mineralogy minerals rock-forming silicates mohs scale quartz feldspar mica pyroxene amphibole olivine">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 03</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">22 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Mineralogy & Rock-Forming Silicates</h2>
+                    <p class="card-text">Physical properties of minerals (luster, streak, Mohs hardness, cleavage, specific gravity), silicate crystal chemistry (neso- to tecto-silicates), and diagnostic rock-forming minerals.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Mohs Scale</span>
+                        <span class="topic-pill">Feldspar Group</span>
+                        <span class="topic-pill">Pyroxene vs Amphibole</span>
+                        <span class="topic-pill">Silicate Frameworks</span>
+                    </div>
+                    <a href="chapters/ch03_mineralogy.html" class="card-action">Read Chapter 3 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="card" data-keywords="crystallography symmetry crystal systems miller indices weiss intercepts twinning bravais lattices">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 04</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">20 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Crystallography</h2>
+                    <p class="card-text">Elements of crystal symmetry (planes, axes, center), 32 crystal classes, the six crystal systems (Cubic to Triclinic), Weiss intercepts, Miller indices, and crystal twinning laws.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Miller Indices</span>
+                        <span class="topic-pill">Six Crystal Systems</span>
+                        <span class="topic-pill">Galena Type</span>
+                        <span class="topic-pill">Carlsbad Twinning</span>
+                    </div>
+                    <a href="chapters/ch04_crystallography.html" class="card-action">Read Chapter 4 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="card" data-keywords="igneous petrology magma bowen reaction series textures forms batholith laccolith dike sill basalt granite">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 05</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">24 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Igneous Petrology</h2>
+                    <p class="card-text">Magma generation and crystallization, Bowen's Reaction Series, intrusive and extrusive volcanic forms (batholiths, laccoliths, sills, dikes), microstructures, and igneous rock classification.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Bowen's Series</span>
+                        <span class="topic-pill">Ophitic Texture</span>
+                        <span class="topic-pill">Granite & Basalt</span>
+                        <span class="topic-pill">Pegmatite</span>
+                    </div>
+                    <a href="chapters/ch05_igneous_petrology.html" class="card-action">Read Chapter 5 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 6 -->
+            <div class="card" data-keywords="sedimentary metamorphic petrology clastic facies foliation metamorphism sandstone shale gneiss schist marble">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 06</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">26 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Sedimentary & Metamorphic Petrology</h2>
+                    <p class="card-text">Sedimentary genesis, Udden-Wentworth grain size scale, clastic vs. non-clastic rocks, metamorphic agents, metamorphic grades, progressive Barrovian facies, and structural rock types.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Udden-Wentworth</span>
+                        <span class="topic-pill">Metamorphic Facies</span>
+                        <span class="topic-pill">Gneissose Banding</span>
+                        <span class="topic-pill">Khondalite & Charnockite</span>
+                    </div>
+                    <a href="chapters/ch06_sedimentary_metamorphic.html" class="card-action">Read Chapter 6 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 7 -->
+            <div class="card" data-keywords="structural geology dip strike folds faults joints unconformities horst graben nappe anticline syncline">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 07</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">25 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Structural Geology & Rock Deformation</h2>
+                    <p class="card-text">True and apparent dip, strike, Brunton compass geometry, fold morphology and genetic classification, faults (normal, reverse, thrust, strike-slip, horst, graben), joints, and unconformities.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">True vs Apparent Dip</span>
+                        <span class="topic-pill">Recumbent Folds</span>
+                        <span class="topic-pill">Fault Mechanics</span>
+                        <span class="topic-pill">Angular Unconformity</span>
+                    </div>
+                    <a href="chapters/ch07_structural_geology.html" class="card-action">Read Chapter 7 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 8 -->
+            <div class="card" data-keywords="stratigraphy india archean dharwar cuddapah vindhyan gondwana deccan traps siwalik talcher coal">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 08</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">28 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Stratigraphy of India</h2>
+                    <p class="card-text">Indian chronostratigraphy: Archean cratonic basement, Dharwar greenstone belts, Purana basins (Cuddapah, Vindhyan), Gondwana coalfields (Damuda, Talcher), Deccan flood basalts, and Siwaliks.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Dharwar Supergroup</span>
+                        <span class="topic-pill">Vindhyan Sandstone</span>
+                        <span class="topic-pill">Gondwana Coal</span>
+                        <span class="topic-pill">Deccan Traps</span>
+                    </div>
+                    <a href="chapters/ch08_stratigraphy_india.html" class="card-action">Read Chapter 8 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 9 -->
+            <div class="card" data-keywords="mineral deposits economic geology ore gangue magmatic hydrothermal supergene coal petroleum oil trap">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 09</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">26 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Mineral Deposits & Economic Geology</h2>
+                    <p class="card-text">Ore genesis processes (magmatic segregation, pegmatites, hydrothermal systems, residual concentration, supergene enrichment), coal and petroleum geology (anticlinal traps), and Indian metallic ores.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Hydrothermal Zones</span>
+                        <span class="topic-pill">Supergene Enrichment</span>
+                        <span class="topic-pill">Anticlinal Oil Trap</span>
+                        <span class="topic-pill">Bauxite & Iron Ore</span>
+                    </div>
+                    <a href="chapters/ch09_ore_deposits.html" class="card-action">Read Chapter 9 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 10 -->
+            <div class="card" data-keywords="engineering geology dams reservoirs tunnels landslides mass wasting building stones ucs brazilian test rqd">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 10</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">32 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Engineering Geology & Rock Mechanics</h2>
+                    <p class="card-text">Civil engineering investigations: dam foundations and dip/strike orientation, reservoir leakage, tunnel stability in folded strata, landslide shear mechanics and factor of safety, and rock strength testing (UCS, Brazilian, Schmidt hammer).</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Dam Dip & Strike</span>
+                        <span class="topic-pill">Tunnel Alignment</span>
+                        <span class="topic-pill">Slump vs Rockslide</span>
+                        <span class="topic-pill">UCS & Brazilian Test</span>
+                    </div>
+                    <a href="chapters/ch10_engineering_geology.html" class="card-action">Read Chapter 10 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 11 -->
+            <div class="card" data-keywords="prospecting methods geophysics electrical resistivity wenner schlumberger seismic refraction snell's law gravity magnetic">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 11</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">24 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Prospecting Methods & Applied Geophysics</h2>
+                    <p class="card-text">Subsurface exploration methods: Gravity anomalies, Magnetic surveying, Electrical Resistivity (Wenner and Schlumberger arrays), and Seismic Refraction travel-time bedrock depth formulas.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Wenner Array</span>
+                        <span class="topic-pill">Schlumberger VES</span>
+                        <span class="topic-pill">Snell's Refraction</span>
+                        <span class="topic-pill">Rippability Chart</span>
+                    </div>
+                    <a href="chapters/ch11_prospecting_methods.html" class="card-action">Read Chapter 11 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 12 -->
+            <div class="card" data-keywords="geological maps structural sections rule of v's 3 point problem contours gis vector raster">
+                <div class="card-header">
+                    <span class="card-tag">Chapter 12</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">22 min read</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Geological Maps, Structural Sections & GIS</h2>
+                    <p class="card-text">Map interpretation, the Rule of V's for valley outcrops, folded and faulted outcrop patterns, structural cross-section construction, mathematical 3-point borehole dip-strike solutions, and GIS vector/raster models.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Rule of V's</span>
+                        <span class="topic-pill">3-Point Problem</span>
+                        <span class="topic-pill">Cross-Sections</span>
+                        <span class="topic-pill">GIS Data Models</span>
+                    </div>
+                    <a href="chapters/ch12_geological_maps.html" class="card-action">Read Chapter 12 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Appendices -->
+            <div class="card" data-keywords="appendices identification tables minerals ores rocks engineering properties isrm bis">
+                <div class="card-header">
+                    <span class="card-tag" style="background: #fef3c7; color: #b45309;">Reference Appendices</span>
+                    <span style="font-size: 0.8rem; color: #64748b;">Laboratory Keys</span>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Practical Mineral & Rock Identification Tables</h2>
+                    <p class="card-text">Comprehensive laboratory identification keys for rock-forming silicates, metallic ore minerals, igneous, sedimentary, and metamorphic rocks, along with ISRM/BIS rock property benchmarks.</p>
+                    <div class="card-topics">
+                        <span class="topic-pill">Silicate Key</span>
+                        <span class="topic-pill">Metallic Ore Key</span>
+                        <span class="topic-pill">Rock Specimen Table</span>
+                        <span class="topic-pill">ISRM Standards</span>
+                    </div>
+                    <a href="chapters/appendix_tables.html" class="card-action" style="background: #b45309;">Open Identification Tables &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Principles of Engineering Geology &bull; Digital Modernized Edition</strong></p>
+        <p style="margin-top: 8px;">Original textbook authored by <strong>K. M. Bangar</strong>. Formatted and modernized for Mining & Civil Engineering students and professional geologists.</p>
+        <p style="margin-top: 14px;"><a href="../index.html">&larr; Return to Central DMG Geology Solutions Portal</a></p>
+    </footer>
+
+    <script>
+    function filterChapters() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.querySelectorAll('#chapterGrid .card');
+        
+        cards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const text = card.querySelector('.card-text').textContent.toLowerCase();
+            const keywords = card.getAttribute('data-keywords') || '';
+            
+            if (title.includes(query) || text.includes(query) || keywords.includes(query)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    </script>
+</body>
+</html>
