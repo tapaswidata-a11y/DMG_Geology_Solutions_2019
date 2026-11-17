@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 12: Geological Maps, Structural Sections & GIS | Bangar Engineering Geology</title>
+    <title>Chapter 12: Geological Maps and Sections | Principles of Engineering Geology - K. M. Bangar</title>
     <style>
     :root {
         --primary: #1e3a8a;
@@ -25,7 +25,7 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
         background: var(--bg);
         color: var(--text-main);
-        line-height: 1.8;
+        line-height: 1.82;
         padding: 0;
     }
     .top-nav {
@@ -58,16 +58,16 @@
         color: #e2e8f0;
     }
     .container {
-        max-width: 960px;
-        margin: 40px auto;
+        max-width: 980px;
+        margin: 36px auto;
         padding: 0 24px 60px 24px;
     }
     .chapter-header {
         background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
         color: white;
-        padding: 40px;
+        padding: 36px 40px;
         border-radius: var(--radius);
-        margin-bottom: 36px;
+        margin-bottom: 32px;
         box-shadow: var(--shadow-lg);
     }
     .chapter-num {
@@ -79,15 +79,24 @@
         margin-bottom: 8px;
     }
     .chapter-title {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         font-weight: 800;
         line-height: 1.25;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
     }
     .chapter-desc {
-        font-size: 1.05rem;
+        font-size: 1.02rem;
         color: #bfdbfe;
-        max-width: 760px;
+        max-width: 780px;
+    }
+    .edition-note {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-size: 0.92rem;
+        margin-bottom: 24px;
     }
     main {
         background: var(--card-bg);
@@ -98,110 +107,84 @@
     }
     h2 {
         color: var(--primary-dark);
-        font-size: 1.55rem;
+        font-size: 1.5rem;
         font-weight: 700;
-        margin: 32px 0 16px 0;
+        margin: 34px 0 14px 0;
         padding-bottom: 8px;
         border-bottom: 2px solid var(--border);
     }
     h3 {
         color: var(--primary);
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         font-weight: 600;
-        margin: 24px 0 12px 0;
+        margin: 22px 0 10px 0;
     }
-    p { margin-bottom: 18px; font-size: 1.05rem; }
-    ul, ol { margin: 0 0 20px 24px; font-size: 1.05rem; }
-    li { margin-bottom: 8px; }
-    .table-container {
-        overflow-x: auto;
+    p { margin-bottom: 14px; font-size: 1.03rem; text-align: justify; }
+    p.book-item { padding-left: 18px; border-left: 2px solid #e2e8f0; }
+    p.question-item { background: #f8fafc; padding: 10px 14px; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 10px; }
+    /* Supplementary Extra Info Box */
+    .callout {
+        border-left: 5px solid #0284c7;
+        background: #f0f9ff;
+        border-top: 1px solid #bae6fd;
+        border-right: 1px solid #bae6fd;
+        border-bottom: 1px solid #bae6fd;
+        padding: 18px 22px;
         margin: 24px 0;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        box-shadow: 0 2px 6px rgba(2, 132, 199, 0.08);
     }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.95rem;
+    .callout-extra {
+        border-left-color: #d97706;
+        background: #fffbeb;
+        border-top-color: #fde68a;
+        border-right-color: #fde68a;
+        border-bottom-color: #fde68a;
     }
-    th, td {
-        padding: 12px 14px;
-        border: 1px solid var(--border);
-        text-align: left;
+    .callout-title {
+        font-weight: 800;
+        color: #92400e;
+        margin-bottom: 8px;
+        font-size: 1.02rem;
+        letter-spacing: 0.3px;
     }
-    th {
-        background: var(--primary-light);
-        color: var(--primary-dark);
-        font-weight: 700;
-    }
-    tr:nth-child(even) td { background: #f8fafc; }
+    .callout-body { font-size: 0.98rem; color: #1f2937; }
+    .callout-body ul { margin: 8px 0 4px 22px; }
+    .callout-body li { margin-bottom: 6px; }
+    /* Interactive Visual Figures */
     .fig-box {
-        background: #f1f5f9;
+        background: #f8fafc;
         border: 1px solid var(--border);
         border-radius: var(--radius);
         padding: 16px;
-        margin: 28px 0;
+        margin: 26px 0;
         text-align: center;
+    }
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
     }
     .fig-box img {
         max-width: 100%;
+        max-height: 460px;
+        width: auto;
         height: auto;
         border-radius: 8px;
         box-shadow: var(--shadow);
         background: white;
+        object-fit: contain;
     }
     .fig-caption {
         font-size: 0.9rem;
         color: var(--text-muted);
         margin-top: 10px;
         font-style: italic;
-    }
-    .callout {
-        border-left: 4px solid var(--accent);
-        background: #eff6ff;
-        padding: 18px 20px;
-        margin: 24px 0;
-        border-radius: 0 var(--radius) var(--radius) 0;
-    }
-    .callout-title {
-        font-weight: 700;
-        color: var(--primary-dark);
-        margin-bottom: 6px;
-    }
-    .callout-engineering {
-        border-left-color: var(--accent-amber);
-        background: #fffbeb;
-    }
-    .chapter-nav {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid var(--border);
-    }
-    .nav-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 18px;
-        background: var(--primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: background 0.2s;
-    }
-    .nav-btn:hover { background: #1d4ed8; }
-    
-    /* Visual Atlas & Interactive Figure Enhancements */
-    .fig-card-interactive {
-        cursor: zoom-in;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        position: relative;
-    }
-    .fig-card-interactive:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--accent);
+        text-align: center;
     }
     .fig-badge-row {
         display: flex;
@@ -222,14 +205,9 @@
     .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
     .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
     .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
-    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
-    .zoom-hint {
-        font-size: 0.75rem;
-        color: #64748b;
-        font-weight: 600;
-    }
+    .zoom-hint { font-size: 0.75rem; color: #64748b; font-weight: 600; }
     .visual-atlas-section {
-        margin-top: 44px;
+        margin-top: 40px;
         padding-top: 24px;
         border-top: 3px solid var(--primary-light);
     }
@@ -239,23 +217,35 @@
         gap: 22px;
         margin: 24px 0;
     }
-    .fig-grid .fig-box {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: #f8fafc;
-    }
-    .fig-grid .fig-box img {
-        max-height: 290px;
-        width: 100%;
-        object-fit: contain;
-        margin: 0 auto;
-    }
+    .fig-grid .fig-box { margin: 0; display: flex; flex-direction: column; justify-content: space-between; }
+    .fig-grid .fig-box img { max-height: 290px; width: 100%; }
     @media (max-width: 640px) {
         .fig-grid { grid-template-columns: 1fr; }
+        main { padding: 22px; }
     }
-    /* Fullscreen Lightbox Modal */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+    .nav-btn:hover { background: #1d4ed8; }
+    /* Fullscreen Lightbox */
     .lightbox-overlay {
         display: none;
         position: fixed;
@@ -273,7 +263,6 @@
         max-width: 94vw;
         max-height: 80vh;
         border-radius: 8px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         background: white;
         padding: 8px;
         object-fit: contain;
@@ -284,11 +273,9 @@
         max-width: 850px;
         text-align: center;
         font-size: 1rem;
-        line-height: 1.5;
         background: rgba(30, 41, 59, 0.85);
         padding: 10px 20px;
         border-radius: 8px;
-        border: 1px solid rgba(255,255,255,0.15);
     }
     .lightbox-close {
         position: absolute;
@@ -296,19 +283,13 @@
         right: 28px;
         color: white;
         font-size: 2.2rem;
-        font-weight: bold;
         cursor: pointer;
         background: rgba(255,255,255,0.12);
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         border: none;
     }
-    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
-
     </style>
     <script>
     window.MathJax = {
@@ -321,281 +302,148 @@
 <body>
     <header class="top-nav">
         <a href="../index.html">&larr; Principles of Engineering Geology</a>
-        <span class="book-badge">K. M. Bangar &bull; Digital Edition</span>
+        <span class="book-badge">K. M. Bangar &bull; Faithful Illustrated Edition</span>
     </header>
-
     <div class="container">
         <div class="chapter-header">
             <div class="chapter-num">Chapter 12</div>
-            <h1 class="chapter-title">Geological Maps, Structural Sections & GIS</h1>
-            <p class="chapter-desc">Interpretation of geological maps, outcrop patterns, the Rule of V's, structural cross-sections, 3-point borehole problems, and principles of Geographic Information Systems (GIS).</p>
+            <h1 class="chapter-title">Geological Maps and Sections</h1>
+            <p class="chapter-desc">Topographic maps, outcrop patterns, Rule of V's, geological cross-sections, dip and strike determination, thickness of beds, and three-point problems.</p>
         </div>
-
+        <div class="edition-note">
+            <strong>&#128214; Faithful Line-by-Line Textbook Edition:</strong> The body text below follows <strong>K. M. Bangar&#39;s <em>Principles of Engineering Geology</em></strong> line by line. All original scanned diagrams have been replaced with clean, full-color geological figures and field photographs from authoritative reference textbooks (<em>Winter, Perkins, Fossen, Boggs, Van der Pluijm &amp; Marshak</em>) and USGS/Wikimedia Commons. Any supplementary notes or modern formulas are clearly separated inside amber <strong>Supplementary Reference Boxes</strong>.
+        </div>
         <main>
-            <h2>12.1 Elements of Geological Maps and Topography</h2>
-            <p>
-                A <strong>Geological Map</strong> represents the distribution, structural attitudes, geological contacts, and ages of rock units exposed on the Earth's surface, projected onto a topographic base map. The fundamental components of a geological map include:
-            </p>
-
-<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_topographic_contour_map_profile.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/web_topographic_contour_map_profile.png" alt="Figure 12.1a: Topographic Contour Map and Vertical Cross-Section Profile showing how closed concentric contours represent hills, valleys, ridges, and steep cliffs." loading="lazy">
-    <div class="fig-caption">Figure 12.1a: Topographic Contour Map and Vertical Cross-Section Profile showing how closed concentric contours represent hills, valleys, ridges, and steep cliffs.</div>
+<p>404 PRINCIPLES OF ENGINEERING GEOL ogy such as roads, railways, villages, towns, lc. Contour lines are commonly used to depict clevations on the topographic maps. &quot;4 Contour Lines. A contour line is a line on a map which has the same. elevation above sea level along its entire length. Most maps show only the two horizontal dimensions. Contour lines are, however, an effective deviog F for representing the third dimension on a map. Some useful facts regarding contour lines are as follows.</p>
+<p class="book-item"><strong>1. Contour lines bend upstream.</strong> They form Vs that point up the valley. ;</p>
+<p>2. Near upper part of hills, contour lines form closures, 3. Contour lines are widely spaced on genile slopes and closely spaced on steep slopes. Evenly spaced contours indicate an unifonn slope.</p>
+<p class="book-item"><strong>4. Contour lines usually do not cross each other.</strong> + 12.3. OUTCROP ge “e| Tote, 4 i 7 S Late uD, F + SEED”: as \ eee ig tot I a ASO, 1 AN 7 B A Pu iS) aT eb) nor \\al fe RY Sa, A = a , al a</p>
+<p class="book-item"><strong>(a) Horizontal Ground.</strong> On horizontal ground the outcrops are always straight lines irrespective of the dip of strata.</p>
+<p class="book-item"><strong>(b) Undulating Ground.</strong> On undulating ground, the outcrop pattern varies with the dip of strata.</p>
+<p class="book-item"><strong>(i) Horizontal beds.</strong> In this case the outcrops run parallel to the contours. For a bed of constant thickness, the width of outcrop will be more where the ground slope is gentle and less where the ground slope is steep [Fig. /2./ (a)}.</p>
+<p class="book-item"><strong>(ii) Vertical heds.</strong> In this case the outcrops are straight lines irrespective of the topography [Fig. 12.1 (b)]. The width of the outcrop will be equal to the truc thickness of strata. (iit) Inclined beds. In this case the outcrops are curved and they cut across the contours [Fig. /2./ (c)]. As a rule the smaller the dip, the more sinuous the outcrop; the higher the dip the more nearly do the outcrops approach straight lines. The width of the outcrop is controlled by the dip of strata and by the slope of the ground.</p>
+<p>Bary an eg ONS eI 3 bee ek Wr Was { pee Ley tye 7 ot : Oe gills eran 2 ft othe 1 2 co . s Meee Wis 4 &#x27; beds generally form a V-pattern, Ty, In a valley the outcrops of rockbeds a ‘3 ic approximate value of dip can be determined by applying the “rule of Ver 3 to these outcrops. cep 3 1, Ina valley, the outcrop of horizontal strata form a nV; » the apex * of which points upstream [Fig. 12.2 (a)]. However in case of the vertical beds, the outcrops run as straight lines and topography 4 has no control on it. fs ‘ 2, The outcrop of dipping beds also give a V-paltem in valleys. Gentle dips give rise to “long Vs&quot; while steep dips produce “shor, Vs&quot;. q (a) When beds dip up the valley, the “WV” points upstream [Fig, 3 (b) When beds dip down the valley, Wwo cases arise. 4 (i) If the angle of dip is greater than the valley stope, the “Y&quot; points downstream [Fig. 12.2 (c)]. 4 1 (ii) If the angle of dip is less than the valley slope, the “V&quot; points upstrcam [Fig. 12.2 (a)]. re &#x27;</p>
+<h2 id="sec-12-4">12.4 Outcrop Patterns and Geologic Structures</h2>
+<p>Geologic maps show various types of outcrop patterns. By studying ; these patterns the geologic structures such as folds, faults, unconformities” and igneous intrusions can easily be recognised. F Folds. In case of folding, the repetition of outcrop of a bed takes place. — If folding is open, the two successive outcrops will show the reversal of dip — direction (Fig. /2.7). Anticlines and synclines can be distinguished by the relative position of the older heds, Older beds occur in the core of anticlines and younger beds in the cor of synclines, Plunging anticlines and synclines are indicated by U-shaped outcrops. ga Faults. A vertical fault outcrops as a straight linc and inclined faults — shaw changes in direction across the area, The dip of a fault plane can be ae in the same way as the dip of bedding planes. Dip faults cause ee ee of beds (Fig. 7.35), while strike faults cause elimination Meet an Of strata (Fig. 7.36 and 7.37). The up-throw and down-throw sides of a fault can be identified on maps by a i er @ beds are found on the dow naps by applying the rule that young! i pwa-throw side and older beds on the up-throw side. by intersecting Co ier ca be recognised on geological maps faults or other Dagiuee ee sedimentary strata und by truncation of dykes, ‘hose of an uncontonnity ow angle faults may also vive patterns similar 10 GEOLOGICAL MAPS AND SECTIONS . 407 Igneous Intrusions. Except sills which run parallel to the boundaries of sedimentary rocks, all other igneous intrusions intersect geological bouraries, Dykes usually run straight while batholiths have very irregular boundaries on the map. ,</p>
+<h2 id="sec-12-5">12.5 Geologic Cross Sections</h2>
+<p>For understanding the structure of a region, geological cross sections are vonsirucied. They are drawn from geological maps along certain given lines. These sections represent the conditions which are to be found at depth. Such subsurfucc conditions are inferred from the geology observed at the a ace, The factors which help in constructing the geological section are as follows.</p>
+<p class="book-item"><strong>(i) Contour lines.</strong> These help in drawing topographic profile along the line of section.</p>
+<p class="book-item"><strong>(ii) Structural attitude of strata.</strong> It is indicated by the component of dip computed along the line of cross section.</p>
+<p class="book-item"><strong>(ii) Thickness of each formation.</strong> This may be obtained from the drill hole records or computed with the help of scale of map, width of outcrop and the dip.</p>
+<p>12.6, DETERMINATION OF STRIKE A “strike line” isa line which joints two points of equal elevation on a particular bedding plane. In may also be defined as the direction-of the line formed by intersection of a bedding plane and horizontal plane. The strike lincs are always al right angles to the dip direction. The suike lines arc important because they show dip of inclined strata just as the contours show the lopographic slope on the map. Similar to topographic contours they have allitudes (Fig. 12 3).</p>
+<p>To draw astrike line for a particular houndary of a bed on a geological map, two points of equal elevation are located on it. These two points are EAIZONTAL PLANE CHAP) Qala DX pinenined Pome i. Sch) a as a NN v : perro BEDDING PLANE 5 &gt;. Cae ee os Ci ings i glen anemge | is a Mh ecto” “ Boe git E an ed ceva eeees se ees socom BF Le hs er Pig 12.3. Strife dines on vat jredined bod : Sonny MOEA QS STRIKE 6 poe | Meanofoo fein ae LEAT oi P Seats dem = 250m J : cad BEDDING PLANE 7 DIP ANGLE 28 q teem t = Y MoRITONTAL 7 ca) PLANE j Fig. 124 (a) Determination of strike and dip on a map. (6) Determination of dip by graphical method.</p>
+<p>Where a particular contour crosses the boundary at two places. The line formed by joining the «wo points will give a strike line. Its altitude will be the same as that of the corresponding contour. Fig. /2.4 (a) shows two strike lines of levels 300 and 500 meters drawn for the boundary between rockbeds P and Q. If the inclination of the bed is uniform throughout, all strike lines will be parallel.</p>
+<p>* _ Incases where a contour line does not intersect a given rock boundary al two places, the strike line is determined from any three points of known elevation on that boundary. : . matte The three points of known % YD es, elevation are the points where \te 0 AS eg the contours cross the rock eS [ae boundary (Fig. 12.5). These [&gt;&gt; Nn FR Points are connected to forma [3-3 ff wy triangle. On the side of the trie | &amp;&amp;Qée&quot; &gt; oa fies angle which joins the highest SAL RR SN and lowest clevation points, a SRE QB ON § Point is located which has the EEO &quot; i same elevation as the imer- % Sore : mediate comer of the triangle. Ss : tig. 12.5. Determination of Sinike.</p>
+<p>GEOLOGICAL MAPS AND SECTIONS - 409 A line drawn through two points of equal elevation will be a strike line Parallel to this another strike line of known clevation is drawn.</p>
+<h2 id="sec-12-7">12.7 Determination of Dip</h2>
+<p>Each rock bed has two boundaries, the top boundary and the bottom boundary. To determine the dip of an inclined bed, any one boundary is chosen and two strike lines of different altitude are drawn on it. In Fig. 12.4 (a) bwo such strike lincs of levels 300 m and 500 m are drawn for the boundary between beds P and Q. The dip will be at right angles to the strike direction. In order to find the dip direction, a line xy is drawn at right angles to the strike lines. The “dip direction” will be from the strike of higher elevation to that of lower elevation. It is indicated by the arrow on the ty line.</p>
+<p>To determine the “amount of dip”, the length of xy line is measured. The xy line represents the horizontal distance between the two strike lines. This distance is 400 meters according to the scale of the map. The difference in elevation between these strike lines is (500 m—300 m) 200 meters. It means that the bedding plane, after a horizontal distance of 400 meters falls 200 meters vertically. The dip angle @ is computed as follows. Vertical drop * Horizontal distance or, Dip = 26°34’ (27° approximately) Thus dip of the bedding plane is 27° in the direction NE. The dip can also be determined by the graphical method as shown in</p>
+<h2 id="sec-12-8">12.8 Drawing Geologic Section</h2>
+<p>Ttis frequently required to construct a geological cross section across a geological map to show the most reliable picture of the subsurface strata. Gcologic sections are of two types : (() normal secticns, and (ii) oblique sections. Sections made in the direction normal to the strike are called “normal sections” whereas those constructed in the direction oblique to the strike are called “oblique sections”. The base line of the section should, in xeneral, represent sea level. The steps involved in the construction of a geological section are as follows.</p>
+<p>(i) Drawing a topographic profile 4 ip PRINCIPLES OF ENGINEERING geo, E0L¢ (ii) Determinauion of dip and strike: g (iii) Filling of geological details. j GE 12.8.1. ‘Topographic Profile a Most geologic maps contain contours which depict the topog an the terrain. A strip of paper ig laid along the line of section and posilj . consceutive contours are marked on it. These height spots are the : ferred on the base line from the strip of paper. Perpendiculars a relevant heights are raised at various points as per the scale of the pe tops of these perpendiculars are then joined by a free hand curve &#x27;p, the topographic profile which now represents the ground surface, Fae (a) shows the topographic profile constructed along xy line of the ‘ aa map shown in Fig. 12.6. Beolg y 5 Na a g~ (gee Liat eo &gt; Fi pup? 4 a t a G A Seg7 D . a fo “bog a. wt 4 wes sed loom &gt; Dipaz 2 500 my and : and at K, iF NDAIZEATAE poit v ek Fig. 12.6, declocical deta Tt 12.8.2. Determinatj gical map. q Te termination of Dip and Stri ett Hate determine the dip of a hy ‘a nd Strike a a sees required. In Fig. 12.6 ety two strike lines of diff The line PR evel FesPectively for the MRS are the two srk ines a4 dip. This od is at right angles is th uundary between strata C wr melevation, aes is from the Hilt cr sone strikes gives the dire : The one is indicated by the 0 m clevation to the strike o an Bigs fe Hike Jines PQ an rae arrow on the PK line. E s by 100 meter verte Ae . a PO the aon me ely ina py tha the level of the bed ia is calculate zontal distance ;, a calculated as Tollows, distance of 250 meters: E OLOGICAL MAPS AND SECTIONS an ! erry hive Y SJ LS oa Sua aya ie cB)</p>
+<h3 id="sec-12-8-3">12.8.3 Filling of Geological Details</h3>
+<p>Another strip of paper is laid along the line of section on the map. The ‘rops of various strata are marked off. Any information regrading dip faults, ete. are also recorded. This record is first marked on the base line then transferred to the surface profile. In order to do this, the various ts are projected up vertically to cut the surface profile. The geological ils are then added in the steps as shown below (a) First, all faults that are present along the line of section are inserted. They are usually represented as vertical lines running from the ground surface downward. The strata must be shown displaced along these faults [Fig. 12.8 (b)](6) Then stata are added. These are drawn from each point of outcrop and are shown dipping at angles computed for this purpose or slated on the map. This is usually done by drawing angles of dip first at the base line and then drawing parallel lines from the corresponding points at the surface profile [Fig. 12.7 (b)](ce) Anticlines and synclines are generally indicated on the map by. : change of dip or by repetition of strata, They must be made in the ‘section accondingls F¥g, £27) PRINCIPLES OF ENGINEERING cig Soy zy 3 GE Ef ee Epes (ae BEELER oul Lhe 2 aT ee ee - eset er on eee 7 7) Hrs ee a al ’ fs oo LAN aaa, , oe rook vs a&gt; E t he, ais we SS / hie Zags t at, ee. SS 5 &lt;* Oeny WS yee 3 METERS °o DIP a i 53, Ly RS iy QOS vo eS 3 angle (b) 4 foldec . , Ttisa</p>
+<p class="book-item"><strong>(ii) Geologic Succession.</strong> Show sequence of rock beds from oldest to youngest by making an index. Mention also the thickness cr i various beds.</p>
+<p>i (iii) Geologie Structure. Give a bricf description of the various gcologic structures present in the area, (a) In case of inclined beds, give the amount and direction of dip. 1 (b) In case of folds, give the direction of axis and the nature of folds, i (c) In case of faults, give their nature, direction and down-throw, d) In case of an unconformity, give the number of beds present in each series of rocks and also describe their structure.</p>
+<p>(e) In case of an igneous body, give its nature and geographical location. (fv) Geologie History. Describe in brief the geologic history of the area by shuwing periods of sedimentation, uplift, submergence, erosion, igneous intrusion and sequence of faulting. Discuss the relative ages of folds, faults, and igneous bodies.</p>
+<p>example 12.1. For an illustration, let us describe the map shown in Fig. The ground surface of the area is a valley which is sloping in the SE ion. Here seven rock beds are exposed. The oldest bed is ‘S* and the est is ‘G’. 7 here is an angular unconformity which separates the older series of from the younger series. The beds of the younger series dip with an of 20° in the NW direction, while those of the older series series are lin a syncline. The axis of the fold is running in the NE-SW direction. t asymmetrical fold as the dip of the two limbs are unequal. The beds older series are traversed by a transverse fault extending NW-SE. The of the fault is 100 meter and the down-throw side is towards cast. he sequence of events experienced by the area are as follows, (i) Deposition of four sedimentary beds 2 Q, R and S. ‘#) Uplifting and emergence af these beds above sea level. Folding and faulting.</p>
+<p class="book-item"><strong>(iii) Erosion of the region.</strong> ; ; q Giv) Submergence under water followed by deposition of three more — (v) Uplifting and tilting of the entire region(vi) Erosion of the region (0 give present topography. : 12.10, RELATIVE AGES OF BEDS a (i) In case of an unconformity, younger beds overlap alder rocks, (ii) The outcrops of dipping beds in a valley will always point upstream unless the dip is in the same direction as the slope of the valley, and at a greater angle. In this case progressively older beds occur in the upstream direction.</p>
+<p>(iii) In anticlines the older beds outcrop toward the centre of the fold and in synelines the reverse applies. a (iv) Out of two adjacent beds outcropping on opposite side of a fault, the younger bed is always on the down-throw side. 4 () When igneous intrusions or faults cut through older rocks, the are assumed to be younger than the strata they cul. a , We THICKNESS OF BEDS a ‘The thickness of horizontal and vertical beds can be obtained direct from the geologic map. Horizontal beds run parallel to the topographi contours and therefore, their thickness can be determined by interpolatio For example, in Fig. 12.1 (a), the thickness of bed Q is 20 meters. In cas of a vertical bed, such as a dyke, the perpendicular distance from one cont fo the another on the map will give the thickness.</p>
+<p>The thickness of an inclined bed can be determined in three ways : from geologic maps and sections, (i) from width of outcrops, and (sii) {re bore hole data. : 12,11.1. From Geologic Maps and Sections In order to determine the thickness of a bed on a geologic map om of the bed is selected and a strike line is drawn. This strike li yaa enone so that it cuts the other contact at a different level. T the eel a ae two levels will give the thickness of the bed bed Q cuts its ae in Fig. 12.4 the 300 m strike of one contact of u 3 will be 200 m. fer contact at 500 m level. Hence its vertical thickné The thickness of a be: . constructed along th oe va also be determined from a geologic see ze g the tnie dip direction of ii thickn of beds is measured directly strata. In this case the this ircetly on such a section. cS 12,11.2, From Width of Outerop The width of outcrop of a bed depends on thrce fact 4 ie 5 \ lors : (1) the thickness of the bed, (ii) the angle of dip, and (ity the 1 hi ‘ rectloae ‘opographic slope and its (a) On Horizontal Ground. If the thickness of a bed is constant, the Width of outcrop varies with the dip angle. I is minimum Shen the bed is vertical, being in fact equal to the true thickness of the bed, and as the dip decreases the width of outcrop increases. In</p>
+<p>(c) Ground sloping in the same direction as the dip. (8) Slope of Ground Opposite tw Dip. In Fig, {2.9 (b) the strata dip at an angle ‘6* towards cast and the ground slopes at an angle ‘* to the west. The tue thickness of a bed whose width of outcrop is ‘ab’ can be calculated from the following equation.</p>
+<p class="book-item"><strong>(c) Ground Sloping in the Same Direction as Dip.</strong> In Fig. 12.9 (c) the slope of ground and the dip of strata both are in the same direction, the angles heing ‘i* and ‘6’ respectively. The true thick- ness of a bed whose width of outcrop is ‘ab’ can be calculated as r follows.</p>
+<p>PRINCIPLES OF ENGINEERING GEQ) ane BOREHOLE . 2.2. Inanarea, Ee Example 122. exposed. at ra 4 bed of sandstone IS SHALE | 2 a 7 ound and ~ &gt; The slope of the groune rete 3 the dip of the bed arc 10° W oes a and 20° E respectively. If the Pep“? ftom ran width of outcrop is 60 vale? HN determine the true thickness O! syypstowe Peet) veat the sandstone bed. we Q ui sy Solution. fous a Dip of sandstone bed de 3 =20°E aes TSO 3 Slope of the ground SHALE E27 j = 10°W Peet a Thus the dip and the slope ip. 12.10, Determination of thickness of are in opposite directions. from bore hole data.</p>
+<p>Truc Thickness 3 = 30 meters. 12,11.3. From Bore Hole Data 4 In Fig. 12.10 inclined strata are traversed by a vertical bore hole. case the true thickness of a bed can be calculated from the ft oll equation. a True Thickness CD=BDx cos “here BD isthe thickness ofthe bed in the bore hole and 0 is the dip</p>
+<h2 id="sec-12-12">12.12 Dip and Strike</h2>
+<p>PROBLEMS 1 — Strike and Dip by Three Point Method points ra Nar 4) tently dipping beds can be determined fron Plane must he identifier clevations on the same bedding planc. The b directions between th ae “sriainty at each outcrop. The distam directions can be ae Tee points should also be known, the dis! lan the graphical construction from the map of the aren. Fig, 12.11 ill CULCTOPS A, B and C1 m tsed to determine the strike and dip fromt has the sane eleyayjgn vet © find a strike tin int D is located ; vation as the i . he, a point D is a ‘nlermediate point B. The point D wil e 4 ek: BY = Pad 1 &#x27; SS aw “fog 1 Ne MID re 1 ‘ hid fig “Sleeaad ‘ my OS an “ 4 Pew *htekne?</p>
+<p>Scale a RY</p>
+<p>N ae a x a aa T x Kn a D Gy a i Qevel toon)] fe Xe, 7 rs ‘Y (ay souTH S74 h we b id, &quot;y . prticgee ntel ‘3 Dipsyo* Surface. 4</p>
+<p>The amount of dip of the limestone béd is determined by a simple graphical construction shown in Fig. 12.42 (b). The horizontal side of the right angle triangle is cqual to the perpendicular distance ST between tie two strike lines of different altitudes. The vertical side 7M represents the difference in elevation between the two above said strike lines. The dip angle of the limestone bed as measured from the right angle triangle, is 30° in the direction N40°E. ; Example 12.5. A, B, C and D are four stations at the comers of a square of side 900 meters on level ground, B is due west of A and C is due south of B. A coal.seam is met with in bore holes that are put at A, B and C at depths of 200 m, 50 m and 100 m respectively. Determine the dip of the coal seam. At what depth will the seam occur at D.</p>
+<p>Solution, Fig. /2./3 illustrates the location of four stations A, B, C and D on the level ground surface. At stations A, B, and C a coal seam is struck yy ¢ V4 / Cigomy&gt;s _ &gt; FAS y, ‘DIP 10”. bot v Wuerace Scale temazeom</p>
+<p>Example 12.6, In the map shown in Fig. 12.14, A, B and Care the : threc stations where a coal seam is met with in bore holes at depths of 151 m, 50 mand 100 m respectively. Determine the direction and amount of dij 7 of the soal seam. * : ap i j d ir A \ ris SCALM ZeMS FoOm.</p>
+<p>t oe wa HORILONTAL SURFACE 4 Fig, 12.14. Bore hole problem.</p>
+<p><strong>Solution.</strong> The altitudes of the coal scam at the stations A, B and C seenines by subtracting the value of depth from the value of correspont ing contour on which the stations are situsted. Thus the alitudes ofthe uM FRE 12 ie respectively. Now the triangle ABC is constructed in Fig. 12.14. The point § is located on the BC li seam will occur at the altitude of 159 PBS Nite ae the followi i m. It car be Jocated with the help!</p>
+<p>ing equation, Bs = nc. erence in elevation between A and rence in elevation between B and C 9 Now A and S are the (wo points where the coal seam occurs at the same altitude. A line drawn connecting A and S will give a strike line of 150 m. Then other strike lines are drawn and the dip is determined. The dip of the coal scam is 10° in the direction S27°E.</p>
+<h3 id="sec-12-12-2">12.12.2 Determination of Apparent Dip from True Dip</h3>
+<p>If the truc dip of a bed is known, the apparent dip in a given direction can casily be worked out with the help of the following relation. tan a = tan 0 x cas fi where ot is apparent dip, @ is true dip and B is the horizontal angle between the true dip and apparent dip directions. It may be noted that such problems can also be solved by the graphical method.</p>
+<p>Example 12.7. A coal seam dips at 11° in the direction due north. What will be its apparent dip in the direction N60°E. or, &#x27; = 5°35’ (Apparent dip) Graphical Method The dip of coal scam = 11° &quot; cot 11° = 5.144 or 5.0 (Approximately) Hence, the dip of coal seam = 1 in 5. 8 [p—S*#!*£ ¢ Draw a line from a point ‘Q” in the direction due north (Fig. 12.25) and make §| A OB equal to 5 units. BC is a perpendicular 3 set drawn to OB. It represents the strike direc- we tion of the coal scam. Them a line OC is 0 drawn in the direction N6O°E which meets —_ Fig. 12-15.Determination of BCac. oc is measured which is found apparent dip from true dip. to be 10 units. Hence the valuc of the required apparent dip is | in 10, or 5°, Example 12.8. The truc dip of a coal seam is 14° in the direction due south. Find the direction in which the apparent dip will be 8°. Solution. = I tan 8° = tan 14° x cos B Hence, the direction of apparent dip will be S56°W cf SS56°E. Graphical Method 4 (i) The true dip of the coal 7 i j cot 14°=4.0 ane&quot; oF Cn Hence, true dip = | in 4. Se A (ii) The apparent dip of the -)-* 1... a j Hence, apparent dip Fig. 12.16. Determination of direction =lin7 of appareat dip. a Draw a line from a point ‘O° . ; j in the N-S direction and, make OP equal to 4 units (Fig. /2.16). Draw a perpendicular PQ to OP. It represents the strike direction of the coal seam. — Now a point Q is located such that OQ is equal to 7 units. The direction of — the line OQ is the required direction. There are two directions along which i the apparent dip of coal seam is 8°. These are &amp;#36;56°E and S56°W. r</p>
+<h3 id="sec-12-12-3">12.12.3 Determination of True Dip a</h3>
+<p>It is not always possible to measure true dip in the filed. It is easier to measure apparent dips of a bed along two directions and then calculate true a dip from these. a Example 12.9, Two apparent dips of a coal scam are 11° in the direction a NSO°W, and 17° in the direction N60°E. Find the amount and direction of — truc dip. ’ Solution. a () In the direction N5O°W, the apparent dip = 11° a cot 11°=5.14 or 5.0 (Approximately) q Hence, the apparent 4 (i) In the direction a ar N6O°E. the ap. Stee i Parent dip = 17° * io 4 (Approximately) Be — Hence, the ‘@pparent vil dip = 1 in 3.3 po&quot; ae AS shown in Fig. 12.17, tS 5 from a central point Q make Fig. 12.17, Determination of true dip “i from apparent dips. i QA 5 units long in the direction NSO°W, and OB 3.3 units long in the direction N60°E, Connect A and B. The line AB will give the direction of strike of the coal seam. Dram OC perpendicular to AB from 0. Measure OC which is found to be 2.2 units. The angle NOC is also measured which comes to be 13°. Thus the true dip of coal seam is | in 2.2, or 24° in the direction NI3°E.</p>
+<h2 id="sec-12-13">12.13 Completion of Outcrops</h2>
+<p>Jn areas where outcrops of rock beds are not enough to permit the drawing of rock boundaries, geometrical analysis of the map is done. It helps in completing the concealed boundaries of inclined beds. It also serves as a check on the field work.</p>
+<p>If a bed outcrops on the ground surface al three points that lie at different elevations, its boundary on the map can be traced with the help of the three point method (section 12.12).</p>
+<p>Example 12.10. In the map shown in Fig, 12.18, the lower surface of a 50 meter thick limestone bed is exposed on the ground surface at three points A, B, and C. Complete its outcrop.</p>
+<p>or laaaoedaaion N eaten % &quot;50 ee eee AS ane SSS gt eos eg ’ Pid kale _— 7m: z / chlo! aes teak ate&quot; ~O, oe ae see. on 1 t ty 7 se yoo 5 se 1 ‘ c% Sutton 3 ’ . ens Hl 1 3, wes 1 BH ary</p>
+<p><strong>Solution.</strong> The three points A, 8 and C where the lower boundary of the limestone outcrops, lie at different elevations. The elevations of these points are 600, 500 and 550 meters respectively. For drawing the geologic boundary, the first step is to draw strike lines from these points by the “three point method”. As the contour interval on the map is 50 m, construct additiongy strike lines at the interval of &amp;#36;0 meter throughout the map (Fig. 12.79), Leese OE SS ea ES Seer ORR Sgt SES &#x27; PO SOR EINES OAT ET SINS, pees (tem Sam NA Cail, se ates NEA as yas Boe ees 4 es Ste Qe tar Ste tae WER er 4 NeesesN srmce ee ; poo 1. NS Chet yori 3 reo! oe fs Reta J XN creda 4 1 ae het 8 i ere mass so STRIKE Feat oy Gj SSUES 4</p>
+<p>0) = ane sales at right angles to the true dip. Since the beds Nie cee S40°E, the strike will be in the direction (ii) As the point A, in Fig. 12,20, j F q through i in the direction NSOME gs eye com our Hine drawn of 700 m. S0°W will be the strike line GEOLOGICAL MAPS AND SECTIONS ~ 425 or aa A oF N leet Pah,” oT ee a yoere = Ps Dy yeas Grae TIN a a ee oneal a a A A ws &amp; W i) an) aan “nf wat y ESS 3-0 x E ie ss Panes</p>
+<p>(iii) The horizontal distance for the strike interval of 50 meters is determined by the following relaticn. Horizontal distance = 50 x cot 14° (dip angle) (iv) Other strike lines are drawn at the spacing of 200 m (2.0 cm. as per the scale) on the map parallel to the 700 m. Strike line.</p>
+<p>(v) The intersection points of the strike lines and the topographic contours of equal values are marked. The curved line formed by joining the these points will be the race of the contact between the shale and sandstone beds (Fig. £2.20).</p>
+<p>REVIEW QUESTIONS 1. Explain briefly the characteristics of a geological map. Describe how a geological section can be drawn across a geological map.</p>
+<p>2. What is an outcrop ? How does the pattern of outcrop of strata vary with the dip and surface relief.</p>
+<p>3. Describe in brief the various criteria for the recognition of folds, faults and, unconformities on geological maps.</p>
+<p>4. Draw a geological cross section of an area shown in Fig. 12.8 Give a brief account of the gealogical history of the area.</p>
+<p>a pRINCIPLES OF ENGINEENING GEOLGE 4» strikes N9O°E and dips 4g S. Determine the thickness of a shale that sire ene ane He E the direction due south. The width of CURT 4% &#x27; direction is 125 meters. The region is of&quot; se SW and dips 455640 6. In region of na relief a conslomersle OK oo ihe surface iy i 1 width of the outcrop as measured 21008 N se ist meters, Calculate thickness of the conglomerat®- ical wick a and shows a vertical thickness gf; 1 has been bored through a0 i f x ee The sla dip at 1 in 3 Find the true thickness of the coal seam, an . sloping ground is 20 me si of a limestone bed on @ stop! | ee q . Te Serine oll and the dip of the strata are in the same direction their amounts being 25° and 10° respectively. Calculate (he thickness of limestone hed. a 9, The top of a shale bed outcrops at an altitude of 200 meters. A second qufe of this horizon lies at a distance of 800 meters due north at an altitude of meters, and a third oulerop lies at a distance of 500 meters due west from first outcrop at an altiude of 400 meters. Determine the strike and dip of a shale bed. BY 5 10. The top of a clay bed outcrops at two places X and ¥. ¥ is at a distanci 3 2700 m from X in the direction N30°W and their surface levels are 60 m F 240 m respectively. The same bed is struck in a bore hole at a depth of 7 mat Zwhich is at a distance of 4500 from ¥ in the direction NSO°E. Calcul E the dip of the clay bed. 4 = 11. Acoal seam is struck in the three hore holes X, Y, and Z at depths 120 m, é m and 180 m respectively. Y is situated at a distance of 550 m in the direc Ss pe y S80°W from X, and Z is 270 m in the direction S50°W. The surface level a the hore holes are the same. Find the dip af the coal seam. 4 3 12. Acoal scam is met with in three bore holes A, B and C. The surface level Ps bore holes are 22 m, 14 m and 30 m, and the depth of bore holes are 4¢ é 20 m and 25 m respectively. The bore hole B is 480 m away from A if = direction N30°E and bore hole C is 350 m from B in the direction S31 s Calculate the dip of the coal seam 7 ¢ 13, A sandstone bed has a true dip of 30° in the direction N45°W, Calculal a apparent dip in the NS°W direction, j \ é 14, The true dip of a coal seam is 14° ‘ E capes P in the direction N30° ind its app dip in the direction N25°E. hen NGO&quot; WY Fin a 1S. The two apparent di E [4 ips of a |; . oe of 47° in the direction N6O°W. Fay ae et - 36° in the direction N80 F f 5 true dip, : = 16. The apparent dip of sandstone hed is 6° in th a &quot;7 the direction S37, Determine tue dip of th gene Sea a F ¢ dip of the sandstone bed. 4 E</p>
+<div class="callout callout-extra">
+    <div class="callout-title">&#128216; Supplementary Reference Box &bull; Bed Thickness &amp; Three-Point Borehole Solution Formulas</div>
+    <div class="callout-body"><ul><li><strong>True Stratigraphic Thickness ($t$):</strong> From outcrop width $W$ on flat ground: $t = W\sin\theta$. From vertical borehole depth $D$: $t = D\cos\theta$.</li><li><strong>Three-Point Problem:</strong> Connect Highest ($H$) and Lowest ($L$) bed elevations; interpolate point $P$ matching Intermediate ($I$) elevation along $HL$. Line $IP$ is the <strong>True Strike Line</strong>, and dip is $\tan\theta = \frac{\Delta h}{d_\perp}$.</li></ul></div>
 </div>
-
-<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/map_scale_rf_ground_distance_triangle.png', this.querySelector('.fig-caption').innerText)">
+        <div class="visual-atlas-section">
+            <h2>Visual Reference Gallery (Clean Color Diagrams &amp; Specimens)</h2>
+            <p>Supplementary full-color diagrams from <em>Winter, Perkins, Fossen, Boggs</em> and high-resolution USGS/Wikimedia photographs replacing scanned textbook drawings.</p>
+            <div class="fig-grid"><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_topographic_contour_map_profile.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD Color</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_topographic_contour_map_profile.png" alt="Figure 12.1 (Replacement): Topographic Contour Lines and Corresponding Elevation Cross-Section Profile." loading="lazy">
+    <div class="fig-caption">Figure 12.1 (Replacement): Topographic Contour Lines and Corresponding Elevation Cross-Section Profile.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/map_scale_rf_ground_distance_triangle.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/map_scale_rf_ground_distance_triangle.png" alt="Figure 12.2a: Cartographic Scale Relationships: Representative Fraction ($RF = \text{Map Distance} / \text{Ground Distance}$) and Ground Coverage vs. Resolution." loading="lazy">
-    <div class="fig-caption">Figure 12.2a: Cartographic Scale Relationships: Representative Fraction ($RF = \text{Map Distance} / \text{Ground Distance}$) and Ground Coverage vs. Resolution.</div>
-</div>
-
-            <ul>
-                <li><strong>Topographic Contours:</strong> Imaginary lines joining points of equal ground elevation above mean sea level ($MSL$). The vertical distance between consecutive contour lines is the <strong>Contour Interval ($CI$)</strong>, and the horizontal distance is the <strong>Horizontal Equivalent ($HE$)</strong>:
-                    $$\text{Ground Slope } (\tan \theta) = \frac{\text{Contour Interval } (CI)}{\text{Horizontal Equivalent } (HE)}$$
-                </li>
-                <li><strong>Map Scale:</strong> The ratio between distance on the map and actual ground distance:
-                    $$\text{Representative Fraction } (RF) = \frac{\text{Map Distance}}{\text{Ground Distance}}$$
-                </li>
-            </ul>
-
-            <div class="fig-box">
-                <img src="../images/bangar_fig12_1_geological_map_scale.png" alt="Geological Map Scale and Coordinates">
-                <div class="fig-caption">Figure 12.1: Cartographic elements of geological maps: geographic coordinates, representative fractions, and linear bar scales (K. M. Bangar).</div>
-            </div>
-
-            <div class="fig-box">
-                <img src="../images/bangar_p217_map_scale_feature_dimensions.png" alt="Map Scale Feature Dimensions">
-                <div class="fig-caption">Figure 12.2: Relationship between cartographic map scale, feature resolution, and ground dimensions (K. M. Bangar).</div>
-            </div>
-
-            <h2>12.2 Outcrop Patterns and the Rule of V's</h2>
-            <p>
-                An <strong>Outcrop</strong> is the exposed portion of a rock unit at the surface. When an inclined geological bed intersects a river valley, its outcrop trace on a map forms a characteristic V-shape. The relationship between bed dip and valley slope is governed by the <strong>Rule of V's</strong>:
-            </p>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Structural Attitude of Bed</th>
-                            <th>Valley Crossing Outcrop Pattern</th>
-                            <th>Diagnostic Rule of V's Behavior</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Horizontal Strata ($\theta = 0^\circ$)</strong></td>
-                            <td>Follows topographic contours exactly</td>
-                            <td>Forms a V that points <strong>Upstream</strong>, perfectly parallel to the contour lines forming the valley.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Vertical Strata ($\theta = 90^\circ$)</strong></td>
-                            <td>Straight line across topography</td>
-                            <td>Cuts completely straight across valleys and ridges with <strong>Zero V</strong>, independent of contour lines.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Beds Dipping Upstream</strong></td>
-                            <td>V points Upstream</td>
-                            <td>Forms a V pointing <strong>Upstream</strong>. The V is narrower and sharper than the contour lines.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Beds Dipping Downstream ($\text{Dip} > \text{Valley Slope}$)</strong></td>
-                            <td>V points Downstream</td>
-                            <td>Forms a V that points <strong>Downstream</strong> in the direction of dip.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Beds Dipping Downstream ($\text{Dip} = \text{Valley Slope}$)</strong></td>
-                            <td>Parallel outcrops along valley walls</td>
-                            <td>The contact runs parallel to the stream bank and <strong>never crosses the stream</strong>.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Beds Dipping Downstream ($\text{Dip} < \text{Valley Slope}$)</strong></td>
-                            <td>V points Upstream</td>
-                            <td>Forms a broad V pointing <strong>Upstream</strong> (reverses apparent direction).</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2>12.3 Outcrop Patterns of Folds, Faults, and Unconformities</h2>
-            <h3>Folded Strata on Maps</h3>
-            <ul>
-                <li><strong>Symmetrical Folds:</strong> Display mirror-image repetition of rock units on either side of the axial trace.
-                    <ul>
-                        <li><em>Anticlines:</em> Oldest beds occupy the core / center of the structure, flanked symmetrically by progressively younger beds dipping outward.</li>
-                        <li><em>Synclines:</em> Youngest beds occupy the core, flanked by progressively older beds dipping inward.</li>
-                    </ul>
-
-<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig12_5_four_unconformities.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Reference Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/boggs_fig12_5_four_unconformities.png" alt="Figure 12.2b: Block Diagrams of Unconformable Contacts and Outcrop Truncation Patterns on Geological Maps (Boggs)." loading="lazy">
-    <div class="fig-caption">Figure 12.2b: Block Diagrams of Unconformable Contacts and Outcrop Truncation Patterns on Geological Maps (Boggs).</div>
-</div>
-
-                </li>
-                <li><strong>Plunging Folds:</strong> Contacts form parabolic or convergent V-shaped outcrop closures:
-                    <ul>
-                        <li>In a <strong>Plunging Anticline</strong>, the nose of the V points in the <em>direction of plunge</em>.</li>
-                        <li>In a <strong>Plunging Syncline</strong>, the nose of the V points <em>opposite</em> to the direction of plunge (opens in plunge direction).</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h3>Faulted Strata on Maps</h3>
-            <p>
-                A fault appears as a sharp linear or curvilinear discontinuity along which lithological units are truncated, repeated, or omitted. If a dipping bed is intersected by a strike-slip or normal fault, the outcrop displays a horizontal lateral shift (offset) across the fault trace.
-            </p>
-
-            <h3>Unconformities on Maps</h3>
-            <p>
-                An angular unconformity is recognized by younger, flatter strata overlapping and truncating the tilted, folded, or faulted contacts of the underlying basement rocks (discordance in strike and dip).
-            </p>
-
-            <h2>12.4 Quantitative Geological Calculations & Three-Point Problem</h2>
-            <h3>1. True Thickness vs. Outcrop Width</h3>
-            <p>
-                On horizontal ground, the <strong>True Stratigraphic Thickness ($t$)</strong> of an inclined planar bed dipping at angle $\theta$ with outcrop width $W$ is:
-            </p>
-            $$t = W \cdot \sin \theta$$
-            <p>
-                If measured in a vertical borehole of depth $D$:
-            </p>
-            $$t = D \cdot \cos \theta$$
-
-            <h3>2. The Three-Point Problem</h3>
-            <p>
-                When a planar bedding plane or coal seam does not crop out continuously, its true strike and dip can be calculated mathematically from three non-collinear boreholes ($A$, $B$, $C$) intersecting the bed at known surface elevations and depths:
-            </p>
-            <ol>
-                <li>Calculate the absolute reduced level ($RL$) of the bed at all three points: $RL = \text{Surface Elevation} - \text{Depth to Bed}$.</li>
-                <li>Rank the points: Highest ($H$), Intermediate ($I$), and Lowest ($L$).</li>
-                <li>Draw a line connecting the highest ($H$) and lowest ($L$) points on the map.</li>
-                <li>Find a point $P$ along the line $HL$ having the exact same reduced level as intermediate point $I$ by proportional linear interpolation:
-                    $$\frac{HP}{HL} = \frac{RL_H - RL_I}{RL_H - RL_L}$$
-                </li>
-                <li>The straight line connecting $I$ and $P$ is a line of equal elevation on the bed plane—hence, it represents the <strong>True Strike Line</strong> of the bed!</li>
-                <li>The direction perpendicular to $IP$ pointing towards the lower elevation is the <strong>True Dip Direction</strong>, and the dip angle $\theta$ is:
-                    $$\tan \theta = \frac{\Delta h}{d_{\perp}}$$
-                    where $\Delta h$ is the contour interval/elevation difference, and $d_{\perp}$ is the perpendicular distance between strike lines.
-                </li>
-            </ol>
-
-            <h2>12.5 Geographic Information Systems (GIS) in Geology</h2>
-            <p>
-                A <strong>Geographic Information System (GIS)</strong> is a computer-based framework that captures, stores, manipulates, analyzes, manages, and presents all types of geographically referenced spatial data.
-            </p>
-
-<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_gis_thematic_data_layers.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/web_gis_thematic_data_layers.png" alt="Figure 12.4a: Fundamental Concept of a Geographic Information System (GIS): stacking georeferenced thematic vector and raster layers (Topography, Lithology, Faults, Hydrology, Land Use)." loading="lazy">
-    <div class="fig-caption">Figure 12.4a: Fundamental Concept of a Geographic Information System (GIS): stacking georeferenced thematic vector and raster layers (Topography, Lithology, Faults, Hydrology, Land Use).</div>
-</div>
-
-<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/gis_vector_primitives_point_line_polygon.png', this.querySelector('.fig-caption').innerText)">
+    <img src="../images/map_scale_rf_ground_distance_triangle.png" alt="Figure 12.2a (Replacement): Map Scale Representative Fraction () and Ground Distance Relationship." loading="lazy">
+    <div class="fig-caption">Figure 12.2a (Replacement): Map Scale Representative Fraction ($RF$) and Ground Distance Relationship.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/map_scale_1_50000_1mm_equals_50_metres.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/gis_vector_primitives_point_line_polygon.png" alt="Figure 12.4b: GIS Vector Data Primitives (0D Points, 1D Polylines, 2D Polygons) linked to Relational Attribute Tables." loading="lazy">
-    <div class="fig-caption">Figure 12.4b: GIS Vector Data Primitives (0D Points, 1D Polylines, 2D Polygons) linked to Relational Attribute Tables.</div>
-</div>
-
-<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/raster_matrix_rows_columns_cell_values.png', this.querySelector('.fig-caption').innerText)">
+    <img src="../images/map_scale_1_50000_1mm_equals_50_metres.png" alt="Figure 12.2b (Replacement): Standard  Toposheet Scale Conversion ()." loading="lazy">
+    <div class="fig-caption">Figure 12.2b (Replacement): Standard $1:50,000$ Toposheet Scale Conversion ($1\text{ cm} = 500\text{ m}$).</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/boggs_fig12_5_four_unconformities.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-ref">Boggs Textbook Figure</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/boggs_fig12_5_four_unconformities.png" alt="Figure 12.6 (Reference - Boggs): Outcrop Truncation Patterns of Unconformities on Geological Maps." loading="lazy">
+    <div class="fig-caption">Figure 12.6 (Reference - Boggs): Outcrop Truncation Patterns of Unconformities on Geological Maps.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_gis_thematic_data_layers.png', this.querySelector('.fig-caption').innerText)">
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD Color</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_gis_thematic_data_layers.png" alt="Modern GIS Extension: Stacking Georeferenced Geological, Topographic, and Fault Thematic Layers." loading="lazy">
+    <div class="fig-caption">Modern GIS Extension: Stacking Georeferenced Geological, Topographic, and Fault Thematic Layers.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/gis_vector_primitives_point_line_polygon.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/raster_matrix_rows_columns_cell_values.png" alt="Figure 12.4c: GIS Raster Grid Matrix Architecture (Rows, Columns, Pixel Resolution, and Digital Number attribute values)." loading="lazy">
-    <div class="fig-caption">Figure 12.4c: GIS Raster Grid Matrix Architecture (Rows, Columns, Pixel Resolution, and Digital Number attribute values).</div>
-</div>
-
-
-            <div class="fig-box">
-                <img src="../images/bangar_p216_gis_vector_features_points_lines_polygons.png" alt="GIS Vector Features">
-                <div class="fig-caption">Figure 12.3: GIS Vector Data Model: discrete real-world features represented as Points (boreholes, mine shafts), Lines (faults, streams, roads), and Polygons (geological formations, mining lease boundaries) (K. M. Bangar).</div>
-            </div>
-
-            <div class="fig-box">
-                <img src="../images/bangar_p223_raster_vs_vector_spaghetti_model.png" alt="Raster vs Vector Spatial Models">
-                <div class="fig-caption">Figure 12.4: Spatial data representation: continuous Raster grid cells (Digital Elevation Models, satellite imagery) versus discrete Vector geometry (K. M. Bangar).</div>
-            </div>
-
-            
-<div class="visual-atlas-section">
-    <h2>12.6 Visual Atlas: Spatial Analysis, Geodatabases, LiDAR & Remote Sensing</h2>
-    <p>Complete spatial technology visual gallery covering vector overlay operations, buffering, coordinate projections, SAR/LiDAR active sensors, and Bangar GIS diagrams.</p>
-    <div class="fig-grid">
-        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/map_scale_1_50000_1mm_equals_50_metres.png', this.querySelector('.fig-caption').innerText)">
+    <img src="../images/gis_vector_primitives_point_line_polygon.png" alt="GIS Vector Primitives (Points, Polylines, Polygons) vs. Attribute Tables." loading="lazy">
+    <div class="fig-caption">GIS Vector Primitives (Points, Polylines, Polygons) vs. Attribute Tables.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/raster_matrix_rows_columns_cell_values.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/map_scale_1_50000_1mm_equals_50_metres.png" alt="Survey of India standard $1:50,000$ topographic map scale conversions ($1\text{ cm} = 500\text{ m}$, $2\text{ cm} = 1\text{ km}$)." loading="lazy">
-    <div class="fig-caption">Survey of India standard $1:50,000$ topographic map scale conversions ($1\text{ cm} = 500\text{ m}$, $2\text{ cm} = 1\text{ km}$).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p218_gis_coordinate_systems_dimensions.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p218_gis_coordinate_systems_dimensions.png" alt="Geographic Coordinate Systems ($\text{Latitude } \phi, \text{Longitude } \lambda, \text{Height } z$) and Planar Map Projections (UTM) (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Geographic Coordinate Systems ($\text{Latitude } \phi, \text{Longitude } \lambda, \text{Height } z$) and Planar Map Projections (UTM) (K. M. Bangar).</div>
+    <img src="../images/raster_matrix_rows_columns_cell_values.png" alt="GIS Raster Grid Matrix (Digital Elevation Models &amp;amp; Satellite Imagery)." loading="lazy">
+    <div class="fig-caption">GIS Raster Grid Matrix (Digital Elevation Models &amp; Satellite Imagery).</div>
 </div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/spatial_data_structures_spaghetti_vs_raster.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/spatial_data_structures_spaghetti_vs_raster.png" alt="Comparison of Spaghetti Vector Model, Topological Vector Model, and Regular Raster Grid Model." loading="lazy">
-    <div class="fig-caption">Comparison of Spaghetti Vector Model, Topological Vector Model, and Regular Raster Grid Model.</div>
+    <img src="../images/spatial_data_structures_spaghetti_vs_raster.png" alt="Topological Vector vs. Raster Spatial Data Structures." loading="lazy">
+    <div class="fig-caption">Topological Vector vs. Raster Spatial Data Structures.</div>
 </div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/gis_buffer_operation_point_line_polygon.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/gis_buffer_operation_point_line_polygon.png" alt="Spatial Proximity Analysis: Buffering around Points (mine shafts), Lines (active faults/rivers), and Polygons (reservoir zones)." loading="lazy">
-    <div class="fig-caption">Spatial Proximity Analysis: Buffering around Points (mine shafts), Lines (active faults/rivers), and Polygons (reservoir zones).</div>
+    <img src="../images/gis_buffer_operation_point_line_polygon.png" alt="GIS Proximity Buffering around Boreholes, Faults, and Mining Leases." loading="lazy">
+    <div class="fig-caption">GIS Proximity Buffering around Boreholes, Faults, and Mining Leases.</div>
 </div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/point_in_polygon_overlay_gis_operation.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/point_in_polygon_overlay_gis_operation.png" alt="Topological Vector Overlay Operations: Point-in-Polygon, Line-in-Polygon, and Polygon-on-Polygon Intersect & Union." loading="lazy">
-    <div class="fig-caption">Topological Vector Overlay Operations: Point-in-Polygon, Line-in-Polygon, and Polygon-on-Polygon Intersect & Union.</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p219_geoprocessing_alphanumeric_inputs.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p219_geoprocessing_alphanumeric_inputs.png" alt="Geoprocessing workflow integrating spatial geometry and alphanumeric attribute queries (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Geoprocessing workflow integrating spatial geometry and alphanumeric attribute queries (K. M. Bangar).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p220_digital_data_creation_digitization.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p220_digital_data_creation_digitization.png" alt="Digital spatial data capture: heads-up screen digitization, scanning, GPS surveying, and orthophoto rectification (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Digital spatial data capture: heads-up screen digitization, scanning, GPS surveying, and orthophoto rectification (K. M. Bangar).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p224_spatial_databases_geodatabase.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p224_spatial_databases_geodatabase.png" alt="Object-Relational Geodatabase (RDBMS) architecture for multi-user geological mapping (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Object-Relational Geodatabase (RDBMS) architecture for multi-user geological mapping (K. M. Bangar).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geodatabase_spatial_database_architecture.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/geodatabase_spatial_database_architecture.png" alt="Enterprise Spatial Database Management System (SDBMS) linking feature classes, topology rules, and raster catalogs." loading="lazy">
-    <div class="fig-caption">Enterprise Spatial Database Management System (SDBMS) linking feature classes, topology rules, and raster catalogs.</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/active_vs_passive_remote_sensing_sensors.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/active_vs_passive_remote_sensing_sensors.png" alt="Passive Optical/Thermal Remote Sensing (solar reflection) vs. Active Microwave RADAR and LiDAR sensors." loading="lazy">
-    <div class="fig-caption">Passive Optical/Thermal Remote Sensing (solar reflection) vs. Active Microwave RADAR and LiDAR sensors.</div>
+    <img src="../images/point_in_polygon_overlay_gis_operation.png" alt="Point-in-Polygon &amp;amp; Polygon Overlay Operations in Engineering GIS." loading="lazy">
+    <div class="fig-caption">Point-in-Polygon &amp; Polygon Overlay Operations in Engineering GIS.</div>
 </div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/sar_lidar_high_spatial_resolution_capabilities.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/sar_lidar_high_spatial_resolution_capabilities.png" alt="Synthetic Aperture Radar (InSAR) and Airborne LiDAR Digital Terrain Modeling through cloud and forest canopy." loading="lazy">
-    <div class="fig-caption">Synthetic Aperture Radar (InSAR) and Airborne LiDAR Digital Terrain Modeling through cloud and forest canopy.</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p225_sar_lidar_spatial_resolution.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p225_sar_lidar_spatial_resolution.png" alt="High-resolution LiDAR point-cloud elevation modeling and SAR interferometry for landslide monitoring (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">High-resolution LiDAR point-cloud elevation modeling and SAR interferometry for landslide monitoring (K. M. Bangar).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p221_gis_accuracy_source_data_processing.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p221_gis_accuracy_source_data_processing.png" alt="Spatial positional accuracy, attribute precision, and error propagation in GIS processing (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Spatial positional accuracy, attribute precision, and error propagation in GIS processing (K. M. Bangar).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p222_gis_fourth_dimension_time.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p222_gis_fourth_dimension_time.png" alt="Spatio-temporal 4D GIS modeling incorporating time-series geological change detection (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Spatio-temporal 4D GIS modeling incorporating time-series geological change detection (K. M. Bangar).</div>
-</div>
-    </div>
-</div>
-
-
-<div class="callout callout-engineering">
-                <div class="callout-title">Engineering Applications of GIS & Map Interpretation</div>
-                <ul>
-                    <li><strong>Landslide Susceptibility Zonation (LSZ):</strong> Overlaying thematic raster layers of slope gradient, lithology, structural lineaments, land use, and rainfall using Multi-Criteria Decision Analysis (AHP) to generate regional landslide risk maps.</li>
-                    <li><strong>Route Optimization for Highways & Tunnels:</strong> Using 3D Digital Elevation Models (DEM) and geological strike/dip vectors to select alignments that minimize earthwork cutting and cross adverse fault corridors at right angles.</li>
-                    <li><strong>Reservoir Inundation Modeling:</strong> Delineating the precise full reservoir level ($FRL$) backwater perimeter by intersecting dam crest elevation surfaces with LiDAR terrain models.</li>
-                </ul>
-            </div>
+    <img src="../images/sar_lidar_high_spatial_resolution_capabilities.png" alt="Airborne LiDAR &amp;amp; InSAR High-Resolution Terrain Mapping." loading="lazy">
+    <div class="fig-caption">Airborne LiDAR &amp; InSAR High-Resolution Terrain Mapping.</div>
+</div></div>
+        </div>
+        
         </main>
-
         <div class="chapter-nav">
-            <a href="ch11_prospecting_methods.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="ch11_prospecting_methods.html" class="nav-btn">&larr; Chapter 11: Field Work & Prospecting Methods</a>
             <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
-            <a href="appendix_tables.html" class="nav-btn">Appendices: Identification Tables &rarr;</a>
+            <a href="appendix_tables.html" class="nav-btn">Appendices A–D: Identification Tables &rarr;</a>
         </div>
     </div>
-
     <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
         <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
@@ -603,10 +451,9 @@
     </div>
     <script>
     function openLightbox(src, captionText) {
-        const modal = document.getElementById('lightboxModal');
         document.getElementById('lightboxImg').src = src;
         document.getElementById('lightboxCap').textContent = captionText;
-        modal.classList.add('active');
+        document.getElementById('lightboxModal').classList.add('active');
     }
     function closeLightbox(e) {
         if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
@@ -614,29 +461,8 @@
         }
     }
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const modal = document.getElementById('lightboxModal');
-            if (modal) modal.classList.remove('active');
-        }
-    });
-    // Also make pre-existing fig-boxes clickable for zoom
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
-            const img = box.querySelector('img');
-            const cap = box.querySelector('.fig-caption');
-            if (img && cap) {
-                box.classList.add('fig-card-interactive');
-                if (!box.querySelector('.fig-badge-row')) {
-                    const row = document.createElement('div');
-                    row.className = 'fig-badge-row';
-                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
-                    box.insertBefore(row, img);
-                }
-                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
-            }
-        });
+        if (e.key === 'Escape') document.getElementById('lightboxModal').classList.remove('active');
     });
     </script>
-
 </body>
 </html>

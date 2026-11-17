@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 11: Prospecting Methods & Applied Geophysics | Bangar Engineering Geology</title>
+    <title>Chapter 11: Field Work and Prospecting Methods | Principles of Engineering Geology - K. M. Bangar</title>
     <style>
     :root {
         --primary: #1e3a8a;
@@ -25,7 +25,7 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Georgia, serif;
         background: var(--bg);
         color: var(--text-main);
-        line-height: 1.8;
+        line-height: 1.82;
         padding: 0;
     }
     .top-nav {
@@ -58,16 +58,16 @@
         color: #e2e8f0;
     }
     .container {
-        max-width: 960px;
-        margin: 40px auto;
+        max-width: 980px;
+        margin: 36px auto;
         padding: 0 24px 60px 24px;
     }
     .chapter-header {
         background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
         color: white;
-        padding: 40px;
+        padding: 36px 40px;
         border-radius: var(--radius);
-        margin-bottom: 36px;
+        margin-bottom: 32px;
         box-shadow: var(--shadow-lg);
     }
     .chapter-num {
@@ -79,15 +79,24 @@
         margin-bottom: 8px;
     }
     .chapter-title {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         font-weight: 800;
         line-height: 1.25;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
     }
     .chapter-desc {
-        font-size: 1.05rem;
+        font-size: 1.02rem;
         color: #bfdbfe;
-        max-width: 760px;
+        max-width: 780px;
+    }
+    .edition-note {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-size: 0.92rem;
+        margin-bottom: 24px;
     }
     main {
         background: var(--card-bg);
@@ -98,110 +107,84 @@
     }
     h2 {
         color: var(--primary-dark);
-        font-size: 1.55rem;
+        font-size: 1.5rem;
         font-weight: 700;
-        margin: 32px 0 16px 0;
+        margin: 34px 0 14px 0;
         padding-bottom: 8px;
         border-bottom: 2px solid var(--border);
     }
     h3 {
         color: var(--primary);
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         font-weight: 600;
-        margin: 24px 0 12px 0;
+        margin: 22px 0 10px 0;
     }
-    p { margin-bottom: 18px; font-size: 1.05rem; }
-    ul, ol { margin: 0 0 20px 24px; font-size: 1.05rem; }
-    li { margin-bottom: 8px; }
-    .table-container {
-        overflow-x: auto;
+    p { margin-bottom: 14px; font-size: 1.03rem; text-align: justify; }
+    p.book-item { padding-left: 18px; border-left: 2px solid #e2e8f0; }
+    p.question-item { background: #f8fafc; padding: 10px 14px; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 10px; }
+    /* Supplementary Extra Info Box */
+    .callout {
+        border-left: 5px solid #0284c7;
+        background: #f0f9ff;
+        border-top: 1px solid #bae6fd;
+        border-right: 1px solid #bae6fd;
+        border-bottom: 1px solid #bae6fd;
+        padding: 18px 22px;
         margin: 24px 0;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        box-shadow: 0 2px 6px rgba(2, 132, 199, 0.08);
     }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.95rem;
+    .callout-extra {
+        border-left-color: #d97706;
+        background: #fffbeb;
+        border-top-color: #fde68a;
+        border-right-color: #fde68a;
+        border-bottom-color: #fde68a;
     }
-    th, td {
-        padding: 12px 14px;
-        border: 1px solid var(--border);
-        text-align: left;
+    .callout-title {
+        font-weight: 800;
+        color: #92400e;
+        margin-bottom: 8px;
+        font-size: 1.02rem;
+        letter-spacing: 0.3px;
     }
-    th {
-        background: var(--primary-light);
-        color: var(--primary-dark);
-        font-weight: 700;
-    }
-    tr:nth-child(even) td { background: #f8fafc; }
+    .callout-body { font-size: 0.98rem; color: #1f2937; }
+    .callout-body ul { margin: 8px 0 4px 22px; }
+    .callout-body li { margin-bottom: 6px; }
+    /* Interactive Visual Figures */
     .fig-box {
-        background: #f1f5f9;
+        background: #f8fafc;
         border: 1px solid var(--border);
         border-radius: var(--radius);
         padding: 16px;
-        margin: 28px 0;
+        margin: 26px 0;
         text-align: center;
+    }
+    .fig-card-interactive {
+        cursor: zoom-in;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .fig-card-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent);
     }
     .fig-box img {
         max-width: 100%;
+        max-height: 460px;
+        width: auto;
         height: auto;
         border-radius: 8px;
         box-shadow: var(--shadow);
         background: white;
+        object-fit: contain;
     }
     .fig-caption {
         font-size: 0.9rem;
         color: var(--text-muted);
         margin-top: 10px;
         font-style: italic;
-    }
-    .callout {
-        border-left: 4px solid var(--accent);
-        background: #eff6ff;
-        padding: 18px 20px;
-        margin: 24px 0;
-        border-radius: 0 var(--radius) var(--radius) 0;
-    }
-    .callout-title {
-        font-weight: 700;
-        color: var(--primary-dark);
-        margin-bottom: 6px;
-    }
-    .callout-engineering {
-        border-left-color: var(--accent-amber);
-        background: #fffbeb;
-    }
-    .chapter-nav {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid var(--border);
-    }
-    .nav-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 18px;
-        background: var(--primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: background 0.2s;
-    }
-    .nav-btn:hover { background: #1d4ed8; }
-    
-    /* Visual Atlas & Interactive Figure Enhancements */
-    .fig-card-interactive {
-        cursor: zoom-in;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        position: relative;
-    }
-    .fig-card-interactive:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--accent);
+        text-align: center;
     }
     .fig-badge-row {
         display: flex;
@@ -222,14 +205,9 @@
     .badge-web { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
     .badge-hd { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
     .badge-ref { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
-    .badge-bangar { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
-    .zoom-hint {
-        font-size: 0.75rem;
-        color: #64748b;
-        font-weight: 600;
-    }
+    .zoom-hint { font-size: 0.75rem; color: #64748b; font-weight: 600; }
     .visual-atlas-section {
-        margin-top: 44px;
+        margin-top: 40px;
         padding-top: 24px;
         border-top: 3px solid var(--primary-light);
     }
@@ -239,23 +217,35 @@
         gap: 22px;
         margin: 24px 0;
     }
-    .fig-grid .fig-box {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: #f8fafc;
-    }
-    .fig-grid .fig-box img {
-        max-height: 290px;
-        width: 100%;
-        object-fit: contain;
-        margin: 0 auto;
-    }
+    .fig-grid .fig-box { margin: 0; display: flex; flex-direction: column; justify-content: space-between; }
+    .fig-grid .fig-box img { max-height: 290px; width: 100%; }
     @media (max-width: 640px) {
         .fig-grid { grid-template-columns: 1fr; }
+        main { padding: 22px; }
     }
-    /* Fullscreen Lightbox Modal */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+    .nav-btn:hover { background: #1d4ed8; }
+    /* Fullscreen Lightbox */
     .lightbox-overlay {
         display: none;
         position: fixed;
@@ -273,7 +263,6 @@
         max-width: 94vw;
         max-height: 80vh;
         border-radius: 8px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         background: white;
         padding: 8px;
         object-fit: contain;
@@ -284,11 +273,9 @@
         max-width: 850px;
         text-align: center;
         font-size: 1rem;
-        line-height: 1.5;
         background: rgba(30, 41, 59, 0.85);
         padding: 10px 20px;
         border-radius: 8px;
-        border: 1px solid rgba(255,255,255,0.15);
     }
     .lightbox-close {
         position: absolute;
@@ -296,19 +283,13 @@
         right: 28px;
         color: white;
         font-size: 2.2rem;
-        font-weight: bold;
         cursor: pointer;
         background: rgba(255,255,255,0.12);
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         border: none;
     }
-    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
-
     </style>
     <script>
     window.MathJax = {
@@ -321,261 +302,143 @@
 <body>
     <header class="top-nav">
         <a href="../index.html">&larr; Principles of Engineering Geology</a>
-        <span class="book-badge">K. M. Bangar &bull; Digital Edition</span>
+        <span class="book-badge">K. M. Bangar &bull; Faithful Illustrated Edition</span>
     </header>
-
     <div class="container">
         <div class="chapter-header">
             <div class="chapter-num">Chapter 11</div>
-            <h1 class="chapter-title">Prospecting Methods & Applied Geophysics</h1>
-            <p class="chapter-desc">Subsurface geological exploration: Gravity, Magnetic, Electrical Resistivity (Wenner & Schlumberger arrays), Seismic Refraction, and Radiometric methods for mineral, groundwater, and engineering investigations.</p>
+            <h1 class="chapter-title">Field Work and Prospecting Methods</h1>
+            <p class="chapter-desc">Geological mapping, surface and subsurface prospecting, core drilling, geophysical methods (gravity, magnetic, electrical, seismic, radiometric), and geochemical prospecting.</p>
         </div>
-
+        <div class="edition-note">
+            <strong>&#128214; Faithful Line-by-Line Textbook Edition:</strong> The body text below follows <strong>K. M. Bangar&#39;s <em>Principles of Engineering Geology</em></strong> line by line. All original scanned diagrams have been replaced with clean, full-color geological figures and field photographs from authoritative reference textbooks (<em>Winter, Perkins, Fossen, Boggs, Van der Pluijm &amp; Marshak</em>) and USGS/Wikimedia Commons. Any supplementary notes or modern formulas are clearly separated inside amber <strong>Supplementary Reference Boxes</strong>.
+        </div>
         <main>
-            <h2>11.1 Fundamental Principles of Geophysical Prospecting</h2>
-            <p>
-                <strong>Geophysical Prospecting</strong> is the indirect remote detection, delineation, and mapping of subsurface structures, mineral deposits, groundwater aquifers, and bedrock topography by measuring physical property contrasts at the Earth&#39;s surface. An anomalous deviation from the regional background field indicates a subsurface target:
-            </p>
-
+<p>I ~~... Prospecting Methods } “ - lz 11.1, FIELD WORK \ a The geological field work is carried out to scarch mineral deposits and : to explore round for many civil engineering works. During the geological . survey sufficient data are gathered to prepare geologic maps and reports ‘ about a particular area of interest. i ; LLL Field Equipments c ‘The equipments that are commonly required for doing a geological field Be work are as follows.</p>
+<p class="book-item"><strong>(i) Topographic map.</strong> (é) Compass Gif) Heanmner r (i) Gv) Haversack (y) Altimeter | .</p>
+<p class="book-item"><strong>(vi) Measuring tape (vii) Ficld notebook.</strong> cr:</p>
+<p><strong>Topographic Map.</strong> First the topographic map of the arca to be inves- | d tigated is procured, It is the most important tool of the geological field work. ‘The map should show topographic details on a sufficiently large scale, that is lem = 2.5 km or 1 : 50,000. It serves us a hase map for systematic field a Work and geological mapping Compass. A magnetic compass is used for finding directions, taking &quot; traverses and lucating one&#x27;s own position on the map. The magnetic needle ‘ of the compass always points towards the magnetic north. The chief: compasses used by geologists for the field work are : (a) “clinometer compass”, and (b) “Briution compass”. These compasses have sons additional arran: 364 PRINCIPLES OF ENGINEERING GEOLOGY gements for measuring dips of bedding plancs. Branton in superior to, clinometer as it can also be used as a hand Jevel 4q MiRgoR etinomerca LEVEL SEF j Fig. 11.1. Brunton compass. a The various parts of a Bruntan compass are shown in Fig. 14.2. It consists of three units : (2) a clinometer, used for measuring dip angles, (ay i a compass, used for measuring direciions, and (¢) a sighting device, used j taking bearings and in hand laveling. While measuring dip, not only angie j but direction of dip must also be noted. The sides of the body of Brunton are made plane and parallel. One of these sides is placed on an inclined bedding plane in the direction of dip. In this position the dial of the instru: ment lies in the vertical plane. The tube bubble of the clinometer is then j centred by rotating a lever. The amount of dip is rad on the inner scale in f degrees. oa &#x27; The compass direction of tie horizontal line on an inclined plane, is E called “strike”. In order to measure a compass direction, the Brunton is held face up. It is then leveled by using the circular level bubble. The hinged mirror and sight help in taking bearings of selected points. The reacling of ; directions are taken on the outer circular scale, é Hammer, A hammer is essential for chipping rocks and collecting rock samples. Geological hammers generally have one chisel end and another flat end. The flat end is used for breaking rocks while the chisel end is used for trimming and sizing the specimens, The common field hammers may weigh 0.5 to 1.0 kilogram. ; Haversack. It is used for carrying compass, notebooks and rock samples collected in the field, 3 wo _Aimeter Aimer is barometer which is used for determining — . Along with compass, altimeter greatly helps i ing outcrops in mountainous arcas Greatly Delps in local Measuring Ke &amp;#36; as : ing Tape. A steel of inetallic tape of 30 meter length and a p it pe tape of 2 ructer length is required for the field work. The first i a aeons ons measuring traverse lines, etc, and the 4 6 shorter units such as thickness Of strata, veins, etc, 4 = seh a + gy FIELD WORK AND PROSPECTING METHODS sae nn&quot; Field Notebed: A Te Rotcbook is used for keeping record of Peay. servations made in the field. Field notes should be brief ut clear ames hea contain the following information eee wey 1 1. The exact location of an outcrop ay a 2. Nature of the rock as scest in the outcrop, ss 3. Dip and strike of rock beds and other structural features like ripple marks, current bedding, etc 4, Location of samples collected.</p>
+<p>5, Relation between different rock types ! bi 6. Any other special information: f,</p>
+<h3 id="sec-11-1-2">11.1.2 Method of Field Work ep</h3>
+<p><strong>Preliminary Survey.</strong> Before doing filed mapping one should first un- . “aa dertake a rapid reconnaissance of the target area hy taking topographical Ses map. This will help in choosing suitable mapping procedures and in getting \ os “ the general idew about the geological problems. The reconnaissance traverses i. should be planned in such a manner as to come across the diflerent rock types present in the area. This is usually done by moving along the direction ize of dip of rocks. wa Geological Mapping. Afier the prelininary survey detailed examination p is conducted and geological mapping is started. The traverses should be carefully planned and followed, and contacts between rock types are marked | f # on the topographical map. Whenever cxposures of rocks are met with, they i ( should be examined carefully. All available information-about the outcrop should be recorded in the ficld notebook. If necessary, sketches may he ae 4 drawn and photographs may he taken. (57&gt;75-@ — Representative samples of este! te rocks of proper size (10cmx 7.Scm conGhomexate GRANITE rote x 2.5cm) are collected for eee laboratory study. They are labelled rey pesca properly. The label should bear ~ Oe sample number, the locality from sguegveNe Gunes \ , which the samples are taken, name siisiasi of the rock, and other details about EZ \ TE seven While marking the boundaries. “Say g uate z of rock types and making a a8 Oe geological map, the location and \ eee Pind altitude of contacts must be deter- =| a Me mined or inferred. On a LAA % ob eee ical man many locati LIMESTONE denise ” topographical tap many earitend Tig, 112, Lalelagical symbols. =o see ean be determined accurately * Ras ar ad ag ?</p>
+<p>i PRINCIPLES OF ENGINEERING GEOLOgy ; * ape 4 - s that are eenerall, d 7 - nts, Cultural features that..&lt; &quot;t rea atee aie Hi oe especialy ixeTOL J establishing locationg, slown on reba ach ‘are concealed under soil, the boundaries may bg q ieee o armiy and variations in the soil colour. ey Portions of the bounties have to be interpolated benwecn exposures of 1510 Tiay lypes. seca a . ion is covered and the Bcological y the whole area in question is ¢ Sed The different rock unils are shown by different colourg. ‘ Saale (Fig. 11.2). Dip, strike, cleavae, joints, faults, ete. are al, a A STRIKE AND DIP Pa FAULT es FAULT WITH 7 STRIKE AND Pn LA Dewar HRow a HORIZONTAL BEDS A SeINTE, VER TICRS F x AMIS OF ANTICUME ae JOINTS DIPPING MC AXIS OF SVWCLIWE a JOINTS HORIZONTAL 10°” we AXIS OF FoLD IWcLineD : ,</p>
+<p><strong>Laboratory Work.</strong> Afier completing the field work, the rock samples are brought in the laboratory for correct identification, Thin sections of the ails are prepared and examined tinder the petrological microscope. Such ; oni ead ig the understanding of mineral composition and texture of the reck. A correlated picture of the geological structure of the area is also made during the laboratory work, 4 q ieee eer us Bore UE ‘formation obtained from the field work and : fellows k Pied in the form of 4 Heat report. Its outline is as a q (a) Introduction, BS FIELO WORK ANO PROSPECTING METHODS 367 x (b) A brief account of the earlier work, if any ie (c) Statement of actual observations, findings and inferences made as eth a result of the field work and laboratory work. ee (d) The report should he secompanied by the prepared geological map i and sections to show the geological structures and history of the area.</p>
+<h2 id="sec-11-2">11.2 Prospecting Methods</h2>
+<p>The object of prospecting of an area is : (i) to search ore deposits, (i) to know the nature of overburden, (iii) to determine depth, shape. size. and grade of ore deposits, (iv) Lo determine the geologic structures, and (v) to discover the ground water conditions. The mineral exploration includes two activities. The first is “prospecting” which is mainly concerned with the age outlining of mineral targets for exploration, and the second is “exploration” a which consists of proving of targets outlined during prospecting. The prospecting methods are broadly classified into two groups : (/) airborne prospecting methods, and (ii) ground provpecting methods, 3 Airborne Prospecting Methods. The airhome prospecting methods F include “remote sensing methods” in which photogeelogical study is under- j taken, and “aerial geophysical prospecting metliods”. By these methods ces large areas are covered quickly and target areas are outlined for ground r prospecting.</p>
+<p><strong>Ground Prospecting Methods.</strong> The ground prospecting methods are broadly classified into two groups : (i) surface methods, and (ii) geophysical methods. La surface prospecting methods data are obtained by direct observation, Most of the information comes from natural exposures and artificial é openings such as pitting, trenching, drilling, etc. In the geophysical methods. the information is obtained indirectly by studying the physical properties of rocks, 1. Surface prospecting methods 7 (i) Geological mapping. : ces (ii) Test pitting, trenching, and aditing.</p>
+<p>(iii) Augering and washboring.</p>
+<p class="book-item"><strong>(iv) Drilling xs 2.</strong> Geophysical methods one (i) Gravity methods ad (fi) Magnetic methods (iii) Electrical methods (iv) Seismic methods. a Chas AL.3. SURFACE PROSPECTING METHODS. J ‘ Geological Mapping. Before starting the prospecting work, a target: &#x27; area that can yield mineral deposits, is selected. Then its geological map is , Prepared on a suitable scale, Such a map shows topography, rock outcrops, and structural features such as dip, strike, folds, faults, etc. This sort of map &#x27; gives un idea of the Length and width of the deposit. I also serves as a base it map for planning out a trenching, pilting or drilling programme. a ‘Trenching. A “trench” is a qarrow lincar excavation which is mude to. i. expuse ore bodies concealed under soil cover. The tenches may be 6 to 9 i meter long, | to 1.5iucter wide, and 2 to 2.5 meter dcep. They are commonly dug across the strike of the ore body, al intervals of 15 to 150 meters. The spacing of renches depends upon the consistency of data. Prospecting by” i trenching is generally done when the orc outcrops are narrow and the soil) caver is thin (about one meter). The trenching gives reliable information i | about the geology, structure, extension and grade variation of the ore body. Ht ‘This method has been adopted as a major prospecting method in may i-on id ore and bauxite eae 4 ao | Pitting. Thoiprocess of digging rectangular openings to penetralc soil. 4 sas cover to reach oft tinies conceaied iifiderneath is called “pitting”: The q ey ! common dimension of pits is 1.2m x 1.2m x 6m. However pits may be sunk ie toa depth of ahout 10 meters beyond which they become very expensive, t Piuting is a very useful method of prospecting those ore bodies which arc et flat or gently dipping and lying ncar the ground surface. For steeply dipping oe ore bodies and those having linear and narrow outcrops, pitting would not be favourable. The pattem of the layout of the pits may be regular or oh irregular. In a regular system pits are sunk in rows in grid or triangular \ pattern. Pitting is an imporiant method of prospecting in many bauxite and 4 se 5) iron are deposits. a ne Aditting. The “adits” we horizontal openings which are dug in moun- ‘ f tainous terrain to explore ore bodies. An adit many be driven across or along ay the strike of rocks. [I should be dug in such a way so that ata later stage il “a could be used as an opening for exploiting the ore 4 of Augering and Washboring. Augering and washboring are commonly 1 q used lor prospecting of flat and homogencous deposits like clays which are 4 ma concedaled under a thin cover of softandunconsolidated materials, “Auger cll é Pe Sole method of putting down holes of about 2.5 cm in diameter co . His screwed into te gi a Tinipe aa 2 altached to the upper end, Ne eround by turning ona T-pipe a P In “wastboring” a hole is dug j as 4 - water through the wash-pipe, The Bile pees ay rite a jet of =e 4 sche ‘ comes to the surface a8 2s “Suspension in water where it is examined and identified. 4 . v mers a ‘4 FIELD WORK AND PROSPECTING METHODS 389 4 Dritling. Drilling is an important method of prospecting subsurface heh rocks and ore deposits. In drilling data are collected by direct penetration base ‘of subsurface rocks by drill holes. The samples of rocks arc obtained in the seek form of cylindrical cores or rock fragments, The drill holes provide the Ra following informations. te 1. Size, shape and morphatogy of the ore body.</p>
+<p>2. Geological structures and number of lodes present. &quot; 3. Nature of the host rocks.</p>
+<p class="book-item"><strong>4. Composition and grade of the ore body.</strong> During prospecting, drill holes are located at certain intervals in certain directions depending upon the regularity of the orc body and its structure, ki In most cases, the test holes are drilled systematically in a grid pattern. In re this pattern, the system of “diminishing squares&quot; is adopted. First a gird of perce large syuares is Jaid out and the holes are drilled at each comer of the Lica squares. In case of simple deposits the grid lines may be kept 300—400 aa meters apast, while in complex and intricate deposits, this interval may be reduced to 200—300 meters and 100—200 meters respectively. Subsequently for closer examination, each grid is subdivided into four small squares and more holes are drilled at their comers. Thus systematic geologi- porate cal dala are obtained for the entire deposit. iB For every drill hole cores should be carefully logged and vertical sections of the geological formations penetrated shauld be preparcd. The positions of drill holes are marked properly on the base map of the area, and a map showing variations of grade of the ore is prepared. Then the portions P af it which have the proper tenor of ore are delineated and the area computed for estimating the reserve. f</p>
+<h2 id="sec-11-4">11.4 Geophysical Prospecting</h2>
 <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geophysical_methods_units_gravity_magnetic.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/geophysical_methods_units_gravity_magnetic.png" alt="Figure 11.0a: Overview of Geophysical Exploration Methods, Physical Property Contrasts, Measurement Units (mGal, nT, $\Omega\cdot\text{m}$, $\text{m/s}$), and Depth Penetration." loading="lazy">
-    <div class="fig-caption">Figure 11.0a: Overview of Geophysical Exploration Methods, Physical Property Contrasts, Measurement Units (mGal, nT, $\Omega\cdot\text{m}$, $\text{m/s}$), and Depth Penetration.</div>
+    <img src="../images/geophysical_methods_units_gravity_magnetic.png" alt="Figure 11.4 (Replacement): Geophysical Prospecting Methods, Target Physical Contrasts, and Measurement Units." loading="lazy">
+    <div class="fig-caption">Figure 11.4 (Replacement): Geophysical Prospecting Methods, Target Physical Contrasts, and Measurement Units.</div>
 </div>
-
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Geophysical Method</th>
-                            <th>Diagnostic Physical Property</th>
-                            <th>Instrument Employed</th>
-                            <th>Primary Civil & Mining Applications</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Gravity</strong></td>
-                            <td>Mass density contrast ($\Delta \rho$)</td>
-                            <td>Gravimeter (Worden, LaCoste-Romberg)</td>
-                            <td>Chromite/sulfide bodies, salt domes, buried valleys, sedimentary basins.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnetic</strong></td>
-                            <td>Magnetic susceptibility ($k$) & remanence</td>
-                            <td>Proton Precession Magnetometer (PPM), Fluxgate</td>
-                            <td>Iron ore (BIF), basic igneous dikes, kimberlite pipes, fault delineation.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Electrical Resistivity</strong></td>
-                            <td>Electrical resistivity / conductivity ($\rho$)</td>
-                            <td>Resistivity Meter, Wenner & Schlumberger arrays</td>
-                            <td>Groundwater aquifers, depth to fresh bedrock, saline water intrusion, cavity detection.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Seismic Refraction</strong></td>
-                            <td>Compressional P-wave velocity ($V_p$)</td>
-                            <td>Seismograph, Geophones, Sledgehammer / Explosive</td>
-                            <td>Bedrock depth for dams, rock mass rippability, fault zones, tunnel overburden.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Radiometric</strong></td>
-                            <td>Radioactive decay ($\gamma$-ray emission: $\text{U, Th, K}$)</td>
-                            <td>Geiger-Müller counter, Scintillation counter</td>
-                            <td>Uranium-thorium ores, beach placer monazite mapping, lithological correlation.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2>11.2 Electrical Resistivity Methods</h2>
-            <p>
-                The electrical resistivity method is the workhorse of engineering site investigations and hydrogeological prospecting. Electric current ($I$) is injected into the ground through two metal current electrodes ($A$ and $B$), and the resulting electrical potential difference ($\Delta V$) is measured between two intermediate potential electrodes ($M$ and $N$).
-            </p>
-
+<p>In geophysical prospecting certain physical properties of the under- » ae ground rocks are measurcd from the surface. The properties of racks measured commonly ure density, magnelismn, electrical conductivity and ore elasticity. In the radiometric surveys mainly the — y-ray (gamma-ray) os radiations are micasured. The measured data are then interpreted to give information about the presence of ore bodies, buricd anticlines, faults, ig- ssi neous intrusions, and other geological structures. The main geophysical — Prospecting methods are as follows. pe 1. Gravity methods. i 2. Magnetic methods.</p>
+<p class="book-item"><strong>3. Electrical methods.</strong> Re 4. Seismic methods. a oi?</p>
+<p class="book-item"><strong>5. Radioactive methods.</strong> a ‘11.5. GRAVITY METHODS ; 4g The gravimetric survey is based on the measurement of density cony ras between the anomaly producing body and the surrounding rock. Use. (i) The gravity methods are used chiefly for the exploration p oil and gas. These have been used successfully for outli anticlines, buried ridges, igncous intrusions, faults and oth c geological structures. q (i) The gravity survey has also been utilized for the exploratioy of metallic ore bodies such as massive sulfide ore, iron ore, and chromite ore, i Method. The instruncats which are commonly used to measure gravitational deflections are; (/) pendulum, (i) torsion balance, and (if) gravimete Of these the gravimeter is the most useful. For covering larger arcas rapid I) airbome gravity survey is done. Fi a eRavity In the area of search, raver- § VY ne ses are laid at suitable intervals. 5 a Then the values of gravitational 2 f r a deflections are measured al ¥ 4 predetermined points. The read- &#x27; £ saa = ings thus obtained are plotted on —__ “®®! FON TAL Distance — 4 graph with distances on x-axis : and deflections on the y-axis, [f a mn oe. no dense rock or a massive ore hody pee” a Me ao is present in the area, the graph cw eM ORE sony a . will show an anomaly inthe form |&quot;. °° ho of a peak as shown in Fig. Hd, Let et J . The difference between the nor- STRUCTURE FECTION mal value und the observed value Fig. 11.4, Showing gravity profile of deflection is called “anomaly”. of an ore body, ___ The gravity data can also be interpreted by contouring the anomaly. In this casc the gravity anomaly for each station is plotted on a base map and hate lines of equal gravity anomnaly are drawn in the same way as contour 11.6, MAGNETIC METHODS 7 q The i magia antiee are based on the Measurement of value of mag- q magnetic field is measured “al component of the earth&#x27;s Use. (i) The mapnetj &quot; a ’ ibn pel ie he used widely for the exploraif magnetic ore lies such its of maghetite, pyrrhotite and ilmenite, as deposits of mag q (it) At places faults may bring together rocks of different magnetic properties. Hence they may be delineated from magnetic A dala, :</p>
+<p>(iii) The magnetite and pyrrhotite are more abundant in basic igneous rocks than in acid rocks. Hence the former ean be detected by the magnetic surveys.</p>
+<p>(iv) Certain mineral deposits which contain magnetic minerals in subordinate amount, such as magnetite with asbestos and pyrrhotite with base metals, can oc detected by magnetic surveys.</p>
+<p><strong>Method.</strong> The magnetometers are used to measure the magneuc intensity of the ground at various stations. For covering large areas rapidly, airborne magnetic surveys are conducted. j In the area of search, Uraverses are laid al suitable intervals. Then the values of magnetic intensities are measured at closely spaced stations. For euch station, the observed value is compared with the normal value, The difference between them is the “magnetic anomaly”.</p>
+<p>The values of anomaly are plotted on a base map. Then the lines of equal magnetic anomaly are drawn in the same way as contour lines. From such a map, the area of the magnetic body can be readily delineated. The anomaly data may also be interpreted by constructing magnetic profiles in the same way as done for gravity data (Fig. 11.4).</p>
+<h2 id="sec-11-7">11.7 Electrical Methods</h2>
 <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/schlumberger_vs_wenner_resistivity_array.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/schlumberger_vs_wenner_resistivity_array.png" alt="Figure 11.2a: Side-by-Side Comparison of Wenner ($AM=MN=NB=a$) and Schlumberger ($AB=2L \gg MN=2l$) Four-Electrode Resistivity Arrays and Current Flow Lines." loading="lazy">
-    <div class="fig-caption">Figure 11.2a: Side-by-Side Comparison of Wenner ($AM=MN=NB=a$) and Schlumberger ($AB=2L \gg MN=2l$) Four-Electrode Resistivity Arrays and Current Flow Lines.</div>
+    <img src="../images/schlumberger_vs_wenner_resistivity_array.png" alt="Figure 11.7 (Replacement): Wenner (-spacing) vs. Schlumberger () Electrical Resistivity Arrays." loading="lazy">
+    <div class="fig-caption">Figure 11.7 (Replacement): Wenner ($a$-spacing) vs. Schlumberger ($AB=2L \gg MN=2l$) Electrical Resistivity Arrays.</div>
 </div>
-
 <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/aquifer_resistivity_saturation_salinity.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/aquifer_resistivity_saturation_salinity.png" alt="Figure 11.2b: Electrical Resistivity Spectrum of Subsurface Rocks and Groundwater (Archie's Law): Fresh Water Aquifers vs. Brackish/Saline Intrusion and Metallic Sulfide Conductors." loading="lazy">
-    <div class="fig-caption">Figure 11.2b: Electrical Resistivity Spectrum of Subsurface Rocks and Groundwater (Archie's Law): Fresh Water Aquifers vs. Brackish/Saline Intrusion and Metallic Sulfide Conductors.</div>
+    <img src="../images/aquifer_resistivity_saturation_salinity.png" alt="Figure 11.8 (Replacement): Electrical Resistivity Spectrum of Fresh Aquifers, Saline Zones, and Sulfide Ore Bodies." loading="lazy">
+    <div class="fig-caption">Figure 11.8 (Replacement): Electrical Resistivity Spectrum of Fresh Aquifers, Saline Zones, and Sulfide Ore Bodies.</div>
 </div>
-
-            <p>
-                From Ohm&#39;s Law, the <strong>Apparent Resistivity</strong> ($\rho_a$) of the subsurface is given by:
-            </p>
-            $$\rho_a = K \cdot \frac{\Delta V}{I}$$
-            <p>
-                Where $K$ is the <strong>Geometric Factor</strong> determined strictly by the spatial arrangement and spacing of the four electrodes:
-            </p>
-            $$K = \frac{2\pi}{\left(\frac{1}{AM} - \frac{1}{BM}\right) - \left(\frac{1}{AN} - \frac{1}{BN}\right)}$$
-
-            <h3>1. The Wenner Electrode Configuration</h3>
-            <div class="fig-box">
-                <img src="../images/bangar_sheet_204_wenner_array.png" alt="Wenner Electrode Array Configuration">
-                <div class="fig-caption">Figure 11.1: Wenner Electrode Array: Four collinear electrodes with strictly uniform equal inter-electrode spacing $a$ ($AM = MN = NB = a$) (K. M. Bangar).</div>
-            </div>
-            <p>
-                In the Wenner configuration, the electrodes are symmetrically and equally spaced:
-            </p>
-            $$AM = a, \quad AN = 2a, \quad BM = 2a, \quad BN = a$$
-            <p>
-                Substituting into the geometric factor equation yields the celebrated Wenner apparent resistivity formula:
-            </p>
-            $$K = 2\pi a \implies \rho_a = 2\pi a \frac{\Delta V}{I}$$
-
-            <h3>2. The Schlumberger Electrode Configuration</h3>
-            <div class="fig-box">
-                <img src="../images/bangar_p211_schlumberger_resistivity_array.png" alt="Schlumberger Electrode Array Configuration">
-                <div class="fig-caption">Figure 11.2: Schlumberger Electrode Array: Potential electrodes $MN$ ($2l$) are kept closely spaced at the center while current electrodes $AB$ ($2L$) expand symmetrically outward ($L \gg l$) (K. M. Bangar).</div>
-            </div>
-            <p>
-                In the Schlumberger array, the potential electrodes $M$ and $N$ remain closely spaced at the center ($MN = 2l$), while only the outer current electrodes $A$ and $B$ are moved outward in steps ($AB = 2L$):
-            </p>
-            $$K = \frac{\pi (L^2 - l^2)}{2l} \approx \frac{\pi L^2}{2l} \implies \rho_a = \frac{\pi (L^2 - l^2)}{2l} \frac{\Delta V}{I}$$
-            <p>
-                <strong>Operational Advantage:</strong> In field surveys, the Schlumberger array is vastly superior for deep Vertical Electrical Sounding (VES) because only two heavy current electrodes need to be moved for each reading, minimizing labor and cable dragging while eliminating near-surface potential electrode contact noise.
-            </p>
-
-            <h3>Field Survey Techniques</h3>
-            <ul>
-                <li><strong>Vertical Electrical Sounding (VES):</strong> Electrodes are progressively expanded outward about a fixed central point. The depth of current penetration increases with spacing ($d \approx \frac{AB}{3}\text{ to }\frac{AB}{4}$), providing a 1D vertical profile of layer thicknesses and resistivities (used to find aquifer depth and bedrock level).</li>
-                <li><strong>Constant Separation Profiling (Electrical Trenching):</strong> Electrode spacing ($a$) is held constant while the entire 4-electrode array is moved laterally along survey traverses. Maps horizontal resistivity variations to locate vertical fault zones, shear corridors, and mineralized quartz veins.</li>
-            </ul>
-
-            <h2>11.3 Seismic Refraction Method</h2>
-            <p>
-                The seismic refraction method utilizes elastic compression waves (P-waves) generated by a sledgehammer impact on a steel plate or a shallow explosive blast. Waves propagate downward, and upon striking an underlying layer with higher seismic velocity ($V_2 &gt; V_1$, e.g., solid granite bedrock beneath loose alluvium), they refract according to <strong>Snell&#39;s Law</strong>:
-            </p>
-
+<div class="callout callout-extra">
+    <div class="callout-title">&#128216; Supplementary Reference Box &bull; Apparent Resistivity &amp; Seismic Bedrock Depth Formulas (Applied Geophysics)</div>
+    <div class="callout-body"><ul><li><strong>Wenner Array:</strong> $\rho_a = 2\pi a \frac{\Delta V}{I}$ &nbsp;|&nbsp; <strong>Schlumberger Array:</strong> $\rho_a = \frac{\pi(L^2 - l^2)}{2l}\frac{\Delta V}{I}$</li><li><strong>Seismic Refraction Depth to Bedrock:</strong> $h = \frac{t_i}{2}\frac{V_1 V_2}{\sqrt{V_2^2 - V_1^2}}$ (Snell's critical angle $\sin i_c = V_1/V_2$).</li></ul></div>
+</div>
+<p>The electrical methods |e aya. cunrent-“&quot;? are uscd mainly for the ex- [owes ot ploration of metallic mineral (Z 5 deposits. The electrical survey inethods are of four types : () self potential method, (i) equipatential method , (ii) PLAN electromagnetic method, and (iv) resistivity method. g</p>
+<h3 id="sec-11-7-1">11.7.1 Self Potential Focy2y252 Sate BAS SANE 8</h3>
+<p>Methed ee) ASS a In this method the elecuri- [Fy tt Wai ta : Nee calcnergy produced bytheore or ty! # RYH AL hody itsetf is directly | tf &amp;#36;1 RQE Cre gy measured and nooutsideener- [y 1 1 4 W’ Picci Fe gizing force is required. Core fy fy! IN Pe ake os tain ore bodies, perticularly those containing sulfide SECTION minerals when subjected to Fig. 11.5. Showing self potential currents of an ore body: oxidation, produce electrical currents. These currents are called “tellurie currents”. By measuring these currents the presence of the hidden ore body — can be detected. . ; a</p>
+<h3 id="sec-11-7-2">11.7.2 Equipotential Method</h3>
+<p>The equipotential method is best suited to shallow deposits in the — regions not too wel. It can be used to locate orc bodies in the glacial drift — and for determining structure beneath the soil. This method is also used to study the geological formations with steep or vertical contacts such as igneous intrusions. 4 - Method. The currentis intro- wineans a duced into the ground by means abe d ee £5 7 of two line electrodes. A “line se, |) | | ot 1 4 ge electrode” is a bare copper wire 3 rfipaupap ty. pee which is pegged into the ground &amp;#36; ry Eds ; ‘ al intervals (Fig. 11.6). The cur- 2 vey taht Aaa : rent flows between them through : t A rN the ground because of the dif- @ ud (aoa Ny!</p>
+<p>ference in potential. &amp;#36; i CRD Ifthe intervening groundisor &amp;} | 1 \\\ NOY als uniform conductivity, the lines of BH}; \&#x27;\V Nor fp fit y equal potential will be parallelto y} |1 Vik il fa taf ep te the line electrodes. This is shown % 1 HD py aula 3 in Fig, 1.6 by dotted lines a,b, *] 4! ata tats tela leds &#x27; ¢, etc. On the other hand, if an ore ce, a oe OE a t ey which is a better conductor inne “OTERO, than the surrounding rock, is f . ™ ql Present in the ground, the lines of Fig. 11.6. Equipotential method. equal potential will be distorted. This is s i 7 dl i : 1, 2,3, ete, Hence by noting the paeoaat) in the Figure by solid lines hidden ore body can be demarcated. 11 He eauipotential lines, the 5 11.7.3, Electromagnetic Method i 7 Out of the electrical - q favoured method for search of tis electromagnetic tethod is the most ore bodies. It is more precise and yiclds greater information regarding shape, size and position of the body. The electromagnetic method can be used for ae rrp a mountain region, dry sands and ice covered ground. e my When an allernating current is passed through a conductor, induced currents are produced around it. If a conductor, such as an ore body, lics within the induced field, it sets up a secondary induced currents around it which can be measured.</p>
+<p><strong>Method.</strong> A rectangular loop of insulated cable is placed on or above the ground. Then an alternaling current is supplied to the q loop (Fig. 11.7). The loop Pk Boke &amp; : sets up a “primary magnetic pices | ve Rk : field” within the surround 9g oy QD, if, {i ing ground which coin Tai diminishes with distance Bac q Lie ie « from the loop. cong 2 3 &amp; S € 7 &amp; If a conductor (ore body) is present within the ground, a “secondary field” ~) is induced about the conduc- Fig. 11.7. Electromagnetic method tor. Because both the primary and sccondary fields are present at the same place , the primary field gets distorted. The ore body is outlined by measuring the distoftion by sensilive receivers, In order to detect the distortion, traverse lines are laid normal to the longer axis of the leop and normal to the hidden ore body (Fig. 11.7). These traverse lines are then surveyed by the receiver. If the ground is uniform, the readings of the field will decrease with distance. On the other hand if un ore body is hidden in the ground, the readings will rise at the boundary of the ore body as shown in Fig. 17.</p>
+<h2 id="sec-11-8">11.8 Resistivity Methods</h2>
 <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/web_seismic_refraction_raypaths.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/web_seismic_refraction_raypaths.png" alt="Figure 11.3: Seismic Refraction Survey Geometry showing Direct Wave ($V_1$), Critically Refracted Head Wave ($V_2 > V_1$, $\sin i_c = V_1/V_2$), Geophone Array, and Travel-Time ($t\text{--}x$) Plot." loading="lazy">
-    <div class="fig-caption">Figure 11.3: Seismic Refraction Survey Geometry showing Direct Wave ($V_1$), Critically Refracted Head Wave ($V_2 > V_1$, $\sin i_c = V_1/V_2$), Geophone Array, and Travel-Time ($t\text{--}x$) Plot.</div>
+    <div class="fig-badge-row"><span class="fig-badge badge-web">Web / Wikimedia Commons &amp; USGS HD Color</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
+    <img src="../images/web_seismic_refraction_raypaths.png" alt="Figure 11.9 (Replacement): Seismic Refraction Survey Geometry — Direct Wave (), Critical Head Wave (), and  Intercept Plot." loading="lazy">
+    <div class="fig-caption">Figure 11.9 (Replacement): Seismic Refraction Survey Geometry — Direct Wave ($V_1$), Critical Head Wave ($V_2$), and $t\text{--}x$ Intercept Plot.</div>
 </div>
-
-            $$\frac{\sin i}{\sin r} = \frac{V_1}{V_2}$$
-            <p>
-                When the angle of incidence equals the <strong>Critical Angle</strong> ($i_c$), the refracted wave travels along the interface boundary at velocity $V_2$ as a "head wave", continuously transmitting energy back to surface geophones at angle $i_c$:
-            </p>
-            $$\sin i_c = \frac{V_1}{V_2}$$
-
-            <h3>Interpretation of Time-Distance ($t\text{--}x$) Graph</h3>
-            <p>
-                A plot of first-arrival travel time ($t$) against source-geophone offset distance ($x$) produces two straight-line segments:
-            </p>
-            <ol>
-                <li><strong>Direct Wave (Slope $1/V_1$):</strong> Passes through origin: $t = \frac{x}{V_1}$.</li>
-                <li><strong>Refracted Head Wave (Slope $1/V_2$):</strong> Arrives after intercept time $t_i$: $t = \frac{x}{V_2} + t_i$.</li>
-            </ol>
-            <p>
-                The depth to bedrock ($h$) is calculated directly from the intercept time ($t_i$) or the crossover distance ($x_c$ where direct and refracted waves arrive simultaneously):
-            </p>
-            $$h = \frac{t_i}{2} \frac{V_1 V_2}{\sqrt{V_2^2 - V_1^2}} = \frac{x_c}{2} \sqrt{\frac{V_2 - V_1}{V_2 + V_1}}$$
-
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Geological Material</th>
-                            <th>Typical P-Wave Velocity $V_p$ (m/s)</th>
-                            <th>Rippability Assessment (Caterpillar Scale)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Loose Topsoil / Sand</td><td>$300\text{--}800$</td><td>Easily ripped / scrapable</td></tr>
-                        <tr><td>Wet Alluvium / Clay</td><td>$1000\text{--}1800$</td><td>Easily excavated with backhoe</td></tr>
-                        <tr><td>Weathered Sandstone / Shale</td><td>$1800\text{--}2500$</td><td>Marginally rippable with D9 bulldozer</td></tr>
-                        <tr><td>Sound Limestone / Dolerite</td><td>$3500\text{--}5500$</td><td>Non-rippable; requires blasting</td></tr>
-                        <tr><td>Massive Fresh Granite / Basalt</td><td>$5000\text{--}6200$</td><td>Extremely hard; full drill-and-blast required</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2>11.4 Gravity and Magnetic Prospecting</h2>
-            <h3>Gravity Method</h3>
-            <p>
-                Measures tiny variations in Earth&#39;s gravitational acceleration (expressed in milligals: $1\text{ mgal} = 10^{-3}\text{ cm/s}^2 = 10^{-5}\text{ m/s}^2$). Raw field gravity measurements are reduced to the <strong>Bouguer Anomaly</strong> by applying:
-            </p>
-
-<div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geochemical_anomaly_background_threshold_profile.png', this.querySelector('.fig-caption').innerText)">
+<p>In resistivity surveys the amount of resistance met by an electric current which is passed through a portion of the earth, is measured. The measure of resistivity is presumed to be a measure of the fluid content and porosity of rocks. Therefore the resistivity measurements help in making distinction between saturated and unsaturated rocks, and also between rocks of differing Porosity.</p>
+<p><strong>Uses.</strong> The resistivity surveys are very effective in the investigation of # horizontal or gently dipping rocks. These are used in detecting the following.</p>
+<p>1. The thickness of overburden or depth to bed rock is determined very accurately. ‘ 2. The resistivity surveys have been used in the exploration of the s placer deposits and bedded deposits. : . _— 394 PRINCIPLES OF ENGINEERING GEOLUqy 3. The resistivity methods have heen used widely for the exploration of groundwater. In regions of gentle dips the presence of aquife, s can be determined. 4 4, Fault zones may be detcrmined as they contain electrolyte in solution. g a 5. Resistivity surveys can be used for discovering the subsurta ice structure and lithology. The buried anticlines can be traced by determining depths to strata of greater or lesser resistivity. Hence they are also used in the exploration of petroleum. - 3</p>
+<h3 id="sec-11-8-1">11.8.1 Wenner Method. In resistivity surveying various electrode ar</h3>
+<p>rangements are employed but the arrangements shown by Wenner is widely used. In the Wenner method the spacing between the electrodes are kept equal. In Fig. £1.8 this spacing is&#x27;designated as ‘d*. The current is introduced into the ground by twa current electrodes C, and C,, and the potential difference</p>
+<h3 id="sec-11-8-2">11.8.2 Resistivity Traversing</h3>
+<p>This method is also called “resistivit ing”. Wi i 4 ele &quot;ity trenching”. IL is used to inves dale T ied Pee in the horizontal direction al constant depth. along 2 tement OF the electrodes are kept constant while they are moved niga, Bn line: The resistivity measurements are made al various stations. From the data thus obtai Sabah q ‘i ‘ obtained, the resistivity curves are drawn by plotting the distance of stations 0 X-axis a ae i 4 ab ons On X-axis and resistivity yal he ¥-axis.</p>
+<p>An abrupt change in the Curvature of a resistivit a a a ote hange ature . A SUVILY profile indicates a chan, in the nature of the underlying material (Fig, LS, indicates I ———— esvance —— ee SEAL THE ‘</p>
+<h2 id="sec-11-9">11.9 Seismic Methods</h2>
+<p>In seismic methods, the variations in the seismic wave velocity are measured in different rock layers. The values of the seismic velocities are obtained from the time-distance curves. Since this velocity is directly proportional to the density of rocks, by noung the differences in the velocities, the structure of the subsurface rocks can be worked out. srt hg . ling rigs and recording Method. In seismic surveys, truck mounted drilling ; systems are uscd. Small charges of explosives are detonated in shallow boreholes drilled in the surface rocks. The seismic waves (hus generated are transmitied through the rocks and are picked up by a series of geophones carefully spaced along a line of traverse [Fig. 1.11 (ani RECORDING PDINTS 7+ TIME MARK EVety 0-01 BECOND a &#x27; &#x27;s cB) “i 7 i ints and geophones along a line</p>
+<h3 id="sec-11-9-1">11.9.1 Refraction Survey</h3>
+<p>The seismic waves undergo reflections and refractions at the rock boundaries.-In the refraction method only the refracted waves are recorded and used for determining the structure of rocks. The refraction survey is commonly used for the following.</p>
+<p>(f) For determining the structure of rocks lying at relatively shallow 4 depth. It is widely used for civil cngineering explorations.</p>
+<p>(ii) For the location of shallow salt domes and the oil pools associated i with them.</p>
+<h3 id="sec-11-9-2">11.9.2 Reflection Survey i</h3>
+<p>In this method the reflection waves from ao reflecting surface are” recorded and used for determining the rock structures. The reflection survey i is generally used for deep explorations (600 meters ore more). Hence itis ~ widely used for oil exploration. This method accurately delineates the subsurface structural traps and salt domes.</p>
+<p>11.10, RADIOMETRIC SURVEYING The radioactive elements, such as uranjum-238 and thorium-232, con- , stantly undergo a process of disintegration. During disintegration ey icant radiations of three types : (i) o rays, (ii) B rays, and (iif) Y rays: (@ a-Rays. These are the beams of positively charged particles. ji 5 of helium atoms (2 protons + 2 These particles are the nuclei of i Ay of kilometers neutrons). They trivel with velocities of thousan per second. ee :</p>
+<p class="book-item"><strong>(ii) B-Rays.</strong> These are the beams of negatively charges! partictes. Tey 4 travel faster than &amp; rays. (iii) y-Rays, These are the rays of very short wave length like Srays, They travel with velocity of lightand have a very high Peneirating power. ‘ OF the three above said radiations, only the y-rays are useful from the point of view of radiometric surveys. The instruments cammonly used for yj radiometric surveys are : (i) Geiger Mueller counters, and (ii) scintillation 4g counters. a Geiger Mueller Counter. This instruments is fitted with an ionization 4 chamber, meters and count registcrs. These make it possible to measures the fr intensity of y-rays. 4 The y-rays are detected by the ionization chamber. This chamber consists of a closed tube containing an ionisable gas under pressure. An clectrical potential is applicd to produce an electrical field inside the tube. As a result the positive ions move towards the negative electrode and the negative ions towards the positive electrode. A beam of incoming ¥-rays librates a large number of ions inside the tube and produces an impulse of electri current, a ft, Scintillation Counter. This is a very sensitive instrument which measures the intensity of y-ryas (gamma rays) in terms of clectrical signals, —</p>
+<h3 id="sec-1-10-1">1.10.1 Types of Radiometric Surveys ;</h3>
+<p>Depending on whether the measurements are made from air, al the : ‘ ground, or along drill holes, the radioactive Surveys are classilied into three — groups : (i) airbome radiometric Surveys, (11) ground radiometric surveys, — and (iii) radioactive logging of bore holes. a i Airhorne Radiometric Surveys. In airborne surveys, scintillation counters are used for recording the ‘y-rays from the air. These Surveys are usually carried out along with the acromagnelic and aeroelectromagnetic a Surveys. By airborne radiometric surveys the deposits of radioactive sub- iq stances and boundaries between various rocklypes may be outlined.</p>
+<p><strong>Ground Radiometric Surveys.</strong> The ground radiometric surveys are used mainly : (i) to search deposits of radioactive substances, and (ii) to q Outline geological structures such as faults, : (@ To Search De Posits of Radio-active Ores, Jn ground surveys, the 4 yo ake : Commonly used to detect the intensity of yrays. as posit Which is hidden beneath a thick cover of E tl, may nol be detected because most of the radioactive emana- 4 tions are absorbed by the soil cover, Jn such i of the hidden deposit dencay. a ch a case the detection elements from the ioe Fie nthe nugration of the radioactive 4 team Us tnigration is caused in two ways : a (@) Whe radioactive subst, ak . 3 stances may migrate in solu fer the : deposition of the ore. and (b, i josie oe . ) the radon which is the gaseous 3 figLo WORK AND PROSPECTING METHODS ee member of the radioactive series nay diffuse through the over: lying cover.</p>
+<p>The process of migration of radioactive elemen Z ents may in the formation of an “aureole”, or in the localization of suiay tivity along faults or fissures. By detecting these cl i ore body may be outlined. i nes. the hidden . (i) To Outline Faults. Certain groundwaters contain radon and soluble radioactive materials in appreciable amounts. Faults con- 2 taining such radioactive fluid may be outlined by measuring varia. tions in the radivactivity of rocks.</p>
+<p><strong>Radioactive Logging.</strong> The “radioactive logging” is an operation in which y-ray counts of various rockformations met in a borehole are recorded continuously along the depth, This depthwise record is called “radioactive log”. The radioactive logging is used for (i) correlating rockbeds, and (ii) determining porosity and permeability of rocks.</p>
+<p>(® For Correlating Rocks, Every rockformation contains some natural radioactivily in measurable degrees. As a rule, acid rocks arc more radioactive then basic rocks. Because different rocks have different amount of radioactivity, they may be correlated by, using this criteria.</p>
+<p>Gi) For Determining Porosity. The radioactivity counts of different rocks vary with their densities. The more dense rocks have higher i values of radioactivity than those of less dense rocks. Hence from the density, the porosity of rocks may be determined.</p>
+<h2 id="sec-11-11">11.11 Geochemical Prospecting</h2>
+<p>The geochemical prospecting is very ¢ffective is locating deposits of base metals, such as Cu, Pb, Zn, etc. In India this method is used commonly for this purpose. The essential principle of geochemical prospecting is as follows.</p>
+<p>1. Samples of the surface soil or sediment of the target area are taken systematically from grid points. | ihe 2. The metal content of the samples are determined precisely by rapid geochemical analyses.</p>
+<p>3. The distribution of the metal content in the surface soil or sediment is determined by plotting the values on a base map of the : large! area, q 4. Then the comparision of these values is made with the known “background” values.</p>
+<p>5. This comparision will give the {stea about the presence of the mineral deposit hidden below the ground. 400 PRINCIPLES OF ENGINEERING GEO. 9, in steps involved in the geochemical prosp ‘ inp (i) Je in eet! analyses, and (/if) interpretation of data (i) Sampling. The geochemical prospecting of a target area is 5 with the collection of samples. The samples of surface soi], stp sediment, water or rock chips are collected at regular inter Generally a large number of samples are collected from grid po al fixed intervals. The grid lines are drawn transverse to the str of the suspected zones of mineralization. i (a) Soil Sampling. The soils always contain mineral partic present in the parent rock. The soils caped over the o re bod: commonly shows anomalously high values of metal ¢ centration, In soil sampling, the samples weighing abo ul gm. are collected from cach grid point, a (6) Stream Sediment Sampling. In geochemical surveys y sueam sediment sampling is commonly done. In this “cas samples of fine stream sediments are colleccted from str 7 channels. These sediments usually carry mineral pa rtic derived from their original source rock. The samples of stre sediment are normally collected at intervals of 0.15 km. E (c) Water Sampling. Water sampling is done mainly for urani deposits and rarcly for zinc and copper deposits. he v samples are collected from lakes, rivers, and undergraun sources. ‘— FE:</p>
+<p class="book-item"><strong>(d) Rock Sampling.</strong> In case of rock sampling, chips of ro ks collected from visible outcrops at regular intervals. Th chips are then crushed to -100 mesh size and analysed for th metal content. a (ii) Geochemical Analysis, Each sample is analysed precise ly rapid geochemical methods to determine its metal content. Thu for a single geochemical survey, individual readings of the on of 50,000 to 60,000 are obtained, Ey , (itt) Interpretation of Data, The data obtained from the geochemici analyses are interpreted with the help of graphical statistical pro cedures or by computer methods. The method of interpretatio may briefly be summarized as follows. aS &#x27;. The area under investigation shows thrce types of values : ( background values, (b) threshold values, and (c) anomalot iin sc rersee values of the metal content of the af thots shies ese mal values”. The “threshold values” ate and the anom, ele the zone separating the average values threshold values are nue The values which are above the ees re called “anomalous values”. i eigu0 WORK AND PROSPECTING METHODS 2. The area of anomalous values ba hidden below the ground. Mine the mineral depoxt 12,12. GEOCHEMICAL SURVEY FOR OM, AND Gas The gases associated with petroleum are maj ane with minor amounts of Nz, CO, and nly methane, ethane and i prop: : 22 }O;. Since the gases are hi reipile, whey move upward Unrough the rocks and reach the ground highly ‘As a result the soils get enriched in the methane. The ersar arc! i rp Petroleum may als be searched by determining the presence of oil bitumens in the Rg and waters.</p>
+<p>In the geochemical survey, the samples of soil, rock and collected systematically from grid points. These samples are pula = chemically to determine the presence of hydrocarbon gases and biewieas 1 The data thus obtained give clues to the presence of petroleum deposit hidden underneath. i The geochemical methods of prospecting for oi! has been divided into two groups : ({) direct methods, and (if) indirect methods. In the “direct 1 methods” mainly gas and bitumen are used as indicators, while in the “indirect methods” hydrochemical, soil salts, physico-chemical, and microbiological indicators are used.</p>
+<p><strong>Gas Survey.</strong> Of the direct methods, the gas survey is the most important. Ee It has helped in discovering many oil formations independently. In this method, the migrating hydrocarbon gases which are directly associated with H the oil or gas deposit, are detected. The most difficult part of gas survey is sampling. The samples of subsoil gas are taken from shallow wells dug at Hl grid points. The samples are taken in such a manner that the atmospheric air docs not dilute them. !</p>
+<p>Each sample of the subsoil gas is analysed chemically to determine the amount of hydrocarbon gases present in it. The results thus obtained are recorded on a map, Then the area of oil and gas deposit may be outlined. REVIEW QUESTIONS : “ Explain 1. List the various equipments required for doing geological fiekt work. Expl ‘ briefly their use. ¢ for i 2. Describe in brief the basic requirements. methods and ProPer carrying out geological mapping of region. fps a ina b 3. Describe in detail the method of doing geological Fld cept . that are 4. Give a broad outline of the various surface methods prospecting for minerals. Rea Fy ineral deposit.</p>
+<p>S. Describe the procedure for prospecting # i ET oa i 402 PRINCIPLES OF ENGINEERING Geqi ¢ 6. List the various geophysical methods of prospecting. Describe the ej 3 methods in detail. i 4. Describe the specific methods of geophysical exploration used jg a : water survey. BI 8, Describe in brief the electrical and electromagnetic methodsof geo Ee exploration for location of sulfide ore bodies. phys 9, Differentiate between anomaly and background. Describe the geoe a method of exploration of a zinc deposit. nem Lo. Explain the scheme of exploration of oil and gas deposits by geache f method. Beochemic 11. Describe the principle and applications of radiometric survey. 4 i (12) 12.1, GEOLOGICAL MAPS ‘A geological map shows the geological set-up of an area in terms of occurrence und distribution of various rock types. In addition to outcrops, such a map also revculs the attitudes and structure of rocks, and their association with topography and drainage. Geological maps, therefore, provide the key for understanding the structure and geological history of any particular region. These maps have a wide range of application in mineral prospecting, mining and civil enginccring works.</p>
+<p>‘The important characteristics of a geological map are as follows.</p>
+<p>(i) The geological map shows the contacts between various rocks units, (i) The relative ages of Strala are commonly shown by an index. In the index the different rocks beds are arranged in the order of decreasing age from the bottom upward. The oldest formation is placed at the bottom of the column while the youngest at the top. (ti) On the geological map the observed dip and strike of a rockbed are also shown. The angles of dip are indicated by values placed above the dip and strike symbal (iv) In areas of folded strata, individual rockformations appear on the map in belts whose pattern indicates the nature and types of folds involved, () Faults are indicated where such pattems are offset abruptly.</p>
+<h2 id="sec-12-2">12.2 Topographic Maps</h2>
+<p>A topographic map is one which shows the configuratioh of the land surface and drainage details of the area. Il also shows man made features</p>
+        <div class="visual-atlas-section">
+            <h2>Visual Reference Gallery (Clean Color Diagrams &amp; Specimens)</h2>
+            <p>Supplementary full-color diagrams from <em>Winter, Perkins, Fossen, Boggs</em> and high-resolution USGS/Wikimedia photographs replacing scanned textbook drawings.</p>
+            <div class="fig-grid"><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/geochemical_anomaly_background_threshold_profile.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/geochemical_anomaly_background_threshold_profile.png" alt="Figure 11.4: Geochemical & Geophysical Anomaly Profile illustrating Regional Background, Threshold Level, Peak Anomaly over a buried ore body, and Dispersion Halo." loading="lazy">
-    <div class="fig-caption">Figure 11.4: Geochemical & Geophysical Anomaly Profile illustrating Regional Background, Threshold Level, Peak Anomaly over a buried ore body, and Dispersion Halo.</div>
-</div>
-
-            <ul>
-                <li><em>Latitude Correction:</em> Accounts for Earth&#39;s centrifugal flattening.</li>
-                <li><em>Free-Air Correction:</em> Elevational change without mass ($\Delta g_F = +0.3086 \, h\text{ mgal}$).</li>
-                <li><em>Bouguer Slab Correction:</em> Mass of rock slab between station and datum ($\Delta g_B = -2\pi G \rho h = -0.04192 \, \rho h\text{ mgal}$).</li>
-                <li><em>Terrain Correction:</em> Surrounding hill and valley relief (always positive).</li>
-            </ul>
-
-            <h3>Magnetic Method</h3>
-            <p>
-                Measures variations in the total geomagnetic field intensity (in nanoteslas, $\text{nT}$). Highly magnetized rocks containing magnetite produce intense dipolar anomalies. Widely used for airborne reconnaissance surveys across prospective mineral belts.
-            </p>
-
-            
-<div class="visual-atlas-section">
-    <h2>11.5 Visual Atlas: Hydrogeophysical Logging, Aquifer Pumping Tests & Water Quality</h2>
-    <p>Field hydrogeology and geophysical interpretation charts covering Cooper-Jacob drawdown analysis, residual recovery tests, and EC-to-TDS conversions.</p>
-    <div class="fig-grid">
-        <div class="fig-box fig-card-interactive" onclick="openLightbox('../images/cooper_jacob_validity_condition_theis_comparison.png', this.querySelector('.fig-caption').innerText)">
+    <img src="../images/geochemical_anomaly_background_threshold_profile.png" alt="Figure 11.12 (Replacement): Geochemical Dispersion Halo, Background, Threshold, and Ore Anomaly Profile." loading="lazy">
+    <div class="fig-caption">Figure 11.12 (Replacement): Geochemical Dispersion Halo, Background, Threshold, and Ore Anomaly Profile.</div>
+</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/cooper_jacob_validity_condition_theis_comparison.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/cooper_jacob_validity_condition_theis_comparison.png" alt="Theis Non-Equilibrium Type Curve and Cooper-Jacob Semi-Log Straight-Line Approximation ($u = \frac{r^2 S}{4 T t} < 0.01$) for aquifer transmissivity ($T$) and storativity ($S$)." loading="lazy">
-    <div class="fig-caption">Theis Non-Equilibrium Type Curve and Cooper-Jacob Semi-Log Straight-Line Approximation ($u = \frac{r^2 S}{4 T t} < 0.01$) for aquifer transmissivity ($T$) and storativity ($S$).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p34_cooper_jacob_method_conditions.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p34_cooper_jacob_method_conditions.png" alt="Cooper-Jacob time-drawdown pumping test analysis and cone of depression geometry (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Cooper-Jacob time-drawdown pumping test analysis and cone of depression geometry (K. M. Bangar).</div>
+    <img src="../images/cooper_jacob_validity_condition_theis_comparison.png" alt="Theis &amp;amp; Cooper-Jacob Pumping Test Time-Drawdown Analysis." loading="lazy">
+    <div class="fig-caption">Theis &amp; Cooper-Jacob Pumping Test Time-Drawdown Analysis.</div>
 </div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/pumping_test_recovery_residual_drawdown_timeline.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/pumping_test_recovery_residual_drawdown_timeline.png" alt="Pumping and Recovery Phase timeline showing Residual Drawdown ($s'$) vs. $\log(t/t')$ for calculating aquifer transmissivity." loading="lazy">
-    <div class="fig-caption">Pumping and Recovery Phase timeline showing Residual Drawdown ($s'$) vs. $\log(t/t')$ for calculating aquifer transmissivity.</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p33_pumping_test_residual_drawdown.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p33_pumping_test_residual_drawdown.png" alt="Theis recovery method for evaluating well performance and aquifer parameters (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Theis recovery method for evaluating well performance and aquifer parameters (K. M. Bangar).</div>
+    <img src="../images/pumping_test_recovery_residual_drawdown_timeline.png" alt="Aquifer Pumping &amp;amp; Residual Recovery Drawdown Curve." loading="lazy">
+    <div class="fig-caption">Aquifer Pumping &amp; Residual Recovery Drawdown Curve.</div>
 </div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/ec_to_tds_hydrochemical_conversion_chart.png', this.querySelector('.fig-caption').innerText)">
     <div class="fig-badge-row"><span class="fig-badge badge-hd">High-Res Color Conceptual Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/ec_to_tds_hydrochemical_conversion_chart.png" alt="Hydrochemical relationship between Electrical Conductivity ($EC$ in $\mu\text{S/cm}$) and Total Dissolved Solids ($\text{TDS in mg/L} \approx 0.64 \times EC$)." loading="lazy">
-    <div class="fig-caption">Hydrochemical relationship between Electrical Conductivity ($EC$ in $\mu\text{S/cm}$) and Total Dissolved Solids ($\text{TDS in mg/L} \approx 0.64 \times EC$).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p36_electrical_conductivity_tds_conversion.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p36_electrical_conductivity_tds_conversion.png" alt="Groundwater salinity classification based on specific electrical conductance (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Groundwater salinity classification based on specific electrical conductance (K. M. Bangar).</div>
-</div><div class="fig-box fig-card-interactive" onclick="openLightbox('../images/bangar_p35_cable_tool_drilling_bhabar_piedmont.png', this.querySelector('.fig-caption').innerText)">
-    <div class="fig-badge-row"><span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span></div>
-    <img src="../images/bangar_p35_cable_tool_drilling_bhabar_piedmont.png" alt="Cable-tool percussion and rotary water-well drilling across piedmont Bhabar boulder fans and Terai artesian belts (K. M. Bangar)." loading="lazy">
-    <div class="fig-caption">Cable-tool percussion and rotary water-well drilling across piedmont Bhabar boulder fans and Terai artesian belts (K. M. Bangar).</div>
-</div>
-    </div>
-</div>
-
-
-<div class="callout callout-engineering">
-                <div class="callout-title">Engineering Application Summary of Chapter 11</div>
-                Geophysical techniques eliminate blind drilling:
-                <ul>
-                    <li><strong>Dam Foundations:</strong> Seismic refraction maps continuous bedrock depth and pinpoints hidden buried river channels that would cause catastrophic piping leakage under dam embankments.</li>
-                    <li><strong>Groundwater Supply:</strong> Schlumberger VES curves differentiate between saline groundwater ($\rho &lt; 5\;\Omega\cdot\text{m}$), clay-rich aquitards ($\rho = 10\text{--}30\;\Omega\cdot\text{m}$), and fresh gravel/sand aquifers ($\rho = 50\text{--}150\;\Omega\cdot\text{m}$).</li>
-                    <li><strong>Tunnel Overburden:</strong> Resistivity profiling detects water-bearing sheared fault zones hundreds of meters ahead of tunnel boring machines (TBMs), preventing tunnel flooding disasters.</li>
-                </ul>
-            </div>
+    <img src="../images/ec_to_tds_hydrochemical_conversion_chart.png" alt="Electrical Conductivity () to Total Dissolved Solids () Relationship." loading="lazy">
+    <div class="fig-caption">Electrical Conductivity ($EC$) to Total Dissolved Solids ($\text{TDS}$) Relationship.</div>
+</div></div>
+        </div>
+        
         </main>
-
         <div class="chapter-nav">
-            <a href="ch10_engineering_geology.html" class="nav-btn">&larr; Previous Chapter</a>
+            <a href="ch10_engineering_geology.html" class="nav-btn">&larr; Chapter 10: Engineering Geology</a>
             <a href="../index.html" class="nav-btn">&#9776; Table of Contents</a>
-            <a href="ch12_geological_maps.html" class="nav-btn">Next Chapter &rarr;</a>
+            <a href="ch12_geological_maps.html" class="nav-btn">Chapter 12: Geological Maps and Sections &rarr;</a>
         </div>
     </div>
-
     <div id="lightboxModal" class="lightbox-overlay" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close Zoom">&times;</button>
         <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Geological Figure">
@@ -583,10 +446,9 @@
     </div>
     <script>
     function openLightbox(src, captionText) {
-        const modal = document.getElementById('lightboxModal');
         document.getElementById('lightboxImg').src = src;
         document.getElementById('lightboxCap').textContent = captionText;
-        modal.classList.add('active');
+        document.getElementById('lightboxModal').classList.add('active');
     }
     function closeLightbox(e) {
         if (e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
@@ -594,29 +456,8 @@
         }
     }
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const modal = document.getElementById('lightboxModal');
-            if (modal) modal.classList.remove('active');
-        }
-    });
-    // Also make pre-existing fig-boxes clickable for zoom
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.fig-box:not(.fig-card-interactive)').forEach(box => {
-            const img = box.querySelector('img');
-            const cap = box.querySelector('.fig-caption');
-            if (img && cap) {
-                box.classList.add('fig-card-interactive');
-                if (!box.querySelector('.fig-badge-row')) {
-                    const row = document.createElement('div');
-                    row.className = 'fig-badge-row';
-                    row.innerHTML = '<span class="fig-badge badge-bangar">K. M. Bangar Original Diagram</span><span class="zoom-hint">&#128269; Click to Zoom</span>';
-                    box.insertBefore(row, img);
-                }
-                box.addEventListener('click', () => openLightbox(img.getAttribute('src'), cap.innerText));
-            }
-        });
+        if (e.key === 'Escape') document.getElementById('lightboxModal').classList.remove('active');
     });
     </script>
-
 </body>
 </html>
